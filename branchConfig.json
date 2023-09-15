@@ -1,0 +1,13 @@
+{
+  "prefixes": ["release", "feature", "hotfix", "homolog", "us", "task", "fix"],
+  "suggestions": {"features": "feature", "feat": "feature", "releases": "release"},
+  "banned": ["wip"],
+  "skip": [],
+  "disallowed": ["master", "main", "develop", "stage"],
+  "separator": "/",
+  "msgBranchBanned": "Branches with the name '%s' are not allowed.",
+  "msgBranchDisallowed": "Pushing to '%s' is not allowed, use git-flow.",
+  "msgPrefixNotAllowed": "Branch prefix '%s' is not allowed.",
+  "msgPrefixSuggestion": "Instead of '%s' try '%s'.",
+  "msgSeparatorRequired": "Branch '%s' must contain a separator '%s'."
+}
