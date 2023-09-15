@@ -7,4 +7,5 @@
 
 ### Checklist:
 
-- [] Build rodou normalmente
+- [ ] Build rodou normalmente
+- [ ] A task está vinculada ao pr
