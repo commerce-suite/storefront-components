@@ -1,4 +1,4 @@
-## [Task] title board
+## [Feature] title board
 
 ### Changes:
 
@@ -8,4 +8,4 @@
 ### Checklist:
 
 - [ ] Build rodou normalmente
-- [ ] A task está vinculada ao pr
+- [ ] A feature está vinculada ao pr
