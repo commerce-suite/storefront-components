@@ -1,5 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import { format } from '../../utils/utils';
+import { ProductService } from '@uxshop/storefront-core';
 
 @Component({
   tag: 'my-component',
@@ -21,12 +22,30 @@ export class MyComponent {
    * The last name
    */
   @Prop() last: string;
+  @Prop() product: any;
 
   private getText(): string {
     return format(this.first, this.middle, this.last);
   }
 
+  private async getProduct() {
+    this.product = await ProductService.getById('2915659');
+  }
+
+  componentWillLoad() {
+    this.getProduct();
+  }
+
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    if (this.product)
+      return (
+        <div>
+          <div>Hello, World! I'm {this.getText()}</div>
+          <h2>
+            {this.product.name} - R${this.product.price}
+          </h2>
+          {this.product.description}
+        </div>
+      );
   }
 }
