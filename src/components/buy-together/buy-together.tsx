@@ -11,6 +11,7 @@ export class BuyTogether {
     return (
       <Host>
         <section class="bagy-buy-together">
+          <h1 class="title">Meu title</h1>
           <product-card></product-card>
         </section>
       </Host>
