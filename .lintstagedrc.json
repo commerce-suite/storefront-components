@@ -2,7 +2,7 @@
   "*.{js,jsx,ts,tsx}": [
     "eslint --fix",
     "prettier --write",
-    "yarn test",
+    "stencil test --spec --e2e --findRelatedTests",
     "git add"
   ]
 }
