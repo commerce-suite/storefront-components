@@ -6,56 +6,45 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface BuyTogether {
+    }
+    interface ProductCard {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLBuyTogetherElement extends Components.BuyTogether, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLBuyTogetherElement: {
+        prototype: HTMLBuyTogetherElement;
+        new (): HTMLBuyTogetherElement;
+    };
+    interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
+    }
+    var HTMLProductCardElement: {
+        prototype: HTMLProductCardElement;
+        new (): HTMLProductCardElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "buy-together": HTMLBuyTogetherElement;
+        "product-card": HTMLProductCardElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface BuyTogether {
+    }
+    interface ProductCard {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "buy-together": BuyTogether;
+        "product-card": ProductCard;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }
     }
 }

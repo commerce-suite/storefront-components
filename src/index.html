@@ -1,14 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
+    <script>
+      window.shop_ctx = {
+        api_url: 'https://api.storefront.dchomolog.dooca.store/',
+        token:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDM3NzksInR5cGUiOiJhZG1pbiIsImVtYWlsIjoic2ltYW8ubWV5cmVyQGJhZ3kuY29tLmJyIiwiZmlyc3RfbmFtZSI6IlNpbVx1MDBlM28iLCJhY3RpdmUiOnRydWUsImlhdCI6MTY5NTE1MjU2NX0.56NBX4cX4-fAt0CehPUNqCSMs3OTa617ImXlyZQ8nRA',
+        mock: null,
+        base_path: '/',
+        organization: 'dooca',
+      };
+    </script>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
     <title>Stencil Component Starter</title>
 
     <script type="module" src="/build/front-components.esm.js"></script>
     <script nomodule src="/build/front-components.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <buy-together></buy-together>
   </body>
 </html>
