@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property  | Attribute | Description | Type           | Default     |
+| --------- | --------- | ----------- | -------------- | ----------- |
+| `inline`  | `inline`  |             | `boolean`      | `false`     |
+| `product` | --        |             | `IProductCard` | `undefined` |
+
+
 ## Dependencies
 
 ### Used by

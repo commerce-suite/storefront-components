@@ -1,3 +1,58 @@
 :host {
-  display: block;
+  display: inline-block;
+  font-size: 14px;
+
+  .product-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    gap: 24px 0;
+    grid-template-areas:
+      'image'
+      'info';
+    &.-inline {
+      grid-template-columns: auto auto;
+      grid-template-rows: auto;
+      gap: 0 24px;
+      grid-template-areas: 'image info';
+    }
+    color: var(--color-light-text-default);
+  }
+
+  .product-container > .info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > .title {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    > .price {
+      display: flex;
+      flex-direction: column;
+      .base {
+        text-decoration: line-through;
+        color: var(--color-light-text-secondary);
+      }
+
+      .current {
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .product-container > .image {
+    grid-area: image;
+    display: inline-block;
+    img {
+      max-width: 400px;
+      width: 100%;
+      height: 100%;
+    }
+    &.-inline {
+      height: 72px;
+    }
+  }
 }

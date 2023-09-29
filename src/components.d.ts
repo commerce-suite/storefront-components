@@ -5,10 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IProductCard } from "./components/ui/product-card/product-card.type";
+export { IProductCard } from "./components/ui/product-card/product-card.type";
 export namespace Components {
     interface BuyTogether {
     }
     interface ProductCard {
+        "inline": boolean;
+        "product": IProductCard;
     }
 }
 declare global {
@@ -33,6 +37,8 @@ declare namespace LocalJSX {
     interface BuyTogether {
     }
     interface ProductCard {
+        "inline"?: boolean;
+        "product"?: IProductCard;
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
