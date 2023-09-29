@@ -3,6 +3,7 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'front-components',
+  globalStyle: 'src/style/global.css',
   outputTargets: [
     {
       type: 'dist',
