@@ -12,9 +12,7 @@ export class FrontLabel {
   render() {
     return (
       <Host>
-        <label class="front-label" htmlFor={this.elementFor}>
-          {this.label}
-        </label>
+        <label htmlFor={this.elementFor}>{this.label}</label>
       </Host>
     );
   }

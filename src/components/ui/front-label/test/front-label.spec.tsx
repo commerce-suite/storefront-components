@@ -10,7 +10,7 @@ describe('front-label', () => {
     });
     expect(page.root).toEqualHtml(`
       <front-label>
-        <label class="front-label">Cor</label>
+        <label >Cor</label>
       </front-label>
     `);
   });
@@ -22,7 +22,7 @@ describe('front-label', () => {
     });
     expect(page.root).toEqualHtml(`
       <front-label>
-        <label class="front-label" htmlFor="color">Cor</label>
+        <label htmlFor="color">Cor</label>
       </front-label>
     `);
   });
