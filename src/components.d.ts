@@ -5,10 +5,20 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IProductCard } from "./components/ui/product-card/product-card.type";
+export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IProductCard } from "./components/ui/product-card/product-card.type";
 export namespace Components {
     interface BuyTogether {
+    }
+    interface FrontSelect {
+        "emptyOption": IFrontSelectOption;
+        "label": string;
+        "optionsList": IFrontSelectOption[];
+        "selectId": string;
+        "selectName": string;
+        "value": any;
     }
     interface ProductCard {
         "inline": boolean;
@@ -22,6 +32,12 @@ declare global {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
     };
+    interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
+    }
+    var HTMLFrontSelectElement: {
+        prototype: HTMLFrontSelectElement;
+        new (): HTMLFrontSelectElement;
+    };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
     var HTMLProductCardElement: {
@@ -30,11 +46,20 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
+        "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+    }
+    interface FrontSelect {
+        "emptyOption"?: IFrontSelectOption;
+        "label"?: string;
+        "optionsList"?: IFrontSelectOption[];
+        "selectId"?: string;
+        "selectName"?: string;
+        "value"?: any;
     }
     interface ProductCard {
         "inline"?: boolean;
@@ -42,6 +67,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
+        "front-select": FrontSelect;
         "product-card": ProductCard;
     }
 }
@@ -50,6 +76,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }
     }
