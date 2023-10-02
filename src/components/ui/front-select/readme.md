@@ -17,6 +17,24 @@
 | `value`       | `value`       |             | `any`                  | `undefined`                                              |
 
 
+## Dependencies
+
+### Used by
+
+ - [buy-together](../../buy-together)
+
+### Depends on
+
+- [front-label](../front-label)
+
+### Graph
+```mermaid
+graph TD;
+  front-select --> front-label
+  buy-together --> front-select
+  style front-select fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

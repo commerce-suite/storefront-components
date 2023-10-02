@@ -18,11 +18,7 @@ export class FrontSelect {
   render() {
     return (
       <Host>
-        {this.label && (
-          <label class="select-label" htmlFor={this.selectId}>
-            {this.label}
-          </label>
-        )}
+        {this.label && <front-label label={this.label} elementFor={this.selectId} />}
         <div class="front-select-container">
           <select name={this.selectName} id={this.selectId}>
             <option value={this.emptyOption.value} selected={this.value === this.emptyOption.value}>

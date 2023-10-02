@@ -64,7 +64,7 @@ describe('front-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <front-select>
-        <label class="select-label" htmlFor="select-cor-1">Cor:</label>
+        <front-label elementfor="select-cor-1" label="Cor:"></front-label>
         <div class="front-select-container">
           <select name="select-cor" id="select-cor-1">
             <option selected="">Nenhum opção selecionada</option>
