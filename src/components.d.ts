@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-import { IProductCard } from "./components/ui/product-card/product-card.type";
+import { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-export { IProductCard } from "./components/ui/product-card/product-card.type";
+export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
 export namespace Components {
     interface BuyTogether {
     }
@@ -28,6 +28,10 @@ export namespace Components {
         "inline": boolean;
         "product": IProductCard;
     }
+}
+export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLProductCardElement;
 }
 declare global {
     interface HTMLBuyTogetherElement extends Components.BuyTogether, HTMLStencilElement {
@@ -78,6 +82,7 @@ declare namespace LocalJSX {
     }
     interface ProductCard {
         "inline"?: boolean;
+        "onInputSelect"?: (event: ProductCardCustomEvent<IInputSelectDataEvent>) => void;
         "product"?: IProductCard;
     }
     interface IntrinsicElements {

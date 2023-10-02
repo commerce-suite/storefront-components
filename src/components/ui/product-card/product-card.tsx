@@ -1,5 +1,5 @@
-import { Component, Host, Prop, h } from '@stencil/core';
-import { IProductCard } from './product-card.type';
+import { Component, Host, Event, Prop, h, EventEmitter } from '@stencil/core';
+import { IInputSelectDataEvent, IProductCard } from './product-card.type';
 import { currencyFormat } from '../../../utils/utils';
 
 @Component({
@@ -11,9 +11,14 @@ import { currencyFormat } from '../../../utils/utils';
 export class ProductCard {
   @Prop() inline: boolean = false;
   @Prop() product: IProductCard;
+  @Event() inputSelect: EventEmitter<IInputSelectDataEvent>;
 
   getClassWithInline(className: string) {
     return `${className}${this.inline ? ' -inline' : ''}`;
+  }
+
+  private onInputSelect(data: any, modelKey: string) {
+    this.inputSelect.emit({ modelKey, value: data.target.value });
   }
 
   render() {
@@ -32,6 +37,24 @@ export class ProductCard {
               <span class="current">{currencyFormat(this.product.price)}</span>
             </div>
           </div>
+          {this.product.selectVariations && (
+            <div class="variations">
+              {this.product.selectVariations.map(
+                ({ label, currentValue, options, modelKey, selectId, optionEmpty }) => (
+                  <div class="item">
+                    <front-select
+                      emptyOption={optionEmpty}
+                      selectId={selectId}
+                      optionsList={options}
+                      label={label}
+                      value={currentValue}
+                      onInput={data => this.onInputSelect(data, modelKey)}
+                    />
+                  </div>
+                ),
+              )}
+            </div>
+          )}
         </div>
       </Host>
     );

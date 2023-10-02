@@ -21,7 +21,7 @@
 
 ### Used by
 
- - [buy-together](../../buy-together)
+ - [product-card](../product-card)
 
 ### Depends on
 
@@ -31,7 +31,7 @@
 ```mermaid
 graph TD;
   front-select --> front-label
-  buy-together --> front-select
+  product-card --> front-select
   style front-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

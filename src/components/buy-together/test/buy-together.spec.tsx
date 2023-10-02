@@ -9,8 +9,9 @@ describe('buy-together', () => {
     });
     expect(page.root).toEqualHtml(`<buy-together>
     <section class="bagy-buy-together">
-      <h1 class="title">Meu title</h1>
-      <product-card inline=""></product-card>
+      <div class="product-box">
+        <product-card></product-card>
+      </div>
     </section>
   </buy-together>
     `);
