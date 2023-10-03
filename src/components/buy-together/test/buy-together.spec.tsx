@@ -8,12 +8,31 @@ describe('buy-together', () => {
       html: `<buy-together></buy-together>`,
     });
     expect(page.root).toEqualHtml(`<buy-together>
-    <section class="bagy-buy-together">
-      <div class="product-box">
+    <section class="bagy-buy-together buy-together-container">
+      <div class="product-main product-wrapper">
         <product-card></product-card>
       </div>
-    </section>
-  </buy-together>
+      <div class="plus-icon">
+        <img alt="" src="./assets/icons/icon-plus.svg">
+      </div>
+      <div class="products-order-bump">
+        <div class="product-wrapper">
+          <product-card inline=""></product-card>
+        </div>
+        <div class="product-wrapper">
+          <product-card inline=""></product-card>
+        </div>
+        <div class="product-wrapper">
+          <product-card inline=""></product-card>
+        </div>
+      </div>
+      <div class="btn-buy">
+        <front-button>
+          Comprar
+        </front-button>
+          </div>
+        </section>
+      </buy-together>
     `);
   });
 });

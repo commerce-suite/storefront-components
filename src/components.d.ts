@@ -12,6 +12,9 @@ export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-car
 export namespace Components {
     interface BuyTogether {
     }
+    interface FrontButton {
+        "disabled": boolean;
+    }
     interface FrontSelect {
         "label": string;
         "optionsList": IFrontSelectOption[];
@@ -36,6 +39,12 @@ declare global {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
     };
+    interface HTMLFrontButtonElement extends Components.FrontButton, HTMLStencilElement {
+    }
+    var HTMLFrontButtonElement: {
+        prototype: HTMLFrontButtonElement;
+        new (): HTMLFrontButtonElement;
+    };
     interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
     }
     var HTMLFrontSelectElement: {
@@ -50,12 +59,16 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
+        "front-button": HTMLFrontButtonElement;
         "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+    }
+    interface FrontButton {
+        "disabled"?: boolean;
     }
     interface FrontSelect {
         "label"?: string;
@@ -72,6 +85,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
+        "front-button": FrontButton;
         "front-select": FrontSelect;
         "product-card": ProductCard;
     }
@@ -81,6 +95,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "front-button": LocalJSX.FrontButton & JSXBase.HTMLAttributes<HTMLFrontButtonElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }
