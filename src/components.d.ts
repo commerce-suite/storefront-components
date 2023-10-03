@@ -12,10 +12,6 @@ export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-car
 export namespace Components {
     interface BuyTogether {
     }
-    interface FrontLabel {
-        "elementFor": string;
-        "label": string;
-    }
     interface FrontSelect {
         "emptyOption": IFrontSelectOption;
         "label": string;
@@ -40,12 +36,6 @@ declare global {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
     };
-    interface HTMLFrontLabelElement extends Components.FrontLabel, HTMLStencilElement {
-    }
-    var HTMLFrontLabelElement: {
-        prototype: HTMLFrontLabelElement;
-        new (): HTMLFrontLabelElement;
-    };
     interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
     }
     var HTMLFrontSelectElement: {
@@ -60,17 +50,12 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
-        "front-label": HTMLFrontLabelElement;
         "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
 }
 declare namespace LocalJSX {
     interface BuyTogether {
-    }
-    interface FrontLabel {
-        "elementFor"?: string;
-        "label"?: string;
     }
     interface FrontSelect {
         "emptyOption"?: IFrontSelectOption;
@@ -87,7 +72,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
-        "front-label": FrontLabel;
         "front-select": FrontSelect;
         "product-card": ProductCard;
     }
@@ -97,7 +81,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
-            "front-label": LocalJSX.FrontLabel & JSXBase.HTMLAttributes<HTMLFrontLabelElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }

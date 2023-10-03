@@ -17,7 +17,7 @@ describe('front-select', () => {
       <front-select>
         <div class="front-select-container">
           <select>
-            <option selected="">Nenhum opção selecionada</option>
+            <option selected="">Selecione</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
           </select>
@@ -28,7 +28,7 @@ describe('front-select', () => {
 
   it('renders with option Empty', async () => {
     const emptyOption: IFrontSelectOption = {
-      name: 'Selecione',
+      name: 'Selecione a opção',
       value: 0,
     };
     const page = await newSpecPage({
@@ -41,7 +41,7 @@ describe('front-select', () => {
       <front-select>
         <div class="front-select-container">
           <select>
-            <option value="0" selected="">Selecione</option>
+            <option value="0" selected="">Selecione a opção</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
           </select>
@@ -64,10 +64,10 @@ describe('front-select', () => {
     });
     expect(page.root).toEqualHtml(`
       <front-select>
-        <front-label elementfor="select-cor-1" label="Cor:"></front-label>
+      <label class="select-label" htmlfor="select-cor-1">Cor:</label>
         <div class="front-select-container">
           <select name="select-cor" id="select-cor-1">
-            <option selected="">Nenhum opção selecionada</option>
+            <option selected="">Selecione</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
           </select>

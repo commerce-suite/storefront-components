@@ -1,3 +1,6 @@
+@import '../../../style/mixins/label';
+@import '../../../style/variables/variables';
+
 :host {
   display: inline-block;
   width: 100%;
@@ -42,4 +45,8 @@
   height: 15px;
   top: 45%;
   transform: rotate(180deg);
+}
+
+.select-label {
+  @include front-label;
 }

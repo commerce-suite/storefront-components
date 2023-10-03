@@ -34,7 +34,6 @@
 ```mermaid
 graph TD;
   product-card --> front-select
-  front-select --> front-label
   buy-together --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
