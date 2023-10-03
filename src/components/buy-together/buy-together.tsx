@@ -24,6 +24,10 @@ export class BuyTogether implements ComponentWillLoad {
     } catch {}
   }
 
+  private selectOrderBump(event: any, productId: number) {
+    console.log('selectOrderBump', { data: event.target.checked, productId });
+  }
+
   componentWillLoad(): void | Promise<void> {
     return this.load();
   }
@@ -44,6 +48,12 @@ export class BuyTogether implements ComponentWillLoad {
           <div class="products-order-bump">
             {this.buyTogetherData.productBump.map(productCard => (
               <div class="product-wrapper">
+                <div class="checkbox-wrapper">
+                  <front-checkbox
+                    inputId={String(productCard.id)}
+                    onInput={ev => this.selectOrderBump(ev, productCard.id)}
+                  />
+                </div>
                 <product-card inline product={productCard}></product-card>
               </div>
             ))}

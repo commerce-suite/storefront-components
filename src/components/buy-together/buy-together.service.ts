@@ -5,6 +5,7 @@ export class BuyTogetherService {
   private variationOptionEmpty: IFrontSelectOption = { name: 'Selecione', value: null };
 
   private productMock: IProductCard = {
+    id: 299948,
     image: {
       src: 'https://blog.myahaas.com.br/wp-content/uploads/2021/08/bolsas-que-combinam-com-tudo-como-comprar-900x900.jpg',
     },
