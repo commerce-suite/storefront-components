@@ -15,6 +15,12 @@ export namespace Components {
     interface FrontButton {
         "disabled": boolean;
     }
+    interface FrontCheckbox {
+        "checked": boolean;
+        "disabled": boolean;
+        "inputId": string;
+        "inputName": string;
+    }
     interface FrontSelect {
         "label": string;
         "optionsList": IFrontSelectOption[];
@@ -45,6 +51,12 @@ declare global {
         prototype: HTMLFrontButtonElement;
         new (): HTMLFrontButtonElement;
     };
+    interface HTMLFrontCheckboxElement extends Components.FrontCheckbox, HTMLStencilElement {
+    }
+    var HTMLFrontCheckboxElement: {
+        prototype: HTMLFrontCheckboxElement;
+        new (): HTMLFrontCheckboxElement;
+    };
     interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
     }
     var HTMLFrontSelectElement: {
@@ -60,6 +72,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
         "front-button": HTMLFrontButtonElement;
+        "front-checkbox": HTMLFrontCheckboxElement;
         "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
@@ -69,6 +82,12 @@ declare namespace LocalJSX {
     }
     interface FrontButton {
         "disabled"?: boolean;
+    }
+    interface FrontCheckbox {
+        "checked"?: boolean;
+        "disabled"?: boolean;
+        "inputId"?: string;
+        "inputName"?: string;
     }
     interface FrontSelect {
         "label"?: string;
@@ -86,6 +105,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "buy-together": BuyTogether;
         "front-button": FrontButton;
+        "front-checkbox": FrontCheckbox;
         "front-select": FrontSelect;
         "product-card": ProductCard;
     }
@@ -96,6 +116,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
             "front-button": LocalJSX.FrontButton & JSXBase.HTMLAttributes<HTMLFrontButtonElement>;
+            "front-checkbox": LocalJSX.FrontCheckbox & JSXBase.HTMLAttributes<HTMLFrontCheckboxElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }
