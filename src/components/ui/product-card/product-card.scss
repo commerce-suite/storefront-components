@@ -66,8 +66,10 @@
   grid-area: variations;
   display: flex;
   flex-wrap: wrap;
-  gap: calc(var(--margin-width) * 2);
+  --variations-gap: calc(var(--margin-width) * 2);
+  gap: var(--variations-gap);
   .item {
+    min-width: calc(50% - var(--variations-gap));
     flex-grow: 2;
   }
 }

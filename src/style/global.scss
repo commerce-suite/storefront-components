@@ -6,6 +6,10 @@
   font-family: var(--font-family);
 }
 
+div {
+  box-sizing: border-box;
+}
+
 figure {
   background: transparent;
   border: 0;
