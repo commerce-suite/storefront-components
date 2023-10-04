@@ -1,4 +1,6 @@
 @import '../../style/mixins/button';
+@import '../../style/variables/variables';
+@import '../../style/mixins/screen-media';
 
 :host {
   display: inline-block;
@@ -13,7 +15,7 @@
   gap: var(--gap-grid);
   grid-template-areas: 'main plus products btn-buy';
 
-  @media screen and (max-width: 425px) {
+  @include for-mobile {
     justify-items: center;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto auto;
@@ -31,7 +33,7 @@
   .checkbox-wrapper {
     margin: 5px;
   }
-  @media screen and (max-width: var(--mobile-max-width)) {
+  @include for-mobile {
     flex-direction: column;
   }
 }
