@@ -15,6 +15,7 @@
 ```mermaid
 graph TD;
   buy-together --> product-card
+  product-card --> front-select
   style buy-together fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,0 +1,18 @@
+:root {
+  --font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-family);
+}
+
+div {
+  box-sizing: border-box;
+}
+
+figure {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}

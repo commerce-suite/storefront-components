@@ -3,10 +3,12 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'front-components',
+  globalStyle: 'src/style/global.scss',
   outputTargets: [
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [{ src: './assets' }],
     },
     {
       type: 'dist-custom-elements',
