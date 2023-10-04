@@ -10,22 +10,23 @@
 
 .buy-together-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto;
-  align-items: center;
   gap: var(--gap-grid);
-  grid-template-areas: 'main plus products btn-buy';
+  justify-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: 'main' 'plus' 'products' 'btn-buy';
 
-  @include for-mobile {
-    justify-items: center;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas: 'main' 'plus' 'products' 'btn-buy';
+  @include for-desktop {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    align-items: center;
+    grid-template-areas: 'main plus products btn-buy';
   }
 }
 
 .product-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   max-width: 400px;
   padding: calc(var(--margin-width) * 2);
@@ -35,8 +36,8 @@
     @include front-checkbox;
     margin: 5px;
   }
-  @include for-mobile {
-    flex-direction: column;
+  @include for-desktop {
+    flex-direction: row;
   }
 }
 
@@ -51,6 +52,7 @@
   justify-content: center;
   gap: var(--gap-grid);
   grid-area: products;
+  align-items: center;
 }
 
 .products-order-bump {
