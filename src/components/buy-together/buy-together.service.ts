@@ -21,7 +21,7 @@ export class BuyTogetherService {
         ],
         currentValue: '12321',
         modelKey: 'color_id',
-        optionEmpty: this.variationOptionEmpty,
+        placeholder: this.variationOptionEmpty,
       },
       {
         label: 'Tamanho',
@@ -32,7 +32,7 @@ export class BuyTogetherService {
         ],
         currentValue: '456',
         modelKey: 'lenght_id',
-        optionEmpty: this.variationOptionEmpty,
+        placeholder: this.variationOptionEmpty,
       },
       {
         label: 'Material',
@@ -43,7 +43,7 @@ export class BuyTogetherService {
         ],
         currentValue: null,
         modelKey: 'manufactured_id',
-        optionEmpty: this.variationOptionEmpty,
+        placeholder: this.variationOptionEmpty,
       },
     ],
   };

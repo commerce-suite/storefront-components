@@ -1,6 +1,7 @@
 import { IProductCard } from '../../../components';
 
 const productMock: IProductCard = {
+  id: 1234,
   image: {
     src: 'https://cdn.dooca.store/816/products/camiseta-ce-e-fi-de-quem-marrom_1600x2000+fill_ffffff.jpg?v=1686845906',
   },
