@@ -40,10 +40,10 @@ export class ProductCard {
           {this.product.selectVariations && (
             <div class="variations">
               {this.product.selectVariations.map(
-                ({ label, currentValue, options, modelKey, selectId, optionEmpty }) => (
+                ({ label, currentValue, options, modelKey, selectId, placeholder }) => (
                   <div class="item">
                     <front-select
-                      emptyOption={optionEmpty}
+                      placeholder={placeholder}
                       selectId={selectId}
                       optionsList={options}
                       label={label}

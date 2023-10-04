@@ -27,14 +27,14 @@ describe('front-select', () => {
   });
 
   it('renders with option Empty', async () => {
-    const emptyOption: IFrontSelectOption = {
+    const placeholder: IFrontSelectOption = {
       name: 'Selecione a opção',
       value: 0,
     };
     const page = await newSpecPage({
       components: [FrontSelect],
       template: () => (
-        <front-select optionsList={optionsList} emptyOption={emptyOption} value={0}></front-select>
+        <front-select optionsList={optionsList} placeholder={placeholder} value={0}></front-select>
       ),
     });
     expect(page.root).toEqualHtml(`

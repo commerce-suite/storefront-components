@@ -10,7 +10,7 @@ import { IFrontSelectOption } from './front-select.type';
 export class FrontSelect {
   @Prop() optionsList: IFrontSelectOption[];
   @Prop() value: any;
-  @Prop() emptyOption: IFrontSelectOption = { name: 'Selecione', value: undefined };
+  @Prop() placeholder: IFrontSelectOption = { name: 'Selecione', value: undefined };
   @Prop() selectId: string = '';
   @Prop() selectName: string = '';
   @Prop() label: string;
@@ -25,8 +25,8 @@ export class FrontSelect {
         )}
         <div class="front-select-container">
           <select name={this.selectName} id={this.selectId}>
-            <option value={this.emptyOption.value} selected={this.value === this.emptyOption.value}>
-              {this.emptyOption.name}
+            <option value={this.placeholder.value} selected={this.value === this.placeholder.value}>
+              {this.placeholder.name}
             </option>
             {this.optionsList.map(({ name, value }) => (
               <option value={value} selected={this.value === value}>

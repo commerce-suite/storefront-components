@@ -6,7 +6,7 @@ interface IImage {
 }
 
 interface ISelectVariation {
-  optionEmpty?: IFrontSelectOption;
+  placeholder?: IFrontSelectOption;
   label: string;
   options: IFrontSelectOption[];
   modelKey: string;

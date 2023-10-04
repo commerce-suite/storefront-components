@@ -9,9 +9,9 @@
 
 | Property      | Attribute     | Description | Type                   | Default                                   |
 | ------------- | ------------- | ----------- | ---------------------- | ----------------------------------------- |
-| `emptyOption` | --            |             | `IFrontSelectOption`   | `{ name: 'Selecione', value: undefined }` |
 | `label`       | `label`       |             | `string`               | `undefined`                               |
 | `optionsList` | --            |             | `IFrontSelectOption[]` | `undefined`                               |
+| `placeholder` | --            |             | `IFrontSelectOption`   | `{ name: 'Selecione', value: undefined }` |
 | `selectId`    | `select-id`   |             | `string`               | `''`                                      |
 | `selectName`  | `select-name` |             | `string`               | `''`                                      |
 | `value`       | `value`       |             | `any`                  | `undefined`                               |

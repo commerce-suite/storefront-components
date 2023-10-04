@@ -13,9 +13,9 @@ export namespace Components {
     interface BuyTogether {
     }
     interface FrontSelect {
-        "emptyOption": IFrontSelectOption;
         "label": string;
         "optionsList": IFrontSelectOption[];
+        "placeholder": IFrontSelectOption;
         "selectId": string;
         "selectName": string;
         "value": any;
@@ -58,9 +58,9 @@ declare namespace LocalJSX {
     interface BuyTogether {
     }
     interface FrontSelect {
-        "emptyOption"?: IFrontSelectOption;
         "label"?: string;
         "optionsList"?: IFrontSelectOption[];
+        "placeholder"?: IFrontSelectOption;
         "selectId"?: string;
         "selectName"?: string;
         "value"?: any;
