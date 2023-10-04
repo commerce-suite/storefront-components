@@ -1,7 +1,7 @@
 import { Component, Host, h, ComponentWillLoad } from '@stencil/core';
 import { IInputSelectDataEvent } from '../../components';
 import { IBuyTogetherData } from './buy-together.type';
-import { BuyTogetherService } from './buy-together.service';
+import { BuyTogetherServiceMock } from './mocks/buy-together.service.mock';
 
 @Component({
   tag: 'buy-together',
@@ -10,7 +10,7 @@ import { BuyTogetherService } from './buy-together.service';
   scoped: true,
 })
 export class BuyTogether implements ComponentWillLoad {
-  private serviceMock = new BuyTogetherService();
+  private serviceMock = new BuyTogetherServiceMock();
   private buyTogetherData: IBuyTogetherData;
 
   private inputSelect = (data: CustomEvent<IInputSelectDataEvent>) => {
