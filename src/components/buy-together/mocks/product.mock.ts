@@ -2,7 +2,7 @@ import { IProductCard } from '../../../components';
 
 const productMock: IProductCard = {
   image: {
-    src: 'https://blog.myahaas.com.br/wp-content/uploads/2021/08/bolsas-que-combinam-com-tudo-como-comprar-900x900.jpg',
+    src: 'https://cdn.dooca.store/816/products/camiseta-ce-e-fi-de-quem-marrom_1600x2000+fill_ffffff.jpg?v=1686845906',
   },
   name: 'Bolsa Essencial',
   price: 389.9,

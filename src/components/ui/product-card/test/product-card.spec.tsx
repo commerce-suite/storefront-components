@@ -2,17 +2,9 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { ProductCard } from '../product-card';
 import { IProductCard } from '../product-card.type';
+import { product, productWithVariations } from '../mocks/product-card.mock';
 
 describe('product-card', () => {
-  const product: IProductCard = {
-    image: {
-      src: 'https://blog.myahaas.com.br/wp-content/uploads/2021/08/bolsas-que-combinam-com-tudo-como-comprar-900x900.jpg',
-    },
-    name: 'Bolsa Essencial',
-    price: 389.9,
-    priceBase: 499.99,
-  };
-
   it('renders', async () => {
     const page = await newSpecPage({
       components: [ProductCard],
@@ -99,31 +91,6 @@ describe('product-card', () => {
   });
 
   it('renders with variations', async () => {
-    const variations = [
-      {
-        label: 'Cor',
-        options: [
-          { name: 'branco', value: '12321' },
-          { name: 'azul', value: '12321' },
-        ],
-        currentValue: '12321',
-        modelKey: 'color_id',
-      },
-      {
-        label: 'Tamanho',
-        options: [
-          { name: 'M', value: '789' },
-          { name: 'P', value: '456' },
-          { name: 'G', value: '123' },
-        ],
-        currentValue: '456',
-        modelKey: 'lenght_id',
-      },
-    ];
-    const productWithVariations: IProductCard = {
-      ...product,
-      selectVariations: variations,
-    };
     const page = await newSpecPage({
       components: [ProductCard],
       template: () => <product-card product={productWithVariations}></product-card>,
