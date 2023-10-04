@@ -20,6 +20,7 @@ export interface IInputSelectDataEvent {
 }
 
 export interface IProductCard {
+  id: number;
   name: string;
   image: IImage;
   price: number;
