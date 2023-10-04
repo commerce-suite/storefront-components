@@ -18,19 +18,19 @@ describe('buy-together', () => {
       <div class="products-order-bump">
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <front-checkbox inputid="1234"></front-checkbox>
+            <input type="checkbox" id="1234"/>
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <front-checkbox inputid="1234"></front-checkbox>
+            <input type="checkbox" id="1234"/>
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <front-checkbox inputid="1234"></front-checkbox>
+            <input type="checkbox" id="1234"/>
           </div>
           <product-card inline=""></product-card>
         </div>

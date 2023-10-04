@@ -49,8 +49,9 @@ export class BuyTogether implements ComponentWillLoad {
             {this.buyTogetherData.productBump.map(productCard => (
               <div class="product-wrapper">
                 <div class="checkbox-wrapper">
-                  <front-checkbox
-                    inputId={String(productCard.id)}
+                  <input
+                    type="checkbox"
+                    id={String(productCard.id)}
                     onInput={ev => this.selectOrderBump(ev, productCard.id)}
                   />
                 </div>

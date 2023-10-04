@@ -1,4 +1,5 @@
 @import '../../style/mixins/button';
+@import '../../style/mixins/checkbox.scss';
 @import '../../style/variables/variables';
 @import '../../style/mixins/screen-media';
 
@@ -31,6 +32,7 @@
   border: 1px solid var(--color-light-border-default);
   gap: 20px;
   .checkbox-wrapper {
+    @include front-checkbox;
     margin: 5px;
   }
   @include for-mobile {
