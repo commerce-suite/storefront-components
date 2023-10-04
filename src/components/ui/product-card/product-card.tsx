@@ -1,6 +1,6 @@
 import { Component, Host, Event, Prop, h, EventEmitter } from '@stencil/core';
 import { IInputSelectDataEvent, IProductCard } from './product-card.type';
-import { currencyFormat } from '../../../utils/utils';
+import { currencyFormat, getClassByProps } from '../../../utils/utils';
 
 @Component({
   tag: 'product-card',
@@ -14,7 +14,8 @@ export class ProductCard {
   @Event() inputSelect: EventEmitter<IInputSelectDataEvent>;
 
   getClassWithInline(className: string) {
-    return `${className}${this.inline ? ' -inline' : ''}`;
+    const prosForClass = { '-inline': this.inline };
+    return `${className} ${getClassByProps(prosForClass)}`;
   }
 
   private onInputSelect(data: any, modelKey: string) {
