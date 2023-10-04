@@ -35,10 +35,10 @@ describe('buy-together', () => {
           <product-card inline=""></product-card>
         </div>
       </div>
-      <div class="btn-buy">
-        <front-button>
+      <div class="buy-btn-wrapper">
+        <button class="buy-btn">
           Comprar
-        </front-button>
+        </button>
           </div>
         </section>
       </buy-together>

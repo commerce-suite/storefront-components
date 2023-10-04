@@ -58,8 +58,8 @@ export class BuyTogether implements ComponentWillLoad {
               </div>
             ))}
           </div>
-          <div class="btn-buy">
-            <front-button>Comprar</front-button>
+          <div class="buy-btn-wrapper">
+            <button class="buy-btn">Comprar</button>
           </div>
         </section>
       </Host>

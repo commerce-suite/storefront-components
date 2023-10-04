@@ -1,3 +1,5 @@
+@import '../../style/mixins/button';
+
 :host {
   display: inline-block;
   width: 100%;
@@ -57,8 +59,11 @@
   align-self: center;
 }
 
-.btn-buy {
+.buy-btn-wrapper {
   display: flex;
   grid-area: btn-buy;
   width: 100%;
+  .buy-btn {
+    @include front-button;
+  }
 }
