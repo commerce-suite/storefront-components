@@ -12,6 +12,9 @@ export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-car
 export namespace Components {
     interface BuyTogether {
     }
+    interface CountdownTracker {
+        "targetDate": string;
+    }
     interface FrontSelect {
         "label": string;
         "optionsList": IFrontSelectOption[];
@@ -25,6 +28,10 @@ export namespace Components {
         "product": IProductCard;
     }
 }
+export interface CountdownTrackerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCountdownTrackerElement;
+}
 export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLProductCardElement;
@@ -35,6 +42,12 @@ declare global {
     var HTMLBuyTogetherElement: {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
+    };
+    interface HTMLCountdownTrackerElement extends Components.CountdownTracker, HTMLStencilElement {
+    }
+    var HTMLCountdownTrackerElement: {
+        prototype: HTMLCountdownTrackerElement;
+        new (): HTMLCountdownTrackerElement;
     };
     interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
     }
@@ -50,12 +63,17 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
+        "countdown-tracker": HTMLCountdownTrackerElement;
         "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+    }
+    interface CountdownTracker {
+        "onCountdownFinished"?: (event: CountdownTrackerCustomEvent<any>) => void;
+        "targetDate"?: string;
     }
     interface FrontSelect {
         "label"?: string;
@@ -72,6 +90,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
+        "countdown-tracker": CountdownTracker;
         "front-select": FrontSelect;
         "product-card": ProductCard;
     }
@@ -81,6 +100,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "countdown-tracker": LocalJSX.CountdownTracker & JSXBase.HTMLAttributes<HTMLCountdownTrackerElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }
