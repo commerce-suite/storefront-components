@@ -1,4 +1,5 @@
 import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/core';
+import { CountdownTrackerService } from './countdown-tracker.service';
 
 @Component({
   tag: 'countdown-tracker',
@@ -18,6 +19,7 @@ export class CountdownTracker {
   @Event() countdownFinished: EventEmitter;
 
   private intervalId: number;
+  private service: CountdownTrackerService;
 
   componentWillLoad() {
     this.calculateTimeDifference();
@@ -28,12 +30,8 @@ export class CountdownTracker {
   }
 
   calculateTimeDifference() {
-    const target = new Date(this.dataTargetDate);
-    const start = new Date();
-
-    const diff = target.getTime() - start.getTime();
-
-    if (diff <= 0) {
+    this.service = new CountdownTrackerService(new Date(), new Date(this.dataTargetDate));
+    if (this.service.isCountdownFinished()) {
       cancelAnimationFrame(this.intervalId);
       this.days = '00';
       this.hours = '00';
@@ -43,15 +41,12 @@ export class CountdownTracker {
       return;
     }
 
-    const daysDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hoursDiff = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutesDiff = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secondsDiff = Math.floor((diff % (1000 * 60)) / 1000);
-
+    const { daysDiff, hoursDiff, minutesDiff, secondsDiff } = this.service.getTimeDifference();
     this.days = String(daysDiff).padStart(2, '0');
     this.hours = String(hoursDiff).padStart(2, '0');
     this.minutes = String(minutesDiff).padStart(2, '0');
     this.seconds = String(secondsDiff).padStart(2, '0');
+
     this.intervalId = requestAnimationFrame(this.calculateTimeDifference.bind(this));
   }
 
