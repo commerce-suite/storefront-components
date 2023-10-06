@@ -18,9 +18,9 @@ export namespace Components {
         "variationId": number;
     }
     interface CountdownTracker {
+        "dataDescription": string;
         "dataTargetDate": string;
-        "description": string;
-        "trackerTitle": string;
+        "dataTrackerTitle": string;
     }
     interface FrontImage {
         "figCaption": string;
@@ -121,10 +121,10 @@ declare namespace LocalJSX {
         "variationId"?: number;
     }
     interface CountdownTracker {
+        "dataDescription"?: string;
         "dataTargetDate"?: string;
-        "description"?: string;
+        "dataTrackerTitle"?: string;
         "onCountdownFinished"?: (event: CountdownTrackerCustomEvent<any>) => void;
-        "trackerTitle"?: string;
     }
     interface FrontImage {
         "figCaption"?: string;
