@@ -90,6 +90,9 @@ export class BuyTogether implements ComponentWillLoad {
   render() {
     return (
       <Host>
+        <div class="title-wrapper">
+          <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
+        </div>
         <section class="bagy-buy-together buy-together-container">
           <div class="product-wrapper product-main">
             <product-card

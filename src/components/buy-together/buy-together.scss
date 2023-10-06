@@ -8,6 +8,17 @@
   width: 100%;
 }
 
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .title {
+    margin: 15px 0;
+    font-weight: 700;
+    font-size: 25px;
+  }
+}
+
 .buy-together-container {
   display: grid;
   gap: var(--gap-grid);
