@@ -33,11 +33,6 @@ export class BuyTogether implements ComponentWillLoad {
         return prod;
       }),
     };
-    console.log('selectOrderBump', {
-      data: event.target.checked,
-      productOrderBumpId,
-      result: this.buyTogetherData,
-    });
   }
 
   private onInputSelectProductMain(event: CustomEvent<IInputSelectDataEvent>) {
@@ -57,6 +52,34 @@ export class BuyTogether implements ComponentWillLoad {
   }
 
   private onInputSelectOrderBump(event: CustomEvent<IInputSelectDataEvent>) {
+    const { productId } = event.detail;
+    const {
+      originalData: { productsPivot },
+      products,
+    } = this.buyTogetherData;
+
+    const productPivotIndex = productsPivot.findIndex(({ id }) => id === productId);
+    const productIndex = products.findIndex(({ id }) => id === productId);
+
+    if (productPivotIndex === -1 || productIndex === -1) return;
+
+    const { productCard, productTargetUpdated } = this.buyTogetherService.changeProductOptions(
+      event.detail,
+      productsPivot[productPivotIndex],
+    );
+
+    productsPivot[productPivotIndex] = productTargetUpdated;
+    products[productIndex] = productCard;
+
+    this.buyTogetherData = {
+      ...this.buyTogetherData,
+      products,
+      originalData: {
+        ...this.buyTogetherData.originalData,
+        productsPivot,
+      },
+    };
+
     console.log('onInputSelectOrderBump', event);
   }
 
@@ -90,7 +113,7 @@ export class BuyTogether implements ComponentWillLoad {
                 <product-card
                   inline
                   product={productCard}
-                  onInputSelect={this.onInputSelectOrderBump}
+                  onInputSelect={ev => this.onInputSelectOrderBump(ev)}
                 ></product-card>
               </div>
             ))}
