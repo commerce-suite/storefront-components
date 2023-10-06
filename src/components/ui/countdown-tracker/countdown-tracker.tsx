@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/core';
-import { CountdownTrackerService } from './countdown-tracker.service';
+import { CountdownService } from './countdown.service';
 
 @Component({
   tag: 'countdown-tracker',
@@ -19,7 +19,7 @@ export class CountdownTracker {
   @Event() countdownFinished: EventEmitter;
 
   private intervalId: number;
-  private service: CountdownTrackerService;
+  private service: CountdownService;
 
   componentWillLoad() {
     this.updateCountdown();
@@ -30,7 +30,7 @@ export class CountdownTracker {
   }
 
   updateCountdown() {
-    this.service = new CountdownTrackerService(new Date(), new Date(this.dataTargetDate));
+    this.service = new CountdownService(new Date(), new Date(this.dataTargetDate));
     if (this.service.isCountdownFinished()) {
       cancelAnimationFrame(this.intervalId);
       this.days = '00';
