@@ -1,5 +1,5 @@
 import type { ICountdownTrackerService } from './ICountdownTrackerService';
-import type { DateDifferenceType } from './types';
+import type { DateDifferenceType } from './countdown-tracker.type';
 
 export class CountdownTrackerService implements ICountdownTrackerService {
   constructor(
