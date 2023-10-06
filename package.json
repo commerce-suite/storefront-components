@@ -27,7 +27,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@stencil/core": "^4.0.0"
+    "@stencil/core": "^4.0.0",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#task/implementacoes-compre-junto"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.5",

@@ -1,4 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
+
+jest.mock('../services/front-buy-together.service');
+
 import { BuyTogether } from '../buy-together';
 
 describe('buy-together', () => {
@@ -18,19 +21,13 @@ describe('buy-together', () => {
       <div class="products-order-bump">
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
+            <input id="9480064" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
-          </div>
-          <product-card inline=""></product-card>
-        </div>
-        <div class="product-wrapper">
-          <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
+            <input id="9480162" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
