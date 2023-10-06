@@ -7,8 +7,8 @@ import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/c
 })
 export class CountdownTracker {
   @Prop() dataTargetDate: string;
-  @Prop() trackerTitle = 'Agora falta muito pouco!';
-  @Prop() description = 'O produto que você tanto espera será liberado em breve.';
+  @Prop() dataTrackerTitle = 'Agora falta muito pouco!';
+  @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
 
   @State() days: string | number = '00';
   @State() hours: string = '00';
@@ -59,8 +59,8 @@ export class CountdownTracker {
     return (
       <Host>
         <div class="countdown-tracker-header">
-          <h3 class="countdown-tracker-title">{this.trackerTitle}</h3>
-          <p class="countdown-tracker-description">{this.description}</p>
+          <h3 class="countdown-tracker-title">{this.dataTrackerTitle}</h3>
+          <p class="countdown-tracker-description">{this.dataDescription}</p>
         </div>
         <div class="countdown-tracker">
           <div class="countdown-tracker-cell">
