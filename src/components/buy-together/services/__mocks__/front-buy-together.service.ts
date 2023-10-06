@@ -11,19 +11,19 @@ import { IInputSelectDataEvent } from '../../../../components';
 
 class FrontBuyTogetherServiceMock implements IFrontBuyTogetherService {
   changeProductOptions(data: IInputSelectDataEvent, productTarget: GqlProduct): IChangeResult {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${{ data, productTarget }}`);
   }
 
   changeColor(colorValue: string, productTarget: GqlProduct): IChangeResult {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${{ colorValue, productTarget }}`);
   }
 
   changeAttribute(colorValue: string, productTarget: GqlProduct): IChangeResult {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${{ colorValue, productTarget }}`);
   }
 
   changeAttributeSecondary(colorValue: string, productTarget: GqlProduct): IChangeResult {
-    throw new Error('Method not implemented.');
+    throw new Error(`Method not implemented. ${{ colorValue, productTarget }}`);
   }
 
   public async getBuyTogetherByProductId(): Promise<IBuyTogetherComponentData> {
