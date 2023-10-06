@@ -23,14 +23,28 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static adapterProductToProductCard(product: GqlProduct): IProductCard {
+    const { price, priceBase } = this.getPrice(product);
     return {
+      price,
+      priceBase,
       id: product.id,
       image: product.images[0],
       name: product.name,
-      price: product.price,
-      priceBase: product.priceCompare,
       selectVariations: this.adapterAttributes(product),
     };
+  }
+
+  public static getPrice(product: GqlProduct) {
+    const { attribute, attributeSecondary, color } = product;
+    const filter = {
+      'attribute.id': attribute?.id,
+      'attributeSecondary.id': attributeSecondary?.id,
+      'color.id': color?.id,
+    };
+    const variationsFiltered = this.filterVariations(product.variations, filter);
+    const price = variationsFiltered[0]?.price || product.price;
+    const priceBase = variationsFiltered[0]?.priceCompare || product.priceCompare;
+    return { price, priceBase };
   }
 
   public static adapterAttributes(product: GqlProduct): ISelectVariation[] {
@@ -109,11 +123,11 @@ export class FrontBuyTogetherAdapter {
   private static filterVariations(
     variations: GqlProduct[],
     filter: { [key: string]: any },
-    attributeTarget: keyof GqlProduct,
+    attributeTarget?: keyof GqlProduct,
   ) {
     const filterKeys = Object.keys(filter);
     return variations.filter(objVariation => {
-      const hasAttr = !!objVariation[attributeTarget];
+      const hasAttr = !attributeTarget || !!objVariation[attributeTarget];
       if (!hasAttr) return false;
       return filterKeys.reduce((acc, currentKey) => {
         const valueForCompare = filter[currentKey];
