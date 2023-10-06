@@ -31,11 +31,13 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const variationByColor = productTarget.variations.find(
       ({ color }) => color?.id === Number(colorValue),
     );
-    const currentImage = variationByColor?.images[0];
-    const productTargetUpdated = {
+    const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation({
       ...productTarget,
       color: variationByColor.color,
-      images: [currentImage],
+    });
+    const productTargetUpdated = {
+      ...currentVariation,
+      variations: productTarget.variations,
     };
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
@@ -45,9 +47,13 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const variationByAttribute = productTarget.variations.find(
       ({ attribute }) => attribute?.id === Number(attributeValue),
     );
-    const productTargetUpdated: GqlProduct = {
+    const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation({
       ...productTarget,
       attribute: variationByAttribute.attribute,
+    });
+    const productTargetUpdated: GqlProduct = {
+      ...currentVariation,
+      variations: productTarget.variations,
     };
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
@@ -60,9 +66,13 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const variationByAttributeSecondary = productTarget.variations.find(
       ({ attributeSecondary }) => attributeSecondary?.id === Number(attributeValue),
     );
-    const productTargetUpdated: GqlProduct = {
+    const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation({
       ...productTarget,
       attributeSecondary: variationByAttributeSecondary.attributeSecondary,
+    });
+    const productTargetUpdated: GqlProduct = {
+      ...currentVariation,
+      variations: productTarget.variations,
     };
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };

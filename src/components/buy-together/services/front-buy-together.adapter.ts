@@ -23,18 +23,18 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static adapterProductToProductCard(product: GqlProduct): IProductCard {
-    const { price, priceBase } = this.getPrice(product);
+    const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,
-      priceBase,
-      id: product.id,
+      priceBase: priceCompare,
+      id,
       image: product.images[0],
       name: product.name,
       selectVariations: this.adapterAttributes(product),
     };
   }
 
-  public static getPrice(product: GqlProduct) {
+  public static getValuesByVariation(product: GqlProduct) {
     const { attribute, attributeSecondary, color } = product;
     const filter = {
       'attribute.id': attribute?.id,
@@ -42,9 +42,7 @@ export class FrontBuyTogetherAdapter {
       'color.id': color?.id,
     };
     const variationsFiltered = this.filterVariations(product.variations, filter);
-    const price = variationsFiltered[0]?.price || product.price;
-    const priceBase = variationsFiltered[0]?.priceCompare || product.priceCompare;
-    return { price, priceBase };
+    return variationsFiltered[0] || product;
   }
 
   public static adapterAttributes(product: GqlProduct): ISelectVariation[] {
@@ -137,7 +135,7 @@ export class FrontBuyTogetherAdapter {
     });
   }
 
-  private static filterAttributesByUnique(
+  public static filterAttributesByUnique(
     attributesGeneric: GqlProduct[],
     attributeTarget: keyof GqlProduct,
   ) {
