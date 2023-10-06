@@ -34,7 +34,7 @@ describe('buy-together', () => {
       </div>
       <div class="buy-btn-wrapper">
         <button class="buy-btn">
-          Comprar
+          Compre agora
         </button>
           </div>
         </section>

@@ -96,7 +96,9 @@ export class BuyTogether implements ComponentWillLoad {
             ))}
           </div>
           <div class="buy-btn-wrapper">
-            <button class="buy-btn">Comprar</button>
+            <button class="buy-btn">
+              {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
+            </button>
           </div>
         </section>
       </Host>
