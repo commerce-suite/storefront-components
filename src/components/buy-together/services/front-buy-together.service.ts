@@ -20,6 +20,8 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
         return this.changeColor(data.value, productTarget);
       case 'attributes':
         return this.changeAttribute(data.value, productTarget);
+      case 'secondaryAttributes':
+        return this.changeAttributeSecondary(data.value, productTarget);
       default:
         return null;
     }
@@ -60,7 +62,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     );
     const productTargetUpdated: GqlProduct = {
       ...productTarget,
-      attributeSecondary: variationByAttributeSecondary.attribute,
+      attributeSecondary: variationByAttributeSecondary.attributeSecondary,
     };
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
