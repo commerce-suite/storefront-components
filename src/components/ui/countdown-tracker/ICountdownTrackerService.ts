@@ -1,4 +1,4 @@
-import { DateDifferenceType } from './types';
+import { DateDifferenceType } from './countdown-tracker.type';
 
 export interface ICountdownTrackerService {
   isCountdownFinished(): boolean;
