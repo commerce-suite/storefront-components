@@ -1,7 +1,7 @@
-import type { ICountdownTrackerService } from './ICountdownTrackerService';
+import type { ICountdownService } from './ICountdownService';
 import type { DateDifferenceType } from './countdown-tracker.type';
 
-export class CountdownTrackerService implements ICountdownTrackerService {
+export class CountdownService implements ICountdownService {
   constructor(
     private startDate: Date,
     private targetDate: Date,
