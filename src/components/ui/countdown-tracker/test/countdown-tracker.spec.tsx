@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { CountdownTracker } from '../countdown-tracker';
 
 describe('countdown-tracker', () => {
-  it('should render reset countdown tracker when a date in the pas is given', async () => {
+  it('should render reset countdown tracker when a date in the past is given', async () => {
     const page = await newSpecPage({
       components: [CountdownTracker],
       html: `<countdown-tracker data-target-date="2020-11-06 13:24:00"></countdown-tracker>`,
