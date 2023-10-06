@@ -6,7 +6,9 @@ import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/c
   scoped: true,
 })
 export class CountdownTracker {
-  @Prop() targetDate: string;
+  @Prop() dataTargetDate: string;
+  @Prop() trackerTitle = 'Agora falta muito pouco!';
+  @Prop() description = 'O produto que você tanto espera será liberado em breve.';
 
   @State() days: string | number = '00';
   @State() hours: string = '00';
@@ -26,7 +28,7 @@ export class CountdownTracker {
   }
 
   calculateTimeDifference() {
-    const target = new Date(this.targetDate);
+    const target = new Date(this.dataTargetDate);
     const start = new Date();
 
     const diff = target.getTime() - start.getTime();
@@ -56,22 +58,26 @@ export class CountdownTracker {
   render() {
     return (
       <Host>
+        <div class="countdown-tracker-header">
+          <h3 class="countdown-tracker-title">{this.trackerTitle}</h3>
+          <p class="countdown-tracker-description">{this.description}</p>
+        </div>
         <div class="countdown-tracker">
-          <div class="countdown-tracker__days">
-            <p>{this.days}</p>
-            <p>dias</p>
+          <div class="countdown-tracker-cell">
+            <p class="countdown-tracker-time">{this.days}</p>
+            <p class="countdown-tracker-date">dias</p>
           </div>
-          <div class="countdown-tracker__hours">
-            <p>{this.hours}</p>
-            <p>horas</p>
+          <div class="countdown-tracker-cell">
+            <p class="countdown-tracker-time">{this.hours}</p>
+            <p class="countdown-tracker-date">horas</p>
           </div>
-          <div class="countdown-tracker__minutes">
-            <p>{this.minutes}</p>
-            <p>minutos</p>
+          <div class="countdown-tracker-cell">
+            <p class="countdown-tracker-time"> {this.minutes}</p>
+            <p class="countdown-tracker-date">minutos</p>
           </div>
-          <div class="countdown-tracker__seconds">
-            <p>{this.seconds}</p>
-            <p>segundos</p>
+          <div class="countdown-tracker-cell">
+            <p class="countdown-tracker-time">{this.seconds}</p>
+            <p class="countdown-tracker-date">segundos</p>
           </div>
         </div>
       </Host>
