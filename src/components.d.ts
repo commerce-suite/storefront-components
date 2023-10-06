@@ -13,9 +13,9 @@ export namespace Components {
     interface BuyTogether {
     }
     interface CountdownTracker {
+        "dataDescription": string;
         "dataTargetDate": string;
-        "description": string;
-        "trackerTitle": string;
+        "dataTrackerTitle": string;
     }
     interface FrontSelect {
         "label": string;
@@ -74,10 +74,10 @@ declare namespace LocalJSX {
     interface BuyTogether {
     }
     interface CountdownTracker {
+        "dataDescription"?: string;
         "dataTargetDate"?: string;
-        "description"?: string;
+        "dataTrackerTitle"?: string;
         "onCountdownFinished"?: (event: CountdownTrackerCustomEvent<any>) => void;
-        "trackerTitle"?: string;
     }
     interface FrontSelect {
         "label"?: string;
