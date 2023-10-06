@@ -22,14 +22,14 @@ export class CountdownTracker {
   private service: CountdownTrackerService;
 
   componentWillLoad() {
-    this.calculateTimeDifference();
+    this.updateCountdown();
   }
 
   disconnectedCallback() {
     clearInterval(this.intervalId);
   }
 
-  calculateTimeDifference() {
+  updateCountdown() {
     this.service = new CountdownTrackerService(new Date(), new Date(this.dataTargetDate));
     if (this.service.isCountdownFinished()) {
       cancelAnimationFrame(this.intervalId);
@@ -47,7 +47,7 @@ export class CountdownTracker {
     this.minutes = String(minutesDiff).padStart(2, '0');
     this.seconds = String(secondsDiff).padStart(2, '0');
 
-    this.intervalId = requestAnimationFrame(this.calculateTimeDifference.bind(this));
+    this.intervalId = requestAnimationFrame(this.updateCountdown.bind(this));
   }
 
   render() {
