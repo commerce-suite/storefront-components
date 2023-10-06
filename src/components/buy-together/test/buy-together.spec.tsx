@@ -1,10 +1,13 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { BuyTogether as IBuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 
 jest.mock('../services/front-buy-together.service');
 
 import { BuyTogether } from '../buy-together';
+import { buyTogetherData } from '../services/__mocks__/buy-together-data.mock';
 
 describe('buy-together', () => {
+  const buyTogetherDataApi = buyTogetherData as IBuyTogether;
   it('renders', async () => {
     const page = await newSpecPage({
       components: [BuyTogether],
@@ -12,7 +15,7 @@ describe('buy-together', () => {
     });
     expect(page.root).toEqualHtml(`<buy-together>
     <div class="title-wrapper">
-        <h2 class="title">Aproveite já</h2>
+        <h2 class="title">${buyTogetherDataApi.title}</h2>
     </div>
     <section class="bagy-buy-together buy-together-container">
       <div class="product-main product-wrapper">
@@ -24,7 +27,13 @@ describe('buy-together', () => {
       <div class="products-order-bump">
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input id="9480064" type="checkbox">
+            <input id="9480211" type="checkbox">
+          </div>
+          <product-card inline=""></product-card>
+        </div>
+        <div class="product-wrapper">
+          <div class="checkbox-wrapper">
+            <input id="9480233" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
@@ -37,7 +46,7 @@ describe('buy-together', () => {
       </div>
       <div class="buy-btn-wrapper">
         <button class="buy-btn">
-          Compre agora
+          ${buyTogetherDataApi.buyButtonText}
         </button>
           </div>
         </section>

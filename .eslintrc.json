@@ -23,7 +23,7 @@
   },
   "overrides": [
     {
-      "files": ["*.spec.tsx"],
+      "files": ["*.spec.tsx", "*.spec.ts"],
       "rules": {
         "import/first": "off"
       }
