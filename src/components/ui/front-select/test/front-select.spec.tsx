@@ -7,6 +7,7 @@ describe('front-select', () => {
   const optionsList: IFrontSelectOption[] = [
     { name: 'Opção A', value: 1 },
     { name: 'Opção B', value: 2 },
+    { name: 'Opção C', value: 3, disabled: true },
   ];
   it('renders without option Empty', async () => {
     const page = await newSpecPage({
@@ -20,6 +21,7 @@ describe('front-select', () => {
             <option selected="">Selecione</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
+            <option value="3" disabled>Opção C</option>
           </select>
         </div>
       </front-select>
@@ -44,6 +46,7 @@ describe('front-select', () => {
             <option value="0" selected="">Selecione a opção</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
+            <option value="3" disabled>Opção C</option>
           </select>
         </div>
       </front-select>
@@ -70,6 +73,7 @@ describe('front-select', () => {
             <option selected="">Selecione</option>
             <option value="1">Opção A</option>
             <option value="2">Opção B</option>
+            <option value="3" disabled>Opção C</option>
           </select>
         </div>
       </front-select>
