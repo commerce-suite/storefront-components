@@ -1,5 +1,5 @@
 import type { ICountdownService } from './ICountdownService';
-import type { DateDifferenceType } from './countdown-tracker.type';
+import type { DateDifferenceType } from './front-countdown.type';
 
 export class CountdownService implements ICountdownService {
   private oneSecond = 1000;

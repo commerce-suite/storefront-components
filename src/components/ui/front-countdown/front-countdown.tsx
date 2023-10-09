@@ -2,14 +2,14 @@ import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/c
 import { CountdownService } from './countdown.service';
 
 @Component({
-  tag: 'countdown-tracker',
-  styleUrl: 'countdown-tracker.scss',
+  tag: 'front-countdown',
+  styleUrl: 'front-countdown.scss',
   scoped: true,
 })
-export class CountdownTracker {
+export class FrontCountdown {
   @Prop() dataTargetDate: string;
   @Prop() dataInitialDate: string;
-  @Prop() dataTrackerTitle = 'Agora falta muito pouco!';
+  @Prop() dataCountdownTitle = 'Agora falta muito pouco!';
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
   @Prop() backgroundColor?: string;
   @Prop() textColor?: string;
@@ -69,26 +69,26 @@ export class CountdownTracker {
 
     return (
       <Host style={backgroundColor}>
-        <div class="countdown-tracker-header" style={textColor}>
-          <h3 class="countdown-tracker-title">{this.dataTrackerTitle}</h3>
-          <p class="countdown-tracker-description">{this.dataDescription}</p>
+        <div class="front-countdown-header" style={textColor}>
+          <h3 class="front-countdown-title">{this.dataCountdownTitle}</h3>
+          <p class="front-countdown-description">{this.dataDescription}</p>
         </div>
-        <div class="countdown-tracker">
-          <div class="countdown-tracker-cell" style={textCounterColor}>
-            <p class="countdown-tracker-time">{this.days}</p>
-            <p class="countdown-tracker-date">dias</p>
+        <div class="front-countdown">
+          <div class="front-countdown-cell" style={textCounterColor}>
+            <p class="front-countdown-time">{this.days}</p>
+            <p class="front-countdown-date">dias</p>
           </div>
-          <div class="countdown-tracker-cell" style={textCounterColor}>
-            <p class="countdown-tracker-time">{this.hours}</p>
-            <p class="countdown-tracker-date">horas</p>
+          <div class="front-countdown-cell" style={textCounterColor}>
+            <p class="front-countdown-time">{this.hours}</p>
+            <p class="front-countdown-date">horas</p>
           </div>
-          <div class="countdown-tracker-cell" style={textCounterColor}>
-            <p class="countdown-tracker-time"> {this.minutes}</p>
-            <p class="countdown-tracker-date">minutos</p>
+          <div class="front-countdown-cell" style={textCounterColor}>
+            <p class="front-countdown-time"> {this.minutes}</p>
+            <p class="front-countdown-date">minutos</p>
           </div>
-          <div class="countdown-tracker-cell" style={textCounterColor}>
-            <p class="countdown-tracker-time">{this.seconds}</p>
-            <p class="countdown-tracker-date">segundos</p>
+          <div class="front-countdown-cell" style={textCounterColor}>
+            <p class="front-countdown-time">{this.seconds}</p>
+            <p class="front-countdown-date">segundos</p>
           </div>
         </div>
       </Host>
