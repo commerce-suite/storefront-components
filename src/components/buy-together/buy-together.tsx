@@ -79,8 +79,6 @@ export class BuyTogether implements ComponentWillLoad {
         productsPivot,
       },
     };
-
-    console.log('onInputSelectOrderBump', event);
   }
 
   componentWillLoad(): void | Promise<void> {
