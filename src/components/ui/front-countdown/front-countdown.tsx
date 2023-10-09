@@ -69,26 +69,26 @@ export class FrontCountdown {
 
     return (
       <Host style={backgroundColor}>
-        <div class="front-countdown-header" style={textColor}>
-          <h3 class="front-countdown-title">{this.dataCountdownTitle}</h3>
-          <p class="front-countdown-description">{this.dataDescription}</p>
+        <div class="front-countdown__header" style={textColor}>
+          <h3 class="front-countdown__title">{this.dataCountdownTitle}</h3>
+          <p class="front-countdown__description">{this.dataDescription}</p>
         </div>
         <div class="front-countdown">
-          <div class="front-countdown-cell" style={textCounterColor}>
-            <p class="front-countdown-time">{this.days}</p>
-            <p class="front-countdown-date">dias</p>
+          <div class="front-countdown__cell" style={textCounterColor}>
+            <p class="front-countdown__time">{this.days}</p>
+            <p class="front-countdown__unit">dias</p>
           </div>
-          <div class="front-countdown-cell" style={textCounterColor}>
-            <p class="front-countdown-time">{this.hours}</p>
-            <p class="front-countdown-date">horas</p>
+          <div class="front-countdown__cell" style={textCounterColor}>
+            <p class="front-countdown__time">{this.hours}</p>
+            <p class="front-countdown__unit">horas</p>
           </div>
-          <div class="front-countdown-cell" style={textCounterColor}>
-            <p class="front-countdown-time"> {this.minutes}</p>
-            <p class="front-countdown-date">minutos</p>
+          <div class="front-countdown__cell" style={textCounterColor}>
+            <p class="front-countdown__time"> {this.minutes}</p>
+            <p class="front-countdown__unit">minutos</p>
           </div>
-          <div class="front-countdown-cell" style={textCounterColor}>
-            <p class="front-countdown-time">{this.seconds}</p>
-            <p class="front-countdown-date">segundos</p>
+          <div class="front-countdown__cell" style={textCounterColor}>
+            <p class="front-countdown__time">{this.seconds}</p>
+            <p class="front-countdown__unit">segundos</p>
           </div>
         </div>
       </Host>
