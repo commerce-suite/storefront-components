@@ -18,10 +18,12 @@ export namespace Components {
         "variationId": number;
     }
     interface CountdownTracker {
+        "backgroundColor"?: string;
         "dataDescription": string;
         "dataInitialDate": string;
         "dataTargetDate": string;
         "dataTrackerTitle": string;
+        "textColor"?: string;
     }
     interface FrontImage {
         "figCaption": string;
@@ -99,11 +101,13 @@ declare namespace LocalJSX {
         "variationId"?: number;
     }
     interface CountdownTracker {
+        "backgroundColor"?: string;
         "dataDescription"?: string;
         "dataInitialDate"?: string;
         "dataTargetDate"?: string;
         "dataTrackerTitle"?: string;
         "onCountdownFinished"?: (event: CountdownTrackerCustomEvent<any>) => void;
+        "textColor"?: string;
     }
     interface FrontImage {
         "figCaption"?: string;
