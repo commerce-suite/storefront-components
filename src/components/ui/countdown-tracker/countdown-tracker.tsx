@@ -11,6 +11,8 @@ export class CountdownTracker {
   @Prop() dataInitialDate: string;
   @Prop() dataTrackerTitle = 'Agora falta muito pouco!';
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
+  @Prop() backgroundColor?: string;
+  @Prop() textColor?: string;
 
   @State() days: string = '00';
   @State() hours: string = '00';
@@ -61,26 +63,30 @@ export class CountdownTracker {
   }
 
   render() {
+    const backgroundColor = this.backgroundColor ? { backgroundColor: this.backgroundColor } : {};
+    const textCounterColor = this.backgroundColor ? { color: this.backgroundColor } : {};
+    const textColor = this.textColor ? { color: this.textColor } : {};
+
     return (
-      <Host>
-        <div class="countdown-tracker-header">
+      <Host style={backgroundColor}>
+        <div class="countdown-tracker-header" style={textColor}>
           <h3 class="countdown-tracker-title">{this.dataTrackerTitle}</h3>
           <p class="countdown-tracker-description">{this.dataDescription}</p>
         </div>
         <div class="countdown-tracker">
-          <div class="countdown-tracker-cell">
+          <div class="countdown-tracker-cell" style={textCounterColor}>
             <p class="countdown-tracker-time">{this.days}</p>
             <p class="countdown-tracker-date">dias</p>
           </div>
-          <div class="countdown-tracker-cell">
+          <div class="countdown-tracker-cell" style={textCounterColor}>
             <p class="countdown-tracker-time">{this.hours}</p>
             <p class="countdown-tracker-date">horas</p>
           </div>
-          <div class="countdown-tracker-cell">
+          <div class="countdown-tracker-cell" style={textCounterColor}>
             <p class="countdown-tracker-time"> {this.minutes}</p>
             <p class="countdown-tracker-date">minutos</p>
           </div>
-          <div class="countdown-tracker-cell">
+          <div class="countdown-tracker-cell" style={textCounterColor}>
             <p class="countdown-tracker-time">{this.seconds}</p>
             <p class="countdown-tracker-date">segundos</p>
           </div>
