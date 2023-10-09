@@ -3,7 +3,7 @@ import type { DateDifferenceType } from './front-countdown.type';
 
 export class CountdownService implements ICountdownService {
   private oneSecond = 1000;
-  private intervalId: any;
+  private intervalId: ReturnType<typeof setInterval>;
 
   constructor(
     private initialDate: Date,
