@@ -1,13 +1,22 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { BuyTogether as IBuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
+
+jest.mock('../services/front-buy-together.service');
+
 import { BuyTogether } from '../buy-together';
+import { buyTogetherData } from '../services/__mocks__/buy-together-data.mock';
 
 describe('buy-together', () => {
+  const buyTogetherDataApi = buyTogetherData as IBuyTogether;
   it('renders', async () => {
     const page = await newSpecPage({
       components: [BuyTogether],
       html: `<buy-together></buy-together>`,
     });
     expect(page.root).toEqualHtml(`<buy-together>
+    <div class="title-wrapper">
+        <h2 class="title">${buyTogetherDataApi.title}</h2>
+    </div>
     <section class="bagy-buy-together buy-together-container">
       <div class="product-main product-wrapper">
         <product-card></product-card>
@@ -18,26 +27,26 @@ describe('buy-together', () => {
       <div class="products-order-bump">
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
+            <input id="9480211" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
+            <input id="9480233" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input type="checkbox" id="1234"/>
+            <input id="9480162" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
       </div>
       <div class="buy-btn-wrapper">
         <button class="buy-btn">
-          Comprar
+          ${buyTogetherDataApi.buyButtonText}
         </button>
           </div>
         </section>

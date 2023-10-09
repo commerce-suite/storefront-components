@@ -1,4 +1,4 @@
-import { IProductCard } from '../product-card.type';
+import { IProductCard, ISelectVariation } from '../product-card.type';
 
 const product: IProductCard = {
   id: 1234,
@@ -10,7 +10,7 @@ const product: IProductCard = {
   priceBase: 499.99,
 };
 
-const variations = [
+const variations: ISelectVariation[] = [
   {
     label: 'Cor',
     options: [
@@ -18,7 +18,7 @@ const variations = [
       { name: 'azul', value: '12321' },
     ],
     currentValue: '12321',
-    modelKey: 'color_id',
+    selectType: 'color',
   },
   {
     label: 'Tamanho',
@@ -28,7 +28,7 @@ const variations = [
       { name: 'G', value: '123' },
     ],
     currentValue: '456',
-    modelKey: 'lenght_id',
+    selectType: 'attributes',
   },
 ];
 const productWithVariations: IProductCard = {

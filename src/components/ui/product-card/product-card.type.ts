@@ -1,22 +1,25 @@
 import { IFrontSelectOption } from '../front-select/front-select.type';
 
+export type SelectAttributesType = 'color' | 'attributes' | 'secondaryAttributes';
+
 interface IImage {
   src: string;
   alt?: string;
 }
 
-interface ISelectVariation {
+export interface ISelectVariation {
   placeholder?: IFrontSelectOption;
   label: string;
   options: IFrontSelectOption[];
-  modelKey: string;
+  selectType: SelectAttributesType;
   currentValue: any;
   selectId?: string;
 }
 
 export interface IInputSelectDataEvent {
-  modelKey: string;
+  eventSelectType: SelectAttributesType;
   value: any;
+  productId: number;
 }
 
 export interface IProductCard {

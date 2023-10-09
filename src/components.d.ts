@@ -11,6 +11,7 @@ export { IFrontSelectOption } from "./components/ui/front-select/front-select.ty
 export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
 export namespace Components {
     interface BuyTogether {
+        "productId": number;
     }
     interface FrontSelect {
         "label": string;
@@ -56,6 +57,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+        "productId"?: number;
     }
     interface FrontSelect {
         "label"?: string;

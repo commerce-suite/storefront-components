@@ -27,11 +27,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@stencil/core": "^4.0.0"
+    "@stencil/core": "^4.0.0",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.5",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.199",
     "@types/node": "^16.18.11",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",

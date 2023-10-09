@@ -1,5 +1,5 @@
 import { Component, Host, Event, Prop, h, EventEmitter } from '@stencil/core';
-import { IInputSelectDataEvent, IProductCard } from './product-card.type';
+import { IInputSelectDataEvent, IProductCard, SelectAttributesType } from './product-card.type';
 import { currencyFormat, getClassByProps } from '../../../utils/utils';
 
 @Component({
@@ -10,7 +10,7 @@ import { currencyFormat, getClassByProps } from '../../../utils/utils';
 })
 export class ProductCard {
   @Prop() inline: boolean = false;
-  @Prop() product: IProductCard;
+  @Prop({ mutable: true }) product: IProductCard;
   @Event() inputSelect: EventEmitter<IInputSelectDataEvent>;
 
   getClassWithInline(className: string) {
@@ -18,8 +18,12 @@ export class ProductCard {
     return `${className} ${getClassByProps(prosForClass)}`;
   }
 
-  private onInputSelect(data: any, modelKey: string) {
-    this.inputSelect.emit({ modelKey, value: data.target.value });
+  private onInputSelect(data: any, eventSelectType: SelectAttributesType) {
+    this.inputSelect.emit({
+      eventSelectType,
+      value: data.target.value,
+      productId: this.product.id,
+    });
   }
 
   render() {
@@ -41,7 +45,7 @@ export class ProductCard {
           {this.product.selectVariations && (
             <div class="variations">
               {this.product.selectVariations.map(
-                ({ label, currentValue, options, modelKey, selectId, placeholder }) => (
+                ({ label, currentValue, options, selectId, placeholder, selectType }) => (
                   <div class="item">
                     <front-select
                       placeholder={placeholder}
@@ -49,7 +53,7 @@ export class ProductCard {
                       optionsList={options}
                       label={label}
                       value={currentValue}
-                      onInput={data => this.onInputSelect(data, modelKey)}
+                      onInput={data => this.onInputSelect(data, selectType)}
                     />
                   </div>
                 ),

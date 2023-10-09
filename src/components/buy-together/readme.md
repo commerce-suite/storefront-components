@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property    | Attribute    | Description | Type     | Default     |
+| ----------- | ------------ | ----------- | -------- | ----------- |
+| `productId` | `product-id` |             | `number` | `undefined` |
+
+
 ## Dependencies
 
 ### Depends on
