@@ -3,7 +3,7 @@ import { IBuyTogetherComponentData } from '../buy-together.type';
 import { IProductCard } from '../../../components';
 import {
   Attribute,
-  GqlProduct,
+  Product,
   BuyTogether as IBuyTogether,
   ShowcaseColor,
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
@@ -22,7 +22,7 @@ export class FrontBuyTogetherAdapter {
     };
   }
 
-  public static adapterProductToProductCard(product: GqlProduct): IProductCard {
+  public static adapterProductToProductCard(product: Product): IProductCard {
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,
@@ -34,7 +34,7 @@ export class FrontBuyTogetherAdapter {
     };
   }
 
-  public static getValuesByVariation(product: GqlProduct) {
+  public static getValuesByVariation(product: Product) {
     const { attribute, attributeSecondary, color } = product;
     const filter = {
       'attribute.id': attribute?.id,
@@ -45,14 +45,14 @@ export class FrontBuyTogetherAdapter {
     return variationsFiltered[0] || product;
   }
 
-  public static adapterAttributes(product: GqlProduct): ISelectVariation[] {
+  public static adapterAttributes(product: Product): ISelectVariation[] {
     const colors: ISelectVariation = this.generateSelectColors(product);
     const attributes = this.generateSelectAttributes(product);
     const attributesSecondary = this.generateSelectAttributesSecondary(product);
     return [colors, attributes, attributesSecondary].filter(attr => !!attr);
   }
 
-  public static generateSelectAttributes(product: GqlProduct): ISelectVariation {
+  public static generateSelectAttributes(product: Product): ISelectVariation {
     const { color, attributeSecondary } = product;
     const filterToCompare = {
       'color.id': color?.id,
@@ -75,7 +75,7 @@ export class FrontBuyTogetherAdapter {
     };
   }
 
-  public static generateSelectAttributesSecondary(product: GqlProduct): ISelectVariation {
+  public static generateSelectAttributesSecondary(product: Product): ISelectVariation {
     const { color, attribute } = product;
     const filterToCompare = { 'color.id': color?.id, 'attribute.id': attribute?.id };
     const listAttributesSecondary = this.filterAttributesByUnique(
@@ -95,7 +95,7 @@ export class FrontBuyTogetherAdapter {
     };
   }
 
-  public static generateSelectColors(product: GqlProduct): ISelectVariation {
+  public static generateSelectColors(product: Product): ISelectVariation {
     const { attribute, attributeSecondary } = product;
     const filterToCompare = {
       'attribute.id': attribute?.id,
@@ -119,9 +119,9 @@ export class FrontBuyTogetherAdapter {
   }
 
   private static filterVariations(
-    variations: GqlProduct[],
+    variations: Product[],
     filter: { [key: string]: any },
-    attributeTarget?: keyof GqlProduct,
+    attributeTarget?: keyof Product,
   ) {
     const filterKeys = Object.keys(filter);
     return variations.filter(objVariation => {
@@ -136,8 +136,8 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static filterAttributesByUnique(
-    attributesGeneric: GqlProduct[],
-    attributeTarget: keyof GqlProduct,
+    attributesGeneric: Product[],
+    attributeTarget: keyof Product,
   ) {
     return attributesGeneric
       .filter(attr => !!attr[attributeTarget])

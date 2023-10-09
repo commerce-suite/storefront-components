@@ -3,7 +3,7 @@ import { buyTogetherData } from '../__mocks__/buy-together-data.mock';
 import { FrontBuyTogetherAdapter } from '../front-buy-together.adapter';
 
 describe('FrontBuyTogetherAdapter', () => {
-  it('It should adpter to component ProductCard from GqlProduct - adapterProductToProductCard', () => {
+  it('It should adpter to component ProductCard from Product - adapterProductToProductCard', () => {
     const data = buyTogetherData as BuyTogether;
     const result = FrontBuyTogetherAdapter.adapterProductToProductCard(data.product);
     const expectObject = {

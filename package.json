@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@stencil/core": "^4.0.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#task/implementacoes-compre-junto",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

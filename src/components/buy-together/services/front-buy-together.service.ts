@@ -1,7 +1,7 @@
 import { BuyTogetherService } from '@uxshop/storefront-core';
 import { IBuyTogetherComponentData } from '../buy-together.type';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
-import { GqlProduct } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
+import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 
@@ -13,7 +13,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
 
   public changeProductOptions(
     data: IInputSelectDataEvent,
-    productTarget: GqlProduct,
+    productTarget: Product,
   ): IChangeResult | null {
     switch (data.eventSelectType) {
       case 'color':
@@ -27,7 +27,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     }
   }
 
-  public changeColor(colorValue: string, productTarget: GqlProduct): IChangeResult {
+  public changeColor(colorValue: string, productTarget: Product): IChangeResult {
     const variationByColor = productTarget.variations.find(
       ({ color }) => color?.id === Number(colorValue),
     );
@@ -43,7 +43,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return { productTargetUpdated, productCard };
   }
 
-  public changeAttribute(attributeValue: string, productTarget: GqlProduct): IChangeResult {
+  public changeAttribute(attributeValue: string, productTarget: Product): IChangeResult {
     const variationByAttribute = productTarget.variations.find(
       ({ attribute }) => attribute?.id === Number(attributeValue),
     );
@@ -51,7 +51,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...productTarget,
       attribute: variationByAttribute.attribute,
     });
-    const productTargetUpdated: GqlProduct = {
+    const productTargetUpdated: Product = {
       ...currentVariation,
       variations: productTarget.variations,
     };
@@ -59,10 +59,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return { productTargetUpdated, productCard };
   }
 
-  public changeAttributeSecondary(
-    attributeValue: string,
-    productTarget: GqlProduct,
-  ): IChangeResult {
+  public changeAttributeSecondary(attributeValue: string, productTarget: Product): IChangeResult {
     const variationByAttributeSecondary = productTarget.variations.find(
       ({ attributeSecondary }) => attributeSecondary?.id === Number(attributeValue),
     );
@@ -70,7 +67,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...productTarget,
       attributeSecondary: variationByAttributeSecondary.attributeSecondary,
     });
-    const productTargetUpdated: GqlProduct = {
+    const productTargetUpdated: Product = {
       ...currentVariation,
       variations: productTarget.variations,
     };
