@@ -8,35 +8,38 @@ import { CountdownService } from './countdown.service';
 })
 export class CountdownTracker {
   @Prop() dataTargetDate: string;
+  @Prop() dataInitialDate: string;
   @Prop() dataTrackerTitle = 'Agora falta muito pouco!';
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
 
-  @State() days: string | number = '00';
+  @State() days: string = '00';
   @State() hours: string = '00';
   @State() minutes: string = '00';
   @State() seconds: string = '00';
 
   @Event() countdownFinished: EventEmitter;
 
-  private intervalId: number;
   private service: CountdownService;
 
   componentWillLoad() {
-    this.updateCountdown();
+    try {
+      this.service = new CountdownService(
+        new Date(this.dataInitialDate),
+        new Date(this.dataTargetDate),
+      );
+      this.updateCountdown();
+    } catch {
+      this.resetCountdown();
+    }
   }
 
   disconnectedCallback() {
-    clearInterval(this.intervalId);
+    this.service.stopCountdown();
   }
 
   updateCountdown() {
-    this.service = new CountdownService(new Date(), new Date(this.dataTargetDate));
     if (this.service.isCountdownFinished()) {
-      cancelAnimationFrame(this.intervalId);
-      this.days = '00';
-      this.hours = '00';
-      this.minutes = '00';
-      this.seconds = '00';
+      this.resetCountdown();
       this.countdownFinished.emit('finished');
       return;
     }
@@ -47,7 +50,14 @@ export class CountdownTracker {
     this.minutes = String(minutesDiff).padStart(2, '0');
     this.seconds = String(secondsDiff).padStart(2, '0');
 
-    this.intervalId = requestAnimationFrame(this.updateCountdown.bind(this));
+    this.service.intervalId = requestAnimationFrame(this.updateCountdown.bind(this));
+  }
+
+  resetCountdown() {
+    this.days = '00';
+    this.hours = '00';
+    this.minutes = '00';
+    this.seconds = '00';
   }
 
   render() {

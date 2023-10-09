@@ -2,17 +2,38 @@ import type { ICountdownService } from './ICountdownService';
 import type { DateDifferenceType } from './countdown-tracker.type';
 
 export class CountdownService implements ICountdownService {
+  intervalId: any;
   constructor(
-    private startDate: Date,
+    private initialDate: Date,
     private targetDate: Date,
   ) {
-    if (isNaN(startDate.getTime()) || isNaN(targetDate.getTime())) {
+    if (isNaN(initialDate.getTime()) || isNaN(targetDate.getTime())) {
       throw new Error('Invalid date');
     }
+
+    this.startCountdown();
+  }
+
+  private incrementOneSecond(): void {
+    this.initialDate = new Date(this.initialDate.getTime() + 1000);
+  }
+
+  startCountdown(): void {
+    this.intervalId = setInterval(() => {
+      this.incrementOneSecond();
+
+      if (this.isCountdownFinished()) {
+        this.stopCountdown();
+      }
+    }, 1000);
+  }
+
+  stopCountdown(): void {
+    clearInterval(this.intervalId);
   }
 
   getMillisecondsDifference(): number {
-    return this.targetDate.getTime() - this.startDate.getTime();
+    return this.targetDate.getTime() - this.initialDate.getTime();
   }
 
   isCountdownFinished(): boolean {

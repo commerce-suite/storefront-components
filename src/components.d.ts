@@ -19,6 +19,7 @@ export namespace Components {
     }
     interface CountdownTracker {
         "dataDescription": string;
+        "dataInitialDate": string;
         "dataTargetDate": string;
         "dataTrackerTitle": string;
     }
@@ -99,6 +100,7 @@ declare namespace LocalJSX {
     }
     interface CountdownTracker {
         "dataDescription"?: string;
+        "dataInitialDate"?: string;
         "dataTargetDate"?: string;
         "dataTrackerTitle"?: string;
         "onCountdownFinished"?: (event: CountdownTrackerCustomEvent<any>) => void;
