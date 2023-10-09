@@ -52,7 +52,7 @@ export class CountdownTracker {
     this.minutes = String(minutesDiff).padStart(2, '0');
     this.seconds = String(secondsDiff).padStart(2, '0');
 
-    this.service.intervalId = requestAnimationFrame(this.updateCountdown.bind(this));
+    requestAnimationFrame(this.updateCountdown.bind(this));
   }
 
   resetCountdown() {
