@@ -3,7 +3,7 @@ import type { DateDifferenceType } from './countdown-tracker.type';
 
 export class CountdownService implements ICountdownService {
   private oneSecond = 1000;
-  intervalId: any;
+  private intervalId: any;
 
   constructor(
     private initialDate: Date,
