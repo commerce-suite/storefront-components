@@ -15,7 +15,7 @@
     justify-content: space-between;
     margin: 8px;
 
-    &-header {
+    &__header {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -25,16 +25,16 @@
       line-height: 1.5;
     }
 
-    &-title {
+    &__title {
       margin: 0;
       margin-bottom: 4px;
     }
 
-    &-description {
+    &__description {
       margin: 0;
     }
 
-    &-cell {
+    &__cell {
       border-radius: 16px;
       background-color: #fff;
       color: #ff4295;
@@ -46,13 +46,13 @@
       padding: 6px;
     }
 
-    &-time {
+    &__time {
       font-size: 40px;
       font-weight: 700;
       margin: 0;
     }
 
-    &-date {
+    &__init {
       font-size: 12px;
       margin: 0;
     }
