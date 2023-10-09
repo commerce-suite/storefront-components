@@ -2,7 +2,9 @@ import type { ICountdownService } from './ICountdownService';
 import type { DateDifferenceType } from './countdown-tracker.type';
 
 export class CountdownService implements ICountdownService {
+  private oneSecond = 1000;
   intervalId: any;
+
   constructor(
     private initialDate: Date,
     private targetDate: Date,
@@ -15,7 +17,7 @@ export class CountdownService implements ICountdownService {
   }
 
   private incrementOneSecond(): void {
-    this.initialDate = new Date(this.initialDate.getTime() + 1000);
+    this.initialDate = new Date(this.initialDate.getTime() + this.oneSecond);
   }
 
   startCountdown(): void {
@@ -25,7 +27,7 @@ export class CountdownService implements ICountdownService {
       if (this.isCountdownFinished()) {
         this.stopCountdown();
       }
-    }, 1000);
+    }, this.oneSecond);
   }
 
   stopCountdown(): void {
