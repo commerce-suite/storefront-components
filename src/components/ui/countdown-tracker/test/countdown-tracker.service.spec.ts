@@ -4,7 +4,7 @@ describe('countdown-tracker service', () => {
   let service: CountdownService;
 
   afterEach(() => {
-    service = null;
+    if (service) service.stopCountdown();
   });
 
   it('should return a error when try initiate the service with invalid dates', () => {
