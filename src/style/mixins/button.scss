@@ -1,17 +1,17 @@
 @import '../variables/variables';
 
 @mixin front-button {
-  --bg-color-primary: var(--color-primary);
-  --text-color: var(--color-white);
+  --btn-bg-color: var(--fc-color-primary);
+  --btn-text-color: var(--fc-color-white);
   all: unset;
   box-sizing: border-box;
   width: 100%;
-  background-color: var(--bg-color-primary);
-  color: var(--text-color);
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
   font-weight: 600;
   padding: 12px 24px;
   cursor: pointer;
-  border-radius: var(--border-radius);
+  border-radius: var(--fc-border-radius);
   text-align: center;
   &:disabled {
     opacity: 0.6;

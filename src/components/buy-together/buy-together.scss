@@ -14,14 +14,14 @@
   justify-content: center;
   .title {
     margin: 15px 0;
-    font-weight: 700;
-    font-size: 25px;
+    font-weight: var(--fc-h2-fw);
+    font-size: var(--fc-h2-fs);
   }
 }
 
 .buy-together-container {
   display: grid;
-  gap: var(--gap-grid);
+  gap: var(--fc-gap-grid);
   justify-items: center;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
@@ -41,8 +41,8 @@
   flex-direction: column;
   align-items: center;
   max-width: 400px;
-  padding: calc(var(--margin-width) * 2);
-  border: 1px solid var(--color-light-border-default);
+  padding: calc(var(--fc-margin-width) * 2);
+  border: 1px solid var(--fc-color-light-border-default);
   gap: 20px;
   .checkbox-wrapper {
     @include front-checkbox;
@@ -62,7 +62,7 @@
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  gap: var(--gap-grid);
+  gap: var(--fc-gap-grid);
   grid-area: products;
   align-items: center;
 }
@@ -83,5 +83,7 @@
   width: 100%;
   .buy-btn {
     @include front-button;
+    --btn-bg-color: var(--color-buy-button);
+    --btn-text-color: var(--color-buy-button-text);
   }
 }

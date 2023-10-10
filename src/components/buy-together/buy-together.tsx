@@ -1,4 +1,4 @@
-import { Component, Host, h, ComponentWillLoad, Prop, State } from '@stencil/core';
+import { Component, Host, h, ComponentWillLoad, Prop, State, getAssetPath } from '@stencil/core';
 import { IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
 import { IInputSelectDataEvent } from '../../components';
@@ -99,7 +99,7 @@ export class BuyTogether implements ComponentWillLoad {
             ></product-card>
           </div>
           <div class="plus-icon">
-            <img src="./assets/icons/icon-plus.svg" alt="" />
+            <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
           </div>
           <div class="products-order-bump">
             {this.buyTogetherData.products.map(productCard => (
