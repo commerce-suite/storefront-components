@@ -1,4 +1,13 @@
-import { Component, Host, h, ComponentWillLoad, Prop, State, getAssetPath } from '@stencil/core';
+import {
+  Component,
+  Host,
+  h,
+  ComponentWillLoad,
+  Prop,
+  State,
+  getAssetPath,
+  Method,
+} from '@stencil/core';
 import { IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
 import { IInputSelectDataEvent } from '../../components';
@@ -13,6 +22,11 @@ export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
+
+  @Method()
+  async getBuyTogetherData() {
+    return this.buyTogetherData;
+  }
 
   public async load() {
     try {

@@ -12,6 +12,19 @@
 | `productId` | `product-id` |             | `number` | `undefined` |
 
 
+## Methods
+
+### `getBuyTogetherData() => Promise<IBuyTogetherComponentData>`
+
+
+
+#### Returns
+
+Type: `Promise<IBuyTogetherComponentData>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
