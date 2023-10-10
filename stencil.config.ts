@@ -19,6 +19,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null, // disable service workers
+      copy: [{ src: './dooca.mock.js' }, { src: './assets', dest: './build/assets' }],
     },
   ],
   testing: {
