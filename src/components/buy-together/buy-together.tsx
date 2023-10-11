@@ -7,10 +7,12 @@ import {
   State,
   getAssetPath,
   Method,
+  Event,
+  EventEmitter,
 } from '@stencil/core';
 import { IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
-import { IInputSelectDataEvent } from '../../components';
+import { IInputSelectDataEvent, IProductCard } from '../ui/product-card/product-card.type';
 
 @Component({
   tag: 'buy-together',
@@ -22,6 +24,8 @@ export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
+  @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
+  onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
 
   @Method()
   async getBuyTogetherData() {
@@ -96,12 +100,13 @@ export class BuyTogether implements ComponentWillLoad {
   }
 
   private async onAddItemsToCart(event: any) {
+    event.preventDefault();
     const variationsIds: number[] = [];
     const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
     variationsIds.push(this.buyTogetherData.productMain.id);
     checkedProducts.forEach(product => variationsIds.push(product.id));
     await this.buyTogetherService.addToCart(variationsIds);
-    event.preventDefault();
+    this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
   }
 
   componentWillLoad(): void | Promise<void> {

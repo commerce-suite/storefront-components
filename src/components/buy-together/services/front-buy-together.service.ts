@@ -76,19 +76,28 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public async addToCart(variantIds: number[]) {
-    const urlBase = window.dooca.base_url;
-    const route = '/action/cart/add';
-    const body = new FormData();
-    const items = variantIds.map(variationId => ({
-      variation_id: variationId,
-      quantity: 1,
-    }));
+    return new Promise((resolve, reject) => {
+      const urlBase = window.dooca.base_url;
+      const route = '/action/cart/add';
+      const body = new FormData();
+      const items = variantIds.map(variationId => ({
+        variation_id: variationId,
+        quantity: 1,
+      }));
 
-    body.set('items', JSON.stringify(items));
+      body.append('items', JSON.stringify(items));
 
-    await fetch(`${urlBase}${route}`, {
-      method: 'POST',
-      body,
+      const request = new XMLHttpRequest();
+      request.open('POST', `${urlBase}${route}`, true);
+      request.setRequestHeader('X-Ajax', 'true');
+      request.onload = function () {
+        if (request.status >= 200 && request.status < 300) {
+          resolve(request.responseText);
+        } else {
+          reject(request.status);
+        }
+      };
+      request.send(body);
     });
   }
 }
