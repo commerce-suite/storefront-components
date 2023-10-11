@@ -14,6 +14,7 @@ describe('buy-together', () => {
       html: `<buy-together></buy-together>`,
     });
     expect(page.root).toEqualHtml(`<buy-together>
+    <form>
     <div class="title-wrapper">
         <h2 class="title">${buyTogetherDataApi.title}</h2>
     </div>
@@ -45,11 +46,12 @@ describe('buy-together', () => {
         </div>
       </div>
       <div class="buy-btn-wrapper">
-        <button class="buy-btn">
+        <button class="buy-btn" type="submit">
           ${buyTogetherDataApi.buyButtonText}
         </button>
           </div>
-        </section>
+      </section>
+        </form>
       </buy-together>
     `);
   });
