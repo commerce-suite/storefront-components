@@ -74,4 +74,21 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
   }
+
+  public addToCart(variantIds: number[]) {
+    const urlBase = 'https://sapato-do-simon.homolog.bagypro.com';
+    const route = '/action/cart/add';
+    const body = new FormData();
+    const items = variantIds.map(variationId => ({
+      variation_id: variationId,
+      quantity: 1,
+    }));
+
+    body.set('items', JSON.stringify(items));
+
+    fetch(`${urlBase}${route}`, {
+      method: 'POST',
+      body,
+    });
+  }
 }
