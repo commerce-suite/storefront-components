@@ -75,7 +75,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return { productTargetUpdated, productCard };
   }
 
-  public addToCart(variantIds: number[]) {
+  public async addToCart(variantIds: number[]) {
     const urlBase = window.dooca.base_url;
     const route = '/action/cart/add';
     const body = new FormData();
@@ -86,7 +86,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
 
     body.set('items', JSON.stringify(items));
 
-    fetch(`${urlBase}${route}`, {
+    await fetch(`${urlBase}${route}`, {
       method: 'POST',
       body,
     });

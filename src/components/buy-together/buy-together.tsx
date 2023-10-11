@@ -81,11 +81,12 @@ export class BuyTogether implements ComponentWillLoad {
     };
   }
 
-  private onAddItemsToCart(event: any) {
+  private async onAddItemsToCart(event: any) {
     const variationsIds: number[] = [];
+    const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
     variationsIds.push(this.buyTogetherData.productMain.id);
-    this.buyTogetherData.products.forEach(product => variationsIds.push(product.id));
-    this.buyTogetherService.addToCart(variationsIds);
+    checkedProducts.forEach(product => variationsIds.push(product.id));
+    await this.buyTogetherService.addToCart(variationsIds);
     event.preventDefault();
   }
 
