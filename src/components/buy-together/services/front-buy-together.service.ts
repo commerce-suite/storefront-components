@@ -74,4 +74,21 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
   }
+
+  public async addToCart(variantIds: number[]) {
+    const urlBase = window.dooca.base_url;
+    const route = '/action/cart/add';
+    const body = new FormData();
+    const items = variantIds.map(variationId => ({
+      variation_id: variationId,
+      quantity: 1,
+    }));
+
+    body.set('items', JSON.stringify(items));
+
+    await fetch(`${urlBase}${route}`, {
+      method: 'POST',
+      body,
+    });
+  }
 }
