@@ -16,6 +16,11 @@ export namespace Components {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
     }
+    interface FrontImage {
+        "figCaption": string;
+        "imageSrc": string;
+        "textAlt": string;
+    }
     interface FrontSelect {
         "label": string;
         "optionsList": IFrontSelectOption[];
@@ -44,6 +49,12 @@ declare global {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
     };
+    interface HTMLFrontImageElement extends Components.FrontImage, HTMLStencilElement {
+    }
+    var HTMLFrontImageElement: {
+        prototype: HTMLFrontImageElement;
+        new (): HTMLFrontImageElement;
+    };
     interface HTMLFrontSelectElement extends Components.FrontSelect, HTMLStencilElement {
     }
     var HTMLFrontSelectElement: {
@@ -58,6 +69,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
+        "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
         "product-card": HTMLProductCardElement;
     }
@@ -66,6 +78,11 @@ declare namespace LocalJSX {
     interface BuyTogether {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
+    }
+    interface FrontImage {
+        "figCaption"?: string;
+        "imageSrc"?: string;
+        "textAlt"?: string;
     }
     interface FrontSelect {
         "label"?: string;
@@ -82,6 +99,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
+        "front-image": FrontImage;
         "front-select": FrontSelect;
         "product-card": ProductCard;
     }
@@ -91,6 +109,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
         }

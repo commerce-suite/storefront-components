@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="/build/front-components.css" />
   </head>
   <body>
-    <buy-together product-id="2915737"></buy-together>
+    <buy-together id="buy-together" product-id="2915737"></buy-together>
   </body>
+  <script>
+    (async () => {
+      await customElements.whenDefined('buy-together');
+      const element = document.getElementById('buy-together');
+      console.log({ element: await element.getBuyTogetherData() });
+      element.addEventListener('onNotPromotion', ev => console.log(ev));
+    })();
+  </script>
 </html>

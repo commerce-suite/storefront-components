@@ -13,9 +13,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
     <product-card>
       <div class="product-container">
-        <figure class="image">
-          <img alt="Imagem do produto" src="${product.image.src}">
-        </figure>
+        <front-image class="image" imagesrc="${product.image.src}" textalt="Imagem do produto"></front-image>
         <div class="info">
           <span class="title">
             Bolsa Essencial
@@ -42,9 +40,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
     <product-card>
       <div class="-inline  product-container">
-        <figure class="-inline image">
-          <img alt="Imagem do produto" src="${product.image.src}">
-        </figure>
+        <front-image class="-inline image" imagesrc="${product.image.src}" textalt="Imagem do produto"></front-image>
         <div class="info">
           <span class="title">
             Bolsa Essencial
@@ -72,9 +68,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
     <product-card>
       <div class="-inline  product-container">
-        <figure class="-inline image">
-          <img alt="Imagem do produto" src="${product.image.src}">
-        </figure>
+        <front-image class="-inline image" imagesrc="${product.image.src}" textalt="Imagem do produto"></front-image>
         <div class="info">
           <span class="title">
             Bolsa Essencial
@@ -98,9 +92,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
     <product-card>
       <div class="product-container">
-        <figure class="image">
-          <img alt="Imagem do produto" src="${product.image.src}">
-        </figure>
+        <front-image class="image" imagesrc="${product.image.src}" textalt="Imagem do produto"></front-image>
         <div class="info">
           <span class="title">
             Bolsa Essencial

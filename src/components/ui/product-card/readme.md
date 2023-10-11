@@ -28,11 +28,13 @@
 
 ### Depends on
 
+- [front-image](../front-image)
 - [front-select](../front-select)
 
 ### Graph
 ```mermaid
 graph TD;
+  product-card --> front-image
   product-card --> front-select
   buy-together --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
