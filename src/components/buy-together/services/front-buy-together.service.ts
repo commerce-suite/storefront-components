@@ -76,7 +76,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public addToCart(variantIds: number[]) {
-    const urlBase = 'https://sapato-do-simon.homolog.bagypro.com';
+    const urlBase = window.dooca.base_url;
     const route = '/action/cart/add';
     const body = new FormData();
     const items = variantIds.map(variationId => ({
