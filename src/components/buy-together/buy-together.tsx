@@ -30,6 +30,7 @@ export class BuyTogether implements ComponentWillLoad {
 
   @State() hasBuyTogether: boolean;
   @State() isLoading: boolean;
+  @State() isAddingToCart: boolean;
 
   @Method()
   async getBuyTogetherData() {
@@ -108,13 +109,18 @@ export class BuyTogether implements ComponentWillLoad {
   }
 
   private async onAddItemsToCart(event: any) {
-    event.preventDefault();
-    const variationsIds: number[] = [];
-    const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
-    variationsIds.push(this.buyTogetherData.productMain.id);
-    checkedProducts.forEach(product => variationsIds.push(product.id));
-    await this.buyTogetherService.addToCart(variationsIds);
-    this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
+    try {
+      this.isAddingToCart = true;
+      event.preventDefault();
+      const variationsIds: number[] = [];
+      const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
+      variationsIds.push(this.buyTogetherData.productMain.id);
+      checkedProducts.forEach(product => variationsIds.push(product.id));
+      await this.buyTogetherService.addToCart(variationsIds);
+      this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
+    } finally {
+      this.isAddingToCart = false;
+    }
   }
 
   @Watch('buyTogetherData')
@@ -168,7 +174,7 @@ export class BuyTogether implements ComponentWillLoad {
                 ))}
               </div>
               <div class="buy-btn-wrapper">
-                <button class="buy-btn" type="submit">
+                <button class="buy-btn" type="submit" disabled={this.isAddingToCart}>
                   {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
                 </button>
               </div>
