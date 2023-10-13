@@ -22,7 +22,6 @@ export class FrontImage {
   }
 
   private onSrcLoadFinish() {
-    console.log('onSrcLoadFinish');
     setTimeout(() => {
       this.isSrcLoading = false;
     }, 500);
