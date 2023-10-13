@@ -9,6 +9,7 @@ import {
   Method,
   Event,
   EventEmitter,
+  Watch,
 } from '@stencil/core';
 import { IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
@@ -27,6 +28,7 @@ export class BuyTogether implements ComponentWillLoad {
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
   onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
 
+  @State() hasBuyTogether: boolean;
   @State() isLoading: boolean;
 
   @Method()
@@ -115,6 +117,11 @@ export class BuyTogether implements ComponentWillLoad {
     this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
   }
 
+  @Watch('buyTogetherData')
+  watchPropHandler(newValue: IBuyTogetherComponentData) {
+    this.hasBuyTogether = !!newValue.originalData;
+  }
+
   componentWillLoad(): void | Promise<void> {
     this.load();
   }
@@ -127,7 +134,7 @@ export class BuyTogether implements ComponentWillLoad {
             <span class="spinner" />
           </div>
         )}
-        {!this.isLoading && (
+        {!this.isLoading && this.hasBuyTogether && (
           <form onSubmit={evt => this.onAddItemsToCart(evt)}>
             <div class="title-wrapper">
               <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
