@@ -12,6 +12,26 @@
 | `productId` | `product-id` |             | `number` | `undefined` |
 
 
+## Events
+
+| Event                      | Description | Type                          |
+| -------------------------- | ----------- | ----------------------------- |
+| `on-buy-together-add-cart` |             | `CustomEvent<IProductCard[]>` |
+
+
+## Methods
+
+### `getBuyTogetherData() => Promise<IBuyTogetherComponentData>`
+
+
+
+#### Returns
+
+Type: `Promise<IBuyTogetherComponentData>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

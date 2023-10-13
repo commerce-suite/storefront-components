@@ -23,7 +23,7 @@ describe('buy-together', () => {
         <product-card></product-card>
       </div>
       <div class="plus-icon">
-        <img alt="" src="./assets/icons/icon-plus.svg">
+        <img alt="" src="/assets/icons/icon-plus.svg">
       </div>
       <div class="products-order-bump">
         <div class="product-wrapper">

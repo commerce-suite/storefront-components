@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, getAssetPath, h } from '@stencil/core';
 import { IFrontSelectOption } from './front-select.type';
 
 @Component({
@@ -14,6 +14,13 @@ export class FrontSelect {
   @Prop() selectId: string = '';
   @Prop() selectName: string = '';
   @Prop() label: string;
+
+  componentWillLoad() {
+    document.documentElement.style.setProperty(
+      '--arrow-up-image-src',
+      `url(${getAssetPath('./assets/images/arrow-up.png')})`,
+    );
+  }
 
   render() {
     return (

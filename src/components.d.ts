@@ -5,12 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
-export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+import { IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
+import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
+export { IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
+export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export namespace Components {
     interface BuyTogether {
+        "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
     }
     interface FrontSelect {
@@ -25,6 +28,10 @@ export namespace Components {
         "inline": boolean;
         "product": IProductCard;
     }
+}
+export interface BuyTogetherCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBuyTogetherElement;
 }
 export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -57,6 +64,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
     }
     interface FrontSelect {
