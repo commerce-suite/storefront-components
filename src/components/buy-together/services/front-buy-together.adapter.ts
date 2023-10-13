@@ -10,7 +10,7 @@ import {
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 
 export class FrontBuyTogetherAdapter {
-  public static adapterIBuyTogehterToComponentData(
+  public static adapterIBuyTogetherToComponentData(
     buyTogether: IBuyTogether,
   ): IBuyTogetherComponentData {
     return {

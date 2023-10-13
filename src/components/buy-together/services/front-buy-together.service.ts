@@ -7,8 +7,8 @@ import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.ty
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   public async getBuyTogetherByProductId(productId: number): Promise<IBuyTogetherComponentData> {
-    const responseData = await BuyTogetherService.getByProductId(productId);
-    return FrontBuyTogetherAdapter.adapterIBuyTogehterToComponentData(responseData);
+    const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
+    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseData);
   }
 
   public changeProductOptions(

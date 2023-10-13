@@ -27,7 +27,7 @@ class FrontBuyTogetherServiceMock implements IFrontBuyTogetherService {
   }
 
   public async getBuyTogetherByProductId(): Promise<IBuyTogetherComponentData> {
-    return FrontBuyTogetherAdapter.adapterIBuyTogehterToComponentData(
+    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(
       buyTogetherData as BuyTogether,
     );
   }

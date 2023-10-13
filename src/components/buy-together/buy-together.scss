@@ -2,6 +2,7 @@
 @import '../../style/mixins/checkbox.scss';
 @import '../../style/variables/variables';
 @import '../../style/mixins/screen-media';
+@import '../../style/mixins/spinner-loading.scss';
 
 :host {
   display: inline-block;
@@ -16,6 +17,16 @@
     margin: 15px 0;
     font-weight: var(--fc-h2-fw);
     font-size: var(--fc-h2-fs);
+  }
+}
+.loading-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+  .spinner {
+    @include lds-dual-ring;
   }
 }
 

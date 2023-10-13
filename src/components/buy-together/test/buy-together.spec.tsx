@@ -55,4 +55,19 @@ describe('buy-together', () => {
       </buy-together>
     `);
   });
+
+  it('renders loader', async () => {
+    const page = await newSpecPage({
+      components: [BuyTogether],
+      html: `<buy-together></buy-together>`,
+    });
+    page.rootInstance.isLoading = true;
+    await page.waitForChanges();
+    expect(page.root).toEqualHtml(`<buy-together>
+      <div class="loading-container">
+        <span class="spinner" />
+      </div>
+      </buy-together>
+    `);
+  });
 });

@@ -9,6 +9,7 @@ import {
   Method,
   Event,
   EventEmitter,
+  Watch,
 } from '@stencil/core';
 import { IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
@@ -27,17 +28,25 @@ export class BuyTogether implements ComponentWillLoad {
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
   onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
 
+  @State() hasBuyTogether: boolean;
+  @State() isLoading: boolean;
+  @State() isAddingToCart: boolean;
+
   @Method()
   async getBuyTogetherData() {
     return this.buyTogetherData;
   }
 
   public async load() {
+    this.isLoading = true;
     try {
       this.buyTogetherData = await this.buyTogetherService.getBuyTogetherByProductId(
         this.productId,
       );
-    } catch {}
+    } catch {
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   private selectOrderBump(event: any, productOrderBumpId: number) {
@@ -100,61 +109,78 @@ export class BuyTogether implements ComponentWillLoad {
   }
 
   private async onAddItemsToCart(event: any) {
-    event.preventDefault();
-    const variationsIds: number[] = [];
-    const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
-    variationsIds.push(this.buyTogetherData.productMain.id);
-    checkedProducts.forEach(product => variationsIds.push(product.id));
-    await this.buyTogetherService.addToCart(variationsIds);
-    this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
+    try {
+      this.isAddingToCart = true;
+      event.preventDefault();
+      const variationsIds: number[] = [];
+      const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
+      variationsIds.push(this.buyTogetherData.productMain.id);
+      checkedProducts.forEach(product => variationsIds.push(product.id));
+      await this.buyTogetherService.addToCart(variationsIds);
+      this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
+    } finally {
+      this.isAddingToCart = false;
+    }
+  }
+
+  @Watch('buyTogetherData')
+  watchPropHandler(newValue: IBuyTogetherComponentData) {
+    this.hasBuyTogether = !!newValue.originalData;
   }
 
   componentWillLoad(): void | Promise<void> {
-    return this.load();
+    this.load();
   }
 
   render() {
     return (
       <Host>
-        <form onSubmit={evt => this.onAddItemsToCart(evt)}>
-          <div class="title-wrapper">
-            <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
+        {this.isLoading && (
+          <div class="loading-container">
+            <span class="spinner" />
           </div>
-          <section class="bagy-buy-together buy-together-container">
-            <div class="product-wrapper product-main">
-              <product-card
-                product={this.buyTogetherData.productMain}
-                onInputSelect={ev => this.onInputSelectProductMain(ev)}
-              ></product-card>
+        )}
+        {!this.isLoading && this.hasBuyTogether && (
+          <form onSubmit={evt => this.onAddItemsToCart(evt)}>
+            <div class="title-wrapper">
+              <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
             </div>
-            <div class="plus-icon">
-              <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
-            </div>
-            <div class="products-order-bump">
-              {this.buyTogetherData.products.map(productCard => (
-                <div class="product-wrapper">
-                  <div class="checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      id={String(productCard.id)}
-                      onInput={ev => this.selectOrderBump(ev, productCard.id)}
-                    />
+            <section class="bagy-buy-together buy-together-container">
+              <div class="product-wrapper product-main">
+                <product-card
+                  product={this.buyTogetherData.productMain}
+                  onInputSelect={ev => this.onInputSelectProductMain(ev)}
+                ></product-card>
+              </div>
+              <div class="plus-icon">
+                <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
+              </div>
+              <div class="products-order-bump">
+                {this.buyTogetherData.products.map(productCard => (
+                  <div class="product-wrapper">
+                    <div class="checkbox-wrapper">
+                      <input
+                        type="checkbox"
+                        id={String(productCard.id)}
+                        onInput={ev => this.selectOrderBump(ev, productCard.id)}
+                      />
+                    </div>
+                    <product-card
+                      inline
+                      product={productCard}
+                      onInputSelect={ev => this.onInputSelectOrderBump(ev)}
+                    ></product-card>
                   </div>
-                  <product-card
-                    inline
-                    product={productCard}
-                    onInputSelect={ev => this.onInputSelectOrderBump(ev)}
-                  ></product-card>
-                </div>
-              ))}
-            </div>
-            <div class="buy-btn-wrapper">
-              <button class="buy-btn" type="submit">
-                {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
-              </button>
-            </div>
-          </section>
-        </form>
+                ))}
+              </div>
+              <div class="buy-btn-wrapper">
+                <button class="buy-btn" type="submit" disabled={this.isAddingToCart}>
+                  {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
+                </button>
+              </div>
+            </section>
+          </form>
+        )}
       </Host>
     );
   }
