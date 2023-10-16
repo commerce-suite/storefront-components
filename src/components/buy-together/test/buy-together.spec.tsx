@@ -28,19 +28,19 @@ describe('buy-together', () => {
       <div class="products-order-bump">
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input id="9480211" type="checkbox">
+            <input checked="" id="9480211" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input id="9480233" type="checkbox">
+            <input checked="" id="9480233" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
         <div class="product-wrapper">
           <div class="checkbox-wrapper">
-            <input id="9480162" type="checkbox">
+            <input checked="" id="9480162" type="checkbox">
           </div>
           <product-card inline=""></product-card>
         </div>
