@@ -96,7 +96,7 @@ export class BuyTogether implements ComponentWillLoad {
     );
 
     productsPivot[productPivotIndex] = productTargetUpdated;
-    products[productIndex] = productCard;
+    products[productIndex] = { ...productCard, isCheck: products[productIndex].isCheck };
 
     this.buyTogetherData = {
       ...this.buyTogetherData,
