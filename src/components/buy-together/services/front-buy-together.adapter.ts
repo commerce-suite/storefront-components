@@ -14,22 +14,20 @@ export class FrontBuyTogetherAdapter {
     buyTogether: IBuyTogether,
   ): IBuyTogetherComponentData {
     return {
-      productMain: this.adapterProductToProductCard(buyTogether.product),
-      products: buyTogether.productsPivot.map(data =>
-        this.adapterProductToOrderBumpProductCard(data),
-      ),
+      productMain: this.adapterToProductCard(buyTogether.product),
+      products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
       originalData: buyTogether,
     };
   }
 
-  public static adapterProductToOrderBumpProductCard(product: Product): IProductOrderBump {
+  public static adapterPivotToProductCard(product: Product): IProductOrderBump {
     return {
-      ...this.adapterProductToProductCard(product),
+      ...this.adapterToProductCard(product),
       isCheck: true,
     };
   }
 
-  public static adapterProductToProductCard(product: Product): IProductCard {
+  public static adapterToProductCard(product: Product): IProductCard {
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,

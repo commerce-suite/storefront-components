@@ -48,15 +48,15 @@ describe('FrontBuyTogetherAdapter', () => {
       },
     ],
   };
-  it('It should adpter to component ProductCard from Product - adapterProductToProductCard', () => {
+  it('It should adapter to component ProductCard from Product - adapterProductToProductCard', () => {
     const data = buyTogetherData as BuyTogether;
-    const result = FrontBuyTogetherAdapter.adapterProductToProductCard(data.product);
+    const result = FrontBuyTogetherAdapter.adapterToProductCard(data.product);
     expect(result).toEqual(expectObjectAdapted);
   });
 
-  it('It should adpter to component ProductCard from Product with isChecked true', () => {
+  it('It should adapter to component ProductCard from Product with isChecked true', () => {
     const data = buyTogetherData as BuyTogether;
-    const result = FrontBuyTogetherAdapter.adapterProductToOrderBumpProductCard(data.product);
+    const result = FrontBuyTogetherAdapter.adapterPivotToProductCard(data.product);
     expect(result).toEqual({ ...expectObjectAdapted, isCheck: true });
   });
 });
