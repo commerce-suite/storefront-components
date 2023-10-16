@@ -23,6 +23,7 @@ import { IInputSelectDataEvent, IProductCard } from '../ui/product-card/product-
 })
 export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
+  @Prop({ mutable: true }) variationId: number;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
@@ -42,6 +43,7 @@ export class BuyTogether implements ComponentWillLoad {
     try {
       this.buyTogetherData = await this.buyTogetherService.getBuyTogetherByProductId(
         this.productId,
+        this.variationId,
       );
     } catch {
     } finally {
