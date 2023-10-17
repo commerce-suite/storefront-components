@@ -1,24 +1,31 @@
+@import '../../style/variables/variables';
+
 :host {
+  display: inline-block;
+  width: 100%;
+}
+
+.launch-countdown-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ff4295;
-  padding: 24px;
-  padding-bottom: 32px;
-  border-radius: 32px;
+  background-color: var(--fc-color-secondary);
+  padding: var(--fc-gap-grid);
+  border-radius: var(--fc-border-radius);
 
   > .header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
+    color: var(--fc-color-white);
     margin-bottom: 16px;
     line-height: 1.5;
 
     > .title {
       margin: 0;
       margin-bottom: 4px;
+      font-weight: var(--fc-m-fw);
     }
 
     > .description {
@@ -34,7 +41,7 @@
     > .cell {
       border-radius: 16px;
       background-color: #fff;
-      color: #ff4295;
+      color: var(--fc-color-secondary);
       display: flex;
       flex-direction: column;
       align-items: center;
