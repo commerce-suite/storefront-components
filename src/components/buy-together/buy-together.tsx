@@ -161,6 +161,7 @@ export class BuyTogether implements ComponentWillLoad {
                     <div class="checkbox-wrapper">
                       <input
                         type="checkbox"
+                        checked={productCard.isCheck}
                         id={String(productCard.id)}
                         onInput={ev => this.selectOrderBump(ev, productCard.id)}
                       />

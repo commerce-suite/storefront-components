@@ -39,7 +39,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
   }
 
@@ -55,7 +55,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
   }
 
@@ -71,7 +71,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterProductToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
     return { productTargetUpdated, productCard };
   }
 

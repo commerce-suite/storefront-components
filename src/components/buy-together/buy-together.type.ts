@@ -1,7 +1,7 @@
 import { BuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IProductCard } from '../../components';
 
-interface IProductOrderBump extends IProductCard {
+export interface IProductOrderBump extends IProductCard {
   isCheck?: boolean;
 }
 

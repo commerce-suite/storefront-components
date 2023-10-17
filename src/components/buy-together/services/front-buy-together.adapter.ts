@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { IBuyTogetherComponentData } from '../buy-together.type';
+import { IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
 import { IProductCard } from '../../../components';
 import {
   Attribute,
@@ -14,15 +14,20 @@ export class FrontBuyTogetherAdapter {
     buyTogether: IBuyTogether,
   ): IBuyTogetherComponentData {
     return {
-      productMain: this.adapterProductToProductCard(buyTogether.product),
-      products: buyTogether.productsPivot.map(data => {
-        return this.adapterProductToProductCard(data);
-      }),
+      productMain: this.adapterToProductCard(buyTogether.product),
+      products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
       originalData: buyTogether,
     };
   }
 
-  public static adapterProductToProductCard(product: Product): IProductCard {
+  public static adapterPivotToProductCard(product: Product): IProductOrderBump {
+    return {
+      ...this.adapterToProductCard(product),
+      isCheck: true,
+    };
+  }
+
+  public static adapterToProductCard(product: Product): IProductCard {
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,
