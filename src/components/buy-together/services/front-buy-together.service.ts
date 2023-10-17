@@ -6,9 +6,24 @@ import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
-  public async getBuyTogetherByProductId(productId: number): Promise<IBuyTogetherComponentData> {
+  public async getBuyTogetherByProductId(
+    productId: number,
+    variationId?: number,
+  ): Promise<IBuyTogetherComponentData> {
     const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
+    if (responseData && variationId) {
+      responseData.product = this.changeByVariationSelected(variationId, responseData.product);
+    }
     return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseData);
+  }
+
+  public changeByVariationSelected(variationId: number, product: Product) {
+    const variation = product.variations?.find(({ id }) => Number(id) === variationId);
+    if (!variation) return product;
+    return {
+      ...variation,
+      variations: product.variations,
+    };
   }
 
   public changeProductOptions(

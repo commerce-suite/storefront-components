@@ -8,6 +8,16 @@ import { FrontBuyTogetherService } from '../front-buy-together.service';
 describe('FrontBuyTogetherService', () => {
   const service = new FrontBuyTogetherService();
   const data = buyTogetherData as BuyTogether;
+  it('It should change selected variation by variationId', () => {
+    const variationId = 9480237;
+    const variation = data.product.variations.find(({ id }) => Number(id) === variationId);
+    const productWithVariation = service.changeByVariationSelected(variationId, data.product);
+    expect(productWithVariation).toEqual({
+      ...variation,
+      variations: productWithVariation.variations,
+    });
+  });
+
   it('It should change Color for data api and produtCard', () => {
     const { productCard, productTargetUpdated } = service.changeColor('266425', data.product);
     const color = {

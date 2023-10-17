@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type     | Default     |
-| ----------- | ------------ | ----------- | -------- | ----------- |
-| `productId` | `product-id` |             | `number` | `undefined` |
+| Property      | Attribute      | Description | Type     | Default     |
+| ------------- | -------------- | ----------- | -------- | ----------- |
+| `productId`   | `product-id`   |             | `number` | `undefined` |
+| `variationId` | `variation-id` |             | `number` | `undefined` |
 
 
 ## Events

@@ -15,6 +15,7 @@ export namespace Components {
     interface BuyTogether {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
+        "variationId": number;
     }
     interface FrontImage {
         "figCaption": string;
@@ -78,6 +79,7 @@ declare namespace LocalJSX {
     interface BuyTogether {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
+        "variationId"?: number;
     }
     interface FrontImage {
         "figCaption"?: string;
