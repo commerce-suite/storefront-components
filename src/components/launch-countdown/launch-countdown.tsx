@@ -2,11 +2,12 @@ import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/c
 import { CountdownService } from './countdown.service';
 
 @Component({
-  tag: 'front-countdown',
-  styleUrl: 'front-countdown.scss',
+  tag: 'launch-countdown',
+  styleUrl: 'launch-countdown.scss',
+  shadow: false,
   scoped: true,
 })
-export class FrontCountdown {
+export class LaunchCountdown {
   @Prop() dataTargetDate: string;
   @Prop() dataInitialDate: string;
   @Prop() dataCountdownTitle = 'Agora falta muito pouco!';
@@ -68,7 +69,7 @@ export class FrontCountdown {
     const textColor = this.textColor ? { color: this.textColor } : {};
 
     return (
-      <Host class="front-countdown" style={backgroundColor}>
+      <Host style={backgroundColor}>
         <div class="header" style={textColor}>
           <h3 class="title">{this.dataCountdownTitle}</h3>
           <p class="description">{this.dataDescription}</p>
