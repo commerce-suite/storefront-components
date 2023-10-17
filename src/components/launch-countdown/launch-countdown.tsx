@@ -70,27 +70,29 @@ export class LaunchCountdown {
 
     return (
       <Host style={backgroundColor}>
-        <div class="header" style={textColor}>
-          <h3 class="title">{this.dataCountdownTitle}</h3>
-          <p class="description">{this.dataDescription}</p>
-        </div>
+        <div class="launch-countdown-container">
+          <div class="header" style={textColor}>
+            <h3 class="title">{this.dataCountdownTitle}</h3>
+            <p class="description">{this.dataDescription}</p>
+          </div>
 
-        <div class="timer">
-          <div class="cell" style={textCounterColor}>
-            <p class="time">{this.days}</p>
-            <p class="unit">dias</p>
-          </div>
-          <div class="cell" style={textCounterColor}>
-            <p class="time">{this.hours}</p>
-            <p class="unit">horas</p>
-          </div>
-          <div class="cell" style={textCounterColor}>
-            <p class="time"> {this.minutes}</p>
-            <p class="unit">minutos</p>
-          </div>
-          <div class="cell" style={textCounterColor}>
-            <p class="time">{this.seconds}</p>
-            <p class="unit">segundos</p>
+          <div class="timer">
+            <div class="cell" style={textCounterColor}>
+              <p class="time">{this.days}</p>
+              <p class="unit">dias</p>
+            </div>
+            <div class="cell" style={textCounterColor}>
+              <p class="time">{this.hours}</p>
+              <p class="unit">horas</p>
+            </div>
+            <div class="cell" style={textCounterColor}>
+              <p class="time"> {this.minutes}</p>
+              <p class="unit">minutos</p>
+            </div>
+            <div class="cell" style={textCounterColor}>
+              <p class="time">{this.seconds}</p>
+              <p class="unit">segundos</p>
+            </div>
           </div>
         </div>
       </Host>
