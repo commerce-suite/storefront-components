@@ -17,14 +17,6 @@ export namespace Components {
         "productId": number;
         "variationId": number;
     }
-    interface FrontCountdown {
-        "backgroundColor"?: string;
-        "dataCountdownTitle": string;
-        "dataDescription": string;
-        "dataInitialDate": string;
-        "dataTargetDate": string;
-        "textColor"?: string;
-    }
     interface FrontImage {
         "figCaption": string;
         "imageSrc": string;
@@ -55,9 +47,9 @@ export interface BuyTogetherCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBuyTogetherElement;
 }
-export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
+export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLFrontCountdownElement;
+    target: HTMLLaunchCountdownElement;
 }
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -73,12 +65,6 @@ declare global {
     var HTMLBuyTogetherElement: {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
-    };
-    interface HTMLFrontCountdownElement extends Components.FrontCountdown, HTMLStencilElement {
-    }
-    var HTMLFrontCountdownElement: {
-        prototype: HTMLFrontCountdownElement;
-        new (): HTMLFrontCountdownElement;
     };
     interface HTMLFrontImageElement extends Components.FrontImage, HTMLStencilElement {
     }
@@ -106,7 +92,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
-        "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
         "launch-countdown": HTMLLaunchCountdownElement;
@@ -122,15 +107,6 @@ declare namespace LocalJSX {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
         "variationId"?: number;
-    }
-    interface FrontCountdown {
-        "backgroundColor"?: string;
-        "dataCountdownTitle"?: string;
-        "dataDescription"?: string;
-        "dataInitialDate"?: string;
-        "dataTargetDate"?: string;
-        "onCountdownFinished"?: (event: FrontCountdownCustomEvent<any>) => void;
-        "textColor"?: string;
     }
     interface FrontImage {
         "figCaption"?: string;
@@ -161,7 +137,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
-        "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
         "launch-countdown": LaunchCountdown;
@@ -173,7 +148,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
-            "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
