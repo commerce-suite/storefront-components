@@ -1,6 +1,6 @@
 import { CountdownService } from '../countdown.service';
 
-describe('front-countdown service', () => {
+describe('launch-countdown service', () => {
   let service: CountdownService;
 
   afterEach(() => {
