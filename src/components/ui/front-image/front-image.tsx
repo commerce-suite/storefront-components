@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Host, Prop, State, Watch, getAssetPath, h } from '@stencil/core';
 import { getClassByProps } from '../../../utils/utils';
 
 @Component({
@@ -21,6 +21,13 @@ export class FrontImage {
     return `image-container ${getClassByProps(classProps)}`;
   }
 
+  private onSrcLoadError() {
+    this.imageSrc = getAssetPath('./assets/images/image-fallback.png');
+    setTimeout(() => {
+      this.isSrcLoading = false;
+    }, 500);
+  }
+
   private onSrcLoadFinish() {
     setTimeout(() => {
       this.isSrcLoading = false;
@@ -40,6 +47,7 @@ export class FrontImage {
             src={this.imageSrc}
             alt={this.textAlt || 'Imagem'}
             onLoad={() => this.onSrcLoadFinish()}
+            onError={() => this.onSrcLoadError()}
           />
           {!!this.figCaption && <figcaption>{this.figCaption}</figcaption>}
         </figure>
