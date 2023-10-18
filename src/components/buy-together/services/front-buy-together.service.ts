@@ -14,6 +14,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     if (responseData && variationId) {
       responseData.product = this.changeByVariationSelected(variationId, responseData.product);
     }
+    if (!responseData?.product?.balance) return null;
     return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseData);
   }
 
