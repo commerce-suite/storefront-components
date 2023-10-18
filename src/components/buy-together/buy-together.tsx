@@ -45,7 +45,8 @@ export class BuyTogether implements ComponentWillLoad {
         this.productId,
         this.variationId,
       );
-    } catch {
+    } catch (error) {
+      console.error('BuyTogether - load', error);
     } finally {
       this.isLoading = false;
     }

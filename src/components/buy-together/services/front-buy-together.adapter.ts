@@ -33,7 +33,7 @@ export class FrontBuyTogetherAdapter {
       price,
       priceBase: priceCompare,
       id,
-      image: product.images[0],
+      image: product.images?.length ? product.images[0] : { src: '' },
       name: product.name,
       selectVariations: this.adapterAttributes(product),
     };
