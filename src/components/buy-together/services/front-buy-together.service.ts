@@ -1,7 +1,10 @@
 import { BuyTogetherService } from '@uxshop/storefront-core';
 import { IBuyTogetherComponentData } from '../buy-together.type';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
-import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
+import {
+  BuyTogether,
+  Product,
+} from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 
@@ -14,7 +17,24 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     if (responseData && variationId) {
       responseData.product = this.changeByVariationSelected(variationId, responseData.product);
     }
-    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseData);
+    return this.applyFilterRulesToBuyTogether(responseData);
+  }
+
+  public applyFilterRulesToBuyTogether(response: BuyTogether) {
+    if (!response?.product?.balance) return null;
+    const responseHandle = this.removePivotProductsByBalance(response);
+    const hasProductPivot = !!responseHandle.productsPivot.length;
+    if (!hasProductPivot) return null;
+    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
+  }
+
+  public removePivotProductsByBalance(response: BuyTogether): BuyTogether {
+    return {
+      ...response,
+      productsPivot: (response.productsPivot = response.productsPivot.filter(
+        ({ variations }) => variations.filter(({ balance }) => !!balance).length !== 0,
+      )),
+    };
   }
 
   public changeByVariationSelected(variationId: number, product: Product) {

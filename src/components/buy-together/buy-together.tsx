@@ -128,7 +128,7 @@ export class BuyTogether implements ComponentWillLoad {
 
   @Watch('buyTogetherData')
   watchPropHandler(newValue: IBuyTogetherComponentData) {
-    this.hasBuyTogether = !!newValue.originalData;
+    this.hasBuyTogether = !!newValue?.originalData;
   }
 
   componentWillLoad(): void | Promise<void> {
