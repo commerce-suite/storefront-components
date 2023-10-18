@@ -27,8 +27,8 @@ export class LaunchCountdown {
   componentWillLoad() {
     try {
       this.service = new CountdownService(
-        new Date(this.dataInitialDate),
-        new Date(this.dataTargetDate),
+        new Date(Number(this.dataInitialDate) || this.dataInitialDate),
+        new Date(Number(this.dataTargetDate) || this.dataTargetDate),
       );
       this.updateCountdown();
     } catch {

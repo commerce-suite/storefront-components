@@ -19,8 +19,9 @@
     <button id="btn-go">Alterar variação</button>
     <buy-together id="buy-together" product-id="2915733" variation-id="9480208"></buy-together>
     <launch-countdown
-      data-initial-date="10-07-2023 10:0:10"
-      data-target-date="11-08-2027 10:0:10"
+      id="launch-countdown"
+      data-initial-date="10-18-2023 11:25:20"
+      data-target-date="10-18-2023 11:25:10"
     ></launch-countdown>
   </body>
   <script>
@@ -34,6 +35,9 @@
       await customElements.whenDefined('buy-together');
       const element = document.getElementById('buy-together');
       element.addEventListener('loadBuyTogehter', ev => console.log(ev));
+      // await customElements.whenDefined('launch-countdown');
+      // const element = document.getElementById('launch-countdown');
+      // element.addEventListener('countdownFinished', ev => console.log(ev));
     })();
   </script>
 </html>
