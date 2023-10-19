@@ -10,6 +10,7 @@ describe('launch-countdown', () => {
 
     expect(page.root).toEqualHtml(`
     <launch-countdown data-initial-date="2024-11-05 13:24:00" data-target-date="2020-11-06 13:24:00">
+    <div class="launch-countdown-container">
       <div class="header">
         <h3 class="title">Agora falta muito pouco!</h3>
         <p class="description">O produto que você tanto espera será liberado em breve.</p>
@@ -33,6 +34,7 @@ describe('launch-countdown', () => {
           </div>
         </div>
     </launch-countdown>
+    </div>
     `);
   });
 });
