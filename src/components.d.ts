@@ -6,10 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
-import { IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
+import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
-export { IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
+export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export namespace Components {
     interface BuyTogether {
@@ -78,6 +78,10 @@ declare global {
 declare namespace LocalJSX {
     interface BuyTogether {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
+        "onOnLoad"?: (event: BuyTogetherCustomEvent<{
+    status: EnumBuyTogetherOnLoadStatus;
+    data: IBuyTogetherComponentData | null;
+  }>) => void;
         "productId"?: number;
         "variationId"?: number;
     }
