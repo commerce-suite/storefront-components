@@ -17,8 +17,8 @@
 
 | Event                      | Description | Type                                                                                     |
 | -------------------------- | ----------- | ---------------------------------------------------------------------------------------- |
+| `loadBuyTogehter`          |             | `CustomEvent<{ status: EnumBuyTogetherOnLoadStatus; data: IBuyTogetherComponentData; }>` |
 | `on-buy-together-add-cart` |             | `CustomEvent<IProductCard[]>`                                                            |
-| `onLoad`                   |             | `CustomEvent<{ status: EnumBuyTogetherOnLoadStatus; data: IBuyTogetherComponentData; }>` |
 
 
 ## Methods

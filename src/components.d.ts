@@ -77,11 +77,11 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuyTogether {
-        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
-        "onOnLoad"?: (event: BuyTogetherCustomEvent<{
+        "onLoadBuyTogehter"?: (event: BuyTogetherCustomEvent<{
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
   }>) => void;
+        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
         "variationId"?: number;
     }

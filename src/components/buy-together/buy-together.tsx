@@ -30,7 +30,7 @@ export class BuyTogether implements ComponentWillLoad {
   onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
 
   @Event({ bubbles: true })
-  onLoad: EventEmitter<{
+  loadBuyTogehter: EventEmitter<{
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
   }>;
@@ -66,7 +66,7 @@ export class BuyTogether implements ComponentWillLoad {
     if (!this.buyTogetherData) {
       status = EnumBuyTogetherOnLoadStatus.SHOULD_HIDDEN;
     }
-    this.onLoad.emit({ status, data: this.buyTogetherData });
+    this.loadBuyTogehter.emit({ status, data: this.buyTogetherData });
   }
 
   private selectOrderBump(event: any, productOrderBumpId: number) {

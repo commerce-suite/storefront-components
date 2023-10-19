@@ -21,7 +21,7 @@
     (async () => {
       await customElements.whenDefined('buy-together');
       const element = document.getElementById('buy-together');
-      element.addEventListener('onLoad', ev => console.log(ev));
+      element.addEventListener('loadBuyTogehter', ev => console.log(ev));
     })();
   </script>
 </html>
