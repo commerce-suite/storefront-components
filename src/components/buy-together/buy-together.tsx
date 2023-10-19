@@ -11,7 +11,7 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core';
-import { IBuyTogetherComponentData } from './buy-together.type';
+import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
 import { IInputSelectDataEvent, IProductCard } from '../ui/product-card/product-card.type';
 
@@ -28,6 +28,12 @@ export class BuyTogether implements ComponentWillLoad {
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
   onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
+
+  @Event({ bubbles: true })
+  loadBuyTogehter: EventEmitter<{
+    status: EnumBuyTogetherOnLoadStatus;
+    data: IBuyTogetherComponentData | null;
+  }>;
 
   @State() hasBuyTogether: boolean;
   @State() isLoading: boolean;
@@ -46,10 +52,21 @@ export class BuyTogether implements ComponentWillLoad {
         this.variationId,
       );
     } catch (error) {
-      console.error('BuyTogether - load', error);
+      if (!error?.message?.includes('buy_together_not_found')) {
+        console.error('BuyTogether - load', { error });
+      }
     } finally {
       this.isLoading = false;
+      this.emitOnLoad();
     }
+  }
+
+  private emitOnLoad() {
+    let status = EnumBuyTogetherOnLoadStatus.SHOULD_SHOW;
+    if (!this.buyTogetherData) {
+      status = EnumBuyTogetherOnLoadStatus.SHOULD_HIDDEN;
+    }
+    this.loadBuyTogehter.emit({ status, data: this.buyTogetherData });
   }
 
   private selectOrderBump(event: any, productOrderBumpId: number) {
