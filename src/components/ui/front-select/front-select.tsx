@@ -35,7 +35,7 @@ export class FrontSelect {
             <option value={this.placeholder.value} selected={this.value === this.placeholder.value}>
               {this.placeholder.name}
             </option>
-            {this.optionsList.map(({ name, value, disabled }) => (
+            {this.optionsList?.map(({ name, value, disabled }) => (
               <option value={value} selected={this.value === value} disabled={disabled}>
                 {name}
               </option>
