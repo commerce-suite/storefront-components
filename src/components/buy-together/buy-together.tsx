@@ -148,6 +148,16 @@ export class BuyTogether implements ComponentWillLoad {
     this.hasBuyTogether = !!newValue?.originalData;
   }
 
+  @Watch('variationId')
+  watchVariationIdChange() {
+    this.load();
+  }
+
+  @Watch('productId')
+  watchProductIdChange() {
+    this.load();
+  }
+
   componentWillLoad(): void | Promise<void> {
     this.load();
   }

@@ -15,9 +15,17 @@
     <link rel="stylesheet" href="/build/front-components.css" />
   </head>
   <body>
-    <buy-together id="buy-together" product-id="2915736"></buy-together>
+    <input type="text" id="variaton-id" />
+    <button id="btn-go">Alterar variação</button>
+    <buy-together id="buy-together" product-id="2915733" variation-id="9480208"></buy-together>
   </body>
   <script>
+    const btn = document.getElementById('btn-go');
+    btn.onclick = () => {
+      const input = document.getElementById('variaton-id');
+      const element = document.getElementById('buy-together');
+      element.setAttribute('variation-id', input.value);
+    };
     (async () => {
       await customElements.whenDefined('buy-together');
       const element = document.getElementById('buy-together');
