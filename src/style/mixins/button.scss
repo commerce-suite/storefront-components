@@ -1,0 +1,31 @@
+@import '../variables/variables';
+
+@mixin front-button {
+  --btn-bg-color: var(--fc-color-primary);
+  --btn-text-color: var(--fc-color-white);
+  --btn-text-weight: var(--fc-m-fw, 600);
+  --btn-text-size: var(--fc-m-fs);
+  --btn-text-transform: var(--fc-m-tt, 'uppercase');
+  --btn-text-letter-spacing: var(--fc-m-ls, 1px);
+
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  font-weight: var(--btn-text-weight);
+  font-size: var(--btn-text-size);
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: var(--fc-border-radius);
+  text-align: center;
+  text-transform: var(--btn-text-transform);
+  letter-spacing: var(--btn-text-letter-spacing);
+  &:hover {
+    opacity: 0.75;
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
