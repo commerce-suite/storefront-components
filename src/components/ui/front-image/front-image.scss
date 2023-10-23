@@ -1,0 +1,25 @@
+@import '../../../style/mixins/skeleton.scss';
+
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.image-container {
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  &.-is-loading {
+    min-width: 100px;
+    min-height: 100px;
+    img {
+      opacity: 0;
+    }
+    @include skeleton;
+  }
+}

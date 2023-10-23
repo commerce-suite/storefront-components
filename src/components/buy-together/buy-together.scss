@@ -1,0 +1,101 @@
+@import '../../style/mixins/button';
+@import '../../style/mixins/checkbox.scss';
+@import '../../style/variables/variables';
+@import '../../style/mixins/screen-media';
+@import '../../style/mixins/spinner-loading.scss';
+
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .title {
+    margin: 15px 0;
+    font-weight: var(--fc-h2-fw);
+    font-size: var(--fc-h2-fs);
+  }
+}
+.loading-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+  .spinner {
+    @include lds-dual-ring;
+  }
+}
+
+.buy-together-container {
+  display: grid;
+  gap: var(--fc-gap-grid);
+  justify-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: 'main' 'plus' 'products' 'btn-buy';
+
+  @include for-desktop {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    align-items: center;
+    grid-template-areas: 'main plus products btn-buy';
+  }
+}
+
+.product-wrapper {
+  display: flex;
+  width: 100%;
+  background-color: var(--fc-color-white);
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  padding: calc(var(--fc-margin-width) * 2);
+  border: 1px solid var(--fc-color-light-border-default);
+  gap: 20px;
+  .checkbox-wrapper {
+    @include front-checkbox;
+    margin: 5px;
+  }
+  @include for-desktop {
+    flex-direction: row;
+  }
+}
+
+.product-main {
+  grid-area: main;
+}
+
+.products-order-bump {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--fc-gap-grid);
+  grid-area: products;
+  align-items: center;
+}
+
+.products-order-bump {
+  grid-area: products;
+}
+
+.plus-icon {
+  display: inline-block;
+  grid-area: plus;
+  align-self: center;
+}
+
+.buy-btn-wrapper {
+  display: flex;
+  grid-area: btn-buy;
+  width: 100%;
+  .buy-btn {
+    @include front-button;
+    --btn-bg-color: var(--color-buy-button);
+    --btn-text-color: var(--color-buy-button-text);
+  }
+}

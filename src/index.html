@@ -1,14 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
+    <script type="module" src="./dooca.mock.js"></script>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
     <title>Stencil Component Starter</title>
 
     <script type="module" src="/build/front-components.esm.js"></script>
     <script nomodule src="/build/front-components.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="stylesheet" href="/build/front-components.css" />
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <buy-together id="buy-together" product-id="2915736"></buy-together>
   </body>
+  <script>
+    (async () => {
+      await customElements.whenDefined('buy-together');
+      const element = document.getElementById('buy-together');
+      element.addEventListener('loadBuyTogehter', ev => console.log(ev));
+    })();
+  </script>
 </html>
