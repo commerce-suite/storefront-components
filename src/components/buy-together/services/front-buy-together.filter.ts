@@ -1,3 +1,4 @@
+import { ReleaseDate } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 type FilterRulesType = {
@@ -53,5 +54,20 @@ export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
     );
   }
 
-  protected filterByReleaseDate() {}
+  protected filterByReleaseDate() {
+    const checkIsInReleaseDate = (releaseDateObj?: ReleaseDate) => {
+      if (!releaseDateObj) return false;
+      const { now, releaseDate } = releaseDateObj;
+      return Number(now) < Number(releaseDate);
+    };
+    const shouldRemoveBuyTogether = checkIsInReleaseDate(this.response?.product?.releaseDate);
+    if (!this.response || shouldRemoveBuyTogether) {
+      this.response = null;
+      return;
+    }
+    this.response.productsPivot = this.response.productsPivot.filter(
+      ({ variations }) =>
+        variations.filter(({ releaseDate }) => !checkIsInReleaseDate(releaseDate)).length !== 0,
+    );
+  }
 }
