@@ -28,10 +28,8 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
 
     if (!filter) return buyTogether;
 
-    console.log(filters[filter]);
-
     return (
-      filters[filter](buyTogether) ??
+      (filters[filter] && filters[filter](buyTogether)) ??
       this.removePivotProductsByPrice(this.removePivotProductsByBalance(buyTogether))
     );
   }
@@ -39,7 +37,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
     const hasPrice = +response?.product?.price;
     if (!response?.product?.balance || !hasPrice) return null;
-    const responseHandle = this.filterByRules(response, 'price');
+    const responseHandle = this.filterByRules(response, 'all');
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
     return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
