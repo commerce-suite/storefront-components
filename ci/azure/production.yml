@@ -1,0 +1,23 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+resources:
+  repositories:
+    - repository: centralized-templates
+      type: git
+      name: Infra/centralized-templates
+
+variables:
+  - group: azure-devops-iam-aws-dooca-aws
+
+stages:
+  - stage: Deploy
+    jobs:
+      - job: DeployToS3Bucket
+        steps:
+          - template: yarn/install.yml@centralized-templates
+          - template: yarn/build.yml@centralized-templates
+          - template: s3/sync-files.yml@centralized-templates

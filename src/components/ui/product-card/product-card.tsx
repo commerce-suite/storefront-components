@@ -32,19 +32,19 @@ export class ProductCard {
         <div class={this.getClassWithInline('product-container')}>
           <front-image
             class={this.getClassWithInline('image')}
-            imageSrc={this.product.image.src}
-            textAlt={this.product.image.alt || 'Imagem do produto'}
+            imageSrc={this.product?.image.src}
+            textAlt={this.product?.image.alt || 'Imagem do produto'}
           ></front-image>
           <div class="info">
-            <span class="title">{this.product.name}</span>
+            <span class="title">{this.product?.name}</span>
             <div class="price">
-              {!!this.product.priceBase && (
+              {!!this.product?.priceBase && (
                 <span class="base">{currencyFormat(this.product.priceBase)}</span>
               )}
-              <span class="current">{currencyFormat(this.product.price)}</span>
+              <span class="current">{currencyFormat(this.product?.price)}</span>
             </div>
           </div>
-          {this.product.selectVariations && (
+          {this.product?.selectVariations && (
             <div class="variations">
               {this.product.selectVariations.map(
                 ({ label, currentValue, options, selectId, placeholder, selectType }) => (
