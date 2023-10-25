@@ -20,10 +20,26 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return this.applyFilterRulesToBuyTogether(responseData);
   }
 
+  public filterByRules(buyTogether: BuyTogether, filter?: 'price' | 'balance' | 'all') {
+    const filters = {
+      price: this.removePivotProductsByPrice,
+      balance: this.removePivotProductsByBalance,
+    };
+
+    if (!filter) return buyTogether;
+
+    console.log(filters[filter]);
+
+    return (
+      filters[filter](buyTogether) ??
+      this.removePivotProductsByPrice(this.removePivotProductsByBalance(buyTogether))
+    );
+  }
+
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
     const hasPrice = +response?.product?.price;
     if (!response?.product?.balance || !hasPrice) return null;
-    const responseHandle = this.removePivotProductsByBalance(response);
+    const responseHandle = this.filterByRules(response, 'price');
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
     return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
@@ -34,6 +50,15 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...response,
       productsPivot: (response.productsPivot = response.productsPivot.filter(
         ({ variations }) => variations.filter(({ balance }) => !!balance).length !== 0,
+      )),
+    };
+  }
+
+  public removePivotProductsByPrice(response: BuyTogether): BuyTogether {
+    return {
+      ...response,
+      productsPivot: (response.productsPivot = response.productsPivot.filter(
+        ({ variations }) => variations.filter(({ price }) => +price).length !== 0,
       )),
     };
   }
