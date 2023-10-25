@@ -21,7 +21,8 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
-    if (!response?.product?.balance) return null;
+    const hasPrice = +response?.product?.price;
+    if (!response?.product?.balance || !hasPrice) return null;
     const responseHandle = this.removePivotProductsByBalance(response);
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
