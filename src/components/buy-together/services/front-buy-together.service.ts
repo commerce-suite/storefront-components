@@ -1,12 +1,10 @@
 import { BuyTogetherService } from '@uxshop/storefront-core';
 import { IBuyTogetherComponentData } from '../buy-together.type';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
-import {
-  BuyTogether,
-  Product,
-} from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
+import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
+import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   public async getBuyTogetherByProductId(
@@ -14,60 +12,12 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     variationId?: number,
   ): Promise<IBuyTogetherComponentData> {
     const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
-    if (responseData && variationId) {
-      responseData.product = this.changeByVariationSelected(variationId, responseData.product);
-    }
-    return this.applyFilterRulesToBuyTogether(responseData);
-  }
-
-  public filterByRules(buyTogether: BuyTogether, filter?: 'price' | 'balance' | 'all') {
-    const filters = {
-      price: this.removePivotProductsByPrice,
-      balance: this.removePivotProductsByBalance,
-    };
-
-    if (!filter) return buyTogether;
-
-    return (
-      (filters[filter] && filters[filter](buyTogether)) ??
-      this.removePivotProductsByPrice(this.removePivotProductsByBalance(buyTogether))
-    );
-  }
-
-  public applyFilterRulesToBuyTogether(response: BuyTogether) {
-    const hasPrice = +response?.product?.price;
-    if (!response?.product?.balance || !hasPrice) return null;
-    const responseHandle = this.filterByRules(response, 'all');
-    const hasProductPivot = !!responseHandle.productsPivot.length;
-    if (!hasProductPivot) return null;
-    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
-  }
-
-  public removePivotProductsByBalance(response: BuyTogether): BuyTogether {
-    return {
-      ...response,
-      productsPivot: (response.productsPivot = response.productsPivot.filter(
-        ({ variations }) => variations.filter(({ balance }) => !!balance).length !== 0,
-      )),
-    };
-  }
-
-  public removePivotProductsByPrice(response: BuyTogether): BuyTogether {
-    return {
-      ...response,
-      productsPivot: (response.productsPivot = response.productsPivot.filter(
-        ({ variations }) => variations.filter(({ price }) => +price).length !== 0,
-      )),
-    };
-  }
-
-  public changeByVariationSelected(variationId: number, product: Product) {
-    const variation = product.variations?.find(({ id }) => Number(id) === variationId);
-    if (!variation) return product;
-    return {
-      ...variation,
-      variations: product.variations,
-    };
+    if (!responseData) return null;
+    const buyTogetherData = new FrontBuyTogetherFilter(responseData);
+    return buyTogetherData
+      .changeByVariationSelected(variationId)
+      .applyFilters()
+      .adapterToComponentData().getComponentData;
   }
 
   public changeProductOptions(
