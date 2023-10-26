@@ -1,7 +1,8 @@
-import { ReleaseDate } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
+import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 type FilterRulesType = {
+  key: 'balance' | 'priceless' | 'releaseDate';
   isActive: boolean;
   applyFn: () => void;
 };
@@ -9,20 +10,35 @@ type FilterRulesType = {
 export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
   private filterRules: FilterRulesType[] = [
     {
+      key: 'balance',
       isActive: true,
       applyFn: this.filterByBalance.bind(this),
     },
     {
+      key: 'priceless',
       isActive: true,
       applyFn: this.filterByZeroPrice.bind(this),
     },
     {
+      key: 'releaseDate',
       isActive: true,
       applyFn: this.filterByReleaseDate.bind(this),
     },
   ];
 
-  public applyFilters() {
+  public applyFilters(overrideFilters?: Partial<FilterRulesType>[]) {
+    if (overrideFilters) {
+      this.filterRules = this.filterRules.map(filter => {
+        const overrideFilter = overrideFilters.find(({ key }) => key === filter.key);
+        if (!overrideFilter) return filter;
+
+        return {
+          ...filter,
+          ...overrideFilter,
+          applyFn: overrideFilter.applyFn ? overrideFilter.applyFn.bind(this) : filter.applyFn,
+        };
+      });
+    }
     this.filterRules
       .filter(({ isActive }) => isActive)
       .forEach(({ applyFn }) => {
@@ -32,42 +48,53 @@ export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
   }
 
   protected filterByZeroPrice() {
-    const shouldRemoveBuyTogether =
-      !this.response?.product?.price || Number(this.response.product?.price) <= 0;
+    const checkHasPrice = (data?: Product) => {
+      const { price } = data || {};
+      return price && !!Number(price);
+    };
+    const shouldRemoveBuyTogether = !checkHasPrice(this.response.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
       return;
     }
-    this.response.productsPivot = this.response.productsPivot.filter(
-      ({ variations }) => variations.filter(({ price }) => !!+price).length !== 0,
+    this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
+      this.filterVariations(variations, checkHasPrice),
     );
   }
 
   protected filterByBalance() {
-    const shouldRemoveBuyTogether = !this.response?.product?.balance;
+    const checkHasBalance = (data?: Product) => {
+      const { balance } = data || {};
+      return !!balance;
+    };
+    const shouldRemoveBuyTogether = !checkHasBalance(this.response?.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
       return;
     }
-    this.response.productsPivot = this.response.productsPivot.filter(
-      ({ variations }) => variations.filter(({ balance }) => !!balance).length !== 0,
+    this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
+      this.filterVariations(variations, checkHasBalance),
     );
   }
 
   protected filterByReleaseDate() {
-    const checkIsInReleaseDate = (releaseDateObj?: ReleaseDate) => {
-      if (!releaseDateObj) return false;
+    const checkIsOutReleaseDate = (data?: Product) => {
+      const { releaseDate: releaseDateObj } = data || {};
+      if (!releaseDateObj) return true;
       const { now, releaseDate } = releaseDateObj;
-      return Number(now) < Number(releaseDate);
+      return Number(now) >= Number(releaseDate);
     };
-    const shouldRemoveBuyTogether = checkIsInReleaseDate(this.response?.product?.releaseDate);
+    const shouldRemoveBuyTogether = !checkIsOutReleaseDate(this.response?.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
       return;
     }
-    this.response.productsPivot = this.response.productsPivot.filter(
-      ({ variations }) =>
-        variations.filter(({ releaseDate }) => !checkIsInReleaseDate(releaseDate)).length !== 0,
+    this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
+      this.filterVariations(variations, checkIsOutReleaseDate),
     );
+  }
+
+  private filterVariations(variations: Product[], checkFn: (data: Product) => boolean) {
+    return variations.filter(data => checkFn(data)).length !== 0;
   }
 }

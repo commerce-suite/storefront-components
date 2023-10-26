@@ -36,6 +36,6 @@ export class FrontBuyTogetherResponse {
   }
 
   get getResponse() {
-    return { ...this.response };
+    return this.response;
   }
 }
