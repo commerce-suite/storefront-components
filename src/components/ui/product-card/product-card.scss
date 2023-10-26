@@ -49,10 +49,9 @@
 .product-container > .image {
   grid-area: image;
   display: flex;
-  img {
-    max-width: 400px;
-    width: 100%;
-  }
+  max-width: 400px;
+  max-height: 400px;
+
   &.-inline {
     width: 100px;
   }
