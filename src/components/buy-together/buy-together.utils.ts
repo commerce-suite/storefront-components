@@ -11,3 +11,8 @@ export const checkHasBalance = (data?: Partial<Product>) => {
   const { balance } = data || {};
   return !!balance && balance > 0;
 };
+
+export const checkHasPrice = (data?: Partial<Product>) => {
+  const { price } = data || {};
+  return price && !!Number(price);
+};
