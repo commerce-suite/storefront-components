@@ -1,4 +1,13 @@
-import { Component, Host, Event, Prop, h, EventEmitter } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Event,
+  Prop,
+  h,
+  EventEmitter,
+  State,
+  ComponentWillLoad,
+} from '@stencil/core';
 import { IInputSelectDataEvent, IProductCard, SelectAttributesType } from './product-card.type';
 import { currencyFormat, getClassByProps } from '../../../utils/utils';
 
@@ -8,10 +17,12 @@ import { currencyFormat, getClassByProps } from '../../../utils/utils';
   shadow: false,
   scoped: true,
 })
-export class ProductCard {
+export class ProductCard implements ComponentWillLoad {
   @Prop() inline: boolean = false;
   @Prop({ mutable: true }) product: IProductCard;
   @Event() inputSelect: EventEmitter<IInputSelectDataEvent>;
+
+  @State() showPriceBase: boolean;
 
   getClassWithInline(className: string) {
     const prosForClass = { '-inline': this.inline };
@@ -26,6 +37,11 @@ export class ProductCard {
     });
   }
 
+  componentWillLoad(): void | Promise<void> {
+    this.showPriceBase =
+      !!this.product?.priceBase && +this.product?.priceBase !== +this.product?.price;
+  }
+
   render() {
     return (
       <Host>
@@ -38,7 +54,7 @@ export class ProductCard {
           <div class="info">
             <span class="title">{this.product?.name}</span>
             <div class="price">
-              {!!this.product?.priceBase && (
+              {this.showPriceBase && (
                 <span class="base">{currencyFormat(this.product.priceBase)}</span>
               )}
               <span class="current">{currencyFormat(this.product?.price)}</span>
