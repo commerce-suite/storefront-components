@@ -19,8 +19,10 @@ describe('buy-together', () => {
         <h2 class="title">${buyTogetherDataApi.title}</h2>
     </div>
     <section class="bagy-buy-together buy-together-container">
-      <div class="product-main product-wrapper">
-        <product-card></product-card>
+      <div class="product-main">
+        <div class="product-wrapper">
+          <product-card></product-card>
+        </div>
       </div>
       <div class="plus-icon">
         <img alt="" src="/assets/icons/icon-plus.svg">

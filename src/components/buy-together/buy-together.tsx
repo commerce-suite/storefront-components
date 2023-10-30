@@ -176,11 +176,13 @@ export class BuyTogether implements ComponentWillLoad {
               <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
             </div>
             <section class="bagy-buy-together buy-together-container">
-              <div class="product-wrapper product-main">
-                <product-card
-                  product={this.buyTogetherData.productMain}
-                  onInputSelect={ev => this.onInputSelectProductMain(ev)}
-                ></product-card>
+              <div class="product-main">
+                <div class="product-wrapper">
+                  <product-card
+                    product={this.buyTogetherData.productMain}
+                    onInputSelect={ev => this.onInputSelectProductMain(ev)}
+                  ></product-card>
+                </div>
               </div>
               <div class="plus-icon">
                 <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
