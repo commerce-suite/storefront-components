@@ -1,10 +1,12 @@
 import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
+import { checkHasBalance, checkHasPrice, checkIsOutReleaseDate } from '../buy-together.utils';
 
 type FilterRulesType = {
   key: 'balance' | 'priceless' | 'releaseDate';
   isActive: boolean;
   applyFn: () => void;
+  checkFn: (data?: Partial<Product>) => boolean;
 };
 
 export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
@@ -13,16 +15,19 @@ export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
       key: 'balance',
       isActive: true,
       applyFn: this.filterByBalance.bind(this),
+      checkFn: checkHasBalance,
     },
     {
       key: 'priceless',
       isActive: true,
       applyFn: this.filterByZeroPrice.bind(this),
+      checkFn: checkHasPrice,
     },
     {
       key: 'releaseDate',
       isActive: true,
       applyFn: this.filterByReleaseDate.bind(this),
+      checkFn: checkIsOutReleaseDate,
     },
   ];
 
@@ -44,57 +49,51 @@ export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
       .forEach(({ applyFn }) => {
         applyFn();
       });
+    this.applyFilterVariations();
     return this;
   }
 
   protected filterByZeroPrice() {
-    const checkHasPrice = (data?: Product) => {
-      const { price } = data || {};
-      return price && !!Number(price);
-    };
     const shouldRemoveBuyTogether = !checkHasPrice(this.response.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
-      return;
     }
-    this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
-      this.filterVariations(variations, checkHasPrice),
-    );
   }
 
   protected filterByBalance() {
-    const checkHasBalance = (data?: Product) => {
-      const { balance } = data || {};
-      return !!balance;
-    };
     const shouldRemoveBuyTogether = !checkHasBalance(this.response?.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
-      return;
     }
-    this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
-      this.filterVariations(variations, checkHasBalance),
-    );
   }
 
   protected filterByReleaseDate() {
-    const checkIsOutReleaseDate = (data?: Product) => {
-      const { releaseDate: releaseDateObj } = data || {};
-      if (!releaseDateObj) return true;
-      const { now, releaseDate } = releaseDateObj;
-      return Number(now) >= Number(releaseDate);
-    };
     const shouldRemoveBuyTogether = !checkIsOutReleaseDate(this.response?.product);
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
-      return;
     }
+  }
+
+  protected applyFilterVariations() {
+    if (!this.response) return;
+    const checkFns = this.filterRules
+      .filter(({ isActive }) => isActive)
+      .map(({ checkFn }) => checkFn);
     this.response.productsPivot = this.response.productsPivot.filter(({ variations }) =>
-      this.filterVariations(variations, checkIsOutReleaseDate),
+      this.filterVariations(variations, checkFns),
     );
   }
 
-  private filterVariations(variations: Product[], checkFn: (data: Product) => boolean) {
-    return variations.filter(data => checkFn(data)).length !== 0;
+  private filterVariations(
+    variations: Product[],
+    checkFns: ((data?: Partial<Product>) => boolean)[],
+  ) {
+    return (
+      variations.filter(data => {
+        const results = checkFns.map(fn => fn(data));
+        const shouldAdd = results.reduce((prev, current) => prev && current, true);
+        return shouldAdd;
+      }).length !== 0
+    );
   }
 }
