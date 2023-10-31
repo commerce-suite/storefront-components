@@ -1,23 +1,22 @@
 import type { ICountdownService } from './ICountdownService';
-import type { DateDifferenceType } from './launch-countdown.type';
+import type { DateDifferenceType } from './front-countdown.type';
 
-export class CountdownService implements ICountdownService {
+export class FrontCountdownService implements ICountdownService {
   private oneSecond = 1000;
   private intervalId: ReturnType<typeof setInterval>;
 
   constructor(
-    private initialDate: Date,
-    private targetDate: Date,
+    private startDate: Date,
+    private endDate: Date,
   ) {
-    if (isNaN(initialDate.getTime()) || isNaN(targetDate.getTime())) {
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
       throw new Error('Invalid date');
     }
-
     this.startCountdown();
   }
 
   private incrementOneSecond(): void {
-    this.initialDate = new Date(this.initialDate.getTime() + this.oneSecond);
+    this.startDate = new Date(this.startDate.getTime() + this.oneSecond);
   }
 
   startCountdown(): void {
@@ -35,7 +34,7 @@ export class CountdownService implements ICountdownService {
   }
 
   getMillisecondsDifference(): number {
-    return this.targetDate.getTime() - this.initialDate.getTime();
+    return this.endDate.getTime() - this.startDate.getTime();
   }
 
   isCountdownFinished(): boolean {
