@@ -1,4 +1,4 @@
-import { DateDifferenceType } from './launch-countdown.type';
+import { DateDifferenceType } from './front-countdown.type';
 
 export interface ICountdownService {
   startCountdown(): void;

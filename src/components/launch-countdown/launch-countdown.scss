@@ -15,7 +15,7 @@
   padding: var(--fc-gap-grid);
   border-radius: var(--fc-border-radius);
 
-  > .header {
+  > .launch-countdown-container-header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,19 +25,19 @@
     line-height: 1.5;
     text-align: center;
 
-    > .title {
+    > .launch-countdown-container-title {
       margin: 0;
       margin-bottom: 4px;
       font-weight: var(--fc-m-fw);
     }
 
-    > .description {
+    > .launch-countdown-container-description {
       margin: 0;
       font-size: 12px;
     }
   }
 
-  > .timer {
+  > front-countdown.timer {
     display: flex;
     flex-wrap: wrap;
     --variations-gap: 16px;

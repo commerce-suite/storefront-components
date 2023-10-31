@@ -6,10 +6,10 @@ import {
   Product,
   BuyTogether as IBuyTogether,
   ShowcaseColor,
-  ReleaseDate,
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
+import { ReleaseDate } from '@uxshop/storefront-core/dist/types/ReleaseDateTypes';
 
 type AttributesExtraDataType = { balance: number; releaseDate: ReleaseDate };
 
