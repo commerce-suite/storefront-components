@@ -12,14 +12,7 @@
 | `dataInitialDate`    | `data-initial-date`    |             | `string` | `undefined`                                                 |
 | `dataTargetDate`     | `data-target-date`     |             | `string` | `undefined`                                                 |
 | `productId`          | `product-id`           |             | `string` | `undefined`                                                 |
-| `variationId`        | `variation-id`         |             | `number` | `undefined`                                                 |
-
-
-## Events
-
-| Event               | Description | Type               |
-| ------------------- | ----------- | ------------------ |
-| `countdownFinished` |             | `CustomEvent<any>` |
+| `variationId`        | `variation-id`         |             | `string` | `undefined`                                                 |
 
 
 ## Dependencies

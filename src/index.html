@@ -39,5 +39,10 @@
       // const element = document.getElementById('launch-countdown');
       // element.addEventListener('countdownFinished', ev => console.log(ev));
     })();
+    (async () => {
+      await customElements.whenDefined('launch-countdown');
+      const element = document.getElementById('launch-countdown');
+      element.addEventListener('countdownFinished', ev => console.log(ev));
+    })();
   </script>
 </html>

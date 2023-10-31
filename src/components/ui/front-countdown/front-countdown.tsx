@@ -1,4 +1,14 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  ComponentWillLoad,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  Watch,
+  h,
+} from '@stencil/core';
 import { FrontCountdownService } from './front-countdown.service';
 
 @Component({
@@ -7,7 +17,7 @@ import { FrontCountdownService } from './front-countdown.service';
   shadow: false,
   scoped: true,
 })
-export class FrontCountdown {
+export class FrontCountdown implements ComponentWillLoad {
   @Prop({ mutable: true }) startDate: string;
   @Prop({ mutable: true }) endDate: string;
 
@@ -47,7 +57,8 @@ export class FrontCountdown {
     this.service.stopCountdown();
   }
 
-  componentWillLoad() {
+  private loadCountdown() {
+    if (!this.startDate || !this.endDate) return;
     try {
       this.service = new FrontCountdownService(
         new Date(Number(this.startDate) || this.startDate),
@@ -57,6 +68,20 @@ export class FrontCountdown {
     } catch {
       this.resetCountdown();
     }
+  }
+
+  @Watch('startDate')
+  watchStartDateChange() {
+    this.loadCountdown();
+  }
+
+  @Watch('endDate')
+  watchEndDateChange() {
+    this.loadCountdown();
+  }
+
+  componentWillLoad() {
+    this.loadCountdown();
   }
 
   render() {

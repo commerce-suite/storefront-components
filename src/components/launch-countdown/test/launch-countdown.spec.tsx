@@ -1,4 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
+
+jest.mock('./../launch-countdown.service');
+
 import { LaunchCountdown } from '../launch-countdown';
 
 describe('launch-countdown', () => {
