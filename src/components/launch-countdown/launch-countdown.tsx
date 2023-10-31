@@ -1,4 +1,5 @@
-import { Component, Host, Prop, h, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
+import { LaunchCountdownService } from './launch-countdown.service';
 
 @Component({
   tag: 'launch-countdown',
@@ -7,22 +8,48 @@ import { Component, Host, Prop, h, Event, EventEmitter, Watch } from '@stencil/c
   scoped: false,
 })
 export class LaunchCountdown {
-  @Prop({ mutable: true }) dataTargetDate: string;
-  @Prop({ mutable: true }) dataInitialDate: string;
   @Prop({ mutable: true }) productId: string;
-  @Prop({ mutable: true }) variationId: number;
+  @Prop({ mutable: true }) variationId: string;
+  @Prop() dataTargetDate: string;
+  @Prop() dataInitialDate: string;
   @Prop() dataCountdownTitle = 'Agora falta muito pouco!';
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
 
-  @Event() countdownFinished: EventEmitter;
+  @State() dateTime: { startDate: string; endDate: string } = { endDate: null, startDate: null };
 
-  componentWillLoad() {}
+  private setDateTimeByProps() {
+    this.dateTime = {
+      startDate: this.dataInitialDate,
+      endDate: this.dataTargetDate,
+    };
+  }
+
+  private async loadCountDown() {
+    const productReleaseDate = await LaunchCountdownService.getReleaseDateByProduct(
+      this.productId,
+      this.variationId,
+    );
+    if (!productReleaseDate) return this.setDateTimeByProps();
+    const { now, releaseDate } = productReleaseDate;
+    this.dateTime = {
+      startDate: now,
+      endDate: releaseDate,
+    };
+  }
+
+  componentWillLoad() {
+    this.loadCountDown();
+  }
 
   @Watch('variationId')
-  watchVariationIdChange() {}
+  watchVariationIdChange() {
+    this.loadCountDown();
+  }
 
   @Watch('productId')
-  watchProductIdChange() {}
+  watchProductIdChange() {
+    this.loadCountDown();
+  }
 
   render() {
     return (
@@ -33,8 +60,8 @@ export class LaunchCountdown {
             <p class="launch-countdown-container-description">{this.dataDescription}</p>
           </div>
           <front-countdown
-            start-date={this.dataInitialDate}
-            end-date={this.dataTargetDate}
+            start-date={this.dateTime.startDate}
+            end-date={this.dateTime.endDate}
           ></front-countdown>
         </div>
       </Host>

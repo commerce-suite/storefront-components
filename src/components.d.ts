@@ -40,7 +40,7 @@ export namespace Components {
         "dataInitialDate": string;
         "dataTargetDate": string;
         "productId": string;
-        "variationId": number;
+        "variationId": string;
     }
     interface ProductCard {
         "inline": boolean;
@@ -54,10 +54,6 @@ export interface BuyTogetherCustomEvent<T> extends CustomEvent<T> {
 export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
-}
-export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLLaunchCountdownElement;
 }
 export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -142,9 +138,8 @@ declare namespace LocalJSX {
         "dataDescription"?: string;
         "dataInitialDate"?: string;
         "dataTargetDate"?: string;
-        "onCountdownFinished"?: (event: LaunchCountdownCustomEvent<any>) => void;
         "productId"?: string;
-        "variationId"?: number;
+        "variationId"?: string;
     }
     interface ProductCard {
         "inline"?: boolean;
