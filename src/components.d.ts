@@ -55,6 +55,10 @@ export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
 }
+export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLaunchCountdownElement;
+}
 export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLProductCardElement;
@@ -138,6 +142,7 @@ declare namespace LocalJSX {
         "dataDescription"?: string;
         "dataInitialDate"?: string;
         "dataTargetDate"?: string;
+        "onCountdownLoaded"?: (event: LaunchCountdownCustomEvent<{ releaseDateActive: boolean }>) => void;
         "productId"?: string;
         "variationId"?: string;
     }

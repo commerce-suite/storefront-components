@@ -15,6 +15,13 @@
 | `variationId`        | `variation-id`         |             | `string` | `undefined`                                                 |
 
 
+## Events
+
+| Event             | Description | Type                                           |
+| ----------------- | ----------- | ---------------------------------------------- |
+| `countdownLoaded` |             | `CustomEvent<{ releaseDateActive: boolean; }>` |
+
+
 ## Dependencies
 
 ### Depends on
