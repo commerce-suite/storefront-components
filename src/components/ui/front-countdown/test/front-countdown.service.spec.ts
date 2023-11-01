@@ -1,7 +1,7 @@
-import { CountdownService } from '../countdown.service';
+import { FrontCountdownService } from '../front-countdown.service';
 
 describe('launch-countdown service', () => {
-  let service: CountdownService;
+  let service: FrontCountdownService;
 
   afterEach(() => {
     if (service) service.stopCountdown();
@@ -12,11 +12,11 @@ describe('launch-countdown service', () => {
     const validDate = new Date('2022-12-31T23:59:59.999Z');
 
     expect(() => {
-      service = new CountdownService(invalidDate, validDate);
+      service = new FrontCountdownService(invalidDate, validDate);
     }).toThrow(new Error('Invalid date'));
 
     expect(() => {
-      service = new CountdownService(validDate, invalidDate);
+      service = new FrontCountdownService(validDate, invalidDate);
     }).toThrow(new Error('Invalid date'));
   });
 
@@ -26,7 +26,7 @@ describe('launch-countdown service', () => {
       const targetDate = new Date('2023-11-05T00:00:00Z');
       const expectedResult = 2678400000;
 
-      service = new CountdownService(startDate, targetDate);
+      service = new FrontCountdownService(startDate, targetDate);
 
       const result = service.getMillisecondsDifference();
       expect(result).toBe(expectedResult);
@@ -39,7 +39,7 @@ describe('launch-countdown service', () => {
       const targetDate = new Date('2023-10-06T01:01:01Z');
       const expectedResult = { daysDiff: 1, hoursDiff: 1, minutesDiff: 1, secondsDiff: 1 };
 
-      service = new CountdownService(startDate, targetDate);
+      service = new FrontCountdownService(startDate, targetDate);
 
       const result = service.getTimeDifference();
       expect(result.daysDiff).toBe(expectedResult.daysDiff);
@@ -53,7 +53,7 @@ describe('launch-countdown service', () => {
     it('should return true when Countdown was finished', () => {
       const startDate = new Date('2023-11-05T00:00:00Z');
       const targetDate = new Date('2023-10-06T01:01:01Z');
-      service = new CountdownService(startDate, targetDate);
+      service = new FrontCountdownService(startDate, targetDate);
 
       expect(service.isCountdownFinished()).toBe(true);
     });
@@ -61,7 +61,7 @@ describe('launch-countdown service', () => {
     it("should return false when Countdown wasn't finished", () => {
       const startDate = new Date('2023-10-05T00:00:00Z');
       const targetDate = new Date('2023-11-06T01:01:01Z');
-      service = new CountdownService(startDate, targetDate);
+      service = new FrontCountdownService(startDate, targetDate);
 
       expect(service.isCountdownFinished()).toBe(false);
     });

@@ -1,99 +1,75 @@
-import { Component, Host, Prop, State, h, Event, EventEmitter } from '@stencil/core';
-import { CountdownService } from './countdown.service';
+import { Component, Host, Prop, h, Watch, State, Event, EventEmitter } from '@stencil/core';
+import { LaunchCountdownService } from './launch-countdown.service';
 
 @Component({
   tag: 'launch-countdown',
   styleUrl: 'launch-countdown.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class LaunchCountdown {
+  @Prop({ mutable: true }) productId: string;
+  @Prop({ mutable: true }) variationId: string;
   @Prop() dataTargetDate: string;
   @Prop() dataInitialDate: string;
   @Prop() dataCountdownTitle = 'Agora falta muito pouco!';
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
-  @Prop() backgroundColor?: string;
-  @Prop() textColor?: string;
 
-  @State() days: string = '00';
-  @State() hours: string = '00';
-  @State() minutes: string = '00';
-  @State() seconds: string = '00';
+  @State() dateTime: { startDate: string; endDate: string } = { endDate: null, startDate: null };
 
-  @Event() countdownFinished: EventEmitter;
+  @Event() countdownLoaded: EventEmitter<{ releaseDateActive: boolean }>;
 
-  private service: CountdownService;
-
-  componentWillLoad() {
-    try {
-      this.service = new CountdownService(
-        new Date(Number(this.dataInitialDate) || this.dataInitialDate),
-        new Date(Number(this.dataTargetDate) || this.dataTargetDate),
-      );
-      this.updateCountdown();
-    } catch {
-      this.resetCountdown();
-    }
+  private setDateTimeByProps() {
+    this.dateTime = {
+      startDate: this.dataInitialDate,
+      endDate: this.dataTargetDate,
+    };
   }
 
-  disconnectedCallback() {
-    this.service.stopCountdown();
-  }
-
-  updateCountdown() {
-    if (this.service.isCountdownFinished()) {
-      this.resetCountdown();
-      this.countdownFinished.emit('finished');
+  private async loadCountDown() {
+    const productReleaseDate = await LaunchCountdownService.getReleaseDateByProduct(
+      this.productId,
+      this.variationId,
+    );
+    if (!productReleaseDate) {
+      this.countdownLoaded.emit({ releaseDateActive: false });
+      this.setDateTimeByProps();
       return;
     }
-
-    const { daysDiff, hoursDiff, minutesDiff, secondsDiff } = this.service.getTimeDifference();
-    this.days = String(daysDiff).padStart(2, '0');
-    this.hours = String(hoursDiff).padStart(2, '0');
-    this.minutes = String(minutesDiff).padStart(2, '0');
-    this.seconds = String(secondsDiff).padStart(2, '0');
-
-    requestAnimationFrame(this.updateCountdown.bind(this));
+    const { now, releaseDate } = productReleaseDate;
+    this.countdownLoaded.emit({ releaseDateActive: Number(now) < Number(releaseDate) });
+    this.dateTime = {
+      startDate: now,
+      endDate: releaseDate,
+    };
   }
 
-  resetCountdown() {
-    this.days = '00';
-    this.hours = '00';
-    this.minutes = '00';
-    this.seconds = '00';
+  componentWillLoad() {
+    this.loadCountDown();
+  }
+
+  @Watch('variationId')
+  watchVariationIdChange() {
+    this.loadCountDown();
+  }
+
+  @Watch('productId')
+  watchProductIdChange() {
+    this.loadCountDown();
   }
 
   render() {
-    const backgroundColor = this.backgroundColor ? { backgroundColor: this.backgroundColor } : {};
-    const textCounterColor = this.backgroundColor ? { color: this.backgroundColor } : {};
-    const textColor = this.textColor ? { color: this.textColor } : {};
-
     return (
-      <Host style={backgroundColor}>
+      <Host>
         <div class="launch-countdown-container">
-          <div class="header" style={textColor}>
-            <h3 class="title">{this.dataCountdownTitle}</h3>
-            <p class="description">{this.dataDescription}</p>
+          <div class="launch-countdown-container-header">
+            <h3 class="launch-countdown-container-title">{this.dataCountdownTitle}</h3>
+            <p class="launch-countdown-container-description">{this.dataDescription}</p>
           </div>
-
-          <div class="timer">
-            <div class="cell" style={textCounterColor}>
-              <p class="time">{this.days}</p>
-              <p class="unit">dias</p>
-            </div>
-            <div class="cell" style={textCounterColor}>
-              <p class="time">{this.hours}</p>
-              <p class="unit">horas</p>
-            </div>
-            <div class="cell" style={textCounterColor}>
-              <p class="time"> {this.minutes}</p>
-              <p class="unit">minutos</p>
-            </div>
-            <div class="cell" style={textCounterColor}>
-              <p class="time">{this.seconds}</p>
-              <p class="unit">segundos</p>
-            </div>
-          </div>
+          <front-countdown
+            start-date={this.dateTime.startDate}
+            end-date={this.dateTime.endDate}
+          ></front-countdown>
         </div>
       </Host>
     );

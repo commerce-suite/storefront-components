@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@stencil/core": "^4.0.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#task/nao-retornar-compre-junto-com-lancamento",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#us/consumidor-final-visualiza-produto-com-data-de-lancamento",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
