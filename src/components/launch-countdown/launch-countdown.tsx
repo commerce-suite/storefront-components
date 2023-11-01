@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
+import { Component, Host, Prop, h, Watch, State, Event, EventEmitter } from '@stencil/core';
 import { LaunchCountdownService } from './launch-countdown.service';
 
 @Component({
@@ -17,6 +17,8 @@ export class LaunchCountdown {
 
   @State() dateTime: { startDate: string; endDate: string } = { endDate: null, startDate: null };
 
+  @Event() countdownLoaded: EventEmitter<{ releaseDateActive: boolean }>;
+
   private setDateTimeByProps() {
     this.dateTime = {
       startDate: this.dataInitialDate,
@@ -29,8 +31,13 @@ export class LaunchCountdown {
       this.productId,
       this.variationId,
     );
-    if (!productReleaseDate) return this.setDateTimeByProps();
+    if (!productReleaseDate) {
+      this.countdownLoaded.emit({ releaseDateActive: false });
+      this.setDateTimeByProps();
+      return;
+    }
     const { now, releaseDate } = productReleaseDate;
+    this.countdownLoaded.emit({ releaseDateActive: Number(now) < Number(releaseDate) });
     this.dateTime = {
       startDate: now,
       endDate: releaseDate,
