@@ -54,6 +54,7 @@ export class FrontCountdown implements ComponentWillLoad {
   }
 
   disconnectedCallback() {
+    if (!this.service) return;
     this.service.stopCountdown();
   }
 
