@@ -52,7 +52,6 @@
   background-color: var(--fc-color-white);
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
   padding: calc(var(--fc-margin-width) * 2);
   border: 1px solid var(--fc-color-light-border-default);
   gap: 20px;
@@ -66,7 +65,9 @@
 }
 
 .product-main {
+  display: flex;
   grid-area: main;
+  width: 100%;
 }
 
 .products-order-bump {

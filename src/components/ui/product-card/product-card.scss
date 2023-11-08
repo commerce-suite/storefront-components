@@ -3,6 +3,7 @@
 :host {
   display: inline-block;
   font-size: 14px;
+  width: 100%;
 }
 
 .product-container {
@@ -52,7 +53,7 @@
   max-width: 400px;
   max-height: 400px;
   justify-content: center;
-
+  margin: 0 auto;
   &.-inline {
     width: 100px;
     justify-content: flex-start;
