@@ -13,9 +13,16 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     productId: number,
     variationId?: number,
   ): Promise<IBuyTogetherComponentData> {
+    let variationIdWithBalance = variationId;
     const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
-    if (responseData && variationId) {
-      responseData.product = this.changeByVariationSelected(variationId, responseData.product);
+    if (!variationId) {
+      variationIdWithBalance = responseData.product.variations.find(this.variationWithBalance)?.id;
+    }
+    if (responseData && variationIdWithBalance) {
+      responseData.product = this.changeByVariationSelected(
+        variationIdWithBalance,
+        responseData.product,
+      );
     }
     return this.applyFilterRulesToBuyTogether(responseData);
   }
@@ -32,6 +39,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       (filters[filter] && filters[filter](buyTogether)) ??
       this.removePivotProductsByPrice(this.removePivotProductsByBalance(buyTogether))
     );
+  }
+
+  private variationWithBalance(product: Product) {
+    return product.balance && product.balance > 0;
   }
 
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
