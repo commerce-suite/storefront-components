@@ -13,16 +13,9 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     productId: number,
     variationId?: number,
   ): Promise<IBuyTogetherComponentData> {
-    let variationIdWithBalance = variationId;
     const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
-    if (!variationId) {
-      variationIdWithBalance = responseData.product.variations.find(this.variationWithBalance)?.id;
-    }
-    if (responseData && variationIdWithBalance) {
-      responseData.product = this.changeByVariationSelected(
-        variationIdWithBalance,
-        responseData.product,
-      );
+    if (responseData && variationId) {
+      responseData.product = this.changeByVariationSelected(variationId, responseData.product);
     }
     return this.applyFilterRulesToBuyTogether(responseData);
   }
@@ -45,9 +38,14 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return product.balance && product.balance > 0;
   }
 
+  private hasProductOrVariationsBalance(product: Product) {
+    const hasSomeVariationBalance = product.variations.some(this.variationWithBalance);
+    return product?.balance || hasSomeVariationBalance;
+  }
+
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
     const hasPrice = +response?.product?.price;
-    if (!response?.product?.balance || !hasPrice) return null;
+    if (!this.hasProductOrVariationsBalance(response.product) || !hasPrice) return null;
     const responseHandle = this.filterByRules(response, 'all');
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
@@ -73,7 +71,9 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public changeByVariationSelected(variationId: number, product: Product) {
-    const variation = product.variations?.find(({ id }) => Number(id) === variationId);
+    const variation = product.variations?.find(({ id, balance }) => {
+      return Number(id) === variationId && balance > 0;
+    });
     if (!variation) return product;
     return {
       ...variation,
