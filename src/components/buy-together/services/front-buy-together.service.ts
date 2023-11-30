@@ -71,12 +71,20 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public changeByVariationSelected(variationId: number, product: Product) {
-    const variation = product.variations?.find(({ id, balance }) => {
-      return Number(id) === variationId && balance > 0;
+    const selectedVariation = product.variations?.find(({ id }) => Number(id) === variationId);
+    if (!selectedVariation) return product;
+    if (selectedVariation?.balance > 0) {
+      return {
+        ...selectedVariation,
+        variations: product.variations,
+      };
+    }
+
+    const variationWithBalance = product.variations?.find(({ balance, color }) => {
+      return selectedVariation.color.id === color.id && balance > 0;
     });
-    if (!variation) return product;
     return {
-      ...variation,
+      ...variationWithBalance,
       variations: product.variations,
     };
   }
