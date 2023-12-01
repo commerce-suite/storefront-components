@@ -49,7 +49,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const responseHandle = this.filterByRules(response, 'all');
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
-    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
+    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle, true);
   }
 
   public removePivotProductsByBalance(response: BuyTogether): BuyTogether {
@@ -127,10 +127,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     );
     const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation({
       ...productTarget,
-      attribute: variationByAttribute.attribute,
+      attribute: variationByAttribute?.attribute || productTarget.attribute,
     });
     const productTargetUpdated: Product = {
-      ...currentVariation,
+      ...(currentVariation || productTarget),
       variations: productTarget.variations,
     };
     const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);

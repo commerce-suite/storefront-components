@@ -10,14 +10,20 @@ import {
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 
 export class FrontBuyTogetherAdapter {
+  static isFirstLoad = false;
+  static placeholderDisabled = { name: 'Selecione', disabled: true, value: undefined };
   public static adapterIBuyTogetherToComponentData(
     buyTogether: IBuyTogether,
+    isFirstLoad = false,
   ): IBuyTogetherComponentData {
-    return {
+    this.isFirstLoad = isFirstLoad;
+    const componentData = {
       productMain: this.adapterToProductCard(buyTogether.product),
       products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
       originalData: buyTogether,
     };
+    this.isFirstLoad = false;
+    return componentData;
   }
 
   public static adapterPivotToProductCard(product: Product): IProductOrderBump {
@@ -69,6 +75,7 @@ export class FrontBuyTogetherAdapter {
     );
     if (!attributes.length) return null;
     return {
+      placeholder: this.placeholderDisabled,
       label: product.attribute?.attributeName,
       options: attributes.map(({ balance, id, name }) => ({
         name,
@@ -76,7 +83,7 @@ export class FrontBuyTogetherAdapter {
         disabled: balance <= 0,
       })),
       selectType: 'attributes',
-      currentValue: product.attribute?.id,
+      currentValue: this.isFirstLoad ? undefined : product.attribute?.id,
     };
   }
 
@@ -89,6 +96,7 @@ export class FrontBuyTogetherAdapter {
     );
     if (!listAttributesSecondary.length) return null;
     return {
+      placeholder: this.placeholderDisabled,
       label: product.attributeSecondary?.attributeName,
       options: listAttributesSecondary.map(({ name, balance, id }) => ({
         value: id,
@@ -96,7 +104,7 @@ export class FrontBuyTogetherAdapter {
         disabled: balance <= 0,
       })),
       selectType: 'secondaryAttributes',
-      currentValue: product.attributeSecondary?.id,
+      currentValue: this.isFirstLoad ? undefined : product.attributeSecondary?.id,
     };
   }
 
@@ -113,6 +121,7 @@ export class FrontBuyTogetherAdapter {
     if (!listColors?.length) return null;
     return {
       label: 'Cor',
+      placeholder: this.placeholderDisabled,
       options: listColors?.map(({ balance, id, name }) => ({
         name,
         value: id,
