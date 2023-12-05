@@ -24,6 +24,11 @@ describe('FrontBuyTogetherAdapter', () => {
           { name: 'Lilas Claro', value: 266425, disabled: false },
         ],
         currentValue: 266424,
+        placeholder: {
+          disabled: true,
+          name: 'Selecione',
+          value: undefined,
+        },
         selectType: 'color',
       },
       {
@@ -34,6 +39,11 @@ describe('FrontBuyTogetherAdapter', () => {
           { name: '37', value: 462522, disabled: false },
           { name: '38', value: 462523, disabled: false },
         ],
+        placeholder: {
+          disabled: true,
+          name: 'Selecione',
+          value: undefined,
+        },
         selectType: 'attributes',
         currentValue: 462520,
       },
@@ -44,6 +54,11 @@ describe('FrontBuyTogetherAdapter', () => {
           { value: 462515, name: 'Couro', disabled: true },
         ],
         selectType: 'secondaryAttributes',
+        placeholder: {
+          disabled: true,
+          name: 'Selecione',
+          value: undefined,
+        },
         currentValue: 462516,
       },
     ],

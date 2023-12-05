@@ -34,13 +34,22 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     );
   }
 
+  private variationWithBalance(product: Product) {
+    return product.balance && product.balance > 0;
+  }
+
+  private hasProductOrVariationsBalance(product: Product) {
+    const hasSomeVariationBalance = product.variations.some(this.variationWithBalance);
+    return product?.balance || hasSomeVariationBalance;
+  }
+
   public applyFilterRulesToBuyTogether(response: BuyTogether) {
     const hasPrice = +response?.product?.price;
-    if (!response?.product?.balance || !hasPrice) return null;
+    if (!this.hasProductOrVariationsBalance(response.product) || !hasPrice) return null;
     const responseHandle = this.filterByRules(response, 'all');
     const hasProductPivot = !!responseHandle.productsPivot.length;
     if (!hasProductPivot) return null;
-    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle);
+    return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(responseHandle, true);
   }
 
   public removePivotProductsByBalance(response: BuyTogether): BuyTogether {
@@ -62,10 +71,20 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   }
 
   public changeByVariationSelected(variationId: number, product: Product) {
-    const variation = product.variations?.find(({ id }) => Number(id) === variationId);
-    if (!variation) return product;
+    const selectedVariation = product.variations?.find(({ id }) => Number(id) === variationId);
+    if (!selectedVariation) return product;
+    if (selectedVariation?.balance > 0) {
+      return {
+        ...selectedVariation,
+        variations: product.variations,
+      };
+    }
+
+    const variationWithBalance = product.variations?.find(({ balance, color }) => {
+      return selectedVariation.color.id === color.id && balance > 0;
+    });
     return {
-      ...variation,
+      ...variationWithBalance,
       variations: product.variations,
     };
   }
@@ -108,10 +127,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     );
     const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation({
       ...productTarget,
-      attribute: variationByAttribute.attribute,
+      attribute: variationByAttribute?.attribute || productTarget.attribute,
     });
     const productTargetUpdated: Product = {
-      ...currentVariation,
+      ...(currentVariation || productTarget),
       variations: productTarget.variations,
     };
     const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);

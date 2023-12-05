@@ -13,7 +13,11 @@ import {
 } from '@stencil/core';
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
-import { IInputSelectDataEvent, IProductCard } from '../ui/product-card/product-card.type';
+import {
+  IInputSelectDataEvent,
+  IProductCard,
+  ISelectVariation,
+} from '../ui/product-card/product-card.type';
 
 @Component({
   tag: 'buy-together',
@@ -38,6 +42,7 @@ export class BuyTogether implements ComponentWillLoad {
   @State() hasBuyTogether: boolean;
   @State() isLoading: boolean;
   @State() isAddingToCart: boolean;
+  @State() formIsValid: boolean;
 
   @Method()
   async getBuyTogetherData() {
@@ -59,6 +64,23 @@ export class BuyTogether implements ComponentWillLoad {
       this.isLoading = false;
       this.emitOnLoad();
     }
+  }
+
+  private checkValidForm() {
+    const checkSelectedVariations = (variations: ISelectVariation[]) =>
+      variations.every(({ currentValue }) => currentValue !== undefined && currentValue !== null);
+    const isValidProductMain = checkSelectedVariations(
+      this.buyTogetherData.productMain.selectVariations,
+    );
+    const productsPivotSelected = this.buyTogetherData.products
+      .map(({ selectVariations, isCheck }) => ({ selectVariations, isCheck }))
+      .filter(({ isCheck }) => isCheck);
+    const isValidPivotProducts = productsPivotSelected.every(({ selectVariations }) =>
+      checkSelectedVariations(selectVariations),
+    );
+
+    this.formIsValid =
+      isValidProductMain && isValidPivotProducts && productsPivotSelected.length > 0;
   }
 
   private emitOnLoad() {
@@ -146,6 +168,7 @@ export class BuyTogether implements ComponentWillLoad {
   @Watch('buyTogetherData')
   watchPropHandler(newValue: IBuyTogetherComponentData) {
     this.hasBuyTogether = !!newValue?.originalData;
+    this.checkValidForm();
   }
 
   @Watch('variationId')
@@ -207,7 +230,11 @@ export class BuyTogether implements ComponentWillLoad {
                 ))}
               </div>
               <div class="buy-btn-wrapper">
-                <button class="buy-btn" type="submit" disabled={this.isAddingToCart}>
+                <button
+                  class="buy-btn"
+                  type="submit"
+                  disabled={this.isAddingToCart || !this.formIsValid}
+                >
                   {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
                 </button>
               </div>

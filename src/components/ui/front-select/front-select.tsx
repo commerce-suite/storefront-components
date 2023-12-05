@@ -32,7 +32,11 @@ export class FrontSelect {
         )}
         <div class="front-select-container">
           <select name={this.selectName} id={this.selectId}>
-            <option value={this.placeholder.value} selected={this.value === this.placeholder.value}>
+            <option
+              disabled={this.placeholder.disabled}
+              value={this.placeholder.value}
+              selected={this.value === this.placeholder.value}
+            >
               {this.placeholder.name}
             </option>
             {this.optionsList?.map(({ name, value, disabled }) => (
