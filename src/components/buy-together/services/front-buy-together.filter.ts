@@ -61,7 +61,9 @@ export class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
   }
 
   protected filterByBalance() {
-    const shouldRemoveBuyTogether = !checkHasBalance(this.response?.product);
+    const productWithoutBalance = !checkHasBalance(this.response?.product);
+    const noneVariationsHasBalance = !this.response?.product.variations.some(checkHasBalance);
+    const shouldRemoveBuyTogether = productWithoutBalance || noneVariationsHasBalance;
     if (!this.response || shouldRemoveBuyTogether) {
       this.response = null;
     }

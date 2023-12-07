@@ -13,7 +13,7 @@ export class FrontBuyTogetherResponse {
   public adapterToComponentData(): FrontBuyTogetherResponse {
     const canApplyAdapter = this.response && this.response?.productsPivot?.length > 0;
     this.componentData = canApplyAdapter
-      ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response)
+      ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response, true)
       : null;
     return this;
   }
@@ -24,10 +24,23 @@ export class FrontBuyTogetherResponse {
       ({ id }) => Number(id) === variationId,
     );
     if (!variation) return this;
+
+    if (variation?.balance > 0) {
+      this.response.product = {
+        ...variation,
+        variations: this.response.product.variations,
+      };
+    }
+
+    const variationWithBalance = this.response.product.variations?.find(({ balance, color }) => {
+      return variation.color.id === color.id && balance > 0;
+    });
+
     this.response.product = {
-      ...variation,
+      ...variationWithBalance,
       variations: this.response.product.variations,
     };
+
     return this;
   }
 
