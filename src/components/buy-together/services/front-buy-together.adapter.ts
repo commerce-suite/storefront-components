@@ -8,6 +8,10 @@ import {
   ShowcaseColor,
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
+import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
+import { ReleaseDate } from '@uxshop/storefront-core/dist/types/ReleaseDateTypes';
+
+type AttributesExtraDataType = { balance: number; releaseDate: ReleaseDate };
 
 export class FrontBuyTogetherAdapter {
   static isFirstLoad = false;
@@ -77,10 +81,10 @@ export class FrontBuyTogetherAdapter {
     return {
       placeholder: this.placeholderDisabled,
       label: product.attribute?.attributeName,
-      options: attributes.map(({ balance, id, name }) => ({
+      options: attributes.map(({ balance, id, name, releaseDate }) => ({
         name,
         value: id,
-        disabled: balance <= 0,
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
       })),
       selectType: 'attributes',
       currentValue: this.isFirstLoad ? undefined : product.attribute?.id,
@@ -98,10 +102,10 @@ export class FrontBuyTogetherAdapter {
     return {
       placeholder: this.placeholderDisabled,
       label: product.attributeSecondary?.attributeName,
-      options: listAttributesSecondary.map(({ name, balance, id }) => ({
+      options: listAttributesSecondary.map(({ name, balance, id, releaseDate }) => ({
         value: id,
         name,
-        disabled: balance <= 0,
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
       })),
       selectType: 'secondaryAttributes',
       currentValue: this.isFirstLoad ? undefined : product.attributeSecondary?.id,
@@ -122,10 +126,10 @@ export class FrontBuyTogetherAdapter {
     return {
       label: 'Cor',
       placeholder: this.placeholderDisabled,
-      options: listColors?.map(({ balance, id, name }) => ({
+      options: listColors?.map(({ balance, id, name, releaseDate }) => ({
         name,
         value: id,
-        disabled: balance <= 0,
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
       })),
       currentValue: product.color?.id,
       selectType: 'color',
@@ -159,10 +163,19 @@ export class FrontBuyTogetherAdapter {
         (acc, current) => {
           const objItem = current[attributeTarget] as Attribute | ShowcaseColor;
           const index = acc.findIndex(attrAcc => attrAcc.id === objItem.id);
-          if (index === -1) return [...acc, { ...objItem, balance: current.balance }];
+          if (index === -1)
+            return [
+              ...acc,
+              { ...objItem, balance: current.balance, releaseDate: current.releaseDate },
+            ];
           return acc;
         },
-        [] as ((Attribute | ShowcaseColor) & { balance: number })[],
+        [] as ((Attribute | ShowcaseColor) & AttributesExtraDataType)[],
       );
+  }
+
+  private static checkAttributeOptionDisabled(data: AttributesExtraDataType) {
+    const { balance, releaseDate } = data;
+    return !checkHasBalance({ balance }) || !checkIsOutReleaseDate({ releaseDate });
   }
 }
