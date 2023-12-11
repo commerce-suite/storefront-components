@@ -1,0 +1,75 @@
+@import '../../style/variables/variables';
+@import '../../style/mixins/screen-media';
+
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.launch-countdown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fc-color-secondary);
+  padding: var(--fc-gap-grid);
+  border-radius: var(--fc-border-radius);
+
+  > .launch-countdown-container-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--fc-color-white);
+    background-color: transparent;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    text-align: center;
+
+    > .launch-countdown-container-title {
+      margin: 0;
+      margin-bottom: 4px;
+      font-weight: var(--fc-m-fw);
+    }
+
+    > .launch-countdown-container-description {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  > front-countdown.timer {
+    display: flex;
+    flex-wrap: wrap;
+    --variations-gap: 16px;
+    gap: var(--variations-gap);
+
+    > .cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: calc(50% - var(--variations-gap));
+      border-radius: 16px;
+      background-color: #fff;
+      color: var(--fc-color-secondary);
+      padding: 6px;
+
+      > .time {
+        font-size: 46px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      > .unit {
+        font-size: 12px;
+        margin: 0;
+      }
+
+      @include for-desktop {
+        min-width: 80px;
+        > .time {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
