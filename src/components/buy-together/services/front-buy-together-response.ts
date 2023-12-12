@@ -32,9 +32,14 @@ export class FrontBuyTogetherResponse {
       };
     }
 
-    const variationWithBalance = this.response.product.variations?.find(({ balance, color }) => {
-      return variation.color.id === color.id && balance > 0;
-    });
+    const variationWithBalance = this.response.product.variations?.find(
+      ({ balance, color, isSellOutOfStock }) => {
+        if (variation.color) {
+          return variation.color.id === color.id && (balance > 0 || isSellOutOfStock);
+        }
+        return balance > 0 || isSellOutOfStock;
+      },
+    );
 
     this.response.product = {
       ...variationWithBalance,
