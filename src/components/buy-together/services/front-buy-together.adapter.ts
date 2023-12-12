@@ -11,7 +11,11 @@ import { ISelectVariation } from '../../ui/product-card/product-card.type';
 import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
 import { ReleaseDate } from '@uxshop/storefront-core/dist/types/ReleaseDateTypes';
 
-type AttributesExtraDataType = { balance: number; releaseDate: ReleaseDate };
+type AttributesExtraDataType = {
+  balance: number;
+  releaseDate: ReleaseDate;
+  isSellOutOfStock?: boolean;
+};
 
 export class FrontBuyTogetherAdapter {
   static isFirstLoad = false;
@@ -68,7 +72,7 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static generateSelectAttributes(product: Product): ISelectVariation {
-    const { color, attributeSecondary } = product;
+    const { color, attributeSecondary, isSellOutOfStock } = product;
     const filterToCompare = {
       'color.id': color?.id,
       'attributeSecondary.id': attributeSecondary?.id,
@@ -84,7 +88,7 @@ export class FrontBuyTogetherAdapter {
       options: attributes.map(({ balance, id, name, releaseDate }) => ({
         name,
         value: id,
-        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate, isSellOutOfStock }),
       })),
       selectType: 'attributes',
       currentValue: this.isFirstLoad ? undefined : product.attribute?.id,
@@ -92,7 +96,7 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static generateSelectAttributesSecondary(product: Product): ISelectVariation {
-    const { color, attribute } = product;
+    const { color, attribute, isSellOutOfStock } = product;
     const filterToCompare = { 'color.id': color?.id, 'attribute.id': attribute?.id };
     const listAttributesSecondary = this.filterAttributesByUnique(
       this.filterVariations(product.variations, filterToCompare, 'attributeSecondary'),
@@ -105,7 +109,7 @@ export class FrontBuyTogetherAdapter {
       options: listAttributesSecondary.map(({ name, balance, id, releaseDate }) => ({
         value: id,
         name,
-        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate, isSellOutOfStock }),
       })),
       selectType: 'secondaryAttributes',
       currentValue: this.isFirstLoad ? undefined : product.attributeSecondary?.id,
@@ -175,7 +179,9 @@ export class FrontBuyTogetherAdapter {
   }
 
   private static checkAttributeOptionDisabled(data: AttributesExtraDataType) {
-    const { balance, releaseDate } = data;
-    return !checkHasBalance({ balance }) || !checkIsOutReleaseDate({ releaseDate });
+    const { balance, releaseDate, isSellOutOfStock } = data;
+    return (
+      !checkHasBalance({ balance, isSellOutOfStock }) || !checkIsOutReleaseDate({ releaseDate })
+    );
   }
 }
