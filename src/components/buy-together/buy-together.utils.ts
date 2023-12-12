@@ -8,8 +8,8 @@ export const checkIsOutReleaseDate = (data?: Partial<Product>) => {
 };
 
 export const checkHasBalance = (data?: Partial<Product>) => {
-  const { balance } = data || {};
-  return !!balance && balance > 0;
+  const { balance, isSellOutOfStock } = data || {};
+  return (!!balance && balance > 0) || isSellOutOfStock;
 };
 
 export const checkHasPrice = (data?: Partial<Product>) => {
