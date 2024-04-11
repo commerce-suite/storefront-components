@@ -43,6 +43,13 @@
     grid-template-rows: auto;
     align-items: center;
     grid-template-areas: 'main plus products btn-buy';
+
+    &.-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fc-gap-grid);
+      align-items: center;
+    }
   }
 }
 
@@ -78,10 +85,15 @@
   gap: var(--fc-gap-grid);
   grid-area: products;
   align-items: center;
-}
 
-.products-order-bump {
-  grid-area: products;
+  @include for-desktop {
+    &.-showcase {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      gap: var(--fc-gap-grid);
+    }
+  }
 }
 
 .plus-icon {
@@ -94,6 +106,10 @@
   display: flex;
   grid-area: btn-buy;
   width: 100%;
+
+  &.-showcase {
+    width: auto;
+  }
   .buy-btn {
     @include front-button;
     --btn-bg-color: var(--color-buy-button);

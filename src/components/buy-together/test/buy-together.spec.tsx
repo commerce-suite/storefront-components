@@ -19,13 +19,15 @@ describe('buy-together', () => {
         <h2 class="title">${buyTogetherDataApi.title}</h2>
     </div>
     <section class="bagy-buy-together buy-together-container">
-      <div class="product-main">
-        <div class="product-wrapper">
-          <product-card></product-card>
+      <div>
+        <div class="product-main">
+          <div class="product-wrapper">
+            <product-card></product-card>
+          </div>
         </div>
-      </div>
-      <div class="plus-icon">
-        <img alt="" src="/assets/icons/icon-plus.svg">
+        <div class="plus-icon">
+          <img alt="" src="/assets/icons/icon-plus.svg">
+        </div>
       </div>
       <div class="products-order-bump">
         <div class="product-wrapper">
@@ -54,6 +56,48 @@ describe('buy-together', () => {
           </div>
       </section>
         </form>
+      </buy-together>
+    `);
+  });
+  it('renders as showcase', async () => {
+    const page = await newSpecPage({
+      components: [BuyTogether],
+      html: `<buy-together showcase-mode></buy-together>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <buy-together showcase-mode>
+      <form>
+        <div class="title-wrapper">
+          <h2 class="title">${buyTogetherDataApi.title}</h2>
+        </div>
+      <section class="bagy-buy-together buy-together-container -showcase">
+          <div class="products-order-bump -showcase">
+            <div class="product-wrapper">
+              <div class="checkbox-wrapper">
+                <input checked="" id="9480211" type="checkbox">
+              </div>
+            <product-card inline=""></product-card>
+          </div>
+          <div class="product-wrapper">
+            <div class="checkbox-wrapper">
+              <input checked="" id="9480233" type="checkbox">
+            </div>
+            <product-card inline=""></product-card>
+          </div>
+          <div class="product-wrapper">
+            <div class="checkbox-wrapper">
+              <input checked="" id="9480162" type="checkbox">
+            </div>
+            <product-card inline=""></product-card>
+          </div>
+        </div>
+        <div class="buy-btn-wrapper -showcase">
+          <button class="buy-btn" type="submit">
+            ${buyTogetherDataApi.buyButtonText}
+          </button>
+            </div>
+        </section>
+      </form>
       </buy-together>
     `);
   });
