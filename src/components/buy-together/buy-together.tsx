@@ -210,36 +210,46 @@ export class BuyTogether implements ComponentWillLoad {
             </div>
             <section class={`bagy-buy-together buy-together-container ${this.showcaseModeClass()}`}>
               {!this.showcaseMode && (
-                <div>
-                  <div class="product-main">
-                    <div class="product-wrapper">
-                      <product-card
-                        product={this.buyTogetherData.productMain}
+                <div class="product-main">
+                  <div class="product-wrapper">
+                    <product-card product={this.buyTogetherData.productMain}></product-card>
+                    {this.buyTogetherData.productMain.selectVariations && (
+                      <variation-selector
+                        productId={this.buyTogetherData.productMain.id}
                         onInputSelect={ev => this.onInputSelectProductMain(ev)}
-                      ></product-card>
-                    </div>
+                        variations={this.buyTogetherData.productMain.selectVariations}
+                      ></variation-selector>
+                    )}
                   </div>
-                  <div class="plus-icon">
-                    <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
-                  </div>
+                </div>
+              )}
+              {!this.showcaseMode && (
+                <div class="plus-icon">
+                  <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
                 </div>
               )}
               <div class={`products-order-bump ${this.showcaseModeClass()}`}>
                 {this.buyTogetherData.products.map(productCard => (
                   <div class="product-wrapper">
-                    <div class="checkbox-wrapper">
-                      <input
-                        type="checkbox"
-                        checked={productCard.isCheck}
-                        id={String(productCard.id)}
-                        onInput={ev => this.selectOrderBump(ev, productCard.id)}
-                      />
+                    <div class="product-wrapper-pivot">
+                      <div class="checkbox-wrapper">
+                        <input
+                          type="checkbox"
+                          checked={productCard.isCheck}
+                          id={String(productCard.id)}
+                          onInput={ev => this.selectOrderBump(ev, productCard.id)}
+                        />
+                      </div>
+                      <product-card inline product={productCard}></product-card>
                     </div>
-                    <product-card
-                      inline
-                      product={productCard}
-                      onInputSelect={ev => this.onInputSelectOrderBump(ev)}
-                    ></product-card>
+                    {productCard.selectVariations && (
+                      <variation-selector
+                        productId={productCard.id}
+                        variations={productCard.selectVariations}
+                        onInputSelect={ev => this.onInputSelectOrderBump(ev)}
+                        showcaseMode={this.showcaseMode}
+                      ></variation-selector>
+                    )}
                   </div>
                 ))}
               </div>
