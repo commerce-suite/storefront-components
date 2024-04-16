@@ -186,8 +186,8 @@ export const buyTogetherComponentData = {
   originalData: {
     id: 83,
     name: 'Compre e arrase',
-    title: 'Aproveite para arrasar no lookj',
-    buyButtonText: 'Compre e arrase',
+    title: 'Compre Junto',
+    buyButtonText: 'Comprar',
     productId: 2915737,
     colorId: null,
     dateFrom: '2023-10-06',

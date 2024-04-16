@@ -28,6 +28,8 @@ import {
 export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   @Prop({ mutable: true }) variationId: number;
+  @Prop() promotionTitle: string;
+  @Prop() buyButtonText: string;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
@@ -196,7 +198,7 @@ export class BuyTogether implements ComponentWillLoad {
         {!this.isLoading && this.hasBuyTogether && (
           <form onSubmit={evt => this.onAddItemsToCart(evt)}>
             <div class="title-wrapper">
-              <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
+              <h2 class="title">{this.promotionTitle || 'Compre Junto'}</h2>
             </div>
             <section class="bagy-buy-together buy-together-container">
               <div class="product-main">
@@ -235,7 +237,7 @@ export class BuyTogether implements ComponentWillLoad {
                   type="submit"
                   disabled={this.isAddingToCart || !this.formIsValid}
                 >
-                  {this.buyTogetherData.originalData.buyButtonText || 'Comprar'}
+                  {this.buyButtonText || 'Comprar'}
                 </button>
               </div>
             </section>

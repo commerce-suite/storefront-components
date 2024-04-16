@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default     |
-| ------------- | -------------- | ----------- | -------- | ----------- |
-| `productId`   | `product-id`   |             | `number` | `undefined` |
-| `variationId` | `variation-id` |             | `number` | `undefined` |
+| Property         | Attribute         | Description | Type     | Default     |
+| ---------------- | ----------------- | ----------- | -------- | ----------- |
+| `buyButtonText`  | `buy-button-text` |             | `string` | `undefined` |
+| `productId`      | `product-id`      |             | `number` | `undefined` |
+| `promotionTitle` | `promotion-title` |             | `string` | `undefined` |
+| `variationId`    | `variation-id`    |             | `number` | `undefined` |
 
 
 ## Events
