@@ -13,8 +13,10 @@ export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./compon
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export namespace Components {
     interface BuyTogether {
+        "buyButtonText": string;
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
+        "promotionTitle": string;
         "variationId": number;
     }
     interface FrontCountdown {
@@ -64,13 +66,39 @@ export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
     target: HTMLProductCardElement;
 }
 declare global {
+    interface HTMLBuyTogetherElementEventMap {
+        "on-buy-together-add-cart": IProductCard[];
+        "loadBuyTogehter": {
+    status: EnumBuyTogetherOnLoadStatus;
+    data: IBuyTogetherComponentData | null;
+  };
+    }
     interface HTMLBuyTogetherElement extends Components.BuyTogether, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBuyTogetherElementEventMap>(type: K, listener: (this: HTMLBuyTogetherElement, ev: BuyTogetherCustomEvent<HTMLBuyTogetherElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBuyTogetherElementEventMap>(type: K, listener: (this: HTMLBuyTogetherElement, ev: BuyTogetherCustomEvent<HTMLBuyTogetherElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBuyTogetherElement: {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
     };
+    interface HTMLFrontCountdownElementEventMap {
+        "countdownFinished": any;
+    }
     interface HTMLFrontCountdownElement extends Components.FrontCountdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLFrontCountdownElementEventMap>(type: K, listener: (this: HTMLFrontCountdownElement, ev: FrontCountdownCustomEvent<HTMLFrontCountdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLFrontCountdownElementEventMap>(type: K, listener: (this: HTMLFrontCountdownElement, ev: FrontCountdownCustomEvent<HTMLFrontCountdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLFrontCountdownElement: {
         prototype: HTMLFrontCountdownElement;
@@ -88,13 +116,35 @@ declare global {
         prototype: HTMLFrontSelectElement;
         new (): HTMLFrontSelectElement;
     };
+    interface HTMLLaunchCountdownElementEventMap {
+        "countdownLoaded": { releaseDateActive: boolean };
+    }
     interface HTMLLaunchCountdownElement extends Components.LaunchCountdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLaunchCountdownElementEventMap>(type: K, listener: (this: HTMLLaunchCountdownElement, ev: LaunchCountdownCustomEvent<HTMLLaunchCountdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLaunchCountdownElementEventMap>(type: K, listener: (this: HTMLLaunchCountdownElement, ev: LaunchCountdownCustomEvent<HTMLLaunchCountdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLaunchCountdownElement: {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
     };
+    interface HTMLProductCardElementEventMap {
+        "inputSelect": IInputSelectDataEvent;
+    }
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLProductCardElementEventMap>(type: K, listener: (this: HTMLProductCardElement, ev: ProductCardCustomEvent<HTMLProductCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLProductCardElementEventMap>(type: K, listener: (this: HTMLProductCardElement, ev: ProductCardCustomEvent<HTMLProductCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLProductCardElement: {
         prototype: HTMLProductCardElement;
@@ -111,12 +161,14 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+        "buyButtonText"?: string;
         "onLoadBuyTogehter"?: (event: BuyTogetherCustomEvent<{
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
   }>) => void;
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
+        "promotionTitle"?: string;
         "variationId"?: number;
     }
     interface FrontCountdown {
