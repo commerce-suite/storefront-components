@@ -9,7 +9,7 @@
       "ci": "ci"
     },
     "banned": ["wip"],
-    "skip": [],
+    "skip": ["homolog"],
     "disallowed": ["master", "main", "develop", "stage"],
     "separator": "/",
     "msgBranchBanned": "Branches with the name '%s' are not allowed.",
