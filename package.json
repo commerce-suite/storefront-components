@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@stencil/core": "^4.0.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#task/otimizar-query-do-buy-together",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#feature/usuario-cadastra-compre-junto-com-varios-produtos-base",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
