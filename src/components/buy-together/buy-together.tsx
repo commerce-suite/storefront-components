@@ -28,6 +28,7 @@ import {
 export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   @Prop({ mutable: true }) variationId: number;
+  @Prop() showcaseMode: boolean;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
@@ -79,8 +80,12 @@ export class BuyTogether implements ComponentWillLoad {
       checkSelectedVariations(selectVariations),
     );
 
-    this.formIsValid =
-      isValidProductMain && isValidPivotProducts && productsPivotSelected.length > 0;
+    if (this.showcaseMode) {
+      this.formIsValid = isValidPivotProducts && productsPivotSelected.length > 0;
+    } else {
+      this.formIsValid =
+        isValidProductMain && isValidPivotProducts && productsPivotSelected.length > 0;
+    }
   }
 
   private emitOnLoad() {
@@ -165,6 +170,11 @@ export class BuyTogether implements ComponentWillLoad {
     }
   }
 
+  private showcaseModeClass() {
+    if (this.showcaseMode) return '-showcase';
+    else return '';
+  }
+
   @Watch('buyTogetherData')
   watchPropHandler(newValue: IBuyTogetherComponentData) {
     this.hasBuyTogether = !!newValue?.originalData;
@@ -198,38 +208,52 @@ export class BuyTogether implements ComponentWillLoad {
             <div class="title-wrapper">
               <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
             </div>
-            <section class="bagy-buy-together buy-together-container">
-              <div class="product-main">
-                <div class="product-wrapper">
-                  <product-card
-                    product={this.buyTogetherData.productMain}
-                    onInputSelect={ev => this.onInputSelectProductMain(ev)}
-                  ></product-card>
+            <section class={`bagy-buy-together buy-together-container ${this.showcaseModeClass()}`}>
+              {!this.showcaseMode && (
+                <div class="product-main">
+                  <div class="product-wrapper">
+                    <product-card product={this.buyTogetherData.productMain}></product-card>
+                    {this.buyTogetherData.productMain.selectVariations && (
+                      <variation-selector
+                        productId={this.buyTogetherData.productMain.id}
+                        onInputSelect={ev => this.onInputSelectProductMain(ev)}
+                        variations={this.buyTogetherData.productMain.selectVariations}
+                      ></variation-selector>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div class="plus-icon">
-                <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
-              </div>
-              <div class="products-order-bump">
+              )}
+              {!this.showcaseMode && (
+                <div class="plus-icon">
+                  <img src={getAssetPath('./assets/icons/icon-plus.svg')} alt="" />
+                </div>
+              )}
+              <div class={`products-order-bump ${this.showcaseModeClass()}`}>
                 {this.buyTogetherData.products.map(productCard => (
                   <div class="product-wrapper">
-                    <div class="checkbox-wrapper">
-                      <input
-                        type="checkbox"
-                        checked={productCard.isCheck}
-                        id={String(productCard.id)}
-                        onInput={ev => this.selectOrderBump(ev, productCard.id)}
-                      />
+                    <div class="product-wrapper-pivot">
+                      <div class="checkbox-wrapper">
+                        <input
+                          type="checkbox"
+                          checked={productCard.isCheck}
+                          id={String(productCard.id)}
+                          onInput={ev => this.selectOrderBump(ev, productCard.id)}
+                        />
+                      </div>
+                      <product-card inline product={productCard}></product-card>
                     </div>
-                    <product-card
-                      inline
-                      product={productCard}
-                      onInputSelect={ev => this.onInputSelectOrderBump(ev)}
-                    ></product-card>
+                    {productCard.selectVariations && (
+                      <variation-selector
+                        productId={productCard.id}
+                        variations={productCard.selectVariations}
+                        onInputSelect={ev => this.onInputSelectOrderBump(ev)}
+                        showcaseMode={this.showcaseMode}
+                      ></variation-selector>
+                    )}
                   </div>
                 ))}
               </div>
-              <div class="buy-btn-wrapper">
+              <div class={`buy-btn-wrapper ${this.showcaseModeClass()}`}>
                 <button
                   class="buy-btn"
                   type="submit"

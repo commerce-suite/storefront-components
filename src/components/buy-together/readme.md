@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default     |
-| ------------- | -------------- | ----------- | -------- | ----------- |
-| `productId`   | `product-id`   |             | `number` | `undefined` |
-| `variationId` | `variation-id` |             | `number` | `undefined` |
+| Property       | Attribute       | Description | Type      | Default     |
+| -------------- | --------------- | ----------- | --------- | ----------- |
+| `productId`    | `product-id`    |             | `number`  | `undefined` |
+| `showcaseMode` | `showcase-mode` |             | `boolean` | `undefined` |
+| `variationId`  | `variation-id`  |             | `number`  | `undefined` |
 
 
 ## Events
@@ -39,13 +40,15 @@ Type: `Promise<IBuyTogetherComponentData>`
 ### Depends on
 
 - [product-card](../ui/product-card)
+- [variation-selector](../ui/variation-selector)
 
 ### Graph
 ```mermaid
 graph TD;
   buy-together --> product-card
+  buy-together --> variation-selector
   product-card --> front-image
-  product-card --> front-select
+  variation-selector --> front-select
   style buy-together fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
