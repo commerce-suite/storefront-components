@@ -1,9 +1,6 @@
 # buy-together
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -14,7 +11,6 @@
 | `promotionTitle` | `promotion-title` |             | `string` | `undefined` |
 | `variationId`    | `variation-id`    |             | `number` | `undefined` |
 
-
 ## Events
 
 | Event                      | Description | Type                                                                                     |
@@ -22,35 +18,32 @@
 | `loadBuyTogehter`          |             | `CustomEvent<{ status: EnumBuyTogetherOnLoadStatus; data: IBuyTogetherComponentData; }>` |
 | `on-buy-together-add-cart` |             | `CustomEvent<IProductCard[]>`                                                            |
 
-
 ## Methods
 
 ### `getBuyTogetherData() => Promise<IBuyTogetherComponentData>`
 
-
-
 #### Returns
 
 Type: `Promise<IBuyTogetherComponentData>`
-
-
-
 
 ## Dependencies
 
 ### Depends on
 
 - [product-card](../ui/product-card)
+- [variation-selector](../ui/variation-selector)
 
 ### Graph
+
 ```mermaid
 graph TD;
   buy-together --> product-card
+  buy-together --> variation-selector
   product-card --> front-image
-  product-card --> front-select
+  variation-selector --> front-select
   style buy-together fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

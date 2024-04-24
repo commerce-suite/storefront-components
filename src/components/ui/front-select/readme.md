@@ -21,12 +21,12 @@
 
 ### Used by
 
- - [product-card](../product-card)
+ - [variation-selector](../variation-selector)
 
 ### Graph
 ```mermaid
 graph TD;
-  product-card --> front-select
+  variation-selector --> front-select
   style front-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

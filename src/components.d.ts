@@ -5,10 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
+import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-export { IInputSelectDataEvent, IProductCard } from "./components/ui/product-card/product-card.type";
+export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export namespace Components {
@@ -17,6 +17,7 @@ export namespace Components {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
         "promotionTitle": string;
+        "showcaseMode": boolean;
         "variationId": number;
     }
     interface FrontCountdown {
@@ -48,6 +49,11 @@ export namespace Components {
         "inline": boolean;
         "product": IProductCard;
     }
+    interface VariationSelector {
+        "productId": number;
+        "showcaseMode": boolean;
+        "variations": ISelectVariation[];
+    }
 }
 export interface BuyTogetherCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -61,9 +67,9 @@ export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
 }
-export interface ProductCardCustomEvent<T> extends CustomEvent<T> {
+export interface VariationSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLProductCardElement;
+    target: HTMLVariationSelectorElement;
 }
 declare global {
     interface HTMLBuyTogetherElementEventMap {
@@ -133,22 +139,28 @@ declare global {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
     };
-    interface HTMLProductCardElementEventMap {
-        "inputSelect": IInputSelectDataEvent;
-    }
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLProductCardElementEventMap>(type: K, listener: (this: HTMLProductCardElement, ev: ProductCardCustomEvent<HTMLProductCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLProductCardElementEventMap>(type: K, listener: (this: HTMLProductCardElement, ev: ProductCardCustomEvent<HTMLProductCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLProductCardElement: {
         prototype: HTMLProductCardElement;
         new (): HTMLProductCardElement;
+    };
+    interface HTMLVariationSelectorElementEventMap {
+        "inputSelect": IInputSelectDataEvent;
+    }
+    interface HTMLVariationSelectorElement extends Components.VariationSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVariationSelectorElementEventMap>(type: K, listener: (this: HTMLVariationSelectorElement, ev: VariationSelectorCustomEvent<HTMLVariationSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVariationSelectorElementEventMap>(type: K, listener: (this: HTMLVariationSelectorElement, ev: VariationSelectorCustomEvent<HTMLVariationSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVariationSelectorElement: {
+        prototype: HTMLVariationSelectorElement;
+        new (): HTMLVariationSelectorElement;
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
@@ -157,6 +169,7 @@ declare global {
         "front-select": HTMLFrontSelectElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "product-card": HTMLProductCardElement;
+        "variation-selector": HTMLVariationSelectorElement;
     }
 }
 declare namespace LocalJSX {
@@ -169,6 +182,7 @@ declare namespace LocalJSX {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
         "promotionTitle"?: string;
+        "showcaseMode"?: boolean;
         "variationId"?: number;
     }
     interface FrontCountdown {
@@ -200,8 +214,13 @@ declare namespace LocalJSX {
     }
     interface ProductCard {
         "inline"?: boolean;
-        "onInputSelect"?: (event: ProductCardCustomEvent<IInputSelectDataEvent>) => void;
         "product"?: IProductCard;
+    }
+    interface VariationSelector {
+        "onInputSelect"?: (event: VariationSelectorCustomEvent<IInputSelectDataEvent>) => void;
+        "productId"?: number;
+        "showcaseMode"?: boolean;
+        "variations"?: ISelectVariation[];
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
@@ -210,6 +229,7 @@ declare namespace LocalJSX {
         "front-select": FrontSelect;
         "launch-countdown": LaunchCountdown;
         "product-card": ProductCard;
+        "variation-selector": VariationSelector;
     }
 }
 export { LocalJSX as JSX };
@@ -222,6 +242,7 @@ declare module "@stencil/core" {
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
+            "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }
     }
 }
