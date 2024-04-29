@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event              | Description | Type               |
-| ------------------ | ----------- | ------------------ |
-| `onClickBuyButton` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `clickBuyButton` |             | `CustomEvent<any>` |
 
 
 ## Methods

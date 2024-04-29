@@ -11,7 +11,7 @@ import { EventEmitter } from 'stream';
 export class Showcase {
   @Prop() products: IProductCard[];
   @Prop() productsPerPage: number = 3;
-  @Event() onClickBuyButton: EventEmitter<any>;
+  @Event() clickBuyButton: EventEmitter<any>;
 
   componentDidLoad() {
     const splide = new Splide('#splide', {
@@ -37,7 +37,7 @@ export class Showcase {
   @Method()
   onClickBuyButtonEmit(event: any, product: IProductCard) {
     event.preventDefault();
-    this.onClickBuyButton.emit(product);
+    this.clickBuyButton.emit(product);
   }
 
   render() {

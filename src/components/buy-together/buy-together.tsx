@@ -177,7 +177,7 @@ export class BuyTogether implements ComponentWillLoad {
     else return '';
   }
 
-  @Listen('onClickBuyButton')
+  @Listen('clickBuyButton')
   onClickBuyButtonHandler(event: CustomEvent<IProductCard>) {
     window.open(`${window.location.origin}/${event.detail.slug}`, '_blank');
   }
