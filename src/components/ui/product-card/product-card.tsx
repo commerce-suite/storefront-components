@@ -30,8 +30,8 @@ export class ProductCard implements ComponentWillLoad {
         <div class={this.getClassWithInline('product-container')}>
           <front-image
             class={this.getClassWithInline('image')}
-            imageSrc={this.product?.image.src}
-            textAlt={this.product?.image.alt || 'Imagem do produto'}
+            imageSrc={this.product?.image?.src}
+            textAlt={this.product?.image?.alt || 'Imagem do produto'}
           ></front-image>
           <div class="info">
             <span class="title">{this.product?.name}</span>

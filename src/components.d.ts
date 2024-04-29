@@ -8,14 +8,17 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+import { IProductCard as IProductCard1 } from "./components";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+export { IProductCard as IProductCard1 } from "./components";
 export namespace Components {
     interface BuyTogether {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
         "showcaseMode": boolean;
+        "simpleShowcaseMode": boolean;
         "variationId": number;
     }
     interface FrontCountdown {
@@ -47,6 +50,11 @@ export namespace Components {
         "inline": boolean;
         "product": IProductCard;
     }
+    interface ShowcaseRelated {
+        "onClickBuyButtonEmit": (event: any, product: IProductCard1) => Promise<void>;
+        "products": IProductCard1[];
+        "productsPerPage": number;
+    }
     interface VariationSelector {
         "productId": number;
         "showcaseMode": boolean;
@@ -64,6 +72,10 @@ export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLShowcaseRelatedElement;
 }
 export interface VariationSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -143,6 +155,23 @@ declare global {
         prototype: HTMLProductCardElement;
         new (): HTMLProductCardElement;
     };
+    interface HTMLShowcaseRelatedElementEventMap {
+        "onClickBuyButton": any;
+    }
+    interface HTMLShowcaseRelatedElement extends Components.ShowcaseRelated, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLShowcaseRelatedElementEventMap>(type: K, listener: (this: HTMLShowcaseRelatedElement, ev: ShowcaseRelatedCustomEvent<HTMLShowcaseRelatedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLShowcaseRelatedElementEventMap>(type: K, listener: (this: HTMLShowcaseRelatedElement, ev: ShowcaseRelatedCustomEvent<HTMLShowcaseRelatedElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLShowcaseRelatedElement: {
+        prototype: HTMLShowcaseRelatedElement;
+        new (): HTMLShowcaseRelatedElement;
+    };
     interface HTMLVariationSelectorElementEventMap {
         "inputSelect": IInputSelectDataEvent;
     }
@@ -167,6 +196,7 @@ declare global {
         "front-select": HTMLFrontSelectElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "product-card": HTMLProductCardElement;
+        "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
     }
 }
@@ -179,6 +209,7 @@ declare namespace LocalJSX {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
         "showcaseMode"?: boolean;
+        "simpleShowcaseMode"?: boolean;
         "variationId"?: number;
     }
     interface FrontCountdown {
@@ -212,6 +243,11 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         "product"?: IProductCard;
     }
+    interface ShowcaseRelated {
+        "onOnClickBuyButton"?: (event: ShowcaseRelatedCustomEvent<any>) => void;
+        "products"?: IProductCard1[];
+        "productsPerPage"?: number;
+    }
     interface VariationSelector {
         "onInputSelect"?: (event: VariationSelectorCustomEvent<IInputSelectDataEvent>) => void;
         "productId"?: number;
@@ -225,6 +261,7 @@ declare namespace LocalJSX {
         "front-select": FrontSelect;
         "launch-countdown": LaunchCountdown;
         "product-card": ProductCard;
+        "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
     }
 }
@@ -238,6 +275,7 @@ declare module "@stencil/core" {
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
+            "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }
     }

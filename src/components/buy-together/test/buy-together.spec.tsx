@@ -115,6 +115,17 @@ describe('buy-together', () => {
     </buy-together>
     `);
   });
+  it('renders as simple showcase', async () => {
+    const page = await newSpecPage({
+      components: [BuyTogether],
+      html: `<buy-together simple-showcase-mode></buy-together>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <buy-together simple-showcase-mode="">
+        <showcase-related></showcase-related>
+      </buy-together>
+    `);
+  });
 
   it('renders loader', async () => {
     const page = await newSpecPage({
