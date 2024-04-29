@@ -49,6 +49,7 @@ export class FrontBuyTogetherAdapter {
       id,
       image: product.images?.length ? product.images[0] : { src: '' },
       name: product.name,
+      slug: product.slug,
       selectVariations: this.adapterAttributes(product),
     };
   }

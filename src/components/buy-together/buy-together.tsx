@@ -10,6 +10,7 @@ import {
   Event,
   EventEmitter,
   Watch,
+  Listen,
 } from '@stencil/core';
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
@@ -29,6 +30,7 @@ export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   @Prop({ mutable: true }) variationId: number;
   @Prop() showcaseMode: boolean;
+  @Prop() simpleShowcaseMode: boolean;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
@@ -175,6 +177,11 @@ export class BuyTogether implements ComponentWillLoad {
     else return '';
   }
 
+  @Listen('clickBuyButton')
+  onClickBuyButtonHandler(event: CustomEvent<IProductCard>) {
+    window.open(`${window.location.origin}/${event.detail.slug}`, '_blank');
+  }
+
   @Watch('buyTogetherData')
   watchPropHandler(newValue: IBuyTogetherComponentData) {
     this.hasBuyTogether = !!newValue?.originalData;
@@ -203,7 +210,7 @@ export class BuyTogether implements ComponentWillLoad {
             <span class="spinner" />
           </div>
         )}
-        {!this.isLoading && this.hasBuyTogether && (
+        {!this.isLoading && this.hasBuyTogether && !this.simpleShowcaseMode && (
           <form onSubmit={evt => this.onAddItemsToCart(evt)}>
             <div class="title-wrapper">
               <h2 class="title">{this.buyTogetherData.originalData.title || 'Compre Junto'}</h2>
@@ -264,6 +271,9 @@ export class BuyTogether implements ComponentWillLoad {
               </div>
             </section>
           </form>
+        )}
+        {!this.isLoading && this.hasBuyTogether && this.simpleShowcaseMode && (
+          <showcase-related products={this.buyTogetherData.products} />
         )}
       </Host>
     );
