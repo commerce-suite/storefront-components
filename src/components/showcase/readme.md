@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property          | Attribute           | Description | Type             | Default     |
-| ----------------- | ------------------- | ----------- | ---------------- | ----------- |
-| `products`        | --                  |             | `IProductCard[]` | `undefined` |
-| `productsPerPage` | `products-per-page` |             | `number`         | `3`         |
+| Property                | Attribute                  | Description | Type     | Default     |
+| ----------------------- | -------------------------- | ----------- | -------- | ----------- |
+| `buyTogetherProductIds` | `buy-together-product-ids` |             | `string` | `undefined` |
+| `productsPerPage`       | `products-per-page`        |             | `number` | `3`         |
 
 
 ## Events
@@ -22,16 +22,9 @@
 
 ## Methods
 
-### `onClickBuyButtonEmit(event: any, product: IProductCard) => Promise<void>`
+### `load() => Promise<void>`
 
 
-
-#### Parameters
-
-| Name      | Type           | Description |
-| --------- | -------------- | ----------- |
-| `event`   | `any`          |             |
-| `product` | `IProductCard` |             |
 
 #### Returns
 
@@ -42,10 +35,6 @@ Type: `Promise<void>`
 
 ## Dependencies
 
-### Used by
-
- - [buy-together](../buy-together)
-
 ### Depends on
 
 - [product-card](../ui/product-card)
@@ -55,7 +44,6 @@ Type: `Promise<void>`
 graph TD;
   showcase-related --> product-card
   product-card --> front-image
-  buy-together --> showcase-related
   style showcase-related fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
