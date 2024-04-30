@@ -1,25 +1,43 @@
-import { Component, Host, Prop, h, Event, Method } from '@stencil/core';
+import { Component, Host, Prop, h, Event, Method, State, ComponentWillLoad } from '@stencil/core';
 import Splide from '@splidejs/splide';
 import { IProductCard } from '../../components';
 import { EventEmitter } from 'stream';
+import { FrontBuyTogetherService } from '../buy-together/services/front-buy-together.service';
 
 @Component({
   tag: 'showcase-related',
   styleUrl: 'showcase.scss',
   shadow: false,
 })
-export class Showcase {
-  @Prop() products: IProductCard[];
+export class Showcase implements ComponentWillLoad {
   @Prop() productsPerPage: number = 3;
+  @Prop() buyTogetherProductIds: string;
+  @State() productIds: number[];
+  @State() products: any[];
   @Event() clickBuyButton: EventEmitter<any>;
 
-  componentDidLoad() {
+  @Method()
+  public async load() {
+    try {
+      this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
+    } catch (error) {
+      if (!error?.message?.includes('buy_together_not_found')) {
+        console.error('BuyTogether - load', { error });
+      }
+    }
+  }
+
+  public mountCarousel() {
     const splide = new Splide('#splide', {
       pagination: false,
       lazyLoad: true,
       breakpoints: {
         2000: {
           perPage: this.productsPerPage,
+          gap: '.7rem',
+        },
+        768: {
+          perPage: 3,
           gap: '.7rem',
         },
         640: {
@@ -34,10 +52,24 @@ export class Showcase {
     splide.mount();
   }
 
-  @Method()
+  parseProductIds() {
+    if (this.buyTogetherProductIds) {
+      this.productIds = JSON.parse(this.buyTogetherProductIds);
+    }
+  }
+
   onClickBuyButtonEmit(event: any, product: IProductCard) {
     event.preventDefault();
     this.clickBuyButton.emit(product);
+  }
+
+  async componentWillLoad(): Promise<void> {
+    this.parseProductIds();
+    await this.load();
+  }
+
+  componentDidLoad() {
+    this.mountCarousel();
   }
 
   render() {
@@ -46,10 +78,13 @@ export class Showcase {
         <div id="splide" class="splide">
           <div class="splide__track">
             <ul class="splide__list">
-              {this.products.map(product => {
+              {this.products?.map(product => {
                 return (
                   <li class="splide__slide">
-                    <form onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}>
+                    <form
+                      class="product-form"
+                      onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
+                    >
                       <div class="product-main-container">
                         <product-card product={product}></product-card>
                         <button type="submit" class="buy-button">
