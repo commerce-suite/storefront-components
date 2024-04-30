@@ -8,17 +8,14 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-import { IProductCard as IProductCard1 } from "./components";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-export { IProductCard as IProductCard1 } from "./components";
 export namespace Components {
     interface BuyTogether {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
         "showcaseMode": boolean;
-        "simpleShowcaseMode": boolean;
         "variationId": number;
     }
     interface FrontCountdown {
@@ -51,8 +48,8 @@ export namespace Components {
         "product": IProductCard;
     }
     interface ShowcaseRelated {
-        "onClickBuyButtonEmit": (event: any, product: IProductCard1) => Promise<void>;
-        "products": IProductCard1[];
+        "buyTogetherProductIds": string;
+        "load": () => Promise<void>;
         "productsPerPage": number;
     }
     interface VariationSelector {
@@ -156,7 +153,7 @@ declare global {
         new (): HTMLProductCardElement;
     };
     interface HTMLShowcaseRelatedElementEventMap {
-        "onClickBuyButton": any;
+        "clickBuyButton": any;
     }
     interface HTMLShowcaseRelatedElement extends Components.ShowcaseRelated, HTMLStencilElement {
         addEventListener<K extends keyof HTMLShowcaseRelatedElementEventMap>(type: K, listener: (this: HTMLShowcaseRelatedElement, ev: ShowcaseRelatedCustomEvent<HTMLShowcaseRelatedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -209,7 +206,6 @@ declare namespace LocalJSX {
         "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
         "productId"?: number;
         "showcaseMode"?: boolean;
-        "simpleShowcaseMode"?: boolean;
         "variationId"?: number;
     }
     interface FrontCountdown {
@@ -244,8 +240,8 @@ declare namespace LocalJSX {
         "product"?: IProductCard;
     }
     interface ShowcaseRelated {
-        "onOnClickBuyButton"?: (event: ShowcaseRelatedCustomEvent<any>) => void;
-        "products"?: IProductCard1[];
+        "buyTogetherProductIds"?: string;
+        "onClickBuyButton"?: (event: ShowcaseRelatedCustomEvent<any>) => void;
         "productsPerPage"?: number;
     }
     interface VariationSelector {
