@@ -29,11 +29,12 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "^4.0.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#task/adicionar-query-para-buy-together-list",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@stencil/sass": "^3.0.5",
+    "@stencil/vue-output-target": "^0.8.8",
     "@types/jest": "^27.5.2",
     "@types/lodash": "^4.14.199",
     "@types/node": "^16.18.11",
