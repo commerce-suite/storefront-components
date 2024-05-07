@@ -2,6 +2,23 @@
 @import './splide/splide.min.css';
 @import './splide/splide-sea-green.min.css';
 
+.showcase-related-products-title {
+  text-align: center;
+  margin: 0;
+}
+
+.splide__arrow--next {
+  right: 0.5em;
+}
+
+.splide__arrow--prev {
+  left: 0.5em;
+}
+
+ul li:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+
 .product-form {
   height: 100%;
 }
@@ -22,4 +39,6 @@
   @include front-button;
   --btn-bg-color: var(--color-buy-button);
   --btn-text-color: var(--color-buy-button-text);
+  background-color: var(--primary);
+  color: var(--fc-color-white, #fff);
 }

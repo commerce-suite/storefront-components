@@ -7,10 +7,13 @@
 
 ## Properties
 
-| Property                | Attribute                  | Description | Type     | Default     |
-| ----------------------- | -------------------------- | ----------- | -------- | ----------- |
-| `buyTogetherProductIds` | `buy-together-product-ids` |             | `string` | `undefined` |
-| `productsPerPage`       | `products-per-page`        |             | `number` | `3`         |
+| Property                | Attribute                  | Description | Type      | Default     |
+| ----------------------- | -------------------------- | ----------- | --------- | ----------- |
+| `buttonLabel`           | `button-label`             |             | `string`  | `undefined` |
+| `buyTogetherProductIds` | `buy-together-product-ids` |             | `string`  | `undefined` |
+| `productsPerPage`       | `products-per-page`        |             | `number`  | `undefined` |
+| `showArrows`            | `show-arrows`              |             | `boolean` | `true`      |
+| `showcaseTitle`         | `showcase-title`           |             | `string`  | `undefined` |
 
 
 ## Events
