@@ -1,6 +1,4 @@
-'use strict';
-
-const index = require('./index-78a45013.js');
+import { B as BuyTogetherService } from './index-7b8cc3ac.js';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1351,6 +1349,7 @@ class FrontBuyTogetherAdapter {
             price,
             priceBase: priceCompare,
             id,
+            productId: product.productId,
             image: ((_a = product.images) === null || _a === void 0 ? void 0 : _a.length) ? product.images[0] : { src: '' },
             name: product.name,
             slug: product.slug,
@@ -1592,7 +1591,7 @@ class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
 
 class FrontBuyTogetherService {
     async getBuyTogetherByProductId(productId, variationId) {
-        const responseData = await index.BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
+        const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
         if (!responseData)
             return null;
         const buyTogetherData = new FrontBuyTogetherFilter(responseData);
@@ -1602,10 +1601,10 @@ class FrontBuyTogetherService {
             .adapterToComponentData().getComponentData;
     }
     async getOnlyPivotProducts(productIds) {
-        const responseData = await index.BuyTogetherService.getByProductIds(productIds);
+        const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.map(response => {
             const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.id));
+            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.productId));
             return filteredUniqueProducts;
         });
         return productsPivot.reduce((acc, current) => {
@@ -1671,6 +1670,6 @@ class FrontBuyTogetherService {
     }
 }
 
-exports.FrontBuyTogetherService = FrontBuyTogetherService;
+export { FrontBuyTogetherService as F };
 
-//# sourceMappingURL=front-buy-together.service-7808ad91.js.map
+//# sourceMappingURL=front-buy-together.service-59dcaad4.js.map

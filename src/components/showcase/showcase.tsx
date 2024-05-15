@@ -17,16 +17,20 @@ export class Showcase implements ComponentWillLoad {
   @Prop() showArrows: boolean = true;
   @State() productIds: number[];
   @State() products: any[];
+  @State() loading: boolean;
   @Event() clickBuyButton: EventEmitter<any>;
 
   @Method()
   public async load() {
     try {
+      this.loading = true;
       this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
     } catch (error) {
       if (!error?.message?.includes('buy_together_not_found')) {
         console.error('BuyTogether - load', { error });
       }
+    } finally {
+      this.loading = false;
     }
   }
 
@@ -53,6 +57,7 @@ export class Showcase implements ComponentWillLoad {
         480: {
           perPage: 1,
           arrows: this.showArrows,
+          padding: { right: '24px' },
         },
       },
     });
@@ -82,32 +87,39 @@ export class Showcase implements ComponentWillLoad {
   render() {
     return (
       <Host>
-        <div class="showcase-related-products">
-          <h4 class="showcase-related-products-title">{this.showcaseTitle}</h4>
-          <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
-            <div class="splide__track">
-              <ul class="splide__list">
-                {this.products?.map(product => {
-                  return (
-                    <li class="splide__slide">
-                      <form
-                        class="product-form"
-                        onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
-                      >
-                        <div class="product-main-container">
-                          <product-card product={product}></product-card>
-                          <button type="submit" class="buy-button">
-                            Comprar
-                          </button>
-                        </div>
-                      </form>
-                    </li>
-                  );
-                })}
-              </ul>
+        {this.loading && (
+          <div class="loading-container">
+            <span class="spinner" />
+          </div>
+        )}
+        {!this.loading && this.products && (
+          <div class="showcase-related-products">
+            <h4 class="showcase-related-products-title">{this.showcaseTitle}</h4>
+            <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
+              <div class="splide__track">
+                <ul class="splide__list">
+                  {this.products?.map(product => {
+                    return (
+                      <li class="splide__slide">
+                        <form
+                          class="product-form"
+                          onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
+                        >
+                          <div class="product-main-container">
+                            <product-card product={product}></product-card>
+                            <button type="submit" class="buy-button">
+                              Comprar
+                            </button>
+                          </div>
+                        </form>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Host>
     );
   }

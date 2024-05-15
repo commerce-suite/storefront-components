@@ -1,11 +1,7 @@
 @import '../../style/mixins/button';
 @import './splide/splide.min.css';
 @import './splide/splide-sea-green.min.css';
-
-.showcase-related-products-title {
-  text-align: center;
-  margin: 0;
-}
+@import '../../style/mixins/spinner-loading.scss';
 
 .splide__arrow--next {
   right: 0.5em;
@@ -17,6 +13,22 @@
 
 ul li:not(:last-child) {
   margin-bottom: 0 !important;
+}
+
+.loading-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  .spinner {
+    @include lds-dual-ring;
+  }
+}
+
+.showcase-related-products-title {
+  text-align: center;
+  margin: 0;
 }
 
 .product-form {

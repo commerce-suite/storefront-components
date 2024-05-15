@@ -26,7 +26,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     const productsPivot = responseData.map(response => {
       const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
       const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(
-        product => !productIds.includes(+product.id),
+        product => !productIds.includes(+product.productId),
       );
       return filteredUniqueProducts;
     });

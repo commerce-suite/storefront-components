@@ -11,6 +11,7 @@ export declare class Showcase implements ComponentWillLoad {
     showArrows: boolean;
     productIds: number[];
     products: any[];
+    loading: boolean;
     clickBuyButton: EventEmitter<any>;
     load(): Promise<void>;
     mountCarousel(): void;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-dbc06400.js');
-const frontBuyTogether_service = require('./front-buy-together.service-7808ad91.js');
+const frontBuyTogether_service = require('./front-buy-together.service-285a87a0.js');
 require('./index-78a45013.js');
 
 var EnumBuyTogetherOnLoadStatus;

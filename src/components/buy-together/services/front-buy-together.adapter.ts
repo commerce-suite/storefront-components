@@ -47,6 +47,7 @@ export class FrontBuyTogetherAdapter {
       price,
       priceBase: priceCompare,
       id,
+      productId: product.productId,
       image: product.images?.length ? product.images[0] : { src: '' },
       name: product.name,
       slug: product.slug,

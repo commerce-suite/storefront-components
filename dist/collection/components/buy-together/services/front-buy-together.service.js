@@ -17,7 +17,7 @@ export class FrontBuyTogetherService {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.map(response => {
             const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.id));
+            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.productId));
             return filteredUniqueProducts;
         });
         return productsPivot.reduce((acc, current) => {

@@ -10,16 +10,21 @@ export class Showcase {
         this.showArrows = true;
         this.productIds = undefined;
         this.products = undefined;
+        this.loading = undefined;
     }
     async load() {
         var _a;
         try {
+            this.loading = true;
             this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
         }
         catch (error) {
             if (!((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('buy_together_not_found'))) {
                 console.error('BuyTogether - load', { error });
             }
+        }
+        finally {
+            this.loading = false;
         }
     }
     mountCarousel() {
@@ -46,6 +51,7 @@ export class Showcase {
                 480: {
                     perPage: 1,
                     arrows: this.showArrows,
+                    padding: { right: '24px' },
                 },
             },
         });
@@ -69,9 +75,9 @@ export class Showcase {
     }
     render() {
         var _a;
-        return (h(Host, { key: '874d85640961bffe3dc7c9f20f0dd8b6f0e450ba' }, h("div", { key: '794f2c1abcce9865743d4b3bf7d434cbf7f347d4', class: "showcase-related-products" }, h("h4", { key: '98eb61743cdc114a6d7126ecefa3e07b80321cf2', class: "showcase-related-products-title" }, this.showcaseTitle), h("div", { key: 'e0d0a20281e6e79075355b2fb16bc75858fd3ccd', id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { key: '6085373868c1ae8f9e6fcc3b0fb8198b72620722', class: "splide__track" }, h("ul", { key: '30754f1595bf68483a560035ff0a7a03d120c3d3', class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (h(Host, { key: 'e660e02f42898ccc8e517486da503c72f1025ce2' }, this.loading && (h("div", { key: '484c080703f51bcb8ec5d275329ad3a696f9cf8b', class: "loading-container" }, h("span", { key: '0b8e278b68b8ef8e6a5d9c8a00f29a9e143fe06a', class: "spinner" }))), !this.loading && this.products && (h("div", { key: 'cbe9322baa9571bd8eabb51e4e375a7ac8b2b6b1', class: "showcase-related-products" }, h("h4", { key: 'd298802147283a7005e43435e940607bb66cce49', class: "showcase-related-products-title" }, this.showcaseTitle), h("div", { key: 'f3b2320dd5b7ec88404edbd983c2c3e64a46dda4', id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { key: 'd54e1fbea541b0a829e3f3443d36522881103884', class: "splide__track" }, h("ul", { key: '32e75223ebdfc8d4de61ecf59b36bcbbbb91b371', class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, "Comprar")))));
-        })))))));
+        }))))))));
     }
     static get is() { return "showcase-related"; }
     static get originalStyleUrls() {
@@ -177,7 +183,8 @@ export class Showcase {
     static get states() {
         return {
             "productIds": {},
-            "products": {}
+            "products": {},
+            "loading": {}
         };
     }
     static get events() {

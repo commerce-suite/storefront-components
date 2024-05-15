@@ -1349,6 +1349,7 @@ class FrontBuyTogetherAdapter {
             price,
             priceBase: priceCompare,
             id,
+            productId: product.productId,
             image: ((_a = product.images) === null || _a === void 0 ? void 0 : _a.length) ? product.images[0] : { src: '' },
             name: product.name,
             slug: product.slug,
@@ -1603,7 +1604,7 @@ class FrontBuyTogetherService {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.map(response => {
             const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.id));
+            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.productId));
             return filteredUniqueProducts;
         });
         return productsPivot.reduce((acc, current) => {
