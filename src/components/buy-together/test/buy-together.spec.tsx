@@ -13,48 +13,106 @@ describe('buy-together', () => {
       components: [BuyTogether],
       html: `<buy-together></buy-together>`,
     });
-    expect(page.root).toEqualHtml(`<buy-together>
-    <form>
-    <div class="title-wrapper">
-        <h2 class="title">${buyTogetherDataApi.title}</h2>
-    </div>
-    <section class="bagy-buy-together buy-together-container">
-      <div class="product-main">
-        <div class="product-wrapper">
-          <product-card></product-card>
+    expect(page.root).toEqualHtml(`
+    <buy-together>
+      <form>
+        <div class="title-wrapper">
+          <h2 class="title">${buyTogetherDataApi.title}</h2>
         </div>
-      </div>
-      <div class="plus-icon">
-        <img alt="" src="/assets/icons/icon-plus.svg">
-      </div>
-      <div class="products-order-bump">
-        <div class="product-wrapper">
-          <div class="checkbox-wrapper">
-            <input checked="" id="9480211" type="checkbox">
+        <section class="bagy-buy-together buy-together-container">
+          <div class="product-main">
+            <div class="product-wrapper">
+              <product-card></product-card>
+              <variation-selector productid="${buyTogetherDataApi.product.id}"></variation-selector>
+            </div>
           </div>
-          <product-card inline=""></product-card>
+          <div class="plus-icon">
+            <img alt="" src="/assets/icons/icon-plus.svg" />
+          </div>
+          <div class="products-order-bump">
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480211" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480211"></variation-selector>
+            </div>
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480233" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480233"></variation-selector>
+            </div>
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480162" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480162"></variation-selector>
+            </div>
+          </div>
+          <div class="buy-btn-wrapper">
+            <button class="buy-btn" type="submit">${buyTogetherDataApi.buyButtonText}</button>
+          </div>
+        </section>
+      </form>
+    </buy-together>
+    `);
+  });
+  it('renders as showcase', async () => {
+    const page = await newSpecPage({
+      components: [BuyTogether],
+      html: `<buy-together showcase-mode></buy-together>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <buy-together showcase-mode>
+      <form>
+        <div class="title-wrapper">
+          <h2 class="title">${buyTogetherDataApi.title}</h2>
         </div>
-        <div class="product-wrapper">
-          <div class="checkbox-wrapper">
-            <input checked="" id="9480233" type="checkbox">
+        <section class="bagy-buy-together buy-together-container -showcase">
+          <div class="products-order-bump -showcase">
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480211" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480211" showcasemode=""></variation-selector>
+            </div>
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480233" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480233" showcasemode=""></variation-selector>
+            </div>
+            <div class="product-wrapper">
+              <div class="product-wrapper-pivot">
+                <div class="checkbox-wrapper">
+                  <input checked="" id="9480162" type="checkbox" />
+                </div>
+                <product-card inline=""></product-card>
+              </div>
+              <variation-selector productid="9480162" showcasemode=""></variation-selector>
+            </div>
           </div>
-          <product-card inline=""></product-card>
-        </div>
-        <div class="product-wrapper">
-          <div class="checkbox-wrapper">
-            <input checked="" id="9480162" type="checkbox">
+          <div class="buy-btn-wrapper -showcase">
+            <button class="buy-btn" type="submit">${buyTogetherDataApi.buyButtonText}</button>
           </div>
-          <product-card inline=""></product-card>
-        </div>
-      </div>
-      <div class="buy-btn-wrapper">
-        <button class="buy-btn" type="submit">
-          ${buyTogetherDataApi.buyButtonText}
-        </button>
-          </div>
-      </section>
-        </form>
-      </buy-together>
+        </section>
+      </form>
+    </buy-together>
     `);
   });
 

@@ -1,0 +1,19 @@
+{
+  "entries": [
+    "components/buy-together/buy-together.js",
+    "components/launch-countdown/launch-countdown.js",
+    "components/showcase/showcase.js",
+    "components/ui/front-countdown/front-countdown.js",
+    "components/ui/front-image/front-image.js",
+    "components/ui/front-select/front-select.js",
+    "components/ui/product-card/product-card.js",
+    "components/ui/variation-selector/variation-selector.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "4.17.0",
+    "typescriptVersion": "5.4.5"
+  },
+  "collections": [],
+  "bundles": []
+}

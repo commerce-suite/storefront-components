@@ -18,7 +18,7 @@ export class FrontSelect {
   componentWillLoad() {
     document.documentElement.style.setProperty(
       '--arrow-up-image-src',
-      `url(${getAssetPath('./assets/images/arrow-up.png')})`,
+      `url(${getAssetPath('../../../assets/images/arrow-up.png')})`,
     );
   }
 

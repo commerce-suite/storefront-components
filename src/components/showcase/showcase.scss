@@ -1,0 +1,56 @@
+@import '../../style/mixins/button';
+@import './splide/splide.min.css';
+@import './splide/splide-sea-green.min.css';
+@import '../../style/mixins/spinner-loading.scss';
+
+.splide__arrow--next {
+  right: 0.5em;
+}
+
+.splide__arrow--prev {
+  left: 0.5em;
+}
+
+ul li:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+
+.loading-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  .spinner {
+    @include lds-dual-ring;
+  }
+}
+
+.showcase-related-products-title {
+  text-align: center;
+  margin: 0;
+}
+
+.product-form {
+  height: 100%;
+}
+
+.product-main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  max-height: 650px;
+  padding: 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.buy-button {
+  @include front-button;
+  --btn-bg-color: var(--color-buy-button);
+  --btn-text-color: var(--color-buy-button-text);
+  background-color: var(--primary);
+  color: var(--fc-color-white, #fff);
+}
