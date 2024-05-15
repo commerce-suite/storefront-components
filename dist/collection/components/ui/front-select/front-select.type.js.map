@@ -1,0 +1,1 @@
+{"version":3,"file":"front-select.type.js","sourceRoot":"","sources":["../../../../../src/components/ui/front-select/front-select.type.ts"],"names":[],"mappings":"","sourcesContent":["export interface IFrontSelectOption {\n  name: string;\n  value: any;\n  disabled?: boolean;\n}\n"]}
