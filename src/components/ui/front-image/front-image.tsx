@@ -47,7 +47,6 @@ export class FrontImage {
             src={this.imageSrc}
             alt={this.textAlt || 'Imagem'}
             onLoad={() => this.onSrcLoadFinish()}
-            onError={() => this.onSrcLoadError()}
           />
           {!!this.figCaption && <figcaption>{this.figCaption}</figcaption>}
         </figure>
