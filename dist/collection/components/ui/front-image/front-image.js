@@ -25,10 +25,11 @@ export class FrontImage {
         }, 500);
     }
     changeImageSrc() {
+        console.log('this.imageSrc', this.imageSrc);
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: 'daf3ac48a0253f7f196b478ed4a3a1d27fde5511' }, h("figure", { key: 'd8b8ebe533e94ad30136fa9b49c28cea904ff209', class: this.getImageClassByProps() }, h("img", { key: 'ef3d12c21715e533b52c183f2d3d8bdbe0495f5a', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish(), onError: () => this.onSrcLoadError() }), !!this.figCaption && h("figcaption", { key: '365eea8bfca39d16b589a7eca873316945edf187' }, this.figCaption))));
+        return (h(Host, { key: '3ec6e7d2c2d3892d12ade3a8a1927dcd7acd3e23' }, h("figure", { key: '504d6c93eab3f0937f9c32c68457c5e34798da87', class: this.getImageClassByProps() }, h("img", { key: '3c68fe2c0d75d3848ad7385d49801d0934e65542', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish(), onError: () => this.onSrcLoadError() }), !!this.figCaption && h("figcaption", { key: '4c1116b5128356dd3f695602cfbde3699bc78ec6' }, this.figCaption))));
     }
     static get is() { return "front-image"; }
     static get originalStyleUrls() {
