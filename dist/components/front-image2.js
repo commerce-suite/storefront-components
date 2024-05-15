@@ -1,4 +1,4 @@
-import { proxyCustomElement, HTMLElement, getAssetPath, h, Host } from '@stencil/core/internal/client';
+import { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';
 
 function currencyFormat(value) {
     return Number(value).toLocaleString('pt-BR', {
@@ -31,23 +31,22 @@ const FrontImage = /*@__PURE__*/ proxyCustomElement(class FrontImage extends HTM
         };
         return `image-container ${getClassByProps(classProps)}`;
     }
-    onSrcLoadError() {
-        this.imageSrc = getAssetPath('./assets/images/image-fallback.png');
-        setTimeout(() => {
-            this.isSrcLoading = false;
-        }, 500);
-    }
+    // private onSrcLoadError() {
+    //   this.imageSrc = getAssetPath('./assets/images/image-fallback.png');
+    //   setTimeout(() => {
+    //     this.isSrcLoading = false;
+    //   }, 500);
+    // }
     onSrcLoadFinish() {
         setTimeout(() => {
             this.isSrcLoading = false;
         }, 500);
     }
     changeImageSrc() {
-        console.log('this.imageSrc', this.imageSrc);
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: '3ec6e7d2c2d3892d12ade3a8a1927dcd7acd3e23' }, h("figure", { key: '504d6c93eab3f0937f9c32c68457c5e34798da87', class: this.getImageClassByProps() }, h("img", { key: '3c68fe2c0d75d3848ad7385d49801d0934e65542', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish(), onError: () => this.onSrcLoadError() }), !!this.figCaption && h("figcaption", { key: '4c1116b5128356dd3f695602cfbde3699bc78ec6' }, this.figCaption))));
+        return (h(Host, { key: 'dfe19929d1a4460c3a53ab8b21473d50f373f95d' }, h("figure", { key: '8ca7f5cbd4cea2630345855ab5134053b87bc0c0', class: this.getImageClassByProps() }, h("img", { key: '88b32865d26eec60da8d9c2ec49f48ee61750c36', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: 'b5e2e7ee79664becc8951d8a24e3e5e3ab751c81' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]
