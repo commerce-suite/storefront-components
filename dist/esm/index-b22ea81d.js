@@ -1223,4 +1223,4 @@ var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
 export { Host as H, bootstrapLazy as b, createEvent as c, getAssetPath as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
 
-//# sourceMappingURL=index-f45e2507.js.map
+//# sourceMappingURL=index-b22ea81d.js.map

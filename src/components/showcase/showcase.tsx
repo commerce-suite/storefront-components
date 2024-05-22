@@ -92,7 +92,7 @@ export class Showcase implements ComponentWillLoad {
             <span class="spinner" />
           </div>
         )}
-        {!this.loading && this.products && (
+        {!this.loading && this.products.length && (
           <div class="showcase-related-products">
             <h4 class="showcase-related-products-title">{this.showcaseTitle}</h4>
             <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
