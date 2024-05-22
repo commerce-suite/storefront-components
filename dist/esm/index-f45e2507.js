@@ -1115,7 +1115,24 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
   if (module) {
     return module[exportName];
   }
-  /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
+  
+        if (!hmrVersionId || !BUILD.hotModuleReplacement) {
+          const processMod = importedModule => {
+              cmpModules.set(bundleId, importedModule);
+              return importedModule[exportName];
+          }
+          switch(bundleId) {
+              
+                case 'buy-together_7':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './buy-together_7.entry.js').then(processMod, consoleError);
+                case 'showcase-related':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './showcase-related.entry.js').then(processMod, consoleError);
+          }
+      }
   return import(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */

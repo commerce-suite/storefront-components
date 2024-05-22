@@ -1137,7 +1137,24 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
   if (module) {
     return module[exportName];
   }
-  /*!__STENCIL_STATIC_IMPORT_SWITCH__*/
+  
+        if (!hmrVersionId || !BUILD.hotModuleReplacement) {
+          const processMod = importedModule => {
+              cmpModules.set(bundleId, importedModule);
+              return importedModule[exportName];
+          }
+          switch(bundleId) {
+              
+                case 'buy-together_7.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './buy-together_7.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'showcase-related.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './showcase-related.cjs.entry.js')); }).then(processMod, consoleError);
+          }
+      }
   return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
