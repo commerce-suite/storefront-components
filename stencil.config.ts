@@ -32,4 +32,7 @@ export const config: Config = {
     modulePathIgnorePatterns: ['<rootDir>/dist'],
   },
   plugins: [sass()],
+  extras: {
+    enableImportInjection: true,
+  },
 };
