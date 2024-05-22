@@ -3,8 +3,10 @@ import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTo
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 export declare class FrontBuyTogetherService implements IFrontBuyTogetherService {
+    private filterOutOriginalProducts;
+    private getUniqueProducts;
     getBuyTogetherByProductId(productId: number, variationId?: number): Promise<IBuyTogetherComponentData>;
-    getOnlyPivotProducts(productIds: number[]): Promise<import("../buy-together.type").IProductOrderBump[]>;
+    getOnlyPivotProducts(productIds: number[]): Promise<any[]>;
     changeProductOptions(data: IInputSelectDataEvent, productTarget: Product): IChangeResult | null;
     changeColor(colorValue: string, productTarget: Product): IChangeResult;
     changeAttribute(attributeValue: string, productTarget: Product): IChangeResult;

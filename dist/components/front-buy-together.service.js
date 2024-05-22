@@ -819,13 +819,13 @@ var getNative = _getNative,
     root = _root;
 
 /* Built-in method references that are verified to be native. */
-var Map$1 = getNative(root, 'Map');
+var Map$2 = getNative(root, 'Map');
 
-var _Map = Map$1;
+var _Map = Map$2;
 
 var Hash = _Hash,
     ListCache = _ListCache,
-    Map = _Map;
+    Map$1 = _Map;
 
 /**
  * Removes all key-value entries from the map.
@@ -838,7 +838,7 @@ function mapCacheClear$1() {
   this.size = 0;
   this.__data__ = {
     'hash': new Hash,
-    'map': new (Map || ListCache),
+    'map': new (Map$1 || ListCache),
     'string': new Hash
   };
 }
@@ -1590,6 +1590,18 @@ class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
 }
 
 class FrontBuyTogetherService {
+    filterOutOriginalProducts(products, productIds) {
+        return products.filter(product => !productIds.includes(+product.productId));
+    }
+    getUniqueProducts(products) {
+        const uniqueProductsMap = new Map();
+        for (const product of products) {
+            if (!uniqueProductsMap.has(product.id)) {
+                uniqueProductsMap.set(product.id, product);
+            }
+        }
+        return Array.from(uniqueProductsMap.values());
+    }
     async getBuyTogetherByProductId(productId, variationId) {
         const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
         if (!responseData)
@@ -1602,14 +1614,13 @@ class FrontBuyTogetherService {
     }
     async getOnlyPivotProducts(productIds) {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
-        const productsPivot = responseData.map(response => {
+        const productsPivot = responseData.flatMap(response => {
             const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.productId));
-            return filteredUniqueProducts;
+            return adaptedBuyTogether.getComponentData.products;
         });
-        return productsPivot.reduce((acc, current) => {
-            return acc.concat(current);
-        }, []);
+        const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
+        const uniqueProducts = this.getUniqueProducts(filteredProducts);
+        return uniqueProducts;
     }
     changeProductOptions(data, productTarget) {
         switch (data.eventSelectType) {

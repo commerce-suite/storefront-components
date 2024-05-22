@@ -1,5 +1,5 @@
 import { BuyTogetherService } from '@uxshop/storefront-core';
-import { IBuyTogetherComponentData } from '../buy-together.type';
+import { IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
 import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IInputSelectDataEvent } from '../../../components';
@@ -8,6 +8,20 @@ import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
+  private filterOutOriginalProducts(products: IProductOrderBump[], productIds: number[]) {
+    return products.filter(product => !productIds.includes(+product.productId));
+  }
+
+  private getUniqueProducts(products: IProductOrderBump[]) {
+    const uniqueProductsMap = new Map();
+    for (const product of products) {
+      if (!uniqueProductsMap.has(product.id)) {
+        uniqueProductsMap.set(product.id, product);
+      }
+    }
+    return Array.from(uniqueProductsMap.values());
+  }
+
   public async getBuyTogetherByProductId(
     productId: number,
     variationId?: number,
@@ -23,17 +37,15 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
 
   public async getOnlyPivotProducts(productIds: number[]) {
     const responseData = await BuyTogetherService.getByProductIds(productIds);
-    const productsPivot = responseData.map(response => {
+    const productsPivot = responseData.flatMap(response => {
       const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-      const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(
-        product => !productIds.includes(+product.productId),
-      );
-      return filteredUniqueProducts;
+      return adaptedBuyTogether.getComponentData.products;
     });
 
-    return productsPivot.reduce((acc, current) => {
-      return acc.concat(current);
-    }, []);
+    const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
+    const uniqueProducts = this.getUniqueProducts(filteredProducts);
+
+    return uniqueProducts;
   }
 
   public changeProductOptions(

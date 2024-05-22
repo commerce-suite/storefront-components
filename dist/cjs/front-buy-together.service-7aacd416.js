@@ -1,3 +1,5 @@
+'use strict';
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 var webfontloader = {exports: {}};
@@ -11890,6 +11892,18 @@ class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
 }
 
 class FrontBuyTogetherService {
+    filterOutOriginalProducts(products, productIds) {
+        return products.filter(product => !productIds.includes(+product.productId));
+    }
+    getUniqueProducts(products) {
+        const uniqueProductsMap = new Map();
+        for (const product of products) {
+            if (!uniqueProductsMap.has(product.id)) {
+                uniqueProductsMap.set(product.id, product);
+            }
+        }
+        return Array.from(uniqueProductsMap.values());
+    }
     async getBuyTogetherByProductId(productId, variationId) {
         const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
         if (!responseData)
@@ -11902,14 +11916,13 @@ class FrontBuyTogetherService {
     }
     async getOnlyPivotProducts(productIds) {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
-        const productsPivot = responseData.map(response => {
+        const productsPivot = responseData.flatMap(response => {
             const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
-            const filteredUniqueProducts = adaptedBuyTogether.getComponentData.products.filter(product => !productIds.includes(+product.productId));
-            return filteredUniqueProducts;
+            return adaptedBuyTogether.getComponentData.products;
         });
-        return productsPivot.reduce((acc, current) => {
-            return acc.concat(current);
-        }, []);
+        const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
+        const uniqueProducts = this.getUniqueProducts(filteredProducts);
+        return uniqueProducts;
     }
     changeProductOptions(data, productTarget) {
         switch (data.eventSelectType) {
@@ -11970,6 +11983,7 @@ class FrontBuyTogetherService {
     }
 }
 
-export { FrontBuyTogetherService as F, ProductService as P };
+exports.FrontBuyTogetherService = FrontBuyTogetherService;
+exports.ProductService = ProductService;
 
-//# sourceMappingURL=front-buy-together.service-d5334714.js.map
+//# sourceMappingURL=front-buy-together.service-7aacd416.js.map
