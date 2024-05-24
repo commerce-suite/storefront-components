@@ -162,7 +162,7 @@ export class BuyTogether implements ComponentWillLoad {
       event.preventDefault();
       const variationsIds: number[] = [];
       const checkedProducts = this.buyTogetherData.products.filter(product => product.isCheck);
-      variationsIds.push(this.buyTogetherData.productMain.id);
+      if (!this.showcaseMode) variationsIds.push(this.buyTogetherData.productMain.id);
       checkedProducts.forEach(product => variationsIds.push(product.id));
       await this.buyTogetherService.addToCart(variationsIds);
       this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
