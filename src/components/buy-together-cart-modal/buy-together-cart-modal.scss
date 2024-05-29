@@ -1,0 +1,59 @@
+@import '../../style/mixins/button';
+@import '../../style/mixins/screen-media';
+
+.buy-together-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      @include for-desktop {
+        flex-direction: row;
+      }
+
+      & img {
+        width: 32px;
+        height: 32px;
+      }
+
+      & h2 {
+        margin: 0;
+      }
+    }
+
+    @include for-desktop {
+      flex-direction: row;
+    }
+  }
+}
+
+.header-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include for-desktop {
+    flex-direction: row;
+  }
+
+  &-primary {
+    @include front-button;
+  }
+  &-secondary {
+    @include front-button;
+    background-color: var(--fc-color-secondary);
+    white-space: nowrap;
+  }
+}
