@@ -50,10 +50,11 @@
 
   &-primary {
     @include front-button;
+    background-color: var(--color-buy-button);
   }
+
   &-secondary {
     @include front-button;
-    background-color: var(--fc-color-secondary);
     white-space: nowrap;
   }
 }
