@@ -18,8 +18,7 @@ export class Showcase implements ComponentWillLoad {
   @State() productIds: number[];
   @State() products: any[];
   @State() loading: boolean;
-  @Event() clickBuyButton: EventEmitter<any>;
-
+  @Event({ bubbles: true, eventName: 'clickBuyButton' }) clickBuyButton: EventEmitter<any>;
   @Method()
   public async load() {
     try {
