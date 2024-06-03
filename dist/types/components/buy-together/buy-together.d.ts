@@ -5,6 +5,8 @@ export declare class BuyTogether implements ComponentWillLoad {
     productId: number;
     variationId: number;
     showcaseMode: boolean;
+    promotionTitle: string;
+    buyButtonText: string;
     private buyTogetherService;
     buyTogetherData: IBuyTogetherComponentData;
     onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;

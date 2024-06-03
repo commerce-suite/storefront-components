@@ -287,7 +287,7 @@ const dooca = {
 window.shop_ctx = {
   api_url: 'https://api.storefront.dchomolog.dooca.store/',
   token:
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDM3NzksInR5cGUiOiJmcm9udGVuZCIsImVtYWlsIjpudWxsLCJmaXJzdF9uYW1lIjoiU3RvcmUiLCJhY3RpdmUiOnRydWUsImlhdCI6MTY5NTE1MjU2NX0.u0IO3ubOhhuqzJwy09ZDvr3ghdCgZxHW9wtSexYiv_U',
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDQwMzV9.HsbOuMWFZy-Bh9O6hUf1U8ORlFxnCX18Oo9mAOaAHyc',
   mock: null,
   base_path: '/',
   organization: 'dooca',

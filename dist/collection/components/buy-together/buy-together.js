@@ -7,6 +7,8 @@ export class BuyTogether {
         this.productId = undefined;
         this.variationId = undefined;
         this.showcaseMode = undefined;
+        this.promotionTitle = undefined;
+        this.buyButtonText = undefined;
         this.buyTogetherData = undefined;
         this.hasBuyTogether = undefined;
         this.isLoading = undefined;
@@ -72,8 +74,8 @@ export class BuyTogether {
     onInputSelectOrderBump(event) {
         const { productId } = event.detail;
         const { originalData: { productsPivot }, products, } = this.buyTogetherData;
-        const productPivotIndex = productsPivot.findIndex(({ id }) => id === productId);
-        const productIndex = products.findIndex(({ id }) => id === productId);
+        const productPivotIndex = productsPivot.findIndex(({ id }) => +id === productId);
+        const productIndex = products.findIndex(({ id }) => +id === productId);
         if (productPivotIndex === -1 || productIndex === -1)
             return;
         const { productCard, productTargetUpdated } = this.buyTogetherService.changeProductOptions(event.detail, productsPivot[productPivotIndex]);
@@ -120,7 +122,7 @@ export class BuyTogether {
         this.load();
     }
     render() {
-        return (h(Host, { key: '0cd89a1cb4b53563e3c5a0d9d72e4017a03a2e64' }, this.isLoading && (h("div", { key: '3028bdb6fd11ed7b555025762692bad5cd717ea0', class: "loading-container" }, h("span", { key: '78c0bd38d64e684c1cb65139adb0f99f10244b04', class: "spinner" }))), !this.isLoading && this.hasBuyTogether && (h("form", { key: '03e16547cbee88b110102c8e2a035e4e15e3b966', onSubmit: evt => this.onAddItemsToCart(evt) }, h("div", { key: '04be75be85be01ff1f40552cb7055dd8d9d9aef5', class: "title-wrapper" }, h("h2", { key: 'a832dbf440e9c6cc19095bd6d8de981f2c214e45', class: "title" }, this.buyTogetherData.originalData.title || 'Compre Junto')), h("section", { key: '0ee545481c05e1133bb1bb5d836a1adfad91b52b', class: `bagy-buy-together buy-together-container ${this.showcaseModeClass()}` }, !this.showcaseMode && (h("div", { key: 'c2204ccb90b82eb71622970a03a1610e68e3695a', class: "product-main" }, h("div", { key: '85dbaefa729c50f7a82475aa797e50d909415c1f', class: "product-wrapper" }, h("product-card", { key: '496821bf6e13f1333a5d14d941e17bd5944889b8', product: this.buyTogetherData.productMain }), this.buyTogetherData.productMain.selectVariations && (h("variation-selector", { key: '425f7d3ff20ced4d020abf95700616fd1708fd60', productId: this.buyTogetherData.productMain.id, onInputSelect: ev => this.onInputSelectProductMain(ev), variations: this.buyTogetherData.productMain.selectVariations }))))), !this.showcaseMode && (h("div", { key: 'cdf8f5f9fa139b1037f4d59d4f13c4cfa0bf3207', class: "plus-icon" }, h("img", { key: '1bbbfbc8395aca8503f4305a25469fbfed08e790', src: getAssetPath('./assets/icons/icon-plus.svg'), alt: "" }))), h("div", { key: '7b92d837dee9089ec65a759ae0553576d4cff9e8', class: `products-order-bump ${this.showcaseModeClass()}` }, this.buyTogetherData.products.map(productCard => (h("div", { class: "product-wrapper" }, h("div", { class: "product-wrapper-pivot" }, h("div", { class: "checkbox-wrapper" }, h("input", { type: "checkbox", checked: productCard.isCheck, id: String(productCard.id), onInput: ev => this.selectOrderBump(ev, productCard.id) })), h("product-card", { inline: true, product: productCard })), productCard.selectVariations && (h("variation-selector", { productId: productCard.id, variations: productCard.selectVariations, onInputSelect: ev => this.onInputSelectOrderBump(ev), showcaseMode: this.showcaseMode })))))), h("div", { key: '342f206c1fbfbece08426a4f6caa497bba1a341c', class: `buy-btn-wrapper ${this.showcaseModeClass()}` }, h("button", { key: '7d6042af2514596d5a27173327dd0f6706439a1d', class: "buy-btn", type: "submit", disabled: this.isAddingToCart || !this.formIsValid }, this.buyTogetherData.originalData.buyButtonText || 'Comprar')))))));
+        return (h(Host, { key: '57766c0376fb05e0a0cfc8f26df9523936561127' }, this.isLoading && (h("div", { key: 'c59b571ec5a505a1d07d01e3b82fd28b22982045', class: "loading-container" }, h("span", { key: '83aeb352cc002a6f319d286086a4bb71db726bfe', class: "spinner" }))), !this.isLoading && this.hasBuyTogether && (h("form", { key: 'd4fce1bf45cf01a1b44c18346f045b8d9a252c58', onSubmit: evt => this.onAddItemsToCart(evt) }, h("div", { key: '3de00cda8142435d453071344ec3202bb97418f6', class: "title-wrapper" }, h("h2", { key: '2eeb41e7f7f03f7fb20305ab2da5c160178c9d4a', class: "title" }, this.promotionTitle || 'Compre Junto')), h("section", { key: '4be8ebdb8203ac124690ef28aa0dd3b0ff55684b', class: `bagy-buy-together buy-together-container ${this.showcaseModeClass()}` }, !this.showcaseMode && (h("div", { key: '6e3fe94079bf0fada469b2d5509395c503906bd9', class: "product-main" }, h("div", { key: '117ad4aa6d370ea7a7390208218961c250c99aeb', class: "product-wrapper" }, h("product-card", { key: '7afa39cbd3ba1d0fd3ff9db90bef534d1dacf25c', product: this.buyTogetherData.productMain }), this.buyTogetherData.productMain.selectVariations && (h("variation-selector", { key: '3a0a7ce957433b21fb390b82f0585097bc89468b', productId: this.buyTogetherData.productMain.id, onInputSelect: ev => this.onInputSelectProductMain(ev), variations: this.buyTogetherData.productMain.selectVariations }))))), !this.showcaseMode && (h("div", { key: '5267f3c3a9fa5b4d4b79a6af48c081ed5d10605d', class: "plus-icon" }, h("img", { key: 'd392fe6f9535862d4b7694382823fbc1591ef77a', src: getAssetPath('./assets/icons/icon-plus.svg'), alt: "" }))), h("div", { key: '061fe3ea7c85e4d37e3e12df4d7a122f834d95e2', class: `products-order-bump ${this.showcaseModeClass()}` }, this.buyTogetherData.products.map(productCard => (h("div", { class: "product-wrapper" }, h("div", { class: "product-wrapper-pivot" }, h("div", { class: "checkbox-wrapper" }, h("input", { type: "checkbox", checked: productCard.isCheck, id: String(productCard.id), onInput: ev => this.selectOrderBump(ev, productCard.id) })), h("product-card", { inline: true, product: productCard })), productCard.selectVariations && (h("variation-selector", { productId: productCard.id, variations: productCard.selectVariations, onInputSelect: ev => this.onInputSelectOrderBump(ev), showcaseMode: this.showcaseMode })))))), h("div", { key: '4c488ad413bf8b15197adcbe6cf16dc00720bfd6', class: `buy-btn-wrapper ${this.showcaseModeClass()}` }, h("button", { key: 'a4cea3a5ecb9a228ea88098a42cb7f196f60de29', class: "buy-btn", type: "submit", disabled: this.isAddingToCart || !this.formIsValid }, this.buyButtonText || 'Comprar')))))));
     }
     static get is() { return "buy-together"; }
     static get encapsulation() { return "scoped"; }
@@ -185,6 +187,40 @@ export class BuyTogether {
                     "text": ""
                 },
                 "attribute": "showcase-mode",
+                "reflect": false
+            },
+            "promotionTitle": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "promotion-title",
+                "reflect": false
+            },
+            "buyButtonText": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "buy-button-text",
                 "reflect": false
             }
         };

@@ -46,7 +46,7 @@ const FrontImage = /*@__PURE__*/ proxyCustomElement(class FrontImage extends HTM
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: '0d7dec8afefd3f1b83a8f4bc699407988667ea3f' }, h("figure", { key: 'bf9cf2be0bcbb311dba4e8998d768bb668452626', class: this.getImageClassByProps() }, h("img", { key: '9c56ad826fbad2456fb35dc4a994213441bd9385', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: 'a88e477440272ec247638e0d8bebe30165f8977c' }, this.figCaption))));
+        return (h(Host, { key: '02f31a7d523ad529da5221f97fadc4b16e5d3b5e' }, h("figure", { key: '45cde14b0a9eedc571d6f6d759a10ea4ee9d0c8f', class: this.getImageClassByProps() }, h("img", { key: '196981269af260a6d30fd90c4ddb7b88af552c62', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: '3c101926b00fee2462142ed2de0e59df3a214d95' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]

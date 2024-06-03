@@ -142,7 +142,6 @@
   flex-direction: column;
   padding: calc(var(--fc-margin-width) * 2);
   border: 1px solid var(--fc-color-light-border-default);
-  gap: 20px;
 }
 .product-wrapper .checkbox-wrapper {
   margin: 5px;

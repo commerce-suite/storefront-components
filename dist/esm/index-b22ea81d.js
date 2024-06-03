@@ -1127,10 +1127,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './buy-together_7.entry.js').then(processMod, consoleError);
-                case 'showcase-related':
+                case 'launch-countdown':
                     return import(
                       /* webpackMode: "lazy" */
-                      './showcase-related.entry.js').then(processMod, consoleError);
+                      './launch-countdown.entry.js').then(processMod, consoleError);
+                case 'front-countdown':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './front-countdown.entry.js').then(processMod, consoleError);
           }
       }
   return import(
