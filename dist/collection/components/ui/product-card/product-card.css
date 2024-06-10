@@ -68,5 +68,6 @@
 }
 .product-container > .image.-inline {
   width: 100px;
-  justify-content: flex-start;
+  height: 100px;
+  justify-content: center;
 }

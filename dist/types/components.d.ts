@@ -17,7 +17,7 @@ export namespace Components {
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
         "promotionTitle": string;
-        "showcaseMode": boolean;
+        "showcaseMode"?: boolean;
         "variationId": number;
     }
     interface BuyTogetherCartModal {
@@ -96,7 +96,7 @@ export interface VariationSelectorCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBuyTogetherElementEventMap {
-        "on-buy-together-add-cart": IProductCard[];
+        "on-buy-together-add-cart": { showcaseMode: boolean; productsAdded: IProductCard[] };
         "loadBuyTogehter": {
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
@@ -240,7 +240,7 @@ declare namespace LocalJSX {
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
   }>) => void;
-        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
+        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<{ showcaseMode: boolean; productsAdded: IProductCard[] }>) => void;
         "productId"?: number;
         "promotionTitle"?: string;
         "showcaseMode"?: boolean;

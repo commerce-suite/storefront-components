@@ -77,7 +77,7 @@
   justify-content: center;
 }
 .title-wrapper .title {
-  margin: 24px 0;
+  margin: 0 0 56px 0;
   font-weight: var(--fc-h2-fw);
   font-size: var(--fc-h2-fs);
 }

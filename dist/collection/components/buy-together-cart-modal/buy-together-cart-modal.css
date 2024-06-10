@@ -29,6 +29,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  padding: 24px;
+  border-bottom: 1px solid #dee2e6;
 }
 .buy-together-cart-header-text {
   display: flex;
@@ -42,11 +44,15 @@
   }
 }
 .buy-together-cart-header-text img {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+  color: var(--fc-color-light-text-default);
 }
 .buy-together-cart-header-text h2 {
   margin: 0;
+  font-size: var(--fc-h2-fs);
+  font-weight: 600;
+  color: var(--fc-color-light-text-default);
 }
 @media (min-width: 1024px) {
   .buy-together-cart-header {
@@ -121,4 +127,12 @@
 .header-buttons-secondary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.buy-together-wrapper {
+  padding: 0 24px 24px;
+}
+
+.title-wrapper .title {
+  margin: 0 0 24px 0;
 }

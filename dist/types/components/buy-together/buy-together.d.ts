@@ -4,12 +4,15 @@ import { IProductCard } from '../ui/product-card/product-card.type';
 export declare class BuyTogether implements ComponentWillLoad {
     productId: number;
     variationId: number;
-    showcaseMode: boolean;
     promotionTitle: string;
     buyButtonText: string;
+    showcaseMode?: boolean;
     private buyTogetherService;
     buyTogetherData: IBuyTogetherComponentData;
-    onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
+    onBuyTogetherAddCartEvent: EventEmitter<{
+        showcaseMode: boolean;
+        productsAdded: IProductCard[];
+    }>;
     loadBuyTogehter: EventEmitter<{
         status: EnumBuyTogetherOnLoadStatus;
         data: IBuyTogetherComponentData | null;

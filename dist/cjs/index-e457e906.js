@@ -1149,14 +1149,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './buy-together_7.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'launch-countdown.cjs':
+                case 'buy-together-cart-modal.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './launch-countdown.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'front-countdown.cjs':
+                        './buy-together-cart-modal.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'showcase-related.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './front-countdown.cjs.entry.js')); }).then(processMod, consoleError);
+                        './showcase-related.cjs.entry.js')); }).then(processMod, consoleError);
           }
       }
   return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
