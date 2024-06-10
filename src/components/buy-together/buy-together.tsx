@@ -24,18 +24,17 @@ import {
   tag: 'buy-together',
   styleUrl: 'buy-together.scss',
   shadow: false,
-  scoped: true,
 })
 export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
   @Prop({ mutable: true }) variationId: number;
-  @Prop() showcaseMode: boolean;
   @Prop() promotionTitle: string;
   @Prop() buyButtonText: string;
+  @Prop() showcaseMode?: boolean;
   private buyTogetherService = new FrontBuyTogetherService();
   @State() buyTogetherData: IBuyTogetherComponentData;
   @Event({ bubbles: true, eventName: 'on-buy-together-add-cart' })
-  onBuyTogetherAddCartEvent: EventEmitter<IProductCard[]>;
+  onBuyTogetherAddCartEvent: EventEmitter<{ showcaseMode: boolean; productsAdded: IProductCard[] }>;
 
   @Event({ bubbles: true })
   loadBuyTogehter: EventEmitter<{
@@ -167,7 +166,10 @@ export class BuyTogether implements ComponentWillLoad {
       if (!this.showcaseMode) variationsIds.push(this.buyTogetherData.productMain.id);
       checkedProducts.forEach(product => variationsIds.push(product.id));
       await this.buyTogetherService.addToCart(variationsIds);
-      this.onBuyTogetherAddCartEvent.emit([...checkedProducts, this.buyTogetherData.productMain]);
+      this.onBuyTogetherAddCartEvent.emit({
+        showcaseMode: !!this.showcaseMode,
+        productsAdded: [...checkedProducts, this.buyTogetherData.productMain],
+      });
     } finally {
       this.isAddingToCart = false;
     }
