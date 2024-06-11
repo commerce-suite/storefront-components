@@ -26,5 +26,6 @@ export interface IProductCard {
     slug?: string;
     priceBase?: number;
     selectVariations?: ISelectVariation[];
+    specialPrice?: number | null;
 }
 export {};

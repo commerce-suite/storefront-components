@@ -16,6 +16,15 @@ export class FrontBuyTogetherAdapter {
     }
     static adapterToProductCard(product) {
         var _a;
+        const adaptSpecialPrice = (payments) => {
+            const pixMethod = payments.find(payment => payment.method === 'pix');
+            if (pixMethod) {
+                const specialPrice = product.price * Number(pixMethod.markup);
+                return specialPrice;
+            }
+            return null;
+        };
+        adaptSpecialPrice(product.payments);
         const { price, priceCompare, id } = this.getValuesByVariation(product);
         return {
             price,
@@ -26,6 +35,7 @@ export class FrontBuyTogetherAdapter {
             name: product.name,
             slug: product.slug,
             selectVariations: this.adapterAttributes(product),
+            specialPrice: adaptSpecialPrice(product.payments),
         };
     }
     static getValuesByVariation(product) {

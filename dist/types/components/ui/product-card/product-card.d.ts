@@ -5,6 +5,7 @@ export declare class ProductCard implements ComponentWillLoad {
     product: IProductCard;
     showPriceBase: boolean;
     getClassWithInline(className: string): string;
+    getPrice(): string | number;
     componentWillLoad(): void | Promise<void>;
     render(): any;
 }
