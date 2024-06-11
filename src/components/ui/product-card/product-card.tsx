@@ -19,6 +19,14 @@ export class ProductCard implements ComponentWillLoad {
     return `${className} ${getClassByProps(prosForClass)}`;
   }
 
+  getPrice() {
+    if (this.product.specialPrice) {
+      const price = currencyFormat(this.product.specialPrice);
+      return `${price} no pix`;
+    }
+    return this.product.price;
+  }
+
   componentWillLoad(): void | Promise<void> {
     this.showPriceBase =
       !!this.product?.priceBase && +this.product?.priceBase !== +this.product?.price;
@@ -39,7 +47,7 @@ export class ProductCard implements ComponentWillLoad {
               {this.showPriceBase && (
                 <span class="base">{currencyFormat(this.product.priceBase)}</span>
               )}
-              <span class="current">{currencyFormat(this.product?.price)}</span>
+              <span class="current">{this.getPrice()}</span>
             </div>
           </div>
         </div>
