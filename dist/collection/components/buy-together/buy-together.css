@@ -81,6 +81,11 @@
   font-weight: var(--fc-h2-fw);
   font-size: var(--fc-h2-fs);
 }
+@media (min-width: 1024px) {
+  .title-wrapper .title.-showcase {
+    margin: 0 0 24px 0;
+  }
+}
 
 .loading-container {
   display: flex;

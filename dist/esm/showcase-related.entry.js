@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-b22ea81d.js';
-import { F as FrontBuyTogetherService } from './front-buy-together.service-10863d1d.js';
+import { F as FrontBuyTogetherService } from './front-buy-together.service-5c1fe636.js';
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
