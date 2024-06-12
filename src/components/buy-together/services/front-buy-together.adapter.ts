@@ -6,6 +6,7 @@ import {
   Product,
   BuyTogether as IBuyTogether,
   ShowcaseColor,
+  Payment,
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
@@ -42,7 +43,7 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static adapterToProductCard(product: Product): IProductCard {
-    const adaptSpecialPrice = (payments: any[]): number | null => {
+    const adaptSpecialPrice = (payments: Payment[]): number | null => {
       const pixMethod = payments.find(payment => payment.method === 'pix');
       if (pixMethod) {
         const specialPrice = product.price * Number(pixMethod.markup);
