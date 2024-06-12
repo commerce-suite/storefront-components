@@ -216,7 +216,9 @@ export class BuyTogether implements ComponentWillLoad {
         {!this.isLoading && this.hasBuyTogether && (
           <form onSubmit={evt => this.onAddItemsToCart(evt)}>
             <div class="title-wrapper">
-              <h2 class="title">{this.promotionTitle || 'Compre Junto'}</h2>
+              <h2 class={`title ${this.showcaseModeClass()}`}>
+                {this.promotionTitle || 'Compre Junto'}
+              </h2>
             </div>
             <section class={`bagy-buy-together buy-together-container ${this.showcaseModeClass()}`}>
               {!this.showcaseMode && (
