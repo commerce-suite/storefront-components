@@ -5741,7 +5741,6 @@ var BuyTogetherRepositoryGql = /** @class */ (function () {
                         return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
                     case 1:
                         buyTogether = (_a.sent()).buyTogether;
-                        console.log('buytogether', buyTogether);
                         return [2 /*return*/, buyTogether];
                 }
             });

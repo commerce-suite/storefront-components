@@ -1,5 +1,3 @@
-'use strict';
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 var webfontloader = {exports: {}};
@@ -5745,7 +5743,6 @@ var BuyTogetherRepositoryGql = /** @class */ (function () {
                         return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
                     case 1:
                         buyTogether = (_a.sent()).buyTogether;
-                        console.log('buytogether', buyTogether);
                         return [2 /*return*/, buyTogether];
                 }
             });
@@ -11995,7 +11992,6 @@ class FrontBuyTogetherService {
     }
 }
 
-exports.FrontBuyTogetherService = FrontBuyTogetherService;
-exports.ProductService = ProductService;
+export { FrontBuyTogetherService as F, ProductService as P };
 
-//# sourceMappingURL=front-buy-together.service-9db431f9.js.map
+//# sourceMappingURL=front-buy-together.service-d3ef8ed1.js.map

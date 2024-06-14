@@ -30,6 +30,7 @@
   align-items: center;
   gap: 8px;
   border-bottom: 1px solid #dee2e6;
+  padding: 24px;
 }
 .buy-together-cart-header-text {
   display: flex;
@@ -90,6 +91,7 @@
   text-transform: var(--btn-text-transform);
   letter-spacing: var(--btn-text-letter-spacing);
   background-color: var(--color-buy-button);
+  white-space: nowrap;
 }
 .header-buttons-primary:hover {
   opacity: 0.75;

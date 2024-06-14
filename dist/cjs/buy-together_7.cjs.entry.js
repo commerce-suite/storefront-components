@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-e457e906.js');
-const frontBuyTogether_service = require('./front-buy-together.service-9db431f9.js');
+const frontBuyTogether_service = require('./front-buy-together.service-aa7c665d.js');
 
 var EnumBuyTogetherOnLoadStatus;
 (function (EnumBuyTogetherOnLoadStatus) {
@@ -256,7 +256,7 @@ const FrontCountdown = class {
         this.loadCountdown();
     }
     render() {
-        return (index.h(index.Host, { key: '87bb93d588569e2549042e8e6c1fd4fbbf1b1a80', class: "timer" }, index.h("div", { key: '5511d23f64e780eaa651534ed25cffbebd25d60e', class: "cell" }, index.h("p", { key: 'fb13ab26c6765807cc49f329f3c2aab87eeb1f11', class: "time" }, this.days), index.h("p", { key: 'e0eedb35d1d0bb37f864fcf62b6d22c0d33b0aa1', class: "unit" }, "dias")), index.h("div", { key: 'e07c7efa1afdba5ed142792ecb3407b5ff7aa08c', class: "cell" }, index.h("p", { key: '5661edce2c7bf6a20678a8e7faf63b41e101d559', class: "time" }, this.hours), index.h("p", { key: 'df0d2ccfb0f4424447b0f67b0eb98070c45c0b59', class: "unit" }, "horas")), index.h("div", { key: 'f317415e70b79c9228f2da756d2a36c1932d3198', class: "cell" }, index.h("p", { key: 'be2c1d43fdef9e439ce78c76f85a6651f5e91abd', class: "time" }, " ", this.minutes), index.h("p", { key: 'e41503854297e9cc58a46bd49da4d0e5050241d4', class: "unit" }, "minutos")), index.h("div", { key: '1fc6bd9b3a444b48bdd98a2c4928b78391822bcb', class: "cell" }, index.h("p", { key: '0a40936838ddf56051d08b8008d886487412950b', class: "time" }, this.seconds), index.h("p", { key: 'f91bd9c410505c74f5ee5b97e7bb9fe72ba072da', class: "unit" }, "segundos"))));
+        return (index.h(index.Host, { key: '5ba0e21d3b0c921f587d2fafeeb3acc232fcc8c5', class: "timer" }, index.h("div", { key: '259ba405576b33a175de29c28db062ae2e1fc14b', class: "cell" }, index.h("p", { key: '5e1dfa501cd7ad281b9d0ceec5da4f8d9ec267e1', class: "time" }, this.days), index.h("p", { key: 'bda0f34d9ed20737307627b1edc8692bf3d7d492', class: "unit" }, "dias")), index.h("div", { key: '9e0c344630d79aa5e88d310ef9d9aca52b4266c3', class: "cell" }, index.h("p", { key: '26ca183f58ba041e68fa3a6775cda1e7c25d55ea', class: "time" }, this.hours), index.h("p", { key: 'e772f7e238b1ebe071b248a9235ce6fe70d9ecc3', class: "unit" }, "horas")), index.h("div", { key: '715d89927050f97075d5061d30b24013afbf602c', class: "cell" }, index.h("p", { key: 'b36d1a318543e2342335d06025cbfe8d36b6def0', class: "time" }, " ", this.minutes), index.h("p", { key: '864ac83f83e084fd1fae07a9276373ed6f00ccbf', class: "unit" }, "minutos")), index.h("div", { key: 'b842c4306e534d12af6bb493968d53e5ee997244', class: "cell" }, index.h("p", { key: '79c4da57f6e08f19b1047d7ac0a7e857e1587d45', class: "time" }, this.seconds), index.h("p", { key: '1437536d184974c8f31baae49782d35524181c27', class: "unit" }, "segundos"))));
     }
     static get watchers() { return {
         "startDate": ["watchStartDateChange"],
@@ -310,7 +310,7 @@ const FrontImage = class {
         this.isSrcLoading = true;
     }
     render() {
-        return (index.h(index.Host, { key: '02f31a7d523ad529da5221f97fadc4b16e5d3b5e' }, index.h("figure", { key: '45cde14b0a9eedc571d6f6d759a10ea4ee9d0c8f', class: this.getImageClassByProps() }, index.h("img", { key: '196981269af260a6d30fd90c4ddb7b88af552c62', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && index.h("figcaption", { key: '3c101926b00fee2462142ed2de0e59df3a214d95' }, this.figCaption))));
+        return (index.h(index.Host, { key: '1cfacd61fb116ba438e7fe4531a0d53210c0bac1' }, index.h("figure", { key: '75816e0e1a214bd2d537a5e083a08446aae0770f', class: this.getImageClassByProps() }, index.h("img", { key: '2d6e2131ee8e1fa3f0fbeefa7f5d5cfb6fca1528', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && index.h("figcaption", { key: '16a5033cbaa300d24b70493882d2ef42533ae46a' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]
@@ -336,7 +336,7 @@ const FrontSelect = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: 'ffe66918b2aa73adacdc637b25b41a83c35688af' }, this.label && (index.h("label", { key: '7e118d1f212caef5c0bf4c502b6905a25d8876ab', class: "select-label", htmlFor: this.selectId }, this.label)), index.h("div", { key: '1daae45e7ae7175dbaf6a47f1ea4ab47d4dbf9a3', class: "front-select-container" }, index.h("select", { key: '90f8c13c9191c52d5703e428702493612e76a210', name: this.selectName, id: this.selectId }, index.h("option", { key: '6a5d0078fa374f59bb417449064dac9db91aeef5', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
+        return (index.h(index.Host, { key: '760f7b331b0f21ab077b86e26b8eb79003b47f7f' }, this.label && (index.h("label", { key: '2289a5cb6b8ef9abcf925d69e11013216c38b328', class: "select-label", htmlFor: this.selectId }, this.label)), index.h("div", { key: '21ee470a2f402173c3785aa2833e62315e729bc6', class: "front-select-container" }, index.h("select", { key: '6f1ea51b898b2e5945b9b26176501d878f1b7de7', name: this.selectName, id: this.selectId }, index.h("option", { key: 'c21537a1ae5d3c16d761bf17b8e4af0476c58ed3', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
             _a.map(({ name, value, disabled }) => (index.h("option", { value: value, selected: this.value === value, disabled: disabled }, name)))))));
     }
 };
@@ -409,7 +409,7 @@ const LaunchCountdown = class {
         this.loadCountDown();
     }
     render() {
-        return (index.h(index.Host, { key: '71430e6883b779cac55f690768bfe8e62131babe' }, index.h("div", { key: '347d50068ebc34f29cc8b4d9ebf8ac7b37a9f56a', class: "launch-countdown-container" }, index.h("div", { key: '7a3986b1f14b8a15a8e404f8f66b910678e19077', class: "launch-countdown-container-header" }, index.h("h3", { key: 'dd7a3cbe5d86256c581a1d1108d20c7d90a91669', class: "launch-countdown-container-title" }, this.dataCountdownTitle), index.h("p", { key: '49a24fa7006b6fcb9042bd00b0dc0dbf4637e6b7', class: "launch-countdown-container-description" }, this.dataDescription)), index.h("front-countdown", { key: '8502d65dbd0301d2ac5299e8fa8bf9073c0edbda', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
+        return (index.h(index.Host, { key: '7663c3ac7be67769e9115cfb71928856c89d0aac' }, index.h("div", { key: 'b67acc6e6e97503b7c32a4d5c920e0ded335de0f', class: "launch-countdown-container" }, index.h("div", { key: 'a836c13f17ef931e6d59acb9dbd32f2c8c95a723', class: "launch-countdown-container-header" }, index.h("h3", { key: 'b9b1f96b681acd79f3f8ad48fefd4c39d3a210f8', class: "launch-countdown-container-title" }, this.dataCountdownTitle), index.h("p", { key: '2ad67b669d41d12d5574a4089b3634b354f25c38', class: "launch-countdown-container-description" }, this.dataDescription)), index.h("front-countdown", { key: '80845c1e039431e5f555b3f2de8733db6dbfd3e5', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
     }
     static get watchers() { return {
         "variationId": ["watchVariationIdChange"],
@@ -446,7 +446,7 @@ const ProductCard = class {
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (index.h(index.Host, { key: '3c4cb06dec292f21c2b4723b78e3fe7a2ab4e93b' }, index.h("div", { key: 'ae08c5bd3bf2e1d4bf4eaea158933a9fca111065', class: this.getClassWithInline('product-container') }, index.h("front-image", { key: '2fefd230381546d59cc0f3bc54ada1967e2cc9b4', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), index.h("div", { key: '05350e17b8f567d85184279dd6fc2c47d17c4ddc', class: "info" }, index.h("span", { key: '0dbef840e20fa411555a6c66aa26a4e7ea6b4115', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), index.h("div", { key: '72ba1c24e3e438e5b78c114dcfcf2d1eac1369de', class: "price" }, this.showPriceBase && (index.h("span", { key: '1eefd0078ed287de34ff93e11e7a52348af4f60d', class: "base" }, currencyFormat(this.product.priceBase))), index.h("span", { key: '315aa571e32450a9b7395459eebe545355148c2b', class: "current" }, this.getPrice()))))));
+        return (index.h(index.Host, { key: '60af42cbb18f12021433b1074c73b6fae27016aa' }, index.h("div", { key: '9cbcbceab1c4e0635c208f861977b0902de3c6c3', class: this.getClassWithInline('product-container') }, index.h("front-image", { key: '25083cfc13dc8f062a19661c6bf72e1806887d87', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), index.h("div", { key: '93752e15dd7c62fa00ac3f9517adf9ed97500dcc', class: "info" }, index.h("span", { key: 'f9d451fe2b281411cb2fcfc601fa8914d06d3af5', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), index.h("div", { key: '779b14c27c763b51a277388b324675f348e3e7b7', class: "price" }, this.showPriceBase && (index.h("span", { key: '52910aa7150099227075225f43836855ff295cc7', class: "base" }, currencyFormat(this.product.priceBase))), index.h("span", { key: 'ae9eacd73afc0f0fc7fb7683ae75f03c651bbb48', class: "current" }, this.getPrice()))))));
     }
 };
 ProductCard.style = ProductCardStyle0;
@@ -470,7 +470,7 @@ const VariationSelector = class {
         });
     }
     render() {
-        return (index.h("div", { key: '94ac72ee36a0cdbab96ac09b606f9275d11822c8', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (index.h("div", { class: "item" }, index.h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
+        return (index.h("div", { key: '43bcc5da855c54b0bb9e876fb8035e74b7c81a98', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (index.h("div", { class: "item" }, index.h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
     }
 };
 VariationSelector.style = VariationSelectorStyle0;

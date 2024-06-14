@@ -13,7 +13,7 @@ export class VariationSelector {
         });
     }
     render() {
-        return (h("div", { key: '94ac72ee36a0cdbab96ac09b606f9275d11822c8', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
+        return (h("div", { key: '43bcc5da855c54b0bb9e876fb8035e74b7c81a98', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
     }
     static get is() { return "variation-selector"; }
     static get encapsulation() { return "scoped"; }
