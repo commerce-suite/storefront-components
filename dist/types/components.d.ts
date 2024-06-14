@@ -13,10 +13,19 @@ export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./compon
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export namespace Components {
     interface BuyTogether {
+        "buyButtonText": string;
         "getBuyTogetherData": () => Promise<IBuyTogetherComponentData>;
         "productId": number;
-        "showcaseMode": boolean;
+        "promotionTitle": string;
+        "showcaseMode"?: boolean;
         "variationId": number;
+    }
+    interface BuyTogetherCartModal {
+        "buyButtonText"?: string;
+        "containerTitle": string;
+        "productId": number;
+        "promotionTitle"?: string;
+        "variationId"?: number;
     }
     interface FrontCountdown {
         "endDate": string;
@@ -65,6 +74,10 @@ export interface BuyTogetherCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBuyTogetherElement;
 }
+export interface BuyTogetherCartModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBuyTogetherCartModalElement;
+}
 export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
@@ -83,7 +96,7 @@ export interface VariationSelectorCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBuyTogetherElementEventMap {
-        "on-buy-together-add-cart": IProductCard[];
+        "on-buy-together-add-cart": { showcaseMode: boolean; productsAdded: IProductCard[] };
         "loadBuyTogehter": {
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
@@ -102,6 +115,25 @@ declare global {
     var HTMLBuyTogetherElement: {
         prototype: HTMLBuyTogetherElement;
         new (): HTMLBuyTogetherElement;
+    };
+    interface HTMLBuyTogetherCartModalElementEventMap {
+        "on-finish-buy-button": void;
+        "on-continue-buy-button": void;
+        "componentRendered": void;
+    }
+    interface HTMLBuyTogetherCartModalElement extends Components.BuyTogetherCartModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBuyTogetherCartModalElementEventMap>(type: K, listener: (this: HTMLBuyTogetherCartModalElement, ev: BuyTogetherCartModalCustomEvent<HTMLBuyTogetherCartModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBuyTogetherCartModalElementEventMap>(type: K, listener: (this: HTMLBuyTogetherCartModalElement, ev: BuyTogetherCartModalCustomEvent<HTMLBuyTogetherCartModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBuyTogetherCartModalElement: {
+        prototype: HTMLBuyTogetherCartModalElement;
+        new (): HTMLBuyTogetherCartModalElement;
     };
     interface HTMLFrontCountdownElementEventMap {
         "countdownFinished": any;
@@ -191,6 +223,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
+        "buy-together-cart-modal": HTMLBuyTogetherCartModalElement;
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
@@ -202,13 +235,25 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BuyTogether {
+        "buyButtonText"?: string;
         "onLoadBuyTogehter"?: (event: BuyTogetherCustomEvent<{
     status: EnumBuyTogetherOnLoadStatus;
     data: IBuyTogetherComponentData | null;
   }>) => void;
-        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<IProductCard[]>) => void;
+        "onOn-buy-together-add-cart"?: (event: BuyTogetherCustomEvent<{ showcaseMode: boolean; productsAdded: IProductCard[] }>) => void;
         "productId"?: number;
+        "promotionTitle"?: string;
         "showcaseMode"?: boolean;
+        "variationId"?: number;
+    }
+    interface BuyTogetherCartModal {
+        "buyButtonText"?: string;
+        "containerTitle"?: string;
+        "onComponentRendered"?: (event: BuyTogetherCartModalCustomEvent<void>) => void;
+        "onOn-continue-buy-button"?: (event: BuyTogetherCartModalCustomEvent<void>) => void;
+        "onOn-finish-buy-button"?: (event: BuyTogetherCartModalCustomEvent<void>) => void;
+        "productId"?: number;
+        "promotionTitle"?: string;
         "variationId"?: number;
     }
     interface FrontCountdown {
@@ -258,6 +303,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "buy-together": BuyTogether;
+        "buy-together-cart-modal": BuyTogetherCartModal;
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
@@ -272,6 +318,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
+            "buy-together-cart-modal": LocalJSX.BuyTogetherCartModal & JSXBase.HTMLAttributes<HTMLBuyTogetherCartModalElement>;
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;

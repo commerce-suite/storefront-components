@@ -1127,6 +1127,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './buy-together_7.entry.js').then(processMod, consoleError);
+                case 'buy-together-cart-modal':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './buy-together-cart-modal.entry.js').then(processMod, consoleError);
                 case 'showcase-related':
                     return import(
                       /* webpackMode: "lazy" */

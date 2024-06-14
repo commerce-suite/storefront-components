@@ -77,9 +77,14 @@
   justify-content: center;
 }
 .title-wrapper .title {
-  margin: 24px 0;
+  margin: 0 0 56px 0;
   font-weight: var(--fc-h2-fw);
   font-size: var(--fc-h2-fs);
+}
+@media (min-width: 1024px) {
+  .title-wrapper .title.-showcase {
+    margin: 0 0 24px 0;
+  }
 }
 
 .loading-container {
@@ -142,7 +147,6 @@
   flex-direction: column;
   padding: calc(var(--fc-margin-width) * 2);
   border: 1px solid var(--fc-color-light-border-default);
-  gap: 20px;
 }
 .product-wrapper .checkbox-wrapper {
   margin: 5px;

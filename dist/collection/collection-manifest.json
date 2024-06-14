@@ -1,6 +1,7 @@
 {
   "entries": [
     "components/buy-together/buy-together.js",
+    "components/buy-together-cart-modal/buy-together-cart-modal.js",
     "components/launch-countdown/launch-countdown.js",
     "components/showcase/showcase.js",
     "components/ui/front-countdown/front-countdown.js",
