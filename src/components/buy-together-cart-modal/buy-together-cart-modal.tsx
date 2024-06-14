@@ -45,14 +45,16 @@ export class BuyTogetherCartModal {
               </button>
             </div>
           </header>
-          <buy-together
-            id="buy-together"
-            promotion-title={this.promotionTitle}
-            buy-button-text={this.buyButtonText}
-            product-id={this.productId}
-            variation-id={this.variationId}
-            showcase-mode
-          />
+          <div class="buy-together-wrapper">
+            <buy-together
+              id="buy-together"
+              promotion-title={this.promotionTitle}
+              buy-button-text={this.buyButtonText}
+              product-id={this.productId}
+              variation-id={this.variationId}
+              showcase-mode
+            />
+          </div>
         </section>
       </Host>
     );
