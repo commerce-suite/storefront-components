@@ -93,7 +93,9 @@ export class Showcase implements ComponentWillLoad {
         )}
         {!this.loading && this.products.length && (
           <div class="showcase-related-products">
-            <h4 class="showcase-related-products-title">{this.showcaseTitle}</h4>
+            <h4 class="showcase-related-products-title">
+              {this.showcaseTitle || 'Recomendados para você'}
+            </h4>
             <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
               <div class="splide__track">
                 <ul class="splide__list">
@@ -107,7 +109,7 @@ export class Showcase implements ComponentWillLoad {
                           <div class="product-main-container">
                             <product-card product={product}></product-card>
                             <button type="submit" class="buy-button">
-                              Comprar
+                              {this.buttonLabel || 'Comprar'}
                             </button>
                           </div>
                         </form>
