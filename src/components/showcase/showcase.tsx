@@ -1,4 +1,14 @@
-import { Component, Host, Prop, h, Event, Method, State, ComponentWillLoad } from '@stencil/core';
+import {
+  Component,
+  Host,
+  Prop,
+  h,
+  Event,
+  Method,
+  State,
+  ComponentWillLoad,
+  Fragment,
+} from '@stencil/core';
 import Splide from '@splidejs/splide';
 import { IProductCard } from '../../components';
 import { EventEmitter } from 'stream';
@@ -80,7 +90,7 @@ export class Showcase implements ComponentWillLoad {
   }
 
   componentDidLoad() {
-    this.mountCarousel();
+    if (this.products.length) this.mountCarousel();
   }
 
   render() {
@@ -91,7 +101,7 @@ export class Showcase implements ComponentWillLoad {
             <span class="spinner" />
           </div>
         )}
-        {!this.loading && this.products.length && (
+        {!this.loading && this.products.length ? (
           <div class="showcase-related-products">
             <h4 class="showcase-related-products-title">
               {this.showcaseTitle || 'Recomendados para você'}
@@ -120,6 +130,8 @@ export class Showcase implements ComponentWillLoad {
               </div>
             </div>
           </div>
+        ) : (
+          <Fragment />
         )}
       </Host>
     );
