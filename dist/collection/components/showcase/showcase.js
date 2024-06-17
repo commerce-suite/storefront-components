@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Host, h, Fragment, } from "@stencil/core";
 import Splide from "@splidejs/splide";
 import { FrontBuyTogetherService } from "../buy-together/services/front-buy-together.service";
 export class Showcase {
@@ -71,13 +71,14 @@ export class Showcase {
         await this.load();
     }
     componentDidLoad() {
-        this.mountCarousel();
+        if (this.products.length)
+            this.mountCarousel();
     }
     render() {
         var _a;
-        return (h(Host, { key: '3337f758ffec76c3f09aab4501daba3238873252' }, this.loading && (h("div", { key: 'cefdc13a8b3d98a49a85c6480a933f6f84ddb13e', class: "loading-container" }, h("span", { key: 'a7fad4b3f33e0f27d276d467e0d54e78aaa7674e', class: "spinner" }))), !this.loading && this.products.length && (h("div", { key: '119f978dc72dde278cc77af0b5d11005ac269c0c', class: "showcase-related-products" }, h("h4", { key: 'cb0bada80a168a8e17506595ecdf2262b1da141e', class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { key: '591b9a21d62cf706a80295e3061f9b5f277290ba', id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { key: '23e925596f90b59ca17004ddbd46c42b73d806b8', class: "splide__track" }, h("ul", { key: '79f5abe3309fd1337149448a4efeef85f15af8d3', class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (h(Host, { key: '9d0be3f8ce8c1c3a8bb5b5379df706de8e884ef7' }, this.loading && (h("div", { key: 'b72a7f04f6f6384a245fc34b602c8d925ba5703c', class: "loading-container" }, h("span", { key: '9bc137bad811143e66fbd500719b942845b7f36a', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
-        }))))))));
+        })))))) : (h(Fragment, null))));
     }
     static get is() { return "showcase-related"; }
     static get originalStyleUrls() {

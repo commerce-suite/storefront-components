@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-e457e906.js');
+const index = require('./index-b315d1cd.js');
 const appGlobals = require('./app-globals-3a1e7e63.js');
 
 const defineCustomElements = async (win, options) => {

@@ -1,3 +1,25 @@
+'use strict';
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 const NAMESPACE = 'front-components';
 
 /*
@@ -131,6 +153,13 @@ var h = (nodeName, vnodeData, ...children) => {
       }
     }
   }
+  if (typeof nodeName === "function") {
+    return nodeName(
+      vnodeData === null ? {} : vnodeData,
+      vNodeChildren,
+      vdomFnUtils
+    );
+  }
   const vnode = newVNode(nodeName, null);
   vnode.$attrs$ = vnodeData;
   if (vNodeChildren.length > 0) {
@@ -159,6 +188,36 @@ var newVNode = (tag, text) => {
 };
 var Host = {};
 var isHost = (node) => node && node.$tag$ === Host;
+var vdomFnUtils = {
+  forEach: (children, cb) => children.map(convertToPublic).forEach(cb),
+  map: (children, cb) => children.map(convertToPublic).map(cb).map(convertToPrivate)
+};
+var convertToPublic = (node) => ({
+  vattrs: node.$attrs$,
+  vchildren: node.$children$,
+  vkey: node.$key$,
+  vname: node.$name$,
+  vtag: node.$tag$,
+  vtext: node.$text$
+});
+var convertToPrivate = (node) => {
+  if (typeof node.vtag === "function") {
+    const vnodeData = { ...node.vattrs };
+    if (node.vkey) {
+      vnodeData.key = node.vkey;
+    }
+    if (node.vname) {
+      vnodeData.name = node.vname;
+    }
+    return h(node.vtag, vnodeData, ...node.vchildren || []);
+  }
+  const vnode = newVNode(node.vtag, node.vtext);
+  vnode.$attrs$ = node.vattrs;
+  vnode.$children$ = node.vchildren;
+  vnode.$key$ = node.vkey;
+  vnode.$name$ = node.vname;
+  return vnode;
+};
 var parsePropertyValue = (propValue, propType) => {
   if (propValue != null && !isComplexType(propValue)) {
     if (propType & 4 /* Boolean */) {
@@ -1049,6 +1108,9 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
   }
   endBootstrap();
 };
+
+// src/runtime/fragment.ts
+var Fragment = (_, children) => children;
 var addHostEventListeners = (elm, hostRef, listeners, attachParentListeners) => {
   if (listeners) {
     listeners.map(([flags, name, method]) => {
@@ -1123,27 +1185,27 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'buy-together_7':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './buy-together_7.entry.js').then(processMod, consoleError);
-                case 'buy-together-cart-modal':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './buy-together-cart-modal.entry.js').then(processMod, consoleError);
-                case 'showcase-related':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './showcase-related.entry.js').then(processMod, consoleError);
+                case 'buy-together_7.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './buy-together_7.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'buy-together-cart-modal.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './buy-together-cart-modal.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'showcase-related.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './showcase-related.cjs.entry.js')); }).then(processMod, consoleError);
           }
       }
-  return import(
+  return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
     `./${bundleId}.entry.js${""}`
-  ).then((importedModule) => {
+  )); }).then((importedModule) => {
     {
       cmpModules.set(bundleId, importedModule);
     }
@@ -1225,6 +1287,14 @@ var flush = () => {
 var nextTick = (cb) => promiseResolve().then(cb);
 var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
-export { Host as H, bootstrapLazy as b, createEvent as c, getAssetPath as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.Fragment = Fragment;
+exports.Host = Host;
+exports.bootstrapLazy = bootstrapLazy;
+exports.createEvent = createEvent;
+exports.getAssetPath = getAssetPath;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;
 
-//# sourceMappingURL=index-b22ea81d.js.map
+//# sourceMappingURL=index-b315d1cd.js.map

@@ -30,6 +30,7 @@
   align-items: center;
   gap: 8px;
   border-bottom: 1px solid #dee2e6;
+  padding: 24px;
 }
 .buy-together-cart-header-text {
   display: flex;
@@ -90,6 +91,7 @@
   text-transform: var(--btn-text-transform);
   letter-spacing: var(--btn-text-letter-spacing);
   background-color: var(--color-buy-button);
+  white-space: nowrap;
 }
 .header-buttons-primary:hover {
   opacity: 0.75;
@@ -128,8 +130,10 @@
   cursor: not-allowed;
 }
 
-.buy-together-wrapper {
-  padding: 0 24px 24px;
+@media (min-width: 1024px) {
+  .buy-together-wrapper {
+    padding: 0 24px 24px;
+  }
 }
 
 .title-wrapper .title {
