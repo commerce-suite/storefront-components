@@ -67,7 +67,9 @@
 }
 
 .buy-together-wrapper {
-  padding: 0 24px 24px;
+  @include for-desktop {
+    padding: 0 24px 24px;
+  }
 }
 
 .title-wrapper {
