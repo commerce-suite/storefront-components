@@ -15,7 +15,7 @@ export class ProductCard {
             const price = currencyFormat(this.product.specialPrice);
             return `${price} no pix`;
         }
-        return this.product.price;
+        return currencyFormat(this.product.price);
     }
     componentWillLoad() {
         var _a, _b, _c;
@@ -24,7 +24,7 @@ export class ProductCard {
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (h(Host, { key: 'f58800974ec9a6e30be9cd602cf816d4972be200' }, h("div", { key: 'f61777dc88371d31791de1a72b11b7968a425b1e', class: this.getClassWithInline('product-container') }, h("front-image", { key: 'f68beaf72d95f09ba13830d2da0237e5ab0d5222', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '0dba8f53a2e7b5990bfa071d0039c8789469dab2', class: "info" }, h("span", { key: '28243ebdcd9400167abd0a9b33c8979643a40352', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("div", { key: 'b227a962229d2d107ed99df685acf0ba94b4e3be', class: "price" }, this.showPriceBase && (h("span", { key: '64f55c34ccdc559698f7802eb7529836eeb2c2d1', class: "base" }, currencyFormat(this.product.priceBase))), h("span", { key: '8b5943cb312a4af9c2d35b387f6f6f792036c5c6', class: "current" }, this.getPrice()))))));
+        return (h(Host, { key: '858f40d36381339ac56cdf361862d99570b60827' }, h("div", { key: '69f7e6fbb44421c31f75dc39c575177d0ce0847f', class: this.getClassWithInline('product-container') }, h("front-image", { key: '29ac89fa414116489d0f6db0e69f659a2d6c77d8', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '81cbcea072e99824c8b5b4fa120f89a152bed748', class: "info" }, h("span", { key: 'abc07c3b23b66998220a61ec4988b473eb303969', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("div", { key: 'd71bd4db5dadaec4fd7151005b3dd7a25543b74e', class: "price" }, this.showPriceBase && (h("span", { key: '964270e9cad98f70c5a91015d0beaac51add0cc5', class: "base" }, currencyFormat(this.product.priceBase))), h("span", { key: '8966cccd3376d73766432131b02a1bdfc6a9acb8', class: "current" }, this.getPrice()))))));
     }
     static get is() { return "product-card"; }
     static get encapsulation() { return "scoped"; }
