@@ -24,7 +24,7 @@ export class ProductCard implements ComponentWillLoad {
       const price = currencyFormat(this.product.specialPrice);
       return `${price} no pix`;
     }
-    return this.product.price;
+    return currencyFormat(this.product.price);
   }
 
   componentWillLoad(): void | Promise<void> {

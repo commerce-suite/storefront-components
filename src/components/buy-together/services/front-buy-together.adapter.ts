@@ -130,15 +130,7 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static generateSelectColors(product: Product): ISelectVariation {
-    const { attribute, attributeSecondary } = product;
-    const filterToCompare = {
-      'attribute.id': attribute?.id,
-      'attributeSecondary.id': attributeSecondary?.id,
-    };
-    const listColors = this.filterAttributesByUnique(
-      this.filterVariations(product.variations, filterToCompare, 'color'),
-      'color',
-    );
+    const listColors = this.filterAttributesByUnique(product.variations, 'color');
     if (!listColors?.length) return null;
     return {
       label: 'Cor',
