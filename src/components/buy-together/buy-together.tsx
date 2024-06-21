@@ -143,7 +143,7 @@ export class BuyTogether implements ComponentWillLoad {
         }
       }
       if (attributeTypeChanged === 'attributes') {
-        if (variation.selectType !== 'color' && variation.selectType === 'attributes') {
+        if (variation.selectType !== 'color' && variation.selectType === 'secondaryAttributes') {
           variation.currentValue = undefined;
         }
       }
