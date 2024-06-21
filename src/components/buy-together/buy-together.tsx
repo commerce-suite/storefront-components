@@ -12,12 +12,17 @@ import {
   Watch,
   Listen,
 } from '@stencil/core';
-import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from './buy-together.type';
+import {
+  EnumBuyTogetherOnLoadStatus,
+  IBuyTogetherComponentData,
+  IProductOrderBump,
+} from './buy-together.type';
 import { FrontBuyTogetherService } from './services/front-buy-together.service';
 import {
   IInputSelectDataEvent,
   IProductCard,
   ISelectVariation,
+  SelectAttributesType,
 } from '../ui/product-card/product-card.type';
 
 @Component({
@@ -127,6 +132,24 @@ export class BuyTogether implements ComponentWillLoad {
     };
   }
 
+  private resetAttributes(product: IProductOrderBump, attributeTypeChanged: SelectAttributesType) {
+    product.selectVariations.forEach(variation => {
+      if (attributeTypeChanged === 'color') {
+        if (
+          variation.selectType === 'attributes' ||
+          variation.selectType === 'secondaryAttributes'
+        ) {
+          variation.currentValue = undefined;
+        }
+      }
+      if (attributeTypeChanged === 'attributes') {
+        if (variation.selectType !== 'color' && variation.selectType === 'attributes') {
+          variation.currentValue = undefined;
+        }
+      }
+    });
+  }
+
   private onInputSelectOrderBump(event: CustomEvent<IInputSelectDataEvent>) {
     const { productId } = event.detail;
     const {
@@ -146,6 +169,10 @@ export class BuyTogether implements ComponentWillLoad {
 
     productsPivot[productPivotIndex] = productTargetUpdated;
     products[productIndex] = { ...productCard, isCheck: products[productIndex].isCheck };
+
+    if (products[productIndex]) {
+      this.resetAttributes(products[productIndex], event.detail.eventSelectType);
+    }
 
     this.buyTogetherData = {
       ...this.buyTogetherData,

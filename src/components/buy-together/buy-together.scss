@@ -14,14 +14,14 @@
   align-items: center;
   justify-content: center;
   .title {
-    margin: 0 0 56px 0;
     font-weight: var(--fc-h2-fw);
     font-size: var(--fc-h2-fs);
+    &.-showcase {
+      margin: 0 0 24px 0;
+    }
 
     @include for-desktop {
-      &.-showcase {
-        margin: 0 0 24px 0;
-      }
+      margin: 56px 0 56px 0;
     }
   }
 }
@@ -72,6 +72,7 @@
   flex-direction: column;
   padding: calc(var(--fc-margin-width) * 2);
   border: 1px solid var(--fc-color-light-border-default);
+  gap: 8px;
   .checkbox-wrapper {
     @include front-checkbox;
     margin: 5px;
