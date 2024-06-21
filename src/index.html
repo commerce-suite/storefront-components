@@ -17,14 +17,10 @@
   <body>
     <input type="text" id="variaton-id" />
     <button id="btn-go">Alterar variação</button>
-    <buy-together id="buy-together" product-id="2915788" variation-id=""></buy-together>
-    <launch-countdown
-      id="launch-countdown"
-      data-initial-date="10-18-2023 11:25:20"
-      data-target-date="10-18-2023 11:25:10"
-    ></launch-countdown>
+    <buy-together id="buy-together" product-id="2915659" variation-id=""></buy-together>
+    <showcase-related buy-together-product-ids="[2915659]"></showcase-related>
   </body>
-  <script>
+  <!-- <script>
     const btn = document.getElementById('btn-go');
     btn.onclick = () => {
       const input = document.getElementById('variaton-id');
@@ -44,5 +40,5 @@
       const element = document.getElementById('launch-countdown');
       element.addEventListener('countdownFinished', ev => console.log(ev));
     })();
-  </script>
+  </script> -->
 </html>

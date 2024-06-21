@@ -27,6 +27,7 @@ export declare class BuyTogether implements ComponentWillLoad {
     private emitOnLoad;
     private selectOrderBump;
     private onInputSelectProductMain;
+    private resetAttributes;
     private onInputSelectOrderBump;
     private onAddItemsToCart;
     private showcaseModeClass;
