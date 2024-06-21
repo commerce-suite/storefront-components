@@ -1,0 +1,13 @@
+.variations {
+  display: flex;
+  flex-wrap: wrap;
+  --variations-gap: calc(var(--fc-margin-width) * 2);
+  gap: var(--variations-gap);
+}
+.variations .item {
+  min-width: calc(50% - var(--variations-gap));
+  flex-grow: 2;
+}
+.variations.-showcase .item {
+  width: 100%;
+}
