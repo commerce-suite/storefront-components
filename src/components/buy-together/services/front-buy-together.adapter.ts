@@ -90,10 +90,10 @@ export class FrontBuyTogetherAdapter {
       'color.id': color?.id,
       'attributeSecondary.id': attributeSecondary?.id,
     };
-    const attributes = this.filterAttributesByUnique(
-      this.filterVariations(product.variations, filterToCompare, 'attribute'),
-      'attribute',
-    );
+    const productVariations = product.color
+      ? this.filterVariations(product.variations, filterToCompare, 'attribute')
+      : product.variations;
+    const attributes = this.filterAttributesByUnique(productVariations, 'attribute');
     if (!attributes.length) return null;
     return {
       placeholder: this.placeholderDisabled,
