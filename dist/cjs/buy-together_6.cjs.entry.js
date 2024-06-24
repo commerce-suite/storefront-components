@@ -5159,7 +5159,7 @@ const Showcase = class {
                     arrows: this.showArrows ||
                         ((_c = this.products) === null || _c === void 0 ? void 0 : _c.length) > this.productsPerPage ||
                         ((_d = this.products) === null || _d === void 0 ? void 0 : _d.length) > 4,
-                    padding: { right: '35%', left: '35%' },
+                    padding: { right: '32%', left: '32%' },
                 },
                 768: {
                     perPage: 3,
