@@ -3195,7 +3195,7 @@ const Showcase = /*@__PURE__*/ proxyCustomElement(class Showcase extends HTMLEle
                     arrows: this.showArrows ||
                         ((_c = this.products) === null || _c === void 0 ? void 0 : _c.length) > this.productsPerPage ||
                         ((_d = this.products) === null || _d === void 0 ? void 0 : _d.length) > 4,
-                    padding: { right: '25%', left: '25%' },
+                    padding: { right: '35%', left: '35%' },
                 },
                 768: {
                     perPage: 3,
