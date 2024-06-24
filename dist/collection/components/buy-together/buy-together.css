@@ -79,14 +79,10 @@
 .title-wrapper .title {
   font-weight: var(--fc-h2-fw);
   font-size: var(--fc-h2-fs);
+  margin: 56px 0 56px 0;
 }
 .title-wrapper .title.-showcase {
   margin: 0 0 24px 0;
-}
-@media (min-width: 1024px) {
-  .title-wrapper .title {
-    margin: 56px 0 56px 0;
-  }
 }
 
 .loading-container {

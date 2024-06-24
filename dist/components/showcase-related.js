@@ -3184,7 +3184,7 @@ const Showcase = /*@__PURE__*/ proxyCustomElement(class Showcase extends HTMLEle
         }
     }
     mountCarousel() {
-        var _a, _b;
+        var _a, _b, _c, _d, _e, _f, _g;
         const splide = new Splide('#splide', {
             pagination: false,
             lazyLoad: true,
@@ -3192,21 +3192,24 @@ const Showcase = /*@__PURE__*/ proxyCustomElement(class Showcase extends HTMLEle
                 2000: {
                     perPage: this.productsPerPage || ((_a = this.products) === null || _a === void 0 ? void 0 : _a.length) >= 4 ? 4 : (_b = this.products) === null || _b === void 0 ? void 0 : _b.length,
                     gap: '.7rem',
-                    arrows: this.showArrows,
+                    arrows: this.showArrows ||
+                        ((_c = this.products) === null || _c === void 0 ? void 0 : _c.length) > this.productsPerPage ||
+                        ((_d = this.products) === null || _d === void 0 ? void 0 : _d.length) > 4,
+                    padding: { right: '25%', left: '25%' },
                 },
                 768: {
                     perPage: 3,
                     gap: '.7rem',
-                    arrows: this.showArrows,
+                    arrows: this.showArrows || ((_e = this.products) === null || _e === void 0 ? void 0 : _e.length) > 3,
                 },
                 640: {
                     perPage: 2,
                     gap: '.7rem',
-                    arrows: this.showArrows,
+                    arrows: this.showArrows || ((_f = this.products) === null || _f === void 0 ? void 0 : _f.length) > 2,
                 },
                 480: {
                     perPage: 1,
-                    arrows: this.showArrows,
+                    arrows: this.showArrows || ((_g = this.products) === null || _g === void 0 ? void 0 : _g.length) > 1,
                     padding: { right: '24px' },
                 },
             },
@@ -3232,7 +3235,7 @@ const Showcase = /*@__PURE__*/ proxyCustomElement(class Showcase extends HTMLEle
     }
     render() {
         var _a;
-        return (h(Host, { key: '9d0be3f8ce8c1c3a8bb5b5379df706de8e884ef7' }, this.loading && (h("div", { key: 'b72a7f04f6f6384a245fc34b602c8d925ba5703c', class: "loading-container" }, h("span", { key: '9bc137bad811143e66fbd500719b942845b7f36a', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (h(Host, { key: '206151cde0930863b6282c75da735b718b8d4620' }, this.loading && (h("div", { key: '45ebc93c3edbb819bb5459e0ecd505c1c729f950', class: "loading-container" }, h("span", { key: '689e22a48e8a33b8abb0e10585ce917164d907dc', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         })))))) : (h(Fragment, null))));
     }
