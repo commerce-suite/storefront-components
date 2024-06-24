@@ -16,12 +16,9 @@
   .title {
     font-weight: var(--fc-h2-fw);
     font-size: var(--fc-h2-fs);
+    margin: 56px 0 56px 0;
     &.-showcase {
       margin: 0 0 24px 0;
-    }
-
-    @include for-desktop {
-      margin: 56px 0 56px 0;
     }
   }
 }
