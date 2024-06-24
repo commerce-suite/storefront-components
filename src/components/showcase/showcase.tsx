@@ -51,21 +51,25 @@ export class Showcase implements ComponentWillLoad {
         2000: {
           perPage: this.productsPerPage || this.products?.length >= 4 ? 4 : this.products?.length,
           gap: '.7rem',
-          arrows: this.showArrows,
+          arrows:
+            this.showArrows ||
+            this.products?.length > this.productsPerPage ||
+            this.products?.length > 4,
+          padding: { right: '25%', left: '25%' },
         },
         768: {
           perPage: 3,
           gap: '.7rem',
-          arrows: this.showArrows,
+          arrows: this.showArrows || this.products?.length > 3,
         },
         640: {
           perPage: 2,
           gap: '.7rem',
-          arrows: this.showArrows,
+          arrows: this.showArrows || this.products?.length > 2,
         },
         480: {
           perPage: 1,
-          arrows: this.showArrows,
+          arrows: this.showArrows || this.products?.length > 1,
           padding: { right: '24px' },
         },
       },

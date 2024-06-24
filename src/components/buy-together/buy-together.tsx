@@ -29,6 +29,7 @@ import {
   tag: 'buy-together',
   styleUrl: 'buy-together.scss',
   shadow: false,
+  scoped: true,
 })
 export class BuyTogether implements ComponentWillLoad {
   @Prop({ mutable: true }) productId: number;
