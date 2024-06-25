@@ -19,14 +19,23 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install
         run: npm install
 
       - name: Build project
         run: npm run build
 
-      - name: Upload dist folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist
+      - name: Temporarily remove dist from .gitignore
+        run: |
+          sed -i '/dist/d' .gitignore
+
+      - name: Commit and push dist
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add dist
+          git commit -m 'Deploy dist' -n
+          git push origin HEAD
+
+      - name: Restore .gitignore
+        run: git checkout .gitignore
