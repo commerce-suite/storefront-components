@@ -33,6 +33,7 @@ export class Showcase implements ComponentWillLoad {
   public async load() {
     try {
       this.loading = true;
+      console.log('🚀 ~ Showcase ~ load ~ this.loading:', this.loading);
       this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
     } catch (error) {
       if (!error?.message?.includes('buy_together_not_found')) {
