@@ -31,8 +31,8 @@ jobs:
 
       - name: Commit and push dist
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config --global user.name 'simaomeyrerdooca'
+          git config --global user.email 'simao.meyrer@bagy.com.br'
           git add dist
           git commit -m 'Deploy dist' -n
           git push origin HEAD
