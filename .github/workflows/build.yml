@@ -19,14 +19,25 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install
         run: npm install
 
       - name: Build project
         run: npm run build
 
-      - name: Upload dist folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist
+      - name: Temporarily remove dist from .gitignore
+        run: |
+          sed -i '/dist/d' .gitignore
+
+      - name: Commit and push dist
+        env:
+          GH_ACTIONS_TOKEN: ${{ secrets.GH_ACTIONS_TOKEN }}
+        run: |
+          git config --global user.name 'simaomeyrerdooca'
+          git config --global user.email 'simao.meyrer@bagy.com.br'
+          git add dist
+          git commit -m 'Deploy dist folder' -n
+          git push https://x-access-token:${GH_ACTIONS_TOKEN}@github.com/commerce-suite/storefront-components.git HEAD:main
+
+      - name: Restore .gitignore
+        run: git checkout .gitignore
