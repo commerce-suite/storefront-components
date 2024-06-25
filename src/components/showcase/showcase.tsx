@@ -55,7 +55,7 @@ export class Showcase implements ComponentWillLoad {
             this.showArrows ||
             this.products?.length > this.productsPerPage ||
             this.products?.length > 4,
-          padding: { right: '35%', left: '35%' },
+          padding: this.products?.length === 1 ? { right: '32%', left: '32%' } : {},
         },
         768: {
           perPage: 3,

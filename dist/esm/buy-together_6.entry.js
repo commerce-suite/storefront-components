@@ -5144,7 +5144,7 @@ const Showcase = class {
         }
     }
     mountCarousel() {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         const splide = new Splide('#splide', {
             pagination: false,
             lazyLoad: true,
@@ -5155,21 +5155,21 @@ const Showcase = class {
                     arrows: this.showArrows ||
                         ((_c = this.products) === null || _c === void 0 ? void 0 : _c.length) > this.productsPerPage ||
                         ((_d = this.products) === null || _d === void 0 ? void 0 : _d.length) > 4,
-                    padding: { right: '25%', left: '25%' },
+                    padding: ((_e = this.products) === null || _e === void 0 ? void 0 : _e.length) === 1 ? { right: '32%', left: '32%' } : {},
                 },
                 768: {
                     perPage: 3,
                     gap: '.7rem',
-                    arrows: this.showArrows || ((_e = this.products) === null || _e === void 0 ? void 0 : _e.length) > 3,
+                    arrows: this.showArrows || ((_f = this.products) === null || _f === void 0 ? void 0 : _f.length) > 3,
                 },
                 640: {
                     perPage: 2,
                     gap: '.7rem',
-                    arrows: this.showArrows || ((_f = this.products) === null || _f === void 0 ? void 0 : _f.length) > 2,
+                    arrows: this.showArrows || ((_g = this.products) === null || _g === void 0 ? void 0 : _g.length) > 2,
                 },
                 480: {
                     perPage: 1,
-                    arrows: this.showArrows || ((_g = this.products) === null || _g === void 0 ? void 0 : _g.length) > 1,
+                    arrows: this.showArrows || ((_h = this.products) === null || _h === void 0 ? void 0 : _h.length) > 1,
                     padding: { right: '24px' },
                 },
             },
@@ -5195,7 +5195,7 @@ const Showcase = class {
     }
     render() {
         var _a;
-        return (h(Host, { key: '206151cde0930863b6282c75da735b718b8d4620' }, this.loading && (h("div", { key: '45ebc93c3edbb819bb5459e0ecd505c1c729f950', class: "loading-container" }, h("span", { key: '689e22a48e8a33b8abb0e10585ce917164d907dc', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (h(Host, { key: '9af997fe51eae247dff58b4c3e7fe860f6a505df' }, this.loading && (h("div", { key: '545128fd50c4d99922691decfd0a294ad932f795', class: "loading-container" }, h("span", { key: 'cdf333a124e87b60159e8dd7476ab2011db0772a', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         })))))) : (h(Fragment, null))));
     }
