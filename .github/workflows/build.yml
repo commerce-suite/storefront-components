@@ -37,7 +37,7 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add dist
           git commit -m 'Deploy dist folder' -n
-          git push https://x-access-token:${GH_ACTIONS_TOKEN}@github.com/github-actions/commerce-suite/storefront-components.git HEAD:main
+          git push https://x-access-token:${GH_ACTIONS_TOKEN}@github.com/commerce-suite/storefront-components.git HEAD:main
 
       - name: Restore .gitignore
         run: git checkout .gitignore
