@@ -6,7 +6,7 @@ import { currencyFormat, getClassByProps } from '../../../utils/utils';
   tag: 'product-card',
   styleUrl: 'product-card.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class ProductCard implements ComponentWillLoad {
   @Prop() inline: boolean = false;

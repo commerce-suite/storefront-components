@@ -1,4 +1,5 @@
 @import '../../style/mixins/button';
+@import '../../style/mixins/screen-media.scss';
 @import './splide/splide.min.css';
 @import './splide/splide-sea-green.min.css';
 @import '../../style/mixins/spinner-loading.scss';
@@ -45,6 +46,11 @@ ul li:not(:last-child) {
   padding: 16px;
   border: 1px solid #dee2e6;
   border-radius: 8px;
+
+  .product-container > .image {
+    max-width: 250px;
+    max-height: 250px;
+  }
 }
 
 .buy-button {
@@ -53,4 +59,11 @@ ul li:not(:last-child) {
   --btn-text-color: var(--color-buy-button-text);
   background-color: var(--primary);
   color: var(--fc-color-white, #fff);
+}
+
+.splide-container {
+  @include for-tablet {
+    display: flex;
+    justify-content: center;
+  }
 }
