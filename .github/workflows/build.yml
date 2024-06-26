@@ -43,7 +43,7 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add dist
-          git commit -m 'Deploy dist folder'
+          git commit -m 'Deploy dist folder' -n
           git push git@github.com:commerce-suite/storefront-components.git HEAD:${GITHUB_REF#refs/heads/}
 
       - name: Restore .gitignore
