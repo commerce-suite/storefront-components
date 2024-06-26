@@ -33,7 +33,6 @@ export class Showcase implements ComponentWillLoad {
   public async load() {
     try {
       this.loading = true;
-      console.log('🚀 ~ Showcase ~ load ~ this.loading:', this.loading);
       this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
     } catch (error) {
       if (!error?.message?.includes('buy_together_not_found')) {
@@ -56,22 +55,22 @@ export class Showcase implements ComponentWillLoad {
             this.showArrows ||
             this.products?.length > this.productsPerPage ||
             this.products?.length > 4,
-          padding: this.products?.length === 1 ? { right: '32%', left: '32%' } : {},
+          padding: { left: '5%', right: '5%' },
         },
         768: {
-          perPage: 3,
+          perPage: this.productsPerPage || this.products?.length >= 3 ? 3 : this.products?.length,
           gap: '.7rem',
           arrows: this.showArrows || this.products?.length > 3,
         },
         640: {
-          perPage: 2,
+          perPage: this.productsPerPage || this.products?.length >= 2 ? 2 : this.products?.length,
           gap: '.7rem',
           arrows: this.showArrows || this.products?.length > 2,
         },
         480: {
           perPage: 1,
           arrows: this.showArrows || this.products?.length > 1,
-          padding: { right: '24px' },
+          padding: { left: '0', right: '24px' },
         },
       },
     });
@@ -111,27 +110,29 @@ export class Showcase implements ComponentWillLoad {
             <h4 class="showcase-related-products-title">
               {this.showcaseTitle || 'Recomendados para você'}
             </h4>
-            <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
-              <div class="splide__track">
-                <ul class="splide__list">
-                  {this.products?.map(product => {
-                    return (
-                      <li class="splide__slide">
-                        <form
-                          class="product-form"
-                          onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
-                        >
-                          <div class="product-main-container">
-                            <product-card product={product}></product-card>
-                            <button type="submit" class="buy-button">
-                              {this.buttonLabel || 'Comprar'}
-                            </button>
-                          </div>
-                        </form>
-                      </li>
-                    );
-                  })}
-                </ul>
+            <div class="splide-container">
+              <div id="splide" class="splide" style={!this.showArrows ? { padding: '30px 0' } : {}}>
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    {this.products?.map(product => {
+                      return (
+                        <li class="splide__slide">
+                          <form
+                            class="product-form"
+                            onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
+                          >
+                            <div class="product-main-container">
+                              <product-card product={product}></product-card>
+                              <button type="submit" class="buy-button">
+                                {this.buttonLabel || 'Comprar'}
+                              </button>
+                            </div>
+                          </form>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
