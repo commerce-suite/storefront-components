@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { variations } from './mocks/variant-selector.mock';
-import { VariationSelector } from './variation-selector';
+import { variations } from '../mocks/variant-selector.mock';
+import { VariationSelector } from '../variation-selector';
 
 it('renders with variations', async () => {
   const page = await newSpecPage({
