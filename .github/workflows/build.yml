@@ -38,7 +38,16 @@ jobs:
             sed -i '/dist/d' .gitignore
           fi
 
+      - name: Check for changes
+        run: |
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit."
+            echo "skip=true" >> $GITHUB_ENV
+          else
+            echo "Changes detected."
+          fi
       - name: Commit and push dist
+        if: env.skip != 'true'
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
