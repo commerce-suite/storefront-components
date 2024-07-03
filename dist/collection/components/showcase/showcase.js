@@ -16,7 +16,6 @@ export class Showcase {
         var _a;
         try {
             this.loading = true;
-            console.log('🚀 ~ Showcase ~ load ~ this.loading:', this.loading);
             this.products = await new FrontBuyTogetherService().getOnlyPivotProducts(this.productIds);
         }
         catch (error) {
@@ -29,7 +28,7 @@ export class Showcase {
         }
     }
     mountCarousel() {
-        var _a, _b, _c, _d, _e, _f, _g, _h;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
         const splide = new Splide('#splide', {
             pagination: false,
             lazyLoad: true,
@@ -40,22 +39,22 @@ export class Showcase {
                     arrows: this.showArrows ||
                         ((_c = this.products) === null || _c === void 0 ? void 0 : _c.length) > this.productsPerPage ||
                         ((_d = this.products) === null || _d === void 0 ? void 0 : _d.length) > 4,
-                    padding: ((_e = this.products) === null || _e === void 0 ? void 0 : _e.length) === 1 ? { right: '32%', left: '32%' } : {},
+                    padding: { left: '5%', right: '5%' },
                 },
                 768: {
-                    perPage: 3,
+                    perPage: this.productsPerPage || ((_e = this.products) === null || _e === void 0 ? void 0 : _e.length) >= 3 ? 3 : (_f = this.products) === null || _f === void 0 ? void 0 : _f.length,
                     gap: '.7rem',
-                    arrows: this.showArrows || ((_f = this.products) === null || _f === void 0 ? void 0 : _f.length) > 3,
+                    arrows: this.showArrows || ((_g = this.products) === null || _g === void 0 ? void 0 : _g.length) > 3,
                 },
                 640: {
-                    perPage: 2,
+                    perPage: this.productsPerPage || ((_h = this.products) === null || _h === void 0 ? void 0 : _h.length) >= 2 ? 2 : (_j = this.products) === null || _j === void 0 ? void 0 : _j.length,
                     gap: '.7rem',
-                    arrows: this.showArrows || ((_g = this.products) === null || _g === void 0 ? void 0 : _g.length) > 2,
+                    arrows: this.showArrows || ((_k = this.products) === null || _k === void 0 ? void 0 : _k.length) > 2,
                 },
                 480: {
                     perPage: 1,
-                    arrows: this.showArrows || ((_h = this.products) === null || _h === void 0 ? void 0 : _h.length) > 1,
-                    padding: { right: '24px' },
+                    arrows: this.showArrows || ((_l = this.products) === null || _l === void 0 ? void 0 : _l.length) > 1,
+                    padding: { left: '0', right: '24px' },
                 },
             },
         });
@@ -80,9 +79,9 @@ export class Showcase {
     }
     render() {
         var _a;
-        return (h(Host, { key: '817ff01a3fb6907182cf50300a67b37f5782a173' }, this.loading && (h("div", { key: 'fcb850c8891b756fd79894869c7fedf2eefbffb8', class: "loading-container" }, h("span", { key: '0081fe6adbcab2834a7742b16d43660b444fa20b', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (h(Host, { key: 'b505083682d6bb37458fa4685e99788c286f2be5' }, this.loading && (h("div", { key: '4531c3907441992a9da36387eca59007c6630923', class: "loading-container" }, h("span", { key: 'ca70993f6eca0dc87c2d1fde4e660d6a751474e1', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
-        })))))) : (h(Fragment, null))));
+        }))))))) : (h(Fragment, null))));
     }
     static get is() { return "showcase-related"; }
     static get originalStyleUrls() {
