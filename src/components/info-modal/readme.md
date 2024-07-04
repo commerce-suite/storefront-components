@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property              | Attribute               | Description | Type      | Default                                                                          |
-| --------------------- | ----------------------- | ----------- | --------- | -------------------------------------------------------------------------------- |
-| `center`              | `center`                |             | `boolean` | `false`                                                                          |
-| `hideButtons`         | `hide-buttons`          |             | `boolean` | `false`                                                                          |
-| `modalDescription`    | `modal-description`     |             | `string`  | `'Venha conferir nossa live cheia novidades e promoções imperdíveis para você!'` |
-| `modalTitle`          | `modal-title`           |             | `string`  | `'Estamos ao vivo!'`                                                             |
-| `primaryButtonText`   | `primary-button-text`   |             | `string`  | `'Assistir agora'`                                                               |
-| `secondaryButtonText` | `secondary-button-text` |             | `string`  | `'Não, obrigado'`                                                                |
+| Property              | Attribute               | Description | Type                            | Default                                                                          |
+| --------------------- | ----------------------- | ----------- | ------------------------------- | -------------------------------------------------------------------------------- |
+| `hideButtons`         | `hide-buttons`          |             | `boolean`                       | `false`                                                                          |
+| `modalDescription`    | `modal-description`     |             | `string`                        | `'Venha conferir nossa live cheia novidades e promoções imperdíveis para você!'` |
+| `modalTitle`          | `modal-title`           |             | `string`                        | `'Estamos ao vivo!'`                                                             |
+| `position`            | `position`              |             | `"bottom" \| "center" \| "top"` | `'bottom'`                                                                       |
+| `primaryButtonText`   | `primary-button-text`   |             | `string`                        | `'Assistir agora'`                                                               |
+| `secondaryButtonText` | `secondary-button-text` |             | `string`                        | `'Não, obrigado'`                                                                |
 
 
 ## Events

@@ -13,7 +13,7 @@ export class InfoModal {
   @Prop() hideButtons: boolean = false;
   @Prop() primaryButtonText: string = 'Assistir agora';
   @Prop() secondaryButtonText: string = 'Não, obrigado';
-  @Prop() center: boolean = false;
+  @Prop() position: 'bottom' | 'center' | 'top' = 'bottom';
 
   @Event() componentRendered: EventEmitter<void>;
 
@@ -23,6 +23,15 @@ export class InfoModal {
   @Event({ bubbles: true, eventName: 'on-click-secondary-button' })
   onClickSecondaryButton: EventEmitter<void>;
 
+  private getModalPosition() {
+    const positionMap: { [key: string]: string } = {
+      top: '-top',
+      center: '-center',
+    };
+
+    return positionMap[this.position] || '-bottom';
+  }
+
   componentDidLoad() {
     this.componentRendered.emit();
   }
@@ -31,9 +40,7 @@ export class InfoModal {
     return (
       <Host>
         <div
-          class={`info-modal ${this.center ? '-center' : ''} ${
-            this.hideButtons ? '-hide-buttons' : ''
-          }`}
+          class={`info-modal ${this.getModalPosition()} ${this.hideButtons ? '-hide-buttons' : ''}`}
         >
           <div class="info-modal-header">
             <h2 class="info-modal-header-title">{this.modalTitle}</h2>

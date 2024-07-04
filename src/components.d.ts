@@ -45,10 +45,10 @@ export namespace Components {
         "value": any;
     }
     interface InfoModal {
-        "center": boolean;
         "hideButtons": boolean;
         "modalDescription": string;
         "modalTitle": string;
+        "position": 'bottom' | 'center' | 'top';
         "primaryButtonText": string;
         "secondaryButtonText": string;
     }
@@ -307,13 +307,13 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface InfoModal {
-        "center"?: boolean;
         "hideButtons"?: boolean;
         "modalDescription"?: string;
         "modalTitle"?: string;
         "onComponentRendered"?: (event: InfoModalCustomEvent<void>) => void;
         "onOn-click-primary-button"?: (event: InfoModalCustomEvent<void>) => void;
         "onOn-click-secondary-button"?: (event: InfoModalCustomEvent<void>) => void;
+        "position"?: 'bottom' | 'center' | 'top';
         "primaryButtonText"?: string;
         "secondaryButtonText"?: string;
     }

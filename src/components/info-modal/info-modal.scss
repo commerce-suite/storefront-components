@@ -2,9 +2,6 @@
 
 .info-modal {
   position: fixed;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 401px;
   background-color: #ffffff;
   box-shadow: 0px 8px 16px 0px #00000029;
@@ -56,12 +53,27 @@
       border: 1px solid #c2cfde;
     }
   }
-}
 
-.info-modal.-center {
-  top: 50%;
-  bottom: auto;
-  transform: translate(-50%, -50%);
+  &.-top {
+    top: 5%;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.-center {
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.-bottom {
+    top: auto;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .info-modal.-hide-buttons .info-modal-header-description {
