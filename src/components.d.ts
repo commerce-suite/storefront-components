@@ -44,6 +44,14 @@ export namespace Components {
         "selectName": string;
         "value": any;
     }
+    interface InfoModal {
+        "hideButtons": boolean;
+        "modalDescription": string;
+        "modalTitle": string;
+        "position": 'bottom' | 'center' | 'top';
+        "primaryButtonText": string;
+        "secondaryButtonText": string;
+    }
     interface LaunchCountdown {
         "dataCountdownTitle": string;
         "dataDescription": string;
@@ -81,6 +89,10 @@ export interface BuyTogetherCartModalCustomEvent<T> extends CustomEvent<T> {
 export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
+}
+export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInfoModalElement;
 }
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -164,6 +176,25 @@ declare global {
         prototype: HTMLFrontSelectElement;
         new (): HTMLFrontSelectElement;
     };
+    interface HTMLInfoModalElementEventMap {
+        "componentRendered": void;
+        "on-click-primary-button": void;
+        "on-click-secondary-button": void;
+    }
+    interface HTMLInfoModalElement extends Components.InfoModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInfoModalElementEventMap>(type: K, listener: (this: HTMLInfoModalElement, ev: InfoModalCustomEvent<HTMLInfoModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInfoModalElementEventMap>(type: K, listener: (this: HTMLInfoModalElement, ev: InfoModalCustomEvent<HTMLInfoModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInfoModalElement: {
+        prototype: HTMLInfoModalElement;
+        new (): HTMLInfoModalElement;
+    };
     interface HTMLLaunchCountdownElementEventMap {
         "countdownLoaded": { releaseDateActive: boolean };
     }
@@ -227,6 +258,7 @@ declare global {
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
+        "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
@@ -274,6 +306,17 @@ declare namespace LocalJSX {
         "selectName"?: string;
         "value"?: any;
     }
+    interface InfoModal {
+        "hideButtons"?: boolean;
+        "modalDescription"?: string;
+        "modalTitle"?: string;
+        "onComponentRendered"?: (event: InfoModalCustomEvent<void>) => void;
+        "onOn-click-primary-button"?: (event: InfoModalCustomEvent<void>) => void;
+        "onOn-click-secondary-button"?: (event: InfoModalCustomEvent<void>) => void;
+        "position"?: 'bottom' | 'center' | 'top';
+        "primaryButtonText"?: string;
+        "secondaryButtonText"?: string;
+    }
     interface LaunchCountdown {
         "dataCountdownTitle"?: string;
         "dataDescription"?: string;
@@ -307,6 +350,7 @@ declare namespace LocalJSX {
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
+        "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
@@ -322,6 +366,7 @@ declare module "@stencil/core" {
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
+            "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
