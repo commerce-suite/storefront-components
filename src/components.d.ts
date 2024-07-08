@@ -30,6 +30,7 @@ export namespace Components {
     interface CustomCard {
         "cardDescription": string;
         "cardTitle": string;
+        "customClass": string;
     }
     interface FrontCountdown {
         "endDate": string;
@@ -317,6 +318,7 @@ declare namespace LocalJSX {
     interface CustomCard {
         "cardDescription"?: string;
         "cardTitle"?: string;
+        "customClass"?: string;
         "onComponentRendered"?: (event: CustomCardCustomEvent<void>) => void;
     }
     interface FrontCountdown {

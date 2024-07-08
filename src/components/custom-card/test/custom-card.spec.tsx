@@ -86,4 +86,24 @@ describe('custom-card', () => {
       </custom-card>
     `);
   });
+
+  it('should render custom-card with custom class', async () => {
+    const page = await newSpecPage({
+      components: [CustomCard],
+      html: `<custom-card custom-class="custom"></custom-card>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <custom-card custom-class="custom">
+        <div class="custom-card custom">
+          <div class="custom-card-header">
+            <h2 class="custom-card-header-title">
+              Não perca! Live hoje às 19 horas.
+            </h2>
+          </div>
+          <div class="custom-card-content"></div>
+        </div>
+      </custom-card>
+    `);
+  });
 });

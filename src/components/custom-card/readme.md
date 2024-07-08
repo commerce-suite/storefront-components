@@ -11,6 +11,7 @@
 | ----------------- | ------------------ | ----------- | -------- | ------------------------------------- |
 | `cardDescription` | `card-description` |             | `string` | `undefined`                           |
 | `cardTitle`       | `card-title`       |             | `string` | `'Não perca! Live hoje às 19 horas.'` |
+| `customClass`     | `custom-class`     |             | `string` | `''`                                  |
 
 
 ## Events

@@ -8,6 +8,7 @@ import { Component, Event, Host, EventEmitter, h, Prop } from '@stencil/core';
 export class CustomCard {
   @Prop() cardTitle: string = 'Não perca! Live hoje às 19 horas.';
   @Prop() cardDescription: string;
+  @Prop() customClass: string = '';
 
   @Event() componentRendered: EventEmitter<void>;
 
@@ -18,7 +19,7 @@ export class CustomCard {
   render() {
     return (
       <Host>
-        <div class="custom-card">
+        <div class={`custom-card ${this.customClass}`}>
           <div class="custom-card-header">
             <h2 class="custom-card-header-title">{this.cardTitle}</h2>
             {this.cardDescription && (
