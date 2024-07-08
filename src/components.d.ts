@@ -29,7 +29,10 @@ export namespace Components {
     }
     interface CustomCard {
         "cardDescription": string;
+        "cardMargin": string;
+        "cardPadding": string;
         "cardTitle": string;
+        "showBorder": boolean;
     }
     interface FrontCountdown {
         "endDate": string;
@@ -316,8 +319,11 @@ declare namespace LocalJSX {
     }
     interface CustomCard {
         "cardDescription"?: string;
+        "cardMargin"?: string;
+        "cardPadding"?: string;
         "cardTitle"?: string;
         "onComponentRendered"?: (event: CustomCardCustomEvent<void>) => void;
+        "showBorder"?: boolean;
     }
     interface FrontCountdown {
         "endDate"?: string;

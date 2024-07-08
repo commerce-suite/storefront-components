@@ -7,10 +7,13 @@
 
 ## Properties
 
-| Property          | Attribute          | Description | Type     | Default                               |
-| ----------------- | ------------------ | ----------- | -------- | ------------------------------------- |
-| `cardDescription` | `card-description` |             | `string` | `undefined`                           |
-| `cardTitle`       | `card-title`       |             | `string` | `'Não perca! Live hoje às 19 horas.'` |
+| Property          | Attribute          | Description | Type      | Default                               |
+| ----------------- | ------------------ | ----------- | --------- | ------------------------------------- |
+| `cardDescription` | `card-description` |             | `string`  | `undefined`                           |
+| `cardMargin`      | `card-margin`      |             | `string`  | `'0'`                                 |
+| `cardPadding`     | `card-padding`     |             | `string`  | `'88px 0'`                            |
+| `cardTitle`       | `card-title`       |             | `string`  | `'Não perca! Live hoje às 19 horas.'` |
+| `showBorder`      | `show-border`      |             | `boolean` | `false`                               |
 
 
 ## Events
