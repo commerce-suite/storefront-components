@@ -36,11 +36,6 @@
     }
   }
 
-  &.-border {
-    border: 1px solid var(--menu-items);
-    border-radius: 8px;
-  }
-
   @include for-desktop {
     gap: 40px;
   }

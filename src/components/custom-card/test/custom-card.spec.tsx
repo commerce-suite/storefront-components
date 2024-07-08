@@ -10,7 +10,7 @@ describe('custom-card', () => {
 
     expect(page.root).toEqualHtml(`
       <custom-card>
-        <div class="custom-card" style="padding: 88px 0; margin: 0;">
+        <div class="custom-card">
           <div class="custom-card-header">
             <h2 class="custom-card-header-title">
               Não perca! Live hoje às 19 horas.
@@ -30,7 +30,7 @@ describe('custom-card', () => {
 
     expect(page.root).toEqualHtml(`
       <custom-card card-title="Título customizado">
-        <div class="custom-card" style="padding: 88px 0; margin: 0;">
+        <div class="custom-card">
           <div class="custom-card-header">
             <h2 class="custom-card-header-title">
               Título customizado
@@ -50,7 +50,7 @@ describe('custom-card', () => {
 
     expect(page.root).toEqualHtml(`
       <custom-card card-description="Descrição customizada">
-        <div class="custom-card" style="padding: 88px 0; margin: 0;">
+        <div class="custom-card">
           <div class="custom-card-header">
             <h2 class="custom-card-header-title">
               Não perca! Live hoje às 19 horas.
@@ -73,7 +73,7 @@ describe('custom-card', () => {
 
     expect(page.root).toEqualHtml(`
       <custom-card>
-        <div class="custom-card" style="padding: 88px 0; margin: 0;">
+        <div class="custom-card">
           <div class="custom-card-header">
             <h2 class="custom-card-header-title">
               Não perca! Live hoje às 19 horas.
