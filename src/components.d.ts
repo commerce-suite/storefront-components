@@ -65,6 +65,9 @@ export namespace Components {
         "productId": string;
         "variationId": string;
     }
+    interface LiveVideoChat {
+        "videoId": string;
+    }
     interface ProductCard {
         "inline": boolean;
         "product": IProductCard;
@@ -106,6 +109,10 @@ export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveVideoChatElement;
 }
 export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -238,6 +245,23 @@ declare global {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
     };
+    interface HTMLLiveVideoChatElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLLiveVideoChatElement extends Components.LiveVideoChat, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveVideoChatElementEventMap>(type: K, listener: (this: HTMLLiveVideoChatElement, ev: LiveVideoChatCustomEvent<HTMLLiveVideoChatElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveVideoChatElementEventMap>(type: K, listener: (this: HTMLLiveVideoChatElement, ev: LiveVideoChatCustomEvent<HTMLLiveVideoChatElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveVideoChatElement: {
+        prototype: HTMLLiveVideoChatElement;
+        new (): HTMLLiveVideoChatElement;
+    };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
     var HTMLProductCardElement: {
@@ -287,6 +311,7 @@ declare global {
         "front-select": HTMLFrontSelectElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "live-video-chat": HTMLLiveVideoChatElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
@@ -359,6 +384,10 @@ declare namespace LocalJSX {
         "productId"?: string;
         "variationId"?: string;
     }
+    interface LiveVideoChat {
+        "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
     interface ProductCard {
         "inline"?: boolean;
         "product"?: IProductCard;
@@ -386,6 +415,7 @@ declare namespace LocalJSX {
         "front-select": FrontSelect;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
+        "live-video-chat": LiveVideoChat;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
@@ -403,6 +433,7 @@ declare module "@stencil/core" {
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
