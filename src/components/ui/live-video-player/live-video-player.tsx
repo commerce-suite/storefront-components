@@ -12,7 +12,7 @@ export class LiveVideoPlayer {
   @Event()
   componentRendered: EventEmitter<void>;
 
-  getVideoUrl() {
+  private getVideoUrl() {
     if (this.autoPlay) return `https://www.youtube.com/embed/${this.videoId}?autoplay=1&mute=1`;
     return `https://www.youtube.com/embed/${this.videoId}`;
   }
