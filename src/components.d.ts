@@ -8,9 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -48,6 +50,9 @@ export namespace Components {
         "selectId": string;
         "selectName": string;
         "value": any;
+    }
+    interface HighlightCard {
+        "items": IHighlightCardItem[];
     }
     interface InfoModal {
         "hideButtons": boolean;
@@ -105,6 +110,10 @@ export interface CustomCardCustomEvent<T> extends CustomEvent<T> {
 export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
+}
+export interface HighlightCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLHighlightCardElement;
 }
 export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -216,6 +225,23 @@ declare global {
     var HTMLFrontSelectElement: {
         prototype: HTMLFrontSelectElement;
         new (): HTMLFrontSelectElement;
+    };
+    interface HTMLHighlightCardElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLHighlightCardElement extends Components.HighlightCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLHighlightCardElementEventMap>(type: K, listener: (this: HTMLHighlightCardElement, ev: HighlightCardCustomEvent<HTMLHighlightCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLHighlightCardElementEventMap>(type: K, listener: (this: HTMLHighlightCardElement, ev: HighlightCardCustomEvent<HTMLHighlightCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLHighlightCardElement: {
+        prototype: HTMLHighlightCardElement;
+        new (): HTMLHighlightCardElement;
     };
     interface HTMLInfoModalElementEventMap {
         "componentRendered": void;
@@ -334,6 +360,7 @@ declare global {
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
+        "highlight-card": HTMLHighlightCardElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "live-video-chat": HTMLLiveVideoChatElement;
@@ -390,6 +417,10 @@ declare namespace LocalJSX {
         "selectName"?: string;
         "value"?: any;
     }
+    interface HighlightCard {
+        "items"?: IHighlightCardItem[];
+        "onComponentRendered"?: (event: HighlightCardCustomEvent<void>) => void;
+    }
     interface InfoModal {
         "hideButtons"?: boolean;
         "modalDescription"?: string;
@@ -444,6 +475,7 @@ declare namespace LocalJSX {
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
+        "highlight-card": HighlightCard;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
         "live-video-chat": LiveVideoChat;
@@ -463,6 +495,7 @@ declare module "@stencil/core" {
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
+            "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;

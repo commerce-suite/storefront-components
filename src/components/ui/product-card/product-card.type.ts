@@ -2,7 +2,7 @@ import { IFrontSelectOption } from '../front-select/front-select.type';
 
 export type SelectAttributesType = 'color' | 'attributes' | 'secondaryAttributes';
 
-interface IImage {
+export interface IImage {
   src: string;
   alt?: string;
 }

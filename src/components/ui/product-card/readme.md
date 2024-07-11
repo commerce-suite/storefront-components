@@ -18,6 +18,7 @@
 ### Used by
 
  - [buy-together](../../buy-together)
+ - [highlight-card](../highlight-card)
  - [showcase-related](../../showcase)
 
 ### Depends on
@@ -29,6 +30,7 @@
 graph TD;
   product-card --> front-image
   buy-together --> product-card
+  highlight-card --> product-card
   showcase-related --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
