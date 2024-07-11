@@ -74,3 +74,42 @@
     }
   }
 }
+
+.highlight-card .highlight-custom-style.product-container {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+}
+
+.highlight-card .highlight-custom-style.product-container > .info {
+  > .price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    > .base,
+    .current {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}
+
+.highlight-card .highlight-custom-style.product-container > .image {
+  height: 48px;
+  width: 48px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+
+  > .image-container {
+    > img {
+      border-radius: 3px;
+    }
+  }
+}
+
+.highlight-card .highlight-custom-style.product-container > .image .image-container.-is-loading {
+  min-width: 48px;
+  min-height: 48px;
+}

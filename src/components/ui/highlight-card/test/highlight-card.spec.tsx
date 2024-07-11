@@ -1,7 +1,7 @@
 import { getAssetPath, h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { HighlightCard } from '../highlight-card';
-import { IHighlightCardItem } from '../highlight-card.type';
+import { items } from '../mocks/highlight-card.mock';
 
 describe('highlight-card', () => {
   it('should render highlight-card without any props', async () => {
@@ -18,36 +18,6 @@ describe('highlight-card', () => {
   });
 
   it('should render highlight-card with items', async () => {
-    const items: IHighlightCardItem[] = [
-      {
-        type: 'message',
-        title: 'Que bom ver vocês por aqui!',
-        content:
-          'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
-        highlight: true,
-      },
-      {
-        type: 'product',
-        id: 9480063,
-        price: 799.0,
-        priceBase: 1290,
-        image: {
-          src: 'https://optimizer.dchomolog.dooca.store/103779/products/013886p1a4.jpeg?v=1695153157',
-          alt: null,
-        },
-        name: 'Tênis Nike Air Force',
-        specialPrice: 395.505,
-        highlight: true,
-      },
-      {
-        type: 'message',
-        title: 'Que bom ver vocês por aqui!',
-        content:
-          'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
-        highlight: false,
-      },
-    ];
-
     const page = await newSpecPage({
       components: [HighlightCard],
       template: () => <highlight-card items={items}></highlight-card>,
@@ -72,7 +42,7 @@ describe('highlight-card', () => {
             <div>
               <div class="highlight-card-item highlight-card-item-highlighted">
                 <div class="highlight-card-product">
-                  <product-card class="highlight-custom-style" inline=""></product-card>
+                  <product-card custom-class="highlight-custom-style" inline=""></product-card>
                   <div class="highlight-card-product-cart-icon">
                     <img src=${getAssetPath(
                       './assets/icons/add-to-cart.svg',

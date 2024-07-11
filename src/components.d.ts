@@ -78,6 +78,7 @@ export namespace Components {
         "videoId": string;
     }
     interface ProductCard {
+        "customClass": string;
         "inline": boolean;
         "product": IProductCard;
     }
@@ -451,6 +452,7 @@ declare namespace LocalJSX {
         "videoId"?: string;
     }
     interface ProductCard {
+        "customClass"?: string;
         "inline"?: boolean;
         "product"?: IProductCard;
     }

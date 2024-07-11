@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type           | Default     |
-| --------- | --------- | ----------- | -------------- | ----------- |
-| `inline`  | `inline`  |             | `boolean`      | `false`     |
-| `product` | --        |             | `IProductCard` | `undefined` |
+| Property      | Attribute      | Description | Type           | Default     |
+| ------------- | -------------- | ----------- | -------------- | ----------- |
+| `customClass` | `custom-class` |             | `string`       | `''`        |
+| `inline`      | `inline`       |             | `boolean`      | `false`     |
+| `product`     | --             |             | `IProductCard` | `undefined` |
 
 
 ## Dependencies

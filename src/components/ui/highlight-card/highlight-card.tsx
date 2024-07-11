@@ -22,7 +22,7 @@ export class HighlightCard {
         )}
         {item.type === 'product' && (
           <div class="highlight-card-product">
-            <product-card class="highlight-custom-style" product={item} inline />
+            <product-card custom-class="highlight-custom-style" product={item} inline />
             <div class="highlight-card-product-cart-icon">
               <img
                 onClick={() => console.log('add to cart')}
