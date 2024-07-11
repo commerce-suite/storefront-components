@@ -10,13 +10,14 @@ import { currencyFormat, getClassByProps } from '../../../utils/utils';
 })
 export class ProductCard implements ComponentWillLoad {
   @Prop() inline: boolean = false;
+  @Prop() customClass: string = '';
   @Prop({ mutable: true }) product: IProductCard;
 
   @State() showPriceBase: boolean;
 
   getClassWithInline(className: string) {
     const prosForClass = { '-inline': this.inline };
-    return `${className} ${getClassByProps(prosForClass)}`;
+    return `${className} ${getClassByProps(prosForClass)} ${this.customClass}`;
   }
 
   getPrice() {
