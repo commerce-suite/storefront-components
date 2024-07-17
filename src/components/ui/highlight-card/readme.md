@@ -21,6 +21,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [live-shop](../../live-shop)
+
 ### Depends on
 
 - [product-card](../product-card)
@@ -30,6 +34,7 @@
 graph TD;
   highlight-card --> product-card
   product-card --> front-image
+  live-shop --> highlight-card
   style highlight-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
