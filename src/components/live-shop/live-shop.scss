@@ -81,7 +81,6 @@
       display: flex;
       justify-content: center;
       gap: 24px;
-      padding: 88px 110px;
 
       &-infos {
         display: flex;
@@ -91,6 +90,7 @@
         &-options {
           display: flex;
           justify-content: space-between;
+          align-items: center;
 
           &-title {
             margin: 0;
