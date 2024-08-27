@@ -29,7 +29,7 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "4.17.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#hotfix/adiciona-installment-na-query",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
