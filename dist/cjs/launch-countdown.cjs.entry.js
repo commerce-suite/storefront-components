@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index$1 = require('./index-b315d1cd.js');
-const index = require('./index-83c65302.js');
+const index = require('./index-b602d0d3.js');
 
 class LaunchCountdownService {
     static async getReleaseDateByProduct(productId, variationId) {

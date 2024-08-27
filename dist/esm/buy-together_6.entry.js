@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host, F as Fragment } from './index-0d23a78b.js';
-import { B as BuyTogetherService } from './index-b032ed88.js';
+import { B as BuyTogetherService } from './index-a2248843.js';
 
 var EnumBuyTogetherOnLoadStatus;
 (function (EnumBuyTogetherOnLoadStatus) {
@@ -1354,7 +1354,7 @@ class FrontBuyTogetherAdapter {
         const adaptSpecialPrice = (payments) => {
             const pixMethod = payments.find(payment => payment.method === 'pix');
             if (pixMethod) {
-                const specialPrice = product.price * Number(pixMethod.markup);
+                const specialPrice = Number(pixMethod.installment.total);
                 return specialPrice;
             }
             return null;
