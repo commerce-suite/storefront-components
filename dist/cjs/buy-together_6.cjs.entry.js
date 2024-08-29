@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index$1 = require('./index-b315d1cd.js');
-const index = require('./index-83c65302.js');
+const index = require('./index-b602d0d3.js');
 
 var EnumBuyTogetherOnLoadStatus;
 (function (EnumBuyTogetherOnLoadStatus) {
@@ -1358,7 +1358,7 @@ class FrontBuyTogetherAdapter {
         const adaptSpecialPrice = (payments) => {
             const pixMethod = payments.find(payment => payment.method === 'pix');
             if (pixMethod) {
-                const specialPrice = product.price * Number(pixMethod.markup);
+                const specialPrice = Number(pixMethod.installment.total);
                 return specialPrice;
             }
             return null;

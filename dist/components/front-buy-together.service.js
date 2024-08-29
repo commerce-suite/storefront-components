@@ -1347,7 +1347,7 @@ class FrontBuyTogetherAdapter {
         const adaptSpecialPrice = (payments) => {
             const pixMethod = payments.find(payment => payment.method === 'pix');
             if (pixMethod) {
-                const specialPrice = product.price * Number(pixMethod.markup);
+                const specialPrice = Number(pixMethod.installment.total);
                 return specialPrice;
             }
             return null;

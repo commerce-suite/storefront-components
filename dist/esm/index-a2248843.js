@@ -1,5 +1,3 @@
-'use strict';
-
 var webfontloader = {exports: {}};
 
 /* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */
@@ -5676,7 +5674,8 @@ var BuyTogetherQueries = /** @class */ (function () {
         var imageFields = "\n    {\n      id\n      productId\n      src\n      alt\n      colorIds\n      variationIds\n    }";
         var colorFields = "\n    {\n      id\n      name\n      slug\n      hexadecimal\n    }";
         var attributeFields = "\n    {\n      id\n      name\n      slug\n      attributeId\n      attributeName\n      isActive\n    }";
-        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n    }";
+        var installmentFields = "\n    {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n      }\n    ";
+        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n      installment ".concat(installmentFields, "\n    }");
         var featureFields = "\n    {\n      id\n      name\n      slug\n      values {\n        id\n        name\n        slug\n      }\n    }";
         var variationsFields = "\n    {\n      id\n      name\n      slug\n      releaseDate {\n        releaseDate\n        now\n      }\n      description\n      shortDescription\n      isVirtual\n      isPreSale\n      images ".concat(imageFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      payments ").concat(paymentsFields, "\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      productId\n      colors ").concat(colorFields, "\n    }\n    ");
         return "{\n      id\n      name\n      slug\n      description\n      shortDescription\n      images ".concat(imageFields, "\n      payments ").concat(paymentsFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      variations ").concat(variationsFields, "\n      sku\n      colors ").concat(colorFields, "\n    }");
@@ -6597,7 +6596,6 @@ const decodePayload = (encodedPayload, binaryType) => {
     return packets;
 };
 function createPacketEncoderStream() {
-    // @ts-expect-error
     return new TransformStream({
         transform(packet, controller) {
             encodePacketToBinary(packet, (encodedPacket) => {
@@ -6657,15 +6655,14 @@ function createPacketDecoderStream(maxPayload, binaryType) {
         TEXT_DECODER = new TextDecoder();
     }
     const chunks = [];
-    let state = 0 /* READ_HEADER */;
+    let state = 0 /* State.READ_HEADER */;
     let expectedLength = -1;
     let isBinary = false;
-    // @ts-expect-error
     return new TransformStream({
         transform(chunk, controller) {
             chunks.push(chunk);
             while (true) {
-                if (state === 0 /* READ_HEADER */) {
+                if (state === 0 /* State.READ_HEADER */) {
                     if (totalLength(chunks) < 1) {
                         break;
                     }
@@ -6673,24 +6670,24 @@ function createPacketDecoderStream(maxPayload, binaryType) {
                     isBinary = (header[0] & 0x80) === 0x80;
                     expectedLength = header[0] & 0x7f;
                     if (expectedLength < 126) {
-                        state = 3 /* READ_PAYLOAD */;
+                        state = 3 /* State.READ_PAYLOAD */;
                     }
                     else if (expectedLength === 126) {
-                        state = 1 /* READ_EXTENDED_LENGTH_16 */;
+                        state = 1 /* State.READ_EXTENDED_LENGTH_16 */;
                     }
                     else {
-                        state = 2 /* READ_EXTENDED_LENGTH_64 */;
+                        state = 2 /* State.READ_EXTENDED_LENGTH_64 */;
                     }
                 }
-                else if (state === 1 /* READ_EXTENDED_LENGTH_16 */) {
+                else if (state === 1 /* State.READ_EXTENDED_LENGTH_16 */) {
                     if (totalLength(chunks) < 2) {
                         break;
                     }
                     const headerArray = concatChunks(chunks, 2);
                     expectedLength = new DataView(headerArray.buffer, headerArray.byteOffset, headerArray.length).getUint16(0);
-                    state = 3 /* READ_PAYLOAD */;
+                    state = 3 /* State.READ_PAYLOAD */;
                 }
-                else if (state === 2 /* READ_EXTENDED_LENGTH_64 */) {
+                else if (state === 2 /* State.READ_EXTENDED_LENGTH_64 */) {
                     if (totalLength(chunks) < 8) {
                         break;
                     }
@@ -6703,7 +6700,7 @@ function createPacketDecoderStream(maxPayload, binaryType) {
                         break;
                     }
                     expectedLength = n * Math.pow(2, 32) + view.getUint32(4);
-                    state = 3 /* READ_PAYLOAD */;
+                    state = 3 /* State.READ_PAYLOAD */;
                 }
                 else {
                     if (totalLength(chunks) < expectedLength) {
@@ -6711,7 +6708,7 @@ function createPacketDecoderStream(maxPayload, binaryType) {
                     }
                     const data = concatChunks(chunks, expectedLength);
                     controller.enqueue(decodePacket(isBinary ? data : TEXT_DECODER.decode(data), binaryType));
-                    state = 0 /* READ_HEADER */;
+                    state = 0 /* State.READ_HEADER */;
                 }
                 if (expectedLength === 0 || expectedLength > maxPayload) {
                     controller.enqueue(ERROR_PACKET);
@@ -10303,7 +10300,6 @@ Object.assign(lookup, {
     connect: lookup,
 });
 
-exports.BuyTogetherService = BuyTogetherService;
-exports.ProductService = ProductService;
+export { BuyTogetherService as B, ProductService as P };
 
-//# sourceMappingURL=index-83c65302.js.map
+//# sourceMappingURL=index-a2248843.js.map
