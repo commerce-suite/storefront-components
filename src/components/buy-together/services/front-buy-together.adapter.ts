@@ -135,10 +135,10 @@ export class FrontBuyTogetherAdapter {
     return {
       label: 'Cor',
       placeholder: this.placeholderDisabled,
-      options: listColors?.map(({ balance, id, name, releaseDate }) => ({
+      options: listColors?.map(({ balance, id, name, releaseDate, isSellOutOfStock }) => ({
         name,
         value: id,
-        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate }),
+        disabled: this.checkAttributeOptionDisabled({ balance, releaseDate, isSellOutOfStock }),
       })),
       currentValue: product.color?.id,
       selectType: 'color',
@@ -175,7 +175,12 @@ export class FrontBuyTogetherAdapter {
           if (index === -1)
             return [
               ...acc,
-              { ...objItem, balance: current.balance, releaseDate: current.releaseDate },
+              {
+                ...objItem,
+                balance: current.balance,
+                releaseDate: current.releaseDate,
+                isSellOutOfStock: current.isSellOutOfStock,
+              },
             ];
           return acc;
         },
