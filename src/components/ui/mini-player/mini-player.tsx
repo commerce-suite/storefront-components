@@ -24,50 +24,65 @@ export class MiniPlayer {
   private currentX: number;
   private currentY: number;
 
-  private handleMouseDown(event: MouseEvent | TouchEvent) {
+  private handleDragStart = (event: MouseEvent | TouchEvent) => {
     event.preventDefault();
     this.isDragging = true;
 
-    if (event instanceof MouseEvent) {
-      this.initialX = event.clientX - this.positionX;
-      this.initialY = event.clientY - this.positionY;
-    } else {
-      this.initialX = event.touches[0].clientX - this.positionX;
-      this.initialY = event.touches[0].clientY - this.positionY;
-    }
+    const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+    const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
 
-    window.addEventListener('mousemove', this.handleMouseMove);
-    window.addEventListener('mouseup', this.handleMouseUp);
-    window.addEventListener('touchmove', this.handleMouseMove);
-    window.addEventListener('touchend', this.handleMouseUp);
-  }
+    this.initialX = clientX - this.positionX;
+    this.initialY = clientY - this.positionY;
 
-  private handleMouseMove = (event: MouseEvent | TouchEvent) => {
+    this.addDragEventListeners();
+  };
+
+  private handleDragMove = (event: MouseEvent | TouchEvent) => {
     if (!this.isDragging) return;
 
-    if (event instanceof MouseEvent) {
-      this.currentX = event.clientX - this.initialX;
-      this.currentY = event.clientY - this.initialY;
-    } else {
-      this.currentX = event.touches[0].clientX - this.initialX;
-      this.currentY = event.touches[0].clientY - this.initialY;
-    }
+    const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+    const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
+
+    this.currentX = clientX - this.initialX;
+    this.currentY = clientY - this.initialY;
 
     this.positionX = this.currentX;
     this.positionY = this.currentY;
   };
 
-  private handleMouseUp = () => {
+  private handleDragEnd = () => {
     this.isDragging = false;
-
-    window.removeEventListener('mousemove', this.handleMouseMove);
-    window.removeEventListener('mouseup', this.handleMouseUp);
-    window.removeEventListener('touchmove', this.handleMouseMove);
-    window.removeEventListener('touchend', this.handleMouseUp);
+    this.removeDragEventListeners();
   };
+
+  private addDragEventListeners() {
+    window.addEventListener('mousemove', this.handleDragMove);
+    window.addEventListener('mouseup', this.handleDragEnd);
+    window.addEventListener('touchmove', this.handleDragMove);
+    window.addEventListener('touchend', this.handleDragEnd);
+  }
+
+  private removeDragEventListeners() {
+    window.removeEventListener('mousemove', this.handleDragMove);
+    window.removeEventListener('mouseup', this.handleDragEnd);
+    window.removeEventListener('touchmove', this.handleDragMove);
+    window.removeEventListener('touchend', this.handleDragEnd);
+  }
 
   private handleCloseMiniPlayer() {
     this.showMiniPlayer = false;
+  }
+
+  private getMiniPlayerStyle() {
+    return {
+      transform: `translate(${this.positionX}px, ${this.positionY}px)`,
+    };
+  }
+
+  private getMiniPlayerBarStyle() {
+    return {
+      cursor: this.isDragging ? 'grabbing' : 'grab',
+    };
   }
 
   componentDidLoad() {
@@ -75,27 +90,19 @@ export class MiniPlayer {
   }
 
   render() {
-    const style = {
-      transform: `translate(${this.positionX}px, ${this.positionY}px)`,
-    };
-
-    const styleBar = {
-      cursor: this.isDragging ? 'grabbing' : 'grab',
-    };
-
     return (
       <Host>
-        {this.showMiniPlayer ? (
-          <div class="mini-player" style={style}>
-            <button class="mini-player-close-button" onClick={() => this.handleCloseMiniPlayer()}>
+        {this.showMiniPlayer && (
+          <div class="mini-player" style={this.getMiniPlayerStyle()}>
+            <button class="mini-player-close-button" onClick={this.handleCloseMiniPlayer}>
               <img src={getAssetPath('./assets/icons/close-icon.svg')} alt="close-icon" />
             </button>
             <live-video-player videoId={this.videoId} autoPlay={this.autoPlay} />
             <div
               class="mini-player-bar"
-              style={styleBar}
-              onMouseDown={event => this.handleMouseDown(event)}
-              onTouchStart={event => this.handleMouseDown(event)}
+              style={this.getMiniPlayerBarStyle()}
+              onMouseDown={this.handleDragStart}
+              onTouchStart={this.handleDragStart}
             >
               <h6 class="mini-player-bar-title">{this.mainTitle}</h6>
               <div class="mini-player-bar-button">
@@ -103,7 +110,7 @@ export class MiniPlayer {
               </div>
             </div>
           </div>
-        ) : null}
+        )}
       </Host>
     );
   }
