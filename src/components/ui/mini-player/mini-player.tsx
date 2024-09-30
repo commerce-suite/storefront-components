@@ -1,14 +1,4 @@
-import {
-  Component,
-  Prop,
-  Event,
-  Host,
-  EventEmitter,
-  h,
-  getAssetPath,
-  State,
-  Element,
-} from '@stencil/core';
+import { Component, Prop, Event, Host, EventEmitter, h, getAssetPath, State } from '@stencil/core';
 
 @Component({
   tag: 'mini-player',
@@ -25,8 +15,6 @@ export class MiniPlayer {
   @State() positionX: number = 0;
   @State() positionY: number = 0;
   @State() isDragging: boolean = false;
-
-  @Element() element: HTMLElement;
 
   @Event() componentRendered: EventEmitter<void>;
   @Event({ bubbles: true, eventName: 'on-click-button' }) onClickButton: EventEmitter<void>;
