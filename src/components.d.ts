@@ -77,6 +77,12 @@ export namespace Components {
         "autoPlay": boolean;
         "videoId": string;
     }
+    interface MiniPlayer {
+        "autoPlay": boolean;
+        "buttonText": string;
+        "mainTitle": string;
+        "videoId": string;
+    }
     interface ProductCard {
         "customClass": string;
         "inline": boolean;
@@ -131,6 +137,10 @@ export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
 export interface LiveVideoPlayerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveVideoPlayerElement;
+}
+export interface MiniPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMiniPlayerElement;
 }
 export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -314,6 +324,24 @@ declare global {
         prototype: HTMLLiveVideoPlayerElement;
         new (): HTMLLiveVideoPlayerElement;
     };
+    interface HTMLMiniPlayerElementEventMap {
+        "componentRendered": void;
+        "on-click-button": void;
+    }
+    interface HTMLMiniPlayerElement extends Components.MiniPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMiniPlayerElement: {
+        prototype: HTMLMiniPlayerElement;
+        new (): HTMLMiniPlayerElement;
+    };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
     var HTMLProductCardElement: {
@@ -366,6 +394,7 @@ declare global {
         "launch-countdown": HTMLLaunchCountdownElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
+        "mini-player": HTMLMiniPlayerElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
@@ -451,6 +480,14 @@ declare namespace LocalJSX {
         "onComponentRendered"?: (event: LiveVideoPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
+    interface MiniPlayer {
+        "autoPlay"?: boolean;
+        "buttonText"?: string;
+        "mainTitle"?: string;
+        "onComponentRendered"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "onOn-click-button"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
     interface ProductCard {
         "customClass"?: string;
         "inline"?: boolean;
@@ -482,6 +519,7 @@ declare namespace LocalJSX {
         "launch-countdown": LaunchCountdown;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
+        "mini-player": MiniPlayer;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
@@ -502,6 +540,7 @@ declare module "@stencil/core" {
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
+            "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
