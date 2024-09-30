@@ -94,7 +94,7 @@ export class MiniPlayer {
       <Host>
         {this.showMiniPlayer && (
           <div class="mini-player" style={this.getMiniPlayerStyle()}>
-            <button class="mini-player-close-button" onClick={this.handleCloseMiniPlayer}>
+            <button class="mini-player-close-button" onClick={() => this.handleCloseMiniPlayer()}>
               <img src={getAssetPath('./assets/icons/close-icon.svg')} alt="close-icon" />
             </button>
             <live-video-player videoId={this.videoId} autoPlay={this.autoPlay} />
