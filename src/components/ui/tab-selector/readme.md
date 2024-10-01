@@ -16,12 +16,12 @@
 
 ### Used by
 
- - [live-shop](../../live-shop)
+ - [live-shop-mobile](../../live-shop/snippets)
 
 ### Graph
 ```mermaid
 graph TD;
-  live-shop --> tab-selector
+  live-shop-mobile --> tab-selector
   style tab-selector fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

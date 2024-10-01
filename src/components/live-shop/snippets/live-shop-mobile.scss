@@ -1,0 +1,33 @@
+@import '../../../style/mixins/button.scss';
+
+.live-shop {
+  &-in-live {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .live-video-player {
+      height: 229px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    &-options {
+      .in-live-custom-style .custom-card-content {
+        width: 100%;
+      }
+
+      .in-live-custom-style-empty {
+        padding: 40px;
+        border: 1px solid var(--menu-items);
+        border-radius: 8px;
+      }
+
+      .custom-card-content .live-video-chat {
+        height: calc(100vh - 386px);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+    }
+  }
+}

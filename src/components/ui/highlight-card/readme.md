@@ -23,7 +23,8 @@
 
 ### Used by
 
- - [live-shop](../../live-shop)
+ - [live-shop-desktop](../../live-shop/snippets)
+ - [live-shop-mobile](../../live-shop/snippets)
 
 ### Depends on
 
@@ -34,7 +35,8 @@
 graph TD;
   highlight-card --> product-card
   product-card --> front-image
-  live-shop --> highlight-card
+  live-shop-desktop --> highlight-card
+  live-shop-mobile --> highlight-card
   style highlight-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

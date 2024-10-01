@@ -9,10 +9,12 @@ import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./compone
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+import { ILiveShop } from "./components/live-shop/live-shop.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+export { ILiveShop } from "./components/live-shop/live-shop.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -71,6 +73,16 @@ export namespace Components {
         "variationId": string;
     }
     interface LiveShop {
+    }
+    interface LiveShopDesktop {
+        "isChatOpen": boolean;
+        "liveShopData": ILiveShop;
+        "toggleChat": () => void;
+        "videoId": string;
+    }
+    interface LiveShopMobile {
+        "liveShopData": ILiveShop;
+        "videoId": string;
     }
     interface LiveVideoChat {
         "videoId": string;
@@ -307,6 +319,18 @@ declare global {
         prototype: HTMLLiveShopElement;
         new (): HTMLLiveShopElement;
     };
+    interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+    }
+    var HTMLLiveShopDesktopElement: {
+        prototype: HTMLLiveShopDesktopElement;
+        new (): HTMLLiveShopDesktopElement;
+    };
+    interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+    }
+    var HTMLLiveShopMobileElement: {
+        prototype: HTMLLiveShopMobileElement;
+        new (): HTMLLiveShopMobileElement;
+    };
     interface HTMLLiveVideoChatElementEventMap {
         "componentRendered": void;
     }
@@ -398,6 +422,8 @@ declare global {
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "live-shop": HTMLLiveShopElement;
+        "live-shop-desktop": HTMLLiveShopDesktopElement;
+        "live-shop-mobile": HTMLLiveShopMobileElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
         "product-card": HTMLProductCardElement;
@@ -481,6 +507,16 @@ declare namespace LocalJSX {
         "onComponentRendered"?: (event: LiveShopCustomEvent<void>) => void;
         "onOn-return-to-home"?: (event: LiveShopCustomEvent<void>) => void;
     }
+    interface LiveShopDesktop {
+        "isChatOpen"?: boolean;
+        "liveShopData"?: ILiveShop;
+        "toggleChat"?: () => void;
+        "videoId"?: string;
+    }
+    interface LiveShopMobile {
+        "liveShopData"?: ILiveShop;
+        "videoId"?: string;
+    }
     interface LiveVideoChat {
         "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
         "videoId"?: string;
@@ -523,6 +559,8 @@ declare namespace LocalJSX {
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
         "live-shop": LiveShop;
+        "live-shop-desktop": LiveShopDesktop;
+        "live-shop-mobile": LiveShopMobile;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
         "product-card": ProductCard;
@@ -545,6 +583,8 @@ declare module "@stencil/core" {
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
+            "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
+            "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;

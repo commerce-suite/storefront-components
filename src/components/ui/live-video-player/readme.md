@@ -24,12 +24,14 @@
 
 ### Used by
 
- - [live-shop](../../live-shop)
+ - [live-shop-desktop](../../live-shop/snippets)
+ - [live-shop-mobile](../../live-shop/snippets)
 
 ### Graph
 ```mermaid
 graph TD;
-  live-shop --> live-video-player
+  live-shop-desktop --> live-video-player
+  live-shop-mobile --> live-video-player
   style live-video-player fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
