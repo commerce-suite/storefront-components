@@ -1,4 +1,5 @@
 import { Component, Prop, Event, Host, EventEmitter, h, getAssetPath, State } from '@stencil/core';
+import { DraggableService } from './services/DraggableService';
 
 @Component({
   tag: 'mini-player',
@@ -19,55 +20,22 @@ export class MiniPlayer {
   @Event() componentRendered: EventEmitter<void>;
   @Event({ bubbles: true, eventName: 'on-click-button' }) onClickButton: EventEmitter<void>;
 
-  private initialX: number;
-  private initialY: number;
-  private currentX: number;
-  private currentY: number;
+  private dragDropService: DraggableService;
+
+  componentWillLoad() {
+    this.dragDropService = new DraggableService((x, y) => {
+      this.positionX = x;
+      this.positionY = y;
+    });
+
+    this.dragDropService.onDragStateChange = (isDragging: boolean) => {
+      this.isDragging = isDragging;
+    };
+  }
 
   private handleDragStart = (event: MouseEvent | TouchEvent) => {
-    event.preventDefault();
-    this.isDragging = true;
-
-    const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-    const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
-
-    this.initialX = clientX - this.positionX;
-    this.initialY = clientY - this.positionY;
-
-    this.addDragEventListeners();
+    this.dragDropService.handleDragStart(event, this.positionX, this.positionY);
   };
-
-  private handleDragMove = (event: MouseEvent | TouchEvent) => {
-    if (!this.isDragging) return;
-
-    const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-    const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
-
-    this.currentX = clientX - this.initialX;
-    this.currentY = clientY - this.initialY;
-
-    this.positionX = this.currentX;
-    this.positionY = this.currentY;
-  };
-
-  private handleDragEnd = () => {
-    this.isDragging = false;
-    this.removeDragEventListeners();
-  };
-
-  private addDragEventListeners() {
-    window.addEventListener('mousemove', this.handleDragMove);
-    window.addEventListener('mouseup', this.handleDragEnd);
-    window.addEventListener('touchmove', this.handleDragMove);
-    window.addEventListener('touchend', this.handleDragEnd);
-  }
-
-  private removeDragEventListeners() {
-    window.removeEventListener('mousemove', this.handleDragMove);
-    window.removeEventListener('mouseup', this.handleDragEnd);
-    window.removeEventListener('touchmove', this.handleDragMove);
-    window.removeEventListener('touchend', this.handleDragEnd);
-  }
 
   private handleCloseMiniPlayer() {
     this.showMiniPlayer = false;
