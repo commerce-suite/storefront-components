@@ -9,10 +9,12 @@ import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./compone
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+import { ILiveShop } from "./components/live-shop/live-shop.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+export { ILiveShop } from "./components/live-shop/live-shop.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -70,6 +72,18 @@ export namespace Components {
         "productId": string;
         "variationId": string;
     }
+    interface LiveShop {
+    }
+    interface LiveShopDesktop {
+        "isChatOpen": boolean;
+        "liveShopData": ILiveShop;
+        "toggleChat": () => void;
+        "videoId": string;
+    }
+    interface LiveShopMobile {
+        "liveShopData": ILiveShop;
+        "videoId": string;
+    }
     interface LiveVideoChat {
         "videoId": string;
     }
@@ -95,6 +109,9 @@ export namespace Components {
         "productsPerPage": number;
         "showArrows": boolean;
         "showcaseTitle": string;
+    }
+    interface TabSelector {
+        "tabs": { name: string; label: string | any; content: () => any }[];
     }
     interface VariationSelector {
         "productId": number;
@@ -129,6 +146,10 @@ export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopElement;
 }
 export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -290,6 +311,36 @@ declare global {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
     };
+    interface HTMLLiveShopElementEventMap {
+        "on-return-to-home": void;
+        "componentRendered": void;
+    }
+    interface HTMLLiveShopElement extends Components.LiveShop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopElementEventMap>(type: K, listener: (this: HTMLLiveShopElement, ev: LiveShopCustomEvent<HTMLLiveShopElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopElementEventMap>(type: K, listener: (this: HTMLLiveShopElement, ev: LiveShopCustomEvent<HTMLLiveShopElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveShopElement: {
+        prototype: HTMLLiveShopElement;
+        new (): HTMLLiveShopElement;
+    };
+    interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+    }
+    var HTMLLiveShopDesktopElement: {
+        prototype: HTMLLiveShopDesktopElement;
+        new (): HTMLLiveShopDesktopElement;
+    };
+    interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+    }
+    var HTMLLiveShopMobileElement: {
+        prototype: HTMLLiveShopMobileElement;
+        new (): HTMLLiveShopMobileElement;
+    };
     interface HTMLLiveVideoChatElementEventMap {
         "componentRendered": void;
     }
@@ -365,6 +416,12 @@ declare global {
         prototype: HTMLShowcaseRelatedElement;
         new (): HTMLShowcaseRelatedElement;
     };
+    interface HTMLTabSelectorElement extends Components.TabSelector, HTMLStencilElement {
+    }
+    var HTMLTabSelectorElement: {
+        prototype: HTMLTabSelectorElement;
+        new (): HTMLTabSelectorElement;
+    };
     interface HTMLVariationSelectorElementEventMap {
         "inputSelect": IInputSelectDataEvent;
     }
@@ -392,11 +449,15 @@ declare global {
         "highlight-card": HTMLHighlightCardElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "live-shop": HTMLLiveShopElement;
+        "live-shop-desktop": HTMLLiveShopDesktopElement;
+        "live-shop-mobile": HTMLLiveShopMobileElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
         "mini-player": HTMLMiniPlayerElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
+        "tab-selector": HTMLTabSelectorElement;
         "variation-selector": HTMLVariationSelectorElement;
     }
 }
@@ -471,6 +532,20 @@ declare namespace LocalJSX {
         "productId"?: string;
         "variationId"?: string;
     }
+    interface LiveShop {
+        "onComponentRendered"?: (event: LiveShopCustomEvent<void>) => void;
+        "onOn-return-to-home"?: (event: LiveShopCustomEvent<void>) => void;
+    }
+    interface LiveShopDesktop {
+        "isChatOpen"?: boolean;
+        "liveShopData"?: ILiveShop;
+        "toggleChat"?: () => void;
+        "videoId"?: string;
+    }
+    interface LiveShopMobile {
+        "liveShopData"?: ILiveShop;
+        "videoId"?: string;
+    }
     interface LiveVideoChat {
         "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
         "videoId"?: string;
@@ -501,6 +576,9 @@ declare namespace LocalJSX {
         "showArrows"?: boolean;
         "showcaseTitle"?: string;
     }
+    interface TabSelector {
+        "tabs"?: { name: string; label: string | any; content: () => any }[];
+    }
     interface VariationSelector {
         "onInputSelect"?: (event: VariationSelectorCustomEvent<IInputSelectDataEvent>) => void;
         "productId"?: number;
@@ -517,11 +595,15 @@ declare namespace LocalJSX {
         "highlight-card": HighlightCard;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
+        "live-shop": LiveShop;
+        "live-shop-desktop": LiveShopDesktop;
+        "live-shop-mobile": LiveShopMobile;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
         "mini-player": MiniPlayer;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
+        "tab-selector": TabSelector;
         "variation-selector": VariationSelector;
     }
 }
@@ -538,11 +620,15 @@ declare module "@stencil/core" {
             "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
+            "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
+            "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
             "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
+            "tab-selector": LocalJSX.TabSelector & JSXBase.HTMLAttributes<HTMLTabSelectorElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }
     }
