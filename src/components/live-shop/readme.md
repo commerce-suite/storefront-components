@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property   | Attribute   | Description | Type     | Default    |
+| ---------- | ----------- | ----------- | -------- | ---------- |
+| `hashRoom` | `hash-room` |             | `string` | `'abc123'` |
+
+
 ## Events
 
 | Event               | Description | Type                |

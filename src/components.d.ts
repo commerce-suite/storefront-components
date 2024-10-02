@@ -71,6 +71,7 @@ export namespace Components {
         "variationId": string;
     }
     interface LiveShop {
+        "hashRoom": string;
     }
     interface LiveVideoChat {
         "videoId": string;
@@ -478,6 +479,7 @@ declare namespace LocalJSX {
         "variationId"?: string;
     }
     interface LiveShop {
+        "hashRoom"?: string;
         "onComponentRendered"?: (event: LiveShopCustomEvent<void>) => void;
         "onOn-return-to-home"?: (event: LiveShopCustomEvent<void>) => void;
     }

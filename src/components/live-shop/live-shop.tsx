@@ -1,7 +1,11 @@
-import { Component, Event, Host, EventEmitter, h, State } from '@stencil/core';
+import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
 import { liveShopMock } from './mocks/live-shop.mock';
 import { tabs } from './config/tabs-config';
 import { items } from '../ui/highlight-card/mocks/highlight-card.mock';
+import { LiveShopServiceRepo } from './services/live-shop.service';
+import { ILiveShop, ILiveShopStatus } from './live-shop.type';
+import { LiveShopItemsService } from './services/live-shop-items.service';
+import { IHighlightCardItem } from '../../components';
 
 @Component({
   tag: 'live-shop',
@@ -9,22 +13,20 @@ import { items } from '../ui/highlight-card/mocks/highlight-card.mock';
   shadow: false,
 })
 export class LiveShop {
-  @State() status: 'inLive' | 'finished' | 'warmup' = liveShopMock.status;
-  @State() videoId: string = liveShopMock.urlLive.split('v=')[1];
+  @Prop() hashRoom: string = 'abc123';
+  @State() status: ILiveShopStatus = liveShopMock.status;
+  @State() videoId: string;
   @State() isSmallDevice: boolean = window.innerWidth <= 1024;
   @State() isChatOpen: boolean = false;
   @State() isLoading: boolean = true;
+  @State() liveShopRegister: ILiveShop;
+  @State() liveShopItemsService: LiveShopItemsService;
+  @State() liveShopProducts: IHighlightCardItem[];
 
   @Event({ bubbles: true, eventName: 'on-return-to-home' })
   onReturnToHome: EventEmitter<void>;
 
   @Event() componentRendered: EventEmitter<void>;
-
-  private fakeLoading() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-  }
 
   private handleResize = () => {
     this.isSmallDevice = window.innerWidth <= 1024;
@@ -42,10 +44,29 @@ export class LiveShop {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  componentDidLoad() {
-    this.fakeLoading();
-    window.addEventListener('resize', this.handleResize);
-    this.componentRendered.emit();
+  setCardHighlighted() {
+    this.liveShopItemsService.setHighlightedItem(this.liveShopProducts[0]);
+    this.liveShopProducts = { ...this.liveShopItemsService.adaptProducts(this.liveShopProducts) };
+    console.log(this.liveShopProducts);
+  }
+
+  async componentDidLoad() {
+    try {
+      this.isLoading = true;
+      window.addEventListener('resize', this.handleResize);
+      this.componentRendered.emit();
+      this.liveShopRegister = await LiveShopServiceRepo.getLiveShop(this.hashRoom);
+      const products = await LiveShopServiceRepo.getLiveShopProducts(
+        this.liveShopRegister.products.map(product => product.id),
+      );
+      this.liveShopItemsService = new LiveShopItemsService(products);
+      this.liveShopProducts = this.liveShopItemsService.getItems();
+      if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   private renderLoading() {
@@ -59,9 +80,9 @@ export class LiveShop {
   private renderWarmup() {
     return (
       <div class="live-shop-warmup">
-        <custom-card customClass="banner-custom-style" cardTitle={liveShopMock.title}>
-          {liveShopMock.banner ? (
-            <img src={liveShopMock.banner.src} alt={liveShopMock.banner.alt} />
+        <custom-card customClass="banner-custom-style" cardTitle={this.liveShopRegister.title}>
+          {this.liveShopRegister.banner ? (
+            <img src={this.liveShopRegister.banner.src} alt={this.liveShopRegister.banner.alt} />
           ) : (
             <div class="live-shop-banner" />
           )}
@@ -77,7 +98,7 @@ export class LiveShop {
           <live-video-player videoId={this.videoId} autoPlay />
         </div>
         <div class="live-shop-in-live-options">
-          <custom-card customClass="in-live-custom-style" cardTitle={liveShopMock.name}>
+          <custom-card customClass="in-live-custom-style" cardTitle={this.liveShopRegister.name}>
             <tab-selector tabs={tabs(this.videoId, items)}></tab-selector>
           </custom-card>
         </div>
@@ -93,7 +114,9 @@ export class LiveShop {
             <live-video-player videoId={this.videoId} autoPlay />
           </div>
           <div class="live-shop-in-live-desktop-infos-options">
-            <h2 class="live-shop-in-live-desktop-infos-options-title">{liveShopMock.name}</h2>
+            <h2 class="live-shop-in-live-desktop-infos-options-title">
+              {this.liveShopRegister.name}
+            </h2>
             <button
               class="live-shop-in-live-desktop-infos-options-button"
               onClick={() => this.isChatOpenHandler()}
@@ -110,7 +133,7 @@ export class LiveShop {
         <div class="live-shop-in-live-desktop-content">
           <div class="live-shop-in-live-desktop-content-card">
             {items.length > 0 ? (
-              <highlight-card items={items}></highlight-card>
+              <highlight-card items={this.liveShopProducts}></highlight-card>
             ) : (
               <custom-card
                 customClass="in-live-custom-style-desktop"
@@ -145,12 +168,15 @@ export class LiveShop {
 
     return (
       <Host>
-        <div class="live-shop">
-          {this.status === 'warmup' && this.renderWarmup()}
-          {this.status === 'inLive' &&
-            (this.isSmallDevice ? this.renderInLiveMobile() : this.renderInLiveDesktop())}
-          {this.status === 'finished' && this.renderFinished()}
-        </div>
+        {this.liveShopRegister && (
+          <div class="live-shop">
+            {this.liveShopRegister.status === 'warmup' && this.renderWarmup()}
+            {this.liveShopRegister.status === 'inLive' &&
+              (this.isSmallDevice ? this.renderInLiveMobile() : this.renderInLiveDesktop())}
+            {this.liveShopRegister.status === 'finished' && this.renderFinished()}
+            <button onClick={() => this.setCardHighlighted()}>teste de promoção</button>
+          </div>
+        )}
       </Host>
     );
   }

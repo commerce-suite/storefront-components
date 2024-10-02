@@ -1,5 +1,7 @@
 import { IImage } from '../ui/product-card/product-card.type';
 
+export type ILiveShopStatus = 'inLive' | 'finished' | 'warmup' | string;
+
 export interface ILiveShopDiscount {
   type: string;
   value: number;
@@ -26,7 +28,7 @@ export interface ILiveShop {
   hashRoom: string;
   name: string;
   slug: string;
-  status: 'inLive' | 'finished' | 'warmup';
+  status: ILiveShopStatus;
   urlLive: string;
   title: string;
   banner: IImage;

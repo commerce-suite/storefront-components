@@ -9,15 +9,16 @@ interface IMessageItem extends IItem {
   type: 'message';
   title: string;
   content: string;
+  id?: number;
 }
 
 interface IProductItem extends IItem {
   type: 'product';
-  id: number;
   price: number;
   priceBase: number;
-  image: IImage;
+  image: IImage | null;
   name: string;
+  id?: number;
   specialPrice?: number;
 }
 
