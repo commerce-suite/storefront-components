@@ -9,10 +9,12 @@ import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./compone
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+import { ILiveShop } from "./components/live-shop/live-shop.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+export { ILiveShop } from "./components/live-shop/live-shop.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -73,11 +75,27 @@ export namespace Components {
     interface LiveShop {
         "hashRoom": string;
     }
+    interface LiveShopDesktop {
+        "isChatOpen": boolean;
+        "liveShopData": ILiveShop;
+        "toggleChat": () => void;
+        "videoId": string;
+    }
+    interface LiveShopMobile {
+        "liveShopData": ILiveShop;
+        "videoId": string;
+    }
     interface LiveVideoChat {
         "videoId": string;
     }
     interface LiveVideoPlayer {
         "autoPlay": boolean;
+        "videoId": string;
+    }
+    interface MiniPlayer {
+        "autoPlay": boolean;
+        "buttonText": string;
+        "mainTitle": string;
         "videoId": string;
     }
     interface ProductCard {
@@ -141,6 +159,10 @@ export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
 export interface LiveVideoPlayerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveVideoPlayerElement;
+}
+export interface MiniPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMiniPlayerElement;
 }
 export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -308,6 +330,18 @@ declare global {
         prototype: HTMLLiveShopElement;
         new (): HTMLLiveShopElement;
     };
+    interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+    }
+    var HTMLLiveShopDesktopElement: {
+        prototype: HTMLLiveShopDesktopElement;
+        new (): HTMLLiveShopDesktopElement;
+    };
+    interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+    }
+    var HTMLLiveShopMobileElement: {
+        prototype: HTMLLiveShopMobileElement;
+        new (): HTMLLiveShopMobileElement;
+    };
     interface HTMLLiveVideoChatElementEventMap {
         "componentRendered": void;
     }
@@ -341,6 +375,24 @@ declare global {
     var HTMLLiveVideoPlayerElement: {
         prototype: HTMLLiveVideoPlayerElement;
         new (): HTMLLiveVideoPlayerElement;
+    };
+    interface HTMLMiniPlayerElementEventMap {
+        "componentRendered": void;
+        "on-click-button": void;
+    }
+    interface HTMLMiniPlayerElement extends Components.MiniPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMiniPlayerElement: {
+        prototype: HTMLMiniPlayerElement;
+        new (): HTMLMiniPlayerElement;
     };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
@@ -399,8 +451,11 @@ declare global {
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "live-shop": HTMLLiveShopElement;
+        "live-shop-desktop": HTMLLiveShopDesktopElement;
+        "live-shop-mobile": HTMLLiveShopMobileElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
+        "mini-player": HTMLMiniPlayerElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "tab-selector": HTMLTabSelectorElement;
@@ -483,6 +538,16 @@ declare namespace LocalJSX {
         "onComponentRendered"?: (event: LiveShopCustomEvent<void>) => void;
         "onOn-return-to-home"?: (event: LiveShopCustomEvent<void>) => void;
     }
+    interface LiveShopDesktop {
+        "isChatOpen"?: boolean;
+        "liveShopData"?: ILiveShop;
+        "toggleChat"?: () => void;
+        "videoId"?: string;
+    }
+    interface LiveShopMobile {
+        "liveShopData"?: ILiveShop;
+        "videoId"?: string;
+    }
     interface LiveVideoChat {
         "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
         "videoId"?: string;
@@ -490,6 +555,14 @@ declare namespace LocalJSX {
     interface LiveVideoPlayer {
         "autoPlay"?: boolean;
         "onComponentRendered"?: (event: LiveVideoPlayerCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
+    interface MiniPlayer {
+        "autoPlay"?: boolean;
+        "buttonText"?: string;
+        "mainTitle"?: string;
+        "onComponentRendered"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "onOn-click-button"?: (event: MiniPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
     interface ProductCard {
@@ -525,8 +598,11 @@ declare namespace LocalJSX {
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
         "live-shop": LiveShop;
+        "live-shop-desktop": LiveShopDesktop;
+        "live-shop-mobile": LiveShopMobile;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
+        "mini-player": MiniPlayer;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
         "tab-selector": TabSelector;
@@ -547,8 +623,11 @@ declare module "@stencil/core" {
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
+            "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
+            "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
+            "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "tab-selector": LocalJSX.TabSelector & JSXBase.HTMLAttributes<HTMLTabSelectorElement>;

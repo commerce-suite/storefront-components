@@ -1,0 +1,68 @@
+@import '../../../style/mixins/button.scss';
+
+.live-shop {
+  &-in-live-desktop {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+
+    &-infos {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      &-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-title {
+          margin: 0;
+          font-family: var(--h1-ff);
+          color: var(--menu-items);
+          font-weight: 700;
+          font-size: 24px;
+          text-transform: uppercase;
+        }
+
+        &-button {
+          @include front-button;
+          background-color: var(--color-secondary);
+          width: unset;
+          font-weight: 500;
+          text-transform: none;
+          font-size: 14px;
+        }
+
+        &-chat {
+          .live-video-chat {
+            height: 768px;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+        }
+      }
+
+      .live-video-player {
+        height: 500px;
+        width: 752.7px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+    }
+
+    &-content {
+      &-card {
+        .in-live-custom-style-desktop {
+          padding: 40px;
+          border: 1px solid var(--menu-items);
+          border-radius: 8px;
+
+          .custom-card-content {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

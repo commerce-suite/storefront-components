@@ -1,11 +1,9 @@
 import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
 import { liveShopMock } from './mocks/live-shop.mock';
-import { tabs } from './config/tabs-config';
-import { items } from '../ui/highlight-card/mocks/highlight-card.mock';
-import { LiveShopServiceRepo } from './services/live-shop.service';
 import { ILiveShop, ILiveShopStatus } from './live-shop.type';
 import { LiveShopItemsService } from './services/live-shop-items.service';
 import { IHighlightCardItem } from '../../components';
+import { LiveShopServiceRepo } from './services/live-shop.service';
 
 @Component({
   tag: 'live-shop',
@@ -35,10 +33,6 @@ export class LiveShop {
   private isChatOpenHandler = () => {
     this.isChatOpen = !this.isChatOpen;
   };
-
-  private buttonText() {
-    return this.isChatOpen ? 'Ocultar chat da live' : 'Exibir chat da live';
-  }
 
   disconnectedCallback() {
     window.removeEventListener('resize', this.handleResize);
@@ -91,59 +85,16 @@ export class LiveShop {
     );
   }
 
-  private renderInLiveMobile() {
-    return (
-      <div class="live-shop-in-live">
-        <div class="live-shop-in-live-player">
-          <live-video-player videoId={this.videoId} autoPlay />
-        </div>
-        <div class="live-shop-in-live-options">
-          <custom-card customClass="in-live-custom-style" cardTitle={this.liveShopRegister.name}>
-            <tab-selector tabs={tabs(this.videoId, items)}></tab-selector>
-          </custom-card>
-        </div>
-      </div>
-    );
-  }
-
-  private renderInLiveDesktop() {
-    return (
-      <div class="live-shop-in-live-desktop">
-        <div class="live-shop-in-live-desktop-infos">
-          <div class="live-shop-in-live-desktop-infos-player">
-            <live-video-player videoId={this.videoId} autoPlay />
-          </div>
-          <div class="live-shop-in-live-desktop-infos-options">
-            <h2 class="live-shop-in-live-desktop-infos-options-title">
-              {this.liveShopRegister.name}
-            </h2>
-            <button
-              class="live-shop-in-live-desktop-infos-options-button"
-              onClick={() => this.isChatOpenHandler()}
-            >
-              {this.buttonText()}
-            </button>
-          </div>
-          {this.isChatOpen && (
-            <div class="live-shop-in-live-desktop-infos-options-chat">
-              <live-video-chat videoId={this.videoId} />
-            </div>
-          )}
-        </div>
-        <div class="live-shop-in-live-desktop-content">
-          <div class="live-shop-in-live-desktop-content-card">
-            {items.length > 0 ? (
-              <highlight-card items={this.liveShopProducts}></highlight-card>
-            ) : (
-              <custom-card
-                customClass="in-live-custom-style-desktop"
-                cardTitle="produtos a caminho..."
-                cardDescription="Em breve, teremos algo especial para você!"
-              ></custom-card>
-            )}
-          </div>
-        </div>
-      </div>
+  private renderInLive() {
+    return this.isSmallDevice ? (
+      <live-shop-mobile videoId={this.videoId} liveShopData={liveShopMock}></live-shop-mobile>
+    ) : (
+      <live-shop-desktop
+        videoId={this.videoId}
+        liveShopData={liveShopMock}
+        isChatOpen={this.isChatOpen}
+        toggleChat={() => this.isChatOpenHandler()}
+      />
     );
   }
 
@@ -168,15 +119,11 @@ export class LiveShop {
 
     return (
       <Host>
-        {this.liveShopRegister && (
-          <div class="live-shop">
-            {this.liveShopRegister.status === 'warmup' && this.renderWarmup()}
-            {this.liveShopRegister.status === 'inLive' &&
-              (this.isSmallDevice ? this.renderInLiveMobile() : this.renderInLiveDesktop())}
-            {this.liveShopRegister.status === 'finished' && this.renderFinished()}
-            <button onClick={() => this.setCardHighlighted()}>teste de promoção</button>
-          </div>
-        )}
+        <div class="live-shop">
+          {this.status === 'warmup' && this.renderWarmup()}
+          {this.status === 'inLive' && this.renderInLive()}
+          {this.status === 'finished' && this.renderFinished()}
+        </div>
       </Host>
     );
   }

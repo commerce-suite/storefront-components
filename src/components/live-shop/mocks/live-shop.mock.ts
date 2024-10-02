@@ -6,7 +6,7 @@ export const liveShopMock: ILiveShop = {
   name: 'Super Live Shop',
   slug: 'super-live-shop',
   status: 'inLive',
-  urlLive: 'https://www.youtube.com/watch?v=4wURebw0QXo',
+  urlLive: 'https://www.youtube.com/watch?v=Tii6ljAdSm0',
   title: 'Não perca! Live hoje às 19 horas.',
   banner: {
     src: 'https://picsum.photos/1920/1080',
