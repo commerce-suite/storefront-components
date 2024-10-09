@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute  | Description | Type        | Default     |
-| -------------- | ---------- | ----------- | ----------- | ----------- |
-| `liveShopData` | --         |             | `ILiveShop` | `undefined` |
-| `videoId`      | `video-id` |             | `string`    | `undefined` |
+| Property       | Attribute  | Description | Type                   | Default     |
+| -------------- | ---------- | ----------- | ---------------------- | ----------- |
+| `items`        | --         |             | `IHighlightCardItem[]` | `undefined` |
+| `liveShopData` | --         |             | `ILiveShop`            | `undefined` |
+| `videoId`      | `video-id` |             | `string`               | `undefined` |
 
 
 ## Dependencies

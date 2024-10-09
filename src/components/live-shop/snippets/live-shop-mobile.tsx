@@ -1,7 +1,7 @@
 import { Component, Prop, h } from '@stencil/core';
 import { ILiveShop } from '../live-shop.type';
-import { items } from '../../ui/highlight-card/mocks/highlight-card.mock';
 import { tabs } from '../config/tabs-config';
+import { IHighlightCardItem } from '../../../components';
 
 @Component({
   tag: 'live-shop-mobile',
@@ -11,6 +11,7 @@ import { tabs } from '../config/tabs-config';
 export class LiveShopMobile {
   @Prop() videoId: string;
   @Prop() liveShopData: ILiveShop;
+  @Prop() items: IHighlightCardItem[];
 
   render() {
     return (
@@ -20,7 +21,7 @@ export class LiveShopMobile {
         </div>
         <div class="live-shop-in-live-options">
           <custom-card customClass="in-live-custom-style" cardTitle={this.liveShopData.name}>
-            <tab-selector tabs={tabs(this.videoId, items)} />
+            <tab-selector tabs={tabs(this.videoId, this.items)} />
           </custom-card>
         </div>
       </div>

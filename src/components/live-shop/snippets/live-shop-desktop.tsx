@@ -1,6 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
-import { items } from '../../ui/highlight-card/mocks/highlight-card.mock';
 import { ILiveShop } from '../live-shop.type';
+import { IHighlightCardItem } from '../../../components';
 
 @Component({
   tag: 'live-shop-desktop',
@@ -10,6 +10,7 @@ import { ILiveShop } from '../live-shop.type';
 export class LiveShopDesktop {
   @Prop() videoId: string;
   @Prop() liveShopData: ILiveShop;
+  @Prop() items: IHighlightCardItem[];
   @Prop() isChatOpen: boolean;
   @Prop() toggleChat: () => void;
 
@@ -41,8 +42,8 @@ export class LiveShopDesktop {
         </div>
         <div class="live-shop-in-live-desktop-content">
           <div class="live-shop-in-live-desktop-content-card">
-            {items.length > 0 ? (
-              <highlight-card items={items} />
+            {this.items.length > 0 ? (
+              <highlight-card items={this.items} />
             ) : (
               <custom-card
                 customClass="in-live-custom-style-desktop"

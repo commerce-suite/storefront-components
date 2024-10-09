@@ -1,4 +1,14 @@
-import { Component, Event, Host, EventEmitter, h, getAssetPath, Prop } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  getAssetPath,
+  Prop,
+  State,
+  Host,
+  Watch,
+} from '@stencil/core';
 import { IHighlightCardItem } from './highlight-card.type';
 
 @Component({
@@ -9,6 +19,8 @@ import { IHighlightCardItem } from './highlight-card.type';
 export class HighlightCard {
   @Prop() items: IHighlightCardItem[] = [];
 
+  @State() highlightedItems: IHighlightCardItem[] = [];
+  @State() nonHighlightedItems: IHighlightCardItem[] = [];
   @Event() componentRendered: EventEmitter<void>;
 
   private renderItem(item: any, isHighlighted: boolean) {
@@ -36,31 +48,44 @@ export class HighlightCard {
     );
   }
 
+  filterItems() {
+    this.highlightedItems = this.items.filter(item => item.highlight);
+    this.nonHighlightedItems = this.items.filter(item => !item.highlight);
+  }
+
   componentDidLoad() {
     this.componentRendered.emit();
   }
 
-  render() {
-    const highlightedItems = this.items.filter(item => item.highlight);
-    const nonHighlightedItems = this.items.filter(item => !item.highlight);
+  componentWillLoad() {
+    this.filterItems();
+  }
 
+  @Watch('items')
+  filterItemsHandler() {
+    this.filterItems();
+  }
+
+  render() {
     return (
       <Host>
         <div class="highlight-card">
-          {highlightedItems.length > 0 && (
+          {this.highlightedItems.length > 0 && (
             <div class="highlight-card-container">
               <div class="highlight-card-header">
                 <span class="highlight-card-header-title">Destaque</span>
               </div>
-              {highlightedItems.map((item, index) => (
+              {this.highlightedItems.map((item, index) => (
                 <div>
                   {this.renderItem(item, true)}
-                  {index < highlightedItems.length - 1 && <div class="highlight-card-separator" />}
+                  {index < this.highlightedItems.length - 1 && (
+                    <div class="highlight-card-separator" />
+                  )}
                 </div>
               ))}
             </div>
           )}
-          {nonHighlightedItems.map(item => this.renderItem(item, false))}
+          {this.nonHighlightedItems.map(item => this.renderItem(item, false))}
         </div>
       </Host>
     );

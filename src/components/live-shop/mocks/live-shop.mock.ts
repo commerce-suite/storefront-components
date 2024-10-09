@@ -14,7 +14,7 @@ export const liveShopMock: ILiveShop = {
   },
   products: [
     {
-      id: 101,
+      productId: 101,
       discount: {
         type: 'markup',
         value: 10,
