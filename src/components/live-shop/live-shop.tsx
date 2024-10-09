@@ -1,9 +1,7 @@
 import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
-import { liveShopMock } from './mocks/live-shop.mock';
-import { ILiveShop, ILiveShopStatus } from './live-shop.type';
-import { LiveShopItemsService } from './services/live-shop-items.service';
+import { ILiveShop } from './live-shop.type';
 import { IHighlightCardItem } from '../../components';
-import { LiveShopServiceRepo } from './services/live-shop.service';
+import { LiveShopHandler } from './services/live-shop.service';
 
 @Component({
   tag: 'live-shop',
@@ -11,15 +9,14 @@ import { LiveShopServiceRepo } from './services/live-shop.service';
   shadow: false,
 })
 export class LiveShop {
-  @Prop() hashRoom: string = 'abc123';
-  @State() status: ILiveShopStatus = liveShopMock.status;
+  @Prop() hashRoom: string;
   @State() videoId: string;
   @State() isSmallDevice: boolean = window.innerWidth <= 1024;
   @State() isChatOpen: boolean = false;
   @State() isLoading: boolean = true;
   @State() liveShopRegister: ILiveShop;
-  @State() liveShopItemsService: LiveShopItemsService;
-  @State() liveShopProducts: IHighlightCardItem[];
+  @State() liveShopItemsService: LiveShopHandler;
+  @State() liveShopItems: IHighlightCardItem[];
 
   @Event({ bubbles: true, eventName: 'on-return-to-home' })
   onReturnToHome: EventEmitter<void>;
@@ -38,23 +35,16 @@ export class LiveShop {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  setCardHighlighted() {
-    this.liveShopItemsService.setHighlightedItem(this.liveShopProducts[0]);
-    this.liveShopProducts = { ...this.liveShopItemsService.adaptProducts(this.liveShopProducts) };
-    console.log(this.liveShopProducts);
-  }
-
   async componentDidLoad() {
     try {
+      if (!this.hashRoom) throw new Error('Hash Room is required');
       this.isLoading = true;
       window.addEventListener('resize', this.handleResize);
       this.componentRendered.emit();
-      this.liveShopRegister = await LiveShopServiceRepo.getLiveShop(this.hashRoom);
-      const products = await LiveShopServiceRepo.getLiveShopProducts(
-        this.liveShopRegister.products.map(product => product.id),
-      );
-      this.liveShopItemsService = new LiveShopItemsService(products);
-      this.liveShopProducts = this.liveShopItemsService.getItems();
+      this.liveShopItemsService = new LiveShopHandler();
+      this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
+      this.liveShopItems = await this.liveShopItemsService.getItems();
+      console.log('🚀 ~ LiveShop ~ componentDidLoad ~ this.liveShopItems:', this.liveShopItems);
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
     } catch (error) {
       console.error(error);
@@ -87,11 +77,16 @@ export class LiveShop {
 
   private renderInLive() {
     return this.isSmallDevice ? (
-      <live-shop-mobile videoId={this.videoId} liveShopData={liveShopMock}></live-shop-mobile>
+      <live-shop-mobile
+        videoId={this.videoId}
+        liveShopData={this.liveShopRegister}
+        items={this.liveShopItems}
+      ></live-shop-mobile>
     ) : (
       <live-shop-desktop
         videoId={this.videoId}
-        liveShopData={liveShopMock}
+        liveShopData={this.liveShopRegister}
+        items={this.liveShopItems}
         isChatOpen={this.isChatOpen}
         toggleChat={() => this.isChatOpenHandler()}
       />
@@ -120,9 +115,9 @@ export class LiveShop {
     return (
       <Host>
         <div class="live-shop">
-          {this.status === 'warmup' && this.renderWarmup()}
-          {this.status === 'inLive' && this.renderInLive()}
-          {this.status === 'finished' && this.renderFinished()}
+          {this.liveShopRegister.status === 'warmup' && this.renderWarmup()}
+          {this.liveShopRegister.status === 'inLive' && this.renderInLive()}
+          {this.liveShopRegister.status === 'finished' && this.renderFinished()}
         </div>
       </Host>
     );

@@ -18,7 +18,7 @@ interface ILiveShopVariation {
 }
 
 interface ILiveShopProduct {
-  id: number;
+  productId: number;
   discount: ILiveShopDiscount;
   variations: ILiveShopVariation[];
 }

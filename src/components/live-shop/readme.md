@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default    |
-| ---------- | ----------- | ----------- | -------- | ---------- |
-| `hashRoom` | `hash-room` |             | `string` | `'abc123'` |
+| Property   | Attribute   | Description | Type     | Default     |
+| ---------- | ----------- | ----------- | -------- | ----------- |
+| `hashRoom` | `hash-room` |             | `string` | `undefined` |
 
 
 ## Events

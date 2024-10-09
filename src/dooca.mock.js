@@ -290,7 +290,7 @@ window.shop_ctx = {
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDM3Nzl9.aN9JQNFDsB2bZ56KuTSg9F0G8lmOqK59XEd_VXhaa5M',
   base_path: '/',
   organization: 'dooca',
-  mock: { live_shop: true },
+  mock: {},
 };
 
 window.dooca = dooca;

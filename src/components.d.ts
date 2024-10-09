@@ -10,11 +10,13 @@ import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./compon
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 import { ILiveShop } from "./components/live-shop/live-shop.type";
+import { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 export { ILiveShop } from "./components/live-shop/live-shop.type";
+export { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -77,11 +79,13 @@ export namespace Components {
     }
     interface LiveShopDesktop {
         "isChatOpen": boolean;
+        "items": IHighlightCardItem1[];
         "liveShopData": ILiveShop;
         "toggleChat": () => void;
         "videoId": string;
     }
     interface LiveShopMobile {
+        "items": IHighlightCardItem1[];
         "liveShopData": ILiveShop;
         "videoId": string;
     }
@@ -540,11 +544,13 @@ declare namespace LocalJSX {
     }
     interface LiveShopDesktop {
         "isChatOpen"?: boolean;
+        "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
         "toggleChat"?: () => void;
         "videoId"?: string;
     }
     interface LiveShopMobile {
+        "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
         "videoId"?: string;
     }

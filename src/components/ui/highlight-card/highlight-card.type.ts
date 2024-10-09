@@ -5,14 +5,14 @@ interface IItem {
   highlight: boolean;
 }
 
-interface IMessageItem extends IItem {
+export interface IMessageItem extends IItem {
   type: 'message';
   title: string;
   content: string;
-  id?: number;
+  id?: string;
 }
 
-interface IProductItem extends IItem {
+export interface IProductItem extends IItem {
   type: 'product';
   price: number;
   priceBase: number;
