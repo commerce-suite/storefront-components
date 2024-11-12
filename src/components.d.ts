@@ -264,6 +264,7 @@ declare global {
         new (): HTMLFrontSelectElement;
     };
     interface HTMLHighlightCardElementEventMap {
+        "on-click-add": void;
         "componentRendered": void;
     }
     interface HTMLHighlightCardElement extends Components.HighlightCard, HTMLStencilElement {
@@ -516,6 +517,7 @@ declare namespace LocalJSX {
     interface HighlightCard {
         "items"?: IHighlightCardItem[];
         "onComponentRendered"?: (event: HighlightCardCustomEvent<void>) => void;
+        "onOn-click-add"?: (event: HighlightCardCustomEvent<void>) => void;
     }
     interface InfoModal {
         "hideButtons"?: boolean;

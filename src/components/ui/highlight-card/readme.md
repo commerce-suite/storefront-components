@@ -17,6 +17,7 @@
 | Event               | Description | Type                |
 | ------------------- | ----------- | ------------------- |
 | `componentRendered` |             | `CustomEvent<void>` |
+| `on-click-add`      |             | `CustomEvent<void>` |
 
 
 ## Dependencies
