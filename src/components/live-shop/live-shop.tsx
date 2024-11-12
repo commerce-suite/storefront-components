@@ -1,5 +1,7 @@
-import { Component, Event, Host, EventEmitter, h, State } from '@stencil/core';
-import { liveShopMock } from './mocks/live-shop.mock';
+import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
+import { ILiveShop } from './live-shop.type';
+import { IHighlightCardItem } from '../../components';
+import { LiveShopHandler } from './services/live-shop.service';
 
 @Component({
   tag: 'live-shop',
@@ -7,22 +9,19 @@ import { liveShopMock } from './mocks/live-shop.mock';
   shadow: false,
 })
 export class LiveShop {
-  @State() status: 'inLive' | 'finished' | 'warmup' = liveShopMock.status;
-  @State() videoId: string = liveShopMock.urlLive.split('v=')[1];
+  @Prop() hashRoom: string;
+  @State() videoId: string;
   @State() isSmallDevice: boolean = window.innerWidth <= 1024;
   @State() isChatOpen: boolean = false;
   @State() isLoading: boolean = true;
+  @State() liveShopRegister: ILiveShop;
+  @State() liveShopItemsService: LiveShopHandler;
+  @State() liveShopItems: IHighlightCardItem[];
 
   @Event({ bubbles: true, eventName: 'on-return-to-home' })
   onReturnToHome: EventEmitter<void>;
 
   @Event() componentRendered: EventEmitter<void>;
-
-  private fakeLoading() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-  }
 
   private handleResize = () => {
     this.isSmallDevice = window.innerWidth <= 1024;
@@ -36,10 +35,22 @@ export class LiveShop {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  componentDidLoad() {
-    this.fakeLoading();
-    window.addEventListener('resize', this.handleResize);
-    this.componentRendered.emit();
+  async componentDidLoad() {
+    try {
+      if (!this.hashRoom) throw new Error('Hash Room is required');
+      this.isLoading = true;
+      window.addEventListener('resize', this.handleResize);
+      this.componentRendered.emit();
+      this.liveShopItemsService = new LiveShopHandler();
+      this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
+      this.liveShopItems = await this.liveShopItemsService.getItems();
+      console.log('🚀 ~ LiveShop ~ componentDidLoad ~ this.liveShopItems:', this.liveShopItems);
+      if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   private renderLoading() {
@@ -53,9 +64,9 @@ export class LiveShop {
   private renderWarmup() {
     return (
       <div class="live-shop-warmup">
-        <custom-card customClass="banner-custom-style" cardTitle={liveShopMock.title}>
-          {liveShopMock.banner ? (
-            <img src={liveShopMock.banner.src} alt={liveShopMock.banner.alt} />
+        <custom-card customClass="banner-custom-style" cardTitle={this.liveShopRegister.title}>
+          {this.liveShopRegister.banner ? (
+            <img src={this.liveShopRegister.banner.src} alt={this.liveShopRegister.banner.alt} />
           ) : (
             <div class="live-shop-banner" />
           )}
@@ -66,11 +77,16 @@ export class LiveShop {
 
   private renderInLive() {
     return this.isSmallDevice ? (
-      <live-shop-mobile videoId={this.videoId} liveShopData={liveShopMock}></live-shop-mobile>
+      <live-shop-mobile
+        videoId={this.videoId}
+        liveShopData={this.liveShopRegister}
+        items={this.liveShopItems}
+      ></live-shop-mobile>
     ) : (
       <live-shop-desktop
         videoId={this.videoId}
-        liveShopData={liveShopMock}
+        liveShopData={this.liveShopRegister}
+        items={this.liveShopItems}
         isChatOpen={this.isChatOpen}
         toggleChat={() => this.isChatOpenHandler()}
       />
@@ -99,9 +115,9 @@ export class LiveShop {
     return (
       <Host>
         <div class="live-shop">
-          {this.status === 'warmup' && this.renderWarmup()}
-          {this.status === 'inLive' && this.renderInLive()}
-          {this.status === 'finished' && this.renderFinished()}
+          {this.liveShopRegister.status === 'warmup' && this.renderWarmup()}
+          {this.liveShopRegister.status === 'inLive' && this.renderInLive()}
+          {this.liveShopRegister.status === 'finished' && this.renderFinished()}
         </div>
       </Host>
     );

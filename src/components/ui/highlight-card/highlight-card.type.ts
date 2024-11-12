@@ -5,19 +5,20 @@ interface IItem {
   highlight: boolean;
 }
 
-interface IMessageItem extends IItem {
+export interface IMessageItem extends IItem {
   type: 'message';
   title: string;
   content: string;
+  id?: string;
 }
 
-interface IProductItem extends IItem {
+export interface IProductItem extends IItem {
   type: 'product';
-  id: number;
   price: number;
   priceBase: number;
-  image: IImage;
+  image: IImage | null;
   name: string;
+  id?: number;
   specialPrice?: number;
 }
 
