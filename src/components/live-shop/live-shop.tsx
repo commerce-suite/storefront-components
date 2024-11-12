@@ -44,7 +44,6 @@ export class LiveShop {
       this.liveShopItemsService = new LiveShopHandler();
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
-      console.log('🚀 ~ LiveShop ~ componentDidLoad ~ this.liveShopItems:', this.liveShopItems);
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
     } catch (error) {
       console.error(error);

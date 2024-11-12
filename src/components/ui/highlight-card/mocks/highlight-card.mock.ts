@@ -20,6 +20,7 @@ const items: IHighlightCardItem[] = [
     name: 'Tênis Nike Air Force',
     specialPrice: 395.505,
     highlight: true,
+    slug: 'tenis-nike-air-force',
   },
   {
     type: 'message',

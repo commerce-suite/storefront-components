@@ -10,7 +10,7 @@ export class LiveShopHandler {
   private async getProducts() {
     const productIds = this.liveShopData.products.map(product => product.productId);
     return await ProductService.getList({
-      fields: ['name', 'images { src }', 'price', 'priceCompare', 'id'],
+      fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
       filter: { productIds },
     });
   }
@@ -33,6 +33,7 @@ export class LiveShopHandler {
       content: '',
       type: 'product',
       highlight: false,
+      slug: node.slug,
     }));
   }
 

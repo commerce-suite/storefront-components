@@ -18,6 +18,7 @@ export interface IProductItem extends IItem {
   priceBase: number;
   image: IImage | null;
   name: string;
+  slug: string;
   id?: number;
   specialPrice?: number;
 }
