@@ -14,10 +14,10 @@
 
 ## Events
 
-| Event               | Description | Type                |
-| ------------------- | ----------- | ------------------- |
-| `componentRendered` |             | `CustomEvent<void>` |
-| `on-click-add`      |             | `CustomEvent<void>` |
+| Event               | Description | Type                                        |
+| ------------------- | ----------- | ------------------------------------------- |
+| `addItem`           |             | `CustomEvent<IMessageItem \| IProductItem>` |
+| `componentRendered` |             | `CustomEvent<void>`                         |
 
 
 ## Dependencies

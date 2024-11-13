@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
 import { ILiveShop } from '../live-shop.type';
 import { IHighlightCardItem } from '../../../components';
 
@@ -13,6 +13,20 @@ export class LiveShopDesktop {
   @Prop() items: IHighlightCardItem[];
   @Prop() isChatOpen: boolean;
   @Prop() toggleChat: () => void;
+
+  @Event({ bubbles: true, eventName: 'on-click-add' })
+  clickAdd: EventEmitter<{
+    item: IHighlightCardItem;
+    video_id: string;
+  }>;
+
+  private handleAddItem = (event: CustomEvent<IHighlightCardItem>) => {
+    const item = event.detail;
+    this.clickAdd.emit({
+      item,
+      video_id: this.videoId,
+    });
+  };
 
   private buttonText() {
     return this.isChatOpen ? 'Ocultar chat da live' : 'Exibir chat da live';
@@ -43,7 +57,7 @@ export class LiveShopDesktop {
         <div class="live-shop-in-live-desktop-content">
           <div class="live-shop-in-live-desktop-content-card">
             {this.items.length > 0 ? (
-              <highlight-card items={this.items} />
+              <highlight-card items={this.items} onAddItem={this.handleAddItem} />
             ) : (
               <custom-card
                 customClass="in-live-custom-style-desktop"
