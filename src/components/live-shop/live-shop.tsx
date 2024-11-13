@@ -2,6 +2,7 @@ import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/c
 import { ILiveShop } from './live-shop.type';
 import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
+import { WebSocketClient } from '../../services/WebSocketClient';
 
 @Component({
   tag: 'live-shop',
@@ -45,6 +46,8 @@ export class LiveShop {
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+      const socket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+      console.log('🚀 ~ LiveShop ~ componentDidLoad ~ socket:', socket);
     } catch (error) {
       console.error(error);
     } finally {
