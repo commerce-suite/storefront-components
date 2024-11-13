@@ -4,6 +4,7 @@ describe('FrontBuyTogetherAdapter', () => {
     const expectObjectAdapted = {
         price: '309.90',
         priceBase: 349.9,
+        productId: 2915737,
         id: '9480245',
         image: {
             productId: null,
@@ -15,6 +16,7 @@ describe('FrontBuyTogetherAdapter', () => {
         },
         name: 'Chuck Taylor All Star Lift Glam',
         slug: 'chuck-taylor-all-star-lift-glam',
+        specialPrice: null,
         selectVariations: [
             {
                 label: 'Cor',

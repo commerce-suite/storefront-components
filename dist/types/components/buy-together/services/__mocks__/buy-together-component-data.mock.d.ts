@@ -2,6 +2,7 @@ export declare const buyTogetherComponentData: {
     productMain: {
         price: string;
         priceBase: number;
+        productId: number;
         id: string;
         image: {
             productId: any;
@@ -28,9 +29,11 @@ export declare const buyTogetherComponentData: {
             selectType: string;
         }[];
         slug: string;
+        specialPrice: any;
     };
     products: {
         price: string;
+        productId: number;
         priceBase: number;
         id: string;
         image: {
@@ -58,6 +61,7 @@ export declare const buyTogetherComponentData: {
             selectType: string;
         }[];
         slug: string;
+        specialPrice: any;
         isCheck: boolean;
     }[];
     originalData: {
@@ -108,6 +112,7 @@ export declare const buyTogetherComponentData: {
             discount: number;
             billetDiscount: any;
             paymentsReason: any;
+            payments: any;
             warranty: any;
             model: any;
             brand: any;
@@ -187,6 +192,7 @@ export declare const buyTogetherComponentData: {
                 discount: number;
                 billetDiscount: any;
                 paymentsReason: any;
+                payments: any;
                 warranty: any;
                 model: any;
                 brand: any;
@@ -290,6 +296,7 @@ export declare const buyTogetherComponentData: {
             discount: number;
             billetDiscount: any;
             paymentsReason: any;
+            payments: any;
             warranty: any;
             model: any;
             brand: any;
@@ -354,6 +361,7 @@ export declare const buyTogetherComponentData: {
                 discount: number;
                 billetDiscount: any;
                 paymentsReason: any;
+                payments: any;
                 warranty: any;
                 model: any;
                 brand: any;
@@ -442,6 +450,7 @@ export declare const buyTogetherComponentData: {
             discount: number;
             billetDiscount: any;
             paymentsReason: any;
+            payments: any;
             warranty: any;
             model: any;
             brand: any;
@@ -523,6 +532,7 @@ export declare const buyTogetherComponentData: {
                 discount: number;
                 billetDiscount: any;
                 paymentsReason: any;
+                payments: any;
                 warranty: any;
                 model: any;
                 brand: any;
@@ -620,6 +630,7 @@ export declare const buyTogetherComponentData: {
             discount: any;
             billetDiscount: any;
             paymentsReason: any;
+            payments: any;
             warranty: any;
             model: any;
             brand: {
@@ -696,6 +707,7 @@ export declare const buyTogetherComponentData: {
                 discount: any;
                 billetDiscount: any;
                 paymentsReason: any;
+                payments: any;
                 warranty: any;
                 model: any;
                 brand: {

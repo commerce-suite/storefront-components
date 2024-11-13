@@ -8,9 +8,15 @@ import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+import { ILiveShop } from "./components/live-shop/live-shop.type";
+import { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
+export { ILiveShop } from "./components/live-shop/live-shop.type";
+export { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -26,6 +32,11 @@ export namespace Components {
         "productId": number;
         "promotionTitle"?: string;
         "variationId"?: number;
+    }
+    interface CustomCard {
+        "cardDescription": string;
+        "cardTitle": string;
+        "customClass": string;
     }
     interface FrontCountdown {
         "endDate": string;
@@ -44,6 +55,17 @@ export namespace Components {
         "selectName": string;
         "value": any;
     }
+    interface HighlightCard {
+        "items": IHighlightCardItem[];
+    }
+    interface InfoModal {
+        "hideButtons": boolean;
+        "modalDescription": string;
+        "modalTitle": string;
+        "position": 'bottom' | 'center' | 'top';
+        "primaryButtonText": string;
+        "secondaryButtonText": string;
+    }
     interface LaunchCountdown {
         "dataCountdownTitle": string;
         "dataDescription": string;
@@ -52,7 +74,36 @@ export namespace Components {
         "productId": string;
         "variationId": string;
     }
+    interface LiveShop {
+        "hashRoom": string;
+    }
+    interface LiveShopDesktop {
+        "isChatOpen": boolean;
+        "items": IHighlightCardItem1[];
+        "liveShopData": ILiveShop;
+        "toggleChat": () => void;
+        "videoId": string;
+    }
+    interface LiveShopMobile {
+        "items": IHighlightCardItem1[];
+        "liveShopData": ILiveShop;
+        "videoId": string;
+    }
+    interface LiveVideoChat {
+        "videoId": string;
+    }
+    interface LiveVideoPlayer {
+        "autoPlay": boolean;
+        "videoId": string;
+    }
+    interface MiniPlayer {
+        "autoPlay": boolean;
+        "buttonText": string;
+        "mainTitle": string;
+        "videoId": string;
+    }
     interface ProductCard {
+        "customClass": string;
         "inline": boolean;
         "product": IProductCard;
     }
@@ -63,6 +114,9 @@ export namespace Components {
         "productsPerPage": number;
         "showArrows": boolean;
         "showcaseTitle": string;
+    }
+    interface TabSelector {
+        "tabs": { name: string; label: string | any; content: () => any }[];
     }
     interface VariationSelector {
         "productId": number;
@@ -78,13 +132,49 @@ export interface BuyTogetherCartModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBuyTogetherCartModalElement;
 }
+export interface CustomCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCustomCardElement;
+}
 export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
 }
+export interface HighlightCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLHighlightCardElement;
+}
+export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInfoModalElement;
+}
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopElement;
+}
+export interface LiveShopDesktopCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopDesktopElement;
+}
+export interface LiveShopMobileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopMobileElement;
+}
+export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveVideoChatElement;
+}
+export interface LiveVideoPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveVideoPlayerElement;
+}
+export interface MiniPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMiniPlayerElement;
 }
 export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -135,6 +225,23 @@ declare global {
         prototype: HTMLBuyTogetherCartModalElement;
         new (): HTMLBuyTogetherCartModalElement;
     };
+    interface HTMLCustomCardElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLCustomCardElement extends Components.CustomCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCustomCardElementEventMap>(type: K, listener: (this: HTMLCustomCardElement, ev: CustomCardCustomEvent<HTMLCustomCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCustomCardElementEventMap>(type: K, listener: (this: HTMLCustomCardElement, ev: CustomCardCustomEvent<HTMLCustomCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCustomCardElement: {
+        prototype: HTMLCustomCardElement;
+        new (): HTMLCustomCardElement;
+    };
     interface HTMLFrontCountdownElementEventMap {
         "countdownFinished": any;
     }
@@ -164,6 +271,43 @@ declare global {
         prototype: HTMLFrontSelectElement;
         new (): HTMLFrontSelectElement;
     };
+    interface HTMLHighlightCardElementEventMap {
+        "addItem": IHighlightCardItem;
+        "componentRendered": void;
+    }
+    interface HTMLHighlightCardElement extends Components.HighlightCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLHighlightCardElementEventMap>(type: K, listener: (this: HTMLHighlightCardElement, ev: HighlightCardCustomEvent<HTMLHighlightCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLHighlightCardElementEventMap>(type: K, listener: (this: HTMLHighlightCardElement, ev: HighlightCardCustomEvent<HTMLHighlightCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLHighlightCardElement: {
+        prototype: HTMLHighlightCardElement;
+        new (): HTMLHighlightCardElement;
+    };
+    interface HTMLInfoModalElementEventMap {
+        "componentRendered": void;
+        "on-click-primary-button": void;
+        "on-click-secondary-button": void;
+    }
+    interface HTMLInfoModalElement extends Components.InfoModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInfoModalElementEventMap>(type: K, listener: (this: HTMLInfoModalElement, ev: InfoModalCustomEvent<HTMLInfoModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInfoModalElementEventMap>(type: K, listener: (this: HTMLInfoModalElement, ev: InfoModalCustomEvent<HTMLInfoModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInfoModalElement: {
+        prototype: HTMLInfoModalElement;
+        new (): HTMLInfoModalElement;
+    };
     interface HTMLLaunchCountdownElementEventMap {
         "countdownLoaded": { releaseDateActive: boolean };
     }
@@ -180,6 +324,116 @@ declare global {
     var HTMLLaunchCountdownElement: {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
+    };
+    interface HTMLLiveShopElementEventMap {
+        "on-return-to-home": void;
+        "componentRendered": void;
+    }
+    interface HTMLLiveShopElement extends Components.LiveShop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopElementEventMap>(type: K, listener: (this: HTMLLiveShopElement, ev: LiveShopCustomEvent<HTMLLiveShopElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopElementEventMap>(type: K, listener: (this: HTMLLiveShopElement, ev: LiveShopCustomEvent<HTMLLiveShopElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveShopElement: {
+        prototype: HTMLLiveShopElement;
+        new (): HTMLLiveShopElement;
+    };
+    interface HTMLLiveShopDesktopElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    video_id: string;
+  };
+    }
+    interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveShopDesktopElement: {
+        prototype: HTMLLiveShopDesktopElement;
+        new (): HTMLLiveShopDesktopElement;
+    };
+    interface HTMLLiveShopMobileElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    video_id: string;
+  };
+    }
+    interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveShopMobileElement: {
+        prototype: HTMLLiveShopMobileElement;
+        new (): HTMLLiveShopMobileElement;
+    };
+    interface HTMLLiveVideoChatElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLLiveVideoChatElement extends Components.LiveVideoChat, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveVideoChatElementEventMap>(type: K, listener: (this: HTMLLiveVideoChatElement, ev: LiveVideoChatCustomEvent<HTMLLiveVideoChatElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveVideoChatElementEventMap>(type: K, listener: (this: HTMLLiveVideoChatElement, ev: LiveVideoChatCustomEvent<HTMLLiveVideoChatElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveVideoChatElement: {
+        prototype: HTMLLiveVideoChatElement;
+        new (): HTMLLiveVideoChatElement;
+    };
+    interface HTMLLiveVideoPlayerElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLLiveVideoPlayerElement extends Components.LiveVideoPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveVideoPlayerElementEventMap>(type: K, listener: (this: HTMLLiveVideoPlayerElement, ev: LiveVideoPlayerCustomEvent<HTMLLiveVideoPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveVideoPlayerElementEventMap>(type: K, listener: (this: HTMLLiveVideoPlayerElement, ev: LiveVideoPlayerCustomEvent<HTMLLiveVideoPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveVideoPlayerElement: {
+        prototype: HTMLLiveVideoPlayerElement;
+        new (): HTMLLiveVideoPlayerElement;
+    };
+    interface HTMLMiniPlayerElementEventMap {
+        "componentRendered": void;
+        "on-click-button": void;
+    }
+    interface HTMLMiniPlayerElement extends Components.MiniPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMiniPlayerElement: {
+        prototype: HTMLMiniPlayerElement;
+        new (): HTMLMiniPlayerElement;
     };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
@@ -204,6 +458,12 @@ declare global {
         prototype: HTMLShowcaseRelatedElement;
         new (): HTMLShowcaseRelatedElement;
     };
+    interface HTMLTabSelectorElement extends Components.TabSelector, HTMLStencilElement {
+    }
+    var HTMLTabSelectorElement: {
+        prototype: HTMLTabSelectorElement;
+        new (): HTMLTabSelectorElement;
+    };
     interface HTMLVariationSelectorElementEventMap {
         "inputSelect": IInputSelectDataEvent;
     }
@@ -224,12 +484,22 @@ declare global {
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
         "buy-together-cart-modal": HTMLBuyTogetherCartModalElement;
+        "custom-card": HTMLCustomCardElement;
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
+        "highlight-card": HTMLHighlightCardElement;
+        "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "live-shop": HTMLLiveShopElement;
+        "live-shop-desktop": HTMLLiveShopDesktopElement;
+        "live-shop-mobile": HTMLLiveShopMobileElement;
+        "live-video-chat": HTMLLiveVideoChatElement;
+        "live-video-player": HTMLLiveVideoPlayerElement;
+        "mini-player": HTMLMiniPlayerElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
+        "tab-selector": HTMLTabSelectorElement;
         "variation-selector": HTMLVariationSelectorElement;
     }
 }
@@ -256,6 +526,12 @@ declare namespace LocalJSX {
         "promotionTitle"?: string;
         "variationId"?: number;
     }
+    interface CustomCard {
+        "cardDescription"?: string;
+        "cardTitle"?: string;
+        "customClass"?: string;
+        "onComponentRendered"?: (event: CustomCardCustomEvent<void>) => void;
+    }
     interface FrontCountdown {
         "endDate"?: string;
         "onCountdownFinished"?: (event: FrontCountdownCustomEvent<any>) => void;
@@ -274,6 +550,22 @@ declare namespace LocalJSX {
         "selectName"?: string;
         "value"?: any;
     }
+    interface HighlightCard {
+        "items"?: IHighlightCardItem[];
+        "onAddItem"?: (event: HighlightCardCustomEvent<IHighlightCardItem>) => void;
+        "onComponentRendered"?: (event: HighlightCardCustomEvent<void>) => void;
+    }
+    interface InfoModal {
+        "hideButtons"?: boolean;
+        "modalDescription"?: string;
+        "modalTitle"?: string;
+        "onComponentRendered"?: (event: InfoModalCustomEvent<void>) => void;
+        "onOn-click-primary-button"?: (event: InfoModalCustomEvent<void>) => void;
+        "onOn-click-secondary-button"?: (event: InfoModalCustomEvent<void>) => void;
+        "position"?: 'bottom' | 'center' | 'top';
+        "primaryButtonText"?: string;
+        "secondaryButtonText"?: string;
+    }
     interface LaunchCountdown {
         "dataCountdownTitle"?: string;
         "dataDescription"?: string;
@@ -283,7 +575,50 @@ declare namespace LocalJSX {
         "productId"?: string;
         "variationId"?: string;
     }
+    interface LiveShop {
+        "hashRoom"?: string;
+        "onComponentRendered"?: (event: LiveShopCustomEvent<void>) => void;
+        "onOn-return-to-home"?: (event: LiveShopCustomEvent<void>) => void;
+    }
+    interface LiveShopDesktop {
+        "isChatOpen"?: boolean;
+        "items"?: IHighlightCardItem1[];
+        "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopDesktopCustomEvent<{
+    item: IHighlightCardItem1;
+    video_id: string;
+  }>) => void;
+        "toggleChat"?: () => void;
+        "videoId"?: string;
+    }
+    interface LiveShopMobile {
+        "items"?: IHighlightCardItem1[];
+        "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopMobileCustomEvent<{
+    item: IHighlightCardItem1;
+    video_id: string;
+  }>) => void;
+        "videoId"?: string;
+    }
+    interface LiveVideoChat {
+        "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
+    interface LiveVideoPlayer {
+        "autoPlay"?: boolean;
+        "onComponentRendered"?: (event: LiveVideoPlayerCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
+    interface MiniPlayer {
+        "autoPlay"?: boolean;
+        "buttonText"?: string;
+        "mainTitle"?: string;
+        "onComponentRendered"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "onOn-click-button"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "videoId"?: string;
+    }
     interface ProductCard {
+        "customClass"?: string;
         "inline"?: boolean;
         "product"?: IProductCard;
     }
@@ -295,6 +630,9 @@ declare namespace LocalJSX {
         "showArrows"?: boolean;
         "showcaseTitle"?: string;
     }
+    interface TabSelector {
+        "tabs"?: { name: string; label: string | any; content: () => any }[];
+    }
     interface VariationSelector {
         "onInputSelect"?: (event: VariationSelectorCustomEvent<IInputSelectDataEvent>) => void;
         "productId"?: number;
@@ -304,12 +642,22 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "buy-together": BuyTogether;
         "buy-together-cart-modal": BuyTogetherCartModal;
+        "custom-card": CustomCard;
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
+        "highlight-card": HighlightCard;
+        "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
+        "live-shop": LiveShop;
+        "live-shop-desktop": LiveShopDesktop;
+        "live-shop-mobile": LiveShopMobile;
+        "live-video-chat": LiveVideoChat;
+        "live-video-player": LiveVideoPlayer;
+        "mini-player": MiniPlayer;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
+        "tab-selector": TabSelector;
         "variation-selector": VariationSelector;
     }
 }
@@ -319,12 +667,22 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
             "buy-together-cart-modal": LocalJSX.BuyTogetherCartModal & JSXBase.HTMLAttributes<HTMLBuyTogetherCartModalElement>;
+            "custom-card": LocalJSX.CustomCard & JSXBase.HTMLAttributes<HTMLCustomCardElement>;
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
+            "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
+            "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
+            "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
+            "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
+            "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
+            "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
+            "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
+            "tab-selector": LocalJSX.TabSelector & JSXBase.HTMLAttributes<HTMLTabSelectorElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }
     }

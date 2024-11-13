@@ -28,7 +28,7 @@ export class FrontImage {
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: '4255eb4aec16539af72395d482f9ab7c9c03ae5d' }, h("figure", { key: '9b93a19c07d096c221ec88551f765e0616c7f0ad', class: this.getImageClassByProps() }, h("img", { key: 'df29dad7df8ad63bb511d618c3bb5029f46f089a', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: 'fc72c85e55768d046d6a1e145345a45f52c5ed43' }, this.figCaption))));
+        return (h(Host, { key: '8568df856989ba170181dab00d2b2d319beb59e4' }, h("figure", { key: '713d672234f520f6b3c66323662f7570b3f1c300', class: this.getImageClassByProps() }, h("img", { key: 'c592c3b5a18359ae74f491be9be473f08a51fa53', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: 'dd13acd7b63e276d0936ad03f70d469ac00c4792' }, this.figCaption))));
     }
     static get is() { return "front-image"; }
     static get originalStyleUrls() {

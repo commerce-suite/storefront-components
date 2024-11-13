@@ -1,6 +1,6 @@
 import { IFrontSelectOption } from '../front-select/front-select.type';
 export type SelectAttributesType = 'color' | 'attributes' | 'secondaryAttributes';
-interface IImage {
+export interface IImage {
     src: string;
     alt?: string;
 }
@@ -28,4 +28,3 @@ export interface IProductCard {
     selectVariations?: ISelectVariation[];
     specialPrice?: number | null;
 }
-export {};

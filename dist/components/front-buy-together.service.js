@@ -1352,7 +1352,6 @@ class FrontBuyTogetherAdapter {
             }
             return null;
         };
-        adaptSpecialPrice(product.payments);
         const { price, priceCompare, id } = this.getValuesByVariation(product);
         return {
             price,
@@ -1363,7 +1362,7 @@ class FrontBuyTogetherAdapter {
             name: product.name,
             slug: product.slug,
             selectVariations: this.adapterAttributes(product),
-            specialPrice: adaptSpecialPrice(product.payments),
+            specialPrice: product.payments ? adaptSpecialPrice(product.payments) : null,
         };
     }
     static getValuesByVariation(product) {
