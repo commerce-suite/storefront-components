@@ -1,17 +1,26 @@
 import { h } from '@stencil/core';
 import { IHighlightCardItem } from '../../../components';
 
-export const tabs = (videoId: string, items: IHighlightCardItem[]) => [
+export const tabs = (
+  videoId: string,
+  items: IHighlightCardItem[],
+  handleAddItem: (event: CustomEvent<IHighlightCardItem>) => void,
+) => [
   {
     name: 'products',
     label: (
       <span>
-        Produtos {items?.length > 0 ? <span class="product-count">{items?.length}</span> : ''}
+        Produtos
+        {items?.filter(item => item.type === 'product').length > 0 ? (
+          <span class="product-count">{items?.filter(item => item.type === 'product').length}</span>
+        ) : (
+          ''
+        )}
       </span>
     ),
     content: () => {
       return items?.length > 0 ? (
-        <highlight-card items={items}></highlight-card>
+        <highlight-card items={items} onAddItem={handleAddItem}></highlight-card>
       ) : (
         <custom-card
           customClass="in-live-custom-style-empty"

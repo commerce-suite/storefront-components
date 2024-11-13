@@ -156,6 +156,14 @@ export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveShopElement;
 }
+export interface LiveShopDesktopCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopDesktopElement;
+}
+export interface LiveShopMobileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopMobileElement;
+}
 export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveVideoChatElement;
@@ -264,6 +272,7 @@ declare global {
         new (): HTMLFrontSelectElement;
     };
     interface HTMLHighlightCardElementEventMap {
+        "addItem": IHighlightCardItem;
         "componentRendered": void;
     }
     interface HTMLHighlightCardElement extends Components.HighlightCard, HTMLStencilElement {
@@ -334,13 +343,41 @@ declare global {
         prototype: HTMLLiveShopElement;
         new (): HTMLLiveShopElement;
     };
+    interface HTMLLiveShopDesktopElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    video_id: string;
+  };
+    }
     interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLiveShopDesktopElement: {
         prototype: HTMLLiveShopDesktopElement;
         new (): HTMLLiveShopDesktopElement;
     };
+    interface HTMLLiveShopMobileElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    video_id: string;
+  };
+    }
     interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLiveShopMobileElement: {
         prototype: HTMLLiveShopMobileElement;
@@ -515,6 +552,7 @@ declare namespace LocalJSX {
     }
     interface HighlightCard {
         "items"?: IHighlightCardItem[];
+        "onAddItem"?: (event: HighlightCardCustomEvent<IHighlightCardItem>) => void;
         "onComponentRendered"?: (event: HighlightCardCustomEvent<void>) => void;
     }
     interface InfoModal {
@@ -546,12 +584,20 @@ declare namespace LocalJSX {
         "isChatOpen"?: boolean;
         "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopDesktopCustomEvent<{
+    item: IHighlightCardItem1;
+    video_id: string;
+  }>) => void;
         "toggleChat"?: () => void;
         "videoId"?: string;
     }
     interface LiveShopMobile {
         "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopMobileCustomEvent<{
+    item: IHighlightCardItem1;
+    video_id: string;
+  }>) => void;
         "videoId"?: string;
     }
     interface LiveVideoChat {

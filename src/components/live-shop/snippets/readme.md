@@ -14,6 +14,13 @@
 | `videoId`      | `video-id` |             | `string`               | `undefined` |
 
 
+## Events
+
+| Event          | Description | Type                                                           |
+| -------------- | ----------- | -------------------------------------------------------------- |
+| `on-click-add` |             | `CustomEvent<{ item: IHighlightCardItem; video_id: string; }>` |
+
+
 ## Dependencies
 
 ### Used by
