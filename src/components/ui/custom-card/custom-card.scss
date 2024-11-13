@@ -1,0 +1,42 @@
+@import '../../../style/mixins/screen-media.scss';
+
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title,
+    &-description {
+      margin: 0;
+      text-align: center;
+    }
+
+    &-title {
+      font-family: var(--h1-ff);
+      color: var(--menu-items);
+      font-weight: 700;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    &-description {
+      font-size: 16px;
+    }
+  }
+
+  @include for-desktop {
+    gap: 40px;
+  }
+}

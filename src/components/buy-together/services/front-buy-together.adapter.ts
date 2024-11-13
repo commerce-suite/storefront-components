@@ -43,7 +43,7 @@ export class FrontBuyTogetherAdapter {
   }
 
   public static adapterToProductCard(product: Product): IProductCard {
-    const adaptSpecialPrice = (payments: Payment[]): number | null => {
+    const adaptSpecialPrice = (payments: undefined | Payment[]): number | null => {
       const pixMethod = payments.find(payment => payment.method === 'pix');
       if (pixMethod) {
         const specialPrice = Number(pixMethod.installment.total);
@@ -51,7 +51,7 @@ export class FrontBuyTogetherAdapter {
       }
       return null;
     };
-    adaptSpecialPrice(product.payments);
+
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,
@@ -62,7 +62,7 @@ export class FrontBuyTogetherAdapter {
       name: product.name,
       slug: product.slug,
       selectVariations: this.adapterAttributes(product),
-      specialPrice: adaptSpecialPrice(product.payments),
+      specialPrice: product.payments ? adaptSpecialPrice(product.payments) : null,
     };
   }
 

@@ -75,7 +75,7 @@ describe('buy-together', () => {
     <buy-together showcase-mode>
       <form>
         <div class="title-wrapper">
-          <h2 class="title">${buyTogetherDataApi.title}</h2>
+          <h2 class="-showcase title">${buyTogetherDataApi.title}</h2>
         </div>
         <section class="bagy-buy-together buy-together-container -showcase">
           <div class="products-order-bump -showcase">
