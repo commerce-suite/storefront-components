@@ -17,7 +17,6 @@ export class LiveShopHandler {
 
   async getLiveShop(hashRoom: string): Promise<LiveShop> {
     this.liveShopData = await LiveShopService.getByHash(hashRoom);
-    console.log('🚀 ~ LiveShopHandler ~ getLiveShop ~ liveShopData:', this.liveShopData);
     return this.liveShopData;
   }
 

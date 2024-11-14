@@ -35,7 +35,14 @@ export class LiveShopMobile {
         </div>
         <div class="live-shop-in-live-options">
           <custom-card customClass="in-live-custom-style" cardTitle={this.liveShopData.name}>
-            <tab-selector tabs={tabs(this.videoId, this.items, this.handleAddItem)} />
+            <tab-selector
+              tabs={tabs(
+                this.videoId,
+                this.items,
+                this.handleAddItem,
+                this.liveShopData.chatVisible,
+              )}
+            />
           </custom-card>
         </div>
       </div>
