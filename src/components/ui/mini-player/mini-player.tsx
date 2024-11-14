@@ -17,8 +17,10 @@ export class MiniPlayer {
   @State() positionY: number = 0;
   @State() isDragging: boolean = false;
 
+  @Event({ bubbles: true, eventName: 'on-click-miniplayer-button' })
+  onClickMiniPlayerButton: EventEmitter<void>;
+
   @Event() componentRendered: EventEmitter<void>;
-  @Event({ bubbles: true, eventName: 'on-click-button' }) onClickButton: EventEmitter<void>;
 
   private dragDropService: DraggableService;
 
@@ -74,7 +76,9 @@ export class MiniPlayer {
             >
               <h6 class="mini-player-bar-title">{this.mainTitle}</h6>
               <div class="mini-player-bar-button">
-                <button onClick={() => this.onClickButton.emit()}>{this.buttonText}</button>
+                <button onClick={() => this.onClickMiniPlayerButton.emit()}>
+                  {this.buttonText}
+                </button>
               </div>
             </div>
           </div>
