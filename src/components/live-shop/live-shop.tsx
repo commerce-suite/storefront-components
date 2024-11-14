@@ -117,20 +117,7 @@ export class LiveShop {
     }
 
     if (this.liveShopNotFound) {
-      return (
-        <Host>
-          <div class="live-shop-not-found">
-            <custom-card
-              cardTitle="Ops, parece que essa live não existe mais!"
-              cardDescription="Fique de olho em nossas próximas lives para mais novidades e promoções imperdíveis!"
-            >
-              <button onClick={() => this.onReturnToHome.emit()}>
-                Voltar para a página inicial
-              </button>
-            </custom-card>
-          </div>
-        </Host>
-      );
+      return <live-shop-not-found onOnReturnToHome={() => this.onReturnToHome.emit()} />;
     }
 
     return (

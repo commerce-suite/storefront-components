@@ -28,6 +28,7 @@
  - [live-shop](../../live-shop)
  - [live-shop-desktop](../../live-shop/snippets)
  - [live-shop-mobile](../../live-shop/snippets)
+ - [live-shop-not-found](../../live-shop/snippets)
 
 ### Graph
 ```mermaid
@@ -35,6 +36,7 @@ graph TD;
   live-shop --> custom-card
   live-shop-desktop --> custom-card
   live-shop-mobile --> custom-card
+  live-shop-not-found --> custom-card
   style custom-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

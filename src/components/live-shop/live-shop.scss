@@ -21,13 +21,6 @@
 .live-shop {
   height: 100%;
 
-  &-not-found {
-    & button {
-      @include front-button;
-      font-size: 14px;
-    }
-  }
-
   &-warmup {
     .banner-custom-style {
       padding: 40px;
