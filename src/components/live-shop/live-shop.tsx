@@ -10,6 +10,7 @@ import { LiveShopHandler } from './services/live-shop.service';
 })
 export class LiveShop {
   @Prop() hashRoom: string;
+  @State() liveShopNotFound: boolean = false;
   @State() videoId: string;
   @State() isSmallDevice: boolean = window.innerWidth <= 1024;
   @State() isChatOpen: boolean = false;
@@ -46,6 +47,10 @@ export class LiveShop {
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
     } catch (error) {
+      if (error?.message?.includes('live-shop_not_found')) {
+        this.liveShopNotFound = true;
+        console.error('Live Shop not found', { error });
+      }
       console.error(error);
     } finally {
       this.isLoading = false;
@@ -109,6 +114,10 @@ export class LiveShop {
   render() {
     if (this.isLoading) {
       return <Host>{this.renderLoading()}</Host>;
+    }
+
+    if (this.liveShopNotFound) {
+      return <live-shop-not-found onOnReturnToHome={() => this.onReturnToHome.emit()} />;
     }
 
     return (
