@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event          | Description | Type                                                           |
-| -------------- | ----------- | -------------------------------------------------------------- |
-| `on-click-add` |             | `CustomEvent<{ item: IHighlightCardItem; video_id: string; }>` |
+| Event          | Description | Type                                                                  |
+| -------------- | ----------- | --------------------------------------------------------------------- |
+| `on-click-add` |             | `CustomEvent<{ item: IHighlightCardItem; liveShopData: ILiveShop; }>` |
 
 
 ## Dependencies

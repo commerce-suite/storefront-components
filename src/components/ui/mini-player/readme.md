@@ -17,10 +17,10 @@
 
 ## Events
 
-| Event               | Description | Type                |
-| ------------------- | ----------- | ------------------- |
-| `componentRendered` |             | `CustomEvent<void>` |
-| `on-click-button`   |             | `CustomEvent<void>` |
+| Event                        | Description | Type                |
+| ---------------------------- | ----------- | ------------------- |
+| `componentRendered`          |             | `CustomEvent<void>` |
+| `on-click-miniplayer-button` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

@@ -346,7 +346,7 @@ declare global {
     interface HTMLLiveShopDesktopElementEventMap {
         "on-click-add": {
     item: IHighlightCardItem1;
-    video_id: string;
+    liveShopData: ILiveShop;
   };
     }
     interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
@@ -366,7 +366,7 @@ declare global {
     interface HTMLLiveShopMobileElementEventMap {
         "on-click-add": {
     item: IHighlightCardItem1;
-    video_id: string;
+    liveShopData: ILiveShop;
   };
     }
     interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
@@ -418,8 +418,8 @@ declare global {
         new (): HTMLLiveVideoPlayerElement;
     };
     interface HTMLMiniPlayerElementEventMap {
+        "on-click-miniplayer-button": void;
         "componentRendered": void;
-        "on-click-button": void;
     }
     interface HTMLMiniPlayerElement extends Components.MiniPlayer, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -586,7 +586,7 @@ declare namespace LocalJSX {
         "liveShopData"?: ILiveShop;
         "onOn-click-add"?: (event: LiveShopDesktopCustomEvent<{
     item: IHighlightCardItem1;
-    video_id: string;
+    liveShopData: ILiveShop;
   }>) => void;
         "toggleChat"?: () => void;
         "videoId"?: string;
@@ -596,7 +596,7 @@ declare namespace LocalJSX {
         "liveShopData"?: ILiveShop;
         "onOn-click-add"?: (event: LiveShopMobileCustomEvent<{
     item: IHighlightCardItem1;
-    video_id: string;
+    liveShopData: ILiveShop;
   }>) => void;
         "videoId"?: string;
     }
@@ -614,7 +614,7 @@ declare namespace LocalJSX {
         "buttonText"?: string;
         "mainTitle"?: string;
         "onComponentRendered"?: (event: MiniPlayerCustomEvent<void>) => void;
-        "onOn-click-button"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "onOn-click-miniplayer-button"?: (event: MiniPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
     interface ProductCard {

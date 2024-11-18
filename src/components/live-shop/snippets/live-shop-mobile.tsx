@@ -16,14 +16,14 @@ export class LiveShopMobile {
   @Event({ bubbles: true, eventName: 'on-click-add' })
   clickAdd: EventEmitter<{
     item: IHighlightCardItem;
-    video_id: string;
+    liveShopData: ILiveShop;
   }>;
 
   private handleAddItem = (event: CustomEvent<IHighlightCardItem>) => {
     const item = event.detail;
     this.clickAdd.emit({
       item,
-      video_id: this.videoId,
+      liveShopData: this.liveShopData,
     });
   };
 
