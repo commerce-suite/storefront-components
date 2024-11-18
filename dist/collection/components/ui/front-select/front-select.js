@@ -13,7 +13,7 @@ export class FrontSelect {
     }
     render() {
         var _a;
-        return (h(Host, { key: '73c2f64c1516983ada544be95f772606b58d598d' }, this.label && (h("label", { key: '7fa12bd705aa91574ea18c296fe0f9249c8e1ede', class: "select-label", htmlFor: this.selectId }, this.label)), h("div", { key: '94133423e639d74a7ff876900696cdc38e0af93f', class: "front-select-container" }, h("select", { key: 'bda5b46685d9e7542a289ce9793e9ae0a719599c', name: this.selectName, id: this.selectId }, h("option", { key: '1ec9aa62a90fdd0d7728ada32b30d471b80b5571', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
+        return (h(Host, { key: '10a2164d26911a02d909fa0adf67c727f0c51589' }, this.label && (h("label", { key: '5c29a06e907efba1145c15f673be276a616005ca', class: "select-label", htmlFor: this.selectId }, this.label)), h("div", { key: '9e69463d1a7e53879148d3d66dcee3b43c075c31', class: "front-select-container" }, h("select", { key: '09eb9cefdb810c237bf2af856c32ed7cf6a07265', name: this.selectName, id: this.selectId }, h("option", { key: '019ab62775a83b6b3f12c3c1758ac09118f26f2e', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
             _a.map(({ name, value, disabled }) => (h("option", { value: value, selected: this.value === value, disabled: disabled }, name)))))));
     }
     static get is() { return "front-select"; }

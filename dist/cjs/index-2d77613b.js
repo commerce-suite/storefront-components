@@ -1462,10 +1462,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'custom-card_10.cjs':
+                case 'custom-card_11.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './custom-card_10.cjs.entry.js')); }).then(processMod, consoleError);
+                        './custom-card_11.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'buy-together-cart-modal.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

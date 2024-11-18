@@ -1,17 +1,13 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-const index = require('./index-2d77613b.js');
-const index$1 = require('./index-e8e5cf79.js');
+import { r as registerInstance, c as createEvent, h, H as Host, g as getAssetPath } from './index-cb0223a2.js';
+import { P as ProductService, L as LiveShopService } from './index-bc627d0d.js';
 
 const customCardCss = ":host{display:inline-block;width:100%}.custom-card{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px}.custom-card-header{display:flex;flex-direction:column;gap:16px}.custom-card-header-title,.custom-card-header-description{margin:0;text-align:center}.custom-card-header-title{font-family:var(--h1-ff);color:var(--menu-items);font-weight:700;font-size:24px;text-transform:uppercase}.custom-card-header-description{font-size:16px}@media (min-width: 1024px){.custom-card{gap:40px}}";
 const CustomCardStyle0 = customCardCss;
 
 const CustomCard = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.componentRendered = index.createEvent(this, "componentRendered", 7);
+        registerInstance(this, hostRef);
+        this.componentRendered = createEvent(this, "componentRendered", 7);
         this.cardTitle = 'Não perca! Live hoje às 19 horas.';
         this.cardDescription = undefined;
         this.customClass = '';
@@ -20,7 +16,7 @@ const CustomCard = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '53245f10b891d307ae757b2992c3e5127cfdaf56' }, index.h("div", { key: 'd18493b0cb827d91cf650cf5a139fb791b258fa3', class: `custom-card ${this.customClass}` }, index.h("div", { key: '66348c1eadf3b516bc15ef074461fd7c77d4822b', class: "custom-card-header" }, index.h("h2", { key: '1e45189b4de9ae8e94b6300ae90d26b722b5ee21', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (index.h("p", { key: 'ba3abd85c94474d7a24ab119c091b94b0b6f4670', class: "custom-card-header-description" }, this.cardDescription))), index.h("div", { key: '08d5f6a130b9123713ec8d26d408fd9f496dbd6c', class: "custom-card-content" }, index.h("slot", { key: '07d0861be27e9f32fe81fd55eadda597da0cb10a' })))));
+        return (h(Host, { key: '732ac75941c1cf4a35775ac286de0a74dcb33def' }, h("div", { key: '9fbe399940103764e765dd84563622a5ac9fca29', class: `custom-card ${this.customClass}` }, h("div", { key: 'dca7891aeb907406a97ce9093407ceea1d844d13', class: "custom-card-header" }, h("h2", { key: '8eaefb1c57db1af82c73a2bea7df4dca0c506c90', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '1db1caf8f312021121348055880fc67c7b8e4545', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: 'ea8120c8aa7e11799b5a2e270f49edd3c580bde2', class: "custom-card-content" }, h("slot", { key: 'f793382fc558355fd70659264ec3c69c60f98e31' })))));
     }
 };
 CustomCard.style = CustomCardStyle0;
@@ -43,7 +39,7 @@ const FrontImageStyle0 = frontImageCss;
 
 const FrontImage = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
+        registerInstance(this, hostRef);
         this.imageSrc = undefined;
         this.textAlt = undefined;
         this.figCaption = undefined;
@@ -70,7 +66,7 @@ const FrontImage = class {
         this.isSrcLoading = true;
     }
     render() {
-        return (index.h(index.Host, { key: '8568df856989ba170181dab00d2b2d319beb59e4' }, index.h("figure", { key: '713d672234f520f6b3c66323662f7570b3f1c300', class: this.getImageClassByProps() }, index.h("img", { key: 'c592c3b5a18359ae74f491be9be473f08a51fa53', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && index.h("figcaption", { key: 'dd13acd7b63e276d0936ad03f70d469ac00c4792' }, this.figCaption))));
+        return (h(Host, { key: 'a86cbee4ce7b83af6db0f609c9d50339332ab639' }, h("figure", { key: '1d7ae12ec0cb14648c1bba089f999729338de4b0', class: this.getImageClassByProps() }, h("img", { key: 'fdf4e6f59d6b3014871e74916a8c087d1911cddf', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: '16b68f05ef81fb5c2d76ffef7a236240e8ecc567' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]
@@ -83,15 +79,15 @@ const HighlightCardStyle0 = highlightCardCss;
 
 const HighlightCard = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.addItem = index.createEvent(this, "addItem", 7);
-        this.componentRendered = index.createEvent(this, "componentRendered", 7);
+        registerInstance(this, hostRef);
+        this.addItem = createEvent(this, "addItem", 7);
+        this.componentRendered = createEvent(this, "componentRendered", 7);
         this.items = [];
         this.highlightedItems = [];
         this.nonHighlightedItems = [];
     }
     renderItem(item, isHighlighted) {
-        return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product" }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, inline: true }), index.h("div", { class: "highlight-card-product-cart-icon" }, index.h("img", { onClick: () => this.addItem.emit(item), src: index.getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
+        return (h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (h("div", { class: "highlight-card-message" }, h("h4", { class: "highlight-card-message-title" }, item.title), h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (h("div", { class: "highlight-card-product" }, h("product-card", { "custom-class": "highlight-custom-style", product: item, inline: true }), h("div", { class: "highlight-card-product-cart-icon" }, h("img", { onClick: () => this.addItem.emit(item), src: getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
     }
     filterItems() {
         this.highlightedItems = this.items.filter(item => item.highlight);
@@ -107,7 +103,7 @@ const HighlightCard = class {
         this.filterItems();
     }
     render() {
-        return (index.h(index.Host, { key: '71d5ef81aae5fb0d2b099ba48b0c518d57931310' }, index.h("div", { key: '0f6381c4f72ca5b3e1f038e8aa5d2ad2d87c2a13', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: '2224059a47407062abf4769d14c0d230f00f3dff', class: "highlight-card-container" }, index.h("div", { key: '364d9a076d3a6d0563bf85d59e1644e053187437', class: "highlight-card-header" }, index.h("span", { key: '4798401487cfb3e5f5a97baf6dd25fb07c1f164d', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: '81c35f2eb4ffedbaed094c61e0e00c5c5ffa5290' }, h("div", { key: '4a798edbdede04bee510f6cb1c3635570d0ee7de', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: 'ad4dc2c47315b7a65ec010ba7f0e904bdfda1899', class: "highlight-card-container" }, h("div", { key: 'c73501697d708bdbefa8c982b73604be4ab04fcc', class: "highlight-card-header" }, h("span", { key: '4c9028c801fda1d3d7de4ed2b338bd9116f5847b', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["filterItemsHandler"]
@@ -118,14 +114,13 @@ HighlightCard.style = HighlightCardStyle0;
 class LiveShopHandler {
     async getProducts() {
         const productIds = this.liveShopData.products.map(product => product.productId);
-        return await index$1.ProductService.getList({
+        return await ProductService.getList({
             fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
             filter: { productIds },
         });
     }
     async getLiveShop(hashRoom) {
-        this.liveShopData = await index$1.LiveShopService.getByHash(hashRoom);
-        console.log('🚀 ~ LiveShopHandler ~ getLiveShop ~ liveShopData:', this.liveShopData);
+        this.liveShopData = await LiveShopService.getByHash(hashRoom);
         return this.liveShopData;
     }
     async productsToItemsAdapter() {
@@ -170,9 +165,9 @@ const LiveShopStyle0 = liveShopCss;
 
 const LiveShop = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.onReturnToHome = index.createEvent(this, "on-return-to-home", 7);
-        this.componentRendered = index.createEvent(this, "componentRendered", 7);
+        registerInstance(this, hostRef);
+        this.onReturnToHome = createEvent(this, "on-return-to-home", 7);
+        this.componentRendered = createEvent(this, "componentRendered", 7);
         this.handleResize = () => {
             this.isSmallDevice = window.innerWidth <= 1024;
         };
@@ -180,6 +175,7 @@ const LiveShop = class {
             this.isChatOpen = !this.isChatOpen;
         };
         this.hashRoom = undefined;
+        this.liveShopNotFound = false;
         this.videoId = undefined;
         this.isSmallDevice = window.innerWidth <= 1024;
         this.isChatOpen = false;
@@ -192,6 +188,7 @@ const LiveShop = class {
         window.removeEventListener('resize', this.handleResize);
     }
     async componentDidLoad() {
+        var _a;
         try {
             if (!this.hashRoom)
                 throw new Error('Hash Room is required');
@@ -205,6 +202,10 @@ const LiveShop = class {
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
         }
         catch (error) {
+            if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
+                this.liveShopNotFound = true;
+                console.error('Live Shop not found', { error });
+            }
             console.error(error);
         }
         finally {
@@ -212,22 +213,25 @@ const LiveShop = class {
         }
     }
     renderLoading() {
-        return (index.h("div", { class: "loading-container" }, index.h("span", { class: "spinner" })));
+        return (h("div", { class: "loading-container" }, h("span", { class: "spinner" })));
     }
     renderWarmup() {
-        return (index.h("div", { class: "live-shop-warmup" }, index.h("custom-card", { customClass: "banner-custom-style", cardTitle: this.liveShopRegister.title }, this.liveShopRegister.banner ? (index.h("img", { src: this.liveShopRegister.banner.src, alt: this.liveShopRegister.banner.alt })) : (index.h("div", { class: "live-shop-banner" })))));
+        return (h("div", { class: "live-shop-warmup" }, h("custom-card", { customClass: "banner-custom-style", cardTitle: this.liveShopRegister.title }, this.liveShopRegister.banner ? (h("img", { src: this.liveShopRegister.banner.src, alt: this.liveShopRegister.banner.alt })) : (h("div", { class: "live-shop-banner" })))));
     }
     renderInLive() {
-        return this.isSmallDevice ? (index.h("live-shop-mobile", { videoId: this.videoId, liveShopData: this.liveShopRegister, items: this.liveShopItems })) : (index.h("live-shop-desktop", { videoId: this.videoId, liveShopData: this.liveShopRegister, items: this.liveShopItems, isChatOpen: this.isChatOpen, toggleChat: () => this.isChatOpenHandler() }));
+        return this.isSmallDevice ? (h("live-shop-mobile", { videoId: this.videoId, liveShopData: this.liveShopRegister, items: this.liveShopItems })) : (h("live-shop-desktop", { videoId: this.videoId, liveShopData: this.liveShopRegister, items: this.liveShopItems, isChatOpen: this.isChatOpen, toggleChat: () => this.isChatOpenHandler() }));
     }
     renderFinished() {
-        return (index.h("div", { class: "live-shop-finished" }, index.h("custom-card", { customClass: "button-custom-style", cardTitle: "A live chegou ao fim!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, index.h("button", { onClick: () => this.onReturnToHome.emit() }, "Voltar para a p\u00E1gina inicial"))));
+        return (h("div", { class: "live-shop-finished" }, h("custom-card", { customClass: "button-custom-style", cardTitle: "A live chegou ao fim!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { onClick: () => this.onReturnToHome.emit() }, "Voltar para a p\u00E1gina inicial"))));
     }
     render() {
         if (this.isLoading) {
-            return index.h(index.Host, null, this.renderLoading());
+            return h(Host, null, this.renderLoading());
         }
-        return (index.h(index.Host, null, index.h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
+        if (this.liveShopNotFound) {
+            return h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
+        }
+        return (h(Host, null, h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
     }
 };
 LiveShop.style = LiveShopStyle0;
@@ -237,13 +241,13 @@ const LiveShopDesktopStyle0 = liveShopDesktopCss;
 
 const LiveShopDesktop = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.clickAdd = index.createEvent(this, "on-click-add", 7);
+        registerInstance(this, hostRef);
+        this.clickAdd = createEvent(this, "on-click-add", 7);
         this.handleAddItem = (event) => {
             const item = event.detail;
             this.clickAdd.emit({
                 item,
-                video_id: this.videoId,
+                liveShopData: this.liveShopData,
             });
         };
         this.videoId = undefined;
@@ -256,40 +260,45 @@ const LiveShopDesktop = class {
         return this.isChatOpen ? 'Ocultar chat da live' : 'Exibir chat da live';
     }
     render() {
-        return (index.h("div", { key: '0ee2586808270792007716471f5d87369c55c1f9', class: "live-shop-in-live-desktop" }, index.h("div", { key: 'b63c038433a672c1c8e10504cad1e3d80237d61d', class: "live-shop-in-live-desktop-infos" }, index.h("div", { key: 'e4679b41470de47afe5514e73dfe06200baf89d7', class: "live-shop-in-live-desktop-infos-player" }, index.h("live-video-player", { key: '237354c9f960a2d488729a24ba9b3c02df715ada', videoId: this.videoId, autoPlay: true })), index.h("div", { key: '53e46b670662037597cc9e25c33bfa3e5d340392', class: "live-shop-in-live-desktop-infos-options" }, index.h("h2", { key: '44df1331d19fd994555a60ad03db63eacacf3426', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), index.h("button", { key: '683e1db0dc5b382810e9d0bd343900549ec60398', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText())), this.isChatOpen && (index.h("div", { key: '65297655fa1e43c02709eb56ab64fff57fb933d5', class: "live-shop-in-live-desktop-infos-options-chat" }, index.h("live-video-chat", { key: '3265a63d913454603a8c8f49b87a03bf3489ffa3', videoId: this.videoId })))), index.h("div", { key: '84498cf604b9b2aa604bfa249eba4e3782ef72ac', class: "live-shop-in-live-desktop-content" }, index.h("div", { key: 'd023e218e83062e4b423f644933d13ff579adf77', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 ? (index.h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (index.h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
+        return (h("div", { key: '0b0e80a706d46319d24bf31f22796f27747f3536', class: "live-shop-in-live-desktop" }, h("div", { key: 'a91d542363fe2f1200fd8938b63fceeda4430d5f', class: "live-shop-in-live-desktop-infos" }, h("div", { key: 'b21d77cc94bbbd045e88b7bf1e94eb5e9a0e82a6', class: "live-shop-in-live-desktop-infos-player" }, h("live-video-player", { key: '1f3f0e31fda7ba10cd3ba515c9cfbea7a693d143', videoId: this.videoId, autoPlay: true })), h("div", { key: '20a9163a8380a98b19ce8613e4a6dfb51e8f491b', class: "live-shop-in-live-desktop-infos-options" }, h("h2", { key: '3d51977961f1ef2feb0a9f71aefbff5e8992a361', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), this.liveShopData.chatVisible && (h("button", { key: 'd07cdc4ad3c486da0b60f3c35bf5247a63a8047c', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText()))), this.isChatOpen && (h("div", { key: 'fcec6f27e38dbadad290d6127ffee3930669d7c5', class: "live-shop-in-live-desktop-infos-options-chat" }, h("live-video-chat", { key: '0e3ebfaa8b2c0960158503b3556d8a469990ebc3', videoId: this.videoId })))), h("div", { key: 'f7f486ad5203d7e2a756a95659732c484d054e50', class: "live-shop-in-live-desktop-content" }, h("div", { key: 'a19a7b5bcf531f9f351b8ad6908c174d9c8c21a8', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 ? (h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
     }
 };
 LiveShopDesktop.style = LiveShopDesktopStyle0;
 
-const tabs = (videoId, items, handleAddItem) => [
-    {
-        name: 'products',
-        label: (index.h("span", null,
-            "Produtos",
-            (items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length) > 0 ? (index.h("span", { class: "product-count" }, items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length)) : (''))),
-        content: () => {
-            return (items === null || items === void 0 ? void 0 : items.length) > 0 ? (index.h("highlight-card", { items: items, onAddItem: handleAddItem })) : (index.h("custom-card", { customClass: "in-live-custom-style-empty", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }));
+const tabs = (videoId, items, handleAddItem, chatVisible) => {
+    const baseTabs = [
+        {
+            name: 'products',
+            label: (h("span", null,
+                "Produtos",
+                (items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length) > 0 ? (h("span", { class: "product-count" }, items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length)) : (''))),
+            content: () => {
+                return (items === null || items === void 0 ? void 0 : items.length) > 0 ? (h("highlight-card", { items: items, onAddItem: handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-empty", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }));
+            },
         },
-    },
-    {
-        name: 'chat',
-        label: 'Chat',
-        content: () => index.h("live-video-chat", { videoId: videoId }),
-    },
-];
+    ];
+    if (chatVisible) {
+        baseTabs.push({
+            name: 'chat',
+            label: 'Chat',
+            content: () => h("live-video-chat", { videoId: videoId }),
+        });
+    }
+    return baseTabs;
+};
 
 const liveShopMobileCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}.live-shop-in-live{display:flex;flex-direction:column;gap:32px}.live-shop-in-live .live-video-player{height:229px;border-radius:8px;overflow:hidden}.live-shop-in-live-options .in-live-custom-style .custom-card-content{width:100%}.live-shop-in-live-options .in-live-custom-style-empty{padding:40px;border:1px solid var(--menu-items);border-radius:8px}.live-shop-in-live-options .custom-card-content .live-video-chat{height:calc(100vh - 386px);border-radius:8px;overflow:hidden}";
 const LiveShopMobileStyle0 = liveShopMobileCss;
 
 const LiveShopMobile = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.clickAdd = index.createEvent(this, "on-click-add", 7);
+        registerInstance(this, hostRef);
+        this.clickAdd = createEvent(this, "on-click-add", 7);
         this.handleAddItem = (event) => {
             const item = event.detail;
             this.clickAdd.emit({
                 item,
-                video_id: this.videoId,
+                liveShopData: this.liveShopData,
             });
         };
         this.videoId = undefined;
@@ -297,18 +306,35 @@ const LiveShopMobile = class {
         this.items = undefined;
     }
     render() {
-        return (index.h("div", { key: 'a2e8b7fd69e2bc3c338462bf26c79dd720b8d970', class: "live-shop-in-live" }, index.h("div", { key: 'b106572b3f90afc8a0d869f6f445dbf4a4002e7f', class: "live-shop-in-live-player" }, index.h("live-video-player", { key: '48eef803501fe992949786060724d26921d597a5', videoId: this.videoId, autoPlay: true })), index.h("div", { key: 'a64becef8dfbd80c18e41dbd0d9438d67ad4b216', class: "live-shop-in-live-options" }, index.h("custom-card", { key: '8d8745427174f8e0934964fc854a591a0e8177ae', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, index.h("tab-selector", { key: 'b86e66ada9c27627f9343c6eae555e583d25967f', tabs: tabs(this.videoId, this.items, this.handleAddItem) })))));
+        return (h("div", { key: '1abb54a525fa61685d562217ab00c6c0159cfadd', class: "live-shop-in-live" }, h("div", { key: '3d664a342fb4617d18e5db88e8a49c3f2bfe3e0d', class: "live-shop-in-live-player" }, h("live-video-player", { key: '14a3df758d6159a71e1f6cb01acfda6a991571b6', videoId: this.videoId, autoPlay: true })), h("div", { key: 'ac70850384d726f4e139a54c6eb1f43c1474f8be', class: "live-shop-in-live-options" }, h("custom-card", { key: 'dee7d588370cbd6f9860107597ba2a9a7c219d4e', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: 'a122cdcccc5e6546e90498659b91e1a1f0af6768', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
     }
 };
 LiveShopMobile.style = LiveShopMobileStyle0;
+
+const liveShopNotFoundCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}.live-shop-not-found button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-size:14px}.live-shop-not-found button:hover{opacity:0.75}.live-shop-not-found button:disabled{opacity:0.6;cursor:not-allowed}";
+const LiveShopNotFoundStyle0 = liveShopNotFoundCss;
+
+const LiveShopNotFound = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.returnToHome = createEvent(this, "returnToHome", 7);
+        this.handleReturnToHome = () => {
+            this.returnToHome.emit();
+        };
+    }
+    render() {
+        return (h(Host, { key: '59dac1f6b8f36d4deb1c8dd2c0afc83267f34917' }, h("div", { key: '241648e20ce99d694b61ec9dfd517ce3694781a5', class: "live-shop-not-found" }, h("custom-card", { key: '20ab423c2133a82a6f825b5d088915bfc10fb296', cardTitle: "Ops, parece que essa live n\u00E3o existe mais!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { key: 'e25c35d961b6165aab4f88369108b5523dfb0217', onClick: this.handleReturnToHome }, "Voltar para a p\u00E1gina inicial")))));
+    }
+};
+LiveShopNotFound.style = LiveShopNotFoundStyle0;
 
 const liveVideoChatCss = ":host{display:inline-block;width:100%}.live-video-chat{display:flex;justify-content:center;align-items:center;width:100%}.live-video-chat iframe{height:100%;width:100%}";
 const LiveVideoChatStyle0 = liveVideoChatCss;
 
 const LiveVideoChat = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.componentRendered = index.createEvent(this, "componentRendered", 7);
+        registerInstance(this, hostRef);
+        this.componentRendered = createEvent(this, "componentRendered", 7);
         this.videoId = undefined;
     }
     getChatUrl() {
@@ -318,7 +344,7 @@ const LiveVideoChat = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '99f8f1c30bb7c2a3b0c27f5ef0996f339c5e6863' }, index.h("div", { key: '82ef91119765c8fc529e4fea7f8030c3d9364ca2', class: "live-video-chat" }, index.h("iframe", { key: 'faeea5447113b0f31be336f6f9b16929d7102e1c', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '4fca836fe08716a1c9670fab3600ff25c19ef5c2' }, h("div", { key: '5cc11e1e12dbd71a6e87197fa39088cab475d441', class: "live-video-chat" }, h("iframe", { key: '5dfae10c79c4737e7b0773f854b28a3e9db4a9fd', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoChat.style = LiveVideoChatStyle0;
@@ -328,8 +354,8 @@ const LiveVideoPlayerStyle0 = liveVideoPlayerCss;
 
 const LiveVideoPlayer = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.componentRendered = index.createEvent(this, "componentRendered", 7);
+        registerInstance(this, hostRef);
+        this.componentRendered = createEvent(this, "componentRendered", 7);
         this.videoId = undefined;
         this.autoPlay = false;
     }
@@ -342,7 +368,7 @@ const LiveVideoPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '6143eefed800c9aabcf4b726805e4310b84f60c8' }, index.h("div", { key: '7680de35372b636b177650654e6c804c46809464', class: "live-video-player" }, index.h("iframe", { key: '3eca83bdf0e462bbd0319ebc8763553b578cb7ee', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '942dfcce61872c32a69c77e2af4292ba2b1f1742' }, h("div", { key: '4f66fc6a07ee5cefaf1d28ab140248cb7c0436f8', class: "live-video-player" }, h("iframe", { key: '1fe89746939e6849c7d99797f8e736d8f4df2156', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoPlayer.style = LiveVideoPlayerStyle0;
@@ -352,7 +378,7 @@ const ProductCardStyle0 = productCardCss;
 
 const ProductCard = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
+        registerInstance(this, hostRef);
         this.inline = false;
         this.customClass = '';
         this.product = undefined;
@@ -376,7 +402,7 @@ const ProductCard = class {
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (index.h(index.Host, { key: 'd57a5b480237972e7cb933f4bf18fa3c37b87167' }, index.h("div", { key: '8ca70bb2579a70389166a16257deff1a808fa0f8', class: this.getClassWithInline('product-container') }, index.h("front-image", { key: 'ec4a504469423d2f6bb9851faedd91d5c395b867', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), index.h("div", { key: '7737a2b0063d1b0a699dc09dd7a1bdf9385c1845', class: "info" }, index.h("span", { key: '60579bfd64f7f01e67ff991388eadebecb26f9bc', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), index.h("div", { key: '1f048caf3c00583e7ec298a010345d211cec1a52', class: "price" }, this.showPriceBase && (index.h("span", { key: '6fbeabbff19b94cda3da0b94466cd7553ed2e976', class: "base" }, currencyFormat(this.product.priceBase))), index.h("span", { key: 'c4e27ce6cba64e7a6e24d5bab4c0ce25ef2737cc', class: "current" }, this.getPrice()))))));
+        return (h(Host, { key: 'e13ad1193d530d9a79f9397107012c7d5a1132b2' }, h("div", { key: '89973da4d163b9fab6ba25dcab34e44043587b2a', class: this.getClassWithInline('product-container') }, h("front-image", { key: 'f0ef2820bd49b0caea40f943f0694bb4207fa07a', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '49551011110ab50c99f2591b3999fb19cbc5a406', class: "info" }, h("span", { key: '1db9b300008cb5560f92f8d2b159895b8dada89e', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("div", { key: '1609936379062330d5cdff50667f92bbc0255971', class: "price" }, this.showPriceBase && (h("span", { key: 'a36c4e3938c1f09ca8e520882fea8da23a79e08d', class: "base" }, currencyFormat(this.product.priceBase))), h("span", { key: 'be2acde1e0f7115e4a62cb9e22a8aea867fcdc5b', class: "current" }, this.getPrice()))))));
     }
 };
 ProductCard.style = ProductCardStyle0;
@@ -386,7 +412,7 @@ const TabSelectorStyle0 = tabSelectorCss;
 
 const TabSelector = class {
     constructor(hostRef) {
-        index.registerInstance(this, hostRef);
+        registerInstance(this, hostRef);
         this.tabs = undefined;
         this.activeTab = undefined;
     }
@@ -400,7 +426,7 @@ const TabSelector = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: 'fb65eec92caa07066a7305198f931e8af91c480d', class: "tab-selector" }, index.h("div", { key: '1ca30e4bdf7e9edc025ad7c1c86bab9d32efee17', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (index.h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), index.h("div", { key: '0cf9ccc7955536f81f2247fc82e87f87e9ec6aff', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (index.h("div", { class: {
+        return (h("div", { key: '402fff36355422c22ed5e5da12a4b6a5f1d1bb93', class: "tab-selector" }, h("div", { key: 'bfdcb4e2163f3cb76761ff61cf91317e1e17c573', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '909183d885cf8cb409654ccbefbb65c320e594b9', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));
@@ -408,15 +434,6 @@ const TabSelector = class {
 };
 TabSelector.style = TabSelectorStyle0;
 
-exports.custom_card = CustomCard;
-exports.front_image = FrontImage;
-exports.highlight_card = HighlightCard;
-exports.live_shop = LiveShop;
-exports.live_shop_desktop = LiveShopDesktop;
-exports.live_shop_mobile = LiveShopMobile;
-exports.live_video_chat = LiveVideoChat;
-exports.live_video_player = LiveVideoPlayer;
-exports.product_card = ProductCard;
-exports.tab_selector = TabSelector;
+export { CustomCard as custom_card, FrontImage as front_image, HighlightCard as highlight_card, LiveShop as live_shop, LiveShopDesktop as live_shop_desktop, LiveShopMobile as live_shop_mobile, LiveShopNotFound as live_shop_not_found, LiveVideoChat as live_video_chat, LiveVideoPlayer as live_video_player, ProductCard as product_card, TabSelector as tab_selector };
 
-//# sourceMappingURL=custom-card_10.cjs.entry.js.map
+//# sourceMappingURL=custom-card_11.entry.js.map

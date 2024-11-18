@@ -1,10 +1,11 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
 import { P as ProductService, L as LiveShopService } from './index2.js';
-import { d as defineCustomElement$a } from './custom-card2.js';
-import { d as defineCustomElement$9 } from './front-image2.js';
-import { d as defineCustomElement$8 } from './highlight-card2.js';
-import { d as defineCustomElement$7 } from './live-shop-desktop2.js';
-import { d as defineCustomElement$6 } from './live-shop-mobile2.js';
+import { d as defineCustomElement$b } from './custom-card2.js';
+import { d as defineCustomElement$a } from './front-image2.js';
+import { d as defineCustomElement$9 } from './highlight-card2.js';
+import { d as defineCustomElement$8 } from './live-shop-desktop2.js';
+import { d as defineCustomElement$7 } from './live-shop-mobile2.js';
+import { d as defineCustomElement$6 } from './live-shop-not-found2.js';
 import { d as defineCustomElement$5 } from './live-video-chat2.js';
 import { d as defineCustomElement$4 } from './live-video-player2.js';
 import { d as defineCustomElement$3 } from './product-card2.js';
@@ -20,7 +21,6 @@ class LiveShopHandler {
     }
     async getLiveShop(hashRoom) {
         this.liveShopData = await LiveShopService.getByHash(hashRoom);
-        console.log('🚀 ~ LiveShopHandler ~ getLiveShop ~ liveShopData:', this.liveShopData);
         return this.liveShopData;
     }
     async productsToItemsAdapter() {
@@ -76,6 +76,7 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
             this.isChatOpen = !this.isChatOpen;
         };
         this.hashRoom = undefined;
+        this.liveShopNotFound = false;
         this.videoId = undefined;
         this.isSmallDevice = window.innerWidth <= 1024;
         this.isChatOpen = false;
@@ -88,6 +89,7 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         window.removeEventListener('resize', this.handleResize);
     }
     async componentDidLoad() {
+        var _a;
         try {
             if (!this.hashRoom)
                 throw new Error('Hash Room is required');
@@ -101,6 +103,10 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
         }
         catch (error) {
+            if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
+                this.liveShopNotFound = true;
+                console.error('Live Shop not found', { error });
+            }
             console.error(error);
         }
         finally {
@@ -123,11 +129,15 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         if (this.isLoading) {
             return h(Host, null, this.renderLoading());
         }
+        if (this.liveShopNotFound) {
+            return h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
+        }
         return (h(Host, null, h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
     }
     static get style() { return LiveShopStyle0; }
 }, [0, "live-shop", {
         "hashRoom": [1, "hash-room"],
+        "liveShopNotFound": [32],
         "videoId": [32],
         "isSmallDevice": [32],
         "isChatOpen": [32],
@@ -140,7 +150,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["live-shop", "custom-card", "front-image", "highlight-card", "live-shop-desktop", "live-shop-mobile", "live-video-chat", "live-video-player", "product-card", "tab-selector"];
+    const components = ["live-shop", "custom-card", "front-image", "highlight-card", "live-shop-desktop", "live-shop-mobile", "live-shop-not-found", "live-video-chat", "live-video-player", "product-card", "tab-selector"];
     components.forEach(tagName => { switch (tagName) {
         case "live-shop":
             if (!customElements.get(tagName)) {
@@ -149,25 +159,30 @@ function defineCustomElement$1() {
             break;
         case "custom-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$a();
+                defineCustomElement$b();
             }
             break;
         case "front-image":
             if (!customElements.get(tagName)) {
-                defineCustomElement$9();
+                defineCustomElement$a();
             }
             break;
         case "highlight-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$8();
+                defineCustomElement$9();
             }
             break;
         case "live-shop-desktop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$7();
+                defineCustomElement$8();
             }
             break;
         case "live-shop-mobile":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "live-shop-not-found":
             if (!customElements.get(tagName)) {
                 defineCustomElement$6();
             }

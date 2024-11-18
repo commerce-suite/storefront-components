@@ -9,6 +9,7 @@ export class LiveShop {
             this.isChatOpen = !this.isChatOpen;
         };
         this.hashRoom = undefined;
+        this.liveShopNotFound = false;
         this.videoId = undefined;
         this.isSmallDevice = window.innerWidth <= 1024;
         this.isChatOpen = false;
@@ -21,6 +22,7 @@ export class LiveShop {
         window.removeEventListener('resize', this.handleResize);
     }
     async componentDidLoad() {
+        var _a;
         try {
             if (!this.hashRoom)
                 throw new Error('Hash Room is required');
@@ -34,6 +36,10 @@ export class LiveShop {
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
         }
         catch (error) {
+            if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
+                this.liveShopNotFound = true;
+                console.error('Live Shop not found', { error });
+            }
             console.error(error);
         }
         finally {
@@ -55,6 +61,9 @@ export class LiveShop {
     render() {
         if (this.isLoading) {
             return h(Host, null, this.renderLoading());
+        }
+        if (this.liveShopNotFound) {
+            return h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
         }
         return (h(Host, null, h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
     }
@@ -92,6 +101,7 @@ export class LiveShop {
     }
     static get states() {
         return {
+            "liveShopNotFound": {},
             "videoId": {},
             "isSmallDevice": {},
             "isChatOpen": {},

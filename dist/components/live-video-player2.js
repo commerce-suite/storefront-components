@@ -20,7 +20,7 @@ const LiveVideoPlayer = /*@__PURE__*/ proxyCustomElement(class LiveVideoPlayer e
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '6143eefed800c9aabcf4b726805e4310b84f60c8' }, h("div", { key: '7680de35372b636b177650654e6c804c46809464', class: "live-video-player" }, h("iframe", { key: '3eca83bdf0e462bbd0319ebc8763553b578cb7ee', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '942dfcce61872c32a69c77e2af4292ba2b1f1742' }, h("div", { key: '4f66fc6a07ee5cefaf1d28ab140248cb7c0436f8', class: "live-video-player" }, h("iframe", { key: '1fe89746939e6849c7d99797f8e736d8f4df2156', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
     static get style() { return LiveVideoPlayerStyle0; }
 }, [0, "live-video-player", {

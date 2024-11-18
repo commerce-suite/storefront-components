@@ -9,7 +9,6 @@ export class LiveShopHandler {
     }
     async getLiveShop(hashRoom) {
         this.liveShopData = await LiveShopService.getByHash(hashRoom);
-        console.log('🚀 ~ LiveShopHandler ~ getLiveShop ~ liveShopData:', this.liveShopData);
         return this.liveShopData;
     }
     async productsToItemsAdapter() {

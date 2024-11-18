@@ -5,7 +5,7 @@ export class LiveShopDesktop {
             const item = event.detail;
             this.clickAdd.emit({
                 item,
-                video_id: this.videoId,
+                liveShopData: this.liveShopData,
             });
         };
         this.videoId = undefined;
@@ -18,7 +18,7 @@ export class LiveShopDesktop {
         return this.isChatOpen ? 'Ocultar chat da live' : 'Exibir chat da live';
     }
     render() {
-        return (h("div", { key: '0ee2586808270792007716471f5d87369c55c1f9', class: "live-shop-in-live-desktop" }, h("div", { key: 'b63c038433a672c1c8e10504cad1e3d80237d61d', class: "live-shop-in-live-desktop-infos" }, h("div", { key: 'e4679b41470de47afe5514e73dfe06200baf89d7', class: "live-shop-in-live-desktop-infos-player" }, h("live-video-player", { key: '237354c9f960a2d488729a24ba9b3c02df715ada', videoId: this.videoId, autoPlay: true })), h("div", { key: '53e46b670662037597cc9e25c33bfa3e5d340392', class: "live-shop-in-live-desktop-infos-options" }, h("h2", { key: '44df1331d19fd994555a60ad03db63eacacf3426', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), h("button", { key: '683e1db0dc5b382810e9d0bd343900549ec60398', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText())), this.isChatOpen && (h("div", { key: '65297655fa1e43c02709eb56ab64fff57fb933d5', class: "live-shop-in-live-desktop-infos-options-chat" }, h("live-video-chat", { key: '3265a63d913454603a8c8f49b87a03bf3489ffa3', videoId: this.videoId })))), h("div", { key: '84498cf604b9b2aa604bfa249eba4e3782ef72ac', class: "live-shop-in-live-desktop-content" }, h("div", { key: 'd023e218e83062e4b423f644933d13ff579adf77', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 ? (h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
+        return (h("div", { key: '0b0e80a706d46319d24bf31f22796f27747f3536', class: "live-shop-in-live-desktop" }, h("div", { key: 'a91d542363fe2f1200fd8938b63fceeda4430d5f', class: "live-shop-in-live-desktop-infos" }, h("div", { key: 'b21d77cc94bbbd045e88b7bf1e94eb5e9a0e82a6', class: "live-shop-in-live-desktop-infos-player" }, h("live-video-player", { key: '1f3f0e31fda7ba10cd3ba515c9cfbea7a693d143', videoId: this.videoId, autoPlay: true })), h("div", { key: '20a9163a8380a98b19ce8613e4a6dfb51e8f491b', class: "live-shop-in-live-desktop-infos-options" }, h("h2", { key: '3d51977961f1ef2feb0a9f71aefbff5e8992a361', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), this.liveShopData.chatVisible && (h("button", { key: 'd07cdc4ad3c486da0b60f3c35bf5247a63a8047c', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText()))), this.isChatOpen && (h("div", { key: 'fcec6f27e38dbadad290d6127ffee3930669d7c5', class: "live-shop-in-live-desktop-infos-options-chat" }, h("live-video-chat", { key: '0e3ebfaa8b2c0960158503b3556d8a469990ebc3', videoId: this.videoId })))), h("div", { key: 'f7f486ad5203d7e2a756a95659732c484d054e50', class: "live-shop-in-live-desktop-content" }, h("div", { key: 'a19a7b5bcf531f9f351b8ad6908c174d9c8c21a8', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 ? (h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
     }
     static get is() { return "live-shop-desktop"; }
     static get originalStyleUrls() {
@@ -138,13 +138,18 @@ export class LiveShopDesktop {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "{\n    item: IHighlightCardItem;\n    video_id: string;\n  }",
-                    "resolved": "{ item: IHighlightCardItem; video_id: string; }",
+                    "original": "{\n    item: IHighlightCardItem;\n    liveShopData: ILiveShop;\n  }",
+                    "resolved": "{ item: IHighlightCardItem; liveShopData: ILiveShop; }",
                     "references": {
                         "IHighlightCardItem": {
                             "location": "import",
                             "path": "../../../components",
                             "id": "src/components.d.ts::IHighlightCardItem"
+                        },
+                        "ILiveShop": {
+                            "location": "import",
+                            "path": "../live-shop.type",
+                            "id": "src/components/live-shop/live-shop.type.ts::ILiveShop"
                         }
                     }
                 }

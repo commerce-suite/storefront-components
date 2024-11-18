@@ -6,7 +6,7 @@ export class LiveShopMobile {
             const item = event.detail;
             this.clickAdd.emit({
                 item,
-                video_id: this.videoId,
+                liveShopData: this.liveShopData,
             });
         };
         this.videoId = undefined;
@@ -14,7 +14,7 @@ export class LiveShopMobile {
         this.items = undefined;
     }
     render() {
-        return (h("div", { key: 'a2e8b7fd69e2bc3c338462bf26c79dd720b8d970', class: "live-shop-in-live" }, h("div", { key: 'b106572b3f90afc8a0d869f6f445dbf4a4002e7f', class: "live-shop-in-live-player" }, h("live-video-player", { key: '48eef803501fe992949786060724d26921d597a5', videoId: this.videoId, autoPlay: true })), h("div", { key: 'a64becef8dfbd80c18e41dbd0d9438d67ad4b216', class: "live-shop-in-live-options" }, h("custom-card", { key: '8d8745427174f8e0934964fc854a591a0e8177ae', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: 'b86e66ada9c27627f9343c6eae555e583d25967f', tabs: tabs(this.videoId, this.items, this.handleAddItem) })))));
+        return (h("div", { key: '1abb54a525fa61685d562217ab00c6c0159cfadd', class: "live-shop-in-live" }, h("div", { key: '3d664a342fb4617d18e5db88e8a49c3f2bfe3e0d', class: "live-shop-in-live-player" }, h("live-video-player", { key: '14a3df758d6159a71e1f6cb01acfda6a991571b6', videoId: this.videoId, autoPlay: true })), h("div", { key: 'ac70850384d726f4e139a54c6eb1f43c1474f8be', class: "live-shop-in-live-options" }, h("custom-card", { key: 'dee7d588370cbd6f9860107597ba2a9a7c219d4e', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: 'a122cdcccc5e6546e90498659b91e1a1f0af6768', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
     }
     static get is() { return "live-shop-mobile"; }
     static get originalStyleUrls() {
@@ -102,13 +102,18 @@ export class LiveShopMobile {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "{\n    item: IHighlightCardItem;\n    video_id: string;\n  }",
-                    "resolved": "{ item: IHighlightCardItem; video_id: string; }",
+                    "original": "{\n    item: IHighlightCardItem;\n    liveShopData: ILiveShop;\n  }",
+                    "resolved": "{ item: IHighlightCardItem; liveShopData: ILiveShop; }",
                     "references": {
                         "IHighlightCardItem": {
                             "location": "import",
                             "path": "../../../components",
                             "id": "src/components.d.ts::IHighlightCardItem"
+                        },
+                        "ILiveShop": {
+                            "location": "import",
+                            "path": "../live-shop.type",
+                            "id": "src/components/live-shop/live-shop.type.ts::ILiveShop"
                         }
                     }
                 }

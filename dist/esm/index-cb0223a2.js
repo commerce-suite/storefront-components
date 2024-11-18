@@ -1440,10 +1440,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'custom-card_10':
+                case 'custom-card_11':
                     return import(
                       /* webpackMode: "lazy" */
-                      './custom-card_10.entry.js').then(processMod, consoleError);
+                      './custom-card_11.entry.js').then(processMod, consoleError);
                 case 'buy-together-cart-modal':
                     return import(
                       /* webpackMode: "lazy" */

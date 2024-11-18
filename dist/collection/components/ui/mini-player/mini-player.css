@@ -65,7 +65,7 @@
 }
 .mini-player-bar-title {
   font-family: var(--h1-ff);
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
   color: var(--menu-background);
@@ -100,9 +100,9 @@
   text-transform: var(--btn-text-transform);
   letter-spacing: var(--btn-text-letter-spacing);
   text-transform: none;
-  font-size: 8px;
+  font-size: 12px;
   padding: 8px 16px;
-  color: var(--color-buy-button);
+  color: var(--color-secondary);
   background-color: #ffffff;
 }
 .mini-player-bar-button button:hover {
