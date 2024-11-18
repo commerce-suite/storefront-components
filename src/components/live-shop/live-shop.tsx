@@ -117,7 +117,7 @@ export class LiveShop {
     }
 
     if (this.liveShopNotFound) {
-      return <live-shop-not-found onOnReturnToHome={() => this.onReturnToHome.emit()} />;
+      return <live-shop-not-found onReturnToHome={() => this.onReturnToHome.emit()} />;
     }
 
     return (

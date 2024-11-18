@@ -7,9 +7,9 @@
 
 ## Events
 
-| Event            | Description | Type                |
-| ---------------- | ----------- | ------------------- |
-| `onReturnToHome` |             | `CustomEvent<void>` |
+| Event          | Description | Type                |
+| -------------- | ----------- | ------------------- |
+| `returnToHome` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

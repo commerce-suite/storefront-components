@@ -6,10 +6,10 @@ import { Component, Event, EventEmitter, h, Host } from '@stencil/core';
   shadow: false,
 })
 export class LiveShopNotFound {
-  @Event() onReturnToHome: EventEmitter<void>;
+  @Event() returnToHome: EventEmitter<void>;
 
   private handleReturnToHome = () => {
-    this.onReturnToHome.emit();
+    this.returnToHome.emit();
   };
 
   render() {

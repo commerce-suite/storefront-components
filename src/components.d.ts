@@ -390,7 +390,7 @@ declare global {
         new (): HTMLLiveShopMobileElement;
     };
     interface HTMLLiveShopNotFoundElementEventMap {
-        "onReturnToHome": void;
+        "returnToHome": void;
     }
     interface HTMLLiveShopNotFoundElement extends Components.LiveShopNotFound, HTMLStencilElement {
         addEventListener<K extends keyof HTMLLiveShopNotFoundElementEventMap>(type: K, listener: (this: HTMLLiveShopNotFoundElement, ev: LiveShopNotFoundCustomEvent<HTMLLiveShopNotFoundElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -625,7 +625,7 @@ declare namespace LocalJSX {
         "videoId"?: string;
     }
     interface LiveShopNotFound {
-        "onOnReturnToHome"?: (event: LiveShopNotFoundCustomEvent<void>) => void;
+        "onReturnToHome"?: (event: LiveShopNotFoundCustomEvent<void>) => void;
     }
     interface LiveVideoChat {
         "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
