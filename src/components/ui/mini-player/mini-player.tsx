@@ -39,6 +39,13 @@ export class MiniPlayer {
     this.dragDropService.handleDragStart(event, this.positionX, this.positionY);
   };
 
+  private handleTouchStart(event: TouchEvent) {
+    const target = event.target as HTMLElement;
+
+    if (target.tagName !== 'BUTTON') return this.handleDragStart(event);
+    event.stopPropagation();
+  }
+
   private handleCloseMiniPlayer() {
     this.showMiniPlayer = false;
   }
@@ -72,7 +79,7 @@ export class MiniPlayer {
               class="mini-player-bar"
               style={this.getMiniPlayerBarStyle()}
               onMouseDown={this.handleDragStart}
-              onTouchStart={this.handleDragStart}
+              onTouchStart={event => this.handleTouchStart(event)}
             >
               <h6 class="mini-player-bar-title">{this.mainTitle}</h6>
               <div class="mini-player-bar-button">
