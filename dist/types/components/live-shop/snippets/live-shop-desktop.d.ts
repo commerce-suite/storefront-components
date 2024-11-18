@@ -9,7 +9,7 @@ export declare class LiveShopDesktop {
     toggleChat: () => void;
     clickAdd: EventEmitter<{
         item: IHighlightCardItem;
-        video_id: string;
+        liveShopData: ILiveShop;
     }>;
     private handleAddItem;
     private buttonText;

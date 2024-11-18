@@ -7,7 +7,7 @@ export declare class LiveShopMobile {
     items: IHighlightCardItem[];
     clickAdd: EventEmitter<{
         item: IHighlightCardItem;
-        video_id: string;
+        liveShopData: ILiveShop;
     }>;
     private handleAddItem;
     render(): any;

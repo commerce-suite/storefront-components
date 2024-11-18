@@ -4,6 +4,7 @@ import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
 export declare class LiveShop {
     hashRoom: string;
+    liveShopNotFound: boolean;
     videoId: string;
     isSmallDevice: boolean;
     isChatOpen: boolean;

@@ -8,11 +8,12 @@ export declare class MiniPlayer {
     positionX: number;
     positionY: number;
     isDragging: boolean;
+    onClickMiniPlayerButton: EventEmitter<void>;
     componentRendered: EventEmitter<void>;
-    onClickButton: EventEmitter<void>;
     private dragDropService;
     componentWillLoad(): void;
     private handleDragStart;
+    private handleTouchStart;
     private handleCloseMiniPlayer;
     private getMiniPlayerStyle;
     private getMiniPlayerBarStyle;

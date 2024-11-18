@@ -17,14 +17,14 @@ export class LiveShopDesktop {
   @Event({ bubbles: true, eventName: 'on-click-add' })
   clickAdd: EventEmitter<{
     item: IHighlightCardItem;
-    video_id: string;
+    liveShopData: ILiveShop;
   }>;
 
   private handleAddItem = (event: CustomEvent<IHighlightCardItem>) => {
     const item = event.detail;
     this.clickAdd.emit({
       item,
-      video_id: this.videoId,
+      liveShopData: this.liveShopData,
     });
   };
 
@@ -41,12 +41,14 @@ export class LiveShopDesktop {
           </div>
           <div class="live-shop-in-live-desktop-infos-options">
             <h2 class="live-shop-in-live-desktop-infos-options-title">{this.liveShopData.name}</h2>
-            <button
-              class="live-shop-in-live-desktop-infos-options-button"
-              onClick={this.toggleChat}
-            >
-              {this.buttonText()}
-            </button>
+            {this.liveShopData.chatVisible && (
+              <button
+                class="live-shop-in-live-desktop-infos-options-button"
+                onClick={this.toggleChat}
+              >
+                {this.buttonText()}
+              </button>
+            )}
           </div>
           {this.isChatOpen && (
             <div class="live-shop-in-live-desktop-infos-options-chat">

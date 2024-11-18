@@ -16,14 +16,14 @@ export class LiveShopMobile {
   @Event({ bubbles: true, eventName: 'on-click-add' })
   clickAdd: EventEmitter<{
     item: IHighlightCardItem;
-    video_id: string;
+    liveShopData: ILiveShop;
   }>;
 
   private handleAddItem = (event: CustomEvent<IHighlightCardItem>) => {
     const item = event.detail;
     this.clickAdd.emit({
       item,
-      video_id: this.videoId,
+      liveShopData: this.liveShopData,
     });
   };
 
@@ -35,7 +35,14 @@ export class LiveShopMobile {
         </div>
         <div class="live-shop-in-live-options">
           <custom-card customClass="in-live-custom-style" cardTitle={this.liveShopData.name}>
-            <tab-selector tabs={tabs(this.videoId, this.items, this.handleAddItem)} />
+            <tab-selector
+              tabs={tabs(
+                this.videoId,
+                this.items,
+                this.handleAddItem,
+                this.liveShopData.chatVisible,
+              )}
+            />
           </custom-card>
         </div>
       </div>
