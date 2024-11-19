@@ -1,4 +1,4 @@
-export class WebSocketClient {
+export class WebSocketClient<T = any> {
   private socket: WebSocket;
   private url: string;
 
@@ -20,12 +20,12 @@ export class WebSocketClient {
     console.log('Conexão fechada.');
   };
 
-  private onError = (error: Event) => {
+  onError = (error: Event) => {
     console.error('Erro na conexão:', error);
   };
 
-  onMessage = (event: MessageEvent) => {
-    console.log('Mensagem recebida:', event.data);
+  onMessage = (event: MessageEvent<T>) => {
+    return event.data;
   };
 
   closeConnection() {

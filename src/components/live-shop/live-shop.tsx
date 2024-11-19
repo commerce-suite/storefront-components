@@ -4,6 +4,12 @@ import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
 import { WebSocketClient } from '../../services/WebSocketClient';
 
+export type LiveShopItemStatus = 'displaying' | 'hidden' | 'highlighting';
+export interface SocketMessage {
+  type: 'product' | 'message';
+  status: LiveShopItemStatus;
+  id: number;
+}
 @Component({
   tag: 'live-shop',
   styleUrl: 'live-shop.scss',
@@ -18,6 +24,7 @@ export class LiveShop {
   @State() liveShopRegister: ILiveShop;
   @State() liveShopItemsService: LiveShopHandler;
   @State() liveShopItems: IHighlightCardItem[];
+  @State() liveSocket: WebSocketClient;
 
   @Event({ bubbles: true, eventName: 'on-return-to-home' })
   onReturnToHome: EventEmitter<void>;
@@ -36,6 +43,10 @@ export class LiveShop {
     window.removeEventListener('resize', this.handleResize);
   }
 
+  handleMessage(event: MessageEvent<SocketMessage>) {
+    console.log('🚀 ~ LiveShop ~ handleMessage ~ event:', event);
+  }
+
   async componentDidLoad() {
     try {
       if (!this.hashRoom) throw new Error('Hash Room is required');
@@ -46,8 +57,10 @@ export class LiveShop {
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
-      const socket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
-      console.log('🚀 ~ LiveShop ~ componentDidLoad ~ socket:', socket);
+      this.liveSocket = new WebSocketClient<SocketMessage>(
+        `ws://localhost:3001?hashRoom=${this.hashRoom}`,
+      );
+      this.liveSocket.onMessage = this.handleMessage;
     } catch (error) {
       console.error(error);
     } finally {
