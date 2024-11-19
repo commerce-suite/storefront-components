@@ -21,6 +21,8 @@ export class HighlightCard {
 
   @State() highlightedItems: IHighlightCardItem[] = [];
   @State() nonHighlightedItems: IHighlightCardItem[] = [];
+
+  @Event() addItem: EventEmitter<IHighlightCardItem>;
   @Event() componentRendered: EventEmitter<void>;
 
   private renderItem(item: any, isHighlighted: boolean) {
@@ -39,7 +41,7 @@ export class HighlightCard {
             <product-card custom-class="highlight-custom-style" product={item} inline />
             <div class="highlight-card-product-cart-icon">
               <img
-                onClick={() => console.log('add to cart')}
+                onClick={() => this.addItem.emit(item)}
                 src={getAssetPath('./assets/icons/add-to-cart.svg')}
                 alt="add_to_cart_icon"
               />

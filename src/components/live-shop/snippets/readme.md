@@ -5,13 +5,11 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
+## Events
 
-| Property       | Attribute  | Description | Type                   | Default     |
-| -------------- | ---------- | ----------- | ---------------------- | ----------- |
-| `items`        | --         |             | `IHighlightCardItem[]` | `undefined` |
-| `liveShopData` | --         |             | `ILiveShop`            | `undefined` |
-| `videoId`      | `video-id` |             | `string`               | `undefined` |
+| Event          | Description | Type                |
+| -------------- | ----------- | ------------------- |
+| `returnToHome` |             | `CustomEvent<void>` |
 
 
 ## Dependencies
@@ -22,24 +20,14 @@
 
 ### Depends on
 
-- [live-video-player](../../ui/live-video-player)
 - [custom-card](../../ui/custom-card)
-- [tab-selector](../../ui/tab-selector)
-- [highlight-card](../../ui/highlight-card)
-- [live-video-chat](../../ui/live-video-chat)
 
 ### Graph
 ```mermaid
 graph TD;
-  live-shop-mobile --> live-video-player
-  live-shop-mobile --> custom-card
-  live-shop-mobile --> tab-selector
-  live-shop-mobile --> highlight-card
-  live-shop-mobile --> live-video-chat
-  highlight-card --> product-card
-  product-card --> front-image
-  live-shop --> live-shop-mobile
-  style live-shop-mobile fill:#f9f,stroke:#333,stroke-width:4px
+  live-shop-not-found --> custom-card
+  live-shop --> live-shop-not-found
+  style live-shop-not-found fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

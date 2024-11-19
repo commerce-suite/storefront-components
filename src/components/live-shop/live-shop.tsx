@@ -11,6 +11,7 @@ import { WebSocketClient } from '../../services/WebSocketClient';
 })
 export class LiveShop {
   @Prop() hashRoom: string;
+  @State() liveShopNotFound: boolean = false;
   @State() videoId: string;
   @State() isSmallDevice: boolean = window.innerWidth <= 1024;
   @State() isChatOpen: boolean = false;
@@ -59,6 +60,10 @@ export class LiveShop {
       this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
       this.liveSocket.onMessage(this.handleMessage);
     } catch (error) {
+      if (error?.message?.includes('live-shop_not_found')) {
+        this.liveShopNotFound = true;
+        console.error('Live Shop not found', { error });
+      }
       console.error(error);
     } finally {
       this.isLoading = false;
@@ -122,6 +127,10 @@ export class LiveShop {
   render() {
     if (this.isLoading) {
       return <Host>{this.renderLoading()}</Host>;
+    }
+
+    if (this.liveShopNotFound) {
+      return <live-shop-not-found onReturnToHome={() => this.onReturnToHome.emit()} />;
     }
 
     return (

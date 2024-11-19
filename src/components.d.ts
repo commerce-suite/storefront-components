@@ -89,6 +89,8 @@ export namespace Components {
         "liveShopData": ILiveShop;
         "videoId": string;
     }
+    interface LiveShopNotFound {
+    }
     interface LiveVideoChat {
         "videoId": string;
     }
@@ -155,6 +157,18 @@ export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
 export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveShopElement;
+}
+export interface LiveShopDesktopCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopDesktopElement;
+}
+export interface LiveShopMobileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopMobileElement;
+}
+export interface LiveShopNotFoundCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLiveShopNotFoundElement;
 }
 export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -264,6 +278,7 @@ declare global {
         new (): HTMLFrontSelectElement;
     };
     interface HTMLHighlightCardElementEventMap {
+        "addItem": IHighlightCardItem;
         "componentRendered": void;
     }
     interface HTMLHighlightCardElement extends Components.HighlightCard, HTMLStencilElement {
@@ -334,17 +349,62 @@ declare global {
         prototype: HTMLLiveShopElement;
         new (): HTMLLiveShopElement;
     };
+    interface HTMLLiveShopDesktopElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    liveShopData: ILiveShop;
+  };
+    }
     interface HTMLLiveShopDesktopElement extends Components.LiveShopDesktop, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopDesktopElementEventMap>(type: K, listener: (this: HTMLLiveShopDesktopElement, ev: LiveShopDesktopCustomEvent<HTMLLiveShopDesktopElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLiveShopDesktopElement: {
         prototype: HTMLLiveShopDesktopElement;
         new (): HTMLLiveShopDesktopElement;
     };
+    interface HTMLLiveShopMobileElementEventMap {
+        "on-click-add": {
+    item: IHighlightCardItem1;
+    liveShopData: ILiveShop;
+  };
+    }
     interface HTMLLiveShopMobileElement extends Components.LiveShopMobile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopMobileElementEventMap>(type: K, listener: (this: HTMLLiveShopMobileElement, ev: LiveShopMobileCustomEvent<HTMLLiveShopMobileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLLiveShopMobileElement: {
         prototype: HTMLLiveShopMobileElement;
         new (): HTMLLiveShopMobileElement;
+    };
+    interface HTMLLiveShopNotFoundElementEventMap {
+        "returnToHome": void;
+    }
+    interface HTMLLiveShopNotFoundElement extends Components.LiveShopNotFound, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLiveShopNotFoundElementEventMap>(type: K, listener: (this: HTMLLiveShopNotFoundElement, ev: LiveShopNotFoundCustomEvent<HTMLLiveShopNotFoundElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLiveShopNotFoundElementEventMap>(type: K, listener: (this: HTMLLiveShopNotFoundElement, ev: LiveShopNotFoundCustomEvent<HTMLLiveShopNotFoundElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLiveShopNotFoundElement: {
+        prototype: HTMLLiveShopNotFoundElement;
+        new (): HTMLLiveShopNotFoundElement;
     };
     interface HTMLLiveVideoChatElementEventMap {
         "componentRendered": void;
@@ -381,8 +441,8 @@ declare global {
         new (): HTMLLiveVideoPlayerElement;
     };
     interface HTMLMiniPlayerElementEventMap {
+        "on-click-miniplayer-button": void;
         "componentRendered": void;
-        "on-click-button": void;
     }
     interface HTMLMiniPlayerElement extends Components.MiniPlayer, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMiniPlayerElementEventMap>(type: K, listener: (this: HTMLMiniPlayerElement, ev: MiniPlayerCustomEvent<HTMLMiniPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -457,6 +517,7 @@ declare global {
         "live-shop": HTMLLiveShopElement;
         "live-shop-desktop": HTMLLiveShopDesktopElement;
         "live-shop-mobile": HTMLLiveShopMobileElement;
+        "live-shop-not-found": HTMLLiveShopNotFoundElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
         "mini-player": HTMLMiniPlayerElement;
@@ -515,6 +576,7 @@ declare namespace LocalJSX {
     }
     interface HighlightCard {
         "items"?: IHighlightCardItem[];
+        "onAddItem"?: (event: HighlightCardCustomEvent<IHighlightCardItem>) => void;
         "onComponentRendered"?: (event: HighlightCardCustomEvent<void>) => void;
     }
     interface InfoModal {
@@ -546,13 +608,24 @@ declare namespace LocalJSX {
         "isChatOpen"?: boolean;
         "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopDesktopCustomEvent<{
+    item: IHighlightCardItem1;
+    liveShopData: ILiveShop;
+  }>) => void;
         "toggleChat"?: () => void;
         "videoId"?: string;
     }
     interface LiveShopMobile {
         "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
+        "onOn-click-add"?: (event: LiveShopMobileCustomEvent<{
+    item: IHighlightCardItem1;
+    liveShopData: ILiveShop;
+  }>) => void;
         "videoId"?: string;
+    }
+    interface LiveShopNotFound {
+        "onReturnToHome"?: (event: LiveShopNotFoundCustomEvent<void>) => void;
     }
     interface LiveVideoChat {
         "onComponentRendered"?: (event: LiveVideoChatCustomEvent<void>) => void;
@@ -568,7 +641,7 @@ declare namespace LocalJSX {
         "buttonText"?: string;
         "mainTitle"?: string;
         "onComponentRendered"?: (event: MiniPlayerCustomEvent<void>) => void;
-        "onOn-click-button"?: (event: MiniPlayerCustomEvent<void>) => void;
+        "onOn-click-miniplayer-button"?: (event: MiniPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
     interface ProductCard {
@@ -606,6 +679,7 @@ declare namespace LocalJSX {
         "live-shop": LiveShop;
         "live-shop-desktop": LiveShopDesktop;
         "live-shop-mobile": LiveShopMobile;
+        "live-shop-not-found": LiveShopNotFound;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
         "mini-player": MiniPlayer;
@@ -631,6 +705,7 @@ declare module "@stencil/core" {
             "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
             "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
             "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
+            "live-shop-not-found": LocalJSX.LiveShopNotFound & JSXBase.HTMLAttributes<HTMLLiveShopNotFoundElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
             "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
