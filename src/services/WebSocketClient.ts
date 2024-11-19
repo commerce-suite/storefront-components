@@ -1,4 +1,4 @@
-export class WebSocketClient<T = any> {
+export class WebSocketClient {
   private socket: WebSocket;
   private url: string;
 
@@ -7,7 +7,7 @@ export class WebSocketClient<T = any> {
     this.socket = new WebSocket(this.url);
 
     this.socket.onopen = this.onOpen;
-    this.socket.onmessage = this.onMessage;
+    this.socket.onmessage = (event: MessageEvent) => event.data;
     this.socket.onclose = this.onClose;
     this.socket.onerror = this.onError;
   }
@@ -24,9 +24,9 @@ export class WebSocketClient<T = any> {
     console.error('Erro na conexão:', error);
   };
 
-  onMessage = (event: MessageEvent<T>) => {
-    return event.data;
-  };
+  onMessage(callback: (event: MessageEvent) => void) {
+    this.socket.onmessage = callback;
+  }
 
   closeConnection() {
     if (this.socket.readyState === WebSocket.OPEN) {

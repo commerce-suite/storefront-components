@@ -1,15 +1,9 @@
 import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
-import { ILiveShop } from './live-shop.type';
+import { ILiveShop, SocketMessage } from './live-shop.type';
 import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
 import { WebSocketClient } from '../../services/WebSocketClient';
 
-export type LiveShopItemStatus = 'displaying' | 'hidden' | 'highlighting';
-export interface SocketMessage {
-  type: 'product' | 'message';
-  status: LiveShopItemStatus;
-  id: number;
-}
 @Component({
   tag: 'live-shop',
   styleUrl: 'live-shop.scss',
@@ -39,15 +33,20 @@ export class LiveShop {
     this.isChatOpen = !this.isChatOpen;
   };
 
+  private handleMessage = (event: MessageEvent<string>) => {
+    try {
+      const message: SocketMessage = JSON.parse(event.data);
+      this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   disconnectedCallback() {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  handleMessage(event: MessageEvent<SocketMessage>) {
-    console.log('🚀 ~ LiveShop ~ handleMessage ~ event:', event);
-  }
-
-  async componentDidLoad() {
+  async componentWillLoad() {
     try {
       if (!this.hashRoom) throw new Error('Hash Room is required');
       this.isLoading = true;
@@ -57,10 +56,8 @@ export class LiveShop {
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
-      this.liveSocket = new WebSocketClient<SocketMessage>(
-        `ws://localhost:3001?hashRoom=${this.hashRoom}`,
-      );
-      this.liveSocket.onMessage = this.handleMessage;
+      this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+      this.liveSocket.onMessage(this.handleMessage);
     } catch (error) {
       console.error(error);
     } finally {

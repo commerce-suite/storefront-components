@@ -3,6 +3,7 @@ import { LiveShop } from '@uxshop/storefront-core/dist/modules/live-shop/LiveSho
 import { IHighlightCardItem } from '../../../components';
 import { IImage } from '../../ui/product-card/product-card.type';
 import { IMessageItem, IProductItem } from '../../ui/highlight-card/highlight-card.type';
+import { SocketMessage } from '../live-shop.type';
 
 export class LiveShopHandler {
   private liveShopData: LiveShop;
@@ -10,7 +11,7 @@ export class LiveShopHandler {
   private async getProducts() {
     const productIds = this.liveShopData.products.map(product => product.productId);
     return await ProductService.getList({
-      fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
+      fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
       filter: { productIds },
     });
   }
@@ -23,7 +24,7 @@ export class LiveShopHandler {
   async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
     return products.edges.map(({ node }) => ({
-      id: +node.id,
+      id: +node.productId,
       name: node.name,
       image: (node.images[0] as IImage) ?? null,
       price: node.price,
@@ -33,6 +34,7 @@ export class LiveShopHandler {
       type: 'product',
       highlight: false,
       slug: node.slug,
+      show: true,
     }));
   }
 
@@ -43,7 +45,23 @@ export class LiveShopHandler {
       content: message.content,
       type: 'message',
       highlight: false,
+      show: true,
     }));
+  }
+
+  updateItems(items: IHighlightCardItem[], message: SocketMessage): IHighlightCardItem[] {
+    const updatedItems = items.map(item => {
+      if (item.id === message.id && item.type === message.type) {
+        return {
+          ...item,
+          show: message.status !== 'hidden',
+          highlight: message.status === 'highlighting',
+        };
+      }
+      return item;
+    });
+
+    return updatedItems;
   }
 
   async getItems(): Promise<IHighlightCardItem[]> {
