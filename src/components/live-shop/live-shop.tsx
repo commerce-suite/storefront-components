@@ -36,8 +36,10 @@ export class LiveShop {
 
   private handleMessage = (event: MessageEvent<string>) => {
     try {
-      const message: SocketMessage = JSON.parse(event.data);
-      this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+      if (event.data) {
+        const message: SocketMessage = JSON.parse(event.data);
+        this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+      }
     } catch (error) {
       console.error(error);
     }
