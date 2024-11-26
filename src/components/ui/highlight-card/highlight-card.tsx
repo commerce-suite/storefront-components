@@ -26,6 +26,8 @@ export class HighlightCard {
   @Event() componentRendered: EventEmitter<void>;
 
   private renderItem(item: any, isHighlighted: boolean) {
+    if (!item.show) return null;
+
     return (
       <div class={`highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}`}>
         {item.type === 'message' && (
@@ -50,9 +52,10 @@ export class HighlightCard {
     );
   }
 
-  filterItems() {
-    this.highlightedItems = this.items.filter(item => item.highlight);
-    this.nonHighlightedItems = this.items.filter(item => !item.highlight);
+  filterItems(items: IHighlightCardItem[]) {
+    const visibleItems = items.filter(item => item.show);
+    this.highlightedItems = visibleItems.filter(item => item.highlight);
+    this.nonHighlightedItems = visibleItems.filter(item => !item.highlight);
   }
 
   componentDidLoad() {
@@ -60,12 +63,12 @@ export class HighlightCard {
   }
 
   componentWillLoad() {
-    this.filterItems();
+    this.filterItems(this.items);
   }
 
   @Watch('items')
-  filterItemsHandler() {
-    this.filterItems();
+  handleItemsChange(newItems: IHighlightCardItem[]) {
+    this.filterItems(newItems);
   }
 
   render() {
