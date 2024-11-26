@@ -7,9 +7,9 @@ export declare class HighlightCard {
     addItem: EventEmitter<IHighlightCardItem>;
     componentRendered: EventEmitter<void>;
     private renderItem;
-    filterItems(): void;
+    filterItems(items: IHighlightCardItem[]): void;
     componentDidLoad(): void;
     componentWillLoad(): void;
-    filterItemsHandler(): void;
+    handleItemsChange(newItems: IHighlightCardItem[]): void;
     render(): any;
 }

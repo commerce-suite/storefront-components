@@ -2,6 +2,7 @@ import { IImage } from '../product-card/product-card.type';
 interface IItem {
     type: 'message' | 'product';
     highlight: boolean;
+    show: boolean;
 }
 export interface IMessageItem extends IItem {
     type: 'message';

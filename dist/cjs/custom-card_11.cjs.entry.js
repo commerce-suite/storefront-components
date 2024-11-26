@@ -91,26 +91,29 @@ const HighlightCard = class {
         this.nonHighlightedItems = [];
     }
     renderItem(item, isHighlighted) {
+        if (!item.show)
+            return null;
         return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product" }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, inline: true }), index.h("div", { class: "highlight-card-product-cart-icon" }, index.h("img", { onClick: () => this.addItem.emit(item), src: index.getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
     }
-    filterItems() {
-        this.highlightedItems = this.items.filter(item => item.highlight);
-        this.nonHighlightedItems = this.items.filter(item => !item.highlight);
+    filterItems(items) {
+        const visibleItems = items.filter(item => item.show);
+        this.highlightedItems = visibleItems.filter(item => item.highlight);
+        this.nonHighlightedItems = visibleItems.filter(item => !item.highlight);
     }
     componentDidLoad() {
         this.componentRendered.emit();
     }
     componentWillLoad() {
-        this.filterItems();
+        this.filterItems(this.items);
     }
-    filterItemsHandler() {
-        this.filterItems();
+    handleItemsChange(newItems) {
+        this.filterItems(newItems);
     }
     render() {
-        return (index.h(index.Host, { key: '81c35f2eb4ffedbaed094c61e0e00c5c5ffa5290' }, index.h("div", { key: '4a798edbdede04bee510f6cb1c3635570d0ee7de', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: 'ad4dc2c47315b7a65ec010ba7f0e904bdfda1899', class: "highlight-card-container" }, index.h("div", { key: 'c73501697d708bdbefa8c982b73604be4ab04fcc', class: "highlight-card-header" }, index.h("span", { key: '4c9028c801fda1d3d7de4ed2b338bd9116f5847b', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (index.h(index.Host, { key: 'f03f6996b74420eb4df0c5696d3f2b3e4ee25abb' }, index.h("div", { key: '101a9b536f5e4e1c624c7ddafd85e4ab4122a807', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: 'd20c4bda51d502f533f2fbd54aeb5f49f0c23289', class: "highlight-card-container" }, index.h("div", { key: 'b2f784b8334861744112daccd00d49b2efb88552', class: "highlight-card-header" }, index.h("span", { key: '83d5b38c683141b2d542f96b41c867459b7bf293', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
-        "items": ["filterItemsHandler"]
+        "items": ["handleItemsChange"]
     }; }
 };
 HighlightCard.style = HighlightCardStyle0;
@@ -119,7 +122,7 @@ class LiveShopHandler {
     async getProducts() {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await index$1.ProductService.getList({
-            fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
+            fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
             filter: { productIds },
         });
     }
@@ -132,7 +135,7 @@ class LiveShopHandler {
         return products.edges.map(({ node }) => {
             var _a;
             return ({
-                id: +node.id,
+                id: +node.productId,
                 name: node.name,
                 image: (_a = node.images[0]) !== null && _a !== void 0 ? _a : null,
                 price: node.price,
@@ -142,6 +145,7 @@ class LiveShopHandler {
                 type: 'product',
                 highlight: false,
                 slug: node.slug,
+                show: true,
             });
         });
     }
@@ -154,13 +158,51 @@ class LiveShopHandler {
                 content: message.content,
                 type: 'message',
                 highlight: false,
+                show: true,
             });
         });
+    }
+    updateItems(items, message) {
+        const updatedItems = items.map(item => {
+            if (item.id === message.id && item.type === message.type) {
+                return Object.assign(Object.assign({}, item), { show: message.status !== 'hidden', highlight: message.status === 'highlighting' });
+            }
+            return item;
+        });
+        return updatedItems;
     }
     async getItems() {
         const productItems = await this.productsToItemsAdapter();
         const messageItems = this.messagesToItemsAdapter();
         return [...productItems, ...messageItems];
+    }
+}
+
+class WebSocketClient {
+    constructor(url) {
+        this.onOpen = () => {
+            console.log('Conectado à sala.');
+        };
+        this.onClose = () => {
+            console.log('Conexão fechada.');
+        };
+        this.onError = (error) => {
+            console.error('Erro na conexão:', error);
+        };
+        this.url = url;
+        this.socket = new WebSocket(this.url);
+        this.socket.onopen = this.onOpen;
+        this.socket.onmessage = (event) => event.data;
+        this.socket.onclose = this.onClose;
+        this.socket.onerror = this.onError;
+    }
+    onMessage(callback) {
+        this.socket.onmessage = callback;
+    }
+    closeConnection() {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.close();
+        }
     }
 }
 
@@ -178,6 +220,17 @@ const LiveShop = class {
         this.isChatOpenHandler = () => {
             this.isChatOpen = !this.isChatOpen;
         };
+        this.handleMessage = (event) => {
+            try {
+                if (event.data) {
+                    const message = JSON.parse(event.data);
+                    this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        };
         this.hashRoom = undefined;
         this.liveShopNotFound = false;
         this.videoId = undefined;
@@ -187,11 +240,12 @@ const LiveShop = class {
         this.liveShopRegister = undefined;
         this.liveShopItemsService = undefined;
         this.liveShopItems = undefined;
+        this.liveSocket = undefined;
     }
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
     }
-    async componentDidLoad() {
+    async componentWillLoad() {
         var _a;
         try {
             if (!this.hashRoom)
@@ -204,6 +258,8 @@ const LiveShop = class {
             this.liveShopItems = await this.liveShopItemsService.getItems();
             if (this.liveShopRegister)
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+            this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+            this.liveSocket.onMessage(this.handleMessage);
         }
         catch (error) {
             if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
@@ -229,13 +285,14 @@ const LiveShop = class {
         return (index.h("div", { class: "live-shop-finished" }, index.h("custom-card", { customClass: "button-custom-style", cardTitle: "A live chegou ao fim!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, index.h("button", { onClick: () => this.onReturnToHome.emit() }, "Voltar para a p\u00E1gina inicial"))));
     }
     render() {
+        var _a, _b, _c;
         if (this.isLoading) {
             return index.h(index.Host, null, this.renderLoading());
         }
         if (this.liveShopNotFound) {
             return index.h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
         }
-        return (index.h(index.Host, null, index.h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
+        return (index.h(index.Host, null, index.h("div", { class: "live-shop" }, ((_a = this.liveShopRegister) === null || _a === void 0 ? void 0 : _a.status) === 'warmup' && this.renderWarmup(), ((_b = this.liveShopRegister) === null || _b === void 0 ? void 0 : _b.status) === 'inLive' && this.renderInLive(), ((_c = this.liveShopRegister) === null || _c === void 0 ? void 0 : _c.status) === 'finished' && this.renderFinished())));
     }
 };
 LiveShop.style = LiveShopStyle0;

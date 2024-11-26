@@ -16,26 +16,29 @@ const HighlightCard = /*@__PURE__*/ proxyCustomElement(class HighlightCard exten
         this.nonHighlightedItems = [];
     }
     renderItem(item, isHighlighted) {
+        if (!item.show)
+            return null;
         return (h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (h("div", { class: "highlight-card-message" }, h("h4", { class: "highlight-card-message-title" }, item.title), h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (h("div", { class: "highlight-card-product" }, h("product-card", { "custom-class": "highlight-custom-style", product: item, inline: true }), h("div", { class: "highlight-card-product-cart-icon" }, h("img", { onClick: () => this.addItem.emit(item), src: getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
     }
-    filterItems() {
-        this.highlightedItems = this.items.filter(item => item.highlight);
-        this.nonHighlightedItems = this.items.filter(item => !item.highlight);
+    filterItems(items) {
+        const visibleItems = items.filter(item => item.show);
+        this.highlightedItems = visibleItems.filter(item => item.highlight);
+        this.nonHighlightedItems = visibleItems.filter(item => !item.highlight);
     }
     componentDidLoad() {
         this.componentRendered.emit();
     }
     componentWillLoad() {
-        this.filterItems();
+        this.filterItems(this.items);
     }
-    filterItemsHandler() {
-        this.filterItems();
+    handleItemsChange(newItems) {
+        this.filterItems(newItems);
     }
     render() {
-        return (h(Host, { key: '81c35f2eb4ffedbaed094c61e0e00c5c5ffa5290' }, h("div", { key: '4a798edbdede04bee510f6cb1c3635570d0ee7de', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: 'ad4dc2c47315b7a65ec010ba7f0e904bdfda1899', class: "highlight-card-container" }, h("div", { key: 'c73501697d708bdbefa8c982b73604be4ab04fcc', class: "highlight-card-header" }, h("span", { key: '4c9028c801fda1d3d7de4ed2b338bd9116f5847b', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: 'f03f6996b74420eb4df0c5696d3f2b3e4ee25abb' }, h("div", { key: '101a9b536f5e4e1c624c7ddafd85e4ab4122a807', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: 'd20c4bda51d502f533f2fbd54aeb5f49f0c23289', class: "highlight-card-container" }, h("div", { key: 'b2f784b8334861744112daccd00d49b2efb88552', class: "highlight-card-header" }, h("span", { key: '83d5b38c683141b2d542f96b41c867459b7bf293', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
-        "items": ["filterItemsHandler"]
+        "items": ["handleItemsChange"]
     }; }
     static get style() { return HighlightCardStyle0; }
 }, [0, "highlight-card", {
@@ -43,7 +46,7 @@ const HighlightCard = /*@__PURE__*/ proxyCustomElement(class HighlightCard exten
         "highlightedItems": [32],
         "nonHighlightedItems": [32]
     }, undefined, {
-        "items": ["filterItemsHandler"]
+        "items": ["handleItemsChange"]
     }]);
 function defineCustomElement() {
     if (typeof customElements === "undefined") {

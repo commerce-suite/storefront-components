@@ -3,7 +3,7 @@ export class LiveShopHandler {
     async getProducts() {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await ProductService.getList({
-            fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
+            fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
             filter: { productIds },
         });
     }
@@ -16,7 +16,7 @@ export class LiveShopHandler {
         return products.edges.map(({ node }) => {
             var _a;
             return ({
-                id: +node.id,
+                id: +node.productId,
                 name: node.name,
                 image: (_a = node.images[0]) !== null && _a !== void 0 ? _a : null,
                 price: node.price,
@@ -26,6 +26,7 @@ export class LiveShopHandler {
                 type: 'product',
                 highlight: false,
                 slug: node.slug,
+                show: true,
             });
         });
     }
@@ -38,8 +39,18 @@ export class LiveShopHandler {
                 content: message.content,
                 type: 'message',
                 highlight: false,
+                show: true,
             });
         });
+    }
+    updateItems(items, message) {
+        const updatedItems = items.map(item => {
+            if (item.id === message.id && item.type === message.type) {
+                return Object.assign(Object.assign({}, item), { show: message.status !== 'hidden', highlight: message.status === 'highlighting' });
+            }
+            return item;
+        });
+        return updatedItems;
     }
     async getItems() {
         const productItems = await this.productsToItemsAdapter();

@@ -15,7 +15,7 @@ class LiveShopHandler {
     async getProducts() {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await ProductService.getList({
-            fields: ['name', 'images { src }', 'price', 'priceCompare', 'id', 'slug'],
+            fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
             filter: { productIds },
         });
     }
@@ -28,7 +28,7 @@ class LiveShopHandler {
         return products.edges.map(({ node }) => {
             var _a;
             return ({
-                id: +node.id,
+                id: +node.productId,
                 name: node.name,
                 image: (_a = node.images[0]) !== null && _a !== void 0 ? _a : null,
                 price: node.price,
@@ -38,6 +38,7 @@ class LiveShopHandler {
                 type: 'product',
                 highlight: false,
                 slug: node.slug,
+                show: true,
             });
         });
     }
@@ -50,13 +51,51 @@ class LiveShopHandler {
                 content: message.content,
                 type: 'message',
                 highlight: false,
+                show: true,
             });
         });
+    }
+    updateItems(items, message) {
+        const updatedItems = items.map(item => {
+            if (item.id === message.id && item.type === message.type) {
+                return Object.assign(Object.assign({}, item), { show: message.status !== 'hidden', highlight: message.status === 'highlighting' });
+            }
+            return item;
+        });
+        return updatedItems;
     }
     async getItems() {
         const productItems = await this.productsToItemsAdapter();
         const messageItems = this.messagesToItemsAdapter();
         return [...productItems, ...messageItems];
+    }
+}
+
+class WebSocketClient {
+    constructor(url) {
+        this.onOpen = () => {
+            console.log('Conectado à sala.');
+        };
+        this.onClose = () => {
+            console.log('Conexão fechada.');
+        };
+        this.onError = (error) => {
+            console.error('Erro na conexão:', error);
+        };
+        this.url = url;
+        this.socket = new WebSocket(this.url);
+        this.socket.onopen = this.onOpen;
+        this.socket.onmessage = (event) => event.data;
+        this.socket.onclose = this.onClose;
+        this.socket.onerror = this.onError;
+    }
+    onMessage(callback) {
+        this.socket.onmessage = callback;
+    }
+    closeConnection() {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.close();
+        }
     }
 }
 
@@ -75,6 +114,17 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         this.isChatOpenHandler = () => {
             this.isChatOpen = !this.isChatOpen;
         };
+        this.handleMessage = (event) => {
+            try {
+                if (event.data) {
+                    const message = JSON.parse(event.data);
+                    this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        };
         this.hashRoom = undefined;
         this.liveShopNotFound = false;
         this.videoId = undefined;
@@ -84,11 +134,12 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         this.liveShopRegister = undefined;
         this.liveShopItemsService = undefined;
         this.liveShopItems = undefined;
+        this.liveSocket = undefined;
     }
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
     }
-    async componentDidLoad() {
+    async componentWillLoad() {
         var _a;
         try {
             if (!this.hashRoom)
@@ -101,6 +152,8 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
             this.liveShopItems = await this.liveShopItemsService.getItems();
             if (this.liveShopRegister)
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+            this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+            this.liveSocket.onMessage(this.handleMessage);
         }
         catch (error) {
             if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
@@ -126,13 +179,14 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         return (h("div", { class: "live-shop-finished" }, h("custom-card", { customClass: "button-custom-style", cardTitle: "A live chegou ao fim!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { onClick: () => this.onReturnToHome.emit() }, "Voltar para a p\u00E1gina inicial"))));
     }
     render() {
+        var _a, _b, _c;
         if (this.isLoading) {
             return h(Host, null, this.renderLoading());
         }
         if (this.liveShopNotFound) {
             return h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
         }
-        return (h(Host, null, h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
+        return (h(Host, null, h("div", { class: "live-shop" }, ((_a = this.liveShopRegister) === null || _a === void 0 ? void 0 : _a.status) === 'warmup' && this.renderWarmup(), ((_b = this.liveShopRegister) === null || _b === void 0 ? void 0 : _b.status) === 'inLive' && this.renderInLive(), ((_c = this.liveShopRegister) === null || _c === void 0 ? void 0 : _c.status) === 'finished' && this.renderFinished())));
     }
     static get style() { return LiveShopStyle0; }
 }, [0, "live-shop", {
@@ -144,7 +198,8 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         "isLoading": [32],
         "liveShopRegister": [32],
         "liveShopItemsService": [32],
-        "liveShopItems": [32]
+        "liveShopItems": [32],
+        "liveSocket": [32]
     }]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {

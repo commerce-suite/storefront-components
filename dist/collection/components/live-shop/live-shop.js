@@ -1,5 +1,6 @@
 import { Host, h } from "@stencil/core";
 import { LiveShopHandler } from "./services/live-shop.service";
+import { WebSocketClient } from "../../services/WebSocketClient";
 export class LiveShop {
     constructor() {
         this.handleResize = () => {
@@ -7,6 +8,17 @@ export class LiveShop {
         };
         this.isChatOpenHandler = () => {
             this.isChatOpen = !this.isChatOpen;
+        };
+        this.handleMessage = (event) => {
+            try {
+                if (event.data) {
+                    const message = JSON.parse(event.data);
+                    this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
         };
         this.hashRoom = undefined;
         this.liveShopNotFound = false;
@@ -17,11 +29,12 @@ export class LiveShop {
         this.liveShopRegister = undefined;
         this.liveShopItemsService = undefined;
         this.liveShopItems = undefined;
+        this.liveSocket = undefined;
     }
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
     }
-    async componentDidLoad() {
+    async componentWillLoad() {
         var _a;
         try {
             if (!this.hashRoom)
@@ -34,6 +47,8 @@ export class LiveShop {
             this.liveShopItems = await this.liveShopItemsService.getItems();
             if (this.liveShopRegister)
                 this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+            this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+            this.liveSocket.onMessage(this.handleMessage);
         }
         catch (error) {
             if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
@@ -59,13 +74,14 @@ export class LiveShop {
         return (h("div", { class: "live-shop-finished" }, h("custom-card", { customClass: "button-custom-style", cardTitle: "A live chegou ao fim!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { onClick: () => this.onReturnToHome.emit() }, "Voltar para a p\u00E1gina inicial"))));
     }
     render() {
+        var _a, _b, _c;
         if (this.isLoading) {
             return h(Host, null, this.renderLoading());
         }
         if (this.liveShopNotFound) {
             return h("live-shop-not-found", { onReturnToHome: () => this.onReturnToHome.emit() });
         }
-        return (h(Host, null, h("div", { class: "live-shop" }, this.liveShopRegister.status === 'warmup' && this.renderWarmup(), this.liveShopRegister.status === 'inLive' && this.renderInLive(), this.liveShopRegister.status === 'finished' && this.renderFinished())));
+        return (h(Host, null, h("div", { class: "live-shop" }, ((_a = this.liveShopRegister) === null || _a === void 0 ? void 0 : _a.status) === 'warmup' && this.renderWarmup(), ((_b = this.liveShopRegister) === null || _b === void 0 ? void 0 : _b.status) === 'inLive' && this.renderInLive(), ((_c = this.liveShopRegister) === null || _c === void 0 ? void 0 : _c.status) === 'finished' && this.renderFinished())));
     }
     static get is() { return "live-shop"; }
     static get originalStyleUrls() {
@@ -108,7 +124,8 @@ export class LiveShop {
             "isLoading": {},
             "liveShopRegister": {},
             "liveShopItemsService": {},
-            "liveShopItems": {}
+            "liveShopItems": {},
+            "liveSocket": {}
         };
     }
     static get events() {
