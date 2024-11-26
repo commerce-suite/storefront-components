@@ -138,9 +138,9 @@ export class LiveShop {
     return (
       <Host>
         <div class="live-shop">
-          {this.liveShopRegister.status === 'warmup' && this.renderWarmup()}
-          {this.liveShopRegister.status === 'inLive' && this.renderInLive()}
-          {this.liveShopRegister.status === 'finished' && this.renderFinished()}
+          {this.liveShopRegister?.status === 'warmup' && this.renderWarmup()}
+          {this.liveShopRegister?.status === 'inLive' && this.renderInLive()}
+          {this.liveShopRegister?.status === 'finished' && this.renderFinished()}
         </div>
       </Host>
     );
