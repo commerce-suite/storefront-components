@@ -2,6 +2,8 @@ import { IImage } from '../ui/product-card/product-card.type';
 
 export type ILiveShopStatus = 'inLive' | 'finished' | 'warmup' | string;
 
+export type LiveShopItemStatus = 'displaying' | 'hidden' | 'highlighting';
+
 export interface ILiveShopDiscount {
   type: string;
   value: number;
@@ -39,4 +41,10 @@ export interface ILiveShop {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface SocketMessage {
+  type: 'product' | 'message';
+  status: LiveShopItemStatus;
+  id: number;
 }

@@ -7,6 +7,7 @@ const items: IHighlightCardItem[] = [
     content:
       'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
     highlight: true,
+    show: true,
   },
   {
     type: 'product',
@@ -20,6 +21,7 @@ const items: IHighlightCardItem[] = [
     name: 'Tênis Nike Air Force',
     specialPrice: 395.505,
     highlight: true,
+    show: true,
     slug: 'tenis-nike-air-force',
   },
   {
@@ -28,6 +30,7 @@ const items: IHighlightCardItem[] = [
     content:
       'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
     highlight: false,
+    show: true,
   },
 ];
 

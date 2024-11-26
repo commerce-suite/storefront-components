@@ -10,9 +10,7 @@ describe('live-shop', () => {
 
     expect(page.root).toEqualHtml(`
       <live-shop>
-        <div class="loading-container">
-          <span class="spinner"></span>
-        </div>
+        <div class="live-shop"></div>
       </live-shop>
     `);
   });
