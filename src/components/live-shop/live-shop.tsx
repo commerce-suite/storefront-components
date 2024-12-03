@@ -1,4 +1,4 @@
-import { Component, Event, Host, EventEmitter, h, State, Prop } from '@stencil/core';
+import { Component, Event, Host, EventEmitter, h, State, Prop, Env } from '@stencil/core';
 import { ILiveShop, SocketMessage } from './live-shop.type';
 import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
@@ -49,7 +49,7 @@ export class LiveShop {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  async componentWillLoad() {
+  async componentDidLoad() {
     try {
       if (!this.hashRoom) throw new Error('Hash Room is required');
       this.isLoading = true;
@@ -59,7 +59,8 @@ export class LiveShop {
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
-      this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+      const wsBaseUrl = Env.WEBSOCKET_URL;
+      this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
       this.liveSocket.onMessage(this.handleMessage);
     } catch (error) {
       if (error?.message?.includes('live-shop_not_found')) {

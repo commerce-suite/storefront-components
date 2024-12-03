@@ -23,7 +23,7 @@ export const tabs = (
         </span>
       ),
       content: () => {
-        return items?.length > 0 ? (
+        return items?.length > 0 && items?.some(item => item.show) ? (
           <highlight-card items={items} onAddItem={handleAddItem}></highlight-card>
         ) : (
           <custom-card
