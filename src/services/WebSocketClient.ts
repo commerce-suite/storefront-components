@@ -13,7 +13,7 @@ export class WebSocketClient {
   }
 
   private onOpen = () => {
-    console.log('Conectado à sala.');
+    console.info('Conectado à sala.');
   };
 
   private onClose = () => {
