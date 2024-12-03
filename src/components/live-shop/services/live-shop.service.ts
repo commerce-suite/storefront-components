@@ -34,7 +34,7 @@ export class LiveShopHandler {
       type: 'product',
       highlight: false,
       slug: node.slug,
-      show: true,
+      show: false,
     }));
   }
 
@@ -45,7 +45,7 @@ export class LiveShopHandler {
       content: message.content,
       type: 'message',
       highlight: false,
-      show: true,
+      show: false,
     }));
   }
 

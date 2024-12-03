@@ -58,7 +58,7 @@ export class LiveShopDesktop {
         </div>
         <div class="live-shop-in-live-desktop-content">
           <div class="live-shop-in-live-desktop-content-card">
-            {this.items.length > 0 ? (
+            {this.items.length > 0 && this.items.some(item => item.show) ? (
               <highlight-card items={this.items} onAddItem={this.handleAddItem} />
             ) : (
               <custom-card
