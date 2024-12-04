@@ -13,12 +13,10 @@ export const tabs = (
       label: (
         <span>
           Produtos
-          {items?.filter(item => item.type === 'product').length > 0 ? (
+          {items?.some(item => item.type === 'product' && item.show) && (
             <span class="product-count">
-              {items?.filter(item => item.type === 'product').length}
+              {items.filter(item => item.type === 'product' && item.show).length}
             </span>
-          ) : (
-            ''
           )}
         </span>
       ),
