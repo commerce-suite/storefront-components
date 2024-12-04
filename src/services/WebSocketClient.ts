@@ -12,17 +12,11 @@ export class WebSocketClient {
     this.socket.onerror = this.onError;
   }
 
-  private onOpen = () => {
-    console.info('Conectado à sala.');
-  };
+  private onOpen = () => {};
 
-  private onClose = () => {
-    console.log('Conexão fechada.');
-  };
+  private onClose = () => {};
 
-  onError = (error: Event) => {
-    console.error('Erro na conexão:', error);
-  };
+  onError = () => {};
 
   onMessage(callback: (event: MessageEvent) => void) {
     this.socket.onmessage = callback;
