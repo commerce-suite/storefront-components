@@ -1,3 +1,5 @@
+@import '../../../style/mixins/screen-media';
+
 :host {
   display: inline-block;
   width: 100%;
@@ -43,6 +45,7 @@
     flex-direction: column;
     padding: 24px;
     gap: 2px;
+    min-width: 480px;
 
     &-title,
     &-content {
@@ -64,6 +67,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include for-desktop {
+      max-width: 480px;
+    }
 
     &-cart-icon {
       padding: 24px;
