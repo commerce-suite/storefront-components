@@ -3,6 +3,7 @@ import { ILiveShop, SocketMessage } from './live-shop.type';
 import { IHighlightCardItem } from '../../components';
 import { LiveShopHandler } from './services/live-shop.service';
 import { WebSocketClient } from '../../services/WebSocketClient';
+import { extractYouTubeVideoId } from '../../utils/utils';
 
 @Component({
   tag: 'live-shop',
@@ -58,7 +59,9 @@ export class LiveShop {
       this.liveShopItemsService = new LiveShopHandler();
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
       this.liveShopItems = await this.liveShopItemsService.getItems();
-      if (this.liveShopRegister) this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
+      if (this.liveShopRegister) {
+        this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
+      }
       const wsBaseUrl = Env.WEBSOCKET_URL;
       this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
       this.liveSocket.onMessage(this.handleMessage);
