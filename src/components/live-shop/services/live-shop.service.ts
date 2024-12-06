@@ -23,21 +23,21 @@ export class LiveShopHandler {
 
   async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
-    const liveProducts = this.liveShopData.products;
+    const liveProducts = this.liveShopData?.products;
     return products.edges.map(({ node }) => {
       const liveProduct = liveProducts.find(product => product.productId === node.productId);
       const status = liveProduct?.status ?? null;
       return {
         id: +node.productId,
         name: node.name,
-        image: (node.images[0] as IImage) ?? null,
+        image: (node?.images?.[0] as IImage) ?? null,
         price: node.price,
         priceBase: node.priceCompare,
         title: '',
         content: '',
         type: 'product',
         slug: node.slug,
-        show: status !== 'hidden',
+        show: status && status !== 'hidden',
         highlight: status === 'highlighting',
       };
     });
@@ -49,7 +49,7 @@ export class LiveShopHandler {
       title: message.title,
       content: message.content,
       type: 'message',
-      show: message.status !== 'hidden',
+      show: message.status && message.status !== 'hidden',
       highlight: message.status === 'highlighting',
     }));
   }

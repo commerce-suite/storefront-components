@@ -23,6 +23,8 @@
           font-weight: 700;
           font-size: 24px;
           text-transform: uppercase;
+          max-width: 550px;
+          word-break: break-word;
         }
 
         &-button {
@@ -57,13 +59,16 @@
           padding: 40px;
           border: 1px solid var(--menu-items);
           border-radius: 8px;
-          min-width: 480px;
 
           .custom-card-content {
             display: none;
           }
         }
       }
+    }
+
+    .highlight-card {
+      width: 450px;
     }
   }
 }
