@@ -11,6 +11,7 @@
   align-items: center;
   flex-direction: column;
   gap: 24px;
+  width: 450px;
 
   &-header {
     display: flex;
@@ -29,6 +30,7 @@
       font-weight: 700;
       font-size: 24px;
       text-transform: uppercase;
+      word-break: break-word;
     }
 
     &-description {

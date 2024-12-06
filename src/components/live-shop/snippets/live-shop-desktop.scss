@@ -23,6 +23,8 @@
           font-weight: 700;
           font-size: 24px;
           text-transform: uppercase;
+          max-width: 550px;
+          word-break: break-word;
         }
 
         &-button {
@@ -63,6 +65,10 @@
           }
         }
       }
+    }
+
+    .highlight-card {
+      width: 450px;
     }
   }
 }

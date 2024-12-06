@@ -23,19 +23,24 @@ export class LiveShopHandler {
 
   async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
-    return products.edges.map(({ node }) => ({
-      id: +node.productId,
-      name: node.name,
-      image: (node.images[0] as IImage) ?? null,
-      price: node.price,
-      priceBase: node.priceCompare,
-      title: '',
-      content: '',
-      type: 'product',
-      highlight: false,
-      slug: node.slug,
-      show: false,
-    }));
+    const liveProducts = this.liveShopData?.products;
+    return products.edges.map(({ node }) => {
+      const liveProduct = liveProducts.find(product => product.productId === node.productId);
+      const status = liveProduct?.status ?? null;
+      return {
+        id: +node.productId,
+        name: node.name,
+        image: (node?.images?.[0] as IImage) ?? null,
+        price: node.price,
+        priceBase: node.priceCompare,
+        title: '',
+        content: '',
+        type: 'product',
+        slug: node.slug,
+        show: status && status !== 'hidden',
+        highlight: status === 'highlighting',
+      };
+    });
   }
 
   messagesToItemsAdapter(): IMessageItem[] {
@@ -44,8 +49,8 @@ export class LiveShopHandler {
       title: message.title,
       content: message.content,
       type: 'message',
-      highlight: false,
-      show: false,
+      show: message.status && message.status !== 'hidden',
+      highlight: message.status === 'highlighting',
     }));
   }
 
