@@ -11,7 +11,6 @@
   align-items: center;
   flex-direction: column;
   gap: 24px;
-  width: 450px;
 
   &-header {
     display: flex;
@@ -39,6 +38,7 @@
   }
 
   @include for-desktop {
+    width: 450px;
     gap: 40px;
   }
 }
