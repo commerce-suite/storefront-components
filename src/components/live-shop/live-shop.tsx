@@ -76,13 +76,6 @@ export class LiveShop {
       }
       const wsBaseUrl = Env.WEBSOCKET_URL || 'ws://localhost:3001';
       this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
-      this.liveSocket.setHealthCheck(() => ({
-        action: 'sendMessage',
-        message: {
-          type: 'healthCheck',
-        },
-        hashRoom: this.hashRoom,
-      }));
       this.liveSocket.onMessage(this.handleMessage);
     } catch (error) {
       if (error?.message?.includes('live-shop_not_found')) {
