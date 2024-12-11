@@ -70,6 +70,7 @@ export class LiveShop {
       this.componentRendered.emit();
       this.liveShopItemsService = new LiveShopHandler();
       this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
+      if (!this.liveShopRegister) throw new Error('live-shop_not_found');
       this.liveShopItems = await this.liveShopItemsService.getItems();
       if (this.liveShopRegister) {
         this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
@@ -81,6 +82,7 @@ export class LiveShop {
       if (error?.message?.includes('live-shop_not_found')) {
         this.liveShopNotFound = true;
         console.error('Live Shop not found', { error });
+        return;
       }
       console.error(error);
     } finally {
