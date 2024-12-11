@@ -39,12 +39,11 @@
     &-secondary {
       @include front-button;
       font-weight: 500;
-      text-transform: capitalize;
       font-size: 14px;
     }
 
     &-primary {
-      background-color: var(--color-buy-button);
+      background-color: var(--color-secondary);
     }
 
     &-secondary {

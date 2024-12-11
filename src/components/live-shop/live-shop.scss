@@ -59,7 +59,6 @@
       & button {
         @include front-button;
         font-weight: 500;
-        text-transform: capitalize;
         font-size: 14px;
       }
     }
