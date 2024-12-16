@@ -1,4 +1,4 @@
-# product-card
+# product-card-price
 
 
 
@@ -9,7 +9,6 @@
 
 | Property          | Attribute           | Description | Type           | Default     |
 | ----------------- | ------------------- | ----------- | -------------- | ----------- |
-| `inline`          | `inline`            |             | `boolean`      | `false`     |
 | `product`         | --                  |             | `IProductCard` | `undefined` |
 | `showSimplePrice` | `show-simple-price` |             | `boolean`      | `true`      |
 
@@ -18,22 +17,13 @@
 
 ### Used by
 
- - [buy-together](../../buy-together)
- - [showcase-related](../../showcase)
-
-### Depends on
-
-- [front-image](../front-image)
-- [product-card-price](snippets)
+ - [product-card](..)
 
 ### Graph
 ```mermaid
 graph TD;
-  product-card --> front-image
   product-card --> product-card-price
-  buy-together --> product-card
-  showcase-related --> product-card
-  style product-card fill:#f9f,stroke:#333,stroke-width:4px
+  style product-card-price fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

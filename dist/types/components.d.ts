@@ -55,6 +55,11 @@ export namespace Components {
     interface ProductCard {
         "inline": boolean;
         "product": IProductCard;
+        "showSimplePrice": boolean;
+    }
+    interface ProductCardPrice {
+        "product": IProductCard;
+        "showSimplePrice": boolean;
     }
     interface ShowcaseRelated {
         "buttonLabel": string;
@@ -187,6 +192,12 @@ declare global {
         prototype: HTMLProductCardElement;
         new (): HTMLProductCardElement;
     };
+    interface HTMLProductCardPriceElement extends Components.ProductCardPrice, HTMLStencilElement {
+    }
+    var HTMLProductCardPriceElement: {
+        prototype: HTMLProductCardPriceElement;
+        new (): HTMLProductCardPriceElement;
+    };
     interface HTMLShowcaseRelatedElementEventMap {
         "clickBuyButton": any;
     }
@@ -229,6 +240,7 @@ declare global {
         "front-select": HTMLFrontSelectElement;
         "launch-countdown": HTMLLaunchCountdownElement;
         "product-card": HTMLProductCardElement;
+        "product-card-price": HTMLProductCardPriceElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
     }
@@ -286,6 +298,11 @@ declare namespace LocalJSX {
     interface ProductCard {
         "inline"?: boolean;
         "product"?: IProductCard;
+        "showSimplePrice"?: boolean;
+    }
+    interface ProductCardPrice {
+        "product"?: IProductCard;
+        "showSimplePrice"?: boolean;
     }
     interface ShowcaseRelated {
         "buttonLabel"?: string;
@@ -309,6 +326,7 @@ declare namespace LocalJSX {
         "front-select": FrontSelect;
         "launch-countdown": LaunchCountdown;
         "product-card": ProductCard;
+        "product-card-price": ProductCardPrice;
         "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
     }
@@ -324,6 +342,7 @@ declare module "@stencil/core" {
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
+            "product-card-price": LocalJSX.ProductCardPrice & JSXBase.HTMLAttributes<HTMLProductCardPriceElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }

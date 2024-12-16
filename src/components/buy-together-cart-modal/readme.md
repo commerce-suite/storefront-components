@@ -38,6 +38,7 @@ graph TD;
   buy-together --> product-card
   buy-together --> variation-selector
   product-card --> front-image
+  product-card --> product-card-price
   variation-selector --> front-select
   style buy-together-cart-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -47,6 +47,7 @@ Type: `Promise<void>`
 graph TD;
   showcase-related --> product-card
   product-card --> front-image
+  product-card --> product-card-price
   style showcase-related fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
