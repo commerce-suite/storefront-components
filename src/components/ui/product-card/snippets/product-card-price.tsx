@@ -8,7 +8,7 @@ import { IProductCard } from '../product-card.type';
   shadow: false,
   scoped: false,
 })
-export class ProductCard implements ComponentWillLoad {
+export class ProductCardPrice implements ComponentWillLoad {
   @Prop() product: IProductCard;
   @Prop() showSimplePrice: boolean = true;
 
