@@ -1,11 +1,11 @@
-@import '../../../../style/variables/variables.scss';
+@import '../../../style/variables/variables.scss';
 
 :host {
   display: inline-block;
   width: 100%;
 }
 
-.product-card-price {
+.product-price {
   display: flex;
   flex-direction: column;
 

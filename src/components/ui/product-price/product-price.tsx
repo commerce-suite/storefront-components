@@ -1,14 +1,14 @@
 import { Component, Host, Prop, h, State, ComponentWillLoad } from '@stencil/core';
-import { currencyFormat } from '../../../../utils/utils';
-import { IProductCard } from '../product-card.type';
+import { currencyFormat } from '../../../utils/utils';
+import { IProductCard } from '../product-card/product-card.type';
 
 @Component({
-  tag: 'product-card-price',
-  styleUrl: 'product-card-price.scss',
+  tag: 'product-price',
+  styleUrl: 'product-price.scss',
   shadow: false,
   scoped: false,
 })
-export class ProductCardPrice implements ComponentWillLoad {
+export class ProductPrice implements ComponentWillLoad {
   @Prop() product: IProductCard;
   @Prop() showSimplePrice: boolean = true;
 
@@ -31,11 +31,11 @@ export class ProductCardPrice implements ComponentWillLoad {
     return (
       <Host>
         {this.showSimplePrice ? (
-          <div class="product-card-price">
+          <div class="product-price">
             {this.showPriceBase && (
-              <span class="product-card-price-base">{currencyFormat(this.product.priceBase)}</span>
+              <span class="product-price-base">{currencyFormat(this.product.priceBase)}</span>
             )}
-            <span class="product-card-price-current">{this.getPrice()}</span>
+            <span class="product-price-current">{this.getPrice()}</span>
           </div>
         ) : (
           <p>Outras formas de pagamentos...</p>

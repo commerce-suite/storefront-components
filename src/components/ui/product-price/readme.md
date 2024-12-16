@@ -1,4 +1,4 @@
-# product-card-price
+# product-price
 
 
 
@@ -17,13 +17,13 @@
 
 ### Used by
 
- - [product-card](..)
+ - [product-card](../product-card)
 
 ### Graph
 ```mermaid
 graph TD;
-  product-card --> product-card-price
-  style product-card-price fill:#f9f,stroke:#333,stroke-width:4px
+  product-card --> product-price
+  style product-price fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

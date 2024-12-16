@@ -29,7 +29,7 @@ export class ProductCard {
           />
           <div class="info">
             <span class="title">{this.product?.name}</span>
-            <product-card-price product={this.product} showSimplePrice={this.showSimplePrice} />
+            <product-price product={this.product} showSimplePrice={this.showSimplePrice} />
           </div>
         </div>
       </Host>

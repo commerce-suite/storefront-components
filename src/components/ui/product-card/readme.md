@@ -24,13 +24,13 @@
 ### Depends on
 
 - [front-image](../front-image)
-- [product-card-price](snippets)
+- [product-price](../product-price)
 
 ### Graph
 ```mermaid
 graph TD;
   product-card --> front-image
-  product-card --> product-card-price
+  product-card --> product-price
   buy-together --> product-card
   showcase-related --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
