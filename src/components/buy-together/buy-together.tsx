@@ -254,7 +254,18 @@ export class BuyTogether implements ComponentWillLoad {
                   <div class="product-wrapper">
                     <product-card
                       product={this.buyTogetherData.productMain}
-                      showSimplePrice={false}
+                      paymentOptions={[
+                        {
+                          type: 'creditCard',
+                          price: 999.99,
+                          priceCompare: 1199.99,
+                          parcels: 10,
+                          parcelPrice: 99.99,
+                          hasInterest: false,
+                        },
+                        { type: 'billet', price: 999.99 },
+                        { type: 'pix', price: 999.99 },
+                      ]}
                     ></product-card>
                     {this.buyTogetherData.productMain.selectVariations && (
                       <variation-selector
@@ -286,7 +297,18 @@ export class BuyTogether implements ComponentWillLoad {
                       <product-card
                         inline
                         product={productCard}
-                        showSimplePrice={false}
+                        paymentOptions={[
+                          {
+                            type: 'creditCard',
+                            price: 999.99,
+                            priceCompare: 1199.99,
+                            parcels: 10,
+                            parcelPrice: 99.99,
+                            hasInterest: false,
+                          },
+                          { type: 'billet', price: 999.99 },
+                          { type: 'pix', price: 999.99 },
+                        ]}
                       ></product-card>
                     </div>
                     {productCard.selectVariations && (

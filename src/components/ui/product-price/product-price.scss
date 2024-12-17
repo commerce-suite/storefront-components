@@ -5,17 +5,39 @@
   width: 100%;
 }
 
-.product-price {
+.product-price-container {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
 
-  &-base {
+.payment-option {
+  font-size: 14px;
+
+  .price-compare {
     text-decoration: line-through;
     color: var(--fc-color-light-text-secondary);
   }
 
-  &-current {
-    font-size: 15px;
-    font-weight: 700;
+  .price-current {
+    .highlight {
+      font-weight: bold;
+    }
+  }
+
+  &-simple,
+  &-billet,
+  &-pix {
+    display: flex;
+    flex-direction: column;
+
+    .highlight {
+      font-size: 16px;
+    }
+  }
+
+  &-creditCard {
+    display: flex;
+    flex-direction: column;
   }
 }

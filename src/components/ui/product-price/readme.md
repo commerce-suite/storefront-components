@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property          | Attribute           | Description | Type           | Default     |
-| ----------------- | ------------------- | ----------- | -------------- | ----------- |
-| `product`         | --                  |             | `IProductCard` | `undefined` |
-| `showSimplePrice` | `show-simple-price` |             | `boolean`      | `true`      |
+| Property         | Attribute | Description | Type               | Default |
+| ---------------- | --------- | ----------- | ------------------ | ------- |
+| `paymentOptions` | --        |             | `IPaymentOption[]` | `[]`    |
 
 
 ## Dependencies

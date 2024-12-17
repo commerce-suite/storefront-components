@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property          | Attribute           | Description | Type           | Default     |
-| ----------------- | ------------------- | ----------- | -------------- | ----------- |
-| `inline`          | `inline`            |             | `boolean`      | `false`     |
-| `product`         | --                  |             | `IProductCard` | `undefined` |
-| `showSimplePrice` | `show-simple-price` |             | `boolean`      | `true`      |
+| Property         | Attribute | Description | Type               | Default     |
+| ---------------- | --------- | ----------- | ------------------ | ----------- |
+| `inline`         | `inline`  |             | `boolean`          | `false`     |
+| `paymentOptions` | --        |             | `IPaymentOption[]` | `[]`        |
+| `product`        | --        |             | `IProductCard`     | `undefined` |
 
 
 ## Dependencies

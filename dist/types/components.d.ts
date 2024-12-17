@@ -8,9 +8,11 @@ import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+import { IPaymentOption } from "./components/ui/product-price/product-price.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
+export { IPaymentOption } from "./components/ui/product-price/product-price.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -54,12 +56,11 @@ export namespace Components {
     }
     interface ProductCard {
         "inline": boolean;
+        "paymentOptions": IPaymentOption[];
         "product": IProductCard;
-        "showSimplePrice": boolean;
     }
     interface ProductPrice {
-        "product": IProductCard;
-        "showSimplePrice": boolean;
+        "paymentOptions": IPaymentOption[];
     }
     interface ShowcaseRelated {
         "buttonLabel": string;
@@ -297,12 +298,11 @@ declare namespace LocalJSX {
     }
     interface ProductCard {
         "inline"?: boolean;
+        "paymentOptions"?: IPaymentOption[];
         "product"?: IProductCard;
-        "showSimplePrice"?: boolean;
     }
     interface ProductPrice {
-        "product"?: IProductCard;
-        "showSimplePrice"?: boolean;
+        "paymentOptions"?: IPaymentOption[];
     }
     interface ShowcaseRelated {
         "buttonLabel"?: string;
