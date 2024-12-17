@@ -12,7 +12,7 @@ export class LiveShopHandler {
     const productIds = this.liveShopData.products.map(product => product.productId);
     return await ProductService.getList({
       fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
-      filter: { productIds },
+      filter: { productIds, page: 0, first: productIds.length },
     });
   }
 
