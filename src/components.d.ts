@@ -8,11 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-import { IPaymentOption } from "./components/ui/product-price/product-price.type";
+import { BasePrice, PaymentOption } from "./components/ui/product-price/product-price.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
-export { IPaymentOption } from "./components/ui/product-price/product-price.type";
+export { BasePrice, PaymentOption } from "./components/ui/product-price/product-price.type";
 export namespace Components {
     interface BuyTogether {
         "buyButtonText": string;
@@ -55,12 +55,33 @@ export namespace Components {
         "variationId": string;
     }
     interface ProductCard {
+        "basePrice": BasePrice;
         "inline": boolean;
-        "paymentOptions": IPaymentOption[];
+        "paymentOptions"?: PaymentOption[];
         "product": IProductCard;
     }
     interface ProductPrice {
-        "paymentOptions": IPaymentOption[];
+        "basePrice": BasePrice;
+        "paymentOptions"?: PaymentOption[];
+    }
+    interface ProductPriceBillet {
+        "price": number;
+        "priceCompare"?: number;
+    }
+    interface ProductPriceCreditCard {
+        "hasInterest"?: boolean;
+        "parcelPrice"?: number;
+        "parcels"?: number;
+        "price": number;
+        "priceCompare"?: number;
+    }
+    interface ProductPricePix {
+        "price": number;
+        "priceCompare"?: number;
+    }
+    interface ProductPriceSimple {
+        "price": number;
+        "priceCompare"?: number;
     }
     interface ShowcaseRelated {
         "buttonLabel": string;
@@ -199,6 +220,30 @@ declare global {
         prototype: HTMLProductPriceElement;
         new (): HTMLProductPriceElement;
     };
+    interface HTMLProductPriceBilletElement extends Components.ProductPriceBillet, HTMLStencilElement {
+    }
+    var HTMLProductPriceBilletElement: {
+        prototype: HTMLProductPriceBilletElement;
+        new (): HTMLProductPriceBilletElement;
+    };
+    interface HTMLProductPriceCreditCardElement extends Components.ProductPriceCreditCard, HTMLStencilElement {
+    }
+    var HTMLProductPriceCreditCardElement: {
+        prototype: HTMLProductPriceCreditCardElement;
+        new (): HTMLProductPriceCreditCardElement;
+    };
+    interface HTMLProductPricePixElement extends Components.ProductPricePix, HTMLStencilElement {
+    }
+    var HTMLProductPricePixElement: {
+        prototype: HTMLProductPricePixElement;
+        new (): HTMLProductPricePixElement;
+    };
+    interface HTMLProductPriceSimpleElement extends Components.ProductPriceSimple, HTMLStencilElement {
+    }
+    var HTMLProductPriceSimpleElement: {
+        prototype: HTMLProductPriceSimpleElement;
+        new (): HTMLProductPriceSimpleElement;
+    };
     interface HTMLShowcaseRelatedElementEventMap {
         "clickBuyButton": any;
     }
@@ -242,6 +287,10 @@ declare global {
         "launch-countdown": HTMLLaunchCountdownElement;
         "product-card": HTMLProductCardElement;
         "product-price": HTMLProductPriceElement;
+        "product-price-billet": HTMLProductPriceBilletElement;
+        "product-price-credit-card": HTMLProductPriceCreditCardElement;
+        "product-price-pix": HTMLProductPricePixElement;
+        "product-price-simple": HTMLProductPriceSimpleElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
     }
@@ -297,12 +346,33 @@ declare namespace LocalJSX {
         "variationId"?: string;
     }
     interface ProductCard {
+        "basePrice"?: BasePrice;
         "inline"?: boolean;
-        "paymentOptions"?: IPaymentOption[];
+        "paymentOptions"?: PaymentOption[];
         "product"?: IProductCard;
     }
     interface ProductPrice {
-        "paymentOptions"?: IPaymentOption[];
+        "basePrice"?: BasePrice;
+        "paymentOptions"?: PaymentOption[];
+    }
+    interface ProductPriceBillet {
+        "price"?: number;
+        "priceCompare"?: number;
+    }
+    interface ProductPriceCreditCard {
+        "hasInterest"?: boolean;
+        "parcelPrice"?: number;
+        "parcels"?: number;
+        "price"?: number;
+        "priceCompare"?: number;
+    }
+    interface ProductPricePix {
+        "price"?: number;
+        "priceCompare"?: number;
+    }
+    interface ProductPriceSimple {
+        "price"?: number;
+        "priceCompare"?: number;
     }
     interface ShowcaseRelated {
         "buttonLabel"?: string;
@@ -327,6 +397,10 @@ declare namespace LocalJSX {
         "launch-countdown": LaunchCountdown;
         "product-card": ProductCard;
         "product-price": ProductPrice;
+        "product-price-billet": ProductPriceBillet;
+        "product-price-credit-card": ProductPriceCreditCard;
+        "product-price-pix": ProductPricePix;
+        "product-price-simple": ProductPriceSimple;
         "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
     }
@@ -343,6 +417,10 @@ declare module "@stencil/core" {
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "product-price": LocalJSX.ProductPrice & JSXBase.HTMLAttributes<HTMLProductPriceElement>;
+            "product-price-billet": LocalJSX.ProductPriceBillet & JSXBase.HTMLAttributes<HTMLProductPriceBilletElement>;
+            "product-price-credit-card": LocalJSX.ProductPriceCreditCard & JSXBase.HTMLAttributes<HTMLProductPriceCreditCardElement>;
+            "product-price-pix": LocalJSX.ProductPricePix & JSXBase.HTMLAttributes<HTMLProductPricePixElement>;
+            "product-price-simple": LocalJSX.ProductPriceSimple & JSXBase.HTMLAttributes<HTMLProductPriceSimpleElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
         }

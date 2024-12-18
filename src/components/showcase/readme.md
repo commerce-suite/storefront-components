@@ -48,6 +48,10 @@ graph TD;
   showcase-related --> product-card
   product-card --> front-image
   product-card --> product-price
+  product-price --> product-price-simple
+  product-price --> product-price-billet
+  product-price --> product-price-credit-card
+  product-price --> product-price-pix
   style showcase-related fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

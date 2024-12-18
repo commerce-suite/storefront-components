@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property         | Attribute | Description | Type               | Default     |
-| ---------------- | --------- | ----------- | ------------------ | ----------- |
-| `inline`         | `inline`  |             | `boolean`          | `false`     |
-| `paymentOptions` | --        |             | `IPaymentOption[]` | `[]`        |
-| `product`        | --        |             | `IProductCard`     | `undefined` |
+| Property         | Attribute | Description | Type              | Default     |
+| ---------------- | --------- | ----------- | ----------------- | ----------- |
+| `basePrice`      | --        |             | `BasePrice`       | `undefined` |
+| `inline`         | `inline`  |             | `boolean`         | `false`     |
+| `paymentOptions` | --        |             | `PaymentOption[]` | `[]`        |
+| `product`        | --        |             | `IProductCard`    | `undefined` |
 
 
 ## Dependencies
@@ -31,6 +32,10 @@
 graph TD;
   product-card --> front-image
   product-card --> product-price
+  product-price --> product-price-simple
+  product-price --> product-price-billet
+  product-price --> product-price-credit-card
+  product-price --> product-price-pix
   buy-together --> product-card
   showcase-related --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px

@@ -1,6 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { currencyFormat } from '../../../utils/utils';
-import { IPaymentOption } from './product-price.type';
+import { BasePrice, PaymentOption } from './product-price.type';
 
 @Component({
   tag: 'product-price',
@@ -9,83 +8,56 @@ import { IPaymentOption } from './product-price.type';
   scoped: false,
 })
 export class ProductPrice {
-  @Prop() paymentOptions: IPaymentOption[] = [];
+  @Prop() basePrice: BasePrice;
+  @Prop() paymentOptions?: PaymentOption[];
 
-  private renderStrategy = {
-    simple: (option: IPaymentOption) => {
-      const { price, priceCompare } = option;
-      const formattedPrice = currencyFormat(price);
-      const formattedCompare = priceCompare ? currencyFormat(priceCompare) : null;
-      return (
-        <div class="payment-option payment-option-simple">
-          {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
-          <span class="price-current">
-            <span class="highlight">{formattedPrice}</span>
-          </span>
-        </div>
-      );
-    },
-
-    billet: (option: IPaymentOption) => {
-      const { price, priceCompare } = option;
-      const formattedPrice = currencyFormat(price);
-      const formattedCompare = priceCompare ? currencyFormat(priceCompare) : null;
-      return (
-        <div class="payment-option payment-option-billet">
-          {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
-          <span class="price-current">
-            <span class="highlight">{formattedPrice}</span> no boleto
-          </span>
-        </div>
-      );
-    },
-
-    creditCard: (option: IPaymentOption) => {
-      const { price, priceCompare, parcels, parcelPrice, hasInterest } = option;
-      const formattedPrice = currencyFormat(price);
-      const formattedCompare = priceCompare ? currencyFormat(priceCompare) : null;
-      const formattedParcelPrice = parcelPrice ? currencyFormat(parcelPrice) : null;
-      const interestText = hasInterest ? 'com juros' : 'sem juros';
-
-      return (
-        <div class="payment-option payment-option-creditCard">
-          {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
-          <span class="price-current">
-            {formattedPrice}{' '}
-            {parcels && parcelPrice && (
-              <span class="credit-info">
-                em até <span class="highlight">{parcels}x</span> de{' '}
-                <span class="highlight">{formattedParcelPrice}</span> {interestText}
-              </span>
-            )}
-          </span>
-        </div>
-      );
-    },
-
-    pix: (option: IPaymentOption) => {
-      const { price, priceCompare } = option;
-      const formattedPrice = currencyFormat(price);
-      const formattedCompare = priceCompare ? currencyFormat(priceCompare) : null;
-      return (
-        <div class="payment-option payment-option-pix">
-          {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
-          <span class="price-current">
-            <span class="highlight">{formattedPrice}</span> no pix
-          </span>
-        </div>
-      );
-    },
+  private componentMap = {
+    simple: (option: PaymentOption) => (
+      <product-price-simple price={option.price} priceCompare={option.priceCompare} />
+    ),
+    billet: (option: PaymentOption) => (
+      <product-price-billet price={option.price} priceCompare={option.priceCompare} />
+    ),
+    creditCard: (option: PaymentOption) => (
+      <product-price-credit-card
+        price={option.price}
+        priceCompare={option.priceCompare}
+        parcels={option.parcels}
+        parcelPrice={option.parcelPrice}
+        hasInterest={option.hasInterest}
+      />
+    ),
+    pix: (option: PaymentOption) => (
+      <product-price-pix price={option.price} priceCompare={option.priceCompare} />
+    ),
   };
 
+  private renderPaymentOption(option: PaymentOption) {
+    const renderFn = this.componentMap[option.type] || this.componentMap.simple;
+    return renderFn(option);
+  }
+
   render() {
+    const options = this.paymentOptions || [];
+
+    if (!options.length) {
+      return (
+        <Host>
+          <div class="product-price-container">
+            {this.componentMap.simple({
+              type: 'simple',
+              price: this.basePrice.price,
+              priceCompare: this.basePrice.priceCompare,
+            })}
+          </div>
+        </Host>
+      );
+    }
+
     return (
       <Host>
         <div class="product-price-container">
-          {this.paymentOptions.map(option => {
-            const renderFunction = this.renderStrategy[option.type];
-            return renderFunction ? renderFunction(option) : null;
-          })}
+          {options.map(option => this.renderPaymentOption(option))}
         </div>
       </Host>
     );

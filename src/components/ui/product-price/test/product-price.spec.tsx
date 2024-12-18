@@ -3,14 +3,18 @@ import { newSpecPage } from '@stencil/core/testing';
 import { ProductPrice } from '../product-price';
 
 describe('product-card', () => {
-  it('should render without options', async () => {
+  it('should render without payment options', async () => {
     const page = await newSpecPage({
       components: [ProductPrice],
-      template: () => <product-price></product-price>,
+      template: () => (
+        <product-price basePrice={{ price: 999.99, priceCompare: 1299.99 }}></product-price>
+      ),
     });
     expect(page.root).toEqualHtml(`
       <product-price>
-        <div class="product-price-container"></div>
+        <div class="product-price-container">
+          <product-price-simple price="999.99" pricecompare="1299.99"></product-price-simple>
+        </div>
       </product-price>
     `);
   });
@@ -39,41 +43,9 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
       <product-price>
         <div class="product-price-container">
-          <div class="payment-option payment-option-creditCard">
-            <span class="price-compare">
-              R$&nbsp;1.199,99
-            </span>
-            <span class="price-current">
-              R$&nbsp;999,99
-              <span class="credit-info">
-                em até
-                <span class="highlight">
-                  10x
-                </span>
-                de
-                <span class="highlight">
-                  R$&nbsp;99,99
-                </span>
-                sem juros
-              </span>
-            </span>
-          </div>
-          <div class="payment-option payment-option-billet">
-            <span class="price-current">
-              <span class="highlight">
-                R$&nbsp;999,99
-              </span>
-              no boleto
-            </span>
-          </div>
-          <div class="payment-option payment-option-pix">
-            <span class="price-current">
-              <span class="highlight">
-                R$&nbsp;999,99
-              </span>
-              no pix
-            </span>
-          </div>
+          <product-price-credit-card parcelprice="99.99" parcels="10" price="999.99" pricecompare="1199.99"></product-price-credit-card>
+          <product-price-billet price="999.99"></product-price-billet>
+          <product-price-pix price="999.99"></product-price-pix>
         </div>
       </product-price>
       `);
@@ -90,17 +62,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
       <product-price>
         <div class="product-price-container">
-          <div class="payment-option payment-option-pix">
-            <span class="price-compare">
-              R$&nbsp;1.199,99
-            </span>
-            <span class="price-current">
-              <span class="highlight">
-                R$&nbsp;999,99
-              </span>
-              no pix
-            </span>
-          </div>
+          <product-price-pix price="999.99" pricecompare="1199.99"></product-price-pix>
         </div>
       </product-price>
     `);
@@ -119,17 +81,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
       <product-price>
         <div class="product-price-container">
-          <div class="payment-option payment-option-billet">
-            <span class="price-compare">
-              R$&nbsp;1.199,99
-            </span>
-            <span class="price-current">
-              <span class="highlight">
-                R$&nbsp;999,99
-              </span>
-              no boleto
-            </span>
-          </div>
+          <product-price-billet price="999.99" pricecompare="1199.99"></product-price-billet>
         </div>
       </product-price>
     `);
@@ -148,16 +100,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
       <product-price>
         <div class="product-price-container">
-          <div class="payment-option payment-option-simple">
-            <span class="price-compare">
-              R$&nbsp;1.199,99
-            </span>
-            <span class="price-current">
-              <span class="highlight">
-                R$&nbsp;999,99
-              </span>
-            </span>
-          </div>
+          <product-price-simple price="999.99" pricecompare="1199.99"></product-price-simple>
         </div>
       </product-price>
     `);
@@ -185,25 +128,7 @@ describe('product-card', () => {
     expect(page.root).toEqualHtml(`
       <product-price>
         <div class="product-price-container">
-          <div class="payment-option payment-option-creditCard">
-            <span class="price-compare">
-              R$&nbsp;1.199,99
-            </span>
-            <span class="price-current">
-              R$&nbsp;999,99
-              <span class="credit-info">
-                em até
-                <span class="highlight">
-                  10x
-                </span>
-                de
-                <span class="highlight">
-                  R$&nbsp;99,99
-                </span>
-                sem juros
-              </span>
-            </span>
-          </div>
+          <product-price-credit-card parcelprice="99.99" parcels="10" price="999.99" pricecompare="1199.99"></product-price-credit-card>
         </div>
       </product-price>
     `);

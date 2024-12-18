@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { IProductCard } from './product-card.type';
 import { getClassByProps } from '../../../utils/utils';
-import { IPaymentOption } from '../product-price/product-price.type';
+import { BasePrice, PaymentOption } from '../product-price/product-price.type';
 
 @Component({
   tag: 'product-card',
@@ -12,7 +12,8 @@ import { IPaymentOption } from '../product-price/product-price.type';
 export class ProductCard {
   @Prop() inline: boolean = false;
   @Prop({ mutable: true }) product: IProductCard;
-  @Prop() paymentOptions: IPaymentOption[] = [];
+  @Prop() basePrice: BasePrice;
+  @Prop() paymentOptions?: PaymentOption[] = [];
 
   getClassWithInline(className: string) {
     const prosForClass = { '-inline': this.inline };
@@ -30,7 +31,7 @@ export class ProductCard {
           />
           <div class="info">
             <span class="title">{this.product?.name}</span>
-            <product-price paymentOptions={this.paymentOptions} />
+            <product-price basePrice={this.basePrice} paymentOptions={this.paymentOptions} />
           </div>
         </div>
       </Host>
