@@ -122,7 +122,21 @@ export class Showcase implements ComponentWillLoad {
                             onSubmit={evt => this.onClickBuyButtonEmit(evt, product)}
                           >
                             <div class="product-main-container">
-                              <product-card product={product}></product-card>
+                              <product-card
+                                product={product}
+                                paymentOptions={[
+                                  {
+                                    type: 'creditCard',
+                                    price: 999.99,
+                                    priceCompare: 1199.99,
+                                    parcels: 10,
+                                    parcelPrice: 99.99,
+                                    hasInterest: false,
+                                  },
+                                  { type: 'billet', price: 999.99 },
+                                  { type: 'pix', price: 999.99 },
+                                ]}
+                              ></product-card>
                               <button type="submit" class="buy-button">
                                 {this.buttonLabel || 'Comprar'}
                               </button>

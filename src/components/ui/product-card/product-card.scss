@@ -28,19 +28,6 @@
     margin-bottom: var(--fc-margin-width);
     font-weight: 600;
   }
-  > .price {
-    display: flex;
-    flex-direction: column;
-    .base {
-      text-decoration: line-through;
-      color: var(--fc-color-light-text-secondary);
-    }
-
-    .current {
-      font-size: 15px;
-      font-weight: 700;
-    }
-  }
 }
 
 .product-container > .image {
