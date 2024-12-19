@@ -1,5 +1,9 @@
-import { BuyTogetherService } from '@uxshop/storefront-core';
-import { IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
+import { AppService, BuyTogetherService } from '@uxshop/storefront-core';
+import {
+  BuyTogetherPaymentConfig,
+  IBuyTogetherComponentData,
+  IProductOrderBump,
+} from '../buy-together.type';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
 import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { IInputSelectDataEvent } from '../../../components';
@@ -8,6 +12,17 @@ import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
+  private buyTogetherPaymentConfig: BuyTogetherPaymentConfig[];
+
+  constructor() {
+    this.loadBuyTogetherPaymentConfig();
+  }
+
+  private async loadBuyTogetherPaymentConfig() {
+    const data = await this.getBuyTogetherAppContent();
+    this.buyTogetherPaymentConfig = data?.payments || [];
+  }
+
   private filterOutOriginalProducts(products: IProductOrderBump[], productIds: number[]) {
     return products.filter(product => !productIds.includes(+product.productId));
   }
@@ -32,13 +47,15 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return buyTogetherData
       .changeByVariationSelected(variationId)
       .applyFilters()
-      .adapterToComponentData().getComponentData;
+      .adapterToComponentData(this.buyTogetherPaymentConfig).getComponentData;
   }
 
   public async getOnlyPivotProducts(productIds: number[]) {
     const responseData = await BuyTogetherService.getByProductIds(productIds);
     const productsPivot = responseData.flatMap(response => {
-      const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
+      const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(
+        this.buyTogetherPaymentConfig,
+      );
       return adaptedBuyTogether.getComponentData.products;
     });
 
@@ -76,7 +93,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      this.buyTogetherPaymentConfig,
+    );
     return { productTargetUpdated, productCard };
   }
 
@@ -92,7 +112,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...(currentVariation || productTarget),
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      this.buyTogetherPaymentConfig,
+    );
     return { productTargetUpdated, productCard };
   }
 
@@ -108,7 +131,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      this.buyTogetherPaymentConfig,
+    );
     return { productTargetUpdated, productCard };
   }
 
@@ -136,5 +162,16 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       };
       request.send(body);
     });
+  }
+
+  private async getBuyTogetherAppContent() {
+    try {
+      const response = await AppService.getBySlug('buy-together');
+      if (response?.content) return JSON.parse(response.content);
+      return null;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 }
