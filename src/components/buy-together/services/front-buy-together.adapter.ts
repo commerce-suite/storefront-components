@@ -88,23 +88,30 @@ export class FrontBuyTogetherAdapter {
     const allInactive = paymentConfig.every(payment => !payment.active);
     if (allInactive) return this.adaptSimplePayment(product);
 
+    const adaptMap: Record<
+      BuyTogetherPaymentConfig['method'],
+      (product: Product, config: BuyTogetherPaymentConfig, payment: Payment) => PaymentOption | null
+    > = {
+      creditcard: (product, config, payment) => {
+        return this.adaptCreditCardPayment(product, config, payment);
+      },
+      billet: product => this.adaptPayment(product, 'billet'),
+      pix: product => this.adaptPayment(product, 'pix'),
+    };
+
+    const onlyActivePayments = (payment: BuyTogetherPaymentConfig) => payment.active;
+    const byPosition = (a: BuyTogetherPaymentConfig, b: BuyTogetherPaymentConfig) =>
+      a.position - b.position;
+
     return paymentConfig
-      .filter(payment => payment.active)
-      .sort((a, b) => a.position - b.position)
+      .filter(onlyActivePayments)
+      .sort(byPosition)
       .map(payment => {
         const actualPayment = filteredPayments.find(p => p.method === payment.method);
         if (!actualPayment) return null;
 
-        switch (payment.method) {
-          case 'creditcard':
-            return this.adaptCreditCardPayment(product, payment, actualPayment);
-          case 'billet':
-            return this.adaptPayment(product, 'billet');
-          case 'pix':
-            return this.adaptPayment(product, 'pix');
-          default:
-            return null;
-        }
+        const adaptFunction = adaptMap[payment.method];
+        return adaptFunction ? adaptFunction(product, payment, actualPayment) : null;
       })
       .filter(Boolean);
   }
@@ -242,17 +249,13 @@ export class FrontBuyTogetherAdapter {
     return installments.filter(installment => installment.markup <= 1);
   }
 
-  private static getTotalInstallments(installments: PaymentInstallment[]) {
-    return installments;
-  }
-
   private static adaptCreditCardPayment(
     product: Product,
     paymentConfig: BuyTogetherPaymentConfig,
     actualPayment: Payment,
   ): PaymentOption {
     const installmentsNoInterest = this.getInstallmentsWithoutInterest(actualPayment.installments);
-    const totalInstallments = this.getTotalInstallments(actualPayment.installments);
+    const totalInstallments = actualPayment.installments;
 
     const selectedInstallments = paymentConfig.parcels_no_interest
       ? installmentsNoInterest
