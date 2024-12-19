@@ -69,9 +69,9 @@ export namespace Components {
         "priceCompare"?: number;
     }
     interface ProductPriceCreditCard {
-        "hasInterest"?: boolean;
-        "parcelPrice"?: number;
-        "parcels"?: number;
+        "hasInterest": boolean;
+        "parcelPrice": number;
+        "parcels": number;
         "price": number;
         "priceCompare"?: number;
     }

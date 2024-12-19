@@ -1,6 +1,7 @@
 import { BuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { buyTogetherData } from '../__mocks__/buy-together-data.mock';
 import { FrontBuyTogetherAdapter } from '../front-buy-together.adapter';
+import { buyTogetherPaymentContent } from '../__mocks__/buy-together-payment-content';
 
 describe('FrontBuyTogetherAdapter', () => {
   const expectObjectAdapted = {
@@ -66,7 +67,10 @@ describe('FrontBuyTogetherAdapter', () => {
   };
   it('It should adapter to component ProductCard from Product - adapterProductToProductCard', () => {
     const data = buyTogetherData as BuyTogether;
-    const result = FrontBuyTogetherAdapter.adapterToProductCard(data.product);
+    const result = FrontBuyTogetherAdapter.adapterToProductCard(
+      data.product,
+      buyTogetherPaymentContent,
+    );
     expect(result).toEqual(expectObjectAdapted);
   });
 

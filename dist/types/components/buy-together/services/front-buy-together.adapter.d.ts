@@ -1,4 +1,4 @@
-import { IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
+import { BuyTogetherContentPayment, IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
 import { IProductCard } from '../../../components';
 import { Attribute, Product, BuyTogether as IBuyTogether, ShowcaseColor } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
@@ -17,7 +17,8 @@ export declare class FrontBuyTogetherAdapter {
     };
     static adapterIBuyTogetherToComponentData(buyTogether: IBuyTogether, isFirstLoad?: boolean): IBuyTogetherComponentData;
     static adapterPivotToProductCard(product: Product): IProductOrderBump;
-    static adapterToProductCard(product: Product): IProductCard;
+    static adapterToProductCard(product: Product, mockPayments: BuyTogetherContentPayment[]): IProductCard;
+    private static adaptPaymentOptions;
     static getValuesByVariation(product: Product): Product;
     static adapterAttributes(product: Product): ISelectVariation[];
     static generateSelectAttributes(product: Product): ISelectVariation;
@@ -26,5 +27,10 @@ export declare class FrontBuyTogetherAdapter {
     private static filterVariations;
     static filterAttributesByUnique(attributesGeneric: Product[], attributeTarget: keyof Product): ((ShowcaseColor | Attribute) & AttributesExtraDataType)[];
     private static checkAttributeOptionDisabled;
+    private static getInstallmentsWithoutInterest;
+    private static getTotalInstallments;
+    private static adaptCreditCardPayment;
+    private static adaptPayment;
+    private static adaptSimplePayment;
 }
 export {};

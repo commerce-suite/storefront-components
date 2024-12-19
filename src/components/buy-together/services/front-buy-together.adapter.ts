@@ -1,16 +1,22 @@
 import get from 'lodash/get';
-import { IBuyTogetherComponentData, IProductOrderBump } from '../buy-together.type';
-import { IProductCard } from '../../../components';
+import {
+  BuyTogetherContentPayment,
+  IBuyTogetherComponentData,
+  IProductOrderBump,
+} from '../buy-together.type';
+import { IProductCard, PaymentOption } from '../../../components';
 import {
   Attribute,
   Product,
   BuyTogether as IBuyTogether,
   ShowcaseColor,
   Payment,
+  PaymentInstallment,
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
 import { ReleaseDate } from '@uxshop/storefront-core/dist/types/ReleaseDateTypes';
+import { buyTogetherPaymentContent } from './__mocks__/buy-together-payment-content';
 
 type AttributesExtraDataType = {
   balance: number;
@@ -27,7 +33,7 @@ export class FrontBuyTogetherAdapter {
   ): IBuyTogetherComponentData {
     this.isFirstLoad = isFirstLoad;
     const componentData = {
-      productMain: this.adapterToProductCard(buyTogether.product),
+      productMain: this.adapterToProductCard(buyTogether.product, buyTogetherPaymentContent),
       products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
       originalData: buyTogether,
     };
@@ -37,21 +43,15 @@ export class FrontBuyTogetherAdapter {
 
   public static adapterPivotToProductCard(product: Product): IProductOrderBump {
     return {
-      ...this.adapterToProductCard(product),
+      ...this.adapterToProductCard(product, buyTogetherPaymentContent),
       isCheck: true,
     };
   }
 
-  public static adapterToProductCard(product: Product): IProductCard {
-    const adaptSpecialPrice = (payments: Payment[]): number | null => {
-      const pixMethod = payments.find(payment => payment.method === 'pix');
-      if (pixMethod) {
-        const specialPrice = Number(pixMethod.installment.total);
-        return specialPrice;
-      }
-      return null;
-    };
-    adaptSpecialPrice(product.payments);
+  public static adapterToProductCard(
+    product: Product,
+    mockPayments: BuyTogetherContentPayment[],
+  ): IProductCard {
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
       price,
@@ -62,8 +62,46 @@ export class FrontBuyTogetherAdapter {
       name: product.name,
       slug: product.slug,
       selectVariations: this.adapterAttributes(product),
-      specialPrice: adaptSpecialPrice(product.payments),
+      paymentOptions: this.adaptPaymentOptions(product, mockPayments),
     };
+  }
+
+  private static adaptPaymentOptions(
+    product: Product,
+    mockPayments: BuyTogetherContentPayment[],
+  ): PaymentOption[] {
+    const uniquePayments: Record<string, Payment> = {};
+
+    product.payments.forEach(payment => {
+      if (!uniquePayments[payment.method]) {
+        uniquePayments[payment.method] = payment;
+      }
+    });
+
+    const filteredPayments = Object.values(uniquePayments);
+
+    const allInactive = mockPayments.every(mockPayment => !mockPayment.active);
+    if (allInactive) return this.adaptSimplePayment(product);
+
+    return mockPayments
+      .filter(mockPayment => mockPayment.active)
+      .sort((a, b) => a.position - b.position)
+      .map(mockPayment => {
+        const actualPayment = filteredPayments.find(p => p.method === mockPayment.method);
+        if (!actualPayment) return null;
+
+        switch (mockPayment.method) {
+          case 'creditcard':
+            return this.adaptCreditCardPayment(product, mockPayment, actualPayment);
+          case 'billet':
+            return this.adaptPayment(product, 'billet');
+          case 'pix':
+            return this.adaptPayment(product, 'pix');
+          default:
+            return null;
+        }
+      })
+      .filter(Boolean);
   }
 
   public static getValuesByVariation(product: Product) {
@@ -193,5 +231,57 @@ export class FrontBuyTogetherAdapter {
     return (
       !checkHasBalance({ balance, isSellOutOfStock }) || !checkIsOutReleaseDate({ releaseDate })
     );
+  }
+
+  private static getInstallmentsWithoutInterest(installments: PaymentInstallment[]) {
+    return installments.filter(installment => installment.markup <= 1);
+  }
+
+  private static getTotalInstallments(installments: PaymentInstallment[]) {
+    return installments;
+  }
+
+  private static adaptCreditCardPayment(
+    product: Product,
+    mockPayment: BuyTogetherContentPayment,
+    actualPayment: Payment,
+  ): PaymentOption {
+    const installmentsNoInterest = this.getInstallmentsWithoutInterest(actualPayment.installments);
+    const totalInstallments = this.getTotalInstallments(actualPayment.installments);
+
+    const selectedInstallments = mockPayment.parcels_no_interest
+      ? installmentsNoInterest
+      : totalInstallments;
+
+    const lastInstallment = selectedInstallments[selectedInstallments.length - 1];
+
+    return {
+      type: 'creditCard',
+      price: Number(lastInstallment?.total) || 0,
+      priceCompare: product.priceCompare,
+      parcels: selectedInstallments.length,
+      parcelPrice: Number(lastInstallment?.parcelPrice) || 0,
+      hasInterest: !mockPayment.parcels_no_interest,
+    };
+  }
+
+  private static adaptPayment(product: Product, methodType: 'billet' | 'pix'): PaymentOption {
+    const paymentMethod = product.payments.find(method => method.method === methodType);
+
+    return {
+      type: methodType,
+      price: Number(paymentMethod?.installment.total || 0),
+      priceCompare: product.priceCompare,
+    };
+  }
+
+  private static adaptSimplePayment(product: Product): PaymentOption[] {
+    return [
+      {
+        type: 'simple',
+        price: product.price,
+        priceCompare: product.priceCompare,
+      },
+    ];
   }
 }

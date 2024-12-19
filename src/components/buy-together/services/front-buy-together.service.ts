@@ -6,6 +6,7 @@ import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
+import { buyTogetherPaymentContent } from './__mocks__/buy-together-payment-content';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   private filterOutOriginalProducts(products: IProductOrderBump[], productIds: number[]) {
@@ -76,7 +77,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      buyTogetherPaymentContent,
+    );
     return { productTargetUpdated, productCard };
   }
 
@@ -92,7 +96,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...(currentVariation || productTarget),
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      buyTogetherPaymentContent,
+    );
     return { productTargetUpdated, productCard };
   }
 
@@ -108,7 +115,10 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
       ...currentVariation,
       variations: productTarget.variations,
     };
-    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+    const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
+      productTargetUpdated,
+      buyTogetherPaymentContent,
+    );
     return { productTargetUpdated, productCard };
   }
 
