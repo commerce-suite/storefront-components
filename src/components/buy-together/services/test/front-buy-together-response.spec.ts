@@ -2,6 +2,7 @@ import { BuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/B
 import { buyTogetherData } from '../__mocks__/buy-together-data.mock';
 import { buyTogetherComponentData } from '../__mocks__/buy-together-component-data.mock';
 import { FrontBuyTogetherResponse } from '../front-buy-together-response';
+import { buyTogetherPaymentsConfig } from '../__mocks__/buy-together-payments-config';
 
 describe('FrontBuyTogetherResponse Class', () => {
   let frontBuyTogetherResponse: FrontBuyTogetherResponse;
@@ -23,14 +24,16 @@ describe('FrontBuyTogetherResponse Class', () => {
   });
 
   it('It should adapter to component data for buy-together', () => {
-    const componentData = frontBuyTogetherResponse.adapterToComponentData().getComponentData;
+    const componentData =
+      frontBuyTogetherResponse.adapterToComponentData(buyTogetherPaymentsConfig).getComponentData;
     expect(componentData).toEqual(buyTogetherComponentData);
   });
 
   it('It should return null in adapterToComponentData when no exist pivot product', () => {
     data.productsPivot = [];
     frontBuyTogetherResponse = new FrontBuyTogetherResponse(data);
-    const componentData = frontBuyTogetherResponse.adapterToComponentData().getComponentData;
+    const componentData =
+      frontBuyTogetherResponse.adapterToComponentData(buyTogetherPaymentsConfig).getComponentData;
     expect(componentData).toEqual(null);
   });
 });

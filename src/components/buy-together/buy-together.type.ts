@@ -16,7 +16,7 @@ export interface IBuyTogetherComponentData {
   originalData: BuyTogether;
 }
 
-export interface BuyTogetherContentPayment {
+export interface BuyTogetherPaymentsConfig {
   label: string;
   active: boolean;
   method: 'billet' | 'creditcard' | 'pix';

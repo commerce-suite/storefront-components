@@ -1,7 +1,7 @@
 import { BuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { buyTogetherData } from '../__mocks__/buy-together-data.mock';
 import { FrontBuyTogetherAdapter } from '../front-buy-together.adapter';
-import { buyTogetherPaymentContent } from '../__mocks__/buy-together-payment-content';
+import { buyTogetherPaymentsConfig } from '../__mocks__/buy-together-payments-config';
 
 describe('FrontBuyTogetherAdapter', () => {
   const expectObjectAdapted = {
@@ -69,14 +69,17 @@ describe('FrontBuyTogetherAdapter', () => {
     const data = buyTogetherData as BuyTogether;
     const result = FrontBuyTogetherAdapter.adapterToProductCard(
       data.product,
-      buyTogetherPaymentContent,
+      buyTogetherPaymentsConfig,
     );
     expect(result).toEqual(expectObjectAdapted);
   });
 
   it('It should adapter to component ProductCard from Product with isChecked true', () => {
     const data = buyTogetherData as BuyTogether;
-    const result = FrontBuyTogetherAdapter.adapterPivotToProductCard(data.product);
+    const result = FrontBuyTogetherAdapter.adapterPivotToProductCard(
+      data.product,
+      buyTogetherPaymentsConfig,
+    );
     expect(result).toEqual({ ...expectObjectAdapted, isCheck: true });
   });
 });

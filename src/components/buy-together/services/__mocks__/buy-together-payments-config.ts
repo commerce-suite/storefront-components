@@ -1,9 +1,9 @@
-import { BuyTogetherContentPayment } from '../../buy-together.type';
+import { BuyTogetherPaymentsConfig } from '../../buy-together.type';
 
-export const buyTogetherPaymentContent: BuyTogetherContentPayment[] = [
+export const buyTogetherPaymentsConfig: BuyTogetherPaymentsConfig[] = [
   {
     label: 'Pix',
-    active: true,
+    active: false,
     method: 'pix',
     position: 3,
   },
