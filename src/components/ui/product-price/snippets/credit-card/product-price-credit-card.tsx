@@ -1,5 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import { currencyFormat } from '../../../../../utils/utils';
+import { CreditCardPrice } from '../../product-price.type';
 
 @Component({
   tag: 'product-price-credit-card',
@@ -7,12 +8,12 @@ import { currencyFormat } from '../../../../../utils/utils';
   shadow: false,
   scoped: false,
 })
-export class ProductPriceCreditCard {
+export class ProductPriceCreditCard implements CreditCardPrice {
   @Prop() price: number;
+  @Prop() priceCompare?: number;
   @Prop() parcels: number;
   @Prop() parcelPrice: number;
   @Prop() hasInterest: boolean;
-  @Prop() priceCompare?: number;
 
   render() {
     const formattedPrice = currencyFormat(this.price);
