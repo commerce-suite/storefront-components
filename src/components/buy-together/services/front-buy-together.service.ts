@@ -1,6 +1,6 @@
 import { AppService, BuyTogetherService } from '@uxshop/storefront-core';
 import {
-  BuyTogetherPaymentsConfig,
+  BuyTogetherPaymentConfig,
   IBuyTogetherComponentData,
   IProductOrderBump,
 } from '../buy-together.type';
@@ -12,15 +12,15 @@ import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
-  private buyTogetherPaymentsConfig: BuyTogetherPaymentsConfig[];
+  private buyTogetherPaymentConfig: BuyTogetherPaymentConfig[];
 
   constructor() {
-    this.loadBuyTogetherPaymentsConfig();
+    this.loadBuyTogetherPaymentConfig();
   }
 
-  private async loadBuyTogetherPaymentsConfig() {
+  private async loadBuyTogetherPaymentConfig() {
     const data = await this.getBuyTogetherAppContent();
-    this.buyTogetherPaymentsConfig = data?.payments || [];
+    this.buyTogetherPaymentConfig = data?.payments || [];
   }
 
   private filterOutOriginalProducts(products: IProductOrderBump[], productIds: number[]) {
@@ -47,14 +47,14 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     return buyTogetherData
       .changeByVariationSelected(variationId)
       .applyFilters()
-      .adapterToComponentData(this.buyTogetherPaymentsConfig).getComponentData;
+      .adapterToComponentData(this.buyTogetherPaymentConfig).getComponentData;
   }
 
   public async getOnlyPivotProducts(productIds: number[]) {
     const responseData = await BuyTogetherService.getByProductIds(productIds);
     const productsPivot = responseData.flatMap(response => {
       const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(
-        this.buyTogetherPaymentsConfig,
+        this.buyTogetherPaymentConfig,
       );
       return adaptedBuyTogether.getComponentData.products;
     });
@@ -95,7 +95,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     };
     const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
       productTargetUpdated,
-      this.buyTogetherPaymentsConfig,
+      this.buyTogetherPaymentConfig,
     );
     return { productTargetUpdated, productCard };
   }
@@ -114,7 +114,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     };
     const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
       productTargetUpdated,
-      this.buyTogetherPaymentsConfig,
+      this.buyTogetherPaymentConfig,
     );
     return { productTargetUpdated, productCard };
   }
@@ -133,7 +133,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     };
     const productCard = FrontBuyTogetherAdapter.adapterToProductCard(
       productTargetUpdated,
-      this.buyTogetherPaymentsConfig,
+      this.buyTogetherPaymentConfig,
     );
     return { productTargetUpdated, productCard };
   }

@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import {
-  BuyTogetherPaymentsConfig,
+  BuyTogetherPaymentConfig,
   IBuyTogetherComponentData,
   IProductOrderBump,
 } from '../buy-together.type';
@@ -28,14 +28,14 @@ export class FrontBuyTogetherAdapter {
   static placeholderDisabled = { name: 'Selecione', disabled: true, value: undefined };
   public static adapterIBuyTogetherToComponentData(
     buyTogether: IBuyTogether,
-    buyTogetherPaymentsConfig: BuyTogetherPaymentsConfig[],
+    buyTogetherPaymentConfig: BuyTogetherPaymentConfig[],
     isFirstLoad = false,
   ): IBuyTogetherComponentData {
     this.isFirstLoad = isFirstLoad;
     const componentData = {
-      productMain: this.adapterToProductCard(buyTogether.product, buyTogetherPaymentsConfig),
+      productMain: this.adapterToProductCard(buyTogether.product, buyTogetherPaymentConfig),
       products: buyTogether.productsPivot.map(data =>
-        this.adapterPivotToProductCard(data, buyTogetherPaymentsConfig),
+        this.adapterPivotToProductCard(data, buyTogetherPaymentConfig),
       ),
       originalData: buyTogether,
     };
@@ -45,17 +45,17 @@ export class FrontBuyTogetherAdapter {
 
   public static adapterPivotToProductCard(
     product: Product,
-    buyTogetherPaymentsConfig: BuyTogetherPaymentsConfig[],
+    buyTogetherPaymentConfig: BuyTogetherPaymentConfig[],
   ): IProductOrderBump {
     return {
-      ...this.adapterToProductCard(product, buyTogetherPaymentsConfig),
+      ...this.adapterToProductCard(product, buyTogetherPaymentConfig),
       isCheck: true,
     };
   }
 
   public static adapterToProductCard(
     product: Product,
-    paymentsConfig: BuyTogetherPaymentsConfig[],
+    paymentConfig: BuyTogetherPaymentConfig[],
   ): IProductCard {
     const { price, priceCompare, id } = this.getValuesByVariation(product);
     return {
@@ -67,13 +67,13 @@ export class FrontBuyTogetherAdapter {
       name: product.name,
       slug: product.slug,
       selectVariations: this.adapterAttributes(product),
-      paymentOptions: this.adaptPaymentOptions(product, paymentsConfig),
+      paymentOptions: this.adaptPaymentOptions(product, paymentConfig),
     };
   }
 
   private static adaptPaymentOptions(
     product: Product,
-    paymentsConfig: BuyTogetherPaymentsConfig[],
+    paymentConfig: BuyTogetherPaymentConfig[],
   ): PaymentOption[] {
     const uniquePayments: Record<string, Payment> = {};
 
@@ -85,10 +85,10 @@ export class FrontBuyTogetherAdapter {
 
     const filteredPayments = Object.values(uniquePayments);
 
-    const allInactive = paymentsConfig.every(payment => !payment.active);
+    const allInactive = paymentConfig.every(payment => !payment.active);
     if (allInactive) return this.adaptSimplePayment(product);
 
-    return paymentsConfig
+    return paymentConfig
       .filter(payment => payment.active)
       .sort((a, b) => a.position - b.position)
       .map(payment => {
@@ -248,13 +248,13 @@ export class FrontBuyTogetherAdapter {
 
   private static adaptCreditCardPayment(
     product: Product,
-    paymentsConfig: BuyTogetherPaymentsConfig,
+    paymentConfig: BuyTogetherPaymentConfig,
     actualPayment: Payment,
   ): PaymentOption {
     const installmentsNoInterest = this.getInstallmentsWithoutInterest(actualPayment.installments);
     const totalInstallments = this.getTotalInstallments(actualPayment.installments);
 
-    const selectedInstallments = paymentsConfig.parcels_no_interest
+    const selectedInstallments = paymentConfig.parcels_no_interest
       ? installmentsNoInterest
       : totalInstallments;
 
@@ -266,7 +266,7 @@ export class FrontBuyTogetherAdapter {
       priceCompare: product.priceCompare,
       parcels: selectedInstallments.length,
       parcelPrice: Number(lastInstallment?.parcelPrice) || 0,
-      hasInterest: !paymentsConfig.parcels_no_interest,
+      hasInterest: !paymentConfig.parcels_no_interest,
     };
   }
 

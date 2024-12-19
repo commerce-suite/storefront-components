@@ -1,6 +1,6 @@
 import { BuyTogether } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { FrontBuyTogetherAdapter } from './front-buy-together.adapter';
-import { BuyTogetherPaymentsConfig, IBuyTogetherComponentData } from '../buy-together.type';
+import { BuyTogetherPaymentConfig, IBuyTogetherComponentData } from '../buy-together.type';
 
 export class FrontBuyTogetherResponse {
   protected response: BuyTogether;
@@ -11,13 +11,13 @@ export class FrontBuyTogetherResponse {
   }
 
   public adapterToComponentData(
-    buyTogetherPaymentsConfig: BuyTogetherPaymentsConfig[],
+    buyTogetherPaymentConfig: BuyTogetherPaymentConfig[],
   ): FrontBuyTogetherResponse {
     const canApplyAdapter = this.response && this.response?.productsPivot?.length > 0;
     this.componentData = canApplyAdapter
       ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(
           this.response,
-          buyTogetherPaymentsConfig,
+          buyTogetherPaymentConfig,
           true,
         )
       : null;
