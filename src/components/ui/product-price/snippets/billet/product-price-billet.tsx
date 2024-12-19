@@ -1,5 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import { currencyFormat } from '../../../../../utils/utils';
+import { BasePrice } from '../../product-price.type';
 
 @Component({
   tag: 'product-price-billet',
@@ -7,7 +8,7 @@ import { currencyFormat } from '../../../../../utils/utils';
   shadow: false,
   scoped: false,
 })
-export class ProductPriceBillet {
+export class ProductPriceBillet implements BasePrice {
   @Prop() price: number;
   @Prop() priceCompare?: number;
 

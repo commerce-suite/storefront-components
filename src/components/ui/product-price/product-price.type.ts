@@ -11,3 +11,9 @@ export interface BasePrice {
   price: number;
   priceCompare?: number;
 }
+
+export interface CreditCardPrice extends BasePrice {
+  parcels: number;
+  parcelPrice: number;
+  hasInterest: boolean;
+}
