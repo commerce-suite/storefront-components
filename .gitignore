@@ -1,7 +1,6 @@
 www/
-dist/
+
 *~
-dist/
 *.sw[mnpcod]
 *.log
 *.lock
