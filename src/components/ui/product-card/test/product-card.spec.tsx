@@ -1,7 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { ProductCard } from '../product-card';
-import { IProductCard } from '../product-card.type';
 import { product, productWithSpecialPrice } from '../mocks/product-card.mock';
 
 describe('product-card', () => {
@@ -18,14 +17,7 @@ describe('product-card', () => {
           <span class="title">
             Bolsa Essencial
           </span>
-          <div class="price">
-            <span class="base">
-              R$&nbsp;499,99
-            </span>
-            <span class="current">
-              R$&nbsp;389,90
-            </span>
-          </div>
+          <product-price></product-price>
         </div>
       </div>
      </product-card>
@@ -45,39 +37,7 @@ describe('product-card', () => {
           <span class="title">
             Bolsa Essencial
           </span>
-          <div class="price">
-            <span class="base">
-              R$&nbsp;499,99
-            </span>
-            <span class="current">
-              R$&nbsp;389,90
-            </span>
-          </div>
-        </div>
-      </div>
-     </product-card>
-    `);
-  });
-
-  it('renders without priceBase', async () => {
-    const productWithoutPriceBase: IProductCard = { ...product, priceBase: null };
-    const page = await newSpecPage({
-      components: [ProductCard],
-      template: () => <product-card inline product={productWithoutPriceBase}></product-card>,
-    });
-    expect(page.root).toEqualHtml(`
-    <product-card>
-      <div class="-inline  product-container">
-        <front-image class="-inline image" imagesrc="${product.image.src}" textalt="Imagem do produto"></front-image>
-        <div class="info">
-          <span class="title">
-            Bolsa Essencial
-          </span>
-          <div class="price">
-            <span class="current">
-              R$&nbsp;389,90
-            </span>
-          </div>
+          <product-price></product-price>
         </div>
       </div>
      </product-card>

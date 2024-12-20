@@ -15,3 +15,11 @@ export interface IBuyTogetherComponentData {
   products: IProductOrderBump[];
   originalData: BuyTogether;
 }
+
+export interface BuyTogetherPaymentConfig {
+  label: string;
+  active: boolean;
+  method: 'billet' | 'creditcard' | 'pix';
+  position: number;
+  parcels_no_interest?: boolean;
+}
