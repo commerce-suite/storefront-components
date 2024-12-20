@@ -4,5 +4,6 @@
     "prettier --write",
     "stencil test --spec --e2e --findRelatedTests",
     "git add"
-  ]
+  ],
+  "!(utils).{ts}": ["eslint --fix", "prettier --write"]
 }
