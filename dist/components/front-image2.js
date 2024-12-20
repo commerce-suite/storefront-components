@@ -1,17 +1,5 @@
 import { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';
-
-function currencyFormat(value) {
-    return Number(value).toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-    });
-}
-function getClassByProps(classByProps) {
-    return Object.keys(classByProps)
-        .filter(key => classByProps[key])
-        .map(key => key)
-        .join(' ');
-}
+import { g as getClassByProps } from './utils.js';
 
 const frontImageCss = "@keyframes skeleton-loading{0%{background-color:hsl(200, 20%, 80%)}100%{background-color:hsl(200, 20%, 95%)}}:host{display:inline-block;width:100%}.image-container{position:relative;margin:unset}.image-container img{width:100%;height:100%;object-fit:contain;opacity:1;transition:opacity 1s}.image-container.-is-loading{min-width:100px;min-height:100px;animation:skeleton-loading 1s linear infinite alternate}.image-container.-is-loading img{opacity:0}";
 const FrontImageStyle0 = frontImageCss;
@@ -74,6 +62,6 @@ function defineCustomElement() {
     } });
 }
 
-export { FrontImage as F, currencyFormat as c, defineCustomElement as d, getClassByProps as g };
+export { FrontImage as F, defineCustomElement as d };
 
 //# sourceMappingURL=front-image2.js.map

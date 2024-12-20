@@ -1,14 +1,20 @@
-import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
+import { proxyCustomElement, HTMLElement, createEvent, h, Host, Env } from '@stencil/core/internal/client';
 import { P as ProductService, L as LiveShopService } from './index2.js';
-import { d as defineCustomElement$b } from './custom-card2.js';
-import { d as defineCustomElement$a } from './front-image2.js';
-import { d as defineCustomElement$9 } from './highlight-card2.js';
-import { d as defineCustomElement$8 } from './live-shop-desktop2.js';
-import { d as defineCustomElement$7 } from './live-shop-mobile2.js';
-import { d as defineCustomElement$6 } from './live-shop-not-found2.js';
-import { d as defineCustomElement$5 } from './live-video-chat2.js';
-import { d as defineCustomElement$4 } from './live-video-player2.js';
-import { d as defineCustomElement$3 } from './product-card2.js';
+import { e as extractYouTubeVideoId } from './utils.js';
+import { d as defineCustomElement$g } from './custom-card2.js';
+import { d as defineCustomElement$f } from './front-image2.js';
+import { d as defineCustomElement$e } from './highlight-card2.js';
+import { d as defineCustomElement$d } from './live-shop-desktop2.js';
+import { d as defineCustomElement$c } from './live-shop-mobile2.js';
+import { d as defineCustomElement$b } from './live-shop-not-found2.js';
+import { d as defineCustomElement$a } from './live-video-chat2.js';
+import { d as defineCustomElement$9 } from './live-video-player2.js';
+import { d as defineCustomElement$8 } from './product-card2.js';
+import { d as defineCustomElement$7 } from './product-price2.js';
+import { d as defineCustomElement$6 } from './product-price-billet2.js';
+import { d as defineCustomElement$5 } from './product-price-credit-card2.js';
+import { d as defineCustomElement$4 } from './product-price-pix2.js';
+import { d as defineCustomElement$3 } from './product-price-simple2.js';
 import { d as defineCustomElement$2 } from './tab-selector2.js';
 
 class LiveShopHandler {
@@ -16,7 +22,7 @@ class LiveShopHandler {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await ProductService.getList({
             fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
-            filter: { productIds },
+            filter: { productIds, page: 0, first: productIds.length },
         });
     }
     async getLiveShop(hashRoom) {
@@ -24,22 +30,26 @@ class LiveShopHandler {
         return this.liveShopData;
     }
     async productsToItemsAdapter() {
+        var _a;
         const products = await this.getProducts();
+        const liveProducts = (_a = this.liveShopData) === null || _a === void 0 ? void 0 : _a.products;
         return products.edges.map(({ node }) => {
-            var _a;
-            return ({
+            var _a, _b, _c;
+            const liveProduct = liveProducts.find(product => product.productId === node.productId);
+            const status = (_a = liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.status) !== null && _a !== void 0 ? _a : null;
+            return {
                 id: +node.productId,
                 name: node.name,
-                image: (_a = node.images[0]) !== null && _a !== void 0 ? _a : null,
+                image: (_c = (_b = node === null || node === void 0 ? void 0 : node.images) === null || _b === void 0 ? void 0 : _b[0]) !== null && _c !== void 0 ? _c : null,
                 price: node.price,
                 priceBase: node.priceCompare,
                 title: '',
                 content: '',
                 type: 'product',
-                highlight: false,
                 slug: node.slug,
-                show: true,
-            });
+                show: status && status !== 'hidden',
+                highlight: status === 'highlighting',
+            };
         });
     }
     messagesToItemsAdapter() {
@@ -50,8 +60,8 @@ class LiveShopHandler {
                 title: message.title,
                 content: message.content,
                 type: 'message',
-                highlight: false,
-                show: true,
+                show: message.status && message.status !== 'hidden',
+                highlight: message.status === 'highlighting',
             });
         });
     }
@@ -73,33 +83,74 @@ class LiveShopHandler {
 
 class WebSocketClient {
     constructor(url) {
+        this.socket = null;
+        this.reconnectAttempts = 0;
+        this.reconnectTimeout = null;
+        this.messageCallback = null;
         this.onOpen = () => {
-            console.log('Conectado à sala.');
+            this.reconnectAttempts = 0;
+            if (this.messageCallback && this.socket) {
+                this.socket.addEventListener('message', this.messageCallback);
+            }
         };
-        this.onClose = () => {
-            console.log('Conexão fechada.');
+        this.onClose = (event) => {
+            if (!event.wasClean)
+                this.handleReconnect();
         };
-        this.onError = (error) => {
-            console.error('Erro na conexão:', error);
+        this.onError = () => {
+            this.handleReconnect();
         };
         this.url = url;
+        this.connect();
+    }
+    connect() {
+        if (this.socket) {
+            this.socket.onclose = null;
+            this.socket.onerror = null;
+            this.socket.onmessage = null;
+        }
         this.socket = new WebSocket(this.url);
         this.socket.onopen = this.onOpen;
-        this.socket.onmessage = (event) => event.data;
         this.socket.onclose = this.onClose;
         this.socket.onerror = this.onError;
     }
-    onMessage(callback) {
-        this.socket.onmessage = callback;
+    handleReconnect() {
+        if (this.reconnectTimeout !== null)
+            return;
+        if (this.reconnectAttempts >= WebSocketClient.MAX_RECONNECT_ATTEMPTS)
+            return;
+        const delay = this.reconnectAttempts === 0
+            ? WebSocketClient.INITIAL_INCREMENT_DELAY
+            : Math.min(WebSocketClient.INITIAL_RECONNECT_DELAY * Math.pow(2, this.reconnectAttempts - 1), WebSocketClient.MAX_RECONNECT_DELAY);
+        this.reconnectTimeout = window.setTimeout(() => {
+            this.reconnectAttempts++;
+            this.reconnectTimeout = null;
+            this.connect();
+        }, delay);
     }
     closeConnection() {
-        if (this.socket.readyState === WebSocket.OPEN) {
+        var _a;
+        if (((_a = this.socket) === null || _a === void 0 ? void 0 : _a.readyState) === WebSocket.OPEN) {
             this.socket.close();
+        }
+        if (this.reconnectTimeout !== null) {
+            clearTimeout(this.reconnectTimeout);
+            this.reconnectTimeout = null;
+        }
+    }
+    onMessage(callback) {
+        this.messageCallback = callback;
+        if (this.socket) {
+            this.socket.addEventListener('message', callback);
         }
     }
 }
+WebSocketClient.MAX_RECONNECT_ATTEMPTS = 5;
+WebSocketClient.INITIAL_RECONNECT_DELAY = 5000;
+WebSocketClient.MAX_RECONNECT_DELAY = 30000;
+WebSocketClient.INITIAL_INCREMENT_DELAY = 1000;
 
-const liveShopCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}@keyframes lds-dual-ring-animation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}:host{display:block;width:100%}.loading-container{display:flex;width:100%;justify-content:center;align-items:center;min-height:350px}.loading-container .spinner{--spinner-color:var(--fc-color-secondary, #000);display:inline-block;width:80px;height:80px}.loading-container .spinner:after{content:\" \";display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid var(--spinner-color);border-color:var(--spinner-color) transparent var(--spinner-color) transparent;animation:lds-dual-ring-animation 1.2s linear infinite}.live-shop{height:100%}.live-shop-warmup .banner-custom-style{padding:40px}.live-shop-warmup .banner-custom-style>.custom-card-content{width:100%;max-width:720px;height:auto;aspect-ratio:16/9}.live-shop-warmup .banner-custom-style>.custom-card-content img{width:100%;height:100%;object-fit:cover}.live-shop-warmup .banner-custom-style>.custom-card-content .live-shop-banner{background-color:#d9d9d9;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.live-shop-finished .button-custom-style{padding:40px;max-width:410px;margin:0 auto;text-align:center}.live-shop-finished .button-custom-style button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-weight:500;text-transform:capitalize;font-size:14px}.live-shop-finished .button-custom-style button:hover{opacity:0.75}.live-shop-finished .button-custom-style button:disabled{opacity:0.6;cursor:not-allowed}";
+const liveShopCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}@keyframes lds-dual-ring-animation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}:host{display:block;width:100%}.loading-container{display:flex;width:100%;justify-content:center;align-items:center;min-height:350px}.loading-container .spinner{--spinner-color:var(--fc-color-secondary, #000);display:inline-block;width:80px;height:80px}.loading-container .spinner:after{content:\" \";display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid var(--spinner-color);border-color:var(--spinner-color) transparent var(--spinner-color) transparent;animation:lds-dual-ring-animation 1.2s linear infinite}.live-shop{height:100%}.live-shop-warmup .banner-custom-style{padding:40px}.live-shop-warmup .banner-custom-style>.custom-card-content{width:100%;max-width:720px;height:auto;aspect-ratio:16/9}.live-shop-warmup .banner-custom-style>.custom-card-content img{width:100%;height:100%;object-fit:cover}.live-shop-warmup .banner-custom-style>.custom-card-content .live-shop-banner{background-color:#d9d9d9;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.live-shop-finished .button-custom-style{padding:40px;max-width:410px;margin:0 auto;text-align:center}.live-shop-finished .button-custom-style button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-weight:500;font-size:14px}.live-shop-finished .button-custom-style button:hover{opacity:0.75}.live-shop-finished .button-custom-style button:disabled{opacity:0.6;cursor:not-allowed}";
 const LiveShopStyle0 = liveShopCss;
 
 const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLElement {
@@ -116,10 +167,18 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
         };
         this.handleMessage = (event) => {
             try {
-                if (event.data) {
-                    const message = JSON.parse(event.data);
-                    this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+                if (!event.data)
+                    return;
+                const message = JSON.parse(event.data);
+                const statusMap = {
+                    liveOn: 'inLive',
+                    liveOff: 'finished',
+                };
+                if (statusMap[message.type]) {
+                    this.liveShopRegister = Object.assign(Object.assign({}, this.liveShopRegister), { status: statusMap[message.type] });
+                    return;
                 }
+                this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
             }
             catch (error) {
                 console.error(error);
@@ -138,8 +197,10 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
     }
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
+        if (this.liveSocket)
+            this.liveSocket.closeConnection();
     }
-    async componentWillLoad() {
+    async componentDidLoad() {
         var _a;
         try {
             if (!this.hashRoom)
@@ -149,16 +210,21 @@ const LiveShop$1 = /*@__PURE__*/ proxyCustomElement(class LiveShop extends HTMLE
             this.componentRendered.emit();
             this.liveShopItemsService = new LiveShopHandler();
             this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
+            if (!this.liveShopRegister)
+                throw new Error('live-shop_not_found');
             this.liveShopItems = await this.liveShopItemsService.getItems();
-            if (this.liveShopRegister)
-                this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
-            this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+            if (this.liveShopRegister) {
+                this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
+            }
+            const wsBaseUrl = Env.WEBSOCKET_URL || 'ws://localhost:3001';
+            this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
             this.liveSocket.onMessage(this.handleMessage);
         }
         catch (error) {
             if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
                 this.liveShopNotFound = true;
                 console.error('Live Shop not found', { error });
+                return;
             }
             console.error(error);
         }
@@ -205,7 +271,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["live-shop", "custom-card", "front-image", "highlight-card", "live-shop-desktop", "live-shop-mobile", "live-shop-not-found", "live-video-chat", "live-video-player", "product-card", "tab-selector"];
+    const components = ["live-shop", "custom-card", "front-image", "highlight-card", "live-shop-desktop", "live-shop-mobile", "live-shop-not-found", "live-video-chat", "live-video-player", "product-card", "product-price", "product-price-billet", "product-price-credit-card", "product-price-pix", "product-price-simple", "tab-selector"];
     components.forEach(tagName => { switch (tagName) {
         case "live-shop":
             if (!customElements.get(tagName)) {
@@ -214,45 +280,70 @@ function defineCustomElement$1() {
             break;
         case "custom-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$b();
+                defineCustomElement$g();
             }
             break;
         case "front-image":
             if (!customElements.get(tagName)) {
-                defineCustomElement$a();
+                defineCustomElement$f();
             }
             break;
         case "highlight-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$9();
+                defineCustomElement$e();
             }
             break;
         case "live-shop-desktop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$8();
+                defineCustomElement$d();
             }
             break;
         case "live-shop-mobile":
             if (!customElements.get(tagName)) {
-                defineCustomElement$7();
+                defineCustomElement$c();
             }
             break;
         case "live-shop-not-found":
             if (!customElements.get(tagName)) {
-                defineCustomElement$6();
+                defineCustomElement$b();
             }
             break;
         case "live-video-chat":
             if (!customElements.get(tagName)) {
-                defineCustomElement$5();
+                defineCustomElement$a();
             }
             break;
         case "live-video-player":
             if (!customElements.get(tagName)) {
-                defineCustomElement$4();
+                defineCustomElement$9();
             }
             break;
         case "product-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$8();
+            }
+            break;
+        case "product-price":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "product-price-billet":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "product-price-credit-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "product-price-pix":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "product-price-simple":
             if (!customElements.get(tagName)) {
                 defineCustomElement$3();
             }

@@ -71,7 +71,6 @@
   text-transform: var(--btn-text-transform);
   letter-spacing: var(--btn-text-letter-spacing);
   font-weight: 500;
-  text-transform: capitalize;
   font-size: 14px;
 }
 .info-modal-buttons-primary:hover, .info-modal-buttons-secondary:hover {
@@ -82,7 +81,7 @@
   cursor: not-allowed;
 }
 .info-modal-buttons-primary {
-  background-color: var(--color-buy-button);
+  background-color: var(--color-secondary);
 }
 .info-modal-buttons-secondary {
   background-color: #ffffff;

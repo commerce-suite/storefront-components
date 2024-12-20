@@ -18,6 +18,11 @@
     "components/ui/live-video-player/live-video-player.js",
     "components/ui/mini-player/mini-player.js",
     "components/ui/product-card/product-card.js",
+    "components/ui/product-price/product-price.js",
+    "components/ui/product-price/snippets/billet/product-price-billet.js",
+    "components/ui/product-price/snippets/credit-card/product-price-credit-card.js",
+    "components/ui/product-price/snippets/pix/product-price-pix.js",
+    "components/ui/product-price/snippets/simple/product-price-simple.js",
     "components/ui/tab-selector/tab-selector.js",
     "components/ui/variation-selector/variation-selector.js"
   ],

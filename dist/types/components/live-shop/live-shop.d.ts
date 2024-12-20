@@ -20,7 +20,7 @@ export declare class LiveShop {
     private isChatOpenHandler;
     private handleMessage;
     disconnectedCallback(): void;
-    componentWillLoad(): Promise<void>;
+    componentDidLoad(): Promise<void>;
     private renderLoading;
     private renderWarmup;
     private renderInLive;

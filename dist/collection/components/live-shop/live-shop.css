@@ -108,7 +108,6 @@
   text-transform: var(--btn-text-transform);
   letter-spacing: var(--btn-text-letter-spacing);
   font-weight: 500;
-  text-transform: capitalize;
   font-size: 14px;
 }
 .live-shop-finished .button-custom-style button:hover {

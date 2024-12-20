@@ -1,10 +1,15 @@
 import { h, proxyCustomElement, HTMLElement, createEvent } from '@stencil/core/internal/client';
-import { d as defineCustomElement$7 } from './custom-card2.js';
-import { d as defineCustomElement$6 } from './front-image2.js';
-import { d as defineCustomElement$5 } from './highlight-card2.js';
-import { d as defineCustomElement$4 } from './live-video-chat2.js';
-import { d as defineCustomElement$3 } from './live-video-player2.js';
-import { d as defineCustomElement$2 } from './product-card2.js';
+import { d as defineCustomElement$c } from './custom-card2.js';
+import { d as defineCustomElement$b } from './front-image2.js';
+import { d as defineCustomElement$a } from './highlight-card2.js';
+import { d as defineCustomElement$9 } from './live-video-chat2.js';
+import { d as defineCustomElement$8 } from './live-video-player2.js';
+import { d as defineCustomElement$7 } from './product-card2.js';
+import { d as defineCustomElement$6 } from './product-price2.js';
+import { d as defineCustomElement$5 } from './product-price-billet2.js';
+import { d as defineCustomElement$4 } from './product-price-credit-card2.js';
+import { d as defineCustomElement$3 } from './product-price-pix2.js';
+import { d as defineCustomElement$2 } from './product-price-simple2.js';
 import { d as defineCustomElement$1 } from './tab-selector2.js';
 
 const tabs = (videoId, items, handleAddItem, chatVisible) => {
@@ -13,9 +18,9 @@ const tabs = (videoId, items, handleAddItem, chatVisible) => {
             name: 'products',
             label: (h("span", null,
                 "Produtos",
-                (items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length) > 0 ? (h("span", { class: "product-count" }, items === null || items === void 0 ? void 0 : items.filter(item => item.type === 'product').length)) : (''))),
+                (items === null || items === void 0 ? void 0 : items.some(item => item.type === 'product' && item.show)) && (h("span", { class: "product-count" }, items.filter(item => item.type === 'product' && item.show).length)))),
             content: () => {
-                return (items === null || items === void 0 ? void 0 : items.length) > 0 ? (h("highlight-card", { items: items, onAddItem: handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-empty", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }));
+                return (items === null || items === void 0 ? void 0 : items.length) > 0 && (items === null || items === void 0 ? void 0 : items.some(item => item.show)) ? (h("highlight-card", { items: items, onAddItem: handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-empty", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }));
             },
         },
     ];
@@ -61,7 +66,7 @@ function defineCustomElement() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["live-shop-mobile", "custom-card", "front-image", "highlight-card", "live-video-chat", "live-video-player", "product-card", "tab-selector"];
+    const components = ["live-shop-mobile", "custom-card", "front-image", "highlight-card", "live-video-chat", "live-video-player", "product-card", "product-price", "product-price-billet", "product-price-credit-card", "product-price-pix", "product-price-simple", "tab-selector"];
     components.forEach(tagName => { switch (tagName) {
         case "live-shop-mobile":
             if (!customElements.get(tagName)) {
@@ -70,30 +75,55 @@ function defineCustomElement() {
             break;
         case "custom-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$7();
+                defineCustomElement$c();
             }
             break;
         case "front-image":
             if (!customElements.get(tagName)) {
-                defineCustomElement$6();
+                defineCustomElement$b();
             }
             break;
         case "highlight-card":
             if (!customElements.get(tagName)) {
-                defineCustomElement$5();
+                defineCustomElement$a();
             }
             break;
         case "live-video-chat":
             if (!customElements.get(tagName)) {
-                defineCustomElement$4();
+                defineCustomElement$9();
             }
             break;
         case "live-video-player":
             if (!customElements.get(tagName)) {
-                defineCustomElement$3();
+                defineCustomElement$8();
             }
             break;
         case "product-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "product-price":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "product-price-billet":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "product-price-credit-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "product-price-pix":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "product-price-simple":
             if (!customElements.get(tagName)) {
                 defineCustomElement$2();
             }

@@ -1,6 +1,7 @@
-import { Host, h } from "@stencil/core";
+import { Host, h, Env } from "@stencil/core";
 import { LiveShopHandler } from "./services/live-shop.service";
 import { WebSocketClient } from "../../services/WebSocketClient";
+import { extractYouTubeVideoId } from "../../utils/utils";
 export class LiveShop {
     constructor() {
         this.handleResize = () => {
@@ -11,10 +12,18 @@ export class LiveShop {
         };
         this.handleMessage = (event) => {
             try {
-                if (event.data) {
-                    const message = JSON.parse(event.data);
-                    this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
+                if (!event.data)
+                    return;
+                const message = JSON.parse(event.data);
+                const statusMap = {
+                    liveOn: 'inLive',
+                    liveOff: 'finished',
+                };
+                if (statusMap[message.type]) {
+                    this.liveShopRegister = Object.assign(Object.assign({}, this.liveShopRegister), { status: statusMap[message.type] });
+                    return;
                 }
+                this.liveShopItems = this.liveShopItemsService.updateItems(this.liveShopItems, message);
             }
             catch (error) {
                 console.error(error);
@@ -33,8 +42,10 @@ export class LiveShop {
     }
     disconnectedCallback() {
         window.removeEventListener('resize', this.handleResize);
+        if (this.liveSocket)
+            this.liveSocket.closeConnection();
     }
-    async componentWillLoad() {
+    async componentDidLoad() {
         var _a;
         try {
             if (!this.hashRoom)
@@ -44,16 +55,21 @@ export class LiveShop {
             this.componentRendered.emit();
             this.liveShopItemsService = new LiveShopHandler();
             this.liveShopRegister = await this.liveShopItemsService.getLiveShop(this.hashRoom);
+            if (!this.liveShopRegister)
+                throw new Error('live-shop_not_found');
             this.liveShopItems = await this.liveShopItemsService.getItems();
-            if (this.liveShopRegister)
-                this.videoId = this.liveShopRegister.urlLive.split('v=')[1];
-            this.liveSocket = new WebSocketClient(`ws://localhost:3001?hashRoom=${this.hashRoom}`);
+            if (this.liveShopRegister) {
+                this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
+            }
+            const wsBaseUrl = Env.WEBSOCKET_URL || 'ws://localhost:3001';
+            this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
             this.liveSocket.onMessage(this.handleMessage);
         }
         catch (error) {
             if ((_a = error === null || error === void 0 ? void 0 : error.message) === null || _a === void 0 ? void 0 : _a.includes('live-shop_not_found')) {
                 this.liveShopNotFound = true;
                 console.error('Live Shop not found', { error });
+                return;
             }
             console.error(error);
         }

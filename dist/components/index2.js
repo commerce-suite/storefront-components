@@ -22,6 +22,84 @@ function Da(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].
 g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d));}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]));}}function Ea(a,b){this.c=a;this.a=b;}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa);});};function Ga(a,b){this.c=a;this.a=b;}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(l){}a(e);}},2E3):a([]);};function Ha(a,b){this.c=a;this.f=b;this.a=[];}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)};module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
 }(webfontloader));
 
+var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var AppRepositoryJson = /** @class */ (function () {
+    function AppRepositoryJson() {
+    }
+    AppRepositoryJson.getById = function (id, fields) {
+        var _a;
+        return __awaiter$b(this, void 0, void 0, function () {
+            var mock, isFieldNotSelected, deleteFieldIfNecessary;
+            return __generator$b(this, function (_b) {
+                mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
+                if (id != mock.id) {
+                    throw new Error('apps_not_found');
+                }
+                isFieldNotSelected = function (entry) { return !fields.includes(entry); };
+                deleteFieldIfNecessary = function (entry) {
+                    isFieldNotSelected(entry) && delete mock[entry];
+                };
+                fields && Object.keys(mock).forEach(deleteFieldIfNecessary);
+                return [2 /*return*/, mock];
+            });
+        });
+    };
+    AppRepositoryJson.getBySlug = function (slug, fields) {
+        var _a;
+        return __awaiter$b(this, void 0, void 0, function () {
+            var mock, isFieldNotSelected, deleteFieldIfNecessary;
+            return __generator$b(this, function (_b) {
+                mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
+                if (slug != mock.slug) {
+                    throw new Error('apps_not_found');
+                }
+                isFieldNotSelected = function (entry) { return !fields.includes(entry); };
+                deleteFieldIfNecessary = function (entry) {
+                    isFieldNotSelected(entry) && delete mock[entry];
+                };
+                fields && Object.keys(mock).forEach(deleteFieldIfNecessary);
+                return [2 /*return*/, mock];
+            });
+        });
+    };
+    return AppRepositoryJson;
+}());
+
 // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 var nodejsCustomInspectSymbol = typeof Symbol === 'function' && typeof Symbol.for === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
 const nodejsCustomInspectSymbol$1 = nodejsCustomInspectSymbol;
@@ -5094,7 +5172,7 @@ var J = function Client(e) {
 
 var W = J;
 
-var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -5103,7 +5181,7 @@ var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -5148,9 +5226,9 @@ var GraphqlService = /** @class */ (function () {
         });
     }
     GraphqlService.prototype.query = function (query, variables) {
-        return __awaiter$8(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_1;
-            return __generator$8(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5169,9 +5247,9 @@ var GraphqlService = /** @class */ (function () {
         });
     };
     GraphqlService.prototype.mutation = function (query, variables) {
-        return __awaiter$8(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_2;
-            return __generator$8(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5195,6 +5273,96 @@ function getClient() {
     return new GraphqlService(shop_ctx.api_url, shop_ctx.token, shop_ctx.domain);
 }
 
+var AppQueries = /** @class */ (function () {
+    function AppQueries(fields) {
+        this.fields = fields || this.defaultFields();
+    }
+    AppQueries.prototype.getFields = function () {
+        return this.fields.join();
+    };
+    AppQueries.prototype.defaultFields = function () {
+        return ['id', 'slug', 'content', 'type'];
+    };
+    AppQueries.prototype.getApp = function () {
+        return "query App($filter: filterApps) {\n        app(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
+    };
+    return AppQueries;
+}());
+
+var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var AppRepositoryGql = /** @class */ (function () {
+    function AppRepositoryGql() {
+    }
+    AppRepositoryGql.getById = function (id, fields) {
+        return __awaiter$9(this, void 0, void 0, function () {
+            var appQuery, getAppQuery, app;
+            return __generator$9(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        appQuery = new AppQueries(fields);
+                        getAppQuery = appQuery.getApp();
+                        return [4 /*yield*/, getClient().query(getAppQuery, { filter: { id: id } })];
+                    case 1:
+                        app = (_a.sent()).app;
+                        return [2 /*return*/, app];
+                }
+            });
+        });
+    };
+    AppRepositoryGql.getBySlug = function (slug, fields) {
+        return __awaiter$9(this, void 0, void 0, function () {
+            var appQuery, getAppQuery, app;
+            return __generator$9(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        appQuery = new AppQueries(fields);
+                        getAppQuery = appQuery.getApp();
+                        return [4 /*yield*/, getClient().query(getAppQuery, { filter: { slug: slug } })];
+                    case 1:
+                        app = (_a.sent()).app;
+                        return [2 /*return*/, app];
+                }
+            });
+        });
+    };
+    return AppRepositoryGql;
+}());
+
 var BroadcastService = /** @class */ (function () {
     function BroadcastService() {
     }
@@ -5206,6 +5374,89 @@ var BroadcastService = /** @class */ (function () {
         data && window.dispatchEvent(event);
     };
     return BroadcastService;
+}());
+
+var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
+var AppService = /** @class */ (function () {
+    function AppService() {
+    }
+    AppService.getById = function (id, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository$2().getById(Number(id), fields)];
+                    case 1:
+                        result = _a.sent();
+                        BroadcastService.emit('Apps', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_1 = _a.sent();
+                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AppService.getBySlug = function (slug, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result, error_2;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository$2().getBySlug(slug, fields)];
+                    case 1:
+                        result = _a.sent();
+                        BroadcastService.emit('Apps', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_2 = _a.sent();
+                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return AppService;
 }());
 
 function normalizePagination(page, items) {
@@ -5674,7 +5925,8 @@ var BuyTogetherQueries = /** @class */ (function () {
         var imageFields = "\n    {\n      id\n      productId\n      src\n      alt\n      colorIds\n      variationIds\n    }";
         var colorFields = "\n    {\n      id\n      name\n      slug\n      hexadecimal\n    }";
         var attributeFields = "\n    {\n      id\n      name\n      slug\n      attributeId\n      attributeName\n      isActive\n    }";
-        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n    }";
+        var installmentFields = "\n    {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n      }\n    ";
+        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n      installment ".concat(installmentFields, "\n      installments ").concat(installmentFields, "\n    }");
         var featureFields = "\n    {\n      id\n      name\n      slug\n      values {\n        id\n        name\n        slug\n      }\n    }";
         var variationsFields = "\n    {\n      id\n      name\n      slug\n      releaseDate {\n        releaseDate\n        now\n      }\n      description\n      shortDescription\n      isVirtual\n      isPreSale\n      images ".concat(imageFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      payments ").concat(paymentsFields, "\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      productId\n      colors ").concat(colorFields, "\n    }\n    ");
         return "{\n      id\n      name\n      slug\n      description\n      shortDescription\n      images ".concat(imageFields, "\n      payments ").concat(paymentsFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      variations ").concat(variationsFields, "\n      sku\n      colors ").concat(colorFields, "\n    }");
@@ -5866,7 +6118,7 @@ var LiveShopQueries = /** @class */ (function () {
         return '{alt, src}';
     };
     LiveShopQueries.prototype.getMessageFields = function () {
-        return '{title, content}';
+        return '{id, title, content, status}';
     };
     LiveShopQueries.prototype.getDiscountFields = function () {
         return '{type, value}';
@@ -5875,7 +6127,7 @@ var LiveShopQueries = /** @class */ (function () {
         return "\n      {\n        variationId, \n        discount ".concat(this.getDiscountFields(), "\n      }");
     };
     LiveShopQueries.prototype.getProductFields = function () {
-        return "\n      {\n        productId, \n        discount ".concat(this.getDiscountFields(), ", \n        variations ").concat(this.getVariationFields(), "\n      }");
+        return "\n      {\n        productId, \n        discount ".concat(this.getDiscountFields(), ", \n        variations ").concat(this.getVariationFields(), ",\n        status\n      }");
     };
     LiveShopQueries.prototype.defaultFields = function () {
         return [
@@ -9313,11 +9565,11 @@ class BinaryReconstructor {
 }
 
 const parser = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  protocol: protocol,
-  get PacketType () { return PacketType; },
-  Encoder: Encoder,
-  Decoder: Decoder
+    __proto__: null,
+    protocol: protocol,
+    get PacketType () { return PacketType; },
+    Encoder: Encoder,
+    Decoder: Decoder
 });
 
 function on(obj, ev, fn) {
@@ -10678,6 +10930,6 @@ Object.assign(lookup, {
     connect: lookup,
 });
 
-export { BuyTogetherService as B, LiveShopService as L, ProductService as P };
+export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductService as P };
 
 //# sourceMappingURL=index2.js.map

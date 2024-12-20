@@ -3,6 +3,9 @@ import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTo
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 export declare class FrontBuyTogetherService implements IFrontBuyTogetherService {
+    private buyTogetherPaymentConfig;
+    constructor();
+    private loadBuyTogetherPaymentConfig;
     private filterOutOriginalProducts;
     private getUniqueProducts;
     getBuyTogetherByProductId(productId: number, variationId?: number): Promise<IBuyTogetherComponentData>;
@@ -12,4 +15,5 @@ export declare class FrontBuyTogetherService implements IFrontBuyTogetherService
     changeAttribute(attributeValue: string, productTarget: Product): IChangeResult;
     changeAttributeSecondary(attributeValue: string, productTarget: Product): IChangeResult;
     addToCart(variantIds: number[]): Promise<unknown>;
+    private getBuyTogetherAppContent;
 }

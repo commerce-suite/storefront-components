@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } from './index-cb0223a2.js';
-import { F as FrontBuyTogetherService } from './front-buy-together.service-6763959a.js';
-import './index-bc627d0d.js';
+import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } from './index-39fa297b.js';
+import { F as FrontBuyTogetherService } from './front-buy-together.service-aebfb2cf.js';
+import './index-7dfb22de.js';
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -3234,7 +3234,7 @@ const Showcase = class {
     render() {
         var _a;
         return (h(Host, { key: '60cf0d126e553d8b13608eb12feb0e7c33de8b9c' }, this.loading && (h("div", { key: '145e5422b9dca6d0d12fe12d734fe86fcbc0f062', class: "loading-container" }, h("span", { key: '546d68486a4ff78e1e80695ba092942341d58e4d', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
-            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
+            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product, paymentOptions: product.paymentOptions }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         }))))))) : (h(Fragment, null))));
     }
 };

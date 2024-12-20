@@ -4,7 +4,7 @@ export class LiveShopHandler {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await ProductService.getList({
             fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
-            filter: { productIds },
+            filter: { productIds, page: 0, first: productIds.length },
         });
     }
     async getLiveShop(hashRoom) {
@@ -12,22 +12,26 @@ export class LiveShopHandler {
         return this.liveShopData;
     }
     async productsToItemsAdapter() {
+        var _a;
         const products = await this.getProducts();
+        const liveProducts = (_a = this.liveShopData) === null || _a === void 0 ? void 0 : _a.products;
         return products.edges.map(({ node }) => {
-            var _a;
-            return ({
+            var _a, _b, _c;
+            const liveProduct = liveProducts.find(product => product.productId === node.productId);
+            const status = (_a = liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.status) !== null && _a !== void 0 ? _a : null;
+            return {
                 id: +node.productId,
                 name: node.name,
-                image: (_a = node.images[0]) !== null && _a !== void 0 ? _a : null,
+                image: (_c = (_b = node === null || node === void 0 ? void 0 : node.images) === null || _b === void 0 ? void 0 : _b[0]) !== null && _c !== void 0 ? _c : null,
                 price: node.price,
                 priceBase: node.priceCompare,
                 title: '',
                 content: '',
                 type: 'product',
-                highlight: false,
                 slug: node.slug,
-                show: true,
-            });
+                show: status && status !== 'hidden',
+                highlight: status === 'highlighting',
+            };
         });
     }
     messagesToItemsAdapter() {
@@ -38,8 +42,8 @@ export class LiveShopHandler {
                 title: message.title,
                 content: message.content,
                 type: 'message',
-                highlight: false,
-                show: true,
+                show: message.status && message.status !== 'hidden',
+                highlight: message.status === 'highlighting',
             });
         });
     }

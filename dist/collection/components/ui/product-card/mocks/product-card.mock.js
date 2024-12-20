@@ -7,16 +7,6 @@ const product = {
     price: 389.9,
     priceBase: 499.99,
 };
-const productWithSpecialPrice = {
-    id: 1234,
-    image: {
-        src: 'https://cdn.dooca.store/816/products/camiseta-ce-e-fi-de-quem-marrom_1600x2000+fill_ffffff.jpg?v=1686845906',
-    },
-    name: 'Bolsa Essencial',
-    price: 389.9,
-    priceBase: 499.99,
-    specialPrice: 299.9,
-};
 const variations = [
     {
         label: 'Cor',
@@ -39,5 +29,5 @@ const variations = [
     },
 ];
 const productWithVariations = Object.assign(Object.assign({}, product), { selectVariations: variations });
-export { product, productWithVariations, productWithSpecialPrice };
+export { product, productWithVariations };
 //# sourceMappingURL=product-card.mock.js.map

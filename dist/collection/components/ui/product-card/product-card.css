@@ -26,18 +26,6 @@
   margin-bottom: var(--fc-margin-width);
   font-weight: 600;
 }
-.product-container > .info > .price {
-  display: flex;
-  flex-direction: column;
-}
-.product-container > .info > .price .base {
-  text-decoration: line-through;
-  color: var(--fc-color-light-text-secondary);
-}
-.product-container > .info > .price .current {
-  font-size: 15px;
-  font-weight: 700;
-}
 
 .product-container > .image {
   display: flex;

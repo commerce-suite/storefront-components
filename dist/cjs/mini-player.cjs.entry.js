@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-2d77613b.js');
+const index = require('./index-1656fecd.js');
 
 class DraggableService {
     constructor(onUpdatePosition) {

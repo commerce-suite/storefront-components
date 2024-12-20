@@ -40,6 +40,8 @@
   font-weight: 700;
   font-size: 24px;
   text-transform: uppercase;
+  max-width: 550px;
+  word-break: break-word;
 }
 .live-shop-in-live-desktop-infos-options-button {
   --btn-bg-color: var(--fc-color-primary);
@@ -85,6 +87,9 @@
   border-radius: 8px;
   overflow: hidden;
 }
+.live-shop-in-live-desktop-content-card {
+  width: 450px;
+}
 .live-shop-in-live-desktop-content-card .in-live-custom-style-desktop {
   padding: 40px;
   border: 1px solid var(--menu-items);
@@ -92,4 +97,7 @@
 }
 .live-shop-in-live-desktop-content-card .in-live-custom-style-desktop .custom-card-content {
   display: none;
+}
+.live-shop-in-live-desktop .highlight-card {
+  width: 450px;
 }

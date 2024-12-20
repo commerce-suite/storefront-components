@@ -38,6 +38,7 @@
   flex-direction: column;
   padding: 24px;
   gap: 2px;
+  word-break: break-word;
 }
 .highlight-card-message-title, .highlight-card-message-content {
   margin: 0;
@@ -68,6 +69,9 @@
   padding: 24px;
 }
 
+.highlight-card .highlight-custom-style.product-container > .info > .title {
+  word-break: break-all;
+}
 .highlight-card .highlight-custom-style.product-container > .info > .price {
   display: flex;
   flex-direction: row;
@@ -85,6 +89,7 @@
   width: 48px;
   border: 1px solid #dee2e6;
   border-radius: 4px;
+  flex-shrink: 0;
 }
 .highlight-card .highlight-custom-style.product-container > .image > .image-container > img {
   border-radius: 3px;
