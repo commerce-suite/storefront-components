@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-39fa297b.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-cb0223a2.js';
 
 class FrontCountdownService {
     constructor(startDate, endDate) {

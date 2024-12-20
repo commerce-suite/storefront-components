@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1656fecd.js');
+const index = require('./index-2d77613b.js');
 const frontBuyTogether_service = require('./front-buy-together.service-07114391.js');
 require('./index-f14f22f6.js');
 

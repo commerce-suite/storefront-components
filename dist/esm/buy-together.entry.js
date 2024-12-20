@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-39fa297b.js';
+import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-cb0223a2.js';
 import { F as FrontBuyTogetherService } from './front-buy-together.service-aebfb2cf.js';
 import './index-7dfb22de.js';
 

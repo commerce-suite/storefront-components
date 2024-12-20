@@ -1,28 +1,5 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 const NAMESPACE = 'front-components';
 const BUILD = /* front-components */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: true, element: false, event: true, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: true, propNumber: true, propString: true, reflect: false, scoped: true, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: false, slot: true, slotChildNodesFix: false, slotRelocation: true, state: true, style: true, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: true, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: true, vdomText: true, vdomXlink: false, watchCallback: true };
-const Env = /* front-components */ {"WEBSOCKET_URL":"wss://socket-liveshop.dchomolog.dooca.store/"};
 
 /*
  Stencil Client Platform v4.17.0 | MIT Licensed | https://stenciljs.com
@@ -1463,51 +1440,51 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'custom-card_16.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './custom-card_16.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'buy-together-cart-modal.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './buy-together-cart-modal.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'info-modal.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './info-modal.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'launch-countdown.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './launch-countdown.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'mini-player.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './mini-player.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'showcase-related.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './showcase-related.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'buy-together.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './buy-together.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'front-countdown.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './front-countdown.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'front-select_2.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './front-select_2.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'custom-card_16':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './custom-card_16.entry.js').then(processMod, consoleError);
+                case 'buy-together-cart-modal':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './buy-together-cart-modal.entry.js').then(processMod, consoleError);
+                case 'info-modal':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './info-modal.entry.js').then(processMod, consoleError);
+                case 'launch-countdown':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './launch-countdown.entry.js').then(processMod, consoleError);
+                case 'mini-player':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './mini-player.entry.js').then(processMod, consoleError);
+                case 'showcase-related':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './showcase-related.entry.js').then(processMod, consoleError);
+                case 'buy-together':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './buy-together.entry.js').then(processMod, consoleError);
+                case 'front-countdown':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './front-countdown.entry.js').then(processMod, consoleError);
+                case 'front-select_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './front-select_2.entry.js').then(processMod, consoleError);
           }
       }
-  return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+  return import(
     /* @vite-ignore */
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
     `./${bundleId}.entry.js${""}`
-  )); }).then((importedModule) => {
+  ).then((importedModule) => {
     {
       cmpModules.set(bundleId, importedModule);
     }
@@ -1589,15 +1566,6 @@ var flush = () => {
 var nextTick = (cb) => promiseResolve().then(cb);
 var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
 
-exports.Env = Env;
-exports.Fragment = Fragment;
-exports.Host = Host;
-exports.bootstrapLazy = bootstrapLazy;
-exports.createEvent = createEvent;
-exports.getAssetPath = getAssetPath;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
-exports.setNonce = setNonce;
+export { Fragment as F, Host as H, bootstrapLazy as b, createEvent as c, getAssetPath as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
 
-//# sourceMappingURL=index-1656fecd.js.map
+//# sourceMappingURL=index-cb0223a2.js.map

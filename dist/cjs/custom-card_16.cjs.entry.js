@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1656fecd.js');
+const index = require('./index-2d77613b.js');
 const index$1 = require('./index-f14f22f6.js');
 
 const customCardCss = ":host{display:inline-block;width:100%}.custom-card{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px}.custom-card-header{display:flex;flex-direction:column;gap:16px}.custom-card-header-title,.custom-card-header-description{margin:0;text-align:center}.custom-card-header-title{font-family:var(--h1-ff);color:var(--menu-items);font-weight:700;font-size:24px;text-transform:uppercase;word-break:break-word}.custom-card-header-description{font-size:16px}@media (min-width: 1024px){.custom-card{gap:40px}}";
@@ -323,7 +323,7 @@ const LiveShop = class {
             if (this.liveShopRegister) {
                 this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
             }
-            const wsBaseUrl = index.Env.WEBSOCKET_URL ;
+            const wsBaseUrl = 'ws://localhost:3001';
             this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
             this.liveSocket.onMessage(this.handleMessage);
         }

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getAssetPath, E as Env } from './index-39fa297b.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getAssetPath } from './index-cb0223a2.js';
 import { P as ProductService, L as LiveShopService } from './index-7dfb22de.js';
 
 const customCardCss = ":host{display:inline-block;width:100%}.custom-card{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px}.custom-card-header{display:flex;flex-direction:column;gap:16px}.custom-card-header-title,.custom-card-header-description{margin:0;text-align:center}.custom-card-header-title{font-family:var(--h1-ff);color:var(--menu-items);font-weight:700;font-size:24px;text-transform:uppercase;word-break:break-word}.custom-card-header-description{font-size:16px}@media (min-width: 1024px){.custom-card{gap:40px}}";
@@ -319,7 +319,7 @@ const LiveShop = class {
             if (this.liveShopRegister) {
                 this.videoId = extractYouTubeVideoId(this.liveShopRegister.urlLive);
             }
-            const wsBaseUrl = Env.WEBSOCKET_URL ;
+            const wsBaseUrl = 'ws://localhost:3001';
             this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
             this.liveSocket.onMessage(this.handleMessage);
         }
