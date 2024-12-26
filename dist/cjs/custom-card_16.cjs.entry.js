@@ -591,7 +591,7 @@ const ProductPriceCreditCard = class {
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
         const formattedParcelPrice = this.parcelPrice ? currencyFormat(this.parcelPrice) : null;
         const interestText = this.hasInterest ? 'com juros' : 'sem juros';
-        return (index.h("div", { key: '6a9a93ca0ee4bd214fbf382426540f7c2ca59626', class: "payment-option payment-option-creditCard" }, formattedCompare && index.h("span", { key: '8b6f103b58d6790bad28e4c69e24e1628d576a1b', class: "price-compare" }, formattedCompare), index.h("span", { key: 'cde6822719072a91a86e51610d21080cc9300830', class: "price-current" }, formattedPrice, ' ', this.parcels && this.parcelPrice && (index.h("span", { key: 'adfabae6f4fad27b274967cfc72e8a907da4861c', class: "credit-info" }, "em at\u00E9 ", index.h("span", { key: '6993a89e07169e8ee5178e878820098ff628926c', class: "highlight" }, this.parcels, "x"), " de", ' ', index.h("span", { key: '85b0d30d42c7e2449aa3146a31724226c3d5d86e', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
+        return (index.h("div", { key: '6a9a93ca0ee4bd214fbf382426540f7c2ca59626', class: "payment-option payment-option-creditCard" }, formattedCompare && index.h("span", { key: '8b6f103b58d6790bad28e4c69e24e1628d576a1b', class: "price-compare" }, formattedCompare), index.h("span", { key: 'cde6822719072a91a86e51610d21080cc9300830', class: "price-current" }, index.h("span", { key: '401a7c4d306a06b5c70890dfa69eb0ba5a0043f8', class: "highlight" }, formattedPrice), ' ', this.parcels && this.parcelPrice && (index.h("span", { key: '41d7e71ff72b5b7c9a2c6abff671d0aac4738330', class: "credit-info" }, "em at\u00E9 ", index.h("span", { key: '853a474d498507ac53106e5a3d597c77210fd264', class: "highlight" }, this.parcels, "x"), " de", ' ', index.h("span", { key: '152aa9060d4cb070bc7d701beb472a8c100d1b4a', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
     }
 };
 ProductPriceCreditCard.style = ProductPriceCreditCardStyle0;
@@ -608,7 +608,7 @@ const ProductPricePix = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (index.h("div", { key: '3720311c1a2dac60ba14c3df15e36d6e0a233ee8', class: "payment-option payment-option-pix" }, formattedCompare && index.h("span", { key: 'e2e7b94839cb4826085912a441e274e32bd6a5fd', class: "price-compare" }, formattedCompare), index.h("span", { key: '66193afbbe5dd0c47a78d8ac98762da46c89c885', class: "price-current" }, index.h("span", { key: '15f5acbd8e8c77d89cfdd5df7dfb6693084c18f7', class: "highlight" }, formattedPrice), " no pix")));
+        return (index.h("div", { key: 'b006be8ee807e4f9bee0d339e34268b954618859', class: "payment-option payment-option-pix" }, formattedCompare && index.h("span", { key: '98b9122feb3233e4dc85c6105b371e391be1c613', class: "price-compare" }, formattedCompare), index.h("span", { key: '7e00bf224ba92e7a35793c37d2a998ffc116479e', class: "price-current" }, index.h("span", { key: '3eb8ed1f95172c3ef46a28e85a235581d73f9d81', class: "highlight" }, formattedPrice), " no pix")));
     }
 };
 ProductPricePix.style = ProductPricePixStyle0;
@@ -625,7 +625,7 @@ const ProductPriceSimple = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (index.h("div", { key: '17b05e3159e4321ddc1e66a5c078e9d173e1ca51', class: "payment-option payment-option-simple" }, formattedCompare && index.h("span", { key: 'ef65b3430ae6df8ea91120376c4e577ef1081a63', class: "price-compare" }, formattedCompare), index.h("span", { key: 'af2046604c9b86ed642fd3cbb4b7b5630ec1e28e', class: "price-current" }, index.h("span", { key: '1eebd6d064189413ab6ee87a9606109f65793262', class: "highlight" }, formattedPrice))));
+        return (index.h("div", { key: 'b87b05ebb6330b579e6e3c7703ac37ae0a74e18d', class: "payment-option payment-option-simple" }, formattedCompare && index.h("span", { key: '2d5b7c07df8ca631ecd019078adf5dc1f2fefb6a', class: "price-compare" }, formattedCompare), index.h("span", { key: 'f0f6d020e0a626758c11cfbc22ef31336041c8ba', class: "price-current" }, index.h("span", { key: '469a3d1d4e88517d51169d650a9e5b6a351f904b', class: "highlight" }, formattedPrice))));
     }
 };
 ProductPriceSimple.style = ProductPriceSimpleStyle0;
@@ -649,7 +649,7 @@ const TabSelector = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: 'dcf786285d7ffa9524a1d04e8ff76f11697af90b', class: "tab-selector" }, index.h("div", { key: 'd1545b2aa88d995d69fa7915adfb9bd2f00c049f', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (index.h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), index.h("div", { key: '254e810f3b9551bb879dabf9a4c5d119da3b6654', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (index.h("div", { class: {
+        return (index.h("div", { key: 'f99808007d9c6fc6b8d57f1281e09be382783158', class: "tab-selector" }, index.h("div", { key: '95c9b04f8af831220247bfe240d81d7da1ed7270', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (index.h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), index.h("div", { key: 'cb253ee08a5e27a94e6d8df1521363b1d84b6634', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (index.h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));
