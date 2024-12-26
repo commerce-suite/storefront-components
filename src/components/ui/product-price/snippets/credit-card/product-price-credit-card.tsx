@@ -25,7 +25,7 @@ export class ProductPriceCreditCard implements CreditCardPrice {
       <div class="payment-option payment-option-creditCard">
         {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
         <span class="price-current">
-          {formattedPrice}{' '}
+          <span class="highlight">{formattedPrice}</span>{' '}
           {this.parcels && this.parcelPrice && (
             <span class="credit-info">
               em até <span class="highlight">{this.parcels}x</span> de{' '}
