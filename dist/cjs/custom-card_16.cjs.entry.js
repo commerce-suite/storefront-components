@@ -100,7 +100,10 @@ const HighlightCard = class {
     renderItem(item, isHighlighted) {
         if (!item.show)
             return null;
-        return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product" }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, inline: true }), index.h("div", { class: "highlight-card-product-cart-icon" }, index.h("img", { onClick: () => this.addItem.emit(item), src: index.getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
+        return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product" }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, basePrice: {
+                price: item.price,
+                priceCompare: item.priceBase,
+            }, inline: true }), index.h("div", { class: "highlight-card-product-cart-icon" }, index.h("img", { onClick: () => this.addItem.emit(item), src: index.getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
     }
     filterItems(items) {
         const visibleItems = items.filter(item => item.show);
@@ -117,7 +120,7 @@ const HighlightCard = class {
         this.filterItems(newItems);
     }
     render() {
-        return (index.h(index.Host, { key: 'f03f6996b74420eb4df0c5696d3f2b3e4ee25abb' }, index.h("div", { key: '101a9b536f5e4e1c624c7ddafd85e4ab4122a807', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: 'd20c4bda51d502f533f2fbd54aeb5f49f0c23289', class: "highlight-card-container" }, index.h("div", { key: 'b2f784b8334861744112daccd00d49b2efb88552', class: "highlight-card-header" }, index.h("span", { key: '83d5b38c683141b2d542f96b41c867459b7bf293', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (index.h(index.Host, { key: '7e2f359858cce941a8d6716035d4d6d39e175c7a' }, index.h("div", { key: '55210b6faeeea74acabbed2d93f363f6fa70c8e7', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: '6b0ef6ae3e25d69979144996146168ffe480d4a4', class: "highlight-card-container" }, index.h("div", { key: '65ccf2ce3e9ca96530c56fecd3f00632dd175cde', class: "highlight-card-header" }, index.h("span", { key: 'd768d8d71b176fa8e6acf55c134db5145705338f', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["handleItemsChange"]
