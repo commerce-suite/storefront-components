@@ -9,9 +9,10 @@ import { defaultContent } from './constants/defaultContent';
   shadow: false,
 })
 export class MaintenanceMode {
-  @Event() componentRendered: EventEmitter<void>;
   @State() maintenanceModeData: IMaintenanceMode = maintenanceModeContent || defaultContent;
   @State() recaptchaToken: string;
+
+  @Event() componentRendered: EventEmitter<void>;
 
   handleSubmit(e: Event) {
     e.preventDefault();
@@ -21,6 +22,10 @@ export class MaintenanceMode {
   @Listen('tokenReceived')
   handleTokenReceived(event: CustomEvent<string>) {
     this.recaptchaToken = event.detail;
+  }
+
+  componentDidLoad() {
+    this.componentRendered.emit();
   }
 
   render() {
