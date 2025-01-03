@@ -107,6 +107,7 @@ body {
 
       @include for-desktop {
         width: 480px;
+        padding: 24px;
       }
 
       &-success {
@@ -130,6 +131,7 @@ body {
 
     @include for-desktop {
       width: 480px;
+      padding: 24px;
     }
 
     &-label {
