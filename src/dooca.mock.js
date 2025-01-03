@@ -1,4 +1,5 @@
 const dooca = {
+  base_url: 'http://localhost:9090',
   shop_id: 103779,
   theme: {
     settings: {
@@ -287,7 +288,7 @@ const dooca = {
 window.shop_ctx = {
   api_url: 'https://api.storefront.dchomolog.dooca.store/',
   token:
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDM3Nzl9.aN9JQNFDsB2bZ56KuTSg9F0G8lmOqK59XEd_VXhaa5M',
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzaG9wX2lkIjoxMDMxNjl9.8e5HjrUBS6tXfbl713K1kmayst6udsh7d0Er3Hb8M3E',
   mock: null,
   base_path: '/',
   organization: 'dooca',
