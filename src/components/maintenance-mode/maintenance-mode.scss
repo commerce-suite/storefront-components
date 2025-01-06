@@ -20,11 +20,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff50;
+  background-color: transparentize(#ffffff, 0.5);
   z-index: 9999;
 
   .spinner {
-    @include lds-dual-ring;
+    @include simple-spinner;
   }
 }
 

@@ -90,7 +90,6 @@ export class MaintenanceMode {
               <img src={this.maintenanceModeData.image.src} alt="maintenance-mode-image" />
             )}
           </div>
-
           {this.maintenanceModeData.newsletter && !this.message && (
             <form
               onSubmit={this.handleSubmit.bind(this)}
@@ -116,7 +115,6 @@ export class MaintenanceMode {
               </div>
             </form>
           )}
-
           {this.message && (
             <div
               class={`maintenance-mode-content-message maintenance-mode-content-message-${this.message.type}`}
