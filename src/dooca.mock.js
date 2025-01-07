@@ -1,4 +1,5 @@
 const dooca = {
+  base_url: 'http://localhost:9090',
   shop_id: 103779,
   theme: {
     settings: {
