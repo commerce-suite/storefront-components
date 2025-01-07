@@ -1,4 +1,15 @@
+import { AppService } from '@uxshop/storefront-core';
+
 export class MaintenanceModeService {
+  public async getAppContent() {
+    try {
+      const { content } = await AppService.getBySlug('maintenance-mode');
+      return JSON.parse(content);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   public async submitNewsletter(formData: FormData) {
     const url = `${window.dooca.base_url}/action/newsletter/add`;
 

@@ -1,6 +1,5 @@
 import { Component, Env, Event, EventEmitter, h, Host, Listen, State } from '@stencil/core';
 import { IMaintenanceMode } from './maintenance-mode.type';
-import { maintenanceModeContent } from './mocks/maintenanceModeContent';
 import { defaultContent } from './constants/defaultContent';
 import { MaintenanceModeService } from './maintenance-mode.service';
 
@@ -10,21 +9,34 @@ import { MaintenanceModeService } from './maintenance-mode.service';
   shadow: false,
 })
 export class MaintenanceMode {
-  @State() maintenanceModeData: IMaintenanceMode = maintenanceModeContent || defaultContent;
+  @State() maintenanceModeData: IMaintenanceMode = defaultContent;
   @State() maintenanceModeService = new MaintenanceModeService();
   @State() recaptchaToken: string;
-  @State() isLoading: boolean;
-  @State() message: {
+  @State() isLoading = false;
+  @State() isInitialLoading = false;
+  @State() userMessage: {
     text: string;
     type: 'success' | 'error';
   };
 
   @Event() componentRendered: EventEmitter<void>;
 
-  async handleSubmit(e: Event) {
-    e.preventDefault();
+  private async load() {
+    this.isInitialLoading = true;
 
-    const form = e.target as HTMLFormElement;
+    try {
+      this.maintenanceModeData = await this.maintenanceModeService.getAppContent();
+    } catch (error) {
+      console.error('MaintenanceMode - load', { error });
+    } finally {
+      this.isInitialLoading = false;
+    }
+  }
+
+  private async handleSubmit(event: Event) {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
     formData.append('form_type', 'newsletter');
@@ -32,17 +44,18 @@ export class MaintenanceMode {
     try {
       this.isLoading = true;
       await this.maintenanceModeService.submitNewsletter(formData);
-      this.message = {
+      this.userMessage = {
         text: 'E-mail cadastrado',
         type: 'success',
       };
     } catch (error) {
+      console.error('MaintenanceMode - handleSubmit', { error });
       const defaultMessage = 'Ocorreu um erro, tente novamente mais tarde';
       const errors = error?.message ? JSON.parse(error.message) : { errors: [defaultMessage] };
-      const errorMessage = errors.errors[0];
+      const [errorMessage] = errors.errors;
 
-      this.message = {
-        text: errorMessage,
+      this.userMessage = {
+        text: errorMessage || defaultMessage,
         type: 'error',
       };
     } finally {
@@ -55,24 +68,41 @@ export class MaintenanceMode {
     this.recaptchaToken = event.detail;
   }
 
+  async componentWillLoad() {
+    await this.load();
+  }
+
   componentDidLoad() {
     this.componentRendered.emit();
   }
 
   render() {
-    document.documentElement.style.setProperty(
-      '--maintenance-bg',
-      this.maintenanceModeData.colors.content_background,
-    );
+    const {
+      page_title: pageTitle,
+      page_content: pageContent,
+      colors,
+      image,
+      newsletter,
+    } = this.maintenanceModeData;
+
+    const {
+      content_background: contentBackground,
+      title,
+      content,
+      button_background: buttonBackground,
+      button_text: buttonText,
+    } = colors;
+
+    document.documentElement.style.setProperty('--maintenance-bg', contentBackground);
 
     return (
       <Host
         style={{
-          '--maintenance-bg': this.maintenanceModeData.colors.content_background,
-          '--maintenance-title': this.maintenanceModeData.colors.title,
-          '--maintenance-text': this.maintenanceModeData.colors.content,
-          '--maintenance-button-bg': this.maintenanceModeData.colors.button_background,
-          '--maintenance-button-color': this.maintenanceModeData.colors.button_text,
+          '--maintenance-bg': contentBackground,
+          '--maintenance-title': title,
+          '--maintenance-text': content,
+          '--maintenance-button-bg': buttonBackground,
+          '--maintenance-button-color': buttonText,
         }}
       >
         {this.isLoading && (
@@ -80,49 +110,55 @@ export class MaintenanceMode {
             <span class="spinner" />
           </div>
         )}
-        <div class="maintenance-mode maintenance-mode-container">
-          <div class="maintenance-mode-content">
-            <div class="maintenance-mode-content-label">
-              <h1>{this.maintenanceModeData.page_title}</h1>
-              <p>{this.maintenanceModeData.page_content}</p>
+
+        {this.maintenanceModeData && !this.isInitialLoading && (
+          <div class="maintenance-mode maintenance-mode-container">
+            <div class="maintenance-mode-content">
+              <div class="maintenance-mode-content-label">
+                <h1>{pageTitle}</h1>
+                <p>{pageContent}</p>
+              </div>
+
+              {image && <img src={image.src} alt="maintenance-mode-image" />}
             </div>
-            {this.maintenanceModeData.image && (
-              <img src={this.maintenanceModeData.image.src} alt="maintenance-mode-image" />
+
+            {newsletter && !this.userMessage && (
+              <form
+                onSubmit={e => this.handleSubmit(e)}
+                name="newsletter"
+                class="maintenance-mode-form"
+              >
+                <div class="maintenance-mode-form-label">
+                  <h2>Cadastre-se para receber novidades</h2>
+                </div>
+                <div class="maintenance-mode-form-content">
+                  <div class="maintenance-mode-form-content-input">
+                    <input type="text" name="name" placeholder="Seu nome" required />
+                    <input type="email" name="email" placeholder="Seu email" required />
+                  </div>
+
+                  <google-recaptcha siteKey={Env.GOOGLE_RECAPTCHA_SITE_KEY} />
+
+                  <button
+                    class="maintenance-mode-form-content-button"
+                    type="submit"
+                    disabled={!this.recaptchaToken}
+                  >
+                    Quero me inscrever
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {this.userMessage && (
+              <div
+                class={`maintenance-mode-content-message maintenance-mode-content-message-${this.userMessage.type}`}
+              >
+                <span>{this.userMessage.text}</span>
+              </div>
             )}
           </div>
-          {this.maintenanceModeData.newsletter && !this.message && (
-            <form
-              onSubmit={this.handleSubmit.bind(this)}
-              name="newsletter"
-              class="maintenance-mode-form"
-            >
-              <div class="maintenance-mode-form-label">
-                <h2>Cadastre-se para receber novidades</h2>
-              </div>
-              <div class="maintenance-mode-form-content">
-                <div class="maintenance-mode-form-content-input">
-                  <input type="text" name="name" placeholder="Seu nome" required />
-                  <input type="email" name="email" placeholder="Seu email" required />
-                </div>
-                <google-recaptcha siteKey={Env.GOOGLE_RECAPTCHA_SITE_KEY} />
-                <button
-                  class="maintenance-mode-form-content-button"
-                  type="submit"
-                  disabled={!this.recaptchaToken}
-                >
-                  Quero me inscrever
-                </button>
-              </div>
-            </form>
-          )}
-          {this.message && (
-            <div
-              class={`maintenance-mode-content-message maintenance-mode-content-message-${this.message.type}`}
-            >
-              <span>{this.message.text}</span>
-            </div>
-          )}
-        </div>
+        )}
       </Host>
     );
   }
