@@ -1,4 +1,5 @@
 import { AppService } from '@uxshop/storefront-core';
+import { defaultContent } from './constants/defaultContent';
 
 export class MaintenanceModeService {
   public async getAppContent() {
@@ -7,6 +8,7 @@ export class MaintenanceModeService {
       return JSON.parse(content);
     } catch (error) {
       console.error(error);
+      return defaultContent;
     }
   }
 
