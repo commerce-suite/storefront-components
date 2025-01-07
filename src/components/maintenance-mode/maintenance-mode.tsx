@@ -38,7 +38,7 @@ export class MaintenanceMode {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    formData.append('form_type', 'newsletter');
+    formData.append('form_type', 'newsletter_app');
 
     try {
       this.isLoading = true;
