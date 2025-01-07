@@ -13,7 +13,7 @@ export class MaintenanceMode {
   @State() maintenanceModeService = new MaintenanceModeService();
   @State() recaptchaToken: string;
   @State() isLoading = false;
-  @State() isInitialLoading = false;
+  @State() isInitialLoading = true;
   @State() userMessage: {
     text: string;
     type: 'success' | 'error';
@@ -22,8 +22,6 @@ export class MaintenanceMode {
   @Event() componentRendered: EventEmitter<void>;
 
   private async load() {
-    this.isInitialLoading = true;
-
     try {
       this.maintenanceModeData = await this.maintenanceModeService.getAppContent();
     } catch (error) {
@@ -68,11 +66,8 @@ export class MaintenanceMode {
     this.recaptchaToken = event.detail;
   }
 
-  async componentWillLoad() {
+  async componentDidLoad() {
     await this.load();
-  }
-
-  componentDidLoad() {
     this.componentRendered.emit();
   }
 
@@ -105,8 +100,8 @@ export class MaintenanceMode {
           '--maintenance-button-color': buttonText,
         }}
       >
-        {this.isLoading && (
-          <div class="loading-container">
+        {(this.isLoading || this.isInitialLoading) && (
+          <div class={`loading-container ${this.isInitialLoading ? '-initial-loading' : ''}`}>
             <span class="spinner" />
           </div>
         )}

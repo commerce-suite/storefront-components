@@ -26,6 +26,13 @@ body {
   .spinner {
     @include simple-spinner;
   }
+
+  &.-initial-loading {
+    background-color: transparent;
+    .spinner {
+      @include simple-spinner(#000000);
+    }
+  }
 }
 
 .maintenance-mode-container {
