@@ -14,7 +14,7 @@ const ProductPriceSimple = /*@__PURE__*/ proxyCustomElement(class ProductPriceSi
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'b87b05ebb6330b579e6e3c7703ac37ae0a74e18d', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '2d5b7c07df8ca631ecd019078adf5dc1f2fefb6a', class: "price-compare" }, formattedCompare), h("span", { key: 'f0f6d020e0a626758c11cfbc22ef31336041c8ba', class: "price-current" }, h("span", { key: '469a3d1d4e88517d51169d650a9e5b6a351f904b', class: "highlight" }, formattedPrice))));
+        return (h("div", { key: 'c9039c471f96bd4511e90ebd9561397592fbd564', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '9a203dd0ee2736d6809c154d518d6d1e3cd65bba', class: "price-compare" }, formattedCompare), h("span", { key: 'fd88ad7365d24ecd5ca6094b8fdaca1b31044ffb', class: "price-current" }, h("span", { key: 'eb2de32d730643b6c73b7c3516be88ca107feffc', class: "highlight" }, formattedPrice))));
     }
     static get style() { return ProductPriceSimpleStyle0; }
 }, [0, "product-price-simple", {

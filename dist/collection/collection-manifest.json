@@ -2,11 +2,13 @@
   "entries": [
     "components/buy-together/buy-together.js",
     "components/buy-together-cart-modal/buy-together-cart-modal.js",
+    "components/google-recaptcha/google-recaptcha.js",
     "components/launch-countdown/launch-countdown.js",
     "components/live-shop/live-shop.js",
     "components/live-shop/snippets/live-shop-desktop.js",
     "components/live-shop/snippets/live-shop-mobile.js",
     "components/live-shop/snippets/live-shop-not-found.js",
+    "components/maintenance-mode/maintenance-mode.js",
     "components/showcase/showcase.js",
     "components/ui/custom-card/custom-card.js",
     "components/ui/front-countdown/front-countdown.js",

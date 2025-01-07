@@ -21,7 +21,7 @@ const VariationSelector = /*@__PURE__*/ proxyCustomElement(class VariationSelect
         });
     }
     render() {
-        return (h("div", { key: 'a3d37849db826dcb87e9df46ce51d1fcef4b653f', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
+        return (h("div", { key: '160a00d7e6c7d9dc599c406c0cd9f8e9ca4c31f5', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
     }
     static get style() { return VariationSelectorStyle0; }
 }, [2, "variation-selector", {

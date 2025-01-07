@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getAssetPath, E as Env } from './index-39fa297b.js';
-import { P as ProductService, L as LiveShopService } from './index-7dfb22de.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getAssetPath, E as Env } from './index-a3127836.js';
+import { P as ProductService, L as LiveShopService } from './index-998b9210.js';
 
 const customCardCss = ":host{display:inline-block;width:100%}.custom-card{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px}.custom-card-header{display:flex;flex-direction:column;gap:16px}.custom-card-header-title,.custom-card-header-description{margin:0;text-align:center}.custom-card-header-title{font-family:var(--h1-ff);color:var(--menu-items);font-weight:700;font-size:24px;text-transform:uppercase;word-break:break-word}.custom-card-header-description{font-size:16px}@media (min-width: 1024px){.custom-card{gap:40px}}";
 const CustomCardStyle0 = customCardCss;
@@ -16,7 +16,7 @@ const CustomCard = class {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '732ac75941c1cf4a35775ac286de0a74dcb33def' }, h("div", { key: '9fbe399940103764e765dd84563622a5ac9fca29', class: `custom-card ${this.customClass}` }, h("div", { key: 'dca7891aeb907406a97ce9093407ceea1d844d13', class: "custom-card-header" }, h("h2", { key: '8eaefb1c57db1af82c73a2bea7df4dca0c506c90', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '1db1caf8f312021121348055880fc67c7b8e4545', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: 'ea8120c8aa7e11799b5a2e270f49edd3c580bde2', class: "custom-card-content" }, h("slot", { key: 'f793382fc558355fd70659264ec3c69c60f98e31' })))));
+        return (h(Host, { key: 'bf02f44cdc6c2da39b0529867a67262758a764bb' }, h("div", { key: '4a0472e9cccced2e7888ceb716280eb424821b27', class: `custom-card ${this.customClass}` }, h("div", { key: 'ffeb567152895df9085959ac4a6fc2bb6588cb90', class: "custom-card-header" }, h("h2", { key: '976d0f0d92f4d6c6e8a77c4622324e762c383cd3', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '17396eac2ca965b1d33a390f372d1a7086735f47', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: '1c55813bd7d4d66b04d06794606a38be5d3a1d76', class: "custom-card-content" }, h("slot", { key: 'a0b7326af7ae7b1346e37fb1d2b1ce90bca1d076' })))));
     }
 };
 CustomCard.style = CustomCardStyle0;
@@ -73,7 +73,7 @@ const FrontImage = class {
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: 'a86cbee4ce7b83af6db0f609c9d50339332ab639' }, h("figure", { key: '1d7ae12ec0cb14648c1bba089f999729338de4b0', class: this.getImageClassByProps() }, h("img", { key: 'fdf4e6f59d6b3014871e74916a8c087d1911cddf', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: '16b68f05ef81fb5c2d76ffef7a236240e8ecc567' }, this.figCaption))));
+        return (h(Host, { key: 'bc463968dd294e3a8f7aa279622bba5d72fe8ac6' }, h("figure", { key: 'b71f07405b96ae5685f93de92d032aef312eb779', class: this.getImageClassByProps() }, h("img", { key: 'b5a24103e1c560579c53d9a9eb32630c7500d711', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: 'c3a49858f8e2e02c88a344f9f5fcfc73c86bd79a' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]
@@ -116,7 +116,7 @@ const HighlightCard = class {
         this.filterItems(newItems);
     }
     render() {
-        return (h(Host, { key: '7e2f359858cce941a8d6716035d4d6d39e175c7a' }, h("div", { key: '55210b6faeeea74acabbed2d93f363f6fa70c8e7', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '6b0ef6ae3e25d69979144996146168ffe480d4a4', class: "highlight-card-container" }, h("div", { key: '65ccf2ce3e9ca96530c56fecd3f00632dd175cde', class: "highlight-card-header" }, h("span", { key: 'd768d8d71b176fa8e6acf55c134db5145705338f', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: '1bec2619adbb46bcb6ca24333a54eed64e164189' }, h("div", { key: '2131db9a08f0be0905c0cbe2fb2ea0309d75741e', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '2293dbd85cd2b9295295d86491c8564ede506590', class: "highlight-card-container" }, h("div", { key: '57058ccfde1a9d6ac6d20ad55ba4b3c545592ffe', class: "highlight-card-header" }, h("span", { key: 'd85ada76ac9cd891a62411635aac8e1dd4c5f5ae', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["handleItemsChange"]
@@ -257,7 +257,7 @@ WebSocketClient.INITIAL_RECONNECT_DELAY = 5000;
 WebSocketClient.MAX_RECONNECT_DELAY = 30000;
 WebSocketClient.INITIAL_INCREMENT_DELAY = 1000;
 
-const liveShopCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}@keyframes lds-dual-ring-animation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}:host{display:block;width:100%}.loading-container{display:flex;width:100%;justify-content:center;align-items:center;min-height:350px}.loading-container .spinner{--spinner-color:var(--fc-color-secondary, #000);display:inline-block;width:80px;height:80px}.loading-container .spinner:after{content:\" \";display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid var(--spinner-color);border-color:var(--spinner-color) transparent var(--spinner-color) transparent;animation:lds-dual-ring-animation 1.2s linear infinite}.live-shop{height:100%}.live-shop-warmup .banner-custom-style{padding:40px}.live-shop-warmup .banner-custom-style>.custom-card-content{width:100%;max-width:720px;height:auto;aspect-ratio:16/9}.live-shop-warmup .banner-custom-style>.custom-card-content img{width:100%;height:100%;object-fit:cover}.live-shop-warmup .banner-custom-style>.custom-card-content .live-shop-banner{background-color:#d9d9d9;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.live-shop-finished .button-custom-style{padding:40px;max-width:410px;margin:0 auto;text-align:center}.live-shop-finished .button-custom-style button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-weight:500;font-size:14px}.live-shop-finished .button-custom-style button:hover{opacity:0.75}.live-shop-finished .button-custom-style button:disabled{opacity:0.6;cursor:not-allowed}";
+const liveShopCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}@keyframes lds-dual-ring-animation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes simple-spinner-animation{0%{transform:translate(-50%, -50%) rotate(0deg)}100%{transform:translate(-50%, -50%) rotate(360deg)}}:host{display:block;width:100%}.loading-container{display:flex;width:100%;justify-content:center;align-items:center;min-height:350px}.loading-container .spinner{--spinner-color:var(--fc-color-secondary, #000);display:inline-block;width:80px;height:80px}.loading-container .spinner:after{content:\" \";display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid var(--spinner-color);border-color:var(--spinner-color) transparent var(--spinner-color) transparent;animation:lds-dual-ring-animation 1.2s linear infinite}.live-shop{height:100%}.live-shop-warmup .banner-custom-style{padding:40px}.live-shop-warmup .banner-custom-style>.custom-card-content{width:100%;max-width:720px;height:auto;aspect-ratio:16/9}.live-shop-warmup .banner-custom-style>.custom-card-content img{width:100%;height:100%;object-fit:cover}.live-shop-warmup .banner-custom-style>.custom-card-content .live-shop-banner{background-color:#d9d9d9;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.live-shop-finished .button-custom-style{padding:40px;max-width:410px;margin:0 auto;text-align:center}.live-shop-finished .button-custom-style button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-weight:500;font-size:14px}.live-shop-finished .button-custom-style button:hover{opacity:0.75}.live-shop-finished .button-custom-style button:disabled{opacity:0.6;cursor:not-allowed}";
 const LiveShopStyle0 = liveShopCss;
 
 const LiveShop = class {
@@ -387,7 +387,7 @@ const LiveShopDesktop = class {
         return this.isChatOpen ? 'Ocultar chat da live' : 'Exibir chat da live';
     }
     render() {
-        return (h("div", { key: '0b0e80a706d46319d24bf31f22796f27747f3536', class: "live-shop-in-live-desktop" }, h("div", { key: 'a91d542363fe2f1200fd8938b63fceeda4430d5f', class: "live-shop-in-live-desktop-infos" }, h("div", { key: 'b21d77cc94bbbd045e88b7bf1e94eb5e9a0e82a6', class: "live-shop-in-live-desktop-infos-player" }, h("live-video-player", { key: '1f3f0e31fda7ba10cd3ba515c9cfbea7a693d143', videoId: this.videoId, autoPlay: true })), h("div", { key: '20a9163a8380a98b19ce8613e4a6dfb51e8f491b', class: "live-shop-in-live-desktop-infos-options" }, h("h2", { key: '3d51977961f1ef2feb0a9f71aefbff5e8992a361', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), this.liveShopData.chatVisible && (h("button", { key: 'd07cdc4ad3c486da0b60f3c35bf5247a63a8047c', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText()))), this.isChatOpen && (h("div", { key: 'fcec6f27e38dbadad290d6127ffee3930669d7c5', class: "live-shop-in-live-desktop-infos-options-chat" }, h("live-video-chat", { key: '0e3ebfaa8b2c0960158503b3556d8a469990ebc3', videoId: this.videoId })))), h("div", { key: 'f7f486ad5203d7e2a756a95659732c484d054e50', class: "live-shop-in-live-desktop-content" }, h("div", { key: 'a19a7b5bcf531f9f351b8ad6908c174d9c8c21a8', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 && this.items.some(item => item.show) ? (h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
+        return (h("div", { key: '83688007127152e35d37fa214d5d757dc09bd8dc', class: "live-shop-in-live-desktop" }, h("div", { key: '8590bcd8113204cfeb05cf04d082751e6fdde378', class: "live-shop-in-live-desktop-infos" }, h("div", { key: 'c56a9f3355bf340c5a88138743c0d840897c8ea7', class: "live-shop-in-live-desktop-infos-player" }, h("live-video-player", { key: '836ced4d3feaa823d795a610d7cb9883e51cb823', videoId: this.videoId, autoPlay: true })), h("div", { key: '830a5186917f5ce1545ada8aacbc7d4f5fad2e9a', class: "live-shop-in-live-desktop-infos-options" }, h("h2", { key: '2c83f90c525e1804751ef7ebeb41584d8a07901e', class: "live-shop-in-live-desktop-infos-options-title" }, this.liveShopData.name), this.liveShopData.chatVisible && (h("button", { key: '82ca6cdd8047dfd3648fcdedf93f9f44fddfae7e', class: "live-shop-in-live-desktop-infos-options-button", onClick: this.toggleChat }, this.buttonText()))), this.isChatOpen && (h("div", { key: 'faef8dce8b2e7e59bd0ede6ee089ff8b3e846893', class: "live-shop-in-live-desktop-infos-options-chat" }, h("live-video-chat", { key: 'a6ac796d0b3be7d74a0b15b5bb65681337b7b8a3', videoId: this.videoId })))), h("div", { key: 'd168ffd8d0765d10abc8036abab2d68652944f70', class: "live-shop-in-live-desktop-content" }, h("div", { key: '5c16659d233eafe133c5e619a628f084431b5146', class: "live-shop-in-live-desktop-content-card" }, this.items.length > 0 && this.items.some(item => item.show) ? (h("highlight-card", { items: this.items, onAddItem: this.handleAddItem })) : (h("custom-card", { customClass: "in-live-custom-style-desktop", cardTitle: "produtos a caminho...", cardDescription: "Em breve, teremos algo especial para voc\u00EA!" }))))));
     }
 };
 LiveShopDesktop.style = LiveShopDesktopStyle0;
@@ -433,7 +433,7 @@ const LiveShopMobile = class {
         this.items = undefined;
     }
     render() {
-        return (h("div", { key: '1abb54a525fa61685d562217ab00c6c0159cfadd', class: "live-shop-in-live" }, h("div", { key: '3d664a342fb4617d18e5db88e8a49c3f2bfe3e0d', class: "live-shop-in-live-player" }, h("live-video-player", { key: '14a3df758d6159a71e1f6cb01acfda6a991571b6', videoId: this.videoId, autoPlay: true })), h("div", { key: 'ac70850384d726f4e139a54c6eb1f43c1474f8be', class: "live-shop-in-live-options" }, h("custom-card", { key: 'dee7d588370cbd6f9860107597ba2a9a7c219d4e', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: 'a122cdcccc5e6546e90498659b91e1a1f0af6768', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
+        return (h("div", { key: '3bd015899f2bc4fa515693fd7eac3421c8da8595', class: "live-shop-in-live" }, h("div", { key: 'b35e861c895705ae0f4fe5089aed4db265c8fd63', class: "live-shop-in-live-player" }, h("live-video-player", { key: 'de3b46504d7ebfff2d8c5c346e3cbe1f5afe86c1', videoId: this.videoId, autoPlay: true })), h("div", { key: 'ce7b8980f954d1a5acdb0a5ddae6991f0af52e81', class: "live-shop-in-live-options" }, h("custom-card", { key: 'bb0c62f474bc778fc917fbd93ddd5ed1fc4de668', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: '6025af2ee9e65ac7cd0c9fdec8229f458f54029d', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
     }
 };
 LiveShopMobile.style = LiveShopMobileStyle0;
@@ -450,7 +450,7 @@ const LiveShopNotFound = class {
         };
     }
     render() {
-        return (h(Host, { key: '59dac1f6b8f36d4deb1c8dd2c0afc83267f34917' }, h("div", { key: '241648e20ce99d694b61ec9dfd517ce3694781a5', class: "live-shop-not-found" }, h("custom-card", { key: '20ab423c2133a82a6f825b5d088915bfc10fb296', cardTitle: "Ops, parece que essa live n\u00E3o existe mais!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { key: 'e25c35d961b6165aab4f88369108b5523dfb0217', onClick: this.handleReturnToHome }, "Voltar para a p\u00E1gina inicial")))));
+        return (h(Host, { key: '1f403b5b2af650c1b722d1334e01a520f29c51ac' }, h("div", { key: 'bd76a6b90162f5a8afb6ba6d8ef777e5b3a4c324', class: "live-shop-not-found" }, h("custom-card", { key: 'de9bc6b31df20b18db73e6472ea325a4ffec2e8e', cardTitle: "Ops, parece que essa live n\u00E3o existe mais!", cardDescription: "Fique de olho em nossas pr\u00F3ximas lives para mais novidades e promo\u00E7\u00F5es imperd\u00EDveis!" }, h("button", { key: '992492e601ac1025b555ec7a4cc828f0003e96bd', onClick: this.handleReturnToHome }, "Voltar para a p\u00E1gina inicial")))));
     }
 };
 LiveShopNotFound.style = LiveShopNotFoundStyle0;
@@ -471,7 +471,7 @@ const LiveVideoChat = class {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '4fca836fe08716a1c9670fab3600ff25c19ef5c2' }, h("div", { key: '5cc11e1e12dbd71a6e87197fa39088cab475d441', class: "live-video-chat" }, h("iframe", { key: '5dfae10c79c4737e7b0773f854b28a3e9db4a9fd', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '81d8217d99480e79927891d870ee710b2e31dced' }, h("div", { key: '7b29bc775e2f1753e415bdbcdf0243597d33b6ec', class: "live-video-chat" }, h("iframe", { key: 'ffc9fa4017c6bba043b8a8ac588e6537bde7393e', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoChat.style = LiveVideoChatStyle0;
@@ -495,7 +495,7 @@ const LiveVideoPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '942dfcce61872c32a69c77e2af4292ba2b1f1742' }, h("div", { key: '4f66fc6a07ee5cefaf1d28ab140248cb7c0436f8', class: "live-video-player" }, h("iframe", { key: '1fe89746939e6849c7d99797f8e736d8f4df2156', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '60cab57f22b5b466959f58d15902e2a92367c695' }, h("div", { key: '340dd9a880691532d990181ddfdc3b27bf772bea', class: "live-video-player" }, h("iframe", { key: '1a326a412225a81de6f3368be24925f4111319b4', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoPlayer.style = LiveVideoPlayerStyle0;
@@ -518,7 +518,7 @@ const ProductCard = class {
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (h(Host, { key: '991c60752ba0e7013f37edefe76d9a344e795174' }, h("div", { key: 'f45566a66eb378fb06d792b1a2e9b89ee9139e29', class: this.getClassWithInline('product-container') }, h("front-image", { key: '3303b5b6eb1e3173b8fe6ac0fdaae7e0ec871153', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '046364c46282e3b4692017714f8dc41064cc71a5', class: "info" }, h("span", { key: '04e964be0d1f9b96300c7d6ca566b2d127f4d5f3', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("product-price", { key: '67254f9cba4545e0655793c8fc3ad354a99ab5ec', basePrice: this.basePrice, paymentOptions: this.paymentOptions })))));
+        return (h(Host, { key: '3990e7691e319f4e822f3229395fbd0adc986175' }, h("div", { key: '1cfceba5d9f2ee343f8cc4574e102de5a7f15ab8', class: this.getClassWithInline('product-container') }, h("front-image", { key: '4e409800e65cd3e43d2bbee9059bb89e64202710', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '1755d903905e77f70955c44ebf7c615bde340b8a', class: "info" }, h("span", { key: '37e055b9275f0feb48dfffd387c1a460139561f2', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("product-price", { key: '60ff941af33b538d06654ba683764f2a2d5a33a4', basePrice: this.basePrice, paymentOptions: this.paymentOptions })))));
     }
 };
 ProductCard.style = ProductCardStyle0;
@@ -568,7 +568,7 @@ const ProductPriceBillet = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: '3d806266e456292d2e80d90d202d0b346d70a5d7', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: '15306ea65e7300bd71d1716ee91650e7fd384d86', class: "price-compare" }, formattedCompare), h("span", { key: 'a0a662facb128ad70c1f404ab5c4d4f8152a421e', class: "price-current" }, h("span", { key: '26a2d6933ffcb02f672ff76ea59269f4d4e8749d', class: "highlight" }, formattedPrice), " no boleto")));
+        return (h("div", { key: '1f1b96c087c1e73cffe988ff06fa1c6580b4ac3a', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: '06a678bb35e1a4c2308113d44f0164aff4fb5297', class: "price-compare" }, formattedCompare), h("span", { key: '2fafb6bc9232ab9e44c0761d94da496d10a7072d', class: "price-current" }, h("span", { key: '7f48612adace109aae38a1247f9019038a0c94fa', class: "highlight" }, formattedPrice), " no boleto")));
     }
 };
 ProductPriceBillet.style = ProductPriceBilletStyle0;
@@ -590,7 +590,7 @@ const ProductPriceCreditCard = class {
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
         const formattedParcelPrice = this.parcelPrice ? currencyFormat(this.parcelPrice) : null;
         const interestText = this.hasInterest ? 'com juros' : 'sem juros';
-        return (h("div", { key: '6a9a93ca0ee4bd214fbf382426540f7c2ca59626', class: "payment-option payment-option-creditCard" }, formattedCompare && h("span", { key: '8b6f103b58d6790bad28e4c69e24e1628d576a1b', class: "price-compare" }, formattedCompare), h("span", { key: 'cde6822719072a91a86e51610d21080cc9300830', class: "price-current" }, h("span", { key: '401a7c4d306a06b5c70890dfa69eb0ba5a0043f8', class: "highlight" }, formattedPrice), ' ', this.parcels && this.parcelPrice && (h("span", { key: '41d7e71ff72b5b7c9a2c6abff671d0aac4738330', class: "credit-info" }, "em at\u00E9 ", h("span", { key: '853a474d498507ac53106e5a3d597c77210fd264', class: "highlight" }, this.parcels, "x"), " de", ' ', h("span", { key: '152aa9060d4cb070bc7d701beb472a8c100d1b4a', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
+        return (h("div", { key: '629ce84e525ffb2121a38e7d79e0c34646419d69', class: "payment-option payment-option-creditCard" }, formattedCompare && h("span", { key: '3ae7723e398c04ff83a5d4e1ad2b94318bf35888', class: "price-compare" }, formattedCompare), h("span", { key: 'cf822da5252fee8e18e1205b4149803487c1941f', class: "price-current" }, h("span", { key: '563d9ee9b0390724fdcdcc3197232e9e66d1b77d', class: "highlight" }, formattedPrice), ' ', this.parcels && this.parcelPrice && (h("span", { key: '6fa6503e27631fc382f495674ac40d18c7d163fe', class: "credit-info" }, "em at\u00E9 ", h("span", { key: '5118dc9c547b689e1a99ab1f608adc24d5f379b2', class: "highlight" }, this.parcels, "x"), " de", ' ', h("span", { key: '4779350a3dbfc1844ff670c0bc06ecb932838634', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
     }
 };
 ProductPriceCreditCard.style = ProductPriceCreditCardStyle0;
@@ -607,7 +607,7 @@ const ProductPricePix = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'b006be8ee807e4f9bee0d339e34268b954618859', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: '98b9122feb3233e4dc85c6105b371e391be1c613', class: "price-compare" }, formattedCompare), h("span", { key: '7e00bf224ba92e7a35793c37d2a998ffc116479e', class: "price-current" }, h("span", { key: '3eb8ed1f95172c3ef46a28e85a235581d73f9d81', class: "highlight" }, formattedPrice), " no pix")));
+        return (h("div", { key: '7cfe311cf3a3b6d673ce61bdcddf86ab650f3434', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: 'edcb9c9c3240074e1a8cdf4b9616dd782d11e2f9', class: "price-compare" }, formattedCompare), h("span", { key: 'da3655cdd080fd8ef1a44e05fe38c4bd3adb5c09', class: "price-current" }, h("span", { key: 'e14185061d1cc61cf546c9b9f3e7c741eb9e01aa', class: "highlight" }, formattedPrice), " no pix")));
     }
 };
 ProductPricePix.style = ProductPricePixStyle0;
@@ -624,7 +624,7 @@ const ProductPriceSimple = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'b87b05ebb6330b579e6e3c7703ac37ae0a74e18d', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '2d5b7c07df8ca631ecd019078adf5dc1f2fefb6a', class: "price-compare" }, formattedCompare), h("span", { key: 'f0f6d020e0a626758c11cfbc22ef31336041c8ba', class: "price-current" }, h("span", { key: '469a3d1d4e88517d51169d650a9e5b6a351f904b', class: "highlight" }, formattedPrice))));
+        return (h("div", { key: 'c9039c471f96bd4511e90ebd9561397592fbd564', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '9a203dd0ee2736d6809c154d518d6d1e3cd65bba', class: "price-compare" }, formattedCompare), h("span", { key: 'fd88ad7365d24ecd5ca6094b8fdaca1b31044ffb', class: "price-current" }, h("span", { key: 'eb2de32d730643b6c73b7c3516be88ca107feffc', class: "highlight" }, formattedPrice))));
     }
 };
 ProductPriceSimple.style = ProductPriceSimpleStyle0;
@@ -648,7 +648,7 @@ const TabSelector = class {
     }
     render() {
         var _a, _b;
-        return (h("div", { key: 'f99808007d9c6fc6b8d57f1281e09be382783158', class: "tab-selector" }, h("div", { key: '95c9b04f8af831220247bfe240d81d7da1ed7270', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: 'cb253ee08a5e27a94e6d8df1521363b1d84b6634', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
+        return (h("div", { key: '697ff2e799cc61c170da72d3e8de589ee1706b3e', class: "tab-selector" }, h("div", { key: 'e7b8ea244880f77446af7ca4eee87aac2f85a1d6', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '87eaa028dc50138bc00649ed024560bd7c4c1102', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-39fa297b.js';
+import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-a3127836.js';
 
 class DraggableService {
     constructor(onUpdatePosition) {
@@ -109,7 +109,7 @@ const MiniPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: 'afcd293d0b82abbb8076063bf7fe0ea15b6c1381' }, this.showMiniPlayer && (h("div", { key: '51e3f3c27c66fb4bc79107b8a18d7b717cda6588', class: "mini-player", style: this.getMiniPlayerStyle() }, h("button", { key: 'cac3d98b9ce61ee82235ff65f78c5a264e16f8c0', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, h("img", { key: '8e630cd5ae6ee41697ceabe09cc426a256b072cb', src: getAssetPath('./assets/icons/close-icon.svg'), alt: "close-icon" })), h("live-video-player", { key: '643f7dab642799a394e0dcd280c31951f0cb9813', videoId: this.videoId, autoPlay: this.autoPlay }), h("div", { key: 'f718201f59c97cad5fdf45523b92e99986bebbde', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, h("h6", { key: '67f99bbb642e81d0aa83ea2429ee15b3ce4c10c3', class: "mini-player-bar-title" }, this.mainTitle), h("div", { key: '08393ccd6bffca59fbd49bee410bf1b8cea98e25', class: "mini-player-bar-button" }, h("button", { key: 'f166a052f7bdb6cb8018ccf6f20c9327890c43dd', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
+        return (h(Host, { key: 'b142fda4923bc188cf3cd7c57e3420ce5fb523c2' }, this.showMiniPlayer && (h("div", { key: '88493e3f980bd3781446d03fb74aef576bed9674', class: "mini-player", style: this.getMiniPlayerStyle() }, h("button", { key: 'c1302d6b6291ee2aac7e3a0af4d90688b7205eac', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, h("img", { key: 'c84c7aec9d929e1dd529e6c4c6fb4183e0c62af9', src: getAssetPath('./assets/icons/close-icon.svg'), alt: "close-icon" })), h("live-video-player", { key: '508294b7a08ba9797c257877b8ff26a22c1aa604', videoId: this.videoId, autoPlay: this.autoPlay }), h("div", { key: '6a6d2156931c91cf24f06fb553728b6493eaf1b6', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, h("h6", { key: '4c190ec81f53545549fcbf7861e46136e63bcf37', class: "mini-player-bar-title" }, this.mainTitle), h("div", { key: '33e4f15bbf816ab913f9d063a9d6b0c000669841', class: "mini-player-bar-button" }, h("button", { key: '5140d7eeb2f7e1b5c7f67857ea61459225408e9d', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
     }
 };
 MiniPlayer.style = MiniPlayerStyle0;

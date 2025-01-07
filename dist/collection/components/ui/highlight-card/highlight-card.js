@@ -28,7 +28,7 @@ export class HighlightCard {
         this.filterItems(newItems);
     }
     render() {
-        return (h(Host, { key: '7e2f359858cce941a8d6716035d4d6d39e175c7a' }, h("div", { key: '55210b6faeeea74acabbed2d93f363f6fa70c8e7', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '6b0ef6ae3e25d69979144996146168ffe480d4a4', class: "highlight-card-container" }, h("div", { key: '65ccf2ce3e9ca96530c56fecd3f00632dd175cde', class: "highlight-card-header" }, h("span", { key: 'd768d8d71b176fa8e6acf55c134db5145705338f', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: '1bec2619adbb46bcb6ca24333a54eed64e164189' }, h("div", { key: '2131db9a08f0be0905c0cbe2fb2ea0309d75741e', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '2293dbd85cd2b9295295d86491c8564ede506590', class: "highlight-card-container" }, h("div", { key: '57058ccfde1a9d6ac6d20ad55ba4b3c545592ffe', class: "highlight-card-header" }, h("span", { key: 'd85ada76ac9cd891a62411635aac8e1dd4c5f5ae', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get is() { return "highlight-card"; }
     static get originalStyleUrls() {

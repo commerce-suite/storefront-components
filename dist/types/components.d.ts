@@ -57,6 +57,9 @@ export namespace Components {
         "selectName": string;
         "value": any;
     }
+    interface GoogleRecaptcha {
+        "siteKey": string;
+    }
     interface HighlightCard {
         "items": IHighlightCardItem[];
     }
@@ -99,6 +102,8 @@ export namespace Components {
     interface LiveVideoPlayer {
         "autoPlay": boolean;
         "videoId": string;
+    }
+    interface MaintenanceMode {
     }
     interface MiniPlayer {
         "autoPlay": boolean;
@@ -169,6 +174,10 @@ export interface FrontCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLFrontCountdownElement;
 }
+export interface GoogleRecaptchaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoogleRecaptchaElement;
+}
 export interface HighlightCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLHighlightCardElement;
@@ -204,6 +213,10 @@ export interface LiveVideoChatCustomEvent<T> extends CustomEvent<T> {
 export interface LiveVideoPlayerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLiveVideoPlayerElement;
+}
+export interface MaintenanceModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMaintenanceModeElement;
 }
 export interface MiniPlayerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -303,6 +316,23 @@ declare global {
     var HTMLFrontSelectElement: {
         prototype: HTMLFrontSelectElement;
         new (): HTMLFrontSelectElement;
+    };
+    interface HTMLGoogleRecaptchaElementEventMap {
+        "tokenReceived": string;
+    }
+    interface HTMLGoogleRecaptchaElement extends Components.GoogleRecaptcha, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoogleRecaptchaElementEventMap>(type: K, listener: (this: HTMLGoogleRecaptchaElement, ev: GoogleRecaptchaCustomEvent<HTMLGoogleRecaptchaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoogleRecaptchaElementEventMap>(type: K, listener: (this: HTMLGoogleRecaptchaElement, ev: GoogleRecaptchaCustomEvent<HTMLGoogleRecaptchaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGoogleRecaptchaElement: {
+        prototype: HTMLGoogleRecaptchaElement;
+        new (): HTMLGoogleRecaptchaElement;
     };
     interface HTMLHighlightCardElementEventMap {
         "addItem": IHighlightCardItem;
@@ -467,6 +497,23 @@ declare global {
         prototype: HTMLLiveVideoPlayerElement;
         new (): HTMLLiveVideoPlayerElement;
     };
+    interface HTMLMaintenanceModeElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLMaintenanceModeElement extends Components.MaintenanceMode, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMaintenanceModeElementEventMap>(type: K, listener: (this: HTMLMaintenanceModeElement, ev: MaintenanceModeCustomEvent<HTMLMaintenanceModeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMaintenanceModeElementEventMap>(type: K, listener: (this: HTMLMaintenanceModeElement, ev: MaintenanceModeCustomEvent<HTMLMaintenanceModeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMaintenanceModeElement: {
+        prototype: HTMLMaintenanceModeElement;
+        new (): HTMLMaintenanceModeElement;
+    };
     interface HTMLMiniPlayerElementEventMap {
         "on-click-miniplayer-button": void;
         "componentRendered": void;
@@ -568,6 +615,7 @@ declare global {
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
+        "google-recaptcha": HTMLGoogleRecaptchaElement;
         "highlight-card": HTMLHighlightCardElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
@@ -577,6 +625,7 @@ declare global {
         "live-shop-not-found": HTMLLiveShopNotFoundElement;
         "live-video-chat": HTMLLiveVideoChatElement;
         "live-video-player": HTMLLiveVideoPlayerElement;
+        "maintenance-mode": HTMLMaintenanceModeElement;
         "mini-player": HTMLMiniPlayerElement;
         "product-card": HTMLProductCardElement;
         "product-price": HTMLProductPriceElement;
@@ -635,6 +684,10 @@ declare namespace LocalJSX {
         "selectId"?: string;
         "selectName"?: string;
         "value"?: any;
+    }
+    interface GoogleRecaptcha {
+        "onTokenReceived"?: (event: GoogleRecaptchaCustomEvent<string>) => void;
+        "siteKey"?: string;
     }
     interface HighlightCard {
         "items"?: IHighlightCardItem[];
@@ -698,6 +751,9 @@ declare namespace LocalJSX {
         "onComponentRendered"?: (event: LiveVideoPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
+    interface MaintenanceMode {
+        "onComponentRendered"?: (event: MaintenanceModeCustomEvent<void>) => void;
+    }
     interface MiniPlayer {
         "autoPlay"?: boolean;
         "buttonText"?: string;
@@ -760,6 +816,7 @@ declare namespace LocalJSX {
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
+        "google-recaptcha": GoogleRecaptcha;
         "highlight-card": HighlightCard;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
@@ -769,6 +826,7 @@ declare namespace LocalJSX {
         "live-shop-not-found": LiveShopNotFound;
         "live-video-chat": LiveVideoChat;
         "live-video-player": LiveVideoPlayer;
+        "maintenance-mode": MaintenanceMode;
         "mini-player": MiniPlayer;
         "product-card": ProductCard;
         "product-price": ProductPrice;
@@ -791,6 +849,7 @@ declare module "@stencil/core" {
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
+            "google-recaptcha": LocalJSX.GoogleRecaptcha & JSXBase.HTMLAttributes<HTMLGoogleRecaptchaElement>;
             "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
@@ -800,6 +859,7 @@ declare module "@stencil/core" {
             "live-shop-not-found": LocalJSX.LiveShopNotFound & JSXBase.HTMLAttributes<HTMLLiveShopNotFoundElement>;
             "live-video-chat": LocalJSX.LiveVideoChat & JSXBase.HTMLAttributes<HTMLLiveVideoChatElement>;
             "live-video-player": LocalJSX.LiveVideoPlayer & JSXBase.HTMLAttributes<HTMLLiveVideoPlayerElement>;
+            "maintenance-mode": LocalJSX.MaintenanceMode & JSXBase.HTMLAttributes<HTMLMaintenanceModeElement>;
             "mini-player": LocalJSX.MiniPlayer & JSXBase.HTMLAttributes<HTMLMiniPlayerElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "product-price": LocalJSX.ProductPrice & JSXBase.HTMLAttributes<HTMLProductPriceElement>;

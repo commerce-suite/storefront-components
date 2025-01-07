@@ -8,7 +8,7 @@ export class ProductPricePix {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'b006be8ee807e4f9bee0d339e34268b954618859', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: '98b9122feb3233e4dc85c6105b371e391be1c613', class: "price-compare" }, formattedCompare), h("span", { key: '7e00bf224ba92e7a35793c37d2a998ffc116479e', class: "price-current" }, h("span", { key: '3eb8ed1f95172c3ef46a28e85a235581d73f9d81', class: "highlight" }, formattedPrice), " no pix")));
+        return (h("div", { key: '7cfe311cf3a3b6d673ce61bdcddf86ab650f3434', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: 'edcb9c9c3240074e1a8cdf4b9616dd782d11e2f9', class: "price-compare" }, formattedCompare), h("span", { key: 'da3655cdd080fd8ef1a44e05fe38c4bd3adb5c09', class: "price-current" }, h("span", { key: 'e14185061d1cc61cf546c9b9f3e7c741eb9e01aa', class: "highlight" }, formattedPrice), " no pix")));
     }
     static get is() { return "product-price-pix"; }
     static get originalStyleUrls() {

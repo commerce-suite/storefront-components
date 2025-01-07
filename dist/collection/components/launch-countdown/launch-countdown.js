@@ -40,7 +40,7 @@ export class LaunchCountdown {
         this.loadCountDown();
     }
     render() {
-        return (h(Host, { key: '7663c3ac7be67769e9115cfb71928856c89d0aac' }, h("div", { key: 'b67acc6e6e97503b7c32a4d5c920e0ded335de0f', class: "launch-countdown-container" }, h("div", { key: 'a836c13f17ef931e6d59acb9dbd32f2c8c95a723', class: "launch-countdown-container-header" }, h("h3", { key: 'b9b1f96b681acd79f3f8ad48fefd4c39d3a210f8', class: "launch-countdown-container-title" }, this.dataCountdownTitle), h("p", { key: '2ad67b669d41d12d5574a4089b3634b354f25c38', class: "launch-countdown-container-description" }, this.dataDescription)), h("front-countdown", { key: '80845c1e039431e5f555b3f2de8733db6dbfd3e5', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
+        return (h(Host, { key: '29cddb67e8a7d3b963bf4aaa4f0c9b6cda1470f1' }, h("div", { key: '06cb6b558f312427b7c9d3ebc26fbe66efe992fd', class: "launch-countdown-container" }, h("div", { key: '47a67bf28d204c189fbc735defbc571c49a45dc7', class: "launch-countdown-container-header" }, h("h3", { key: 'f1a3316645e68f85dc6d5ffd6fc64731c8a505d5', class: "launch-countdown-container-title" }, this.dataCountdownTitle), h("p", { key: 'fbef046f8d31721f74d849cfed014a7df672001f', class: "launch-countdown-container-description" }, this.dataDescription)), h("front-countdown", { key: 'be1a088244017be51590b34de61a575661d7c9c6', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
     }
     static get is() { return "launch-countdown"; }
     static get originalStyleUrls() {
