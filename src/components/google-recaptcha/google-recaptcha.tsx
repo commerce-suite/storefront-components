@@ -2,6 +2,7 @@ import { Component, Prop, State, Event, EventEmitter, h } from '@stencil/core';
 
 @Component({
   tag: 'google-recaptcha',
+  styleUrl: 'google-recaptcha.scss',
   shadow: false,
 })
 export class GoogleRecaptcha {
@@ -54,6 +55,6 @@ export class GoogleRecaptcha {
   }
 
   render() {
-    return <div id={this.recaptchaId}></div>;
+    return <div class="g-recaptcha" id={this.recaptchaId} />;
   }
 }

@@ -55,6 +55,8 @@ export namespace Components {
         "productId": string;
         "variationId": string;
     }
+    interface MaintenanceMode {
+    }
     interface ProductCard {
         "inline": boolean;
         "product": IProductCard;
@@ -92,6 +94,10 @@ export interface GoogleRecaptchaCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface MaintenanceModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMaintenanceModeElement;
 }
 export interface ShowcaseRelatedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -205,6 +211,23 @@ declare global {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
     };
+    interface HTMLMaintenanceModeElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLMaintenanceModeElement extends Components.MaintenanceMode, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMaintenanceModeElementEventMap>(type: K, listener: (this: HTMLMaintenanceModeElement, ev: MaintenanceModeCustomEvent<HTMLMaintenanceModeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMaintenanceModeElementEventMap>(type: K, listener: (this: HTMLMaintenanceModeElement, ev: MaintenanceModeCustomEvent<HTMLMaintenanceModeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMaintenanceModeElement: {
+        prototype: HTMLMaintenanceModeElement;
+        new (): HTMLMaintenanceModeElement;
+    };
     interface HTMLProductCardElement extends Components.ProductCard, HTMLStencilElement {
     }
     var HTMLProductCardElement: {
@@ -253,6 +276,7 @@ declare global {
         "front-select": HTMLFrontSelectElement;
         "google-recaptcha": HTMLGoogleRecaptchaElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "maintenance-mode": HTMLMaintenanceModeElement;
         "product-card": HTMLProductCardElement;
         "showcase-related": HTMLShowcaseRelatedElement;
         "variation-selector": HTMLVariationSelectorElement;
@@ -312,6 +336,9 @@ declare namespace LocalJSX {
         "productId"?: string;
         "variationId"?: string;
     }
+    interface MaintenanceMode {
+        "onComponentRendered"?: (event: MaintenanceModeCustomEvent<void>) => void;
+    }
     interface ProductCard {
         "inline"?: boolean;
         "product"?: IProductCard;
@@ -338,6 +365,7 @@ declare namespace LocalJSX {
         "front-select": FrontSelect;
         "google-recaptcha": GoogleRecaptcha;
         "launch-countdown": LaunchCountdown;
+        "maintenance-mode": MaintenanceMode;
         "product-card": ProductCard;
         "showcase-related": ShowcaseRelated;
         "variation-selector": VariationSelector;
@@ -354,6 +382,7 @@ declare module "@stencil/core" {
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "google-recaptcha": LocalJSX.GoogleRecaptcha & JSXBase.HTMLAttributes<HTMLGoogleRecaptchaElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "maintenance-mode": LocalJSX.MaintenanceMode & JSXBase.HTMLAttributes<HTMLMaintenanceModeElement>;
             "product-card": LocalJSX.ProductCard & JSXBase.HTMLAttributes<HTMLProductCardElement>;
             "showcase-related": LocalJSX.ShowcaseRelated & JSXBase.HTMLAttributes<HTMLShowcaseRelatedElement>;
             "variation-selector": LocalJSX.VariationSelector & JSXBase.HTMLAttributes<HTMLVariationSelectorElement>;
