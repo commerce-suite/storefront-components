@@ -2,6 +2,7 @@ import { Component, Env, Event, EventEmitter, h, Host, Listen, State } from '@st
 import { IMaintenanceMode } from './maintenance-mode.type';
 import { defaultContent } from './constants/defaultContent';
 import { MaintenanceModeService } from './maintenance-mode.service';
+import { transformMediaUrl } from '../../utils/utils';
 
 @Component({
   tag: 'maintenance-mode',
@@ -114,7 +115,7 @@ export class MaintenanceMode {
                 <p>{pageContent}</p>
               </div>
 
-              {image && <img src={image.src} alt="maintenance-mode-image" />}
+              {image && <img src={transformMediaUrl(image.src)} alt="maintenance-mode-image" />}
             </div>
 
             {newsletter && !this.userMessage && (
