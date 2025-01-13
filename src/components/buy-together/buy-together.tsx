@@ -252,7 +252,10 @@ export class BuyTogether implements ComponentWillLoad {
               {!this.showcaseMode && (
                 <div class="product-main">
                   <div class="product-wrapper">
-                    <product-card product={this.buyTogetherData.productMain}></product-card>
+                    <product-card
+                      product={this.buyTogetherData.productMain}
+                      paymentOptions={this.buyTogetherData.productMain.paymentOptions}
+                    ></product-card>
                     {this.buyTogetherData.productMain.selectVariations && (
                       <variation-selector
                         productId={this.buyTogetherData.productMain.id}
@@ -280,7 +283,11 @@ export class BuyTogether implements ComponentWillLoad {
                           onInput={ev => this.selectOrderBump(ev, productCard.id)}
                         />
                       </div>
-                      <product-card inline product={productCard}></product-card>
+                      <product-card
+                        inline
+                        product={productCard}
+                        paymentOptions={productCard.paymentOptions}
+                      ></product-card>
                     </div>
                     {productCard.selectVariations && (
                       <variation-selector

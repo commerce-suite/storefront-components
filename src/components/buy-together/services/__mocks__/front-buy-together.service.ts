@@ -8,6 +8,7 @@ import {
 } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTogetherTypes';
 import { FrontBuyTogetherAdapter } from '../front-buy-together.adapter';
 import { IInputSelectDataEvent } from '../../../../components';
+import { buyTogetherPaymentConfig } from './buy-together-payments-config';
 
 class FrontBuyTogetherServiceMock implements IFrontBuyTogetherService {
   changeProductOptions(data: IInputSelectDataEvent, productTarget: Product): IChangeResult {
@@ -29,6 +30,7 @@ class FrontBuyTogetherServiceMock implements IFrontBuyTogetherService {
   public async getBuyTogetherByProductId(): Promise<IBuyTogetherComponentData> {
     return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(
       buyTogetherData as BuyTogether,
+      buyTogetherPaymentConfig,
     );
   }
 }
