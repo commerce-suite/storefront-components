@@ -29,6 +29,10 @@ export namespace Components {
         "promotionTitle"?: string;
         "variationId"?: number;
     }
+    interface CashbackCredit {
+        "customer_id": number;
+        "product": Record<string, any>;
+    }
     interface FrontCountdown {
         "endDate": string;
         "startDate": string;
@@ -162,6 +166,12 @@ declare global {
         prototype: HTMLBuyTogetherCartModalElement;
         new (): HTMLBuyTogetherCartModalElement;
     };
+    interface HTMLCashbackCreditElement extends Components.CashbackCredit, HTMLStencilElement {
+    }
+    var HTMLCashbackCreditElement: {
+        prototype: HTMLCashbackCreditElement;
+        new (): HTMLCashbackCreditElement;
+    };
     interface HTMLFrontCountdownElementEventMap {
         "countdownFinished": any;
     }
@@ -281,6 +291,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "buy-together": HTMLBuyTogetherElement;
         "buy-together-cart-modal": HTMLBuyTogetherCartModalElement;
+        "cashback-credit": HTMLCashbackCreditElement;
         "front-countdown": HTMLFrontCountdownElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
@@ -317,6 +328,10 @@ declare namespace LocalJSX {
         "productId"?: number;
         "promotionTitle"?: string;
         "variationId"?: number;
+    }
+    interface CashbackCredit {
+        "customer_id"?: number;
+        "product"?: Record<string, any>;
     }
     interface FrontCountdown {
         "endDate"?: string;
@@ -391,6 +406,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "buy-together": BuyTogether;
         "buy-together-cart-modal": BuyTogetherCartModal;
+        "cashback-credit": CashbackCredit;
         "front-countdown": FrontCountdown;
         "front-image": FrontImage;
         "front-select": FrontSelect;
@@ -411,6 +427,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
             "buy-together-cart-modal": LocalJSX.BuyTogetherCartModal & JSXBase.HTMLAttributes<HTMLBuyTogetherCartModalElement>;
+            "cashback-credit": LocalJSX.CashbackCredit & JSXBase.HTMLAttributes<HTMLCashbackCreditElement>;
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
