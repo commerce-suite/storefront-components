@@ -3,11 +3,11 @@ export class FrontBuyTogetherResponse {
     constructor(response) {
         this.response = response;
     }
-    adapterToComponentData() {
+    adapterToComponentData(buyTogetherPaymentConfig) {
         var _a, _b;
         const canApplyAdapter = this.response && ((_b = (_a = this.response) === null || _a === void 0 ? void 0 : _a.productsPivot) === null || _b === void 0 ? void 0 : _b.length) > 0;
         this.componentData = canApplyAdapter
-            ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response, true)
+            ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response, buyTogetherPaymentConfig, true)
             : null;
         return this;
     }

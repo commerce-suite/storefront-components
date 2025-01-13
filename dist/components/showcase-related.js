@@ -1,7 +1,12 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host, Fragment } from '@stencil/core/internal/client';
 import { F as FrontBuyTogetherService } from './front-buy-together.service.js';
-import { d as defineCustomElement$3 } from './front-image2.js';
-import { d as defineCustomElement$2 } from './product-card2.js';
+import { d as defineCustomElement$8 } from './front-image2.js';
+import { d as defineCustomElement$7 } from './product-card2.js';
+import { d as defineCustomElement$6 } from './product-price2.js';
+import { d as defineCustomElement$5 } from './product-price-billet2.js';
+import { d as defineCustomElement$4 } from './product-price-credit-card2.js';
+import { d as defineCustomElement$3 } from './product-price-pix2.js';
+import { d as defineCustomElement$2 } from './product-price-simple2.js';
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -3236,7 +3241,7 @@ const Showcase = /*@__PURE__*/ proxyCustomElement(class Showcase extends HTMLEle
     render() {
         var _a;
         return (h(Host, { key: 'b505083682d6bb37458fa4685e99788c286f2be5' }, this.loading && (h("div", { key: '4531c3907441992a9da36387eca59007c6630923', class: "loading-container" }, h("span", { key: 'ca70993f6eca0dc87c2d1fde4e660d6a751474e1', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
-            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
+            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product, paymentOptions: product.paymentOptions }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         }))))))) : (h(Fragment, null))));
     }
     static get style() { return ShowcaseRelatedStyle0; }
@@ -3255,7 +3260,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["showcase-related", "front-image", "product-card"];
+    const components = ["showcase-related", "front-image", "product-card", "product-price", "product-price-billet", "product-price-credit-card", "product-price-pix", "product-price-simple"];
     components.forEach(tagName => { switch (tagName) {
         case "showcase-related":
             if (!customElements.get(tagName)) {
@@ -3264,10 +3269,35 @@ function defineCustomElement$1() {
             break;
         case "front-image":
             if (!customElements.get(tagName)) {
-                defineCustomElement$3();
+                defineCustomElement$8();
             }
             break;
         case "product-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "product-price":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "product-price-billet":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "product-price-credit-card":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "product-price-pix":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "product-price-simple":
             if (!customElements.get(tagName)) {
                 defineCustomElement$2();
             }

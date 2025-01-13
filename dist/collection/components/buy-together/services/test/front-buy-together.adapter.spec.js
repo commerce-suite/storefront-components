@@ -1,5 +1,6 @@
 import { buyTogetherData } from "../__mocks__/buy-together-data.mock";
 import { FrontBuyTogetherAdapter } from "../front-buy-together.adapter";
+import { buyTogetherPaymentConfig } from "../__mocks__/buy-together-payments-config";
 describe('FrontBuyTogetherAdapter', () => {
     const expectObjectAdapted = {
         price: '309.90',
@@ -64,12 +65,12 @@ describe('FrontBuyTogetherAdapter', () => {
     };
     it('It should adapter to component ProductCard from Product - adapterProductToProductCard', () => {
         const data = buyTogetherData;
-        const result = FrontBuyTogetherAdapter.adapterToProductCard(data.product);
+        const result = FrontBuyTogetherAdapter.adapterToProductCard(data.product, buyTogetherPaymentConfig);
         expect(result).toEqual(expectObjectAdapted);
     });
     it('It should adapter to component ProductCard from Product with isChecked true', () => {
         const data = buyTogetherData;
-        const result = FrontBuyTogetherAdapter.adapterPivotToProductCard(data.product);
+        const result = FrontBuyTogetherAdapter.adapterPivotToProductCard(data.product, buyTogetherPaymentConfig);
         expect(result).toEqual(Object.assign(Object.assign({}, expectObjectAdapted), { isCheck: true }));
     });
 });

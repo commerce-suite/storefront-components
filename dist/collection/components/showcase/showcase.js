@@ -80,7 +80,7 @@ export class Showcase {
     render() {
         var _a;
         return (h(Host, { key: 'b505083682d6bb37458fa4685e99788c286f2be5' }, this.loading && (h("div", { key: '4531c3907441992a9da36387eca59007c6630923', class: "loading-container" }, h("span", { key: 'ca70993f6eca0dc87c2d1fde4e660d6a751474e1', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
-            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
+            return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product, paymentOptions: product.paymentOptions }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         }))))))) : (h(Fragment, null))));
     }
     static get is() { return "showcase-related"; }

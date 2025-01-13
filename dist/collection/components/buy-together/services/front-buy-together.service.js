@@ -1,8 +1,15 @@
-import { BuyTogetherService } from "@uxshop/storefront-core";
+import { AppService, BuyTogetherService } from "@uxshop/storefront-core";
 import { FrontBuyTogetherAdapter } from "./front-buy-together.adapter";
 import { FrontBuyTogetherFilter } from "./front-buy-together.filter";
 import { FrontBuyTogetherResponse } from "./front-buy-together-response";
 export class FrontBuyTogetherService {
+    constructor() {
+        this.loadBuyTogetherPaymentConfig();
+    }
+    async loadBuyTogetherPaymentConfig() {
+        const data = await this.getBuyTogetherAppContent();
+        this.buyTogetherPaymentConfig = (data === null || data === void 0 ? void 0 : data.payments) || [];
+    }
     filterOutOriginalProducts(products, productIds) {
         return products.filter(product => !productIds.includes(+product.productId));
     }
@@ -23,12 +30,12 @@ export class FrontBuyTogetherService {
         return buyTogetherData
             .changeByVariationSelected(variationId)
             .applyFilters()
-            .adapterToComponentData().getComponentData;
+            .adapterToComponentData(this.buyTogetherPaymentConfig).getComponentData;
     }
     async getOnlyPivotProducts(productIds) {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.flatMap(response => {
-            const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
+            const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(this.buyTogetherPaymentConfig);
             return adaptedBuyTogether.getComponentData.products;
         });
         const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
@@ -51,21 +58,21 @@ export class FrontBuyTogetherService {
         const variationByColor = productTarget.variations.find(({ color }) => (color === null || color === void 0 ? void 0 : color.id) === Number(colorValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { color: variationByColor.color }));
         const productTargetUpdated = Object.assign(Object.assign({}, currentVariation), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
         return { productTargetUpdated, productCard };
     }
     changeAttribute(attributeValue, productTarget) {
         const variationByAttribute = productTarget.variations.find(({ attribute }) => (attribute === null || attribute === void 0 ? void 0 : attribute.id) === Number(attributeValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { attribute: (variationByAttribute === null || variationByAttribute === void 0 ? void 0 : variationByAttribute.attribute) || productTarget.attribute }));
         const productTargetUpdated = Object.assign(Object.assign({}, (currentVariation || productTarget)), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
         return { productTargetUpdated, productCard };
     }
     changeAttributeSecondary(attributeValue, productTarget) {
         const variationByAttributeSecondary = productTarget.variations.find(({ attributeSecondary }) => (attributeSecondary === null || attributeSecondary === void 0 ? void 0 : attributeSecondary.id) === Number(attributeValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { attributeSecondary: variationByAttributeSecondary.attributeSecondary }));
         const productTargetUpdated = Object.assign(Object.assign({}, currentVariation), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
         return { productTargetUpdated, productCard };
     }
     async addToCart(variantIds) {
@@ -91,6 +98,18 @@ export class FrontBuyTogetherService {
             };
             request.send(body);
         });
+    }
+    async getBuyTogetherAppContent() {
+        try {
+            const response = await AppService.getBySlug('buy-together');
+            if (response === null || response === void 0 ? void 0 : response.content)
+                return JSON.parse(response.content);
+            return null;
+        }
+        catch (error) {
+            console.error(error);
+            return null;
+        }
     }
 }
 //# sourceMappingURL=front-buy-together.service.js.map
