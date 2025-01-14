@@ -1193,6 +1193,14 @@ function hasMultilineItems(maybeArray) {
   return maybeArray != null && maybeArray.some(isMultiline);
 }
 
+function devAssert(condition, message) {
+  var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
+
+  if (!booleanCondition) {
+    throw new Error(message);
+  }
+}
+
 function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
 
 /**
@@ -1487,6 +1495,11 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
     key: "toString",
     value: function toString() {
       return printError(this);
+    }
+  }, {
+    key: "toJSON",
+    value: function toJSON() {
+      return formatError(this);
     } // FIXME: workaround to not break chai comparisons, should be remove in v16
     // $FlowFixMe[unsupported-syntax] Flow doesn't support computed properties yet
 
@@ -1529,6 +1542,33 @@ function printError(error) {
 
   return output;
 }
+/**
+ * Given a GraphQLError, format it according to the rules described by the
+ * Response Format, Errors section of the GraphQL Specification.
+ */
+
+function formatError(error) {
+  var _error$message;
+
+  error || devAssert(0, 'Received null or undefined error.');
+  var message = (_error$message = error.message) !== null && _error$message !== void 0 ? _error$message : 'An unknown error occurred.';
+  var locations = error.locations;
+  var path = error.path;
+  var extensions = error.extensions;
+  return extensions && Object.keys(extensions).length > 0 ? {
+    message: message,
+    locations: locations,
+    path: path,
+    extensions: extensions
+  } : {
+    message: message,
+    locations: locations,
+    path: path
+  };
+}
+/**
+ * @see https://github.com/graphql/graphql-spec/blob/master/spec/Section%207%20--%20Response.md#errors
+ */
 
 /**
  * Produces a GraphQLError representing a syntax error, containing useful
@@ -1570,14 +1610,6 @@ var TokenKind = Object.freeze({
 /**
  * The enum type representing the token kinds values.
  */
-
-function devAssert(condition, message) {
-  var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
-
-  if (!booleanCondition) {
-    throw new Error(message);
-  }
-}
 
 /**
  * A replacement for instanceof which includes an error warning when multi-realm
