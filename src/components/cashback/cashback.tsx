@@ -23,7 +23,7 @@ import { currencyFormat } from '../../utils/utils';
   scoped: true,
 })
 export class Cashback implements ComponentWillLoad {
-  @Prop({ mutable: true }) customer_id: number;
+  @Prop() customer_id: number | null;
   @Prop({ mutable: true }) product: Record<string, any>;
 
   @State() cashback: ICashback;
