@@ -1,0 +1,11 @@
+.cashback {
+    display: inline-flex;
+
+    img {
+        margin-right: .5rem;
+    }
+
+    span {
+        color: var(--success);
+    }
+}
