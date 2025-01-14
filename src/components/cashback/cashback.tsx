@@ -79,8 +79,8 @@ export class Cashback implements ComponentWillLoad {
           <div class="cashback">
             <img src={getAssetPath('./assets/icons/cashback.svg')} />
             <span>
-              Na compra deste produto, você receberá{' '}
-              {this.cashback.type === 'range' || this.product.has_price_range ? 'até ' : ''}
+              Na compra deste produto, você receberá
+              {this.cashback.allow_extra_discounts || this.product.has_price_range ? ' até ' : ' '}
               <strong>{currencyFormat(this.credit.value)}</strong> em Cashback!
             </span>
           </div>
