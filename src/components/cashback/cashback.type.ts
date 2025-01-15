@@ -19,6 +19,7 @@ export interface Cashback {
   active: boolean;
   active_to_use: boolean;
   show_extract: boolean;
+  show_credit_preview: boolean;
   max_representativeness?: number;
   representativeness_type: string;
   ranges?: ICashbackSettingRange[] | null;

@@ -47,7 +47,7 @@ export class Cashback implements ComponentWillLoad {
   }
 
   async getCalculation(): Promise<void> {
-    if (!this.cashback) return null;
+    if (!this.cashback || !this.cashback.show_credit_preview) return null;
 
     const { id } = this.product;
     const price = this.product.has_price_range ? this.product.max_price_range : this.product.price;
@@ -75,12 +75,11 @@ export class Cashback implements ComponentWillLoad {
   render() {
     return (
       <Host>
-        {this.cashback && this.credit && this.credit.value > 0 ? (
+        {this.credit && this.credit.value > 0 ? (
           <div class="cashback">
             <img src={getAssetPath('./assets/icons/cashback.svg')} />
             <span>
-              Na compra deste produto, você receberá
-              {this.cashback.allow_extra_discounts || this.product.has_price_range ? ' até ' : ' '}
+              Na compra deste produto, você receberá até{' '}
               <strong>{currencyFormat(this.credit.value)}</strong> em Cashback!
             </span>
           </div>
