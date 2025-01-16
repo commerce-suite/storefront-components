@@ -30,7 +30,7 @@ it('should render and have correct rootInstance', async () => {
             <div class="cashback">
                 <img src="/assets/icons/cashback.svg">
                 <span>
-                    Na compra deste produto, você receberá <strong>R$&nbsp;10,00</strong> em Cashback!
+                    Na compra deste produto, você receberá até <strong>R$&nbsp;10,00</strong> em Cashback!
                 </span>
             </div>
         </cashback-credit>

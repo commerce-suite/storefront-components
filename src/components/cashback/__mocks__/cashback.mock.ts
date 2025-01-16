@@ -13,6 +13,7 @@ export const cashbackMock: Cashback = {
   active: true,
   active_to_use: true,
   show_extract: true,
+  show_credit_preview: true,
   representativeness_type: 'partial',
   max_representativeness: 30,
   ranges: null,
