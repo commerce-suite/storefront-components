@@ -47,7 +47,7 @@ export class Cashback implements ComponentWillLoad {
   }
 
   async getCalculation(): Promise<void> {
-    if (!this.cashback || !this.cashback.show_credit_preview) return null;
+    if (!this.cashback || !this.cashback.active || !this.cashback.show_credit_preview) return null;
 
     const { id } = this.product;
     const price = this.product.has_price_range ? this.product.max_price_range : this.product.price;
