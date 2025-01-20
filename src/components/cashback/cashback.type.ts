@@ -6,7 +6,7 @@ export interface ICashbackSettingRange {
   markup: number;
 }
 
-export interface Cashback {
+export interface ICashback {
   id: UUID;
   organization_id: number;
   markup: number | string;
