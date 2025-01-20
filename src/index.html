@@ -31,12 +31,31 @@
     <cashback-credit id="cashback-credit"customer_id="1"></cashback-credit>
   </body>
   <script>
-    document.querySelector('#cashback-credit').product = {
+    const element = document.querySelector('#cashback-credit');
+    element.product = {
       id: 2915788,
-      price: 100.0,
-      has_price_range: false,
-      max_price_range: null
+      price: 100.0
     };
+    element.cashback = {
+      id: 'aa701afd-d1c4-4fb4-97e2-9f5f67ee0154',
+      organization_id: 28,
+      type: 'percent',
+      markup: 0.1,
+      release_days: 10,
+      expiration_days: 45,
+      exclude_categories: null,
+      allowed_categories: null,
+      allow_extra_discounts: false,
+      active: true,
+      active_to_use: true,
+      show_extract: true,
+      show_credit_preview: true,
+      representativeness_type: 'partial',
+      max_representativeness: 30,
+      ranges: null,
+      created_at: '2025-01-13 11:05:12',
+      updated_at: '2025-01-13 11:05:12'
+    }
   </script>
   <!-- <script>
     const btn = document.getElementById('btn-go');

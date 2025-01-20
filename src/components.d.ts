@@ -14,6 +14,7 @@ import {
   EnumBuyTogetherOnLoadStatus,
   IBuyTogetherComponentData,
 } from './components/buy-together/buy-together.type';
+import { ICashback } from './components/cashback/cashback.type';
 import { IFrontSelectOption } from './components/ui/front-select/front-select.type';
 import { IHighlightCardItem } from './components/ui/highlight-card/highlight-card.type';
 import { ILiveShop } from './components/live-shop/live-shop.type';
@@ -28,6 +29,7 @@ export {
   EnumBuyTogetherOnLoadStatus,
   IBuyTogetherComponentData,
 } from './components/buy-together/buy-together.type';
+export { ICashback } from './components/cashback/cashback.type';
 export { IFrontSelectOption } from './components/ui/front-select/front-select.type';
 export { IHighlightCardItem } from './components/ui/highlight-card/highlight-card.type';
 export { ILiveShop } from './components/live-shop/live-shop.type';
@@ -49,14 +51,15 @@ export namespace Components {
     promotionTitle?: string;
     variationId?: number;
   }
+  interface CashbackCredit {
+    cashback: ICashback | null;
+    customer_id: number | null;
+    product: { id: number; price: number };
+  }
   interface CustomCard {
     cardDescription: string;
     cardTitle: string;
     customClass: string;
-  }
-  interface CashbackCredit {
-    customer_id: number;
-    product: Record<string, any>;
   }
   interface FrontCountdown {
     endDate: string;
@@ -365,6 +368,11 @@ declare global {
     prototype: HTMLBuyTogetherCartModalElement;
     new (): HTMLBuyTogetherCartModalElement;
   };
+  interface HTMLCashbackCreditElement extends Components.CashbackCredit, HTMLStencilElement {}
+  var HTMLCashbackCreditElement: {
+    prototype: HTMLCashbackCreditElement;
+    new (): HTMLCashbackCreditElement;
+  };
   interface HTMLCustomCardElementEventMap {
     componentRendered: void;
   }
@@ -419,11 +427,6 @@ declare global {
   var HTMLCustomCardElement: {
     prototype: HTMLCustomCardElement;
     new (): HTMLCustomCardElement;
-  };
-  interface HTMLCashbackCreditElement extends Components.CashbackCredit, HTMLStencilElement {}
-  var HTMLCashbackCreditElement: {
-    prototype: HTMLCashbackCreditElement;
-    new (): HTMLCashbackCreditElement;
   };
   interface HTMLFrontCountdownElementEventMap {
     countdownFinished: any;
@@ -1315,8 +1318,8 @@ declare global {
   interface HTMLElementTagNameMap {
     'buy-together': HTMLBuyTogetherElement;
     'buy-together-cart-modal': HTMLBuyTogetherCartModalElement;
-    'custom-card': HTMLCustomCardElement;
     'cashback-credit': HTMLCashbackCreditElement;
+    'custom-card': HTMLCustomCardElement;
     'front-countdown': HTMLFrontCountdownElement;
     'front-image': HTMLFrontImageElement;
     'front-select': HTMLFrontSelectElement;
@@ -1370,15 +1373,16 @@ declare namespace LocalJSX {
     'promotionTitle'?: string;
     'variationId'?: number;
   }
+  interface CashbackCredit {
+    cashback?: ICashback | null;
+    customer_id?: number | null;
+    product?: { id: number; price: number };
+  }
   interface CustomCard {
     cardDescription?: string;
     cardTitle?: string;
     customClass?: string;
     onComponentRendered?: (event: CustomCardCustomEvent<void>) => void;
-  }
-  interface CashbackCredit {
-    customer_id?: number;
-    product?: Record<string, any>;
   }
   interface FrontCountdown {
     endDate?: string;
@@ -1529,8 +1533,8 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'buy-together': BuyTogether;
     'buy-together-cart-modal': BuyTogetherCartModal;
-    'custom-card': CustomCard;
     'cashback-credit': CashbackCredit;
+    'custom-card': CustomCard;
     'front-countdown': FrontCountdown;
     'front-image': FrontImage;
     'front-select': FrontSelect;
@@ -1564,9 +1568,9 @@ declare module '@stencil/core' {
       'buy-together': LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
       'buy-together-cart-modal': LocalJSX.BuyTogetherCartModal &
         JSXBase.HTMLAttributes<HTMLBuyTogetherCartModalElement>;
-      'custom-card': LocalJSX.CustomCard & JSXBase.HTMLAttributes<HTMLCustomCardElement>;
       'cashback-credit': LocalJSX.CashbackCredit &
         JSXBase.HTMLAttributes<HTMLCashbackCreditElement>;
+      'custom-card': LocalJSX.CustomCard & JSXBase.HTMLAttributes<HTMLCustomCardElement>;
       'front-countdown': LocalJSX.FrontCountdown &
         JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
       'front-image': LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
