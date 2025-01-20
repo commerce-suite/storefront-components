@@ -13,7 +13,7 @@ import {
   CalculationItem,
   CalculationItemPromotion,
   CalculationPayload,
-  Cashback as ICashback,
+  ICashback,
 } from './cashback.type';
 import { currencyFormat } from '../../utils/utils';
 
@@ -24,15 +24,12 @@ import { currencyFormat } from '../../utils/utils';
 })
 export class Cashback implements ComponentWillLoad {
   @Prop() customer_id: number | null;
-  @Prop({ mutable: true }) product: Record<string, any>;
+  @Prop() cashback: ICashback | null;
+  @Prop({ mutable: true }) product: { id: number; price: number };
 
-  @State() cashback: ICashback;
   @State() credit: CalculationItem;
 
   async componentWillLoad(): Promise<void> {
-    if (!this.product) return;
-
-    this.cashback = await cashbackService.getCashback();
     await this.getCalculation();
   }
 
@@ -47,10 +44,11 @@ export class Cashback implements ComponentWillLoad {
   }
 
   async getCalculation(): Promise<void> {
-    if (!this.cashback || !this.cashback.active || !this.cashback.show_credit_preview) return null;
+    const valid = this.cashback && this.cashback.active && this.cashback.show_credit_preview;
 
-    const { id } = this.product;
-    const price = this.product.has_price_range ? this.product.max_price_range : this.product.price;
+    if (!this.product || !valid) return;
+
+    const { id, price } = this.product;
 
     const data: CalculationPayload = {
       customer_id: this.customer_id,

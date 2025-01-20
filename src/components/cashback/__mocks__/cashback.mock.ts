@@ -1,6 +1,6 @@
-import { Cashback } from '../cashback.type';
+import { ICashback } from '../cashback.type';
 
-export const cashbackMock: Cashback = {
+export const cashbackMock: ICashback = {
   id: 'aa701afd-d1c4-4fb4-97e2-9f5f67ee0154',
   organization_id: 28,
   type: 'percent',

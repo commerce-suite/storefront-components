@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type                    | Default     |
-| ------------- | ------------- | ----------- | ----------------------- | ----------- |
-| `customer_id` | `customer_id` |             | `number`                | `undefined` |
-| `product`     | --            |             | `{ [x: string]: any; }` | `undefined` |
+| Property      | Attribute     | Description | Type                             | Default     |
+| ------------- | ------------- | ----------- | -------------------------------- | ----------- |
+| `cashback`    | --            |             | `ICashback`                      | `undefined` |
+| `customer_id` | `customer_id` |             | `number`                         | `undefined` |
+| `product`     | --            |             | `{ id: number; price: number; }` | `undefined` |
 
 
 ----------------------------------------------

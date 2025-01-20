@@ -1,7 +1,6 @@
-import { Calculation, CalculationPayload, Cashback } from './cashback.type';
+import { Calculation, CalculationPayload } from './cashback.type';
 
 export interface CashbackService {
-  getCashback(): Promise<Cashback>;
   calculate(data: CalculationPayload): Promise<Calculation>;
 }
 
@@ -25,9 +24,6 @@ const exec = (method: string, url: string, data?: Record<string, any>): Promise<
 };
 
 export const cashbackService: CashbackService = {
-  async getCashback(): Promise<Cashback> {
-    return await exec('GET', `${window.dooca.base_url}/action/promotions/cashback`);
-  },
   async calculate(data: CalculationPayload): Promise<Calculation> {
     return await exec('POST', `${window.dooca.base_url}/action/promotions/calculate`, data);
   },
