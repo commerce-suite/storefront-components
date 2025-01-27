@@ -12,7 +12,6 @@ resources:
 
 variables:
   - group: azure-devops-iam-aws-dchomolog
-  - group: storefront-components-production
 
 stages:
   - stage: Deploy
