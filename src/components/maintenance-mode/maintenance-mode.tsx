@@ -25,6 +25,7 @@ export class MaintenanceMode {
   private async load() {
     try {
       this.maintenanceModeData = await this.maintenanceModeService.getAppContent();
+      console.log('Env', Env);
     } catch (error) {
       console.error('MaintenanceMode - load', { error });
     } finally {
