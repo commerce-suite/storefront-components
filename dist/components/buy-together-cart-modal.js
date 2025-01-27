@@ -1,13 +1,8 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host, getAssetPath } from '@stencil/core/internal/client';
-import { d as defineCustomElement$b } from './buy-together2.js';
-import { d as defineCustomElement$a } from './front-image2.js';
-import { d as defineCustomElement$9 } from './front-select2.js';
-import { d as defineCustomElement$8 } from './product-card2.js';
-import { d as defineCustomElement$7 } from './product-price2.js';
-import { d as defineCustomElement$6 } from './product-price-billet2.js';
-import { d as defineCustomElement$5 } from './product-price-credit-card2.js';
-import { d as defineCustomElement$4 } from './product-price-pix2.js';
-import { d as defineCustomElement$3 } from './product-price-simple2.js';
+import { d as defineCustomElement$6 } from './buy-together2.js';
+import { d as defineCustomElement$5 } from './front-image2.js';
+import { d as defineCustomElement$4 } from './front-select2.js';
+import { d as defineCustomElement$3 } from './product-card2.js';
 import { d as defineCustomElement$2 } from './variation-selector2.js';
 
 const buyTogetherCartModalCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}.buy-together-cart{display:flex;flex-direction:column;gap:24px}.buy-together-cart-header{display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid #dee2e6;padding:24px}.buy-together-cart-header-text{display:flex;flex-direction:column;align-items:center;gap:8px}@media (min-width: 1024px){.buy-together-cart-header-text{flex-direction:row}}.buy-together-cart-header-text img{width:24px;height:24px;color:var(--fc-color-light-text-default)}.buy-together-cart-header-text h2{margin:0;font-size:var(--fc-h2-fs);font-weight:600;color:var(--fc-color-light-text-default)}@media (min-width: 1024px){.buy-together-cart-header{flex-direction:row}}.header-buttons{display:flex;flex-direction:column;gap:8px}@media (min-width: 1024px){.header-buttons{flex-direction:row}}.header-buttons-primary{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);background-color:var(--color-buy-button);white-space:nowrap}.header-buttons-primary:hover{opacity:0.75}.header-buttons-primary:disabled{opacity:0.6;cursor:not-allowed}.header-buttons-secondary{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);white-space:nowrap}.header-buttons-secondary:hover{opacity:0.75}.header-buttons-secondary:disabled{opacity:0.6;cursor:not-allowed}@media (min-width: 1024px){.buy-together-wrapper{padding:0 24px 24px}}.title-wrapper .title{margin:0 0 24px 0}";
@@ -44,7 +39,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["buy-together-cart-modal", "buy-together", "front-image", "front-select", "product-card", "product-price", "product-price-billet", "product-price-credit-card", "product-price-pix", "product-price-simple", "variation-selector"];
+    const components = ["buy-together-cart-modal", "buy-together", "front-image", "front-select", "product-card", "variation-selector"];
     components.forEach(tagName => { switch (tagName) {
         case "buy-together-cart-modal":
             if (!customElements.get(tagName)) {
@@ -53,45 +48,20 @@ function defineCustomElement$1() {
             break;
         case "buy-together":
             if (!customElements.get(tagName)) {
-                defineCustomElement$b();
+                defineCustomElement$6();
             }
             break;
         case "front-image":
             if (!customElements.get(tagName)) {
-                defineCustomElement$a();
+                defineCustomElement$5();
             }
             break;
         case "front-select":
             if (!customElements.get(tagName)) {
-                defineCustomElement$9();
-            }
-            break;
-        case "product-card":
-            if (!customElements.get(tagName)) {
-                defineCustomElement$8();
-            }
-            break;
-        case "product-price":
-            if (!customElements.get(tagName)) {
-                defineCustomElement$7();
-            }
-            break;
-        case "product-price-billet":
-            if (!customElements.get(tagName)) {
-                defineCustomElement$6();
-            }
-            break;
-        case "product-price-credit-card":
-            if (!customElements.get(tagName)) {
-                defineCustomElement$5();
-            }
-            break;
-        case "product-price-pix":
-            if (!customElements.get(tagName)) {
                 defineCustomElement$4();
             }
             break;
-        case "product-price-simple":
+        case "product-card":
             if (!customElements.get(tagName)) {
                 defineCustomElement$3();
             }

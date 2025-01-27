@@ -1,6 +1,9 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const config: Config = {
   namespace: 'front-components',
@@ -34,5 +37,9 @@ export const config: Config = {
   plugins: [sass()],
   extras: {
     enableImportInjection: true,
+  },
+  env: {
+    GOOGLE_RECAPTCHA_SITE_KEY: process.env.GOOGLE_RECAPTCHA_SITE_KEY,
+    CDN_URL: process.env.CDN_URL,
   },
 };

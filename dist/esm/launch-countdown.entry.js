@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-0d23a78b.js';
-import { P as ProductService } from './index-8cd3c1bf.js';
+import { P as ProductService } from './index-a2248843.js';
 
 class LaunchCountdownService {
     static async getReleaseDateByProduct(productId, variationId) {

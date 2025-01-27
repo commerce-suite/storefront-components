@@ -3,7 +3,7 @@ import { PaymentOption } from '../product-price/product-price.type';
 
 export type SelectAttributesType = 'color' | 'attributes' | 'secondaryAttributes';
 
-interface IImage {
+export interface IImage {
   src: string;
   alt?: string;
 }

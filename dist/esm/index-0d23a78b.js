@@ -1163,10 +1163,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'buy-together_11':
+                case 'buy-together_6':
                     return import(
                       /* webpackMode: "lazy" */
-                      './buy-together_11.entry.js').then(processMod, consoleError);
+                      './buy-together_6.entry.js').then(processMod, consoleError);
                 case 'buy-together-cart-modal':
                     return import(
                       /* webpackMode: "lazy" */

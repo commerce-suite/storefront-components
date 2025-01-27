@@ -1185,10 +1185,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'buy-together_11.cjs':
+                case 'buy-together_6.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './buy-together_11.cjs.entry.js')); }).then(processMod, consoleError);
+                        './buy-together_6.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'buy-together-cart-modal.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

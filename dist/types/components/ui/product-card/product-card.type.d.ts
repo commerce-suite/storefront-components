@@ -1,5 +1,4 @@
 import { IFrontSelectOption } from '../front-select/front-select.type';
-import { PaymentOption } from '../product-price/product-price.type';
 export type SelectAttributesType = 'color' | 'attributes' | 'secondaryAttributes';
 interface IImage {
     src: string;
@@ -27,6 +26,6 @@ export interface IProductCard {
     slug?: string;
     priceBase?: number;
     selectVariations?: ISelectVariation[];
-    paymentOptions?: PaymentOption[];
+    specialPrice?: number | null;
 }
 export {};

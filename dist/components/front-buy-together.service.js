@@ -1,4 +1,4 @@
-import { B as BuyTogetherService, A as AppService } from './index2.js';
+import { B as BuyTogetherService } from './index2.js';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1329,21 +1329,30 @@ const checkHasPrice = (data) => {
 };
 
 class FrontBuyTogetherAdapter {
-    static adapterIBuyTogetherToComponentData(buyTogether, buyTogetherPaymentConfig, isFirstLoad = false) {
+    static adapterIBuyTogetherToComponentData(buyTogether, isFirstLoad = false) {
         this.isFirstLoad = isFirstLoad;
         const componentData = {
-            productMain: this.adapterToProductCard(buyTogether.product, buyTogetherPaymentConfig),
-            products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data, buyTogetherPaymentConfig)),
+            productMain: this.adapterToProductCard(buyTogether.product),
+            products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
             originalData: buyTogether,
         };
         this.isFirstLoad = false;
         return componentData;
     }
-    static adapterPivotToProductCard(product, buyTogetherPaymentConfig) {
-        return Object.assign(Object.assign({}, this.adapterToProductCard(product, buyTogetherPaymentConfig)), { isCheck: true });
+    static adapterPivotToProductCard(product) {
+        return Object.assign(Object.assign({}, this.adapterToProductCard(product)), { isCheck: true });
     }
-    static adapterToProductCard(product, paymentConfig) {
+    static adapterToProductCard(product) {
         var _a;
+        const adaptSpecialPrice = (payments) => {
+            const pixMethod = payments.find(payment => payment.method === 'pix');
+            if (pixMethod) {
+                const specialPrice = Number(pixMethod.installment.total);
+                return specialPrice;
+            }
+            return null;
+        };
+        adaptSpecialPrice(product.payments);
         const { price, priceCompare, id } = this.getValuesByVariation(product);
         return {
             price,
@@ -1354,40 +1363,8 @@ class FrontBuyTogetherAdapter {
             name: product.name,
             slug: product.slug,
             selectVariations: this.adapterAttributes(product),
-            paymentOptions: this.adaptPaymentOptions(product, paymentConfig),
+            specialPrice: adaptSpecialPrice(product.payments),
         };
-    }
-    static adaptPaymentOptions(product, paymentConfig) {
-        const uniquePayments = {};
-        product.payments.forEach(payment => {
-            if (!uniquePayments[payment.method]) {
-                uniquePayments[payment.method] = payment;
-            }
-        });
-        const filteredPayments = Object.values(uniquePayments);
-        const allInactive = paymentConfig.every(payment => !payment.active);
-        if (allInactive)
-            return this.adaptSimplePayment(product);
-        const adaptMap = {
-            creditcard: (product, config, payment) => {
-                return this.adaptCreditCardPayment(product, config, payment);
-            },
-            billet: product => this.adaptPayment(product, 'billet'),
-            pix: product => this.adaptPayment(product, 'pix'),
-        };
-        const onlyActivePayments = (payment) => payment.active;
-        const byPosition = (a, b) => a.position - b.position;
-        return paymentConfig
-            .filter(onlyActivePayments)
-            .sort(byPosition)
-            .map(payment => {
-            const actualPayment = filteredPayments.find(p => p.method === payment.method);
-            if (!actualPayment)
-                return null;
-            const adaptFunction = adaptMap[payment.method];
-            return adaptFunction ? adaptFunction(product, payment, actualPayment) : null;
-        })
-            .filter(Boolean);
     }
     static getValuesByVariation(product) {
         const { attribute, attributeSecondary, color } = product;
@@ -1497,42 +1474,6 @@ class FrontBuyTogetherAdapter {
         const { balance, releaseDate, isSellOutOfStock } = data;
         return (!checkHasBalance({ balance, isSellOutOfStock }) || !checkIsOutReleaseDate({ releaseDate }));
     }
-    static getInstallmentsWithoutInterest(installments) {
-        return installments.filter(installment => installment.markup <= 1);
-    }
-    static adaptCreditCardPayment(product, paymentConfig, actualPayment) {
-        const installmentsNoInterest = this.getInstallmentsWithoutInterest(actualPayment.installments);
-        const totalInstallments = actualPayment.installments;
-        const selectedInstallments = paymentConfig.parcels_no_interest
-            ? installmentsNoInterest
-            : totalInstallments;
-        const lastInstallment = selectedInstallments[selectedInstallments.length - 1];
-        return {
-            type: 'creditCard',
-            price: Number(lastInstallment === null || lastInstallment === void 0 ? void 0 : lastInstallment.total) || 0,
-            priceCompare: product.priceCompare,
-            parcels: selectedInstallments.length,
-            parcelPrice: Number(lastInstallment === null || lastInstallment === void 0 ? void 0 : lastInstallment.parcelPrice) || 0,
-            hasInterest: !paymentConfig.parcels_no_interest,
-        };
-    }
-    static adaptPayment(product, methodType) {
-        const paymentMethod = product.payments.find(method => method.method === methodType);
-        return {
-            type: methodType,
-            price: Number((paymentMethod === null || paymentMethod === void 0 ? void 0 : paymentMethod.installment.total) || 0),
-            priceCompare: product.priceCompare,
-        };
-    }
-    static adaptSimplePayment(product) {
-        return [
-            {
-                type: 'simple',
-                price: product.price,
-                priceCompare: product.priceCompare,
-            },
-        ];
-    }
 }
 FrontBuyTogetherAdapter.isFirstLoad = false;
 FrontBuyTogetherAdapter.placeholderDisabled = { name: 'Selecione', disabled: true, value: undefined };
@@ -1541,11 +1482,11 @@ class FrontBuyTogetherResponse {
     constructor(response) {
         this.response = response;
     }
-    adapterToComponentData(buyTogetherPaymentConfig) {
+    adapterToComponentData() {
         var _a, _b;
         const canApplyAdapter = this.response && ((_b = (_a = this.response) === null || _a === void 0 ? void 0 : _a.productsPivot) === null || _b === void 0 ? void 0 : _b.length) > 0;
         this.componentData = canApplyAdapter
-            ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response, buyTogetherPaymentConfig, true)
+            ? FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(this.response, true)
             : null;
         return this;
     }
@@ -1657,13 +1598,6 @@ class FrontBuyTogetherFilter extends FrontBuyTogetherResponse {
 }
 
 class FrontBuyTogetherService {
-    constructor() {
-        this.loadBuyTogetherPaymentConfig();
-    }
-    async loadBuyTogetherPaymentConfig() {
-        const data = await this.getBuyTogetherAppContent();
-        this.buyTogetherPaymentConfig = (data === null || data === void 0 ? void 0 : data.payments) || [];
-    }
     filterOutOriginalProducts(products, productIds) {
         return products.filter(product => !productIds.includes(+product.productId));
     }
@@ -1684,12 +1618,12 @@ class FrontBuyTogetherService {
         return buyTogetherData
             .changeByVariationSelected(variationId)
             .applyFilters()
-            .adapterToComponentData(this.buyTogetherPaymentConfig).getComponentData;
+            .adapterToComponentData().getComponentData;
     }
     async getOnlyPivotProducts(productIds) {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.flatMap(response => {
-            const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(this.buyTogetherPaymentConfig);
+            const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData();
             return adaptedBuyTogether.getComponentData.products;
         });
         const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
@@ -1712,21 +1646,21 @@ class FrontBuyTogetherService {
         const variationByColor = productTarget.variations.find(({ color }) => (color === null || color === void 0 ? void 0 : color.id) === Number(colorValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { color: variationByColor.color }));
         const productTargetUpdated = Object.assign(Object.assign({}, currentVariation), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
         return { productTargetUpdated, productCard };
     }
     changeAttribute(attributeValue, productTarget) {
         const variationByAttribute = productTarget.variations.find(({ attribute }) => (attribute === null || attribute === void 0 ? void 0 : attribute.id) === Number(attributeValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { attribute: (variationByAttribute === null || variationByAttribute === void 0 ? void 0 : variationByAttribute.attribute) || productTarget.attribute }));
         const productTargetUpdated = Object.assign(Object.assign({}, (currentVariation || productTarget)), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
         return { productTargetUpdated, productCard };
     }
     changeAttributeSecondary(attributeValue, productTarget) {
         const variationByAttributeSecondary = productTarget.variations.find(({ attributeSecondary }) => (attributeSecondary === null || attributeSecondary === void 0 ? void 0 : attributeSecondary.id) === Number(attributeValue));
         const currentVariation = FrontBuyTogetherAdapter.getValuesByVariation(Object.assign(Object.assign({}, productTarget), { attributeSecondary: variationByAttributeSecondary.attributeSecondary }));
         const productTargetUpdated = Object.assign(Object.assign({}, currentVariation), { variations: productTarget.variations });
-        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated, this.buyTogetherPaymentConfig);
+        const productCard = FrontBuyTogetherAdapter.adapterToProductCard(productTargetUpdated);
         return { productTargetUpdated, productCard };
     }
     async addToCart(variantIds) {
@@ -1752,18 +1686,6 @@ class FrontBuyTogetherService {
             };
             request.send(body);
         });
-    }
-    async getBuyTogetherAppContent() {
-        try {
-            const response = await AppService.getBySlug('buy-together');
-            if (response === null || response === void 0 ? void 0 : response.content)
-                return JSON.parse(response.content);
-            return null;
-        }
-        catch (error) {
-            console.error(error);
-            return null;
-        }
     }
 }
 

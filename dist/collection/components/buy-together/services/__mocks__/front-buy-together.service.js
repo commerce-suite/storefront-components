@@ -1,6 +1,5 @@
 import { buyTogetherData } from "./buy-together-data.mock";
 import { FrontBuyTogetherAdapter } from "../front-buy-together.adapter";
-import { buyTogetherPaymentConfig } from "./buy-together-payments-config";
 class FrontBuyTogetherServiceMock {
     changeProductOptions(data, productTarget) {
         throw new Error(`Method not implemented. ${{ data, productTarget }}`);
@@ -15,7 +14,7 @@ class FrontBuyTogetherServiceMock {
         throw new Error(`Method not implemented. ${{ colorValue, productTarget }}`);
     }
     async getBuyTogetherByProductId() {
-        return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(buyTogetherData, buyTogetherPaymentConfig);
+        return FrontBuyTogetherAdapter.adapterIBuyTogetherToComponentData(buyTogetherData);
     }
 }
 export { FrontBuyTogetherServiceMock as FrontBuyTogetherService };
