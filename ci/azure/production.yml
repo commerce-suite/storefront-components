@@ -12,6 +12,7 @@ resources:
 
 variables:
   - group: azure-devops-iam-aws-dooca-aws
+  - group: storefront-components-production
 
 stages:
   - stage: Deploy
