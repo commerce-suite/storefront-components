@@ -1,5 +1,6 @@
 const dooca = {
   shop_id: 103779,
+  base_url: 'https://jogos-e-diversao.homolog.bagypro.com',
   theme: {
     settings: {
       lgpd_disable: false,
