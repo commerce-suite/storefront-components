@@ -54,6 +54,11 @@ graph TD;
   buy-together --> product-card
   buy-together --> variation-selector
   product-card --> front-image
+  product-card --> product-price
+  product-price --> product-price-simple
+  product-price --> product-price-billet
+  product-price --> product-price-credit-card
+  product-price --> product-price-pix
   variation-selector --> front-select
   buy-together-cart-modal --> buy-together
   style buy-together fill:#f9f,stroke:#333,stroke-width:4px

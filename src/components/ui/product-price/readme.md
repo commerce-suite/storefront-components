@@ -1,4 +1,4 @@
-# product-card
+# product-price
 
 
 
@@ -10,35 +10,31 @@
 | Property         | Attribute | Description | Type              | Default     |
 | ---------------- | --------- | ----------- | ----------------- | ----------- |
 | `basePrice`      | --        |             | `BasePrice`       | `undefined` |
-| `inline`         | `inline`  |             | `boolean`         | `false`     |
-| `paymentOptions` | --        |             | `PaymentOption[]` | `[]`        |
-| `product`        | --        |             | `IProductCard`    | `undefined` |
+| `paymentOptions` | --        |             | `PaymentOption[]` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [buy-together](../../buy-together)
- - [showcase-related](../../showcase)
+ - [product-card](../product-card)
 
 ### Depends on
 
-- [front-image](../front-image)
-- [product-price](../product-price)
+- [product-price-simple](./snippets/simple)
+- [product-price-billet](./snippets/billet)
+- [product-price-credit-card](./snippets/credit-card)
+- [product-price-pix](./snippets/pix)
 
 ### Graph
 ```mermaid
 graph TD;
-  product-card --> front-image
-  product-card --> product-price
   product-price --> product-price-simple
   product-price --> product-price-billet
   product-price --> product-price-credit-card
   product-price --> product-price-pix
-  buy-together --> product-card
-  showcase-related --> product-card
-  style product-card fill:#f9f,stroke:#333,stroke-width:4px
+  product-card --> product-price
+  style product-price fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
