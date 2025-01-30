@@ -134,7 +134,7 @@ export class LiveShop {
         <custom-card
           customClass="button-custom-style"
           cardTitle="A live chegou ao fim!"
-          cardDescription="Fique de olho em nossas próximas lives para mais novidades e promoções imperdíveis!"
+          cardDescription="Fique de olho em nossas próximas lives para mais novidades!"
         >
           <button onClick={() => this.onReturnToHome.emit()}>Voltar para a página inicial</button>
         </custom-card>
