@@ -102,11 +102,9 @@ export class LiveShop {
     return (
       <div class="live-shop-warmup">
         <custom-card customClass="banner-custom-style" cardTitle={this.liveShopRegister.title}>
-          {this.liveShopRegister.banner ? (
+          {this.liveShopRegister.banner?.src ? (
             <img src={this.liveShopRegister.banner.src} alt={this.liveShopRegister.banner.alt} />
-          ) : (
-            <div class="live-shop-banner" />
-          )}
+          ) : null}
         </custom-card>
       </div>
     );

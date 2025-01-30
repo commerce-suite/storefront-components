@@ -8,7 +8,7 @@ import { Component, Event, Host, EventEmitter, h, Prop } from '@stencil/core';
 export class InfoModal {
   @Prop() modalTitle: string = 'Estamos ao vivo!';
   @Prop() modalDescription: string =
-    'Venha conferir nossa live cheia novidades e promoções imperdíveis para você!';
+    'Venha conferir nossa live cheia de novidades e promoções imperdíveis para você!';
 
   @Prop() hideButtons: boolean = false;
   @Prop() primaryButtonText: string = 'Assistir agora';
