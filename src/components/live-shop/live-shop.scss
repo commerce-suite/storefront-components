@@ -46,6 +46,10 @@
           justify-content: center;
         }
       }
+
+      &.no-banner {
+        height: 100vh;
+      }
     }
   }
 
