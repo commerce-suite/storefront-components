@@ -102,11 +102,9 @@ export class LiveShop {
     return (
       <div class="live-shop-warmup">
         <custom-card customClass="banner-custom-style" cardTitle={this.liveShopRegister.title}>
-          {this.liveShopRegister.banner ? (
+          {this.liveShopRegister.banner?.src ? (
             <img src={this.liveShopRegister.banner.src} alt={this.liveShopRegister.banner.alt} />
-          ) : (
-            <div class="live-shop-banner" />
-          )}
+          ) : null}
         </custom-card>
       </div>
     );
@@ -136,7 +134,7 @@ export class LiveShop {
         <custom-card
           customClass="button-custom-style"
           cardTitle="A live chegou ao fim!"
-          cardDescription="Fique de olho em nossas próximas lives para mais novidades e promoções imperdíveis!"
+          cardDescription="Fique de olho em nossas próximas lives para mais novidades!"
         >
           <button onClick={() => this.onReturnToHome.emit()}>Voltar para a página inicial</button>
         </custom-card>
