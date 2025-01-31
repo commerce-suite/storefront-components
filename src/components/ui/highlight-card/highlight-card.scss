@@ -66,12 +66,18 @@
     align-items: center;
     justify-content: space-between;
 
-    &-cart-icon {
-      padding: 24px;
-
-      & img {
-        cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      .highlight-card-product-cart-action {
+        & a {
+          text-decoration: underline var(--fc-color-primary) 1px solid;
+        }
       }
+    }
+
+    &-cart-action {
+      padding: 24px;
+      font-weight: bold;
     }
   }
 }
