@@ -28,7 +28,12 @@ export class HighlightCard {
         )}
         {item.type === 'product' && (
           <div class="highlight-card-product" onClick={() => this.addItem.emit(item)}>
-            <product-card custom-class="highlight-custom-style" product={item} inline />
+            <product-card
+              custom-class="highlight-custom-style"
+              product={item}
+              basePrice={{ price: item.price, priceCompare: item.priceBase }}
+              inline
+            />
             <div class="highlight-card-product-cart-action">
               <a>Ver produto</a>
             </div>
