@@ -17,7 +17,6 @@ const productWithSpecialPrice: IProductCard = {
   name: 'Bolsa Essencial',
   price: 389.9,
   priceBase: 499.99,
-  specialPrice: 299.9,
 };
 
 const variations: ISelectVariation[] = [
