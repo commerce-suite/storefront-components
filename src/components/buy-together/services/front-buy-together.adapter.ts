@@ -4,7 +4,7 @@ import {
   IBuyTogetherComponentData,
   IProductOrderBump,
 } from '../buy-together.type';
-import { IProductCard, PaymentOption } from '../../../components';
+import { IProductCard } from '../../../components';
 import {
   Attribute,
   Product,
@@ -16,6 +16,7 @@ import {
 import { ISelectVariation } from '../../ui/product-card/product-card.type';
 import { checkHasBalance, checkIsOutReleaseDate } from '../buy-together.utils';
 import { ReleaseDate } from '@uxshop/storefront-core/dist/types/ReleaseDateTypes';
+import { PaymentOption } from '../../ui/product-price/product-price.type';
 
 type AttributesExtraDataType = {
   balance: number;

@@ -2,25 +2,22 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property         | Attribute      | Description | Type              | Default     |
-| ---------------- | -------------- | ----------- | ----------------- | ----------- |
-| `basePrice`      | --             |             | `BasePrice`       | `undefined` |
-| `customClass`    | `custom-class` |             | `string`          | `''`        |
-| `inline`         | `inline`       |             | `boolean`         | `false`     |
-| `paymentOptions` | --             |             | `PaymentOption[]` | `[]`        |
-| `product`        | --             |             | `IProductCard`    | `undefined` |
-
+| Property         | Attribute | Description | Type              | Default     |
+| ---------------- | --------- | ----------- | ----------------- | ----------- |
+| `basePrice`      | --        |             | `BasePrice`       | `undefined` |
+| `inline`         | `inline`  |             | `boolean`         | `false`     |
+| `paymentOptions` | --        |             | `PaymentOption[]` | `[]`        |
+| `product`        | --        |             | `IProductCard`    | `undefined` |
 
 ## Dependencies
 
 ### Used by
 
- - [buy-together](../../buy-together)
- - [highlight-card](../highlight-card)
- - [showcase-related](../../showcase)
+- [buy-together](../../buy-together)
+- [highlight-card](../highlight-card)
+- [showcase-related](../../showcase)
 
 ### Depends on
 
@@ -28,6 +25,7 @@
 - [product-price](../product-price)
 
 ### Graph
+
 ```mermaid
 graph TD;
   product-card --> front-image
@@ -42,6 +40,6 @@ graph TD;
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

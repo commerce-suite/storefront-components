@@ -18,7 +18,7 @@ export class LiveShopNotFound {
         <div class="live-shop-not-found">
           <custom-card
             cardTitle="Ops, parece que essa live não existe mais!"
-            cardDescription="Fique de olho em nossas próximas lives para mais novidades e promoções imperdíveis!"
+            cardDescription="Fique de olho em nossas próximas lives para mais novidades!"
           >
             <button onClick={this.handleReturnToHome}>Voltar para a página inicial</button>
           </custom-card>

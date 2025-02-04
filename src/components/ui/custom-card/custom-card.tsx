@@ -1,4 +1,4 @@
-import { Component, Event, Host, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, Host, EventEmitter, h, Prop, Element } from '@stencil/core';
 
 @Component({
   tag: 'custom-card',
@@ -10,10 +10,16 @@ export class CustomCard {
   @Prop() cardDescription: string;
   @Prop() customClass: string = '';
 
+  @Element() el: HTMLElement;
   @Event() componentRendered: EventEmitter<void>;
 
   componentDidLoad() {
     this.componentRendered.emit();
+  }
+
+  hasSlot(): boolean {
+    const slot = this.el.querySelector('slot') as HTMLSlotElement;
+    return !!slot && slot.assignedNodes().length > 0;
   }
 
   render() {
@@ -26,9 +32,11 @@ export class CustomCard {
               <p class="custom-card-header-description">{this.cardDescription}</p>
             )}
           </div>
-          <div class="custom-card-content">
-            <slot></slot>
-          </div>
+          {this.hasSlot() ? (
+            <div class="custom-card-content">
+              <slot></slot>
+            </div>
+          ) : null}
         </div>
       </Host>
     );
