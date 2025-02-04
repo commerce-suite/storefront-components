@@ -30,7 +30,7 @@ export class HighlightCard {
           <div class="highlight-card-product" onClick={() => this.addItem.emit(item)}>
             <product-card custom-class="highlight-custom-style" product={item} inline />
             <div class="highlight-card-product-cart-action">
-              <a>Ver mais</a>
+              <a>Ver produto</a>
             </div>
           </div>
         )}

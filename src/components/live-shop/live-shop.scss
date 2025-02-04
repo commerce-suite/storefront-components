@@ -19,8 +19,6 @@
 }
 
 .live-shop {
-  height: 100%;
-
   &-warmup {
     .banner-custom-style {
       padding: 40px;
@@ -45,10 +43,6 @@
           align-items: center;
           justify-content: center;
         }
-      }
-
-      &.no-banner {
-        height: 100vh;
       }
     }
   }
