@@ -40,5 +40,7 @@ export const config: Config = {
   },
   env: {
     WEBSOCKET_URL: process.env.WEBSOCKET_URL,
+    GOOGLE_RECAPTCHA_SITE_KEY: process.env.GOOGLE_RECAPTCHA_SITE_KEY,
+    CDN_URL: process.env.CDN_URL,
   },
 };

@@ -1,3 +1,5 @@
+import { Env } from '@stencil/core';
+
 export function currencyFormat(value: number) {
   return Number(value).toLocaleString('pt-BR', {
     style: 'currency',
@@ -19,4 +21,13 @@ export function extractYouTubeVideoId(url: string) {
   const match = url.match(regex);
 
   return match ? match[1] : null;
+}
+export function transformMediaUrl(mediaUrl: string) {
+  const cdnUrl = Env.CDN_URL;
+  const shopId = window.dooca.shop_id;
+  const baseUrl = `${cdnUrl}/${shopId}`;
+  if (mediaUrl.startsWith('media://')) {
+    return mediaUrl.replace('media://', `${baseUrl}/`);
+  }
+  return mediaUrl;
 }
