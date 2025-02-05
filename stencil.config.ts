@@ -26,7 +26,7 @@ export const config: Config = {
       copy: [{ src: './dooca.mock.js' }, { src: './assets', dest: './build/assets' }],
     },
     vueOutputTarget({
-      componentCorePackage: 'front-components',
+      componentCorePackage: 'commerce-front-components',
       proxiesFile: '',
     }),
   ],
