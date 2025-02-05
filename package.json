@@ -6,6 +6,7 @@
     "access": "public"
   },
   "main": "dist/index.cjs.js",
+  "type": "module",
   "unpkg": "dist/front-components/front-components.esm.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",

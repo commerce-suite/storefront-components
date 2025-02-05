@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const config: Config = {
-  namespace: 'front-components',
+  namespace: 'commerce-front-components',
   globalStyle: 'src/style/global.scss',
   outputTargets: [
     {
