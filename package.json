@@ -1,24 +1,12 @@
 {
   "name": "commerce-front-components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Stencil Component Starter",
   "publishConfig": {
     "access": "public"
   },
   "main": "dist/index.cjs.js",
   "unpkg": "dist/front-components/front-components.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/front-components.js",
-      "require": "./dist/cjs/front-components.js",
-      "default": "./dist/esm/front-components.js"
-    },
-    "./loader": {
-      "import": "./dist/esm/loader.js",
-      "require": "./dist/cjs/loader.cjs"
-    },
-    "./*": "./dist/esm/*"
-  },
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
