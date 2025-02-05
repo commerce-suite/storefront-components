@@ -78,9 +78,31 @@ body {
   width: 5rem;
   height: 5rem;
 }
-
-.maintenance-mode-container {
-  background-color: var(--maintenance-bg);
+.loading-container.-initial-loading {
+  background-color: transparent;
+}
+.loading-container.-initial-loading .spinner {
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+}
+.loading-container.-initial-loading .spinner::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-width: -0.75rem;
+  border-style: solid;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-right-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+  border-left-color: rgba(0, 0, 0, 0.5);
+  transform: translateZ(0);
+  animation: simple-spinner-animation 0.5s infinite linear;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
 }
 
 .maintenance-mode {

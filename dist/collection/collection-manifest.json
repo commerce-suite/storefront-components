@@ -2,6 +2,7 @@
   "entries": [
     "components/buy-together/buy-together.js",
     "components/buy-together-cart-modal/buy-together-cart-modal.js",
+    "components/cashback/cashback.js",
     "components/google-recaptcha/google-recaptcha.js",
     "components/launch-countdown/launch-countdown.js",
     "components/live-shop/live-shop.js",

@@ -8,8 +8,12 @@ export class CustomCard {
     componentDidLoad() {
         this.componentRendered.emit();
     }
+    hasSlot() {
+        const slot = this.el.querySelector('slot');
+        return !!slot && slot.assignedNodes().length > 0;
+    }
     render() {
-        return (h(Host, { key: 'bf02f44cdc6c2da39b0529867a67262758a764bb' }, h("div", { key: '4a0472e9cccced2e7888ceb716280eb424821b27', class: `custom-card ${this.customClass}` }, h("div", { key: 'ffeb567152895df9085959ac4a6fc2bb6588cb90', class: "custom-card-header" }, h("h2", { key: '976d0f0d92f4d6c6e8a77c4622324e762c383cd3', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '17396eac2ca965b1d33a390f372d1a7086735f47', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: '1c55813bd7d4d66b04d06794606a38be5d3a1d76', class: "custom-card-content" }, h("slot", { key: 'a0b7326af7ae7b1346e37fb1d2b1ce90bca1d076' })))));
+        return (h(Host, { key: '118b53b69437da947613eaaa2ce7d80e0c04065f' }, h("div", { key: '3cfda6415ea378cfdf1072133483011dcb0f6ece', class: `custom-card ${this.customClass}` }, h("div", { key: '5b2a51d0f715c183e78dacad57fe53339e1a291b', class: "custom-card-header" }, h("h2", { key: '4f7d9134b29fdf9f4f282501a44ce63f473ff0a7', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: 'b81d3a629405ddaeb38ac46b0655803dd67f6e5b', class: "custom-card-header-description" }, this.cardDescription))), this.hasSlot() ? (h("div", { class: "custom-card-content" }, h("slot", null))) : null)));
     }
     static get is() { return "custom-card"; }
     static get originalStyleUrls() {
@@ -97,5 +101,6 @@ export class CustomCard {
                 }
             }];
     }
+    static get elementRef() { return "el"; }
 }
 //# sourceMappingURL=custom-card.js.map

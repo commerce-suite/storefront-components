@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-faa0dd42.js');
+const index = require('./index-ed1a22c2.js');
 
 const googleRecaptchaCss = ".g-recaptcha{display:flex;justify-content:center}";
 const GoogleRecaptchaStyle0 = googleRecaptchaCss;
@@ -52,7 +52,7 @@ const GoogleRecaptcha = class {
         });
     }
     render() {
-        return index.h("div", { key: 'dcb8a08ef5c8ca05e7f8a740b0347d92afe059d7', class: "g-recaptcha", id: this.recaptchaId });
+        return index.h("div", { key: 'e836237538893dab8e46f717230d2e0519b81360', class: "g-recaptcha", id: this.recaptchaId });
     }
 };
 GoogleRecaptcha.style = GoogleRecaptchaStyle0;

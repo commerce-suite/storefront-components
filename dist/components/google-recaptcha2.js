@@ -49,7 +49,7 @@ const GoogleRecaptcha = /*@__PURE__*/ proxyCustomElement(class GoogleRecaptcha e
         });
     }
     render() {
-        return h("div", { key: 'dcb8a08ef5c8ca05e7f8a740b0347d92afe059d7', class: "g-recaptcha", id: this.recaptchaId });
+        return h("div", { key: 'e836237538893dab8e46f717230d2e0519b81360', class: "g-recaptcha", id: this.recaptchaId });
     }
     static get style() { return GoogleRecaptchaStyle0; }
 }, [0, "google-recaptcha", {

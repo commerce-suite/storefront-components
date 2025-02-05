@@ -1,3 +1,5 @@
+import { Env } from '@stencil/core/internal/client';
+
 function currencyFormat(value) {
     return Number(value).toLocaleString('pt-BR', {
         style: 'currency',
@@ -17,7 +19,16 @@ function extractYouTubeVideoId(url) {
     const match = url.match(regex);
     return match ? match[1] : null;
 }
+function transformMediaUrl(mediaUrl) {
+    const cdnUrl = Env.CDN_URL;
+    const shopId = window.dooca.shop_id;
+    const baseUrl = `${cdnUrl}/${shopId}`;
+    if (mediaUrl.startsWith('media://')) {
+        return mediaUrl.replace('media://', `${baseUrl}/`);
+    }
+    return mediaUrl;
+}
 
-export { currencyFormat as c, extractYouTubeVideoId as e, getClassByProps as g };
+export { currencyFormat as c, extractYouTubeVideoId as e, getClassByProps as g, transformMediaUrl as t };
 
 //# sourceMappingURL=utils.js.map

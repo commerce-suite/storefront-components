@@ -56,11 +56,15 @@
   align-items: center;
   justify-content: space-between;
 }
-.highlight-card-product-cart-icon {
-  padding: 24px;
-}
-.highlight-card-product-cart-icon img {
+.highlight-card-product:hover {
   cursor: pointer;
+}
+.highlight-card-product:hover .highlight-card-product-cart-action a {
+  text-decoration: underline var(--fc-color-primary) 1px solid;
+}
+.highlight-card-product-cart-action {
+  padding: 24px;
+  font-weight: bold;
 }
 
 .highlight-card .highlight-custom-style.product-container {

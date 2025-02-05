@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-faa0dd42.js');
-const frontBuyTogether_service = require('./front-buy-together.service-90e2fc06.js');
-require('./index-5ea523e2.js');
+const index = require('./index-ed1a22c2.js');
+const frontBuyTogether_service = require('./front-buy-together.service-5f1f9e4b.js');
+require('./index-4c7a4e0d.js');
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -3237,7 +3237,7 @@ const Showcase = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '98ef4a71d8c94ee6a6f1419041efa405d212c120' }, this.loading && (index.h("div", { key: 'a9e40658a4f22d3b244c8754c9c74ea0287243e0', class: "loading-container" }, index.h("span", { key: 'a68aff0b9f7be25675c8fd8e024971dc314da14b', class: "spinner" }))), !this.loading && this.products.length ? (index.h("div", { class: "showcase-related-products" }, index.h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), index.h("div", { class: "splide-container" }, index.h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, index.h("div", { class: "splide__track" }, index.h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        return (index.h(index.Host, { key: '76ca2216fc3cb991e714a565879f6c5bec2a171f' }, this.loading && (index.h("div", { key: '8fd8b83123e439528ff230a185337aa7ce923e28', class: "loading-container" }, index.h("span", { key: '2c2136f4fc43dfdcd766b4c50a69285828220c2a', class: "spinner" }))), !this.loading && this.products.length ? (index.h("div", { class: "showcase-related-products" }, index.h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), index.h("div", { class: "splide-container" }, index.h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, index.h("div", { class: "splide__track" }, index.h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
             return (index.h("li", { class: "splide__slide" }, index.h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, index.h("div", { class: "product-main-container" }, index.h("product-card", { product: product, paymentOptions: product.paymentOptions }), index.h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         }))))))) : (index.h(index.Fragment, null))));
     }

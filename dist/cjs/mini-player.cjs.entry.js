@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-faa0dd42.js');
+const index = require('./index-ed1a22c2.js');
 
 class DraggableService {
     constructor(onUpdatePosition) {
@@ -113,7 +113,7 @@ const MiniPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: 'b142fda4923bc188cf3cd7c57e3420ce5fb523c2' }, this.showMiniPlayer && (index.h("div", { key: '88493e3f980bd3781446d03fb74aef576bed9674', class: "mini-player", style: this.getMiniPlayerStyle() }, index.h("button", { key: 'c1302d6b6291ee2aac7e3a0af4d90688b7205eac', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, index.h("img", { key: 'c84c7aec9d929e1dd529e6c4c6fb4183e0c62af9', src: index.getAssetPath('./assets/icons/close-icon.svg'), alt: "close-icon" })), index.h("live-video-player", { key: '508294b7a08ba9797c257877b8ff26a22c1aa604', videoId: this.videoId, autoPlay: this.autoPlay }), index.h("div", { key: '6a6d2156931c91cf24f06fb553728b6493eaf1b6', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, index.h("h6", { key: '4c190ec81f53545549fcbf7861e46136e63bcf37', class: "mini-player-bar-title" }, this.mainTitle), index.h("div", { key: '33e4f15bbf816ab913f9d063a9d6b0c000669841', class: "mini-player-bar-button" }, index.h("button", { key: '5140d7eeb2f7e1b5c7f67857ea61459225408e9d', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
+        return (index.h(index.Host, { key: '3fb2df064fcd2015dbbb4e26076b171ea7627e79' }, this.showMiniPlayer && (index.h("div", { key: 'a2f9a06d54b0cadd54f23ab0196cbf2c58454f13', class: "mini-player", style: this.getMiniPlayerStyle() }, index.h("button", { key: '006aa088577788696293fbcd20076c7b7eed8848', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, index.h("img", { key: '911d817a73932d429b48965cc012b128b6774ae1', src: index.getAssetPath('./assets/icons/close-icon.svg'), alt: "close-icon" })), index.h("live-video-player", { key: '1cda6b94d502744ba73b560cfa9f8347f51dd9d8', videoId: this.videoId, autoPlay: this.autoPlay }), index.h("div", { key: '272dbdbfbdbf84247288a7c1fb481ba9fed6ddee', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, index.h("h6", { key: '8fedd7c9069cc5c9b814f40cba7517cbc754ea89', class: "mini-player-bar-title" }, this.mainTitle), index.h("div", { key: '992d782cd3d9548b434b2ff05530d09a83a570e4', class: "mini-player-bar-button" }, index.h("button", { key: 'b9f023fca02b5c15a5592d9234b70592a124b53e', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
     }
 };
 MiniPlayer.style = MiniPlayerStyle0;

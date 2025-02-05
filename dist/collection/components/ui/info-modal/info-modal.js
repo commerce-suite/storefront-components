@@ -2,7 +2,7 @@ import { Host, h } from "@stencil/core";
 export class InfoModal {
     constructor() {
         this.modalTitle = 'Estamos ao vivo!';
-        this.modalDescription = 'Venha conferir nossa live cheia novidades e promoções imperdíveis para você!';
+        this.modalDescription = 'Venha conferir nossa live cheia de novidades!';
         this.hideButtons = false;
         this.primaryButtonText = 'Assistir agora';
         this.secondaryButtonText = 'Não, obrigado';
@@ -19,7 +19,7 @@ export class InfoModal {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '3762fefe56a0befee908f23b3880ea767c7da53e' }, h("div", { key: 'cb77d8dfba9b3f51729b43e753d35c121db9fc1f', class: `info-modal ${this.getModalPosition()} ${this.hideButtons ? '-hide-buttons' : ''}` }, h("div", { key: 'd29b897df8c36e9471e61dafa5dcb428bfa0936a', class: "info-modal-header" }, h("h2", { key: 'e2a146e76bc4407073ec3de1c88af25c17892235', class: "info-modal-header-title" }, this.modalTitle), h("p", { key: 'fffd14a9ca25dac3943f87f625824de874ea437a', class: "info-modal-header-description" }, this.modalDescription)), !this.hideButtons && (h("div", { key: '99d7142fce50fd584815a80a3139a4e755692d94', class: "info-modal-buttons" }, h("button", { key: 'f00e27a3b904263288be1f17289b45ee55458282', class: "info-modal-buttons-primary", onClick: () => this.onClickPrimaryButton.emit() }, this.primaryButtonText), h("button", { key: 'f8f46ce59079134ad450b3bb7d9341ba0499675b', class: "info-modal-buttons-secondary", onClick: () => this.onClickSecondaryButton.emit() }, this.secondaryButtonText))))));
+        return (h(Host, { key: '23841cc018170b92babb8dbeedd9f7d5c85a0698' }, h("div", { key: 'c2b3c4acb6c7912f773cc4edd7783f8f6161a6f7', class: `info-modal ${this.getModalPosition()} ${this.hideButtons ? '-hide-buttons' : ''}` }, h("div", { key: 'ff6e1f1b95dc7ef7263fbf77c7fe5ff79dda519a', class: "info-modal-header" }, h("h2", { key: 'e919652d59ebc67d798286c42625f10405264777', class: "info-modal-header-title" }, this.modalTitle), h("p", { key: '21c284dd63f66ebff7d22e181006f6db5a73a1f9', class: "info-modal-header-description" }, this.modalDescription)), !this.hideButtons && (h("div", { key: 'd997b13ede7d8db1a7f39d34f1918e4ad5787c46', class: "info-modal-buttons" }, h("button", { key: 'fd33a8a4e9f79b1f5c67e55dc943509f375b2df8', class: "info-modal-buttons-primary", onClick: () => this.onClickPrimaryButton.emit() }, this.primaryButtonText), h("button", { key: 'ba32abe4c7583d0ea0e581515fb779358339b74f', class: "info-modal-buttons-secondary", onClick: () => this.onClickSecondaryButton.emit() }, this.secondaryButtonText))))));
     }
     static get is() { return "info-modal"; }
     static get originalStyleUrls() {
@@ -68,7 +68,7 @@ export class InfoModal {
                 },
                 "attribute": "modal-description",
                 "reflect": false,
-                "defaultValue": "'Venha conferir nossa live cheia novidades e promo\u00E7\u00F5es imperd\u00EDveis para voc\u00EA!'"
+                "defaultValue": "'Venha conferir nossa live cheia de novidades!'"
             },
             "hideButtons": {
                 "type": "boolean",

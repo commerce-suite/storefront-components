@@ -15,7 +15,6 @@ export declare class MaintenanceMode {
     private load;
     private handleSubmit;
     handleTokenReceived(event: CustomEvent<string>): void;
-    componentWillLoad(): Promise<void>;
-    componentDidLoad(): void;
+    componentDidLoad(): Promise<void>;
     render(): any;
 }

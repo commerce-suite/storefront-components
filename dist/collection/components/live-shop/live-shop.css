@@ -64,9 +64,6 @@
   animation: lds-dual-ring-animation 1.2s linear infinite;
 }
 
-.live-shop {
-  height: 100%;
-}
 .live-shop-warmup .banner-custom-style {
   padding: 40px;
 }
