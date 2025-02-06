@@ -31,7 +31,8 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "vue-component-lib/"
   ],
   "scripts": {
     "build": "stencil build --docs",
