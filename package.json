@@ -13,8 +13,8 @@
       "default": "./dist/esm/commerce-front-components.js"
     },
     "./loader": {
-      "import": "./dist/loader/index.esm.js",
-      "require": "./dist/loader/index.cjs.js"
+      "import": "./loader/index.esm.js",
+      "require": "./loader/index.cjs.js"
     }
   },
   "unpkg": "dist/commerce-front-components/commerce-front-components.esm.js",
