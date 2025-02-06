@@ -1,0 +1,20 @@
+{
+  "version": "0.0.0",
+  "name": "vue-lib",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "npm run tsc",
+    "tsc": "tsc -p ."
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "commerce-front-components": "../"
+  },
+  "devDependencies": {
+    "vue": "3"
+  }
+}
