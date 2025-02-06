@@ -15,7 +15,8 @@
     "./loader": {
       "import": "./loader/index.esm.js",
       "require": "./loader/index.cjs.js"
-    }
+    },
+    "./vue-component-lib": "./vue-component-lib"
   },
   "unpkg": "dist/commerce-front-components/commerce-front-components.esm.js",
   "module": "dist/index.js",
@@ -72,7 +73,8 @@
     "prettier": "3.0.3",
     "puppeteer": "21.1.1",
     "stylelint-config-prettier": "^9.0.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vue": "^3.5.13"
   },
   "license": "MIT"
 }
