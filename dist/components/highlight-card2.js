@@ -40,7 +40,7 @@ const HighlightCard = /*@__PURE__*/ proxyCustomElement(class HighlightCard exten
         this.filterItems(newItems);
     }
     render() {
-        return (h(Host, { key: '9fb513bae3181aef18f7bbbb436bf8164e91095d' }, h("div", { key: 'eb9c78110064055fec0a405f766d92a0c6253464', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '8595ab9b5896707750d55173bada63de3b470c6b', class: "highlight-card-container" }, h("div", { key: '76bb6759411f19b7b2fca609501e82fc83b6bbf8', class: "highlight-card-header" }, h("span", { key: 'c2f1a0c0ebb6065d8e5442d293cab1cb718056ee', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: 'a4eeb9347c93f89e847a7eb7eaaac7a8c9ecff68' }, h("div", { key: '2706991fca5d561ffb5038c01e0570d78a877e13', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: 'a64e7d1eae28697a53c73765a98b04f3f4a015b7', class: "highlight-card-container" }, h("div", { key: '35a3071f2a8a9058576caee7092612774128bb1f', class: "highlight-card-header" }, h("span", { key: 'cd71c0969eb81aeca6af362e6e70458138d06e6e', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["handleItemsChange"]

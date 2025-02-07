@@ -13,6 +13,7 @@
     "components/showcase/showcase.js",
     "components/ui/custom-card/custom-card.js",
     "components/ui/front-countdown/front-countdown.js",
+    "components/ui/front-icon/front-icon.js",
     "components/ui/front-image/front-image.js",
     "components/ui/front-select/front-select.js",
     "components/ui/highlight-card/highlight-card.js",

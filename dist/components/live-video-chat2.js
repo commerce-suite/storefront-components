@@ -17,7 +17,7 @@ const LiveVideoChat = /*@__PURE__*/ proxyCustomElement(class LiveVideoChat exten
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: 'de6ab4f2077e8bd98954cab2a1952dc06c70f4a1' }, h("div", { key: '0f311b595d0cef20db63dc68d3e5917b6ac5b30f', class: "live-video-chat" }, h("iframe", { key: '2128c2fa24c2de03682b0e1c6af3ac52e9f1bb30', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '81d8217d99480e79927891d870ee710b2e31dced' }, h("div", { key: '7b29bc775e2f1753e415bdbcdf0243597d33b6ec', class: "live-video-chat" }, h("iframe", { key: 'ffc9fa4017c6bba043b8a8ac588e6537bde7393e', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
     static get style() { return LiveVideoChatStyle0; }
 }, [0, "live-video-chat", {

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } from './index-b6aa95eb.js';
+import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host } from './index-f50d7c2c.js';
 import { F as FrontBuyTogetherService } from './front-buy-together.service-3206215f.js';
 import './index-a43c0f48.js';
 

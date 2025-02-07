@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-b6aa95eb.js';
+import { r as registerInstance, c as createEvent, h } from './index-f50d7c2c.js';
 
 const googleRecaptchaCss = ".g-recaptcha{display:flex;justify-content:center}";
 const GoogleRecaptchaStyle0 = googleRecaptchaCss;

@@ -13,7 +13,7 @@ export class LiveVideoPlayer {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: 'ea49692f04dbd19dc053c03b4c02db756b63708d' }, h("div", { key: 'ae9a2a5718358bd7986a5891ea233953e6e8bd41', class: "live-video-player" }, h("iframe", { key: '99845be4a05c5b6250f2f15cd1c5b44abbf80131', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '60cab57f22b5b466959f58d15902e2a92367c695' }, h("div", { key: '340dd9a880691532d990181ddfdc3b27bf772bea', class: "live-video-player" }, h("iframe", { key: '1a326a412225a81de6f3368be24925f4111319b4', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
     static get is() { return "live-video-player"; }
     static get originalStyleUrls() {

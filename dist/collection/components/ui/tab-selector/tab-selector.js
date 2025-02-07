@@ -14,7 +14,7 @@ export class TabSelector {
     }
     render() {
         var _a, _b;
-        return (h("div", { key: '3f32ae4b6d3497265dfda7f2d07e1fa45084b642', class: "tab-selector" }, h("div", { key: '2200c21ac709c6090408cec61cf8925f91292c01', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '9486082883f415da9ddd0c694cd93111a44dddb0', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
+        return (h("div", { key: '697ff2e799cc61c170da72d3e8de589ee1706b3e', class: "tab-selector" }, h("div", { key: 'e7b8ea244880f77446af7ca4eee87aac2f85a1d6', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '87eaa028dc50138bc00649ed024560bd7c4c1102', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));

@@ -14,7 +14,7 @@ const ProductPriceSimple = /*@__PURE__*/ proxyCustomElement(class ProductPriceSi
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: '70c6ad31bee012e9fdf9f5f8a51378536a575d55', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '2adcced98d63710b5ef908569682a4416fd93fd1', class: "price-compare" }, formattedCompare), h("span", { key: 'd18792804db1ae531b203f464649d1499dffb898', class: "price-current" }, h("span", { key: 'c6eef7e5c05c7b89b82932a7883497611f6e1a29', class: "highlight" }, formattedPrice))));
+        return (h("div", { key: 'c9039c471f96bd4511e90ebd9561397592fbd564', class: "payment-option payment-option-simple" }, formattedCompare && h("span", { key: '9a203dd0ee2736d6809c154d518d6d1e3cd65bba', class: "price-compare" }, formattedCompare), h("span", { key: 'fd88ad7365d24ecd5ca6094b8fdaca1b31044ffb', class: "price-current" }, h("span", { key: 'eb2de32d730643b6c73b7c3516be88ca107feffc', class: "highlight" }, formattedPrice))));
     }
     static get style() { return ProductPriceSimpleStyle0; }
 }, [0, "product-price-simple", {

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-b6aa95eb.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-f50d7c2c.js';
 import { P as ProductService } from './index-a43c0f48.js';
 
 class LaunchCountdownService {
