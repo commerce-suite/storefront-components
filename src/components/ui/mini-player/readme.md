@@ -27,11 +27,13 @@
 
 ### Depends on
 
+- [front-icon](../front-icon)
 - [live-video-player](../live-video-player)
 
 ### Graph
 ```mermaid
 graph TD;
+  mini-player --> front-icon
   mini-player --> live-video-player
   style mini-player fill:#f9f,stroke:#333,stroke-width:4px
 ```

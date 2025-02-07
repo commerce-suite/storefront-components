@@ -1,4 +1,4 @@
-import { Component, Prop, Event, Host, EventEmitter, h, getAssetPath, State } from '@stencil/core';
+import { Component, Prop, Event, Host, EventEmitter, h, State } from '@stencil/core';
 import { DraggableService } from './services/DraggableService';
 
 @Component({
@@ -72,7 +72,7 @@ export class MiniPlayer {
         {this.showMiniPlayer && (
           <div class="mini-player" style={this.getMiniPlayerStyle()}>
             <button class="mini-player-close-button" onClick={() => this.handleCloseMiniPlayer()}>
-              <img src={getAssetPath('./assets/icons/close-icon.svg')} alt="close-icon" />
+              <front-icon name="close" />
             </button>
             <live-video-player videoId={this.videoId} autoPlay={this.autoPlay} />
             <div
