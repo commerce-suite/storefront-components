@@ -1,4 +1,4 @@
-import { B as BuyTogetherService, A as AppService } from './index-a43c0f48.js';
+import { B as BuyTogetherService, A as AppService } from './index-b2474825.js';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1769,4 +1769,4 @@ class FrontBuyTogetherService {
 
 export { FrontBuyTogetherService as F };
 
-//# sourceMappingURL=front-buy-together.service-3206215f.js.map
+//# sourceMappingURL=front-buy-together.service-fc8bc69c.js.map

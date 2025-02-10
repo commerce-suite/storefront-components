@@ -1,3 +1,5 @@
+'use strict';
+
 var webfontloader = {exports: {}};
 
 /* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */
@@ -6165,6 +6167,7 @@ var LiveShopQueries = /** @class */ (function () {
         return [
             'id',
             'name',
+            'hashRoom',
             'status',
             'urlLive',
             'title',
@@ -10962,6 +10965,9 @@ Object.assign(lookup, {
     connect: lookup,
 });
 
-export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductService as P };
+exports.AppService = AppService;
+exports.BuyTogetherService = BuyTogetherService;
+exports.LiveShopService = LiveShopService;
+exports.ProductService = ProductService;
 
-//# sourceMappingURL=index-a43c0f48.js.map
+//# sourceMappingURL=index-931c2f55.js.map

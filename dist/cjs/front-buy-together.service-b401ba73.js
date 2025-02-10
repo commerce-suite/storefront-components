@@ -1,6 +1,6 @@
 'use strict';
 
-const index = require('./index-4c7a4e0d.js');
+const index = require('./index-931c2f55.js');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -1771,4 +1771,4 @@ class FrontBuyTogetherService {
 
 exports.FrontBuyTogetherService = FrontBuyTogetherService;
 
-//# sourceMappingURL=front-buy-together.service-5f1f9e4b.js.map
+//# sourceMappingURL=front-buy-together.service-b401ba73.js.map

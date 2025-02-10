@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, E as Env, H as Host } from './index-f50d7c2c.js';
-import { A as AppService } from './index-a43c0f48.js';
+import { A as AppService } from './index-b2474825.js';
 import { t as transformMediaUrl } from './utils-04bece1c.js';
 
 const defaultContent = {

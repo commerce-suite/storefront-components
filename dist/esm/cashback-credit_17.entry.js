@@ -1,6 +1,6 @@
 import { r as registerInstance, h, g as getAssetPath, H as Host, c as createEvent, a as getElement } from './index-f50d7c2c.js';
 import { c as currencyFormat, g as getClassByProps, e as extractYouTubeVideoId } from './utils-04bece1c.js';
-import { P as ProductService, L as LiveShopService } from './index-a43c0f48.js';
+import { P as ProductService, L as LiveShopService } from './index-b2474825.js';
 
 const exec = (method, url, data) => {
     return new Promise((resolve, reject) => {

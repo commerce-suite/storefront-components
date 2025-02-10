@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index$1 = require('./index-ed1a22c2.js');
-const index = require('./index-4c7a4e0d.js');
+const index = require('./index-931c2f55.js');
 const utils = require('./utils-8c2029f5.js');
 
 const defaultContent = {
