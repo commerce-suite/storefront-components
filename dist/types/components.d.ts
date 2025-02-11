@@ -11,6 +11,7 @@ import { ICashback } from "./components/cashback/cashback.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 import { ILiveShop } from "./components/live-shop/live-shop.type";
+import { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 import { BasePrice, PaymentOption } from "./components/ui/product-price/product-price.type";
 export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
@@ -18,6 +19,7 @@ export { ICashback } from "./components/cashback/cashback.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
 export { IHighlightCardItem } from "./components/ui/highlight-card/highlight-card.type";
 export { ILiveShop } from "./components/live-shop/live-shop.type";
+export { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 export { BasePrice, PaymentOption } from "./components/ui/product-price/product-price.type";
 export namespace Components {
     interface BuyTogether {
@@ -48,6 +50,11 @@ export namespace Components {
     interface FrontCountdown {
         "endDate": string;
         "startDate": string;
+    }
+    interface FrontIcon {
+        "color": string;
+        "name": string;
+        "size"?: string;
     }
     interface FrontImage {
         "figCaption": string;
@@ -89,13 +96,13 @@ export namespace Components {
     }
     interface LiveShopDesktop {
         "isChatOpen": boolean;
-        "items": IHighlightCardItem[];
+        "items": IHighlightCardItem1[];
         "liveShopData": ILiveShop;
         "toggleChat": () => void;
         "videoId": string;
     }
     interface LiveShopMobile {
-        "items": IHighlightCardItem[];
+        "items": IHighlightCardItem1[];
         "liveShopData": ILiveShop;
         "videoId": string;
     }
@@ -106,6 +113,7 @@ export namespace Components {
     }
     interface LiveVideoPlayer {
         "autoPlay": boolean;
+        "mute": boolean;
         "videoId": string;
     }
     interface MaintenanceMode {
@@ -316,6 +324,12 @@ declare global {
         prototype: HTMLFrontCountdownElement;
         new (): HTMLFrontCountdownElement;
     };
+    interface HTMLFrontIconElement extends Components.FrontIcon, HTMLStencilElement {
+    }
+    var HTMLFrontIconElement: {
+        prototype: HTMLFrontIconElement;
+        new (): HTMLFrontIconElement;
+    };
     interface HTMLFrontImageElement extends Components.FrontImage, HTMLStencilElement {
     }
     var HTMLFrontImageElement: {
@@ -419,7 +433,7 @@ declare global {
     };
     interface HTMLLiveShopDesktopElementEventMap {
         "on-click-add": {
-    item: IHighlightCardItem;
+    item: IHighlightCardItem1;
     liveShopData: ILiveShop;
   };
     }
@@ -439,7 +453,7 @@ declare global {
     };
     interface HTMLLiveShopMobileElementEventMap {
         "on-click-add": {
-    item: IHighlightCardItem;
+    item: IHighlightCardItem1;
     liveShopData: ILiveShop;
   };
     }
@@ -625,6 +639,7 @@ declare global {
         "cashback-credit": HTMLCashbackCreditElement;
         "custom-card": HTMLCustomCardElement;
         "front-countdown": HTMLFrontCountdownElement;
+        "front-icon": HTMLFrontIconElement;
         "front-image": HTMLFrontImageElement;
         "front-select": HTMLFrontSelectElement;
         "google-recaptcha": HTMLGoogleRecaptchaElement;
@@ -689,6 +704,11 @@ declare namespace LocalJSX {
         "onCountdownFinished"?: (event: FrontCountdownCustomEvent<any>) => void;
         "startDate"?: string;
     }
+    interface FrontIcon {
+        "color"?: string;
+        "name"?: string;
+        "size"?: string;
+    }
     interface FrontImage {
         "figCaption"?: string;
         "imageSrc"?: string;
@@ -738,20 +758,20 @@ declare namespace LocalJSX {
     }
     interface LiveShopDesktop {
         "isChatOpen"?: boolean;
-        "items"?: IHighlightCardItem[];
+        "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
         "onOn-click-add"?: (event: LiveShopDesktopCustomEvent<{
-    item: IHighlightCardItem;
+    item: IHighlightCardItem1;
     liveShopData: ILiveShop;
   }>) => void;
         "toggleChat"?: () => void;
         "videoId"?: string;
     }
     interface LiveShopMobile {
-        "items"?: IHighlightCardItem[];
+        "items"?: IHighlightCardItem1[];
         "liveShopData"?: ILiveShop;
         "onOn-click-add"?: (event: LiveShopMobileCustomEvent<{
-    item: IHighlightCardItem;
+    item: IHighlightCardItem1;
     liveShopData: ILiveShop;
   }>) => void;
         "videoId"?: string;
@@ -765,6 +785,7 @@ declare namespace LocalJSX {
     }
     interface LiveVideoPlayer {
         "autoPlay"?: boolean;
+        "mute"?: boolean;
         "onComponentRendered"?: (event: LiveVideoPlayerCustomEvent<void>) => void;
         "videoId"?: string;
     }
@@ -832,6 +853,7 @@ declare namespace LocalJSX {
         "cashback-credit": CashbackCredit;
         "custom-card": CustomCard;
         "front-countdown": FrontCountdown;
+        "front-icon": FrontIcon;
         "front-image": FrontImage;
         "front-select": FrontSelect;
         "google-recaptcha": GoogleRecaptcha;
@@ -866,6 +888,7 @@ declare module "@stencil/core" {
             "cashback-credit": LocalJSX.CashbackCredit & JSXBase.HTMLAttributes<HTMLCashbackCreditElement>;
             "custom-card": LocalJSX.CustomCard & JSXBase.HTMLAttributes<HTMLCustomCardElement>;
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
+            "front-icon": LocalJSX.FrontIcon & JSXBase.HTMLAttributes<HTMLFrontIconElement>;
             "front-image": LocalJSX.FrontImage & JSXBase.HTMLAttributes<HTMLFrontImageElement>;
             "front-select": LocalJSX.FrontSelect & JSXBase.HTMLAttributes<HTMLFrontSelectElement>;
             "google-recaptcha": LocalJSX.GoogleRecaptcha & JSXBase.HTMLAttributes<HTMLGoogleRecaptchaElement>;
