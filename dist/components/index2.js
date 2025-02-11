@@ -6165,6 +6165,7 @@ var LiveShopQueries = /** @class */ (function () {
         return [
             'id',
             'name',
+            'hashRoom',
             'status',
             'urlLive',
             'title',

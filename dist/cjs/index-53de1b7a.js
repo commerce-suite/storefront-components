@@ -1463,10 +1463,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'custom-card_16.cjs':
+                case 'front-icon_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './custom-card_16.cjs.entry.js')); }).then(processMod, consoleError);
+                        './front-icon_3.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'buy-together-cart-modal.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -1483,14 +1483,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './launch-countdown.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'live-shop.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './live-shop.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'maintenance-mode.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './maintenance-mode.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'mini-player.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './mini-player.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'showcase-related.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -1507,10 +1507,26 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './google-recaptcha.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'live-shop-desktop_3.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './live-shop-desktop_3.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'highlight-card_3.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './highlight-card_3.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'front-select_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './front-select_2.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'custom-card.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './custom-card.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'front-image_7.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './front-image_7.cjs.entry.js')); }).then(processMod, consoleError);
           }
       }
   return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(

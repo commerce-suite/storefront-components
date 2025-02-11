@@ -10,22 +10,24 @@ const LiveVideoPlayer = /*@__PURE__*/ proxyCustomElement(class LiveVideoPlayer e
         this.componentRendered = createEvent(this, "componentRendered", 7);
         this.videoId = undefined;
         this.autoPlay = false;
+        this.mute = true;
     }
     getVideoUrl() {
         if (this.autoPlay)
-            return `https://www.youtube.com/embed/${this.videoId}?autoplay=1&mute=1`;
+            return `https://www.youtube.com/embed/${this.videoId}?autoplay=1&mute=${+this.mute}`;
         return `https://www.youtube.com/embed/${this.videoId}`;
     }
     componentDidLoad() {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: 'ea49692f04dbd19dc053c03b4c02db756b63708d' }, h("div", { key: 'ae9a2a5718358bd7986a5891ea233953e6e8bd41', class: "live-video-player" }, h("iframe", { key: '99845be4a05c5b6250f2f15cd1c5b44abbf80131', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '7bd45de3c3d3860e0cf31e824d8c303ef88bb45d' }, h("div", { key: 'd269dcd341226de98fb5c7f01cf37795eccecf12', class: "live-video-player" }, h("iframe", { key: '672a6be0643a40f4f4866ccd42a01a54a6bed965', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
     static get style() { return LiveVideoPlayerStyle0; }
 }, [0, "live-video-player", {
         "videoId": [1, "video-id"],
-        "autoPlay": [4, "auto-play"]
+        "autoPlay": [4, "auto-play"],
+        "mute": [4]
     }]);
 function defineCustomElement() {
     if (typeof customElements === "undefined") {

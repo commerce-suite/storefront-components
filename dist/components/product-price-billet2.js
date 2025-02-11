@@ -14,7 +14,7 @@ const ProductPriceBillet = /*@__PURE__*/ proxyCustomElement(class ProductPriceBi
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: '2c6e04d7c0683eb95cff19ac97d3ebfd56fe6173', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: '54c6556aad53fc2cf5ad6e2748ec5cdd2ade142e', class: "price-compare" }, formattedCompare), h("span", { key: 'f3d095b38ae7873ea7a98297c33d9ac0967a2d56', class: "price-current" }, h("span", { key: '647979fe18fcff085c0938617cf3b9c9a5a822aa', class: "highlight" }, formattedPrice), " no boleto")));
+        return (h("div", { key: '1f1b96c087c1e73cffe988ff06fa1c6580b4ac3a', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: '06a678bb35e1a4c2308113d44f0164aff4fb5297', class: "price-compare" }, formattedCompare), h("span", { key: '2fafb6bc9232ab9e44c0761d94da496d10a7072d', class: "price-current" }, h("span", { key: '7f48612adace109aae38a1247f9019038a0c94fa', class: "highlight" }, formattedPrice), " no boleto")));
     }
     static get style() { return ProductPriceBilletStyle0; }
 }, [0, "product-price-billet", {

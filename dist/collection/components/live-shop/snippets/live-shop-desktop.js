@@ -79,8 +79,9 @@ export class LiveShopDesktop {
                     "resolved": "IHighlightCardItem[]",
                     "references": {
                         "IHighlightCardItem": {
-                            "location": "global",
-                            "id": "global::IHighlightCardItem"
+                            "location": "import",
+                            "path": "../../../components",
+                            "id": "src/components.d.ts::IHighlightCardItem"
                         }
                     }
                 },
@@ -141,8 +142,9 @@ export class LiveShopDesktop {
                     "resolved": "{ item: IHighlightCardItem; liveShopData: ILiveShop; }",
                     "references": {
                         "IHighlightCardItem": {
-                            "location": "global",
-                            "id": "global::IHighlightCardItem"
+                            "location": "import",
+                            "path": "../../../components",
+                            "id": "src/components.d.ts::IHighlightCardItem"
                         },
                         "ILiveShop": {
                             "location": "import",

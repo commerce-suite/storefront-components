@@ -1,4 +1,4 @@
-import { Host, h, getAssetPath } from "@stencil/core";
+import { Host, h } from "@stencil/core";
 import { DraggableService } from "./services/DraggableService";
 export class MiniPlayer {
     constructor() {
@@ -46,7 +46,7 @@ export class MiniPlayer {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '3fb2df064fcd2015dbbb4e26076b171ea7627e79' }, this.showMiniPlayer && (h("div", { key: 'a2f9a06d54b0cadd54f23ab0196cbf2c58454f13', class: "mini-player", style: this.getMiniPlayerStyle() }, h("button", { key: '006aa088577788696293fbcd20076c7b7eed8848', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, h("img", { key: '911d817a73932d429b48965cc012b128b6774ae1', src: getAssetPath('./assets/icons/close-icon.svg'), alt: "close-icon" })), h("live-video-player", { key: '1cda6b94d502744ba73b560cfa9f8347f51dd9d8', videoId: this.videoId, autoPlay: this.autoPlay }), h("div", { key: '272dbdbfbdbf84247288a7c1fb481ba9fed6ddee', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, h("h6", { key: '8fedd7c9069cc5c9b814f40cba7517cbc754ea89', class: "mini-player-bar-title" }, this.mainTitle), h("div", { key: '992d782cd3d9548b434b2ff05530d09a83a570e4', class: "mini-player-bar-button" }, h("button", { key: 'b9f023fca02b5c15a5592d9234b70592a124b53e', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
+        return (h(Host, { key: 'c3b95cb5b3be2656e01e196be960058974be0490' }, this.showMiniPlayer && (h("div", { key: '336ad2762077302a5507da061caf97d522216e0f', class: "mini-player", style: this.getMiniPlayerStyle() }, h("button", { key: '0811e694f9bfdad71cb5d8b44f1f0f36b4813b7c', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, h("front-icon", { key: '8c640d22818fcd17d2aa362ba7702333f5109cfd', name: "close" })), h("live-video-player", { key: '76bdfe51a47e209a9476eb1441dee8356b2d2ef3', videoId: this.videoId, autoPlay: this.autoPlay }), h("div", { key: '4c0f0d190b479125c25f53175a8cab76f6f1bc6c', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, h("h6", { key: 'b228f613a2673f3afbb28ee71cd007240d860844', class: "mini-player-bar-title" }, this.mainTitle), h("div", { key: '16bcb7e5d29098db646b3624fb214baf207676af', class: "mini-player-bar-button" }, h("button", { key: '1c4644478b4d2ffd648e1899fe8cda4392aa0396', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
     }
     static get is() { return "mini-player"; }
     static get originalStyleUrls() {

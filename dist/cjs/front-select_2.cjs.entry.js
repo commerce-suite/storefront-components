@@ -22,7 +22,7 @@ const FrontSelect = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '80dd69fb63203449e0cf3a9662a9a10b5c46ad2c' }, this.label && (index.h("label", { key: '8660612be79abacd5ff8db383e5980a3a4b967cc', class: "select-label", htmlFor: this.selectId }, this.label)), index.h("div", { key: 'c51d0a4dea2885f9673b702c8282e33a90333d7a', class: "front-select-container" }, index.h("select", { key: 'ef7ba3a44d8603fe7f413862504f364620042098', name: this.selectName, id: this.selectId }, index.h("option", { key: 'ef4349046ecbab450493c88367d835ad533cb15e', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
+        return (index.h(index.Host, { key: 'cd298128c277a74a2b3a4188625c1862d20363ac' }, this.label && (index.h("label", { key: '7f8537c73ee9b3aae7683295335497553cc49ba1', class: "select-label", htmlFor: this.selectId }, this.label)), index.h("div", { key: '56d86ffb30d0d620e82a001acdc0470d03baade5', class: "front-select-container" }, index.h("select", { key: '17934170de18e248cfe5ed51179f039280bb4c5d', name: this.selectName, id: this.selectId }, index.h("option", { key: '4437e34c835ba1a7b5def1b1794006d898110427', disabled: this.placeholder.disabled, value: this.placeholder.value, selected: this.value === this.placeholder.value }, this.placeholder.name), (_a = this.optionsList) === null || _a === void 0 ? void 0 :
             _a.map(({ name, value, disabled }) => (index.h("option", { value: value, selected: this.value === value, disabled: disabled }, name)))))));
     }
 };
@@ -47,7 +47,7 @@ const VariationSelector = class {
         });
     }
     render() {
-        return (index.h("div", { key: '557465d1120cad8e23e02f894718a7294d09ceab', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (index.h("div", { class: "item" }, index.h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
+        return (index.h("div", { key: '160a00d7e6c7d9dc599c406c0cd9f8e9ca4c31f5', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (index.h("div", { class: "item" }, index.h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
     }
 };
 VariationSelector.style = VariationSelectorStyle0;
