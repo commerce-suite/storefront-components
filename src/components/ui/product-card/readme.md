@@ -5,13 +5,14 @@
 
 ## Properties
 
-| Property         | Attribute      | Description | Type              | Default     |
-| ---------------- | -------------- | ----------- | ----------------- | ----------- |
-| `basePrice`      | --             |             | `BasePrice`       | `undefined` |
-| `customClass`    | `custom-class` |             | `string`          | `''`        |
-| `inline`         | `inline`       |             | `boolean`         | `false`     |
-| `paymentOptions` | --             |             | `PaymentOption[]` | `[]`        |
-| `product`        | --             |             | `IProductCard`    | `undefined` |
+| Property           | Attribute            | Description | Type              | Default     |
+| ------------------ | -------------------- | ----------- | ----------------- | ----------- |
+| `basePrice`        | --                   |             | `BasePrice`       | `undefined` |
+| `customClass`      | `custom-class`       |             | `string`          | `''`        |
+| `inline`           | `inline`             |             | `boolean`         | `false`     |
+| `paymentOptions`   | --                   |             | `PaymentOption[]` | `[]`        |
+| `product`          | --                   |             | `IProductCard`    | `undefined` |
+| `showStartingFrom` | `show-starting-from` |             | `boolean`         | `false`     |
 
 
 ## Dependencies
