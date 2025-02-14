@@ -130,10 +130,12 @@ export namespace Components {
         "inline": boolean;
         "paymentOptions"?: PaymentOption[];
         "product": IProductCard;
+        "showStartingFrom"?: boolean;
     }
     interface ProductPrice {
         "basePrice": BasePrice;
         "paymentOptions"?: PaymentOption[];
+        "showStartingFrom"?: boolean;
     }
     interface ProductPriceBillet {
         "price": number;
@@ -153,6 +155,7 @@ export namespace Components {
     interface ProductPriceSimple {
         "price": number;
         "priceCompare"?: number;
+        "showStartingFrom"?: boolean;
     }
     interface ShowcaseRelated {
         "buttonLabel": string;
@@ -806,10 +809,12 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         "paymentOptions"?: PaymentOption[];
         "product"?: IProductCard;
+        "showStartingFrom"?: boolean;
     }
     interface ProductPrice {
         "basePrice"?: BasePrice;
         "paymentOptions"?: PaymentOption[];
+        "showStartingFrom"?: boolean;
     }
     interface ProductPriceBillet {
         "price"?: number;
@@ -829,6 +834,7 @@ declare namespace LocalJSX {
     interface ProductPriceSimple {
         "price"?: number;
         "priceCompare"?: number;
+        "showStartingFrom"?: boolean;
     }
     interface ShowcaseRelated {
         "buttonLabel"?: string;

@@ -32,6 +32,7 @@ export class HighlightCard {
               custom-class="highlight-custom-style"
               product={item}
               basePrice={{ price: item.price, priceCompare: item.priceBase }}
+              showStartingFrom={item.showStartingFrom}
               inline
             />
             <div class="highlight-card-product-cart-action">
