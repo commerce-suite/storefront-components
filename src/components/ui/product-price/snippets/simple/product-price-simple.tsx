@@ -11,6 +11,7 @@ import { BasePrice } from '../../product-price.type';
 export class ProductPriceSimple implements BasePrice {
   @Prop() price: number;
   @Prop() priceCompare?: number;
+  @Prop() showStartingFrom?: boolean = false;
 
   render() {
     const formattedPrice = currencyFormat(this.price);
@@ -18,7 +19,10 @@ export class ProductPriceSimple implements BasePrice {
 
     return (
       <div class="payment-option payment-option-simple">
-        {formattedCompare && <span class="price-compare">{formattedCompare}</span>}
+        {this.showStartingFrom && <span class="starting-from">A partir de</span>}
+        {formattedCompare && !this.showStartingFrom && (
+          <span class="price-compare">{formattedCompare}</span>
+        )}
         <span class="price-current">
           <span class="highlight">{formattedPrice}</span>
         </span>

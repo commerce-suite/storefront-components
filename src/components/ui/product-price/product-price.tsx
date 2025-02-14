@@ -10,10 +10,15 @@ import { BasePrice, PaymentOption } from './product-price.type';
 export class ProductPrice {
   @Prop() basePrice: BasePrice;
   @Prop() paymentOptions?: PaymentOption[];
+  @Prop() showStartingFrom?: boolean = false;
 
   private componentMap = {
     simple: (option: PaymentOption) => (
-      <product-price-simple price={option.price} priceCompare={option.priceCompare} />
+      <product-price-simple
+        price={option.price}
+        priceCompare={option.priceCompare}
+        showStartingFrom={this.showStartingFrom}
+      />
     ),
     billet: (option: PaymentOption) => (
       <product-price-billet price={option.price} priceCompare={option.priceCompare} />

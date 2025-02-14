@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default     |
-| -------------- | --------------- | ----------- | -------- | ----------- |
-| `price`        | `price`         |             | `number` | `undefined` |
-| `priceCompare` | `price-compare` |             | `number` | `undefined` |
+| Property           | Attribute            | Description | Type      | Default     |
+| ------------------ | -------------------- | ----------- | --------- | ----------- |
+| `price`            | `price`              |             | `number`  | `undefined` |
+| `priceCompare`     | `price-compare`      |             | `number`  | `undefined` |
+| `showStartingFrom` | `show-starting-from` |             | `boolean` | `false`     |
 
 
 ## Dependencies

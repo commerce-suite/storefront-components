@@ -11,7 +11,15 @@ export class LiveShopHandler {
   private async getProducts() {
     const productIds = this.liveShopData.products.map(product => product.productId);
     return await ProductService.getList({
-      fields: ['name', 'images { src }', 'price', 'priceCompare', 'productId', 'slug'],
+      fields: [
+        'name',
+        'images { src }',
+        'price',
+        'priceCompare',
+        'productId',
+        'slug',
+        'hasPriceRange',
+      ],
       filter: { productIds, page: 0, first: productIds.length },
     });
   }
@@ -39,6 +47,7 @@ export class LiveShopHandler {
         slug: node.slug,
         show: status && status !== 'hidden',
         highlight: status === 'highlighting',
+        showStartingFrom: node.hasPriceRange,
       };
     });
   }

@@ -70,7 +70,7 @@
       cursor: pointer;
       .highlight-card-product-cart-action {
         & a {
-          text-decoration: underline var(--fc-color-primary) 1px solid;
+          text-decoration: underline var(--fc-color-primary) 1px solid !important;
         }
       }
     }

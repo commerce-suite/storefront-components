@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute | Description | Type              | Default     |
-| ---------------- | --------- | ----------- | ----------------- | ----------- |
-| `basePrice`      | --        |             | `BasePrice`       | `undefined` |
-| `paymentOptions` | --        |             | `PaymentOption[]` | `undefined` |
+| Property           | Attribute            | Description | Type              | Default     |
+| ------------------ | -------------------- | ----------- | ----------------- | ----------- |
+| `basePrice`        | --                   |             | `BasePrice`       | `undefined` |
+| `paymentOptions`   | --                   |             | `PaymentOption[]` | `undefined` |
+| `showStartingFrom` | `show-starting-from` |             | `boolean`         | `false`     |
 
 
 ## Dependencies

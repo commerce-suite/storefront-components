@@ -15,6 +15,7 @@ export class ProductCard {
   @Prop({ mutable: true }) product: IProductCard;
   @Prop() basePrice: BasePrice;
   @Prop() paymentOptions?: PaymentOption[] = [];
+  @Prop() showStartingFrom?: boolean = false;
 
   getClassWithInline(className: string) {
     const prosForClass = { '-inline': this.inline };
@@ -32,7 +33,11 @@ export class ProductCard {
           />
           <div class="info">
             <span class="title">{this.product?.name}</span>
-            <product-price basePrice={this.basePrice} paymentOptions={this.paymentOptions} />
+            <product-price
+              basePrice={this.basePrice}
+              paymentOptions={this.paymentOptions}
+              showStartingFrom={this.showStartingFrom}
+            />
           </div>
         </div>
       </Host>
