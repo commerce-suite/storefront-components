@@ -41,3 +41,7 @@
     gap: 40px;
   }
 }
+
+.custom-card-content:empty {
+  display: none;
+}
