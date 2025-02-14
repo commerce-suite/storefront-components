@@ -1,2 +1,0 @@
-import{r as s,h as t}from"./p-bc241129.js";const o="@import url('https://fonts.googleapis.com/icon?family=Material+Icons');";const i=o;const c=class{constructor(t){s(this,t);this.name="home";this.size="24px";this.color="#000"}render(){return t("span",{key:"0653c7b1f38090771a80276ce5a2d6e1beebb363",class:"material-icons",style:{color:this.color,fontSize:this.size}},this.name)}};c.style=i;export{c as front_icon};
-//# sourceMappingURL=p-93738bad.entry.js.map
