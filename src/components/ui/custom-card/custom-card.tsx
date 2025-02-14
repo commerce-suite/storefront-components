@@ -17,11 +17,6 @@ export class CustomCard {
     this.componentRendered.emit();
   }
 
-  hasSlot(): boolean {
-    const slot = this.el.querySelector('slot') as HTMLSlotElement;
-    return !!slot && slot.assignedNodes().length > 0;
-  }
-
   render() {
     return (
       <Host>
@@ -32,11 +27,9 @@ export class CustomCard {
               <p class="custom-card-header-description">{this.cardDescription}</p>
             )}
           </div>
-          {this.hasSlot() ? (
-            <div class="custom-card-content">
-              <slot></slot>
-            </div>
-          ) : null}
+          <div class="custom-card-content">
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );
