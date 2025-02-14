@@ -8,12 +8,14 @@ import { Component, Prop, Event, Host, EventEmitter, h } from '@stencil/core';
 export class LiveVideoPlayer {
   @Prop() videoId: string;
   @Prop() autoPlay: boolean = false;
+  @Prop() mute: boolean = true;
 
   @Event()
   componentRendered: EventEmitter<void>;
 
   private getVideoUrl() {
-    if (this.autoPlay) return `https://www.youtube.com/embed/${this.videoId}?autoplay=1&mute=1`;
+    if (this.autoPlay)
+      return `https://www.youtube.com/embed/${this.videoId}?autoplay=1&mute=${+this.mute}`;
     return `https://www.youtube.com/embed/${this.videoId}`;
   }
 

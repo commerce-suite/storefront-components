@@ -8,6 +8,7 @@
 | Property   | Attribute   | Description | Type      | Default     |
 | ---------- | ----------- | ----------- | --------- | ----------- |
 | `autoPlay` | `auto-play` |             | `boolean` | `false`     |
+| `mute`     | `mute`      |             | `boolean` | `true`      |
 | `videoId`  | `video-id`  |             | `string`  | `undefined` |
 
 
