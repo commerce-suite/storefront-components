@@ -71,7 +71,8 @@
     .highlight-card {
       width: 450px;
       max-height: 573px;
-      overflow: scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 }
