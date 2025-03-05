@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-acabb06e.js';
-import { F as FrontBuyTogetherService } from './front-buy-together.service-fc8bc69c.js';
-import './index-b2474825.js';
+import { r as registerInstance, c as createEvent, h, g as getAssetPath, H as Host } from './index-eeb6481f.js';
+import { F as FrontBuyTogetherService } from './front-buy-together.service-30ff9fa8.js';
+import './index-a3a8d7b8.js';
 
 var EnumBuyTogetherOnLoadStatus;
 (function (EnumBuyTogetherOnLoadStatus) {

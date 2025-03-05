@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-53de1b7a.js');
+const index = require('./index-9c4b21d6.js');
 
 class FrontCountdownService {
     constructor(startDate, endDate) {

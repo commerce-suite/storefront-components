@@ -23,6 +23,10 @@ export class LiveShopHandler {
         var _a;
         const products = await this.getProducts();
         const liveProducts = (_a = this.liveShopData) === null || _a === void 0 ? void 0 : _a.products;
+        const productIdsOrder = liveProducts.map(product => product.productId);
+        products.edges.sort((a, b) => {
+            return productIdsOrder.indexOf(a.node.productId) - productIdsOrder.indexOf(b.node.productId);
+        });
         return products.edges.map(({ node }) => {
             var _a, _b, _c;
             const liveProduct = liveProducts.find(product => product.productId === node.productId);
