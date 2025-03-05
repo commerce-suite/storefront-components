@@ -32,6 +32,12 @@ export class LiveShopHandler {
   async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
     const liveProducts = this.liveShopData?.products;
+    const productIdsOrder = liveProducts.map(product => product.productId);
+
+    products.edges.sort((a, b) => {
+      return productIdsOrder.indexOf(a.node.productId) - productIdsOrder.indexOf(b.node.productId);
+    });
+
     return products.edges.map(({ node }) => {
       const liveProduct = liveProducts.find(product => product.productId === node.productId);
       const status = liveProduct?.status ?? null;
