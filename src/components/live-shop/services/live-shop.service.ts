@@ -32,11 +32,6 @@ export class LiveShopHandler {
   async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
     const liveProducts = this.liveShopData?.products;
-    const productIdsOrder = liveProducts.map(product => product.productId);
-
-    products.edges.sort((a, b) => {
-      return productIdsOrder.indexOf(a.node.productId) - productIdsOrder.indexOf(b.node.productId);
-    });
 
     return products.edges.map(({ node }) => {
       const liveProduct = liveProducts.find(product => product.productId === node.productId);
@@ -53,6 +48,7 @@ export class LiveShopHandler {
         slug: node.slug,
         show: status && status !== 'hidden',
         highlight: status === 'highlighting',
+        position: liveProduct?.position ?? 0,
         showStartingFrom: node.hasPriceRange,
       };
     });
@@ -66,27 +62,60 @@ export class LiveShopHandler {
       type: 'message',
       show: message.status && message.status !== 'hidden',
       highlight: message.status === 'highlighting',
+      position: message.position ?? 0,
     }));
   }
 
   updateItems(items: IHighlightCardItem[], message: SocketMessage): IHighlightCardItem[] {
+    const maxPosition = Math.max(...items.map(i => i.position ?? 0));
+
     const updatedItems = items.map(item => {
-      if (item.id === message.id && item.type === message.type) {
+      if (item.id !== message.id || item.type !== message.type) return item;
+
+      const isHighlightOn = message.status === 'highlighting';
+      const wasHighlightOn = !!item.highlight;
+      const isHidden = message.status === 'hidden';
+
+      if (isHighlightOn && !wasHighlightOn) {
         return {
           ...item,
-          show: message.status !== 'hidden',
-          highlight: message.status === 'highlighting',
+          show: !isHidden,
+          highlight: true,
+          lastPosition: item.lastPosition ?? item.position,
+          position: maxPosition + 1,
         };
       }
-      return item;
+
+      if (!isHighlightOn && wasHighlightOn) {
+        return {
+          ...item,
+          show: !isHidden,
+          highlight: false,
+          position: item.lastPosition ?? item.position,
+          lastPosition: undefined,
+        };
+      }
+
+      return {
+        ...item,
+        show: !isHidden,
+        highlight: isHighlightOn,
+        position: maxPosition + 1,
+      };
     });
 
+    updatedItems.sort((a, b) => (b.position ?? 0) - (a.position ?? 0));
     return updatedItems;
   }
 
   async getItems(): Promise<IHighlightCardItem[]> {
     const productItems = await this.productsToItemsAdapter();
     const messageItems = this.messagesToItemsAdapter();
-    return [...productItems, ...messageItems];
+
+    const allItems = [...productItems, ...messageItems];
+
+    allItems.sort((a, b) => b.position - a.position);
+
+    return allItems;
   }
 }

@@ -28,12 +28,14 @@ export const liveShopMock: ILiveShop = {
           },
         },
       ],
+      position: 1,
     },
   ],
   messages: [
     {
       title: 'Boas vindas!',
       content: 'Bem vindo a primeira live shop!',
+      position: 2,
     },
   ],
   alertVisible: true,
