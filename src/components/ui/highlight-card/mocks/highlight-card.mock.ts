@@ -8,6 +8,7 @@ const items: IHighlightCardItem[] = [
       'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
     highlight: true,
     show: true,
+    position: 2,
   },
   {
     type: 'product',
@@ -23,6 +24,7 @@ const items: IHighlightCardItem[] = [
     highlight: true,
     show: true,
     slug: 'tenis-nike-air-force',
+    position: 1,
   },
   {
     type: 'message',
@@ -31,6 +33,7 @@ const items: IHighlightCardItem[] = [
       'Estamos animados para compartilhar as melhores ofertas, produtos exclusivos e momentos especiais com vocês. Fiquem ligados e aproveitem ao máximo!',
     highlight: false,
     show: true,
+    position: 3,
   },
 ];
 

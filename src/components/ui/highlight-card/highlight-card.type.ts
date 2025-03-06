@@ -10,7 +10,9 @@ export interface IMessageItem extends IItem {
   type: 'message';
   title: string;
   content: string;
+  position: number;
   id?: string;
+  lastPosition?: number;
 }
 
 export interface IProductItem extends IItem {
@@ -20,8 +22,10 @@ export interface IProductItem extends IItem {
   image: IImage | null;
   name: string;
   slug: string;
+  position: number;
   id?: number;
   specialPrice?: number;
+  lastPosition?: number;
 }
 
 export type IHighlightCardItem = IMessageItem | IProductItem;

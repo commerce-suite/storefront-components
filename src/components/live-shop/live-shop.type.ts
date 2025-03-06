@@ -12,6 +12,7 @@ export interface ILiveShopDiscount {
 interface ILiveShopMessage {
   title: string;
   content: string;
+  position: number;
 }
 
 interface ILiveShopVariation {
@@ -23,6 +24,7 @@ interface ILiveShopProduct {
   productId: number;
   discount: ILiveShopDiscount;
   variations: ILiveShopVariation[];
+  position: number;
 }
 
 export interface ILiveShop {
@@ -47,4 +49,5 @@ export interface SocketMessage {
   type: 'product' | 'message';
   status: LiveShopItemStatus;
   id: number;
+  position: number;
 }
