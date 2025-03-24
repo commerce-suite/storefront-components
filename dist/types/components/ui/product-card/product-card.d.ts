@@ -1,11 +1,12 @@
-import { ComponentWillLoad } from '../../../stencil-public-runtime';
 import { IProductCard } from './product-card.type';
-export declare class ProductCard implements ComponentWillLoad {
+import { BasePrice, PaymentOption } from '../product-price/product-price.type';
+export declare class ProductCard {
     inline: boolean;
+    customClass: string;
     product: IProductCard;
-    showPriceBase: boolean;
+    basePrice: BasePrice;
+    paymentOptions?: PaymentOption[];
+    showStartingFrom?: boolean;
     getClassWithInline(className: string): string;
-    getPrice(): string;
-    componentWillLoad(): void | Promise<void>;
     render(): any;
 }

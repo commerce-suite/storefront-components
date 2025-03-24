@@ -1,0 +1,8 @@
+@import '../../../style/mixins/button.scss';
+
+.live-shop-not-found {
+  & button {
+    @include front-button;
+    font-size: 14px;
+  }
+}

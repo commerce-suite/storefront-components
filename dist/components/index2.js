@@ -22,6 +22,84 @@ function Da(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].
 g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d));}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]));}}function Ea(a,b){this.c=a;this.a=b;}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa);});};function Ga(a,b){this.c=a;this.a=b;}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(l){}a(e);}},2E3):a([]);};function Ha(a,b){this.c=a;this.f=b;this.a=[];}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)};module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
 }(webfontloader));
 
+var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var AppRepositoryJson = /** @class */ (function () {
+    function AppRepositoryJson() {
+    }
+    AppRepositoryJson.getById = function (id, fields) {
+        var _a;
+        return __awaiter$b(this, void 0, void 0, function () {
+            var mock, isFieldNotSelected, deleteFieldIfNecessary;
+            return __generator$b(this, function (_b) {
+                mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
+                if (id != mock.id) {
+                    throw new Error('apps_not_found');
+                }
+                isFieldNotSelected = function (entry) { return !fields.includes(entry); };
+                deleteFieldIfNecessary = function (entry) {
+                    isFieldNotSelected(entry) && delete mock[entry];
+                };
+                fields && Object.keys(mock).forEach(deleteFieldIfNecessary);
+                return [2 /*return*/, mock];
+            });
+        });
+    };
+    AppRepositoryJson.getBySlug = function (slug, fields) {
+        var _a;
+        return __awaiter$b(this, void 0, void 0, function () {
+            var mock, isFieldNotSelected, deleteFieldIfNecessary;
+            return __generator$b(this, function (_b) {
+                mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
+                if (slug != mock.slug) {
+                    throw new Error('apps_not_found');
+                }
+                isFieldNotSelected = function (entry) { return !fields.includes(entry); };
+                deleteFieldIfNecessary = function (entry) {
+                    isFieldNotSelected(entry) && delete mock[entry];
+                };
+                fields && Object.keys(mock).forEach(deleteFieldIfNecessary);
+                return [2 /*return*/, mock];
+            });
+        });
+    };
+    return AppRepositoryJson;
+}());
+
 // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 var nodejsCustomInspectSymbol = typeof Symbol === 'function' && typeof Symbol.for === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
 const nodejsCustomInspectSymbol$1 = nodejsCustomInspectSymbol;
@@ -1115,6 +1193,14 @@ function hasMultilineItems(maybeArray) {
   return maybeArray != null && maybeArray.some(isMultiline);
 }
 
+function devAssert(condition, message) {
+  var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
+
+  if (!booleanCondition) {
+    throw new Error(message);
+  }
+}
+
 function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
 
 /**
@@ -1409,6 +1495,11 @@ var GraphQLError = /*#__PURE__*/function (_Error) {
     key: "toString",
     value: function toString() {
       return printError(this);
+    }
+  }, {
+    key: "toJSON",
+    value: function toJSON() {
+      return formatError(this);
     } // FIXME: workaround to not break chai comparisons, should be remove in v16
     // $FlowFixMe[unsupported-syntax] Flow doesn't support computed properties yet
 
@@ -1451,6 +1542,33 @@ function printError(error) {
 
   return output;
 }
+/**
+ * Given a GraphQLError, format it according to the rules described by the
+ * Response Format, Errors section of the GraphQL Specification.
+ */
+
+function formatError(error) {
+  var _error$message;
+
+  error || devAssert(0, 'Received null or undefined error.');
+  var message = (_error$message = error.message) !== null && _error$message !== void 0 ? _error$message : 'An unknown error occurred.';
+  var locations = error.locations;
+  var path = error.path;
+  var extensions = error.extensions;
+  return extensions && Object.keys(extensions).length > 0 ? {
+    message: message,
+    locations: locations,
+    path: path,
+    extensions: extensions
+  } : {
+    message: message,
+    locations: locations,
+    path: path
+  };
+}
+/**
+ * @see https://github.com/graphql/graphql-spec/blob/master/spec/Section%207%20--%20Response.md#errors
+ */
 
 /**
  * Produces a GraphQLError representing a syntax error, containing useful
@@ -1492,14 +1610,6 @@ var TokenKind = Object.freeze({
 /**
  * The enum type representing the token kinds values.
  */
-
-function devAssert(condition, message) {
-  var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
-
-  if (!booleanCondition) {
-    throw new Error(message);
-  }
-}
 
 /**
  * A replacement for instanceof which includes an error warning when multi-realm
@@ -4247,12 +4357,12 @@ function hash(e) {
   return phash(5381, e) >>> 0;
 }
 
-var i$1 = new Set;
+var i = new Set;
 
 var s = new WeakMap;
 
 function stringify(e) {
-  if (null === e || i$1.has(e)) {
+  if (null === e || i.has(e)) {
     return "null";
   } else if ("object" != typeof e) {
     return JSON.stringify(e) || "";
@@ -4275,7 +4385,7 @@ function stringify(e) {
     s.set(e, u);
     return '{"__key":"' + u + '"}';
   }
-  i$1.add(e);
+  i.add(e);
   var f = "{";
   for (var c = 0, l = o.length; c < l; c++) {
     var p = o[c];
@@ -4287,12 +4397,12 @@ function stringify(e) {
       f += stringify(p) + ":" + h;
     }
   }
-  i$1.delete(e);
+  i.delete(e);
   return f += "}";
 }
 
 function stringifyVariables(e) {
-  i$1.clear();
+  i.clear();
   return stringify(e);
 }
 
@@ -5094,7 +5204,7 @@ var J = function Client(e) {
 
 var W = J;
 
-var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -5103,7 +5213,7 @@ var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$5 = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -5148,9 +5258,9 @@ var GraphqlService = /** @class */ (function () {
         });
     }
     GraphqlService.prototype.query = function (query, variables) {
-        return __awaiter$5(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_1;
-            return __generator$5(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5169,9 +5279,9 @@ var GraphqlService = /** @class */ (function () {
         });
     };
     GraphqlService.prototype.mutation = function (query, variables) {
-        return __awaiter$5(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_2;
-            return __generator$5(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5195,6 +5305,96 @@ function getClient() {
     return new GraphqlService(shop_ctx.api_url, shop_ctx.token, shop_ctx.domain);
 }
 
+var AppQueries = /** @class */ (function () {
+    function AppQueries(fields) {
+        this.fields = fields || this.defaultFields();
+    }
+    AppQueries.prototype.getFields = function () {
+        return this.fields.join();
+    };
+    AppQueries.prototype.defaultFields = function () {
+        return ['id', 'slug', 'content', 'type'];
+    };
+    AppQueries.prototype.getApp = function () {
+        return "query App($filter: filterApps) {\n        app(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
+    };
+    return AppQueries;
+}());
+
+var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var AppRepositoryGql = /** @class */ (function () {
+    function AppRepositoryGql() {
+    }
+    AppRepositoryGql.getById = function (id, fields) {
+        return __awaiter$9(this, void 0, void 0, function () {
+            var appQuery, getAppQuery, app;
+            return __generator$9(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        appQuery = new AppQueries(fields);
+                        getAppQuery = appQuery.getApp();
+                        return [4 /*yield*/, getClient().query(getAppQuery, { filter: { id: id } })];
+                    case 1:
+                        app = (_a.sent()).app;
+                        return [2 /*return*/, app];
+                }
+            });
+        });
+    };
+    AppRepositoryGql.getBySlug = function (slug, fields) {
+        return __awaiter$9(this, void 0, void 0, function () {
+            var appQuery, getAppQuery, app;
+            return __generator$9(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        appQuery = new AppQueries(fields);
+                        getAppQuery = appQuery.getApp();
+                        return [4 /*yield*/, getClient().query(getAppQuery, { filter: { slug: slug } })];
+                    case 1:
+                        app = (_a.sent()).app;
+                        return [2 /*return*/, app];
+                }
+            });
+        });
+    };
+    return AppRepositoryGql;
+}());
+
 var BroadcastService = /** @class */ (function () {
     function BroadcastService() {
     }
@@ -5206,6 +5406,89 @@ var BroadcastService = /** @class */ (function () {
         data && window.dispatchEvent(event);
     };
     return BroadcastService;
+}());
+
+var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
+var AppService = /** @class */ (function () {
+    function AppService() {
+    }
+    AppService.getById = function (id, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result, error_1;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository$2().getById(Number(id), fields)];
+                    case 1:
+                        result = _a.sent();
+                        BroadcastService.emit('Apps', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_1 = _a.sent();
+                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AppService.getBySlug = function (slug, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result, error_2;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository$2().getBySlug(slug, fields)];
+                    case 1:
+                        result = _a.sent();
+                        BroadcastService.emit('Apps', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_2 = _a.sent();
+                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return AppService;
 }());
 
 function normalizePagination(page, items) {
@@ -5372,6 +5655,179 @@ var ProductQueries = /** @class */ (function () {
     return ProductQueries;
 }());
 
+var __assign$4 = (undefined && undefined.__assign) || function () {
+    __assign$4 = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign$4.apply(this, arguments);
+};
+var __awaiter$7 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$7 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var ProductRepositoryGql = /** @class */ (function () {
+    function ProductRepositoryGql() {
+    }
+    ProductRepositoryGql.getList = function (_a) {
+        var fields = _a.fields, agg = _a.agg, filter = _a.filter;
+        return __awaiter$7(this, void 0, void 0, function () {
+            var productQuery, productListQuery, products;
+            return __generator$7(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        productQuery = new ProductQueries(fields);
+                        productListQuery = productQuery.listFullQuery();
+                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$4({}, filter) })];
+                    case 1:
+                        products = (_b.sent()).products;
+                        return [2 /*return*/, products];
+                }
+            });
+        });
+    };
+    ProductRepositoryGql.getOne = function (_a) {
+        var fields = _a.fields, filter = _a.filter;
+        return __awaiter$7(this, void 0, void 0, function () {
+            var productQuery, productGetOneQuery, product;
+            return __generator$7(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        productQuery = new ProductQueries(fields);
+                        productGetOneQuery = productQuery.getOneFullQuery();
+                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$4({}, filter) })];
+                    case 1:
+                        product = (_b.sent()).product;
+                        return [2 /*return*/, product];
+                }
+            });
+        });
+    };
+    ProductRepositoryGql.getById = function (id, fields) {
+        return __awaiter$7(this, void 0, void 0, function () {
+            return __generator$7(this, function (_a) {
+                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { productId: id } })];
+            });
+        });
+    };
+    ProductRepositoryGql.getBySlug = function (slug, fields) {
+        return __awaiter$7(this, void 0, void 0, function () {
+            return __generator$7(this, function (_a) {
+                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
+            });
+        });
+    };
+    return ProductRepositoryGql;
+}());
+
+var __awaiter$6 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$6 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var ProductRepositoryJson = /** @class */ (function () {
+    function ProductRepositoryJson() {
+    }
+    ProductRepositoryJson.getList = function (_a) {
+        var _b;
+        return __awaiter$6(this, void 0, void 0, function () {
+            var result;
+            return __generator$6(this, function (_d) {
+                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.products;
+                return [2 /*return*/, result || {}];
+            });
+        });
+    };
+    ProductRepositoryJson.getById = function (id, fields) {
+        var _a, _b, _c, _d;
+        return __awaiter$6(this, void 0, void 0, function () {
+            var result;
+            return __generator$6(this, function (_e) {
+                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
+                return [2 /*return*/, result];
+            });
+        });
+    };
+    ProductRepositoryJson.getBySlug = function (slug, fields) {
+        var _a, _b, _c, _d;
+        return __awaiter$6(this, void 0, void 0, function () {
+            var result;
+            return __generator$6(this, function (_e) {
+                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.slug) == slug; })) === null || _d === void 0 ? void 0 : _d.node;
+                return [2 /*return*/, result];
+            });
+        });
+    };
+    return ProductRepositoryJson;
+}());
+
 var __assign$3 = (undefined && undefined.__assign) || function () {
     __assign$3 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -5383,6 +5839,142 @@ var __assign$3 = (undefined && undefined.__assign) || function () {
     };
     return __assign$3.apply(this, arguments);
 };
+var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$5 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var Repository$1 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
+var ProductService = /** @class */ (function () {
+    function ProductService() {
+    }
+    ProductService.getList = function (_a) {
+        var filter = _a.filter, _b = _a.agg, agg = _b === void 0 ? { field: ['productId'] } : _b, fields = _a.fields;
+        return __awaiter$5(this, void 0, void 0, function () {
+            var remainFilter, result, error_1;
+            return __generator$5(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        _c.trys.push([0, 2, , 3]);
+                        remainFilter = __rest(filter, ["items"]);
+                        return [4 /*yield*/, Repository$1().getList({
+                                fields: fields || null,
+                                filter: __assign$3(__assign$3({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
+                                agg: agg
+                            })];
+                    case 1:
+                        result = _c.sent();
+                        BroadcastService.emit('Product', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_1 = _c.sent();
+                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProductService.getById = function (productId, fields) {
+        return __awaiter$5(this, void 0, void 0, function () {
+            var result;
+            return __generator$5(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Repository$1().getById(Number(productId), fields)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    ProductService.getBySlug = function (slug, fields) {
+        return __awaiter$5(this, void 0, void 0, function () {
+            var result;
+            return __generator$5(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Repository$1().getBySlug(slug, fields)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    return ProductService;
+}());
+
+var BuyTogetherQueries = /** @class */ (function () {
+    function BuyTogetherQueries(fields) {
+        this.fields = fields;
+    }
+    BuyTogetherQueries.prototype.getAllFields = function (productQueryMode) {
+        var _a;
+        return ((_a = this.fields) !== null && _a !== void 0 ? _a : "{\n        id,\n        name,\n        title,\n        buyButtonText,\n        productId,\n        colorId,\n        dateFrom,\n        dateTo,\n        active,\n        product ".concat(productQueryMode === 'restrict' ? this.getStrictProductFields() : this.getProduct(), ",\n        productsPivot ").concat(productQueryMode === 'restrict' ? this.getStrictProductFields() : this.getProduct(), "\n      }"));
+    };
+    BuyTogetherQueries.prototype.getStrictProductFields = function () {
+        var imageFields = "\n    {\n      id\n      productId\n      src\n      alt\n      colorIds\n      variationIds\n    }";
+        var colorFields = "\n    {\n      id\n      name\n      slug\n      hexadecimal\n    }";
+        var attributeFields = "\n    {\n      id\n      name\n      slug\n      attributeId\n      attributeName\n      isActive\n    }";
+        var installmentFields = "\n    {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n      }\n    ";
+        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n      installment ".concat(installmentFields, "\n      installments ").concat(installmentFields, "\n    }");
+        var featureFields = "\n    {\n      id\n      name\n      slug\n      values {\n        id\n        name\n        slug\n      }\n    }";
+        var variationsFields = "\n    {\n      id\n      name\n      slug\n      releaseDate {\n        releaseDate\n        now\n      }\n      description\n      shortDescription\n      isVirtual\n      isPreSale\n      images ".concat(imageFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      payments ").concat(paymentsFields, "\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      productId\n      colors ").concat(colorFields, "\n    }\n    ");
+        return "{\n      id\n      name\n      slug\n      description\n      shortDescription\n      images ".concat(imageFields, "\n      payments ").concat(paymentsFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      variations ").concat(variationsFields, "\n      sku\n      colors ").concat(colorFields, "\n    }");
+    };
+    BuyTogetherQueries.prototype.getProduct = function () {
+        return "{\n      id\n      name\n      slug\n      payments {\n        id\n        gatewayId\n        externalId\n        name\n        method\n        external\n        maxParcels\n        parcelsNoInterest\n        installments {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n        }\n        minParcelPrice\n        minPurchase\n        maxPurchase\n        expireDays\n        softDescriptor\n        description\n        isActive\n        position\n        billetMinDiscountPrice\n        markup\n        instructions\n        isDefault\n        showOnlyInstoreShipping\n        createdAt\n        updatedAt\n        installment {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n        }\n      }\n      gtin\n      mpn\n      additionalShippingTime\n      externalId\n      categoryDefaultId\n      hotsiteId\n      description\n      shortDescription\n      relevance\n      tags\n      minQuantity\n      maxQuantity\n      isSellInKitOnly\n      metaTitle\n      metaDescription\n      metaKeywords\n      isKit\n      kitMarkup\n      isVirtual\n      isPreSale\n      images {\n        id\n        productId\n        src\n        alt\n        colorIds\n        variationIds\n        position\n      }\n      video\n      weight\n      depth\n      width\n      height\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      minPriceRange\n      maxPriceRange\n      hasPriceRange\n      priceCompare\n      discount\n      billetDiscount\n      paymentsReason\n      warranty\n      model\n      gender\n      ageGroup\n      brand {\n        id\n        name\n        slug\n        description\n        shortDescription\n        image {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n        banner {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n      }\n      category {\n        id\n        name\n        slug\n        description\n        breadcrumb\n        googleTaxonomyId\n      }\n      categories {\n        id\n        name\n        slug\n        description\n        breadcrumb\n        googleTaxonomyId\n      }\n      reference\n      color {\n        id\n        name\n        slug\n        hexadecimal\n        position\n      }\n      attribute {\n        id\n        name\n        slug\n        attributeId\n        attributeName\n        position\n        isActive\n      }\n      attributeSecondary {\n        id\n        name\n        slug\n        attributeId\n        attributeName\n        position\n        isActive\n      }\n      features {\n        id\n        name\n        slug\n        values {\n          id\n          name\n          slug\n        }\n      }\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      createdAt\n      variations {\n        id\n        name\n        slug\n        releaseDate {\n          releaseDate\n          now\n        }\n        payments {\n          id\n          gatewayId\n          externalId\n          name\n          method\n          external\n          maxParcels\n          parcelsNoInterest\n          installments {\n            markup\n            parcel\n            discount\n            interest\n            total\n            parcelPrice\n          }\n          minParcelPrice\n          minPurchase\n          maxPurchase\n          expireDays\n          softDescriptor\n          description\n          isActive\n          position\n          billetMinDiscountPrice\n          markup\n          instructions\n          isDefault\n          showOnlyInstoreShipping\n          createdAt\n          updatedAt\n          installment {\n            markup\n            parcel\n            discount\n            interest\n            total\n            parcelPrice\n          }\n        }\n        gtin\n        mpn\n        additionalShippingTime\n        externalId\n        categoryDefaultId\n        hotsiteId\n        description\n        shortDescription\n        relevance\n        reference\n        tags\n        minQuantity\n        maxQuantity\n        isSellInKitOnly\n        metaTitle\n        metaDescription\n        metaKeywords\n        isKit\n        kitMarkup\n        isVirtual\n        isPreSale\n        images {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n        video\n        weight\n        depth\n        width\n        height\n        priceOutOfStock\n        isSellOutOfStock\n        additionalTimeOutOfStock\n        balance\n        price\n        minPriceRange\n        maxPriceRange\n        hasPriceRange\n        priceCompare\n        discount\n        billetDiscount\n        paymentsReason\n        warranty\n        model\n        gender\n        ageGroup\n        brand {\n          id\n          name\n          slug\n          description\n          shortDescription\n          image {\n            id\n            productId\n            src\n            alt\n            colorIds\n            variationIds\n            position\n          }\n          banner {\n            id\n            productId\n            src\n            alt\n            colorIds\n            variationIds\n            position\n          }\n        }\n        category {\n          id\n          name\n          slug\n          description\n          breadcrumb\n          googleTaxonomyId\n        }\n        categories {\n          id\n          name\n          slug\n          description\n          breadcrumb\n          googleTaxonomyId\n        }\n        color {\n          id\n          name\n          slug\n          hexadecimal\n          position\n        }\n        attribute {\n          id\n          name\n          slug\n          attributeId\n          attributeName\n          position\n          isActive\n        }\n        attributeSecondary {\n          id\n          name\n          slug\n          attributeId\n          attributeName\n          position\n          isActive\n        }\n        features {\n          id\n          name\n          slug\n          values {\n            id\n            name\n            slug\n          }\n        }\n        productId\n        createdAt\n        components {\n          productComponentId\n          productComponentGroupId\n          quantity\n          isDefault\n          isOptional\n          variations {\n            id\n            name\n            slug\n            gtin\n            mpn\n            additionalShippingTime\n            externalId\n            categoryDefaultId\n            hotsiteId\n            description\n            shortDescription\n            relevance\n            reference\n            tags\n            minQuantity\n            maxQuantity\n            isSellInKitOnly\n            metaTitle\n            metaDescription\n            metaKeywords\n            isKit\n            kitMarkup\n            isVirtual\n            isPreSale\n            video\n            weight\n            depth\n            width\n            height\n            priceOutOfStock\n            isSellOutOfStock\n            additionalTimeOutOfStock\n            balance\n            price\n            minPriceRange\n            maxPriceRange\n            hasPriceRange\n            priceCompare\n            discount\n            billetDiscount\n            paymentsReason\n            warranty\n            model\n            gender\n            ageGroup\n            productId\n            createdAt\n            sku\n            isGift\n          }\n          productComponentGroupName\n        }\n        componentGroups {\n          id\n          name\n          description\n          slug\n          optional\n        }\n        sku\n        colors {\n          id\n          name\n          slug\n          hexadecimal\n          position\n        }\n        isGift\n      }\n      components {\n        productComponentId\n        productComponentGroupId\n        quantity\n        isDefault\n        isOptional\n        productComponentGroupName\n      }\n      componentGroups {\n        id\n        name\n        description\n        slug\n        optional\n      }\n      sku\n      colors {\n        id\n        name\n        slug\n        hexadecimal\n        position\n      }\n      isGift\n    }";
+    };
+    BuyTogetherQueries.prototype.getOneFullQuery = function (productQueryMode) {
+        return "query BuyTogether($filter: filterBuyTogether) {\n      buyTogether(filter: $filter) \n        ".concat(this.getAllFields(productQueryMode), "\n    }");
+    };
+    BuyTogetherQueries.prototype.getListFullQuery = function (productQueryMode) {
+        return "query BuyTogetherList($filter: filterBuyTogetherList) {\n      buyTogetherList(filter: $filter) \n        ".concat(this.getAllFields(productQueryMode), "\n    }");
+    };
+    return BuyTogetherQueries;
+}());
+
 var __awaiter$4 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -5419,58 +6011,42 @@ var __generator$4 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ProductRepositoryGql = /** @class */ (function () {
-    function ProductRepositoryGql() {
+var BuyTogetherRepositoryGql = /** @class */ (function () {
+    function BuyTogetherRepositoryGql() {
     }
-    ProductRepositoryGql.getList = function (_a) {
-        var fields = _a.fields, agg = _a.agg, filter = _a.filter;
+    BuyTogetherRepositoryGql.getByProductId = function (productId, fields) {
         return __awaiter$4(this, void 0, void 0, function () {
-            var productQuery, productListQuery, products;
-            return __generator$4(this, function (_b) {
-                switch (_b.label) {
+            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
+            return __generator$4(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        productQuery = new ProductQueries(fields);
-                        productListQuery = productQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$3({}, filter) })];
+                        buyTogetherQuery = new BuyTogetherQueries(fields);
+                        buyTogetherGetOneQuery = buyTogetherQuery.getOneFullQuery('restrict');
+                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
                     case 1:
-                        products = (_b.sent()).products;
-                        return [2 /*return*/, products];
+                        buyTogether = (_a.sent()).buyTogether;
+                        return [2 /*return*/, buyTogether];
                 }
             });
         });
     };
-    ProductRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
+    BuyTogetherRepositoryGql.getByProductIds = function (productIds, fields) {
         return __awaiter$4(this, void 0, void 0, function () {
-            var productQuery, productGetOneQuery, product;
-            return __generator$4(this, function (_b) {
-                switch (_b.label) {
+            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
+            return __generator$4(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        productQuery = new ProductQueries(fields);
-                        productGetOneQuery = productQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$3({}, filter) })];
+                        buyTogetherQuery = new BuyTogetherQueries(fields);
+                        buyTogetherGetOneQuery = buyTogetherQuery.getListFullQuery('restrict');
+                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productsIds: productIds } })];
                     case 1:
-                        product = (_b.sent()).product;
-                        return [2 /*return*/, product];
+                        buyTogether = (_a.sent());
+                        return [2 /*return*/, buyTogether.buyTogetherList];
                 }
             });
         });
     };
-    ProductRepositoryGql.getById = function (id, fields) {
-        return __awaiter$4(this, void 0, void 0, function () {
-            return __generator$4(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { productId: id } })];
-            });
-        });
-    };
-    ProductRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$4(this, void 0, void 0, function () {
-            return __generator$4(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return ProductRepositoryGql;
+    return BuyTogetherRepositoryGql;
 }());
 
 var __awaiter$3 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -5509,40 +6085,107 @@ var __generator$3 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ProductRepositoryJson = /** @class */ (function () {
-    function ProductRepositoryJson() {
+var BuyTogetherService = /** @class */ (function () {
+    function BuyTogetherService() {
     }
-    ProductRepositoryJson.getList = function (_a) {
-        var _b;
+    BuyTogetherService.getByProductId = function (productId, fields) {
         return __awaiter$3(this, void 0, void 0, function () {
-            var result;
-            return __generator$3(this, function (_d) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.products;
-                return [2 /*return*/, result || {}];
+            return __generator$3(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
-    ProductRepositoryJson.getById = function (id, fields) {
-        var _a, _b, _c, _d;
+    BuyTogetherService.getByProductIdWithValidPromotionDate = function (productId, fields) {
         return __awaiter$3(this, void 0, void 0, function () {
-            var result;
-            return __generator$3(this, function (_e) {
-                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
-                return [2 /*return*/, result];
+            var buyTogetherData;
+            return __generator$3(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
+                    case 1:
+                        buyTogetherData = _a.sent();
+                        if (buyTogetherData && this.checkPromotionDateValid(buyTogetherData))
+                            return [2 /*return*/, buyTogetherData];
+                        return [2 /*return*/, null];
+                }
             });
         });
     };
-    ProductRepositoryJson.getBySlug = function (slug, fields) {
-        var _a, _b, _c, _d;
+    BuyTogetherService.getByProductIds = function (productIds, fields) {
         return __awaiter$3(this, void 0, void 0, function () {
-            var result;
-            return __generator$3(this, function (_e) {
-                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.slug) == slug; })) === null || _d === void 0 ? void 0 : _d.node;
-                return [2 /*return*/, result];
+            var buyTogetherData;
+            var _this = this;
+            return __generator$3(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductIds(productIds, fields)];
+                    case 1:
+                        buyTogetherData = _a.sent();
+                        return [2 /*return*/, buyTogetherData.map(function (buyTogether) {
+                                if (_this.checkPromotionDateValid(buyTogether))
+                                    return buyTogether;
+                            })];
+                }
             });
         });
     };
-    return ProductRepositoryJson;
+    BuyTogetherService.checkPromotionDateValid = function (_a) {
+        var dateFrom = _a.dateFrom, dateTo = _a.dateTo;
+        var nowUnixTime = Number(new Date());
+        var dateFromUnixTime = Number(new Date(dateFrom + 'T00:00:00'));
+        if (!dateTo)
+            return nowUnixTime >= dateFromUnixTime;
+        var dateToUnixTime = Number(new Date(dateTo + 'T00:00:00'));
+        return nowUnixTime >= dateFromUnixTime && nowUnixTime <= dateToUnixTime;
+    };
+    return BuyTogetherService;
+}());
+
+var LiveShopQueries = /** @class */ (function () {
+    function LiveShopQueries(fields) {
+        this.fields = fields || this.defaultFields();
+    }
+    LiveShopQueries.prototype.getImageFields = function () {
+        return '{alt, src}';
+    };
+    LiveShopQueries.prototype.getMessageFields = function () {
+        return '{id, title, content, status, position}';
+    };
+    LiveShopQueries.prototype.getDiscountFields = function () {
+        return '{type, value}';
+    };
+    LiveShopQueries.prototype.getVariationFields = function () {
+        return "\n      {\n        variationId, \n        discount ".concat(this.getDiscountFields(), "\n      }");
+    };
+    LiveShopQueries.prototype.getProductFields = function () {
+        return "\n      {\n        productId, \n        discount ".concat(this.getDiscountFields(), ", \n        variations ").concat(this.getVariationFields(), ",\n        status\n        position\n      }");
+    };
+    LiveShopQueries.prototype.defaultFields = function () {
+        return [
+            'id',
+            'name',
+            'hashRoom',
+            'status',
+            'urlLive',
+            'title',
+            "banner ".concat(this.getImageFields()),
+            "messages ".concat(this.getMessageFields()),
+            "products ".concat(this.getProductFields()),
+            'alertVisible',
+            'chatVisible',
+            'isActive',
+            'createdAt',
+            'updatedAt'
+        ];
+    };
+    LiveShopQueries.prototype.getFields = function () {
+        return this.fields.join();
+    };
+    LiveShopQueries.prototype.getOneFullQuery = function () {
+        return "\n    query LiveShop($filter: FilterLiveShop){\n      liveShop(filter: $filter){\n        ".concat(this.getFields(), "\n      }\n    }");
+    };
+    return LiveShopQueries;
 }());
 
 var __assign$2 = (undefined && undefined.__assign) || function () {
@@ -5592,104 +6235,26 @@ var __generator$2 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __rest = (undefined && undefined.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-var Repository = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
-var ProductService = /** @class */ (function () {
-    function ProductService() {
+var LiveShopRepositoryGql = /** @class */ (function () {
+    function LiveShopRepositoryGql() {
     }
-    ProductService.getList = function (_a) {
-        var filter = _a.filter, _b = _a.agg, agg = _b === void 0 ? { field: ['productId'] } : _b, fields = _a.fields;
+    LiveShopRepositoryGql.getOne = function (filter, fields) {
         return __awaiter$2(this, void 0, void 0, function () {
-            var remainFilter, result, error_1;
-            return __generator$2(this, function (_c) {
-                switch (_c.label) {
+            var liveShopQuery, fullQuery, liveShop;
+            return __generator$2(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        _c.trys.push([0, 2, , 3]);
-                        remainFilter = __rest(filter, ["items"]);
-                        return [4 /*yield*/, Repository().getList({
-                                fields: fields || null,
-                                filter: __assign$2(__assign$2({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
-                                agg: agg
-                            })];
+                        liveShopQuery = new LiveShopQueries(fields);
+                        fullQuery = liveShopQuery.getOneFullQuery();
+                        return [4 /*yield*/, getClient().query(fullQuery, __assign$2({}, filter))];
                     case 1:
-                        result = _c.sent();
-                        BroadcastService.emit('Product', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _c.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
+                        liveShop = (_a.sent()).liveShop;
+                        return [2 /*return*/, liveShop];
                 }
             });
         });
     };
-    ProductService.getById = function (productId, fields) {
-        return __awaiter$2(this, void 0, void 0, function () {
-            var result;
-            return __generator$2(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository().getById(Number(productId), fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    ProductService.getBySlug = function (slug, fields) {
-        return __awaiter$2(this, void 0, void 0, function () {
-            var result;
-            return __generator$2(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    return ProductService;
-}());
-
-var BuyTogetherQueries = /** @class */ (function () {
-    function BuyTogetherQueries(fields) {
-        this.fields = fields;
-    }
-    BuyTogetherQueries.prototype.getAllFields = function (productQueryMode) {
-        var _a;
-        return ((_a = this.fields) !== null && _a !== void 0 ? _a : "{\n        id,\n        name,\n        title,\n        buyButtonText,\n        productId,\n        colorId,\n        dateFrom,\n        dateTo,\n        active,\n        product ".concat(productQueryMode === 'restrict' ? this.getStrictProductFields() : this.getProduct(), ",\n        productsPivot ").concat(productQueryMode === 'restrict' ? this.getStrictProductFields() : this.getProduct(), "\n      }"));
-    };
-    BuyTogetherQueries.prototype.getStrictProductFields = function () {
-        var imageFields = "\n    {\n      id\n      productId\n      src\n      alt\n      colorIds\n      variationIds\n    }";
-        var colorFields = "\n    {\n      id\n      name\n      slug\n      hexadecimal\n    }";
-        var attributeFields = "\n    {\n      id\n      name\n      slug\n      attributeId\n      attributeName\n      isActive\n    }";
-        var installmentFields = "\n    {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n      }\n    ";
-        var paymentsFields = "\n    {\n      id\n      name\n      method\n      description\n      isActive\n      markup\n      isDefault\n      installment ".concat(installmentFields, "\n    }");
-        var featureFields = "\n    {\n      id\n      name\n      slug\n      values {\n        id\n        name\n        slug\n      }\n    }";
-        var variationsFields = "\n    {\n      id\n      name\n      slug\n      releaseDate {\n        releaseDate\n        now\n      }\n      description\n      shortDescription\n      isVirtual\n      isPreSale\n      images ".concat(imageFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      payments ").concat(paymentsFields, "\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      productId\n      colors ").concat(colorFields, "\n    }\n    ");
-        return "{\n      id\n      name\n      slug\n      description\n      shortDescription\n      images ".concat(imageFields, "\n      payments ").concat(paymentsFields, "\n      priceOutOfStock\n      isSellOutOfStock\n      balance\n      price\n      priceCompare\n      discount\n      billetDiscount\n      color ").concat(colorFields, "\n      attribute ").concat(attributeFields, "\n      attributeSecondary ").concat(attributeFields, "\n      features ").concat(featureFields, "\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      variations ").concat(variationsFields, "\n      sku\n      colors ").concat(colorFields, "\n    }");
-    };
-    BuyTogetherQueries.prototype.getProduct = function () {
-        return "{\n      id\n      name\n      slug\n      payments {\n        id\n        gatewayId\n        externalId\n        name\n        method\n        external\n        maxParcels\n        parcelsNoInterest\n        installments {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n        }\n        minParcelPrice\n        minPurchase\n        maxPurchase\n        expireDays\n        softDescriptor\n        description\n        isActive\n        position\n        billetMinDiscountPrice\n        markup\n        instructions\n        isDefault\n        showOnlyInstoreShipping\n        createdAt\n        updatedAt\n        installment {\n          markup\n          parcel\n          discount\n          interest\n          total\n          parcelPrice\n        }\n      }\n      gtin\n      mpn\n      additionalShippingTime\n      externalId\n      categoryDefaultId\n      hotsiteId\n      description\n      shortDescription\n      relevance\n      tags\n      minQuantity\n      maxQuantity\n      isSellInKitOnly\n      metaTitle\n      metaDescription\n      metaKeywords\n      isKit\n      kitMarkup\n      isVirtual\n      isPreSale\n      images {\n        id\n        productId\n        src\n        alt\n        colorIds\n        variationIds\n        position\n      }\n      video\n      weight\n      depth\n      width\n      height\n      priceOutOfStock\n      isSellOutOfStock\n      additionalTimeOutOfStock\n      balance\n      price\n      minPriceRange\n      maxPriceRange\n      hasPriceRange\n      priceCompare\n      discount\n      billetDiscount\n      paymentsReason\n      warranty\n      model\n      gender\n      ageGroup\n      brand {\n        id\n        name\n        slug\n        description\n        shortDescription\n        image {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n        banner {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n      }\n      category {\n        id\n        name\n        slug\n        description\n        breadcrumb\n        googleTaxonomyId\n      }\n      categories {\n        id\n        name\n        slug\n        description\n        breadcrumb\n        googleTaxonomyId\n      }\n      reference\n      color {\n        id\n        name\n        slug\n        hexadecimal\n        position\n      }\n      attribute {\n        id\n        name\n        slug\n        attributeId\n        attributeName\n        position\n        isActive\n      }\n      attributeSecondary {\n        id\n        name\n        slug\n        attributeId\n        attributeName\n        position\n        isActive\n      }\n      features {\n        id\n        name\n        slug\n        values {\n          id\n          name\n          slug\n        }\n      }\n      releaseDate {\n        releaseDate\n        now\n      }\n      productId\n      createdAt\n      variations {\n        id\n        name\n        slug\n        releaseDate {\n          releaseDate\n          now\n        }\n        payments {\n          id\n          gatewayId\n          externalId\n          name\n          method\n          external\n          maxParcels\n          parcelsNoInterest\n          installments {\n            markup\n            parcel\n            discount\n            interest\n            total\n            parcelPrice\n          }\n          minParcelPrice\n          minPurchase\n          maxPurchase\n          expireDays\n          softDescriptor\n          description\n          isActive\n          position\n          billetMinDiscountPrice\n          markup\n          instructions\n          isDefault\n          showOnlyInstoreShipping\n          createdAt\n          updatedAt\n          installment {\n            markup\n            parcel\n            discount\n            interest\n            total\n            parcelPrice\n          }\n        }\n        gtin\n        mpn\n        additionalShippingTime\n        externalId\n        categoryDefaultId\n        hotsiteId\n        description\n        shortDescription\n        relevance\n        reference\n        tags\n        minQuantity\n        maxQuantity\n        isSellInKitOnly\n        metaTitle\n        metaDescription\n        metaKeywords\n        isKit\n        kitMarkup\n        isVirtual\n        isPreSale\n        images {\n          id\n          productId\n          src\n          alt\n          colorIds\n          variationIds\n          position\n        }\n        video\n        weight\n        depth\n        width\n        height\n        priceOutOfStock\n        isSellOutOfStock\n        additionalTimeOutOfStock\n        balance\n        price\n        minPriceRange\n        maxPriceRange\n        hasPriceRange\n        priceCompare\n        discount\n        billetDiscount\n        paymentsReason\n        warranty\n        model\n        gender\n        ageGroup\n        brand {\n          id\n          name\n          slug\n          description\n          shortDescription\n          image {\n            id\n            productId\n            src\n            alt\n            colorIds\n            variationIds\n            position\n          }\n          banner {\n            id\n            productId\n            src\n            alt\n            colorIds\n            variationIds\n            position\n          }\n        }\n        category {\n          id\n          name\n          slug\n          description\n          breadcrumb\n          googleTaxonomyId\n        }\n        categories {\n          id\n          name\n          slug\n          description\n          breadcrumb\n          googleTaxonomyId\n        }\n        color {\n          id\n          name\n          slug\n          hexadecimal\n          position\n        }\n        attribute {\n          id\n          name\n          slug\n          attributeId\n          attributeName\n          position\n          isActive\n        }\n        attributeSecondary {\n          id\n          name\n          slug\n          attributeId\n          attributeName\n          position\n          isActive\n        }\n        features {\n          id\n          name\n          slug\n          values {\n            id\n            name\n            slug\n          }\n        }\n        productId\n        createdAt\n        components {\n          productComponentId\n          productComponentGroupId\n          quantity\n          isDefault\n          isOptional\n          variations {\n            id\n            name\n            slug\n            gtin\n            mpn\n            additionalShippingTime\n            externalId\n            categoryDefaultId\n            hotsiteId\n            description\n            shortDescription\n            relevance\n            reference\n            tags\n            minQuantity\n            maxQuantity\n            isSellInKitOnly\n            metaTitle\n            metaDescription\n            metaKeywords\n            isKit\n            kitMarkup\n            isVirtual\n            isPreSale\n            video\n            weight\n            depth\n            width\n            height\n            priceOutOfStock\n            isSellOutOfStock\n            additionalTimeOutOfStock\n            balance\n            price\n            minPriceRange\n            maxPriceRange\n            hasPriceRange\n            priceCompare\n            discount\n            billetDiscount\n            paymentsReason\n            warranty\n            model\n            gender\n            ageGroup\n            productId\n            createdAt\n            sku\n            isGift\n          }\n          productComponentGroupName\n        }\n        componentGroups {\n          id\n          name\n          description\n          slug\n          optional\n        }\n        sku\n        colors {\n          id\n          name\n          slug\n          hexadecimal\n          position\n        }\n        isGift\n      }\n      components {\n        productComponentId\n        productComponentGroupId\n        quantity\n        isDefault\n        isOptional\n        productComponentGroupName\n      }\n      componentGroups {\n        id\n        name\n        description\n        slug\n        optional\n      }\n      sku\n      colors {\n        id\n        name\n        slug\n        hexadecimal\n        position\n      }\n      isGift\n    }";
-    };
-    BuyTogetherQueries.prototype.getOneFullQuery = function (productQueryMode) {
-        return "query BuyTogether($filter: filterBuyTogether) {\n      buyTogether(filter: $filter) \n        ".concat(this.getAllFields(productQueryMode), "\n    }");
-    };
-    BuyTogetherQueries.prototype.getListFullQuery = function (productQueryMode) {
-        return "query BuyTogetherList($filter: filterBuyTogetherList) {\n      buyTogetherList(filter: $filter) \n        ".concat(this.getAllFields(productQueryMode), "\n    }");
-    };
-    return BuyTogetherQueries;
+    return LiveShopRepositoryGql;
 }());
 
 var __awaiter$1 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -5728,42 +6293,29 @@ var __generator$1 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var BuyTogetherRepositoryGql = /** @class */ (function () {
-    function BuyTogetherRepositoryGql() {
+var LiveShopRepositoryJson = /** @class */ (function () {
+    function LiveShopRepositoryJson() {
     }
-    BuyTogetherRepositoryGql.getByProductId = function (productId, fields) {
+    LiveShopRepositoryJson.getOne = function (_a, fields) {
+        var _b;
+        var filter = _a.filter;
         return __awaiter$1(this, void 0, void 0, function () {
-            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
-            return __generator$1(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        buyTogetherQuery = new BuyTogetherQueries(fields);
-                        buyTogetherGetOneQuery = buyTogetherQuery.getOneFullQuery('restrict');
-                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
-                    case 1:
-                        buyTogether = (_a.sent()).buyTogether;
-                        return [2 /*return*/, buyTogether];
+            var liveShop, liveShopResult;
+            return __generator$1(this, function (_c) {
+                liveShop = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.live_shop;
+                liveShopResult = liveShop.find(function (item) {
+                    return (filter.hashRoom && item.hashRoom === filter.hashRoom) ||
+                        (filter.id && item.id === filter.id) ||
+                        (filter.slug && item.slug === filter.slug);
+                });
+                if (!liveShopResult) {
+                    throw new Error('Live Shop not found');
                 }
+                return [2 /*return*/, liveShopResult];
             });
         });
     };
-    BuyTogetherRepositoryGql.getByProductIds = function (productIds, fields) {
-        return __awaiter$1(this, void 0, void 0, function () {
-            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
-            return __generator$1(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        buyTogetherQuery = new BuyTogetherQueries(fields);
-                        buyTogetherGetOneQuery = buyTogetherQuery.getListFullQuery('restrict');
-                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productsIds: productIds } })];
-                    case 1:
-                        buyTogether = (_a.sent());
-                        return [2 /*return*/, buyTogether.buyTogetherList];
-                }
-            });
-        });
-    };
-    return BuyTogetherRepositoryGql;
+    return LiveShopRepositoryJson;
 }());
 
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -5802,61 +6354,51 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var BuyTogetherService = /** @class */ (function () {
-    function BuyTogetherService() {
+var Repository = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.live_shop) ? LiveShopRepositoryJson : LiveShopRepositoryGql); };
+var LiveShopService = /** @class */ (function () {
+    function LiveShopService() {
     }
-    BuyTogetherService.getByProductId = function (productId, fields) {
+    LiveShopService.getByHash = function (hashRoom, fields) {
         return __awaiter(this, void 0, void 0, function () {
+            var result, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    BuyTogetherService.getByProductIdWithValidPromotionDate = function (productId, fields) {
-        return __awaiter(this, void 0, void 0, function () {
-            var buyTogetherData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository().getOne({ filter: { hashRoom: hashRoom } }, fields)];
                     case 1:
-                        buyTogetherData = _a.sent();
-                        if (buyTogetherData && this.checkPromotionDateValid(buyTogetherData))
-                            return [2 /*return*/, buyTogetherData];
-                        return [2 /*return*/, null];
+                        result = _a.sent();
+                        BroadcastService.emit('LiveShop', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_1 = _a.sent();
+                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    BuyTogetherService.getByProductIds = function (productIds, fields) {
+    LiveShopService.getById = function (id, fields) {
         return __awaiter(this, void 0, void 0, function () {
-            var buyTogetherData;
-            var _this = this;
+            var result, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductIds(productIds, fields)];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Repository().getOne({ filter: { id: id } }, fields)];
                     case 1:
-                        buyTogetherData = _a.sent();
-                        return [2 /*return*/, buyTogetherData.map(function (buyTogether) {
-                                if (_this.checkPromotionDateValid(buyTogether))
-                                    return buyTogether;
-                            })];
+                        result = _a.sent();
+                        BroadcastService.emit('LiveShop', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_2 = _a.sent();
+                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    BuyTogetherService.checkPromotionDateValid = function (_a) {
-        var dateFrom = _a.dateFrom, dateTo = _a.dateTo;
-        var nowUnixTime = Number(new Date());
-        var dateFromUnixTime = Number(new Date(dateFrom + 'T00:00:00'));
-        if (!dateTo)
-            return nowUnixTime >= dateFromUnixTime;
-        var dateToUnixTime = Number(new Date(dateTo + 'T00:00:00'));
-        return nowUnixTime >= dateFromUnixTime && nowUnixTime <= dateToUnixTime;
-    };
-    return BuyTogetherService;
+    return LiveShopService;
 }());
 
 var SeoService = /** @class */ (function () {
@@ -6890,6 +7432,15 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
+const nextTick = (() => {
+    const isPromiseAvailable = typeof Promise === "function" && typeof Promise.resolve === "function";
+    if (isPromiseAvailable) {
+        return (cb) => Promise.resolve().then(cb);
+    }
+    else {
+        return (cb, setTimeoutFn) => setTimeoutFn(cb, 0);
+    }
+})();
 const globalThisShim = (() => {
     if (typeof self !== "undefined") {
         return self;
@@ -6901,6 +7452,8 @@ const globalThisShim = (() => {
         return Function("return this")();
     }
 })();
+const defaultBinaryType = "arraybuffer";
+function createCookieJar() { }
 
 function pick(obj, ...attr) {
     return attr.reduce((acc, k) => {
@@ -6953,6 +7506,13 @@ function utf8Length(str) {
     }
     return length;
 }
+/**
+ * Generates a random 8-characters string.
+ */
+function randomString() {
+    return (Date.now().toString(36).substring(3) +
+        Math.random().toString(36).substring(2, 5));
+}
 
 // imported from https://github.com/galkn/querystring
 /**
@@ -6962,7 +7522,7 @@ function utf8Length(str) {
  * @param {Object}
  * @api private
  */
-function encode$1(obj) {
+function encode(obj) {
     let str = '';
     for (let i in obj) {
         if (obj.hasOwnProperty(i)) {
@@ -7011,6 +7571,7 @@ class Transport extends Emitter {
         this.opts = opts;
         this.query = opts.query;
         this.socket = opts.socket;
+        this.supportsBinary = !opts.forceBase64;
     }
     /**
      * Emits an error.
@@ -7119,115 +7680,15 @@ class Transport extends Emitter {
         }
     }
     _query(query) {
-        const encodedQuery = encode$1(query);
+        const encodedQuery = encode(query);
         return encodedQuery.length ? "?" + encodedQuery : "";
     }
 }
 
-// imported from https://github.com/unshiftio/yeast
-const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_'.split(''), length = 64, map = {};
-let seed = 0, i = 0, prev;
-/**
- * Return a string representing the specified number.
- *
- * @param {Number} num The number to convert.
- * @returns {String} The string representation of the number.
- * @api public
- */
-function encode(num) {
-    let encoded = '';
-    do {
-        encoded = alphabet[num % length] + encoded;
-        num = Math.floor(num / length);
-    } while (num > 0);
-    return encoded;
-}
-/**
- * Yeast: A tiny growing id generator.
- *
- * @returns {String} A unique id.
- * @api public
- */
-function yeast() {
-    const now = encode(+new Date());
-    if (now !== prev)
-        return seed = 0, prev = now;
-    return now + '.' + encode(seed++);
-}
-//
-// Map each character to its index.
-//
-for (; i < length; i++)
-    map[alphabet[i]] = i;
-
-// imported from https://github.com/component/has-cors
-let value = false;
-try {
-    value = typeof XMLHttpRequest !== 'undefined' &&
-        'withCredentials' in new XMLHttpRequest();
-}
-catch (err) {
-    // if XMLHttp support is disabled in IE then it will throw
-    // when trying to create
-}
-const hasCORS = value;
-
-// browser shim for xmlhttprequest module
-function XHR(opts) {
-    const xdomain = opts.xdomain;
-    // XMLHttpRequest can be disabled on IE
-    try {
-        if ("undefined" !== typeof XMLHttpRequest && (!xdomain || hasCORS)) {
-            return new XMLHttpRequest();
-        }
-    }
-    catch (e) { }
-    if (!xdomain) {
-        try {
-            return new globalThisShim[["Active"].concat("Object").join("X")]("Microsoft.XMLHTTP");
-        }
-        catch (e) { }
-    }
-}
-function createCookieJar() { }
-
-function empty() { }
-const hasXHR2 = (function () {
-    const xhr = new XHR({
-        xdomain: false,
-    });
-    return null != xhr.responseType;
-})();
 class Polling extends Transport {
-    /**
-     * XHR Polling constructor.
-     *
-     * @param {Object} opts
-     * @package
-     */
-    constructor(opts) {
-        super(opts);
-        this.polling = false;
-        if (typeof location !== "undefined") {
-            const isSSL = "https:" === location.protocol;
-            let port = location.port;
-            // some user agents have empty `location.port`
-            if (!port) {
-                port = isSSL ? "443" : "80";
-            }
-            this.xd =
-                (typeof location !== "undefined" &&
-                    opts.hostname !== location.hostname) ||
-                    port !== opts.port;
-        }
-        /**
-         * XHR supports binary
-         */
-        const forceBase64 = opts && opts.forceBase64;
-        this.supportsBinary = hasXHR2 && !forceBase64;
-        if (this.opts.withCredentials) {
-            this.cookieJar = createCookieJar();
-        }
+    constructor() {
+        super(...arguments);
+        this._polling = false;
     }
     get name() {
         return "polling";
@@ -7239,7 +7700,7 @@ class Polling extends Transport {
      * @protected
      */
     doOpen() {
-        this.poll();
+        this._poll();
     }
     /**
      * Pauses polling.
@@ -7253,9 +7714,9 @@ class Polling extends Transport {
             this.readyState = "paused";
             onPause();
         };
-        if (this.polling || !this.writable) {
+        if (this._polling || !this.writable) {
             let total = 0;
-            if (this.polling) {
+            if (this._polling) {
                 total++;
                 this.once("pollComplete", function () {
                     --total || pause();
@@ -7277,8 +7738,8 @@ class Polling extends Transport {
      *
      * @private
      */
-    poll() {
-        this.polling = true;
+    _poll() {
+        this._polling = true;
         this.doPoll();
         this.emitReserved("poll");
     }
@@ -7306,10 +7767,10 @@ class Polling extends Transport {
         // if an event did not trigger closing
         if ("closed" !== this.readyState) {
             // if we got data we're not polling
-            this.polling = false;
+            this._polling = false;
             this.emitReserved("pollComplete");
             if ("open" === this.readyState) {
-                this.poll();
+                this._poll();
             }
         }
     }
@@ -7356,22 +7817,49 @@ class Polling extends Transport {
         const query = this.query || {};
         // cache busting is forced
         if (false !== this.opts.timestampRequests) {
-            query[this.opts.timestampParam] = yeast();
+            query[this.opts.timestampParam] = randomString();
         }
         if (!this.supportsBinary && !query.sid) {
             query.b64 = 1;
         }
         return this.createUri(schema, query);
     }
+}
+
+// imported from https://github.com/component/has-cors
+let value = false;
+try {
+    value = typeof XMLHttpRequest !== 'undefined' &&
+        'withCredentials' in new XMLHttpRequest();
+}
+catch (err) {
+    // if XMLHttp support is disabled in IE then it will throw
+    // when trying to create
+}
+const hasCORS = value;
+
+function empty() { }
+class BaseXHR extends Polling {
     /**
-     * Creates a request.
+     * XHR Polling constructor.
      *
-     * @param {String} method
-     * @private
+     * @param {Object} opts
+     * @package
      */
-    request(opts = {}) {
-        Object.assign(opts, { xd: this.xd, cookieJar: this.cookieJar }, this.opts);
-        return new Request(this.uri(), opts);
+    constructor(opts) {
+        super(opts);
+        if (typeof location !== "undefined") {
+            const isSSL = "https:" === location.protocol;
+            let port = location.port;
+            // some user agents have empty `location.port`
+            if (!port) {
+                port = isSSL ? "443" : "80";
+            }
+            this.xd =
+                (typeof location !== "undefined" &&
+                    opts.hostname !== location.hostname) ||
+                    port !== opts.port;
+        }
     }
     /**
      * Sends data.
@@ -7411,39 +7899,41 @@ class Request extends Emitter {
      * @param {Object} options
      * @package
      */
-    constructor(uri, opts) {
+    constructor(createRequest, uri, opts) {
         super();
+        this.createRequest = createRequest;
         installTimerFunctions(this, opts);
-        this.opts = opts;
-        this.method = opts.method || "GET";
-        this.uri = uri;
-        this.data = undefined !== opts.data ? opts.data : null;
-        this.create();
+        this._opts = opts;
+        this._method = opts.method || "GET";
+        this._uri = uri;
+        this._data = undefined !== opts.data ? opts.data : null;
+        this._create();
     }
     /**
      * Creates the XHR object and sends the request.
      *
      * @private
      */
-    create() {
+    _create() {
         var _a;
-        const opts = pick(this.opts, "agent", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "autoUnref");
-        opts.xdomain = !!this.opts.xd;
-        const xhr = (this.xhr = new XHR(opts));
+        const opts = pick(this._opts, "agent", "pfx", "key", "passphrase", "cert", "ca", "ciphers", "rejectUnauthorized", "autoUnref");
+        opts.xdomain = !!this._opts.xd;
+        const xhr = (this._xhr = this.createRequest(opts));
         try {
-            xhr.open(this.method, this.uri, true);
+            xhr.open(this._method, this._uri, true);
             try {
-                if (this.opts.extraHeaders) {
+                if (this._opts.extraHeaders) {
+                    // @ts-ignore
                     xhr.setDisableHeaderCheck && xhr.setDisableHeaderCheck(true);
-                    for (let i in this.opts.extraHeaders) {
-                        if (this.opts.extraHeaders.hasOwnProperty(i)) {
-                            xhr.setRequestHeader(i, this.opts.extraHeaders[i]);
+                    for (let i in this._opts.extraHeaders) {
+                        if (this._opts.extraHeaders.hasOwnProperty(i)) {
+                            xhr.setRequestHeader(i, this._opts.extraHeaders[i]);
                         }
                     }
                 }
             }
             catch (e) { }
-            if ("POST" === this.method) {
+            if ("POST" === this._method) {
                 try {
                     xhr.setRequestHeader("Content-type", "text/plain;charset=UTF-8");
                 }
@@ -7453,46 +7943,48 @@ class Request extends Emitter {
                 xhr.setRequestHeader("Accept", "*/*");
             }
             catch (e) { }
-            (_a = this.opts.cookieJar) === null || _a === void 0 ? void 0 : _a.addCookies(xhr);
+            (_a = this._opts.cookieJar) === null || _a === void 0 ? void 0 : _a.addCookies(xhr);
             // ie6 check
             if ("withCredentials" in xhr) {
-                xhr.withCredentials = this.opts.withCredentials;
+                xhr.withCredentials = this._opts.withCredentials;
             }
-            if (this.opts.requestTimeout) {
-                xhr.timeout = this.opts.requestTimeout;
+            if (this._opts.requestTimeout) {
+                xhr.timeout = this._opts.requestTimeout;
             }
             xhr.onreadystatechange = () => {
                 var _a;
                 if (xhr.readyState === 3) {
-                    (_a = this.opts.cookieJar) === null || _a === void 0 ? void 0 : _a.parseCookies(xhr);
+                    (_a = this._opts.cookieJar) === null || _a === void 0 ? void 0 : _a.parseCookies(
+                    // @ts-ignore
+                    xhr.getResponseHeader("set-cookie"));
                 }
                 if (4 !== xhr.readyState)
                     return;
                 if (200 === xhr.status || 1223 === xhr.status) {
-                    this.onLoad();
+                    this._onLoad();
                 }
                 else {
                     // make sure the `error` event handler that's user-set
                     // does not throw in the same tick and gets caught here
                     this.setTimeoutFn(() => {
-                        this.onError(typeof xhr.status === "number" ? xhr.status : 0);
+                        this._onError(typeof xhr.status === "number" ? xhr.status : 0);
                     }, 0);
                 }
             };
-            xhr.send(this.data);
+            xhr.send(this._data);
         }
         catch (e) {
             // Need to defer since .create() is called directly from the constructor
             // and thus the 'error' event can only be only bound *after* this exception
             // occurs.  Therefore, also, we cannot throw here at all.
             this.setTimeoutFn(() => {
-                this.onError(e);
+                this._onError(e);
             }, 0);
             return;
         }
         if (typeof document !== "undefined") {
-            this.index = Request.requestsCount++;
-            Request.requests[this.index] = this;
+            this._index = Request.requestsCount++;
+            Request.requests[this._index] = this;
         }
     }
     /**
@@ -7500,42 +7992,42 @@ class Request extends Emitter {
      *
      * @private
      */
-    onError(err) {
-        this.emitReserved("error", err, this.xhr);
-        this.cleanup(true);
+    _onError(err) {
+        this.emitReserved("error", err, this._xhr);
+        this._cleanup(true);
     }
     /**
      * Cleans up house.
      *
      * @private
      */
-    cleanup(fromError) {
-        if ("undefined" === typeof this.xhr || null === this.xhr) {
+    _cleanup(fromError) {
+        if ("undefined" === typeof this._xhr || null === this._xhr) {
             return;
         }
-        this.xhr.onreadystatechange = empty;
+        this._xhr.onreadystatechange = empty;
         if (fromError) {
             try {
-                this.xhr.abort();
+                this._xhr.abort();
             }
             catch (e) { }
         }
         if (typeof document !== "undefined") {
-            delete Request.requests[this.index];
+            delete Request.requests[this._index];
         }
-        this.xhr = null;
+        this._xhr = null;
     }
     /**
      * Called upon load.
      *
      * @private
      */
-    onLoad() {
-        const data = this.xhr.responseText;
+    _onLoad() {
+        const data = this._xhr.responseText;
         if (data !== null) {
             this.emitReserved("data", data);
             this.emitReserved("success");
-            this.cleanup();
+            this._cleanup();
         }
     }
     /**
@@ -7544,7 +8036,7 @@ class Request extends Emitter {
      * @package
      */
     abort() {
-        this.cleanup();
+        this._cleanup();
     }
 }
 Request.requestsCount = 0;
@@ -7572,42 +8064,56 @@ function unloadHandler() {
         }
     }
 }
-
-const nextTick = (() => {
-    const isPromiseAvailable = typeof Promise === "function" && typeof Promise.resolve === "function";
-    if (isPromiseAvailable) {
-        return (cb) => Promise.resolve().then(cb);
-    }
-    else {
-        return (cb, setTimeoutFn) => setTimeoutFn(cb, 0);
-    }
+const hasXHR2 = (function () {
+    const xhr = newRequest({
+        xdomain: false,
+    });
+    return xhr && xhr.responseType !== null;
 })();
-const WebSocket = globalThisShim.WebSocket || globalThisShim.MozWebSocket;
-const defaultBinaryType = "arraybuffer";
+/**
+ * HTTP long-polling based on the built-in `XMLHttpRequest` object.
+ *
+ * Usage: browser
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+ */
+class XHR extends BaseXHR {
+    constructor(opts) {
+        super(opts);
+        const forceBase64 = opts && opts.forceBase64;
+        this.supportsBinary = hasXHR2 && !forceBase64;
+    }
+    request(opts = {}) {
+        Object.assign(opts, { xd: this.xd }, this.opts);
+        return new Request(newRequest, this.uri(), opts);
+    }
+}
+function newRequest(opts) {
+    const xdomain = opts.xdomain;
+    // XMLHttpRequest can be disabled on IE
+    try {
+        if ("undefined" !== typeof XMLHttpRequest && (!xdomain || hasCORS)) {
+            return new XMLHttpRequest();
+        }
+    }
+    catch (e) { }
+    if (!xdomain) {
+        try {
+            return new globalThisShim[["Active"].concat("Object").join("X")]("Microsoft.XMLHTTP");
+        }
+        catch (e) { }
+    }
+}
 
 // detect ReactNative environment
 const isReactNative = typeof navigator !== "undefined" &&
     typeof navigator.product === "string" &&
     navigator.product.toLowerCase() === "reactnative";
-class WS extends Transport {
-    /**
-     * WebSocket transport constructor.
-     *
-     * @param {Object} opts - connection options
-     * @protected
-     */
-    constructor(opts) {
-        super(opts);
-        this.supportsBinary = !opts.forceBase64;
-    }
+class BaseWS extends Transport {
     get name() {
         return "websocket";
     }
     doOpen() {
-        if (!this.check()) {
-            // let probe timeout
-            return;
-        }
         const uri = this.uri();
         const protocols = this.opts.protocols;
         // React Native only supports the 'headers' option, and will print a warning if anything else is passed
@@ -7618,12 +8124,7 @@ class WS extends Transport {
             opts.headers = this.opts.extraHeaders;
         }
         try {
-            this.ws =
-                !isReactNative
-                    ? protocols
-                        ? new WebSocket(uri, protocols)
-                        : new WebSocket(uri)
-                    : new WebSocket(uri, protocols, opts);
+            this.ws = this.createSocket(uri, protocols, opts);
         }
         catch (err) {
             return this.emitReserved("error", err);
@@ -7662,10 +8163,7 @@ class WS extends Transport {
                 // have a chance of informing us about it yet, in that case send will
                 // throw an error
                 try {
-                    {
-                        // TypeError is thrown when passing the second argument on Safari
-                        this.ws.send(data);
-                    }
+                    this.doWrite(packet, data);
                 }
                 catch (e) {
                 }
@@ -7682,6 +8180,7 @@ class WS extends Transport {
     }
     doClose() {
         if (typeof this.ws !== "undefined") {
+            this.ws.onerror = () => { };
             this.ws.close();
             this.ws = null;
         }
@@ -7696,7 +8195,7 @@ class WS extends Transport {
         const query = this.query || {};
         // append timestamp to URI
         if (this.opts.timestampRequests) {
-            query[this.opts.timestampParam] = yeast();
+            query[this.opts.timestampParam] = randomString();
         }
         // communicate binary support capabilities
         if (!this.supportsBinary) {
@@ -7704,29 +8203,51 @@ class WS extends Transport {
         }
         return this.createUri(schema, query);
     }
-    /**
-     * Feature detection for WebSocket.
-     *
-     * @return {Boolean} whether this transport is available.
-     * @private
-     */
-    check() {
-        return !!WebSocket;
+}
+const WebSocketCtor = globalThisShim.WebSocket || globalThisShim.MozWebSocket;
+/**
+ * WebSocket transport based on the built-in `WebSocket` object.
+ *
+ * Usage: browser, Node.js (since v21), Deno, Bun
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+ * @see https://caniuse.com/mdn-api_websocket
+ * @see https://nodejs.org/api/globals.html#websocket
+ */
+class WS extends BaseWS {
+    createSocket(uri, protocols, opts) {
+        return !isReactNative
+            ? protocols
+                ? new WebSocketCtor(uri, protocols)
+                : new WebSocketCtor(uri)
+            : new WebSocketCtor(uri, protocols, opts);
+    }
+    doWrite(_packet, data) {
+        this.ws.send(data);
     }
 }
 
+/**
+ * WebTransport transport based on the built-in `WebTransport` object.
+ *
+ * Usage: browser, Node.js (with the `@fails-components/webtransport` package)
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/WebTransport
+ * @see https://caniuse.com/webtransport
+ */
 class WT extends Transport {
     get name() {
         return "webtransport";
     }
     doOpen() {
-        // @ts-ignore
-        if (typeof WebTransport !== "function") {
-            return;
+        try {
+            // @ts-ignore
+            this._transport = new WebTransport(this.createUri("https"), this.opts.transportOptions[this.name]);
         }
-        // @ts-ignore
-        this.transport = new WebTransport(this.createUri("https"), this.opts.transportOptions[this.name]);
-        this.transport.closed
+        catch (err) {
+            return this.emitReserved("error", err);
+        }
+        this._transport.closed
             .then(() => {
             this.onClose();
         })
@@ -7734,13 +8255,13 @@ class WT extends Transport {
             this.onError("webtransport error", err);
         });
         // note: we could have used async/await, but that would require some additional polyfills
-        this.transport.ready.then(() => {
-            this.transport.createBidirectionalStream().then((stream) => {
+        this._transport.ready.then(() => {
+            this._transport.createBidirectionalStream().then((stream) => {
                 const decoderStream = createPacketDecoderStream(Number.MAX_SAFE_INTEGER, this.socket.binaryType);
                 const reader = stream.readable.pipeThrough(decoderStream).getReader();
                 const encoderStream = createPacketEncoderStream();
                 encoderStream.readable.pipeTo(stream.writable);
-                this.writer = encoderStream.writable.getWriter();
+                this._writer = encoderStream.writable.getWriter();
                 const read = () => {
                     reader
                         .read()
@@ -7759,7 +8280,7 @@ class WT extends Transport {
                 if (this.query.sid) {
                     packet.data = `{"sid":"${this.query.sid}"}`;
                 }
-                this.writer.write(packet).then(() => this.onOpen());
+                this._writer.write(packet).then(() => this.onOpen());
             });
         });
     }
@@ -7768,7 +8289,7 @@ class WT extends Transport {
         for (let i = 0; i < packets.length; i++) {
             const packet = packets[i];
             const lastPacket = i === packets.length - 1;
-            this.writer.write(packet).then(() => {
+            this._writer.write(packet).then(() => {
                 if (lastPacket) {
                     nextTick(() => {
                         this.writable = true;
@@ -7780,14 +8301,14 @@ class WT extends Transport {
     }
     doClose() {
         var _a;
-        (_a = this.transport) === null || _a === void 0 ? void 0 : _a.close();
+        (_a = this._transport) === null || _a === void 0 ? void 0 : _a.close();
     }
 }
 
 const transports = {
     websocket: WS,
     webtransport: WT,
-    polling: Polling,
+    polling: XHR,
 };
 
 // imported from https://github.com/galkn/parseuri
@@ -7814,7 +8335,7 @@ const parts = [
     'source', 'protocol', 'authority', 'userInfo', 'user', 'password', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'anchor'
 ];
 function parse(str) {
-    if (str.length > 2000) {
+    if (str.length > 8000) {
         throw "URI too long";
     }
     const src = str, b = str.indexOf('['), e = str.indexOf(']');
@@ -7855,28 +8376,71 @@ function queryKey(uri, query) {
     return data;
 }
 
-class Socket$1 extends Emitter {
+const withEventListeners = typeof addEventListener === "function" &&
+    typeof removeEventListener === "function";
+const OFFLINE_EVENT_LISTENERS = [];
+if (withEventListeners) {
+    // within a ServiceWorker, any event handler for the 'offline' event must be added on the initial evaluation of the
+    // script, so we create one single event listener here which will forward the event to the socket instances
+    addEventListener("offline", () => {
+        OFFLINE_EVENT_LISTENERS.forEach((listener) => listener());
+    }, false);
+}
+/**
+ * This class provides a WebSocket-like interface to connect to an Engine.IO server. The connection will be established
+ * with one of the available low-level transports, like HTTP long-polling, WebSocket or WebTransport.
+ *
+ * This class comes without upgrade mechanism, which means that it will keep the first low-level transport that
+ * successfully establishes the connection.
+ *
+ * In order to allow tree-shaking, there are no transports included, that's why the `transports` option is mandatory.
+ *
+ * @example
+ * import { SocketWithoutUpgrade, WebSocket } from "engine.io-client";
+ *
+ * const socket = new SocketWithoutUpgrade({
+ *   transports: [WebSocket]
+ * });
+ *
+ * socket.on("open", () => {
+ *   socket.send("hello");
+ * });
+ *
+ * @see SocketWithUpgrade
+ * @see Socket
+ */
+class SocketWithoutUpgrade extends Emitter {
     /**
      * Socket constructor.
      *
      * @param {String|Object} uri - uri or options
      * @param {Object} opts - options
      */
-    constructor(uri, opts = {}) {
+    constructor(uri, opts) {
         super();
         this.binaryType = defaultBinaryType;
         this.writeBuffer = [];
+        this._prevBufferLen = 0;
+        this._pingInterval = -1;
+        this._pingTimeout = -1;
+        this._maxPayload = -1;
+        /**
+         * The expiration timestamp of the {@link _pingTimeoutTimer} object is tracked, in case the timer is throttled and the
+         * callback is not fired on time. This can happen for example when a laptop is suspended or when a phone is locked.
+         */
+        this._pingTimeoutTime = Infinity;
         if (uri && "object" === typeof uri) {
             opts = uri;
             uri = null;
         }
         if (uri) {
-            uri = parse(uri);
-            opts.hostname = uri.host;
-            opts.secure = uri.protocol === "https" || uri.protocol === "wss";
-            opts.port = uri.port;
-            if (uri.query)
-                opts.query = uri.query;
+            const parsedUri = parse(uri);
+            opts.hostname = parsedUri.host;
+            opts.secure =
+                parsedUri.protocol === "https" || parsedUri.protocol === "wss";
+            opts.port = parsedUri.port;
+            if (parsedUri.query)
+                opts.query = parsedUri.query;
         }
         else if (opts.host) {
             opts.hostname = parse(opts.host).host;
@@ -7900,13 +8464,13 @@ class Socket$1 extends Emitter {
                     : this.secure
                         ? "443"
                         : "80");
-        this.transports = opts.transports || [
-            "polling",
-            "websocket",
-            "webtransport",
-        ];
-        this.writeBuffer = [];
-        this.prevBufferLen = 0;
+        this.transports = [];
+        this._transportsByName = {};
+        opts.transports.forEach((t) => {
+            const transportName = t.prototype.name;
+            this.transports.push(transportName);
+            this._transportsByName[transportName] = t;
+        });
         this.opts = Object.assign({
             path: "/engine.io",
             agent: false,
@@ -7928,37 +8492,33 @@ class Socket$1 extends Emitter {
         if (typeof this.opts.query === "string") {
             this.opts.query = decode(this.opts.query);
         }
-        // set on handshake
-        this.id = null;
-        this.upgrades = null;
-        this.pingInterval = null;
-        this.pingTimeout = null;
-        // set on heartbeat
-        this.pingTimeoutTimer = null;
-        if (typeof addEventListener === "function") {
+        if (withEventListeners) {
             if (this.opts.closeOnBeforeunload) {
                 // Firefox closes the connection when the "beforeunload" event is emitted but not Chrome. This event listener
                 // ensures every browser behaves the same (no "disconnect" event at the Socket.IO level when the page is
                 // closed/reloaded)
-                this.beforeunloadEventListener = () => {
+                this._beforeunloadEventListener = () => {
                     if (this.transport) {
                         // silently close the transport
                         this.transport.removeAllListeners();
                         this.transport.close();
                     }
                 };
-                addEventListener("beforeunload", this.beforeunloadEventListener, false);
+                addEventListener("beforeunload", this._beforeunloadEventListener, false);
             }
             if (this.hostname !== "localhost") {
-                this.offlineEventListener = () => {
-                    this.onClose("transport close", {
+                this._offlineEventListener = () => {
+                    this._onClose("transport close", {
                         description: "network connection lost",
                     });
                 };
-                addEventListener("offline", this.offlineEventListener, false);
+                OFFLINE_EVENT_LISTENERS.push(this._offlineEventListener);
             }
         }
-        this.open();
+        if (this.opts.withCredentials) {
+            this._cookieJar = createCookieJar();
+        }
+        this._open();
     }
     /**
      * Creates transport of the given type.
@@ -7983,40 +8543,28 @@ class Socket$1 extends Emitter {
             secure: this.secure,
             port: this.port,
         }, this.opts.transportOptions[name]);
-        return new transports[name](opts);
+        return new this._transportsByName[name](opts);
     }
     /**
      * Initializes transport to use and starts probe.
      *
      * @private
      */
-    open() {
-        let transport;
-        if (this.opts.rememberUpgrade &&
-            Socket$1.priorWebsocketSuccess &&
-            this.transports.indexOf("websocket") !== -1) {
-            transport = "websocket";
-        }
-        else if (0 === this.transports.length) {
+    _open() {
+        if (this.transports.length === 0) {
             // Emit error on next tick so it can be listened to
             this.setTimeoutFn(() => {
                 this.emitReserved("error", "No transports available");
             }, 0);
             return;
         }
-        else {
-            transport = this.transports[0];
-        }
+        const transportName = this.opts.rememberUpgrade &&
+            SocketWithoutUpgrade.priorWebsocketSuccess &&
+            this.transports.indexOf("websocket") !== -1
+            ? "websocket"
+            : this.transports[0];
         this.readyState = "opening";
-        // Retry with the next transport if the transport is disabled (jsonp: false)
-        try {
-            transport = this.createTransport(transport);
-        }
-        catch (e) {
-            this.transports.shift();
-            this.open();
-            return;
-        }
+        const transport = this.createTransport(transportName);
         transport.open();
         this.setTransport(transport);
     }
@@ -8033,10 +8581,366 @@ class Socket$1 extends Emitter {
         this.transport = transport;
         // set up transport listeners
         transport
-            .on("drain", this.onDrain.bind(this))
-            .on("packet", this.onPacket.bind(this))
-            .on("error", this.onError.bind(this))
-            .on("close", (reason) => this.onClose("transport close", reason));
+            .on("drain", this._onDrain.bind(this))
+            .on("packet", this._onPacket.bind(this))
+            .on("error", this._onError.bind(this))
+            .on("close", (reason) => this._onClose("transport close", reason));
+    }
+    /**
+     * Called when connection is deemed open.
+     *
+     * @private
+     */
+    onOpen() {
+        this.readyState = "open";
+        SocketWithoutUpgrade.priorWebsocketSuccess =
+            "websocket" === this.transport.name;
+        this.emitReserved("open");
+        this.flush();
+    }
+    /**
+     * Handles a packet.
+     *
+     * @private
+     */
+    _onPacket(packet) {
+        if ("opening" === this.readyState ||
+            "open" === this.readyState ||
+            "closing" === this.readyState) {
+            this.emitReserved("packet", packet);
+            // Socket is live - any packet counts
+            this.emitReserved("heartbeat");
+            switch (packet.type) {
+                case "open":
+                    this.onHandshake(JSON.parse(packet.data));
+                    break;
+                case "ping":
+                    this._sendPacket("pong");
+                    this.emitReserved("ping");
+                    this.emitReserved("pong");
+                    this._resetPingTimeout();
+                    break;
+                case "error":
+                    const err = new Error("server error");
+                    // @ts-ignore
+                    err.code = packet.data;
+                    this._onError(err);
+                    break;
+                case "message":
+                    this.emitReserved("data", packet.data);
+                    this.emitReserved("message", packet.data);
+                    break;
+            }
+        }
+    }
+    /**
+     * Called upon handshake completion.
+     *
+     * @param {Object} data - handshake obj
+     * @private
+     */
+    onHandshake(data) {
+        this.emitReserved("handshake", data);
+        this.id = data.sid;
+        this.transport.query.sid = data.sid;
+        this._pingInterval = data.pingInterval;
+        this._pingTimeout = data.pingTimeout;
+        this._maxPayload = data.maxPayload;
+        this.onOpen();
+        // In case open handler closes socket
+        if ("closed" === this.readyState)
+            return;
+        this._resetPingTimeout();
+    }
+    /**
+     * Sets and resets ping timeout timer based on server pings.
+     *
+     * @private
+     */
+    _resetPingTimeout() {
+        this.clearTimeoutFn(this._pingTimeoutTimer);
+        const delay = this._pingInterval + this._pingTimeout;
+        this._pingTimeoutTime = Date.now() + delay;
+        this._pingTimeoutTimer = this.setTimeoutFn(() => {
+            this._onClose("ping timeout");
+        }, delay);
+        if (this.opts.autoUnref) {
+            this._pingTimeoutTimer.unref();
+        }
+    }
+    /**
+     * Called on `drain` event
+     *
+     * @private
+     */
+    _onDrain() {
+        this.writeBuffer.splice(0, this._prevBufferLen);
+        // setting prevBufferLen = 0 is very important
+        // for example, when upgrading, upgrade packet is sent over,
+        // and a nonzero prevBufferLen could cause problems on `drain`
+        this._prevBufferLen = 0;
+        if (0 === this.writeBuffer.length) {
+            this.emitReserved("drain");
+        }
+        else {
+            this.flush();
+        }
+    }
+    /**
+     * Flush write buffers.
+     *
+     * @private
+     */
+    flush() {
+        if ("closed" !== this.readyState &&
+            this.transport.writable &&
+            !this.upgrading &&
+            this.writeBuffer.length) {
+            const packets = this._getWritablePackets();
+            this.transport.send(packets);
+            // keep track of current length of writeBuffer
+            // splice writeBuffer and callbackBuffer on `drain`
+            this._prevBufferLen = packets.length;
+            this.emitReserved("flush");
+        }
+    }
+    /**
+     * Ensure the encoded size of the writeBuffer is below the maxPayload value sent by the server (only for HTTP
+     * long-polling)
+     *
+     * @private
+     */
+    _getWritablePackets() {
+        const shouldCheckPayloadSize = this._maxPayload &&
+            this.transport.name === "polling" &&
+            this.writeBuffer.length > 1;
+        if (!shouldCheckPayloadSize) {
+            return this.writeBuffer;
+        }
+        let payloadSize = 1; // first packet type
+        for (let i = 0; i < this.writeBuffer.length; i++) {
+            const data = this.writeBuffer[i].data;
+            if (data) {
+                payloadSize += byteLength(data);
+            }
+            if (i > 0 && payloadSize > this._maxPayload) {
+                return this.writeBuffer.slice(0, i);
+            }
+            payloadSize += 2; // separator + packet type
+        }
+        return this.writeBuffer;
+    }
+    /**
+     * Checks whether the heartbeat timer has expired but the socket has not yet been notified.
+     *
+     * Note: this method is private for now because it does not really fit the WebSocket API, but if we put it in the
+     * `write()` method then the message would not be buffered by the Socket.IO client.
+     *
+     * @return {boolean}
+     * @private
+     */
+    /* private */ _hasPingExpired() {
+        if (!this._pingTimeoutTime)
+            return true;
+        const hasExpired = Date.now() > this._pingTimeoutTime;
+        if (hasExpired) {
+            this._pingTimeoutTime = 0;
+            nextTick(() => {
+                this._onClose("ping timeout");
+            }, this.setTimeoutFn);
+        }
+        return hasExpired;
+    }
+    /**
+     * Sends a message.
+     *
+     * @param {String} msg - message.
+     * @param {Object} options.
+     * @param {Function} fn - callback function.
+     * @return {Socket} for chaining.
+     */
+    write(msg, options, fn) {
+        this._sendPacket("message", msg, options, fn);
+        return this;
+    }
+    /**
+     * Sends a message. Alias of {@link Socket#write}.
+     *
+     * @param {String} msg - message.
+     * @param {Object} options.
+     * @param {Function} fn - callback function.
+     * @return {Socket} for chaining.
+     */
+    send(msg, options, fn) {
+        this._sendPacket("message", msg, options, fn);
+        return this;
+    }
+    /**
+     * Sends a packet.
+     *
+     * @param {String} type: packet type.
+     * @param {String} data.
+     * @param {Object} options.
+     * @param {Function} fn - callback function.
+     * @private
+     */
+    _sendPacket(type, data, options, fn) {
+        if ("function" === typeof data) {
+            fn = data;
+            data = undefined;
+        }
+        if ("function" === typeof options) {
+            fn = options;
+            options = null;
+        }
+        if ("closing" === this.readyState || "closed" === this.readyState) {
+            return;
+        }
+        options = options || {};
+        options.compress = false !== options.compress;
+        const packet = {
+            type: type,
+            data: data,
+            options: options,
+        };
+        this.emitReserved("packetCreate", packet);
+        this.writeBuffer.push(packet);
+        if (fn)
+            this.once("flush", fn);
+        this.flush();
+    }
+    /**
+     * Closes the connection.
+     */
+    close() {
+        const close = () => {
+            this._onClose("forced close");
+            this.transport.close();
+        };
+        const cleanupAndClose = () => {
+            this.off("upgrade", cleanupAndClose);
+            this.off("upgradeError", cleanupAndClose);
+            close();
+        };
+        const waitForUpgrade = () => {
+            // wait for upgrade to finish since we can't send packets while pausing a transport
+            this.once("upgrade", cleanupAndClose);
+            this.once("upgradeError", cleanupAndClose);
+        };
+        if ("opening" === this.readyState || "open" === this.readyState) {
+            this.readyState = "closing";
+            if (this.writeBuffer.length) {
+                this.once("drain", () => {
+                    if (this.upgrading) {
+                        waitForUpgrade();
+                    }
+                    else {
+                        close();
+                    }
+                });
+            }
+            else if (this.upgrading) {
+                waitForUpgrade();
+            }
+            else {
+                close();
+            }
+        }
+        return this;
+    }
+    /**
+     * Called upon transport error
+     *
+     * @private
+     */
+    _onError(err) {
+        SocketWithoutUpgrade.priorWebsocketSuccess = false;
+        if (this.opts.tryAllTransports &&
+            this.transports.length > 1 &&
+            this.readyState === "opening") {
+            this.transports.shift();
+            return this._open();
+        }
+        this.emitReserved("error", err);
+        this._onClose("transport error", err);
+    }
+    /**
+     * Called upon transport close.
+     *
+     * @private
+     */
+    _onClose(reason, description) {
+        if ("opening" === this.readyState ||
+            "open" === this.readyState ||
+            "closing" === this.readyState) {
+            // clear timers
+            this.clearTimeoutFn(this._pingTimeoutTimer);
+            // stop event from firing again for transport
+            this.transport.removeAllListeners("close");
+            // ensure transport won't stay open
+            this.transport.close();
+            // ignore further transport communication
+            this.transport.removeAllListeners();
+            if (withEventListeners) {
+                if (this._beforeunloadEventListener) {
+                    removeEventListener("beforeunload", this._beforeunloadEventListener, false);
+                }
+                if (this._offlineEventListener) {
+                    const i = OFFLINE_EVENT_LISTENERS.indexOf(this._offlineEventListener);
+                    if (i !== -1) {
+                        OFFLINE_EVENT_LISTENERS.splice(i, 1);
+                    }
+                }
+            }
+            // set ready state
+            this.readyState = "closed";
+            // clear session id
+            this.id = null;
+            // emit close event
+            this.emitReserved("close", reason, description);
+            // clean buffers after, so users can still
+            // grab the buffers on `close` event
+            this.writeBuffer = [];
+            this._prevBufferLen = 0;
+        }
+    }
+}
+SocketWithoutUpgrade.protocol = protocol$1;
+/**
+ * This class provides a WebSocket-like interface to connect to an Engine.IO server. The connection will be established
+ * with one of the available low-level transports, like HTTP long-polling, WebSocket or WebTransport.
+ *
+ * This class comes with an upgrade mechanism, which means that once the connection is established with the first
+ * low-level transport, it will try to upgrade to a better transport.
+ *
+ * In order to allow tree-shaking, there are no transports included, that's why the `transports` option is mandatory.
+ *
+ * @example
+ * import { SocketWithUpgrade, WebSocket } from "engine.io-client";
+ *
+ * const socket = new SocketWithUpgrade({
+ *   transports: [WebSocket]
+ * });
+ *
+ * socket.on("open", () => {
+ *   socket.send("hello");
+ * });
+ *
+ * @see SocketWithoutUpgrade
+ * @see Socket
+ */
+class SocketWithUpgrade extends SocketWithoutUpgrade {
+    constructor() {
+        super(...arguments);
+        this._upgrades = [];
+    }
+    onOpen() {
+        super.onOpen();
+        if ("open" === this.readyState && this.opts.upgrade) {
+            for (let i = 0; i < this._upgrades.length; i++) {
+                this._probe(this._upgrades[i]);
+            }
+        }
     }
     /**
      * Probes a transport.
@@ -8044,10 +8948,10 @@ class Socket$1 extends Emitter {
      * @param {String} name - transport name
      * @private
      */
-    probe(name) {
+    _probe(name) {
         let transport = this.createTransport(name);
         let failed = false;
-        Socket$1.priorWebsocketSuccess = false;
+        SocketWithoutUpgrade.priorWebsocketSuccess = false;
         const onTransportOpen = () => {
             if (failed)
                 return;
@@ -8060,7 +8964,8 @@ class Socket$1 extends Emitter {
                     this.emitReserved("upgrading", transport);
                     if (!transport)
                         return;
-                    Socket$1.priorWebsocketSuccess = "websocket" === transport.name;
+                    SocketWithoutUpgrade.priorWebsocketSuccess =
+                        "websocket" === transport.name;
                     this.transport.pause(() => {
                         if (failed)
                             return;
@@ -8126,7 +9031,7 @@ class Socket$1 extends Emitter {
         transport.once("close", onTransportClose);
         this.once("close", onclose);
         this.once("upgrading", onupgrade);
-        if (this.upgrades.indexOf("webtransport") !== -1 &&
+        if (this._upgrades.indexOf("webtransport") !== -1 &&
             name !== "webtransport") {
             // favor WebTransport
             this.setTimeoutFn(() => {
@@ -8139,288 +9044,9 @@ class Socket$1 extends Emitter {
             transport.open();
         }
     }
-    /**
-     * Called when connection is deemed open.
-     *
-     * @private
-     */
-    onOpen() {
-        this.readyState = "open";
-        Socket$1.priorWebsocketSuccess = "websocket" === this.transport.name;
-        this.emitReserved("open");
-        this.flush();
-        // we check for `readyState` in case an `open`
-        // listener already closed the socket
-        if ("open" === this.readyState && this.opts.upgrade) {
-            let i = 0;
-            const l = this.upgrades.length;
-            for (; i < l; i++) {
-                this.probe(this.upgrades[i]);
-            }
-        }
-    }
-    /**
-     * Handles a packet.
-     *
-     * @private
-     */
-    onPacket(packet) {
-        if ("opening" === this.readyState ||
-            "open" === this.readyState ||
-            "closing" === this.readyState) {
-            this.emitReserved("packet", packet);
-            // Socket is live - any packet counts
-            this.emitReserved("heartbeat");
-            this.resetPingTimeout();
-            switch (packet.type) {
-                case "open":
-                    this.onHandshake(JSON.parse(packet.data));
-                    break;
-                case "ping":
-                    this.sendPacket("pong");
-                    this.emitReserved("ping");
-                    this.emitReserved("pong");
-                    break;
-                case "error":
-                    const err = new Error("server error");
-                    // @ts-ignore
-                    err.code = packet.data;
-                    this.onError(err);
-                    break;
-                case "message":
-                    this.emitReserved("data", packet.data);
-                    this.emitReserved("message", packet.data);
-                    break;
-            }
-        }
-    }
-    /**
-     * Called upon handshake completion.
-     *
-     * @param {Object} data - handshake obj
-     * @private
-     */
     onHandshake(data) {
-        this.emitReserved("handshake", data);
-        this.id = data.sid;
-        this.transport.query.sid = data.sid;
-        this.upgrades = this.filterUpgrades(data.upgrades);
-        this.pingInterval = data.pingInterval;
-        this.pingTimeout = data.pingTimeout;
-        this.maxPayload = data.maxPayload;
-        this.onOpen();
-        // In case open handler closes socket
-        if ("closed" === this.readyState)
-            return;
-        this.resetPingTimeout();
-    }
-    /**
-     * Sets and resets ping timeout timer based on server pings.
-     *
-     * @private
-     */
-    resetPingTimeout() {
-        this.clearTimeoutFn(this.pingTimeoutTimer);
-        this.pingTimeoutTimer = this.setTimeoutFn(() => {
-            this.onClose("ping timeout");
-        }, this.pingInterval + this.pingTimeout);
-        if (this.opts.autoUnref) {
-            this.pingTimeoutTimer.unref();
-        }
-    }
-    /**
-     * Called on `drain` event
-     *
-     * @private
-     */
-    onDrain() {
-        this.writeBuffer.splice(0, this.prevBufferLen);
-        // setting prevBufferLen = 0 is very important
-        // for example, when upgrading, upgrade packet is sent over,
-        // and a nonzero prevBufferLen could cause problems on `drain`
-        this.prevBufferLen = 0;
-        if (0 === this.writeBuffer.length) {
-            this.emitReserved("drain");
-        }
-        else {
-            this.flush();
-        }
-    }
-    /**
-     * Flush write buffers.
-     *
-     * @private
-     */
-    flush() {
-        if ("closed" !== this.readyState &&
-            this.transport.writable &&
-            !this.upgrading &&
-            this.writeBuffer.length) {
-            const packets = this.getWritablePackets();
-            this.transport.send(packets);
-            // keep track of current length of writeBuffer
-            // splice writeBuffer and callbackBuffer on `drain`
-            this.prevBufferLen = packets.length;
-            this.emitReserved("flush");
-        }
-    }
-    /**
-     * Ensure the encoded size of the writeBuffer is below the maxPayload value sent by the server (only for HTTP
-     * long-polling)
-     *
-     * @private
-     */
-    getWritablePackets() {
-        const shouldCheckPayloadSize = this.maxPayload &&
-            this.transport.name === "polling" &&
-            this.writeBuffer.length > 1;
-        if (!shouldCheckPayloadSize) {
-            return this.writeBuffer;
-        }
-        let payloadSize = 1; // first packet type
-        for (let i = 0; i < this.writeBuffer.length; i++) {
-            const data = this.writeBuffer[i].data;
-            if (data) {
-                payloadSize += byteLength(data);
-            }
-            if (i > 0 && payloadSize > this.maxPayload) {
-                return this.writeBuffer.slice(0, i);
-            }
-            payloadSize += 2; // separator + packet type
-        }
-        return this.writeBuffer;
-    }
-    /**
-     * Sends a message.
-     *
-     * @param {String} msg - message.
-     * @param {Object} options.
-     * @param {Function} callback function.
-     * @return {Socket} for chaining.
-     */
-    write(msg, options, fn) {
-        this.sendPacket("message", msg, options, fn);
-        return this;
-    }
-    send(msg, options, fn) {
-        this.sendPacket("message", msg, options, fn);
-        return this;
-    }
-    /**
-     * Sends a packet.
-     *
-     * @param {String} type: packet type.
-     * @param {String} data.
-     * @param {Object} options.
-     * @param {Function} fn - callback function.
-     * @private
-     */
-    sendPacket(type, data, options, fn) {
-        if ("function" === typeof data) {
-            fn = data;
-            data = undefined;
-        }
-        if ("function" === typeof options) {
-            fn = options;
-            options = null;
-        }
-        if ("closing" === this.readyState || "closed" === this.readyState) {
-            return;
-        }
-        options = options || {};
-        options.compress = false !== options.compress;
-        const packet = {
-            type: type,
-            data: data,
-            options: options,
-        };
-        this.emitReserved("packetCreate", packet);
-        this.writeBuffer.push(packet);
-        if (fn)
-            this.once("flush", fn);
-        this.flush();
-    }
-    /**
-     * Closes the connection.
-     */
-    close() {
-        const close = () => {
-            this.onClose("forced close");
-            this.transport.close();
-        };
-        const cleanupAndClose = () => {
-            this.off("upgrade", cleanupAndClose);
-            this.off("upgradeError", cleanupAndClose);
-            close();
-        };
-        const waitForUpgrade = () => {
-            // wait for upgrade to finish since we can't send packets while pausing a transport
-            this.once("upgrade", cleanupAndClose);
-            this.once("upgradeError", cleanupAndClose);
-        };
-        if ("opening" === this.readyState || "open" === this.readyState) {
-            this.readyState = "closing";
-            if (this.writeBuffer.length) {
-                this.once("drain", () => {
-                    if (this.upgrading) {
-                        waitForUpgrade();
-                    }
-                    else {
-                        close();
-                    }
-                });
-            }
-            else if (this.upgrading) {
-                waitForUpgrade();
-            }
-            else {
-                close();
-            }
-        }
-        return this;
-    }
-    /**
-     * Called upon transport error
-     *
-     * @private
-     */
-    onError(err) {
-        Socket$1.priorWebsocketSuccess = false;
-        this.emitReserved("error", err);
-        this.onClose("transport error", err);
-    }
-    /**
-     * Called upon transport close.
-     *
-     * @private
-     */
-    onClose(reason, description) {
-        if ("opening" === this.readyState ||
-            "open" === this.readyState ||
-            "closing" === this.readyState) {
-            // clear timers
-            this.clearTimeoutFn(this.pingTimeoutTimer);
-            // stop event from firing again for transport
-            this.transport.removeAllListeners("close");
-            // ensure transport won't stay open
-            this.transport.close();
-            // ignore further transport communication
-            this.transport.removeAllListeners();
-            if (typeof removeEventListener === "function") {
-                removeEventListener("beforeunload", this.beforeunloadEventListener, false);
-                removeEventListener("offline", this.offlineEventListener, false);
-            }
-            // set ready state
-            this.readyState = "closed";
-            // clear session id
-            this.id = null;
-            // emit close event
-            this.emitReserved("close", reason, description);
-            // clean buffers after, so users can still
-            // grab the buffers on `close` event
-            this.writeBuffer = [];
-            this.prevBufferLen = 0;
-        }
+        this._upgrades = this._filterUpgrades(data.upgrades);
+        super.onHandshake(data);
     }
     /**
      * Filters upgrades, returning only those matching client transports.
@@ -8428,18 +9054,46 @@ class Socket$1 extends Emitter {
      * @param {Array} upgrades - server upgrades
      * @private
      */
-    filterUpgrades(upgrades) {
+    _filterUpgrades(upgrades) {
         const filteredUpgrades = [];
-        let i = 0;
-        const j = upgrades.length;
-        for (; i < j; i++) {
+        for (let i = 0; i < upgrades.length; i++) {
             if (~this.transports.indexOf(upgrades[i]))
                 filteredUpgrades.push(upgrades[i]);
         }
         return filteredUpgrades;
     }
 }
-Socket$1.protocol = protocol$1;
+/**
+ * This class provides a WebSocket-like interface to connect to an Engine.IO server. The connection will be established
+ * with one of the available low-level transports, like HTTP long-polling, WebSocket or WebTransport.
+ *
+ * This class comes with an upgrade mechanism, which means that once the connection is established with the first
+ * low-level transport, it will try to upgrade to a better transport.
+ *
+ * @example
+ * import { Socket } from "engine.io-client";
+ *
+ * const socket = new Socket();
+ *
+ * socket.on("open", () => {
+ *   socket.send("hello");
+ * });
+ *
+ * @see SocketWithoutUpgrade
+ * @see SocketWithUpgrade
+ */
+class Socket$1 extends SocketWithUpgrade {
+    constructor(uri, opts = {}) {
+        const o = typeof uri === "object" ? uri : opts;
+        if (!o.transports ||
+            (o.transports && typeof o.transports[0] === "string")) {
+            o.transports = (o.transports || ["polling", "websocket", "webtransport"])
+                .map((transportName) => transports[transportName])
+                .filter((t) => !!t);
+        }
+        super(uri, o);
+    }
+}
 
 /**
  * URL parser.
@@ -8944,11 +9598,11 @@ class BinaryReconstructor {
 }
 
 const parser = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  protocol: protocol,
-  get PacketType () { return PacketType; },
-  Encoder: Encoder,
-  Decoder: Decoder
+    __proto__: null,
+    protocol: protocol,
+    get PacketType () { return PacketType; },
+    Encoder: Encoder,
+    Decoder: Decoder
 });
 
 function on(obj, ev, fn) {
@@ -9193,6 +9847,7 @@ class Socket extends Emitter {
      * @return self
      */
     emit(ev, ...args) {
+        var _a, _b, _c;
         if (RESERVED_EVENTS.hasOwnProperty(ev)) {
             throw new Error('"' + ev.toString() + '" is a reserved event name');
         }
@@ -9214,12 +9869,11 @@ class Socket extends Emitter {
             this._registerAckCallback(id, ack);
             packet.id = id;
         }
-        const isTransportWritable = this.io.engine &&
-            this.io.engine.transport &&
-            this.io.engine.transport.writable;
-        const discardPacket = this.flags.volatile && (!isTransportWritable || !this.connected);
+        const isTransportWritable = (_b = (_a = this.io.engine) === null || _a === void 0 ? void 0 : _a.transport) === null || _b === void 0 ? void 0 : _b.writable;
+        const isConnected = this.connected && !((_c = this.io.engine) === null || _c === void 0 ? void 0 : _c._hasPingExpired());
+        const discardPacket = this.flags.volatile && !isTransportWritable;
         if (discardPacket) ;
-        else if (this.connected) {
+        else if (isConnected) {
             this.notifyOutgoingListeners(packet);
             this.packet(packet);
         }
@@ -9942,6 +10596,9 @@ class Manager extends Emitter {
         if (!arguments.length)
             return this._reconnection;
         this._reconnection = !!v;
+        if (!v) {
+            this.skipReconnect = true;
+        }
         return this;
     }
     reconnectionAttempts(v) {
@@ -10070,7 +10727,9 @@ class Manager extends Emitter {
         this.emitReserved("open");
         // add new subs
         const socket = this.engine;
-        this.subs.push(on(socket, "ping", this.onping.bind(this)), on(socket, "data", this.ondata.bind(this)), on(socket, "error", this.onerror.bind(this)), on(socket, "close", this.onclose.bind(this)), on(this.decoder, "decoded", this.ondecoded.bind(this)));
+        this.subs.push(on(socket, "ping", this.onping.bind(this)), on(socket, "data", this.ondata.bind(this)), on(socket, "error", this.onerror.bind(this)), on(socket, "close", this.onclose.bind(this)), 
+        // @ts-ignore
+        on(this.decoder, "decoded", this.ondecoded.bind(this)));
     }
     /**
      * Called upon a ping.
@@ -10176,8 +10835,6 @@ class Manager extends Emitter {
         this.skipReconnect = true;
         this._reconnecting = false;
         this.onclose("forced close");
-        if (this.engine)
-            this.engine.close();
     }
     /**
      * Alias for close()
@@ -10188,12 +10845,18 @@ class Manager extends Emitter {
         return this._close();
     }
     /**
-     * Called upon engine close.
+     * Called when:
+     *
+     * - the low-level engine is closed
+     * - the parser encountered a badly formatted packet
+     * - all sockets are disconnected
      *
      * @private
      */
     onclose(reason, description) {
+        var _a;
         this.cleanup();
+        (_a = this.engine) === null || _a === void 0 ? void 0 : _a.close();
         this.backoff.reset();
         this._readyState = "closed";
         this.emitReserved("close", reason, description);
@@ -10300,6 +10963,6 @@ Object.assign(lookup, {
     connect: lookup,
 });
 
-export { BuyTogetherService as B, ProductService as P };
+export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductService as P };
 
 //# sourceMappingURL=index2.js.map

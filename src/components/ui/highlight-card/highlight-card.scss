@@ -1,0 +1,126 @@
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &-container {
+    border: 1px solid var(--menu-items);
+    border-radius: 8px;
+  }
+
+  &-header {
+    background-color: var(--color-secondary);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+
+    &-title {
+      font-family: var(--h1-ff);
+      text-transform: uppercase;
+      color: var(--white);
+    }
+  }
+
+  &-item {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+
+    &-highlighted {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  &-message {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 2px;
+    word-break: break-word;
+
+    &-title,
+    &-content {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    &-title {
+      font-weight: 600;
+    }
+  }
+
+  &-separator {
+    height: 1px;
+    background-color: var(--menu-items);
+  }
+
+  &-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      cursor: pointer;
+      .highlight-card-product-cart-action {
+        & a {
+          text-decoration: underline var(--fc-color-primary) 1px solid !important;
+        }
+      }
+    }
+
+    &-cart-action {
+      padding: 24px;
+      font-weight: bold;
+    }
+  }
+}
+
+.highlight-card .highlight-custom-style.product-container {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+}
+
+.highlight-card .highlight-custom-style.product-container > .info {
+  > .title {
+    word-break: break-all;
+  }
+  > .price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    > .base,
+    .current {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}
+
+.highlight-card .highlight-custom-style.product-container > .image {
+  height: 48px;
+  width: 48px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  > .image-container {
+    > img {
+      border-radius: 3px;
+    }
+  }
+}
+
+.highlight-card .highlight-custom-style.product-container > .image .image-container.-is-loading {
+  min-width: 48px;
+  min-height: 48px;
+}

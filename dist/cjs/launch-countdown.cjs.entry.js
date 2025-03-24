@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index$1 = require('./index-b315d1cd.js');
-const index = require('./index-b602d0d3.js');
+const index$1 = require('./index-53de1b7a.js');
+const index = require('./index-15bfa4ed.js');
 
 class LaunchCountdownService {
     static async getReleaseDateByProduct(productId, variationId) {
@@ -72,7 +72,7 @@ const LaunchCountdown = class {
         this.loadCountDown();
     }
     render() {
-        return (index$1.h(index$1.Host, { key: '7663c3ac7be67769e9115cfb71928856c89d0aac' }, index$1.h("div", { key: 'b67acc6e6e97503b7c32a4d5c920e0ded335de0f', class: "launch-countdown-container" }, index$1.h("div", { key: 'a836c13f17ef931e6d59acb9dbd32f2c8c95a723', class: "launch-countdown-container-header" }, index$1.h("h3", { key: 'b9b1f96b681acd79f3f8ad48fefd4c39d3a210f8', class: "launch-countdown-container-title" }, this.dataCountdownTitle), index$1.h("p", { key: '2ad67b669d41d12d5574a4089b3634b354f25c38', class: "launch-countdown-container-description" }, this.dataDescription)), index$1.h("front-countdown", { key: '80845c1e039431e5f555b3f2de8733db6dbfd3e5', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
+        return (index$1.h(index$1.Host, { key: 'b5222efedc7637599725ceeec7ce9817567f48ae' }, index$1.h("div", { key: '4a2bf59691e27d81c7c4aacd050d6d168ebdbe10', class: "launch-countdown-container" }, index$1.h("div", { key: '2e288b294802a75a710a7896c8484b161ace0bc6', class: "launch-countdown-container-header" }, index$1.h("h3", { key: '2fd3d6689ab670675adf87507250734b75c55db7', class: "launch-countdown-container-title" }, this.dataCountdownTitle), index$1.h("p", { key: '87a180a6bd19d8d42faadab0929dad957c6d5a78', class: "launch-countdown-container-description" }, this.dataDescription)), index$1.h("front-countdown", { key: '63245f4238b0f3b131005a63a9107dc906e0aee6', "start-date": this.dateTime.startDate, "end-date": this.dateTime.endDate }))));
     }
     static get watchers() { return {
         "variationId": ["watchVariationIdChange"],

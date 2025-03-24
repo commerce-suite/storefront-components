@@ -24,27 +24,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-      - name: Add SSH key
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Temporarily remove dist from .gitignore
-        run: |
-          if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i '' '/dist/d' .gitignore
-          else
-            sed -i '/dist/d' .gitignore
-          fi
-
-      - name: Commit and push dist
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add dist
-          git commit -m 'Deploy dist folder' -n
-          git push git@github.com:commerce-suite/storefront-components.git HEAD:${GITHUB_REF#refs/heads/}
-
-      - name: Restore .gitignore
-        run: git checkout .gitignore

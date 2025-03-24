@@ -9,7 +9,7 @@ describe('FrontBuyTogetherService', () => {
   const service = new FrontBuyTogetherService();
   const data = buyTogetherData as BuyTogether;
 
-  it('It should change Color for data api and produtCard', () => {
+  it('It should change Color for data api and productCard', () => {
     const { productCard, productTargetUpdated } = service.changeColor('266425', data.product);
     const color = {
       id: 266425,
@@ -37,7 +37,7 @@ describe('FrontBuyTogetherService', () => {
     ).toEqual(color.id);
   });
 
-  it('It should change Attribute for data api and produtCard', () => {
+  it('It should change Attribute for data api and productCard', () => {
     const { productCard, productTargetUpdated } = service.changeAttribute('462521', data.product);
     const attribute = {
       id: 462521,
@@ -58,7 +58,7 @@ describe('FrontBuyTogetherService', () => {
     ).toEqual(attribute.id);
   });
 
-  it('It should change AttributeSecondary for data api and produtCard', () => {
+  it('It should change AttributeSecondary for data api and productCard', () => {
     // Change Tamanho de Calçado for 36
     const { productTargetUpdated: targetUpdate } = service.changeAttribute('462521', data.product);
     // Change MAterial for couro

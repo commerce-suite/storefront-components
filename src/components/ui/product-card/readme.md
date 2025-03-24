@@ -1,18 +1,18 @@
 # product-card
 
-
-
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property         | Attribute | Description | Type              | Default     |
-| ---------------- | --------- | ----------- | ----------------- | ----------- |
-| `basePrice`      | --        |             | `BasePrice`       | `undefined` |
-| `inline`         | `inline`  |             | `boolean`         | `false`     |
-| `paymentOptions` | --        |             | `PaymentOption[]` | `[]`        |
-| `product`        | --        |             | `IProductCard`    | `undefined` |
+| Property           | Attribute            | Description | Type              | Default     |
+| ------------------ | -------------------- | ----------- | ----------------- | ----------- |
+| `basePrice`        | --                   |             | `BasePrice`       | `undefined` |
+| `customClass`      | `custom-class`       |             | `string`          | `''`        |
+| `inline`           | `inline`             |             | `boolean`         | `false`     |
+| `paymentOptions`   | --                   |             | `PaymentOption[]` | `[]`        |
+| `product`          | --                   |             | `IProductCard`    | `undefined` |
+| `showStartingFrom` | `show-starting-from` |             | `boolean`         | `false`     |
 
 
 ## Dependencies
@@ -20,6 +20,7 @@
 ### Used by
 
  - [buy-together](../../buy-together)
+ - [highlight-card](../highlight-card)
  - [showcase-related](../../showcase)
 
 ### Depends on
@@ -37,6 +38,7 @@ graph TD;
   product-price --> product-price-credit-card
   product-price --> product-price-pix
   buy-together --> product-card
+  highlight-card --> product-card
   showcase-related --> product-card
   style product-card fill:#f9f,stroke:#333,stroke-width:4px
 ```

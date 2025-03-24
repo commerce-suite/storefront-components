@@ -1,30 +1,21 @@
 import get from "lodash/get";
 import { checkHasBalance, checkIsOutReleaseDate } from "../buy-together.utils";
 export class FrontBuyTogetherAdapter {
-    static adapterIBuyTogetherToComponentData(buyTogether, isFirstLoad = false) {
+    static adapterIBuyTogetherToComponentData(buyTogether, buyTogetherPaymentConfig, isFirstLoad = false) {
         this.isFirstLoad = isFirstLoad;
         const componentData = {
-            productMain: this.adapterToProductCard(buyTogether.product),
-            products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data)),
+            productMain: this.adapterToProductCard(buyTogether.product, buyTogetherPaymentConfig),
+            products: buyTogether.productsPivot.map(data => this.adapterPivotToProductCard(data, buyTogetherPaymentConfig)),
             originalData: buyTogether,
         };
         this.isFirstLoad = false;
         return componentData;
     }
-    static adapterPivotToProductCard(product) {
-        return Object.assign(Object.assign({}, this.adapterToProductCard(product)), { isCheck: true });
+    static adapterPivotToProductCard(product, buyTogetherPaymentConfig) {
+        return Object.assign(Object.assign({}, this.adapterToProductCard(product, buyTogetherPaymentConfig)), { isCheck: true });
     }
-    static adapterToProductCard(product) {
+    static adapterToProductCard(product, paymentConfig) {
         var _a;
-        const adaptSpecialPrice = (payments) => {
-            const pixMethod = payments.find(payment => payment.method === 'pix');
-            if (pixMethod) {
-                const specialPrice = Number(pixMethod.installment.total);
-                return specialPrice;
-            }
-            return null;
-        };
-        adaptSpecialPrice(product.payments);
         const { price, priceCompare, id } = this.getValuesByVariation(product);
         return {
             price,
@@ -35,8 +26,40 @@ export class FrontBuyTogetherAdapter {
             name: product.name,
             slug: product.slug,
             selectVariations: this.adapterAttributes(product),
-            specialPrice: adaptSpecialPrice(product.payments),
+            paymentOptions: this.adaptPaymentOptions(product, paymentConfig),
         };
+    }
+    static adaptPaymentOptions(product, paymentConfig) {
+        const uniquePayments = {};
+        product.payments.forEach(payment => {
+            if (!uniquePayments[payment.method]) {
+                uniquePayments[payment.method] = payment;
+            }
+        });
+        const filteredPayments = Object.values(uniquePayments);
+        const allInactive = paymentConfig.every(payment => !payment.active);
+        if (allInactive)
+            return this.adaptSimplePayment(product);
+        const adaptMap = {
+            creditcard: (product, config, payment) => {
+                return this.adaptCreditCardPayment(product, config, payment);
+            },
+            billet: product => this.adaptPayment(product, 'billet'),
+            pix: product => this.adaptPayment(product, 'pix'),
+        };
+        const onlyActivePayments = (payment) => payment.active;
+        const byPosition = (a, b) => a.position - b.position;
+        return paymentConfig
+            .filter(onlyActivePayments)
+            .sort(byPosition)
+            .map(payment => {
+            const actualPayment = filteredPayments.find(p => p.method === payment.method);
+            if (!actualPayment)
+                return null;
+            const adaptFunction = adaptMap[payment.method];
+            return adaptFunction ? adaptFunction(product, payment, actualPayment) : null;
+        })
+            .filter(Boolean);
     }
     static getValuesByVariation(product) {
         const { attribute, attributeSecondary, color } = product;
@@ -145,6 +168,42 @@ export class FrontBuyTogetherAdapter {
     static checkAttributeOptionDisabled(data) {
         const { balance, releaseDate, isSellOutOfStock } = data;
         return (!checkHasBalance({ balance, isSellOutOfStock }) || !checkIsOutReleaseDate({ releaseDate }));
+    }
+    static getInstallmentsWithoutInterest(installments) {
+        return installments.filter(installment => installment.markup <= 1);
+    }
+    static adaptCreditCardPayment(product, paymentConfig, actualPayment) {
+        const installmentsNoInterest = this.getInstallmentsWithoutInterest(actualPayment.installments);
+        const totalInstallments = actualPayment.installments;
+        const selectedInstallments = paymentConfig.parcels_no_interest
+            ? installmentsNoInterest
+            : totalInstallments;
+        const lastInstallment = selectedInstallments[selectedInstallments.length - 1];
+        return {
+            type: 'creditCard',
+            price: Number(lastInstallment === null || lastInstallment === void 0 ? void 0 : lastInstallment.total) || 0,
+            priceCompare: product.priceCompare,
+            parcels: selectedInstallments.length,
+            parcelPrice: Number(lastInstallment === null || lastInstallment === void 0 ? void 0 : lastInstallment.parcelPrice) || 0,
+            hasInterest: !paymentConfig.parcels_no_interest,
+        };
+    }
+    static adaptPayment(product, methodType) {
+        const paymentMethod = product.payments.find(method => method.method === methodType);
+        return {
+            type: methodType,
+            price: Number((paymentMethod === null || paymentMethod === void 0 ? void 0 : paymentMethod.installment.total) || 0),
+            priceCompare: product.priceCompare,
+        };
+    }
+    static adaptSimplePayment(product) {
+        return [
+            {
+                type: 'simple',
+                price: product.price,
+                priceCompare: product.priceCompare,
+            },
+        ];
     }
 }
 FrontBuyTogetherAdapter.isFirstLoad = false;

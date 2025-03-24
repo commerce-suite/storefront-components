@@ -581,5 +581,7 @@ interface ShopConfig {
 declare global {
     interface Window {
         dooca: ShopConfig;
+        grecaptcha?: any;
+        onRecaptchaLoad?: () => void;
     }
 }

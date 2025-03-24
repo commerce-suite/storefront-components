@@ -1,30 +1,21 @@
 import { Host, h } from "@stencil/core";
-import { currencyFormat, getClassByProps } from "../../../utils/utils";
+import { getClassByProps } from "../../../utils/utils";
 export class ProductCard {
     constructor() {
         this.inline = false;
+        this.customClass = '';
         this.product = undefined;
-        this.showPriceBase = undefined;
+        this.basePrice = undefined;
+        this.paymentOptions = [];
+        this.showStartingFrom = false;
     }
     getClassWithInline(className) {
         const prosForClass = { '-inline': this.inline };
-        return `${className} ${getClassByProps(prosForClass)}`;
-    }
-    getPrice() {
-        if (this.product.specialPrice) {
-            const price = currencyFormat(this.product.specialPrice);
-            return `${price} no pix`;
-        }
-        return currencyFormat(this.product.price);
-    }
-    componentWillLoad() {
-        var _a, _b, _c;
-        this.showPriceBase =
-            !!((_a = this.product) === null || _a === void 0 ? void 0 : _a.priceBase) && +((_b = this.product) === null || _b === void 0 ? void 0 : _b.priceBase) !== +((_c = this.product) === null || _c === void 0 ? void 0 : _c.price);
+        return `${className} ${getClassByProps(prosForClass)} ${this.customClass}`;
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (h(Host, { key: '3186b4f9bbc34d64d26b0bf9aa50667cdb1923a4' }, h("div", { key: 'a5ea8e400feb43638a7155576dab2b1d0d3e2a7d', class: this.getClassWithInline('product-container') }, h("front-image", { key: 'fa7c2e423e2a25773366144198cea804981fc185', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: 'ef49c018c82a0b19a0a11d8cf54c65c077e22e74', class: "info" }, h("span", { key: 'f2e36d52bc00d9e1a0493310f4c4d10c4e11ab5f', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("div", { key: '324a9c7efb0968b7ccd9133416bec8757ac606ec', class: "price" }, this.showPriceBase && (h("span", { key: '68a1f75bdfecbad9849d0970756ac404c216ae48', class: "base" }, currencyFormat(this.product.priceBase))), h("span", { key: '8a16a384372a6597d75f055931276f3956ab1330', class: "current" }, this.getPrice()))))));
+        return (h(Host, { key: 'a91c01aba45c2170fd5e80e979bfebb5efe92206' }, h("div", { key: '4e05f5525c4781fc75147e022d6a446ae15d0b98', class: this.getClassWithInline('product-container') }, h("front-image", { key: '25724ec5cb8c21c8616c62f73aa01b2625795aad', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: 'a204f8544ab6cdd62a71498aa481dab5d4c90215', class: "info" }, h("span", { key: '6d1b35bf05b48ca425b9ca5d3ef971f357599cee', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("product-price", { key: '7fd834aa77c751dc27be770f1c0e409ba5a3b1ee', basePrice: this.basePrice, paymentOptions: this.paymentOptions, showStartingFrom: this.showStartingFrom })))));
     }
     static get is() { return "product-card"; }
     static get originalStyleUrls() {
@@ -57,6 +48,24 @@ export class ProductCard {
                 "reflect": false,
                 "defaultValue": "false"
             },
+            "customClass": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "custom-class",
+                "reflect": false,
+                "defaultValue": "''"
+            },
             "product": {
                 "type": "unknown",
                 "mutable": true,
@@ -77,12 +86,68 @@ export class ProductCard {
                     "tags": [],
                     "text": ""
                 }
+            },
+            "basePrice": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "BasePrice",
+                    "resolved": "BasePrice",
+                    "references": {
+                        "BasePrice": {
+                            "location": "import",
+                            "path": "../product-price/product-price.type",
+                            "id": "src/components/ui/product-price/product-price.type.ts::BasePrice"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                }
+            },
+            "paymentOptions": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "PaymentOption[]",
+                    "resolved": "PaymentOption[]",
+                    "references": {
+                        "PaymentOption": {
+                            "location": "import",
+                            "path": "../product-price/product-price.type",
+                            "id": "src/components/ui/product-price/product-price.type.ts::PaymentOption"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "defaultValue": "[]"
+            },
+            "showStartingFrom": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "show-starting-from",
+                "reflect": false,
+                "defaultValue": "false"
             }
-        };
-    }
-    static get states() {
-        return {
-            "showPriceBase": {}
         };
     }
 }

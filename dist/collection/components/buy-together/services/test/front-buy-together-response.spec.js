@@ -1,6 +1,7 @@
 import { buyTogetherData } from "../__mocks__/buy-together-data.mock";
 import { buyTogetherComponentData } from "../__mocks__/buy-together-component-data.mock";
 import { FrontBuyTogetherResponse } from "../front-buy-together-response";
+import { buyTogetherPaymentConfig } from "../__mocks__/buy-together-payments-config";
 describe('FrontBuyTogetherResponse Class', () => {
     let frontBuyTogetherResponse;
     let data;
@@ -15,13 +16,13 @@ describe('FrontBuyTogetherResponse Class', () => {
         expect(productWithVariation).toEqual(Object.assign(Object.assign({}, variation), { variations: productWithVariation.variations }));
     });
     it('It should adapter to component data for buy-together', () => {
-        const componentData = frontBuyTogetherResponse.adapterToComponentData().getComponentData;
+        const componentData = frontBuyTogetherResponse.adapterToComponentData(buyTogetherPaymentConfig).getComponentData;
         expect(componentData).toEqual(buyTogetherComponentData);
     });
     it('It should return null in adapterToComponentData when no exist pivot product', () => {
         data.productsPivot = [];
         frontBuyTogetherResponse = new FrontBuyTogetherResponse(data);
-        const componentData = frontBuyTogetherResponse.adapterToComponentData().getComponentData;
+        const componentData = frontBuyTogetherResponse.adapterToComponentData(buyTogetherPaymentConfig).getComponentData;
         expect(componentData).toEqual(null);
     });
 });

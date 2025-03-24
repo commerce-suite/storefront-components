@@ -14,6 +14,14 @@ export function getClassByProps(classByProps: { [key: string]: boolean }): strin
     .join(' ');
 }
 
+export function extractYouTubeVideoId(url: string) {
+  if (!url) return null;
+
+  const regex = /(?:watch\?v=|live\/)([a-zA-Z0-9_-]{11})/;
+  const match = url.match(regex);
+
+  return match ? match[1] : null;
+}
 export function transformMediaUrl(mediaUrl: string) {
   const cdnUrl = Env.CDN_URL;
   const shopId = window.dooca.shop_id;

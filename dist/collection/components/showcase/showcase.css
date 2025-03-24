@@ -29,6 +29,14 @@
     transform: rotate(360deg);
   }
 }
+@keyframes simple-spinner-animation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 .splide__arrow--next {
   right: 0.5em;
 }
