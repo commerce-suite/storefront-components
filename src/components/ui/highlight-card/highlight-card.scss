@@ -9,7 +9,7 @@
   gap: 16px;
 
   &-container {
-    border: 1px solid var(--menu-items);
+    border: 1px solid var(--color-primary);
     border-radius: 8px;
   }
 
@@ -58,7 +58,7 @@
 
   &-separator {
     height: 1px;
-    background-color: var(--menu-items);
+    background-color: var(--color-primary);
   }
 
   &-product {
