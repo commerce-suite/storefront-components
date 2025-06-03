@@ -2,7 +2,7 @@ trigger:
   - homolog
 
 pool:
-  vmImage: 'ubuntu-20.04'
+  vmImage: $(VM_IMAGE)
 
 resources:
   repositories:
