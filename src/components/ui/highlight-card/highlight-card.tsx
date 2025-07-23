@@ -1,4 +1,14 @@
-import { Component, Event, EventEmitter, h, Prop, State, Host, Watch } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Prop,
+  State,
+  Host,
+  Watch,
+  getAssetPath,
+} from '@stencil/core';
 import { IHighlightCardItem } from './highlight-card.type';
 
 @Component({
@@ -27,7 +37,7 @@ export class HighlightCard {
           </div>
         )}
         {item.type === 'product' && (
-          <div class="highlight-card-product" onClick={() => this.addItem.emit(item)}>
+          <div class="highlight-card-product">
             <product-card
               custom-class="highlight-custom-style"
               product={item}
@@ -35,8 +45,8 @@ export class HighlightCard {
               showStartingFrom={item.showStartingFrom}
               inline
             />
-            <div class="highlight-card-product-cart-action">
-              <a>Ver produto</a>
+            <div class="highlight-card-product-cart-icon" onClick={() => this.addItem.emit(item)}>
+              <img src={getAssetPath('./assets/icons/add-to-cart.svg')} alt="add_to_cart_icon" />
             </div>
           </div>
         )}

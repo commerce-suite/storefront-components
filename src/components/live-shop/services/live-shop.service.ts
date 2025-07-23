@@ -19,6 +19,9 @@ export class LiveShopHandler {
         'productId',
         'slug',
         'hasPriceRange',
+        'balance',
+        'isSellOutOfStock',
+        'colors { id, name, hexadecimal, slug }',
       ],
       filter: { productIds, page: 0, first: productIds.length },
     });
@@ -36,11 +39,17 @@ export class LiveShopHandler {
     return products.edges.map(({ node }) => {
       const liveProduct = liveProducts.find(product => product.productId === node.productId);
       const status = liveProduct?.status ?? null;
+      const firstColor = node.colors?.[0] ?? null;
+
       return {
         id: +node.productId,
         name: node.name,
         image: (node?.images?.[0] as IImage) ?? null,
         price: node.price,
+        balance: node.balance,
+        isSellOutOfStock: node.isSellOutOfStock,
+        colors: node.colors,
+        gridId: firstColor ? `${node.productId}-${firstColor.id}` : `${node.productId}`,
         priceBase: node.priceCompare,
         title: '',
         content: '',
