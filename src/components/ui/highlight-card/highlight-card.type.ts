@@ -1,4 +1,4 @@
-import { IImage } from '../product-card/product-card.type';
+import { IColor, IImage } from '../product-card/product-card.type';
 
 interface IItem {
   type: 'message' | 'product';
@@ -26,6 +26,10 @@ export interface IProductItem extends IItem {
   id?: number;
   specialPrice?: number;
   lastPosition?: number;
+  gridId?: string;
+  balance?: number;
+  isSellOutOfStock?: boolean;
+  colors?: IColor[];
 }
 
 export type IHighlightCardItem = IMessageItem | IProductItem;

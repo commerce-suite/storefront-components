@@ -38,6 +38,9 @@ export class ProductCard {
               paymentOptions={this.paymentOptions}
               showStartingFrom={this.showStartingFrom}
             />
+            <div class="product-card-content">
+              <slot></slot>
+            </div>
           </div>
         </div>
       </Host>
