@@ -30,6 +30,7 @@ export interface IProductItem extends IItem {
   balance?: number;
   isSellOutOfStock?: boolean;
   colors?: IColor[];
+  images?: IImage[];
 }
 
 export type IHighlightCardItem = IMessageItem | IProductItem;

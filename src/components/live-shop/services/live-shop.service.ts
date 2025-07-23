@@ -82,6 +82,12 @@ export class LiveShopHandler {
       id: +base.productId,
       name: base.name,
       image: base.images?.[0]?.src ? { src: base.images[0].src } : null,
+      images: colors
+        ? nodes
+            .map(node => node.images?.[0]?.src)
+            .filter((src, index, self) => !!src && self.indexOf(src) === index)
+            .map(src => ({ src }))
+        : base.images?.map(image => ({ src: image.src })) ?? [],
       price: base.price,
       priceBase: base.priceCompare,
       balance: base.balance,
