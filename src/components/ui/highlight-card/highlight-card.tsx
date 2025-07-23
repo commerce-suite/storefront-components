@@ -46,8 +46,8 @@ export class HighlightCard {
       [productId]: color.id,
     };
 
-    const baseName = currentItem.name?.split(' - ')[0] ?? currentItem.name;
-    const baseSlug = currentItem.slug?.split('/')?.[0] ?? currentItem.slug;
+    const baseName = currentItem.name.split(' - ')[0] ?? currentItem.name;
+    const baseSlug = currentItem.slug.split('/')[0] ?? currentItem.slug;
 
     const updatedProduct: IProductCard = {
       ...currentItem,
@@ -55,7 +55,7 @@ export class HighlightCard {
       name: `${baseName} - ${color.name}`,
       slug: `${baseSlug}/${color.slug}`,
       gridId: `${productId}-${color.id}`,
-      image: { src: color.productImage?.src ?? null },
+      image: color.productImage?.src ? { src: color.productImage.src } : null,
       price: color.price,
       balance: color.balance,
       priceBase: color.priceCompare,
