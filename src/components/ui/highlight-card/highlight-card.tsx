@@ -84,11 +84,13 @@ export class HighlightCard {
               showStartingFrom={item.showStartingFrom}
               inline
             >
-              <color-selector
-                colors={item.colors}
-                selectedId={this.selectedColorByProductId[item.id]}
-                onColorSelected={e => this.handleColorSelected(item, e.detail)}
-              />
+              {item.colors && (
+                <color-selector
+                  colors={item.colors}
+                  selectedId={this.selectedColorByProductId[item.id]}
+                  onColorSelected={e => this.handleColorSelected(item, e.detail)}
+                />
+              )}
             </product-card>
             <div class="highlight-card-product-cart-icon" onClick={() => this.addItem.emit(item)}>
               <img src={getAssetPath('./assets/icons/add-to-cart.svg')} alt="add_to_cart_icon" />
