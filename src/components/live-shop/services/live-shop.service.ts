@@ -70,6 +70,8 @@ export class LiveShopHandler {
           image: node.color?.image?.src ? { src: node.color.image.src } : null,
           price: node.price,
           productImage: node.images?.[0]?.src ? { src: node.images[0].src } : null,
+          balance: node.balance,
+          priceCompare: node.priceCompare,
         }))
       : null;
 

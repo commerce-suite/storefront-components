@@ -57,6 +57,8 @@ export class HighlightCard {
       gridId: `${productId}-${color.id}`,
       image: { src: color.productImage?.src ?? null },
       price: color.price,
+      balance: color.balance,
+      priceBase: color.priceCompare,
     };
 
     this.updateProductItem(currentItem, updatedProduct);
