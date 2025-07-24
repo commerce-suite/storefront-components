@@ -1,9 +1,12 @@
 import { LiveShopService, ProductService } from '@uxshop/storefront-core';
-import { LiveShop } from '@uxshop/storefront-core/dist/modules/live-shop/LiveShopTypes';
+import {
+  LiveShop,
+  LiveShopProduct,
+} from '@uxshop/storefront-core/dist/modules/live-shop/LiveShopTypes';
 import { IHighlightCardItem } from '../../../components';
-import { IImage } from '../../ui/product-card/product-card.type';
 import { IMessageItem, IProductItem } from '../../ui/highlight-card/highlight-card.type';
 import { SocketMessage } from '../live-shop.type';
+import { Product } from '@uxshop/storefront-core/dist/modules/product/ProductTypes';
 
 export class LiveShopHandler {
   private liveShopData: LiveShop;
@@ -21,49 +24,100 @@ export class LiveShopHandler {
         'hasPriceRange',
         'balance',
         'isSellOutOfStock',
-        'colors { id, name, hexadecimal, slug }',
+        'color { id, name, hexadecimal, slug, image { src } }',
       ],
-      filter: { productIds, page: 0, first: productIds.length },
+      filter: { productIds, page: 0, first: 1000 },
+      agg: {
+        field: ['productId', 'colorId'],
+      },
     });
   }
 
-  async getLiveShop(hashRoom: string): Promise<LiveShop> {
+  public async getLiveShop(hashRoom: string): Promise<LiveShop> {
     this.liveShopData = await LiveShopService.getByHash(hashRoom);
     return this.liveShopData;
   }
 
-  async productsToItemsAdapter(): Promise<IProductItem[]> {
+  private groupByProductId(edges: { node: Product }[]): Record<string, Product[]> {
+    return edges.reduce(
+      (acc, { node }) => {
+        const key = node.productId;
+        acc[key] = acc[key] || [];
+        acc[key].push(node);
+        return acc;
+      },
+      {} as Record<string, Product[]>,
+    );
+  }
+
+  private selectBaseNode(nodes: Product[]) {
+    return nodes.find(n => n.images?.length) ?? nodes[0];
+  }
+
+  private buildProductItem(
+    base: Product,
+    nodes: Product[],
+    liveProduct: LiveShopProduct,
+  ): IProductItem {
+    const shouldGroup = nodes.length > 1;
+
+    const colors = shouldGroup
+      ? nodes.map(node => ({
+          id: node.color?.id,
+          name: node.color?.name,
+          slug: node.color?.slug,
+          hexadecimal: node.color?.hexadecimal,
+          image: node.color?.image?.src ? { src: node.color.image.src } : null,
+          price: node.price,
+          productImage: node.images?.[0]?.src ? { src: node.images[0].src } : null,
+          balance: node.balance,
+          priceCompare: node.priceCompare,
+        }))
+      : null;
+
+    const color = base.color;
+    const gridId = color ? `${base.productId}-${color.id}` : `${base.productId}`;
+
+    return {
+      id: +base.productId,
+      name: base.name,
+      image: base.images?.[0]?.src ? { src: base.images[0].src } : null,
+      images: colors
+        ? nodes
+            .map(node => node.images?.[0]?.src)
+            .filter((src, index, self) => !!src && self.indexOf(src) === index)
+            .map(src => ({ src }))
+        : base.images?.map(image => ({ src: image.src })) ?? [],
+      price: base.price,
+      priceBase: base.priceCompare,
+      balance: base.balance,
+      isSellOutOfStock: base.isSellOutOfStock,
+      gridId,
+      slug: base.slug,
+      type: 'product',
+      show: liveProduct?.status && liveProduct.status !== 'hidden',
+      highlight: liveProduct?.status === 'highlighting',
+      position: liveProduct?.position ?? 0,
+      ...(colors ? { colors } : {}),
+      ...(shouldGroup ? {} : { showStartingFrom: base.hasPriceRange }),
+    };
+  }
+
+  private async productsToItemsAdapter(): Promise<IProductItem[]> {
     const products = await this.getProducts();
     const liveProducts = this.liveShopData?.products;
 
-    return products.edges.map(({ node }) => {
-      const liveProduct = liveProducts.find(product => product.productId === node.productId);
-      const status = liveProduct?.status ?? null;
-      const firstColor = node.colors?.[0] ?? null;
+    const grouped = this.groupByProductId(products.edges);
 
-      return {
-        id: +node.productId,
-        name: node.name,
-        image: (node?.images?.[0] as IImage) ?? null,
-        price: node.price,
-        balance: node.balance,
-        isSellOutOfStock: node.isSellOutOfStock,
-        colors: node.colors,
-        gridId: firstColor ? `${node.productId}-${firstColor.id}` : `${node.productId}`,
-        priceBase: node.priceCompare,
-        title: '',
-        content: '',
-        type: 'product',
-        slug: node.slug,
-        show: status && status !== 'hidden',
-        highlight: status === 'highlighting',
-        position: liveProduct?.position ?? 0,
-        showStartingFrom: node.hasPriceRange,
-      };
+    return Object.entries(grouped).map(([productId, nodes]) => {
+      const baseNode = this.selectBaseNode(nodes);
+      const liveProduct = liveProducts.find(p => p.productId === Number(productId));
+
+      return this.buildProductItem(baseNode, nodes, liveProduct);
     });
   }
 
-  messagesToItemsAdapter(): IMessageItem[] {
+  private messagesToItemsAdapter(): IMessageItem[] {
     return this.liveShopData.messages.map(message => ({
       id: message.id ?? null,
       title: message.title,
@@ -75,7 +129,7 @@ export class LiveShopHandler {
     }));
   }
 
-  updateItems(items: IHighlightCardItem[], message: SocketMessage): IHighlightCardItem[] {
+  public updateItems(items: IHighlightCardItem[], message: SocketMessage): IHighlightCardItem[] {
     const maxPosition = Math.max(...items.map(i => i.position ?? 0));
 
     const updatedItems = items.map(item => {
@@ -117,7 +171,7 @@ export class LiveShopHandler {
     return updatedItems;
   }
 
-  async getItems(): Promise<IHighlightCardItem[]> {
+  public async getItems(): Promise<IHighlightCardItem[]> {
     const productItems = await this.productsToItemsAdapter();
     const messageItems = this.messagesToItemsAdapter();
 

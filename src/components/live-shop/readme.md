@@ -42,6 +42,7 @@ graph TD;
   live-shop-mobile --> highlight-card
   live-shop-mobile --> live-video-chat
   highlight-card --> product-card
+  highlight-card --> color-selector
   product-card --> front-image
   product-card --> product-price
   product-price --> product-price-simple
