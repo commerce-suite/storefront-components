@@ -15,6 +15,7 @@ export class LiveShopHandler {
     const productIds = this.liveShopData.products.map(product => product.productId);
     return await ProductService.getList({
       fields: [
+        'id',
         'name',
         'images { src }',
         'price',
@@ -28,7 +29,7 @@ export class LiveShopHandler {
       ],
       filter: { productIds, page: 0, first: 1000 },
       agg: {
-        field: ['productId', 'colorId'],
+        field: ['productId', 'colorId', 'id'],
       },
     });
   }
@@ -38,15 +39,26 @@ export class LiveShopHandler {
     return this.liveShopData;
   }
 
-  private groupByProductId(edges: { node: Product }[]): Record<string, Product[]> {
-    return edges.reduce(
-      (acc, { node }) => {
-        const key = node.productId;
-        acc[key] = acc[key] || [];
-        acc[key].push(node);
-        return acc;
-      },
-      {} as Record<string, Product[]>,
+  private groupByProductIdWithColorAndVariations(
+    edges: { node: Product }[],
+  ): Record<number, Product[][]> {
+    const grouped: Record<number, Record<number, Product[]>> = {};
+
+    for (const { node } of edges) {
+      const productId = node.productId;
+      const colorId = node.color?.id ?? 0;
+
+      if (!grouped[productId]) grouped[productId] = {};
+      if (!grouped[productId][colorId]) grouped[productId][colorId] = [];
+
+      grouped[productId][colorId].push(node);
+    }
+
+    return Object.fromEntries(
+      Object.entries(grouped).map(([productId, colorGroups]) => [
+        +productId,
+        Object.values(colorGroups),
+      ]),
     );
   }
 
@@ -54,25 +66,36 @@ export class LiveShopHandler {
     return nodes.find(n => n.images?.length) ?? nodes[0];
   }
 
-  private buildProductItem(
+  private buildProductItemGroupedByColor(
     base: Product,
-    nodes: Product[],
+    colorGroups: Product[][],
     liveProduct: LiveShopProduct,
   ): IProductItem {
-    const shouldGroup = nodes.length > 1;
+    const validColorGroups = colorGroups.filter(group => group[0]?.color?.id);
+
+    const shouldGroup = validColorGroups.length > 1;
 
     const colors = shouldGroup
-      ? nodes.map(node => ({
-          id: node.color?.id,
-          name: node.color?.name,
-          slug: node.color?.slug,
-          hexadecimal: node.color?.hexadecimal,
-          image: node.color?.image?.src ? { src: node.color.image.src } : null,
-          price: node.price,
-          productImage: node.images?.[0]?.src ? { src: node.images[0].src } : null,
-          balance: node.balance,
-          priceCompare: node.priceCompare,
-        }))
+      ? validColorGroups.map(group => {
+          const variation = group[0];
+          return {
+            id: variation.color?.id,
+            name: variation.color?.name,
+            slug: variation.color?.slug,
+            hexadecimal: variation.color?.hexadecimal,
+            image: variation.color?.image?.src ? { src: variation.color.image.src } : null,
+            price: variation.price,
+            productImage: variation.images?.[0]?.src ? { src: variation.images[0].src } : null,
+            balance: group.reduce((sum, v) => sum + (v.balance ?? 0), 0),
+            priceCompare: variation.priceCompare,
+            variations: group.map(v => ({
+              id: v.id,
+              price: v.price,
+              balance: v.balance,
+              image: v.images?.[0]?.src ? { src: v.images[0].src } : null,
+            })),
+          };
+        })
       : null;
 
     const color = base.color;
@@ -82,12 +105,27 @@ export class LiveShopHandler {
       id: +base.productId,
       name: base.name,
       image: base.images?.[0]?.src ? { src: base.images[0].src } : null,
-      images: colors
-        ? nodes
-            .map(node => node.images?.[0]?.src)
-            .filter((src, index, self) => !!src && self.indexOf(src) === index)
-            .map(src => ({ src }))
-        : base.images?.map(image => ({ src: image.src })) ?? [],
+      images: (() => {
+        const seenSrcs = new Set<string>();
+        const result: { src: string; variationId: string }[] = [];
+
+        for (const variation of colorGroups.flat()) {
+          const variationId = variation.id;
+          const images = variation.images ?? [];
+
+          for (const image of images) {
+            if (image?.src && !seenSrcs.has(image.src)) {
+              seenSrcs.add(image.src);
+              result.push({
+                src: image.src,
+                variationId,
+              });
+            }
+          }
+        }
+
+        return result;
+      })(),
       price: base.price,
       priceBase: base.priceCompare,
       balance: base.balance,
@@ -98,7 +136,7 @@ export class LiveShopHandler {
       show: liveProduct?.status && liveProduct.status !== 'hidden',
       highlight: liveProduct?.status === 'highlighting',
       position: liveProduct?.position ?? 0,
-      ...(colors ? { colors } : {}),
+      colors,
       ...(shouldGroup ? {} : { showStartingFrom: base.hasPriceRange }),
     };
   }
@@ -107,13 +145,14 @@ export class LiveShopHandler {
     const products = await this.getProducts();
     const liveProducts = this.liveShopData?.products;
 
-    const grouped = this.groupByProductId(products.edges);
+    const grouped = this.groupByProductIdWithColorAndVariations(products.edges);
 
-    return Object.entries(grouped).map(([productId, nodes]) => {
-      const baseNode = this.selectBaseNode(nodes);
+    return Object.entries(grouped).map(([productId, colorGroups]) => {
+      const allNodes = colorGroups.flat();
+      const baseNode = this.selectBaseNode(allNodes);
       const liveProduct = liveProducts.find(p => p.productId === Number(productId));
 
-      return this.buildProductItem(baseNode, nodes, liveProduct);
+      return this.buildProductItemGroupedByColor(baseNode, colorGroups, liveProduct);
     });
   }
 
