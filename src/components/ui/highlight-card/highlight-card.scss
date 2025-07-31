@@ -86,7 +86,7 @@
 
 .highlight-card .highlight-custom-style.product-container > .info {
   > .title {
-    word-break: break-all;
+    word-break: break-word;
   }
   > .price {
     display: flex;
