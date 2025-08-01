@@ -88,16 +88,16 @@
   > .title {
     word-break: break-word;
   }
-  > .price {
+  .payment-option-simple {
     display: flex;
     flex-direction: row;
     gap: 8px;
-    align-items: center;
+    align-items: baseline;
 
-    > .base,
-    .current {
-      font-weight: 400;
+    .price-compare,
+    .price-current > .highlight {
       font-size: 14px;
+      font-weight: normal;
     }
   }
 }
