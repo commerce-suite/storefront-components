@@ -38,6 +38,8 @@ export class ProductPrice {
   };
 
   private renderPaymentOption(option: PaymentOption) {
+    if (option.price <= 0) return null;
+
     const renderFn = this.componentMap[option.type] || this.componentMap.simple;
     return renderFn(option);
   }
@@ -49,7 +51,7 @@ export class ProductPrice {
       return (
         <Host>
           <div class="product-price-container">
-            {this.componentMap.simple({
+            {this.renderPaymentOption({
               type: 'simple',
               price: this.basePrice.price,
               priceCompare: this.basePrice.priceCompare,
