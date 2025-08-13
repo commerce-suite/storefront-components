@@ -1689,8 +1689,15 @@ class FrontBuyTogetherService {
     async getOnlyPivotProducts(productIds) {
         const responseData = await BuyTogetherService.getByProductIds(productIds);
         const productsPivot = responseData.flatMap(response => {
-            const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(this.buyTogetherPaymentConfig);
-            return adaptedBuyTogether.getComponentData.products;
+            var _a;
+            const adaptedBuyTogether = new FrontBuyTogetherFilter(response)
+                .applyFilters([
+                { key: 'priceless', isActive: false },
+                { key: 'releaseDate', isActive: false },
+                { key: 'balance', isActive: true },
+            ])
+                .adapterToComponentData(this.buyTogetherPaymentConfig);
+            return ((_a = adaptedBuyTogether === null || adaptedBuyTogether === void 0 ? void 0 : adaptedBuyTogether.getComponentData) === null || _a === void 0 ? void 0 : _a.products) || [];
         });
         const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
         const uniqueProducts = this.getUniqueProducts(filteredProducts);
