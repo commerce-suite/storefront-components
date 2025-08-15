@@ -24,8 +24,6 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "test:coverage": "stencil test --spec --coverage",
-    "test:coverage:watch": "stencil test --spec --coverage --watchAll",
-    "test:coverage:force": "stencil test --spec --coverage --no-cache",
     "coverage:open": "open coverage/lcov-report/index.html",
     "generate": "stencil generate",
     "prepare": "husky install"
