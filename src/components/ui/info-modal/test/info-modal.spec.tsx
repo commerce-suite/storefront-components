@@ -17,7 +17,7 @@ describe('info-modal', () => {
               Estamos ao vivo!
             </h2>
             <p class="info-modal-header-description">
-              Venha conferir nossa live cheia novidades e promoções imperdíveis para você!
+              Venha conferir nossa live cheia de novidades!
             </p>
           </div>
           <div class="info-modal-buttons">
@@ -47,7 +47,7 @@ describe('info-modal', () => {
               Estamos ao vivo!
             </h2>
             <p class="info-modal-header-description">
-              Venha conferir nossa live cheia novidades e promoções imperdíveis para você!
+              Venha conferir nossa live cheia de novidades!
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ describe('info-modal', () => {
               Estamos ao vivo!
             </h2>
             <p class="info-modal-header-description">
-              Venha conferir nossa live cheia novidades e promoções imperdíveis para você!
+              Venha conferir nossa live cheia de novidades!
             </p>
           </div>
           <div class="info-modal-buttons">
@@ -129,7 +129,7 @@ describe('info-modal', () => {
               Estamos ao vivo!
             </h2>
             <p class="info-modal-header-description">
-              Venha conferir nossa live cheia novidades e promoções imperdíveis para você!
+              Venha conferir nossa live cheia de novidades!
             </p>
           </div>
           <div class="info-modal-buttons">
@@ -159,7 +159,7 @@ describe('info-modal', () => {
               Estamos ao vivo!
             </h2>
             <p class="info-modal-header-description">
-              Venha conferir nossa live cheia novidades e promoções imperdíveis para você!
+              Venha conferir nossa live cheia de novidades!
             </p>
           </div>
           <div class="info-modal-buttons">
