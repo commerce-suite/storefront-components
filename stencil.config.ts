@@ -33,6 +33,28 @@ export const config: Config = {
   testing: {
     browserHeadless: 'new',
     modulePathIgnorePatterns: ['<rootDir>/dist'],
+    collectCoverage: false,
+    collectCoverageFrom: [
+      'src/**/*.{ts,tsx}',
+      '!src/**/*.d.ts',
+      '!src/**/*.spec.{ts,tsx}',
+      '!src/**/*.e2e.{ts,tsx}',
+      '!src/**/test/**',
+      '!src/**/__mocks__/**',
+      '!src/**/mocks/**',
+      '!src/index.ts',
+      '!src/components.d.ts',
+    ],
+    coverageDirectory: 'coverage',
+    coverageReporters: ['text', 'lcov', 'html', 'json'],
+    coverageThreshold: {
+      global: {
+        branches: 40,
+        functions: 50,
+        lines: 55,
+        statements: 50,
+      },
+    },
   },
   plugins: [sass()],
   extras: {
