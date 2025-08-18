@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-ed1a22c2.js');
-const frontBuyTogether_service = require('./front-buy-together.service-587a0dbe.js');
+const frontBuyTogether_service = require('./front-buy-together.service-50ab96b2.js');
 require('./index-15bfa4ed.js');
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
