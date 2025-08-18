@@ -78,7 +78,7 @@ export class FrontBuyTogetherAdapter {
   ): PaymentOption[] {
     const uniquePayments: Record<string, Payment> = {};
 
-    product.payments.forEach(payment => {
+    product?.payments?.forEach(payment => {
       if (!uniquePayments[payment.method]) {
         uniquePayments[payment.method] = payment;
       }
