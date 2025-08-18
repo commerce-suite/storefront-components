@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-53de1b7a.js');
+const index = require('./index-ed1a22c2.js');
 
 const frontIconCss = "@import url('https://fonts.googleapis.com/icon?family=Material+Icons');";
 const FrontIconStyle0 = frontIconCss;
