@@ -77,14 +77,14 @@ export class BuyTogether implements ComponentWillLoad {
 
   private checkValidForm() {
     const checkSelectedVariations = (variations: ISelectVariation[]) =>
-      variations.every(({ currentValue }) => currentValue !== undefined && currentValue !== null);
+      variations?.every(({ currentValue }) => currentValue !== undefined && currentValue !== null);
     const isValidProductMain = checkSelectedVariations(
-      this.buyTogetherData.productMain.selectVariations,
+      this.buyTogetherData?.productMain.selectVariations,
     );
-    const productsPivotSelected = this.buyTogetherData.products
+    const productsPivotSelected = this.buyTogetherData?.products
       .map(({ selectVariations, isCheck }) => ({ selectVariations, isCheck }))
       .filter(({ isCheck }) => isCheck);
-    const isValidPivotProducts = productsPivotSelected.every(({ selectVariations }) =>
+    const isValidPivotProducts = productsPivotSelected?.every(({ selectVariations }) =>
       checkSelectedVariations(selectVariations),
     );
 

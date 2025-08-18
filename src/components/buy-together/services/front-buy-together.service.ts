@@ -9,7 +9,6 @@ import { Product } from '@uxshop/storefront-core/dist/modules/buy-together/BuyTo
 import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 import { FrontBuyTogetherFilter } from './front-buy-together.filter';
-import { FrontBuyTogetherResponse } from './front-buy-together-response';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   private buyTogetherPaymentConfig: BuyTogetherPaymentConfig[];
@@ -53,10 +52,14 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   public async getOnlyPivotProducts(productIds: number[]) {
     const responseData = await BuyTogetherService.getByProductIds(productIds);
     const productsPivot = responseData.flatMap(response => {
-      const adaptedBuyTogether = new FrontBuyTogetherResponse(response).adapterToComponentData(
-        this.buyTogetherPaymentConfig,
-      );
-      return adaptedBuyTogether.getComponentData.products;
+      const adaptedBuyTogether = new FrontBuyTogetherFilter(response)
+        .applyFilters([
+          { key: 'priceless', isActive: false },
+          { key: 'releaseDate', isActive: false },
+          { key: 'balance', isActive: true },
+        ])
+        .adapterToComponentData(this.buyTogetherPaymentConfig);
+      return adaptedBuyTogether?.getComponentData?.products || [];
     });
 
     const filteredProducts = this.filterOutOriginalProducts(productsPivot, productIds);
