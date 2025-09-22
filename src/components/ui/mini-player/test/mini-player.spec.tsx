@@ -23,7 +23,7 @@ describe('mini-player', () => {
       <mini-player video-id="h5iOu3zAj-Q">
           <div class="mini-player" style="transform: translate(0px, 0px);">
             <button class="mini-player-close-button">
-              <img alt="close-icon" src="/assets/icons/close-icon.svg">
+              <front-icon name="close"></front-icon>
             </button>
          <live-video-player videoid="h5iOu3zAj-Q"></live-video-player>
          <div class="mini-player-bar" style="cursor: grab;">
@@ -50,7 +50,7 @@ describe('mini-player', () => {
       <mini-player video-id="h5iOu3zAj-Q" auto-play=true>
           <div class="mini-player" style="transform: translate(0px, 0px);">
             <button class="mini-player-close-button">
-              <img alt="close-icon" src="/assets/icons/close-icon.svg">
+              <front-icon name="close"></front-icon>
             </button>
          <live-video-player videoid="h5iOu3zAj-Q" autoplay=""></live-video-player>
          <div class="mini-player-bar" style="cursor: grab;">
@@ -77,7 +77,7 @@ describe('mini-player', () => {
       <mini-player video-id="h5iOu3zAj-Q" main-title="Live Title">
           <div class="mini-player" style="transform: translate(0px, 0px);">
             <button class="mini-player-close-button">
-              <img alt="close-icon" src="/assets/icons/close-icon.svg">
+              <front-icon name="close"></front-icon>
             </button>
          <live-video-player videoid="h5iOu3zAj-Q"></live-video-player>
          <div class="mini-player-bar" style="cursor: grab;">
@@ -104,7 +104,7 @@ describe('mini-player', () => {
       <mini-player video-id="h5iOu3zAj-Q" button-text="Back Button">
           <div class="mini-player" style="transform: translate(0px, 0px);">
             <button class="mini-player-close-button">
-              <img alt="close-icon" src="/assets/icons/close-icon.svg">
+              <front-icon name="close"></front-icon>
             </button>
          <live-video-player videoid="h5iOu3zAj-Q"></live-video-player>
          <div class="mini-player-bar" style="cursor: grab;">

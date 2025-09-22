@@ -25,9 +25,9 @@ export class Showcase implements ComponentWillLoad {
   @Prop() buttonLabel: string;
   @Prop() buyTogetherProductIds: string;
   @Prop() showArrows: boolean = true;
-  @State() productIds: number[];
-  @State() products: any[];
-  @State() loading: boolean;
+  @State() productIds: number[] = [];
+  @State() products: any[] = [];
+  @State() loading: boolean = false;
   @Event({ bubbles: true, eventName: 'clickBuyButton' }) clickBuyButton: EventEmitter<any>;
   @Method()
   public async load() {
@@ -94,7 +94,7 @@ export class Showcase implements ComponentWillLoad {
   }
 
   componentDidLoad() {
-    if (this.products.length) this.mountCarousel();
+    if (this.products?.length) this.mountCarousel();
   }
 
   render() {
@@ -105,7 +105,7 @@ export class Showcase implements ComponentWillLoad {
             <span class="spinner" />
           </div>
         )}
-        {!this.loading && this.products.length ? (
+        {!this.loading && this.products?.length ? (
           <div class="showcase-related-products">
             <h4 class="showcase-related-products-title">
               {this.showcaseTitle || 'Recomendados para você'}

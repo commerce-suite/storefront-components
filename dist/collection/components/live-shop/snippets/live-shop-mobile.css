@@ -33,7 +33,7 @@
 }
 .live-shop-in-live-options .in-live-custom-style-empty {
   padding: 40px;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--menu-items);
   border-radius: 8px;
 }
 .live-shop-in-live-options .custom-card-content .live-video-chat {

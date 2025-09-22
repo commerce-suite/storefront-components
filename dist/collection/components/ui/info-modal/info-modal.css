@@ -35,7 +35,7 @@
 }
 .info-modal-header-title {
   font-family: var(--h1-ff);
-  color: var(--fc-color-primary);
+  color: var(--menu-items);
   margin: 0;
   text-transform: uppercase;
   font-weight: 700;

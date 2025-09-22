@@ -30,11 +30,13 @@
 ### Depends on
 
 - [product-card](../product-card)
+- [color-selector](../color-selector)
 
 ### Graph
 ```mermaid
 graph TD;
   highlight-card --> product-card
+  highlight-card --> color-selector
   product-card --> front-image
   product-card --> product-price
   product-price --> product-price-simple
