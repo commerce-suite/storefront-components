@@ -1,0 +1,102 @@
+Title: Testing Guidelines for Stencil Components (MDC)
+
+Intent
+
+- Provide a concise, consistent playbook for adding and maintaining tests in this repository.
+- Standardize unit (spec) and end-to-end (e2e) tests across all Stencil components.
+
+Scope
+
+- Applies to all files under `src/components/**/test/*.(spec|e2e).tsx`.
+- Unit tests use `@stencil/core/testing` `newSpecPage`.
+- E2E tests use `@stencil/core/testing` `newE2EPage`.
+- Test runner is invoked via `npm/yarn` scripts: `stencil test`.
+
+How to Run
+
+- `yarn test` → run spec and e2e suites.
+- `yarn test.watch` → watch mode for both suites.
+- `yarn test:coverage` → spec coverage report (opens at `coverage/lcov-report`).
+
+Unit Tests (Spec)
+
+- Location: `src/components/<component>/test/*.spec.tsx`.
+- Use `newSpecPage` to render components. Prefer the `template` function or `html` string for inputs.
+- Assert using Jest matchers; prefer `toEqualHtml` for DOM equality.
+- Example pattern:
+  - Arrange: import component, mocks, and `newSpecPage`.
+  - Act: create page with `components: [MyComponent]` and render.
+  - Assert: verify `page.root` using `toEqualHtml` or specific selectors/props.
+- Mocking:
+  - Use `jest.mock('<relative-path>')` for services within the component folder (see `launch-countdown` example).
+  - Keep mocks colocated under `__mocks__` or near the spec when simple.
+
+End-to-End Tests (E2E)
+
+- Location: `src/components/<component>/test/*.e2e.ts`.
+- Use `newE2EPage` and set content via `page.setContent('<tag-name ...></tag-name>')`.
+- Assert hydration and behavior, e.g., `expect(el).toHaveClass('hydrated')`, interactions, attributes, and emitted events.
+
+When to Create E2E Tests
+
+- E2E tests are NOT required by default. Create them only when:
+  - Component has complex user interactions (clicks, hover, keyboard navigation).
+  - Component relies on browser-specific APIs (IntersectionObserver, ResizeObserver, etc.).
+  - Component has critical visual behavior that cannot be tested in unit tests.
+  - Component is part of a critical business flow (e.g., checkout, product selection).
+  - Component manipulates DOM in ways that require real browser rendering.
+- Most components only need unit tests (spec). E2E tests should be selective and purposeful.
+- Current project has E2E tests for: `product-card`, `front-select`, `front-image`, `front-countdown`.
+
+Structure & Naming
+
+- File names: `<component>.spec.tsx` for unit, `<component>.e2e.ts` for E2E.
+- One `describe` per component; multiple `it` cases for scenarios.
+- Keep tests deterministic; avoid time-based flakiness unless mocked.
+
+Common Imports
+
+- `import { newSpecPage } from '@stencil/core/testing'` for spec.
+- `import { newE2EPage } from '@stencil/core/testing'` for e2e.
+- Import the component under test from its folder (e.g., `../my-component`).
+
+Assertions
+
+- Prefer `toEqualHtml` for full DOM snapshots in spec tests.
+- Use targeted queries for specific behavior checks when snapshots are noisy.
+- In E2E, use `.find`, `.findAll`, and class/attribute assertions; verify hydration.
+
+Examples
+
+- Spec (pattern):
+  - Minimal render: verify base markup.
+  - Variant props/attributes: render with props and compare DOM.
+  - Service dependency: mock via `jest.mock('./../service')`.
+- E2E (pattern):
+  - Set content and assert `hydrated` class.
+  - Interact (click, type) and assert visual/attribute changes.
+
+Coverage
+
+- Aim to cover public API of components: attributes, props, events, and DOM output.
+- Include edge cases for conditional rendering.
+
+Do/Don’t
+
+- Do keep tests close to components and small.
+- Do mock network/services in specs.
+- Don’t rely on external state or time—mock where needed.
+- Don’t assert styles; assert DOM structure and attributes.
+- Don’t include any comments in tests; test code must be self-explanatory.
+
+CI Expectations
+
+- Tests must pass on CI. Add/update tests alongside component changes.
+
+Quick Checklist (per PR)
+
+- Added/updated spec tests for new/changed rendering and logic.
+- Added/updated E2E tests ONLY if the component meets the criteria in "When to Create E2E Tests".
+- No flaky waits; use deterministic mocks.
+- Coverage maintained or improved for affected components.
+- No comments added in any test files.
