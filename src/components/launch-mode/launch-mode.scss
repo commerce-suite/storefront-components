@@ -42,12 +42,21 @@ body {
   flex-direction: column;
   min-height: 100vh;
 
+  &-container {
+    padding: 16px;
+
+    @include for-tablet {
+      padding: 0;
+    }
+  }
+
   &-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
     text-align: center;
+    max-width: 480px;
 
     &-label {
       display: flex;
@@ -84,6 +93,7 @@ body {
   }
 
   &-form {
+    width: 100%;
     &-content {
       display: flex;
       flex-direction: column;
@@ -95,11 +105,19 @@ body {
 
       &-input {
         display: flex;
+        position: relative;
+        width: 100%;
+
+        @include for-tablet {
+          flex: 1;
+        }
 
         input {
-          padding: 12px 24px;
+          padding: 12px 48px 12px 24px;
           border: 1px solid #e1e5e9;
           background: #f8f9fa;
+          width: 100%;
+          font-size: 12px;
 
           &::placeholder {
             color: #6c757d;
@@ -115,11 +133,33 @@ body {
             background: #ffffff;
           }
         }
+
+        .password-toggle-btn {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: color 0.2s ease;
+        }
       }
 
       &-button {
         @include front-button;
+        font-size: 12px;
         background-color: var(--launch-button-bg, #667eea);
+        padding: 14px 48px;
+
+        @include for-tablet {
+          width: auto;
+          white-space: nowrap;
+        }
 
         &:disabled {
           opacity: 0.6;

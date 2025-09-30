@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, State } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, State, getAssetPath } from '@stencil/core';
 import { LaunchModeService } from './launch-mode.service';
 import { ILaunchMode } from './lauch-mode.type';
 import { defaultContent } from './constants/defaultContent';
@@ -19,6 +19,7 @@ export class LaunchMode {
   };
 
   @State() passwordInput = '';
+  @State() showPassword = false;
 
   @Event() componentRendered: EventEmitter<void>;
 
@@ -75,6 +76,10 @@ export class LaunchMode {
     if (this.userMessage) this.userMessage = null;
   }
 
+  private togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   async componentDidLoad() {
     await this.load();
     this.componentRendered.emit();
@@ -116,12 +121,27 @@ export class LaunchMode {
                   <div class="launch-mode-form-content-input">
                     <input
                       name="password"
-                      type="password"
+                      type={this.showPassword ? 'text' : 'password'}
                       placeholder="Digite sua senha"
                       value={this.passwordInput}
                       onInput={e => this.handlePasswordChange(e)}
                       required
                     />
+                    <button
+                      type="button"
+                      class="password-toggle-btn"
+                      onClick={() => this.togglePasswordVisibility()}
+                      aria-label={this.showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                    >
+                      <img
+                        src={getAssetPath(
+                          this.showPassword
+                            ? './assets/icons/eye-off.svg'
+                            : './assets/icons/eye.svg',
+                        )}
+                        alt={this.showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                      />
+                    </button>
                   </div>
 
                   <button
