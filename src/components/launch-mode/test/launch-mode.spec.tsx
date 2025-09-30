@@ -118,4 +118,53 @@ describe('launch-mode', () => {
     const message = page.root.querySelector('.launch-mode-content-message-error span');
     expect(message.textContent).toBe(ERROR_MESSAGES.invalid_password);
   });
+
+  it('toggles password visibility when eye button is clicked', async () => {
+    const page = await newSpecPage({
+      components: [LaunchMode],
+      html: `<launch-mode></launch-mode>`,
+    });
+
+    await page.waitForChanges();
+
+    const passwordInput = page.root.querySelector('input[name="password"]') as HTMLInputElement;
+    const toggleButton = page.root.querySelector('.password-toggle-btn') as HTMLButtonElement;
+
+    expect(passwordInput.getAttribute('type')).toBe('password');
+    expect(toggleButton).toBeTruthy();
+
+    toggleButton.click();
+    await page.waitForChanges();
+
+    expect(passwordInput.getAttribute('type')).toBe('text');
+    expect(toggleButton.getAttribute('aria-label')).toBe('Ocultar senha');
+
+    toggleButton.click();
+    await page.waitForChanges();
+
+    expect(passwordInput.getAttribute('type')).toBe('password');
+    expect(toggleButton.getAttribute('aria-label')).toBe('Mostrar senha');
+  });
+
+  it('renders correct icon based on password visibility state', async () => {
+    const page = await newSpecPage({
+      components: [LaunchMode],
+      html: `<launch-mode></launch-mode>`,
+    });
+
+    await page.waitForChanges();
+
+    const toggleButton = page.root.querySelector('.password-toggle-btn');
+
+    let img = toggleButton.querySelector('img') as HTMLImageElement;
+    expect(img).toBeTruthy();
+    expect(img.src).toContain('eye.svg');
+    expect(img.src).not.toContain('eye-off.svg');
+
+    (toggleButton as HTMLButtonElement).click();
+    await page.waitForChanges();
+
+    img = toggleButton.querySelector('img') as HTMLImageElement;
+    expect(img.src).toContain('eye-off.svg');
+  });
 });
