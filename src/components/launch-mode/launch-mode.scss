@@ -117,7 +117,7 @@ body {
           border: 1px solid #e1e5e9;
           background: #f8f9fa;
           width: 100%;
-          font-size: 12px;
+          font-size: 14px;
 
           &::placeholder {
             color: #6c757d;
@@ -152,7 +152,7 @@ body {
 
       &-button {
         @include front-button;
-        font-size: 12px;
+        font-size: 14px;
         background-color: var(--launch-button-bg, #667eea);
         padding: 14px 48px;
 
