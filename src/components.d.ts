@@ -95,6 +95,8 @@ export namespace Components {
         "productId": string;
         "variationId": string;
     }
+    interface LaunchMode {
+    }
     interface LiveShop {
         "hashRoom": string;
     }
@@ -213,6 +215,10 @@ export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface LaunchModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLaunchModeElement;
 }
 export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -440,6 +446,23 @@ declare global {
     var HTMLLaunchCountdownElement: {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
+    };
+    interface HTMLLaunchModeElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLLaunchModeElement extends Components.LaunchMode, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLaunchModeElementEventMap>(type: K, listener: (this: HTMLLaunchModeElement, ev: LaunchModeCustomEvent<HTMLLaunchModeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLaunchModeElementEventMap>(type: K, listener: (this: HTMLLaunchModeElement, ev: LaunchModeCustomEvent<HTMLLaunchModeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLaunchModeElement: {
+        prototype: HTMLLaunchModeElement;
+        new (): HTMLLaunchModeElement;
     };
     interface HTMLLiveShopElementEventMap {
         "on-return-to-home": void;
@@ -675,6 +698,7 @@ declare global {
         "highlight-card": HTMLHighlightCardElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "launch-mode": HTMLLaunchModeElement;
         "live-shop": HTMLLiveShopElement;
         "live-shop-desktop": HTMLLiveShopDesktopElement;
         "live-shop-mobile": HTMLLiveShopMobileElement;
@@ -784,6 +808,9 @@ declare namespace LocalJSX {
         "onCountdownLoaded"?: (event: LaunchCountdownCustomEvent<{ releaseDateActive: boolean }>) => void;
         "productId"?: string;
         "variationId"?: string;
+    }
+    interface LaunchMode {
+        "onComponentRendered"?: (event: LaunchModeCustomEvent<void>) => void;
     }
     interface LiveShop {
         "hashRoom"?: string;
@@ -898,6 +925,7 @@ declare namespace LocalJSX {
         "highlight-card": HighlightCard;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
+        "launch-mode": LaunchMode;
         "live-shop": LiveShop;
         "live-shop-desktop": LiveShopDesktop;
         "live-shop-mobile": LiveShopMobile;
@@ -934,6 +962,7 @@ declare module "@stencil/core" {
             "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "launch-mode": LocalJSX.LaunchMode & JSXBase.HTMLAttributes<HTMLLaunchModeElement>;
             "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
             "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
             "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
