@@ -15,7 +15,7 @@ const FrontIcon = class {
         this.color = '#000';
     }
     render() {
-        return (index.h("span", { key: '9a708e95c57f1570dddea5da8965fb03c357cda7', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
+        return (index.h("span", { key: '59c5c29ff8f8070e8163080e808c5355c118a133', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
     }
 };
 FrontIcon.style = FrontIconStyle0;
@@ -40,7 +40,7 @@ const LiveVideoPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '9e8bb0ce71256d899bfb2914707adab8f070ee33' }, index.h("div", { key: '311dc8c8a179054b069457d057aa271004a70957', class: "live-video-player" }, index.h("iframe", { key: '56e3314f4fc2936d7c73916767406d2df5481f73', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (index.h(index.Host, { key: '1417ff4b4ea1da61d8472f29be4214bacf9bea59' }, index.h("div", { key: '7efe51c561700a7e4289911c24443be3ac455655', class: "live-video-player" }, index.h("iframe", { key: '69a994c0a1306c00cdc2f33b6940c42a5e805d8d', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoPlayer.style = LiveVideoPlayerStyle0;
@@ -154,7 +154,7 @@ const MiniPlayer = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '072e86a2e70052fa044395f1e3dd42ac748ec796' }, this.showMiniPlayer && (index.h("div", { key: 'd030604176a278317e1c73445bd1e95dd2774d0f', class: "mini-player", style: this.getMiniPlayerStyle() }, index.h("button", { key: '42d7421c947c8e459309d9cb79aabf4ac4c7f945', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, index.h("front-icon", { key: 'cd1fa7bb5657c38f050a028e5e3fd028d9388863', name: "close" })), index.h("live-video-player", { key: 'fa957bdb1ad9d56b29c534a05393179d98a87ec9', videoId: this.videoId, autoPlay: this.autoPlay }), index.h("div", { key: 'cf79d1259ca938181061edfb1ae07a317a3b14ca', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, index.h("h6", { key: '3f0c05a388704b7d120751854ff6fee579f8374e', class: "mini-player-bar-title" }, this.mainTitle), index.h("div", { key: '87df5d602e24a94948b0f8bc15b6bc139de2754f', class: "mini-player-bar-button" }, index.h("button", { key: '5e27c4ad44416195b054183eed073a3e668233c6', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
+        return (index.h(index.Host, { key: '40b0da23e02621611ff3d7d149cf48446ae1297d' }, this.showMiniPlayer && (index.h("div", { key: '5d4f43dea7c9c312531a426cbf3a29fe69916539', class: "mini-player", style: this.getMiniPlayerStyle() }, index.h("button", { key: '18f495ecdc874c9d2432336b03a15cd778d22d1f', class: "mini-player-close-button", onClick: () => this.handleCloseMiniPlayer() }, index.h("front-icon", { key: '122c131530981259432f438d95c19a113c94813a', name: "close" })), index.h("live-video-player", { key: 'e9b7697b07a6ceb0bd43e9958b0200b08d65234f', videoId: this.videoId, autoPlay: this.autoPlay }), index.h("div", { key: '709515a64b48cf99f1a64df2ea066a75e290c090', class: "mini-player-bar", style: this.getMiniPlayerBarStyle(), onMouseDown: this.handleDragStart, onTouchStart: event => this.handleTouchStart(event) }, index.h("h6", { key: '90d862415babe716a2416a92595033c4baff691a', class: "mini-player-bar-title" }, this.mainTitle), index.h("div", { key: 'f2c03994b6ad055d412d6764351a73b3c6c4bd9a', class: "mini-player-bar-button" }, index.h("button", { key: 'f2b7dbe660aab6e6c44e5c074a3e487bf701038d', onClick: () => this.onClickMiniPlayerButton.emit() }, this.buttonText)))))));
     }
 };
 MiniPlayer.style = MiniPlayerStyle0;

@@ -33,7 +33,7 @@ const FrontImage = class {
         this.isSrcLoading = true;
     }
     render() {
-        return (h(Host, { key: '57ae7b5a53ed80f0cdb9e571518d50f5dec2101e' }, h("figure", { key: '1200242fe131f56e799ce9fc0c9eadecf7348a1b', class: this.getImageClassByProps() }, h("img", { key: '42bd880cd3333c5a6ce88039fac4a2d582b72d0a', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: '30ec70f8334e0f200ab94edd77ea18ffd98c23a8' }, this.figCaption))));
+        return (h(Host, { key: '17b49aa6ad54af851d52a2ef693ea1200d5638d2' }, h("figure", { key: 'e7fe29b6a7144d8debe2476e2ddf9f73ffce0b38', class: this.getImageClassByProps() }, h("img", { key: 'dfe738fe075686a94f0ced553d6be883a705f187', src: this.imageSrc, alt: this.textAlt || 'Imagem', onLoad: () => this.onSrcLoadFinish() }), !!this.figCaption && h("figcaption", { key: '313fb28f913ed6d5dc87d9d00c5acd07edcafebe' }, this.figCaption))));
     }
     static get watchers() { return {
         "imageSrc": ["changeImageSrc"]
@@ -60,7 +60,7 @@ const ProductCard = class {
     }
     render() {
         var _a, _b, _c, _d, _e;
-        return (h(Host, { key: '0c4ad2a7762896b056747a149a2ce59fc5d15b35' }, h("div", { key: '849efaded16f137d360a4962206e518572cb74be', class: this.getClassWithInline('product-container') }, h("front-image", { key: '6dc99b8115c654a6ba94d447c4484aeeb7cc2adc', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: 'ec60a6fe203c8ccaf3b310e99dd62133fab3165d', class: "info" }, h("span", { key: '18f9fa95d434d2620df7ee0cca65b2dc7a78c89d', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("product-price", { key: '5a27e86ec858c67f83edb72244faf1c22dc37e12', basePrice: this.basePrice, paymentOptions: this.paymentOptions, showStartingFrom: this.showStartingFrom }), h("div", { key: '0e6056904820387dc40cc1300e5891b94e9f20f6', class: "product-card-content" }, h("slot", { key: '39c8180d5ae125093aa2f879be426fdf0805410c' }))))));
+        return (h(Host, { key: '4be6f385aece7bd84af8e6ff850d1b0ae4137551' }, h("div", { key: '5025dc6bc66c094cc7f3d5c045c830a332015314', class: this.getClassWithInline('product-container') }, h("front-image", { key: 'a17eb3d268b8f79be8f9ab0d2526817feeaa97b6', class: this.getClassWithInline('image'), imageSrc: (_b = (_a = this.product) === null || _a === void 0 ? void 0 : _a.image) === null || _b === void 0 ? void 0 : _b.src, textAlt: ((_d = (_c = this.product) === null || _c === void 0 ? void 0 : _c.image) === null || _d === void 0 ? void 0 : _d.alt) || 'Imagem do produto' }), h("div", { key: '3dddc0ae0a8bc039a26bcaf97eb564c43bf2cc50', class: "info" }, h("span", { key: '9899da638ba6feefe2448134edff542cb31a21c7', class: "title" }, (_e = this.product) === null || _e === void 0 ? void 0 : _e.name), h("product-price", { key: 'dc51308503bb329676f597ba331887576c2fb081', basePrice: this.basePrice, paymentOptions: this.paymentOptions, showStartingFrom: this.showStartingFrom }), h("div", { key: '32ee9606efaa11b996a25305eff2f33fb34d90e2', class: "product-card-content" }, h("slot", { key: '7463e287edf82d5552584270179d9ec76525a704' }))))));
     }
 };
 ProductCard.style = ProductCardStyle0;
@@ -113,7 +113,7 @@ const ProductPriceBillet = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'd444f38cce6a4d93990a0fb7f504031a5ae41d9d', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: 'd5a8d7034f2a06abdae96987747fafedcbf3dbba', class: "price-compare" }, formattedCompare), h("span", { key: '71cb31b0778cdf99526910fd70217ea0301016a6', class: "price-current" }, h("span", { key: '4db2215e6be2e31b6b7cbd505d165675c7f399f8', class: "highlight" }, formattedPrice), " no boleto")));
+        return (h("div", { key: 'a8ab1454af610dc9ed49a0a70bf185c8095375ab', class: "payment-option payment-option-billet" }, formattedCompare && h("span", { key: '172c0eaf5fce75ad29ce372fcc22eecb6935f6ad', class: "price-compare" }, formattedCompare), h("span", { key: '7f175acbdb55a4c4d1f309930dba616831d0df43', class: "price-current" }, h("span", { key: 'f44acca039dbea2fcdef8676ffabe39e9b3390be', class: "highlight" }, formattedPrice), " no boleto")));
     }
 };
 ProductPriceBillet.style = ProductPriceBilletStyle0;
@@ -135,7 +135,7 @@ const ProductPriceCreditCard = class {
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
         const formattedParcelPrice = this.parcelPrice ? currencyFormat(this.parcelPrice) : null;
         const interestText = this.hasInterest ? 'com juros' : 'sem juros';
-        return (h("div", { key: '56a875663ecd813875e362cdea7769ed23236d8d', class: "payment-option payment-option-creditCard" }, formattedCompare && h("span", { key: 'ddd49c016c2b181db4173ec9c2c6ab6f787404f8', class: "price-compare" }, formattedCompare), h("span", { key: '9719e2a84fbe76a78f5be522cf1e98789e584fd2', class: "price-current" }, h("span", { key: 'f3a05883142a48722ad8974c0f36b0c014e43732', class: "highlight" }, formattedPrice), ' ', this.parcels && this.parcelPrice && (h("span", { key: '83b2e831989ce156cc973d0e1972c3ffac3b6bb7', class: "credit-info" }, "em at\u00E9 ", h("span", { key: 'a4dddd1c63c11c4490b881469535d012a59f40e0', class: "highlight" }, this.parcels, "x"), " de", ' ', h("span", { key: '1009009ef0873a920cc38a0aceed666523acc2a7', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
+        return (h("div", { key: 'd62d41f121c8baaa57e38041684a2b0178c5bca1', class: "payment-option payment-option-creditCard" }, formattedCompare && h("span", { key: 'aac2669bfacda3b3596f8dbae31cde54b28406c1', class: "price-compare" }, formattedCompare), h("span", { key: 'c70a6bea3294aa1d2bc4d1f239374eedcea96425', class: "price-current" }, h("span", { key: '43e177d8005ad03cedf1601baabde2e740bc6cbe', class: "highlight" }, formattedPrice), ' ', this.parcels && this.parcelPrice && (h("span", { key: '2b25ef4ba6906c8625f7453374f31cb57718e0c2', class: "credit-info" }, "em at\u00E9 ", h("span", { key: '26a016883639bfdc316feeebe38cfa1b65ab71bd', class: "highlight" }, this.parcels, "x"), " de", ' ', h("span", { key: '7c605bd19731c80a264a7fb46cd14dee4352d45d', class: "highlight" }, formattedParcelPrice), " ", interestText)))));
     }
 };
 ProductPriceCreditCard.style = ProductPriceCreditCardStyle0;
@@ -152,7 +152,7 @@ const ProductPricePix = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: 'fbbfc3f1dad8ed61bcfa78dd2c5fb143a86ec947', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: 'a2a3db3ecffd83354591f02fbc4b59c594782dea', class: "price-compare" }, formattedCompare), h("span", { key: '3a045f8a0ef3b448badb502be616e8ef44479848', class: "price-current" }, h("span", { key: 'e9320d8b853026a0c3ae01e8593a7bf6f41a0b30', class: "highlight" }, formattedPrice), " no pix")));
+        return (h("div", { key: '38b0b6cc54b70191d730ebc364f5b629d0660745', class: "payment-option payment-option-pix" }, formattedCompare && h("span", { key: 'cbd0ed88495a78ea2973aa5931bae2e1ca0745ca', class: "price-compare" }, formattedCompare), h("span", { key: 'f1b02fb75407223449d7a82cb215eeca6f1cb54e', class: "price-current" }, h("span", { key: 'ddbad15d7031e236fc99b60ef001eb259b1f8e0d', class: "highlight" }, formattedPrice), " no pix")));
     }
 };
 ProductPricePix.style = ProductPricePixStyle0;
@@ -170,7 +170,7 @@ const ProductPriceSimple = class {
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: '3da59e42467e4d3a56658f52453854640b302708', class: "payment-option payment-option-simple" }, this.showStartingFrom && h("span", { key: '7635df5662b5126422ac34326d689eb5d94d88b3', class: "starting-from" }, "A partir de"), formattedCompare && !this.showStartingFrom && (h("span", { key: 'f34c1035e12fd97e5fd7d7521ccd253ded27a0b8', class: "price-compare" }, formattedCompare)), h("span", { key: 'f973fd9504873ce2390600909c87e6bbce0ecf13', class: "price-current" }, h("span", { key: 'd12bcce1bdc465fdd4b4c7f83011696a1cc733c1', class: "highlight" }, formattedPrice))));
+        return (h("div", { key: '4630ba37bf64b4ac9d33981ab84a2d53e55bc778', class: "payment-option payment-option-simple" }, this.showStartingFrom && h("span", { key: '8768a1234ef4b957fafacfdc0ec20a758a06e77c', class: "starting-from" }, "A partir de"), formattedCompare && !this.showStartingFrom && (h("span", { key: 'ebc0066790aa2222525c704fef70946ebb6886c0', class: "price-compare" }, formattedCompare)), h("span", { key: '023b9b659676bb02e7d3745a4f8712f338b40b6f', class: "price-current" }, h("span", { key: '6cdccc631ae83b876b98d03164399d56f13a1b29', class: "highlight" }, formattedPrice))));
     }
 };
 ProductPriceSimple.style = ProductPriceSimpleStyle0;

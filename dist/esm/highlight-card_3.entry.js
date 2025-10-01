@@ -63,7 +63,7 @@ const HighlightCard = class {
         this.filterItems(newItems);
     }
     render() {
-        return (h(Host, { key: '7fb5d8fe59cc322662a93df09b890a26821045d5' }, h("div", { key: '638e58fe254063991bda4a8934bf9269d749460e', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '83a73cb2ce003173e238536425e1f9fe420c17ba', class: "highlight-card-container" }, h("div", { key: 'a5a398681f54f4424ad162f06c5b66422ed6bfa6', class: "highlight-card-header" }, h("span", { key: 'e1419c83c4bcbb434f01c4f261ab19b3165c07ae', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (h(Host, { key: '5d2d15679e726cb24d9f474c28f57ef5c0dfed13' }, h("div", { key: '2ffa54e037aa2d9c4dec8d04f4e382b4dcb80e60', class: "highlight-card" }, this.highlightedItems.length > 0 && (h("div", { key: '0c4460f04bac7c209a554c22d17a9e40c1928edb', class: "highlight-card-container" }, h("div", { key: 'c71d35b5f1bfd0f8b3eaf83006f07eeb0f021afc', class: "highlight-card-header" }, h("span", { key: 'd31268ae9daafc7001fd6a2838ea452a57e3517c', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index) => (h("div", null, this.renderItem(item, true), index < this.highlightedItems.length - 1 && (h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["handleItemsChange"]
@@ -87,7 +87,7 @@ const LiveVideoChat = class {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '8145529e661125240df663fe39d324e88ce02655' }, h("div", { key: '87fb2a69796887a1947f76c63c428157158ab50d', class: "live-video-chat" }, h("iframe", { key: '249837b61915bf560df02fd177a72ae29c0ae2b2', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '057f50d5c296db5cf49cec899e13a1afb99b3203' }, h("div", { key: 'c6ca6987679a8486a16f9f99805123d0cb8db8dc', class: "live-video-chat" }, h("iframe", { key: 'd5d2d586e01672a4916436645616c6b2e1c6641c', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoChat.style = LiveVideoChatStyle0;
@@ -111,7 +111,7 @@ const TabSelector = class {
     }
     render() {
         var _a, _b;
-        return (h("div", { key: '960263fb2aa24cb72b6861ab81448c1826e04b4b', class: "tab-selector" }, h("div", { key: 'bf9c2ffdd11f1b90fdcfdd15aced01fbbd42d917', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '5a817d931e53738bbcea58b521adf6a919254e8c', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
+        return (h("div", { key: '260c50e4e923a7fdfdf1a225b8cd37aa7bf342ea', class: "tab-selector" }, h("div", { key: 'c4c39da8b9946c1ab818f1a9d810c4d6c38f7a80', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: 'e571fa23fe8aa7285e9b97ca24f6e09a246ff775', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));

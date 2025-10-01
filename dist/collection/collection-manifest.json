@@ -5,6 +5,7 @@
     "components/cashback/cashback.js",
     "components/google-recaptcha/google-recaptcha.js",
     "components/launch-countdown/launch-countdown.js",
+    "components/launch-mode/launch-mode.js",
     "components/live-shop/live-shop.js",
     "components/live-shop/snippets/live-shop-desktop.js",
     "components/live-shop/snippets/live-shop-mobile.js",

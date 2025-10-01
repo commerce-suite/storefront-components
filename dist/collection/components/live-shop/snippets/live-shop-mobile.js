@@ -14,7 +14,7 @@ export class LiveShopMobile {
         this.items = undefined;
     }
     render() {
-        return (h("div", { key: 'b57194c7ac87bfc7ca76717bdccd20e74909ee8f', class: "live-shop-in-live" }, h("div", { key: '0725abc5598f295f32934bbc96b36c2d261ca3c4', class: "live-shop-in-live-player" }, h("live-video-player", { key: '2ac3167cf1954f9d6f745eb2632543dd4715a49f', videoId: this.videoId, autoPlay: true })), h("div", { key: '230abc19f8e2844db0bbb9d3d4ffe41908856e8d', class: "live-shop-in-live-options" }, h("custom-card", { key: 'd428654da62065e3675b75e570b32a41d8b34869', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: '12c671d3815960895c67f10371fd4bc232764d23', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
+        return (h("div", { key: '528b7782f3fc5040d256fac4299312951aa7e5c1', class: "live-shop-in-live" }, h("div", { key: '7820bb481374988eb8de510c4669eb93ad2e406f', class: "live-shop-in-live-player" }, h("live-video-player", { key: '11970b8e9cfaa389ee865dc040c57781d5d9ea26', videoId: this.videoId, autoPlay: true })), h("div", { key: '4bc610f7be52f321e8644f498044cd33a40e39db', class: "live-shop-in-live-options" }, h("custom-card", { key: 'b878361726fb04c08624c3936cfd2d497251c628', customClass: "in-live-custom-style", cardTitle: this.liveShopData.name }, h("tab-selector", { key: 'e51ec56e35e9c0b38e821ff5067dfa5c17e0c7c2', tabs: tabs(this.videoId, this.items, this.handleAddItem, this.liveShopData.chatVisible) })))));
     }
     static get is() { return "live-shop-mobile"; }
     static get originalStyleUrls() {

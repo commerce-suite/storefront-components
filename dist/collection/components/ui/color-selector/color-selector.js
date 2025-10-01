@@ -19,7 +19,7 @@ export class ColorSelector {
             };
     }
     render() {
-        return (h(Host, { key: 'e237e8b13a2695005c7fa697bc0ec98bc5ea9073' }, h("div", { key: 'e5fb54412f4dc929db6e21ffb5988a8ef26e0546', class: "color-selector" }, this.colors.map(color => (h("button", { key: color.id, class: {
+        return (h(Host, { key: 'c73a483a7cafb6552ee7d9bac1a7a113fe73bf5d' }, h("div", { key: '0a6648dda5ecacd6ea206e5b69a08985ac41c840', class: "color-selector" }, this.colors.map(color => (h("button", { key: color.id, class: {
                 'color-option': true,
                 'active': this.selectedId === color.id,
             }, onClick: () => this.onSelectColor(color), "aria-label": color.name, title: color.name }, h("span", { class: "color-dot", style: this.getColorStyle(color) })))))));

@@ -14,7 +14,7 @@ export class TabSelector {
     }
     render() {
         var _a, _b;
-        return (h("div", { key: '960263fb2aa24cb72b6861ab81448c1826e04b4b', class: "tab-selector" }, h("div", { key: 'bf9c2ffdd11f1b90fdcfdd15aced01fbbd42d917', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: '5a817d931e53738bbcea58b521adf6a919254e8c', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
+        return (h("div", { key: '260c50e4e923a7fdfdf1a225b8cd37aa7bf342ea', class: "tab-selector" }, h("div", { key: 'c4c39da8b9946c1ab818f1a9d810c4d6c38f7a80', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), h("div", { key: 'e571fa23fe8aa7285e9b97ca24f6e09a246ff775', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));

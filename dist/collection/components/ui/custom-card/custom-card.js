@@ -9,7 +9,7 @@ export class CustomCard {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: 'dec2d76b0cdf8e2b4c9a996046e6537b586ff674' }, h("div", { key: '8383234a580cce013405c3d4f964e23a9aca3441', class: `custom-card ${this.customClass}` }, h("div", { key: '6637d089be5961bae956f563ec19fa7f2979f8dc', class: "custom-card-header" }, h("h2", { key: '48bd6306e5039a8cce0d74d61db9e1c64573099c', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '1b72d1482c2e9783184198e3955fa4034c9e7dc7', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: 'e6a3cf008c969335ed5a4585acb0f05b6475b1d5', class: "custom-card-content" }, h("slot", { key: '7bdb3c4a38084a496c1df16d66c961bf2c467e0d' })))));
+        return (h(Host, { key: '3f69e2b457d3f54fa06fb2a13beaf90ae4c55856' }, h("div", { key: '919d9d1b8c1a99430e3358628ef8e6475ad6a61b', class: `custom-card ${this.customClass}` }, h("div", { key: '2fab4ad5868f806ca140d94a283d91d33edbb5c8', class: "custom-card-header" }, h("h2", { key: '6c3246ae6ae779370eda6d4e50bb5aaa7c2f5a75', class: "custom-card-header-title" }, this.cardTitle), this.cardDescription && (h("p", { key: '5900bda0530d8b8e206bdceda4df5297be5b0945', class: "custom-card-header-description" }, this.cardDescription))), h("div", { key: '26595ab591a46fcdd5f6ae4b02fa53c9f903087b', class: "custom-card-content" }, h("slot", { key: 'e0dc0fd60c76953fc541239952678890af8c857d' })))));
     }
     static get is() { return "custom-card"; }
     static get originalStyleUrls() {

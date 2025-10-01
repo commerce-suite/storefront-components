@@ -1461,6 +1461,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './launch-countdown.entry.js').then(processMod, consoleError);
+                case 'launch-mode':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './launch-mode.entry.js').then(processMod, consoleError);
                 case 'live-shop':
                     return import(
                       /* webpackMode: "lazy" */

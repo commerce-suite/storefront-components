@@ -10,7 +10,7 @@ export class LiveVideoChat {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '8145529e661125240df663fe39d324e88ce02655' }, h("div", { key: '87fb2a69796887a1947f76c63c428157158ab50d', class: "live-video-chat" }, h("iframe", { key: '249837b61915bf560df02fd177a72ae29c0ae2b2', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '057f50d5c296db5cf49cec899e13a1afb99b3203' }, h("div", { key: 'c6ca6987679a8486a16f9f99805123d0cb8db8dc', class: "live-video-chat" }, h("iframe", { key: 'd5d2d586e01672a4916436645616c6b2e1c6641c', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
     static get is() { return "live-video-chat"; }
     static get originalStyleUrls() {

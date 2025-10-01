@@ -14,7 +14,7 @@ export class LiveVideoPlayer {
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '9e8bb0ce71256d899bfb2914707adab8f070ee33' }, h("div", { key: '311dc8c8a179054b069457d057aa271004a70957', class: "live-video-player" }, h("iframe", { key: '56e3314f4fc2936d7c73916767406d2df5481f73', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: '1417ff4b4ea1da61d8472f29be4214bacf9bea59' }, h("div", { key: '7efe51c561700a7e4289911c24443be3ac455655', class: "live-video-player" }, h("iframe", { key: '69a994c0a1306c00cdc2f33b6940c42a5e805d8d', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
     static get is() { return "live-video-player"; }
     static get originalStyleUrls() {
