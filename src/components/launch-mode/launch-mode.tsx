@@ -16,6 +16,7 @@ export class LaunchMode {
   @State() isInitialLoading = true;
   @State() userMessage: {
     text: string;
+    type: 'error' | 'success';
   };
 
   @State() passwordInput = '';
@@ -44,6 +45,11 @@ export class LaunchMode {
       this.isLoading = true;
       await this.launchModeService.validatePassword(formData);
 
+      this.userMessage = {
+        text: 'Acesso liberado. Você será redirecionado em instantes.',
+        type: 'success',
+      };
+
       const baseUrl = window.dooca.base_url;
       window.location.href = baseUrl;
     } catch (error) {
@@ -54,6 +60,7 @@ export class LaunchMode {
 
       this.userMessage = {
         text: errorMessage,
+        type: 'error',
       };
     } finally {
       this.isLoading = false;
@@ -155,7 +162,9 @@ export class LaunchMode {
               </form>
 
               {this.userMessage && (
-                <div class={`launch-mode-content-message launch-mode-content-message-error`}>
+                <div
+                  class={`launch-mode-content-message launch-mode-content-message-${this.userMessage.type}`}
+                >
                   <span>{this.userMessage.text}</span>
                 </div>
               )}
