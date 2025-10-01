@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
+import { IColor, IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 import { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 import { ICashback } from "./components/cashback/cashback.type";
 import { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
@@ -13,7 +13,7 @@ import { IHighlightCardItem } from "./components/ui/highlight-card/highlight-car
 import { ILiveShop } from "./components/live-shop/live-shop.type";
 import { IHighlightCardItem as IHighlightCardItem1 } from "./components";
 import { BasePrice, PaymentOption } from "./components/ui/product-price/product-price.type";
-export { IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
+export { IColor, IInputSelectDataEvent, IProductCard, ISelectVariation } from "./components/ui/product-card/product-card.type";
 export { EnumBuyTogetherOnLoadStatus, IBuyTogetherComponentData } from "./components/buy-together/buy-together.type";
 export { ICashback } from "./components/cashback/cashback.type";
 export { IFrontSelectOption } from "./components/ui/front-select/front-select.type";
@@ -41,6 +41,10 @@ export namespace Components {
         "cashback": ICashback | null;
         "customer_id": number | null;
         "product": { id: number; price: number };
+    }
+    interface ColorSelector {
+        "colors": IColor[];
+        "selectedId"?: number;
     }
     interface CustomCard {
         "cardDescription": string;
@@ -90,6 +94,8 @@ export namespace Components {
         "dataTargetDate": string;
         "productId": string;
         "variationId": string;
+    }
+    interface LaunchMode {
     }
     interface LiveShop {
         "hashRoom": string;
@@ -182,6 +188,10 @@ export interface BuyTogetherCartModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBuyTogetherCartModalElement;
 }
+export interface ColorSelectorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLColorSelectorElement;
+}
 export interface CustomCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCustomCardElement;
@@ -205,6 +215,10 @@ export interface InfoModalCustomEvent<T> extends CustomEvent<T> {
 export interface LaunchCountdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLaunchCountdownElement;
+}
+export interface LaunchModeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLaunchModeElement;
 }
 export interface LiveShopCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -292,6 +306,23 @@ declare global {
     var HTMLCashbackCreditElement: {
         prototype: HTMLCashbackCreditElement;
         new (): HTMLCashbackCreditElement;
+    };
+    interface HTMLColorSelectorElementEventMap {
+        "colorSelected": IColor;
+    }
+    interface HTMLColorSelectorElement extends Components.ColorSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLColorSelectorElementEventMap>(type: K, listener: (this: HTMLColorSelectorElement, ev: ColorSelectorCustomEvent<HTMLColorSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLColorSelectorElementEventMap>(type: K, listener: (this: HTMLColorSelectorElement, ev: ColorSelectorCustomEvent<HTMLColorSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLColorSelectorElement: {
+        prototype: HTMLColorSelectorElement;
+        new (): HTMLColorSelectorElement;
     };
     interface HTMLCustomCardElementEventMap {
         "componentRendered": void;
@@ -415,6 +446,23 @@ declare global {
     var HTMLLaunchCountdownElement: {
         prototype: HTMLLaunchCountdownElement;
         new (): HTMLLaunchCountdownElement;
+    };
+    interface HTMLLaunchModeElementEventMap {
+        "componentRendered": void;
+    }
+    interface HTMLLaunchModeElement extends Components.LaunchMode, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLaunchModeElementEventMap>(type: K, listener: (this: HTMLLaunchModeElement, ev: LaunchModeCustomEvent<HTMLLaunchModeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLaunchModeElementEventMap>(type: K, listener: (this: HTMLLaunchModeElement, ev: LaunchModeCustomEvent<HTMLLaunchModeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLaunchModeElement: {
+        prototype: HTMLLaunchModeElement;
+        new (): HTMLLaunchModeElement;
     };
     interface HTMLLiveShopElementEventMap {
         "on-return-to-home": void;
@@ -640,6 +688,7 @@ declare global {
         "buy-together": HTMLBuyTogetherElement;
         "buy-together-cart-modal": HTMLBuyTogetherCartModalElement;
         "cashback-credit": HTMLCashbackCreditElement;
+        "color-selector": HTMLColorSelectorElement;
         "custom-card": HTMLCustomCardElement;
         "front-countdown": HTMLFrontCountdownElement;
         "front-icon": HTMLFrontIconElement;
@@ -649,6 +698,7 @@ declare global {
         "highlight-card": HTMLHighlightCardElement;
         "info-modal": HTMLInfoModalElement;
         "launch-countdown": HTMLLaunchCountdownElement;
+        "launch-mode": HTMLLaunchModeElement;
         "live-shop": HTMLLiveShopElement;
         "live-shop-desktop": HTMLLiveShopDesktopElement;
         "live-shop-mobile": HTMLLiveShopMobileElement;
@@ -695,6 +745,11 @@ declare namespace LocalJSX {
         "cashback"?: ICashback | null;
         "customer_id"?: number | null;
         "product"?: { id: number; price: number };
+    }
+    interface ColorSelector {
+        "colors"?: IColor[];
+        "onColorSelected"?: (event: ColorSelectorCustomEvent<IColor>) => void;
+        "selectedId"?: number;
     }
     interface CustomCard {
         "cardDescription"?: string;
@@ -753,6 +808,9 @@ declare namespace LocalJSX {
         "onCountdownLoaded"?: (event: LaunchCountdownCustomEvent<{ releaseDateActive: boolean }>) => void;
         "productId"?: string;
         "variationId"?: string;
+    }
+    interface LaunchMode {
+        "onComponentRendered"?: (event: LaunchModeCustomEvent<void>) => void;
     }
     interface LiveShop {
         "hashRoom"?: string;
@@ -857,6 +915,7 @@ declare namespace LocalJSX {
         "buy-together": BuyTogether;
         "buy-together-cart-modal": BuyTogetherCartModal;
         "cashback-credit": CashbackCredit;
+        "color-selector": ColorSelector;
         "custom-card": CustomCard;
         "front-countdown": FrontCountdown;
         "front-icon": FrontIcon;
@@ -866,6 +925,7 @@ declare namespace LocalJSX {
         "highlight-card": HighlightCard;
         "info-modal": InfoModal;
         "launch-countdown": LaunchCountdown;
+        "launch-mode": LaunchMode;
         "live-shop": LiveShop;
         "live-shop-desktop": LiveShopDesktop;
         "live-shop-mobile": LiveShopMobile;
@@ -892,6 +952,7 @@ declare module "@stencil/core" {
             "buy-together": LocalJSX.BuyTogether & JSXBase.HTMLAttributes<HTMLBuyTogetherElement>;
             "buy-together-cart-modal": LocalJSX.BuyTogetherCartModal & JSXBase.HTMLAttributes<HTMLBuyTogetherCartModalElement>;
             "cashback-credit": LocalJSX.CashbackCredit & JSXBase.HTMLAttributes<HTMLCashbackCreditElement>;
+            "color-selector": LocalJSX.ColorSelector & JSXBase.HTMLAttributes<HTMLColorSelectorElement>;
             "custom-card": LocalJSX.CustomCard & JSXBase.HTMLAttributes<HTMLCustomCardElement>;
             "front-countdown": LocalJSX.FrontCountdown & JSXBase.HTMLAttributes<HTMLFrontCountdownElement>;
             "front-icon": LocalJSX.FrontIcon & JSXBase.HTMLAttributes<HTMLFrontIconElement>;
@@ -901,6 +962,7 @@ declare module "@stencil/core" {
             "highlight-card": LocalJSX.HighlightCard & JSXBase.HTMLAttributes<HTMLHighlightCardElement>;
             "info-modal": LocalJSX.InfoModal & JSXBase.HTMLAttributes<HTMLInfoModalElement>;
             "launch-countdown": LocalJSX.LaunchCountdown & JSXBase.HTMLAttributes<HTMLLaunchCountdownElement>;
+            "launch-mode": LocalJSX.LaunchMode & JSXBase.HTMLAttributes<HTMLLaunchModeElement>;
             "live-shop": LocalJSX.LiveShop & JSXBase.HTMLAttributes<HTMLLiveShopElement>;
             "live-shop-desktop": LocalJSX.LiveShopDesktop & JSXBase.HTMLAttributes<HTMLLiveShopDesktopElement>;
             "live-shop-mobile": LocalJSX.LiveShopMobile & JSXBase.HTMLAttributes<HTMLLiveShopMobileElement>;
