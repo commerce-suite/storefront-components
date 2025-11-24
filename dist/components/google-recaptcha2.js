@@ -1,7 +1,6 @@
 import { proxyCustomElement, HTMLElement, createEvent, h } from '@stencil/core/internal/client';
 
 const googleRecaptchaCss = ".g-recaptcha{display:flex;justify-content:center}";
-const GoogleRecaptchaStyle0 = googleRecaptchaCss;
 
 const GoogleRecaptcha = /*@__PURE__*/ proxyCustomElement(class GoogleRecaptcha extends HTMLElement {
     constructor() {
@@ -51,7 +50,7 @@ const GoogleRecaptcha = /*@__PURE__*/ proxyCustomElement(class GoogleRecaptcha e
     render() {
         return h("div", { key: 'e836237538893dab8e46f717230d2e0519b81360', class: "g-recaptcha", id: this.recaptchaId });
     }
-    static get style() { return GoogleRecaptchaStyle0; }
+    static get style() { return googleRecaptchaCss; }
 }, [0, "google-recaptcha", {
         "siteKey": [1, "site-key"],
         "recaptchaId": [32]

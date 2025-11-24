@@ -1,7 +1,6 @@
 import { proxyCustomElement, HTMLElement, h } from '@stencil/core/internal/client';
 
 const frontIconCss = "@import url('https://fonts.googleapis.com/icon?family=Material+Icons');";
-const FrontIconStyle0 = frontIconCss;
 
 const FrontIcon = /*@__PURE__*/ proxyCustomElement(class FrontIcon extends HTMLElement {
     constructor() {
@@ -14,7 +13,7 @@ const FrontIcon = /*@__PURE__*/ proxyCustomElement(class FrontIcon extends HTMLE
     render() {
         return (h("span", { key: '59c5c29ff8f8070e8163080e808c5355c118a133', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
     }
-    static get style() { return FrontIconStyle0; }
+    static get style() { return frontIconCss; }
 }, [0, "front-icon", {
         "name": [1],
         "size": [1],
