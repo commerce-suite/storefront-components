@@ -28,5 +28,6 @@
         "import/first": "off"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["dist/"]
 }
