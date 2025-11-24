@@ -24,3 +24,5 @@ UserInterfaceState.xcuserstate
 # Coverage reports
 coverage/
 *.lcov
+
+dist
