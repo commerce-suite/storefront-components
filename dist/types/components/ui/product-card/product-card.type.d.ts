@@ -18,6 +18,17 @@ export interface IInputSelectDataEvent {
     value: any;
     productId: number;
 }
+export interface IColor {
+    id: number;
+    name: string;
+    slug: string;
+    price: number;
+    hexadecimal?: string | null;
+    image?: IImage | null;
+    productImage?: IImage | null;
+    balance?: number;
+    priceCompare?: number;
+}
 export interface IProductCard {
     id: number;
     name: string;
@@ -28,4 +39,6 @@ export interface IProductCard {
     priceBase?: number;
     selectVariations?: ISelectVariation[];
     paymentOptions?: PaymentOption[];
+    gridId?: string;
+    balance?: number;
 }

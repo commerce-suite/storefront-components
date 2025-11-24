@@ -22,13 +22,15 @@ const ProductPrice = /*@__PURE__*/ proxyCustomElement(class ProductPrice extends
         this.showStartingFrom = false;
     }
     renderPaymentOption(option) {
+        if (option.price <= 0)
+            return null;
         const renderFn = this.componentMap[option.type] || this.componentMap.simple;
         return renderFn(option);
     }
     render() {
         const options = this.paymentOptions || [];
         if (!options.length) {
-            return (h(Host, null, h("div", { class: "product-price-container" }, this.componentMap.simple({
+            return (h(Host, null, h("div", { class: "product-price-container" }, this.renderPaymentOption({
                 type: 'simple',
                 price: this.basePrice.price,
                 priceCompare: this.basePrice.priceCompare,

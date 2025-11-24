@@ -9,7 +9,7 @@
   gap: 16px;
 }
 .highlight-card-container {
-  border: 1px solid var(--menu-items);
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
 }
 .highlight-card-header {
@@ -49,48 +49,48 @@
 }
 .highlight-card-separator {
   height: 1px;
-  background-color: var(--menu-items);
+  background-color: var(--color-primary);
 }
 .highlight-card-product {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.highlight-card-product:hover {
+.highlight-card-product-cart-icon {
+  padding: 24px;
   cursor: pointer;
 }
-.highlight-card-product:hover .highlight-card-product-cart-action a {
-  text-decoration: underline var(--fc-color-primary) 1px solid !important;
-}
-.highlight-card-product-cart-action {
-  padding: 24px;
-  font-weight: bold;
+.highlight-card .color-selector {
+  max-width: 100%;
+  margin-top: 12px;
 }
 
 .highlight-card .highlight-custom-style.product-container {
   display: flex;
-  gap: 12px;
+  gap: 24px;
   padding: 24px;
 }
 
 .highlight-card .highlight-custom-style.product-container > .info > .title {
-  word-break: break-all;
+  word-break: break-word;
+  font-size: 14px;
+  margin-bottom: 0px;
 }
-.highlight-card .highlight-custom-style.product-container > .info > .price {
+.highlight-card .highlight-custom-style.product-container > .info .payment-option-simple {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  align-items: center;
+  align-items: baseline;
 }
-.highlight-card .highlight-custom-style.product-container > .info > .price > .base,
-.highlight-card .highlight-custom-style.product-container > .info > .price .current {
-  font-weight: 400;
+.highlight-card .highlight-custom-style.product-container > .info .payment-option-simple .price-compare,
+.highlight-card .highlight-custom-style.product-container > .info .payment-option-simple .price-current > .highlight {
   font-size: 14px;
+  font-weight: normal;
 }
 
 .highlight-card .highlight-custom-style.product-container > .image {
-  height: 48px;
-  width: 48px;
+  height: 58px;
+  width: 58px;
   border: 1px solid #dee2e6;
   border-radius: 4px;
   flex-shrink: 0;

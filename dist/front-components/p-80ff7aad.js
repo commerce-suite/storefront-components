@@ -1,2 +1,0 @@
-import{E as n}from"./p-040ae869.js";function t(n){return Number(n).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}function r(n){return Object.keys(n).filter((t=>n[t])).map((n=>n)).join(" ")}function e(n){if(!n)return null;const t=/(?:watch\?v=|live\/)([a-zA-Z0-9_-]{11})/;const r=n.match(t);return r?r[1]:null}function c(t){const r=n.CDN_URL;const e=window.dooca.shop_id;const c=`${r}/${e}`;if(t.startsWith("media://")){return t.replace("media://",`${c}/`)}return t}export{t as c,e,r as g,c as t};
-//# sourceMappingURL=p-80ff7aad.js.map

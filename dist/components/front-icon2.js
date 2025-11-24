@@ -12,7 +12,7 @@ const FrontIcon = /*@__PURE__*/ proxyCustomElement(class FrontIcon extends HTMLE
         this.color = '#000';
     }
     render() {
-        return (h("span", { key: 'c250591eef5668047e5c35868343449e48161761', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
+        return (h("span", { key: '59c5c29ff8f8070e8163080e808c5355c118a133', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
     }
     static get style() { return FrontIconStyle0; }
 }, [0, "front-icon", {

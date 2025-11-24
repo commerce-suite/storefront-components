@@ -29,7 +29,7 @@ export declare const buyTogetherComponentData: {
             selectType: string;
         }[];
         slug: string;
-        specialPrice: any;
+        paymentOptions: any[];
     };
     products: {
         price: string;
@@ -61,7 +61,7 @@ export declare const buyTogetherComponentData: {
             selectType: string;
         }[];
         slug: string;
-        specialPrice: any;
+        paymentOptions: any[];
         isCheck: boolean;
     }[];
     originalData: {
