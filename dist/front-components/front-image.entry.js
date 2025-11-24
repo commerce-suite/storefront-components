@@ -1,5 +1,5 @@
-import { r as registerInstance, h, e as Host } from './index-9b51ba9f.js';
-import { g as getClassByProps } from './utils-65274404.js';
+import { r as registerInstance, h, e as Host } from './index-998c8a8e.js';
+import { g as getClassByProps } from './utils-6c1691e8.js';
 
 const frontImageCss = "@keyframes skeleton-loading{0%{background-color:hsl(200, 20%, 80%)}100%{background-color:hsl(200, 20%, 95%)}}:host{display:inline-block;width:100%}.image-container{position:relative;margin:unset}.image-container img{width:100%;height:100%;object-fit:contain;opacity:1;transition:opacity 1s}.image-container.-is-loading{min-width:100px;min-height:100px;animation:skeleton-loading 1s linear infinite alternate}.image-container.-is-loading img{opacity:0}";
 

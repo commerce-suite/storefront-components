@@ -1,4 +1,4 @@
-import { h, r as registerInstance, a as createEvent } from './index-9b51ba9f.js';
+import { h, r as registerInstance, a as createEvent } from './index-998c8a8e.js';
 
 const tabs = (videoId, items, handleAddItem, chatVisible) => {
     const baseTabs = [

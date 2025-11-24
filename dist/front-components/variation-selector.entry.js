@@ -1,4 +1,4 @@
-import { r as registerInstance, a as createEvent, h } from './index-9b51ba9f.js';
+import { r as registerInstance, a as createEvent, h } from './index-998c8a8e.js';
 
 const variationSelectorCss = ".variations.sc-variation-selector{display:flex;flex-wrap:wrap;--variations-gap:calc(var(--fc-margin-width) * 2);gap:var(--variations-gap)}.variations.sc-variation-selector .item.sc-variation-selector{min-width:calc(50% - var(--variations-gap));flex-grow:2}.variations.-showcase.sc-variation-selector .item.sc-variation-selector{width:100%}";
 

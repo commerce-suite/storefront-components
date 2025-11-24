@@ -1,4 +1,4 @@
-import { r as registerInstance, a as createEvent, h, e as Host } from './index-9b51ba9f.js';
+import { r as registerInstance, a as createEvent, h, e as Host } from './index-998c8a8e.js';
 
 const liveVideoChatCss = ":host{display:inline-block;width:100%}.live-video-chat{display:flex;justify-content:center;align-items:center;width:100%}.live-video-chat iframe{height:100%;width:100%}";
 

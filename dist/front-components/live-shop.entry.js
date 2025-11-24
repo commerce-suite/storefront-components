@@ -1,6 +1,6 @@
-import { r as registerInstance, a as createEvent, E as Env, h, e as Host } from './index-9b51ba9f.js';
+import { r as registerInstance, a as createEvent, E as Env, h, e as Host } from './index-998c8a8e.js';
 import { a as ProductService, L as LiveShopService } from './index-588ed867.js';
-import { e as extractYouTubeVideoId } from './utils-65274404.js';
+import { e as extractYouTubeVideoId } from './utils-6c1691e8.js';
 
 class LiveShopHandler {
     async getProducts() {
