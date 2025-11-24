@@ -1,4 +1,4 @@
-import { r as registerInstance, a as createEvent, h, e as Host } from './index-998c8a8e.js';
+import { r as registerInstance, a as createEvent, h, e as Host } from './index-02e5006d.js';
 
 const liveVideoPlayerCss = ":host{display:inline-block;width:100%}.live-video-player{display:flex;justify-content:center;align-items:center;width:100%;height:100%}.live-video-player iframe{height:100%;width:100%}";
 

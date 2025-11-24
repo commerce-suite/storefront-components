@@ -1,4 +1,4 @@
-import { r as registerInstance, a as createEvent, h, e as Host, g as getAssetPath } from './index-998c8a8e.js';
+import { r as registerInstance, a as createEvent, h, e as Host, g as getAssetPath } from './index-02e5006d.js';
 import { A as AppService } from './index-588ed867.js';
 
 const defaultContent = {

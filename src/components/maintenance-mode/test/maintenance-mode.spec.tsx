@@ -4,6 +4,8 @@ import { MaintenanceMode } from '../maintenance-mode';
 
 describe('maintenance-mode', () => {
   it('should render maintenance-mode', async () => {
+    (Env as any).GOOGLE_RECAPTCHA_SITE_KEY = 'mocked_site_key';
+
     const page = await newSpecPage({
       components: [MaintenanceMode],
       html: `<maintenance-mode></maintenance-mode>`,

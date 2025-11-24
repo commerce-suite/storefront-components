@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-998c8a8e.js';
+import { r as registerInstance, h } from './index-02e5006d.js';
 
 const frontIconCss = "@import url('https://fonts.googleapis.com/icon?family=Material+Icons');";
 

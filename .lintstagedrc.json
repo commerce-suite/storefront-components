@@ -2,7 +2,7 @@
   "*.{ts,tsx}": [
     "eslint --fix",
     "prettier --write",
-    "stencil test --spec --e2e --findRelatedTests --ignore=dist",
+    "stencil test --spec --e2e --findRelatedTests --ignore=dist --dev",
     "git add"
   ]
 }

@@ -1,5 +1,5 @@
-import { r as registerInstance, h, e as Host } from './index-998c8a8e.js';
-import { g as getClassByProps } from './utils-6c1691e8.js';
+import { r as registerInstance, h, e as Host } from './index-02e5006d.js';
+import { g as getClassByProps } from './utils-596665f8.js';
 
 const productCardCss = ":host{display:inline-block;font-size:14px;width:100%}.product-container{display:flex;flex-direction:column;gap:var(--fc-gap-grid) 0;color:var(--fc-color-light-text-default)}.product-container.-inline{flex-direction:row;gap:var(--fc-gap-grid)}.product-container>.info{grid-area:info;display:flex;flex-direction:column;justify-content:center}.product-container>.info>.title{display:inline-block;margin-bottom:var(--fc-margin-width);font-weight:600}.product-container>.image{display:flex;align-self:center;max-width:400px;max-height:400px;justify-content:center}.product-container>.image.-inline{width:100px;height:100px;justify-content:center}";
 
