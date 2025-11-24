@@ -21,7 +21,7 @@
 }
 .custom-card-header-title {
   font-family: var(--h1-ff);
-  color: var(--fc-color-primary);
+  color: var(--menu-items);
   font-weight: 700;
   font-size: 24px;
   text-transform: uppercase;

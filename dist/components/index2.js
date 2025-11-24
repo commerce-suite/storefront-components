@@ -1,56 +1,4 @@
-var StringHelper = /** @class */ (function () {
-    function StringHelper() {
-    }
-    StringHelper.normalizeText = function (text) {
-        return text.replace(/\.?([A-Z]+)/g, function (m) { return " ".concat(m.toLowerCase()); }).trim();
-    };
-    StringHelper.slugify = function (text) {
-        var textNormal = this.normalizeText(text);
-        return textNormal
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9 ]/g, '')
-            .replace(/\s+/g, '-');
-    };
-    return StringHelper;
-}());
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function getDefaultExportFromNamespaceIfPresent (n) {
-	return n && Object.prototype.hasOwnProperty.call(n, 'default') ? n['default'] : n;
-}
-
-function getDefaultExportFromNamespaceIfNotNamed (n) {
-	return n && Object.prototype.hasOwnProperty.call(n, 'default') && Object.keys(n).length === 1 ? n['default'] : n;
-}
-
-function getAugmentedNamespace(n) {
-	if (n.__esModule) return n;
-	var a = Object.defineProperty({}, '__esModule', {value: true});
-	Object.keys(n).forEach(function (k) {
-		var d = Object.getOwnPropertyDescriptor(n, k);
-		Object.defineProperty(a, k, d.get ? d : {
-			enumerable: true,
-			get: function () {
-				return n[k];
-			}
-		});
-	});
-	return a;
-}
-
-function commonjsRequire (path) {
-	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
-}
-
-var webfontloader$1 = {exports: {}};
+var webfontloader = {exports: {}};
 
 /* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */
 
@@ -58,83 +6,23 @@ var webfontloader$1 = {exports: {}};
 (function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return +new Date};function ca(a,b){this.a=a;this.o=b||a;this.c=this.o.document;}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild);}function v(a){a.parentNode&&a.parentNode.removeChild(a);}
 function w(a,b,c){b=b||[];c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e]);}b=[];for(e=0;e<d.length;e+=1){f=!1;for(g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e]);}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"");}function y(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;d<e;d++)if(c[d]==b)return !0;return !1}
 function ea(a){return a.o.location.hostname||a.a.location.hostname}function z(a,b,c){function d(){m&&e&&f&&(m(g),m=null);}b=t(a,"link",{rel:"stylesheet",href:b,media:"all"});var e=!1,f=!0,g=null,m=c||null;da?(b.onload=function(){e=!0;d();},b.onerror=function(){e=!0;g=Error("Stylesheet failed to load");d();}):setTimeout(function(){e=!0;d();},0);u(a,"head",b);}
-function A(a,b,c,d){var e=a.c.getElementsByTagName("head")[0];if(e){var f=t(a,"script",{src:b}),g=!1;f.onload=f.onreadystatechange=function(){g||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(g=!0,c&&c(null),f.onload=f.onreadystatechange=null,"HEAD"==f.parentNode.tagName&&e.removeChild(f));};e.appendChild(f);setTimeout(function(){g||(g=!0,c&&c(Error("Script load timeout")));},d||5E3);return f}return null};function B(){this.a=0;this.c=null;}function C(a){a.a++;return function(){a.a--;D(a);}}function E(a,b){a.c=b;D(a);}function D(a){0==a.a&&a.c&&(a.c(),a.c=null);};function F(a){this.a=a||"-";}F.prototype.c=function(a){for(var b=[],c=0;c<arguments.length;c++)b.push(arguments[c].replace(/[\W_]+/g,"").toLowerCase());return b.join(this.a)};function G(a,b){this.c=a;this.f=4;this.a="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.a=c[1],this.f=parseInt(c[2],10));}function fa(a){return H(a)+" "+(a.f+"00")+" 300px "+I(a.c)}function I(a){var b=[];a=a.split(/,\s*/);for(var c=0;c<a.length;c++){var d=a[c].replace(/['"]/g,"");-1!=d.indexOf(" ")||/^\d/.test(d)?b.push("'"+d+"'"):b.push(d);}return b.join(",")}function J(a){return a.a+a.f}function H(a){var b="normal";"o"===a.a?b="oblique":"i"===a.a&&(b="italic");return b}
-function ga(a){var b=4,c="n",d=null;a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10))));return c+b};function ha(a,b){this.c=a;this.f=a.o.document.documentElement;this.h=b;this.a=new F("-");this.j=!1!==b.events;this.g=!1!==b.classes;}function ia(a){a.g&&w(a.f,[a.a.c("wf","loading")]);K(a,"loading");}function L(a){if(a.g){var b=y(a.f,a.a.c("wf","active")),c=[],d=[a.a.c("wf","loading")];b||c.push(a.a.c("wf","inactive"));w(a.f,c,d);}K(a,"inactive");}function K(a,b,c){if(a.j&&a.h[b])if(c)a.h[b](c.c,J(c));else a.h[b]();};function ja(){this.c={};}function ka(a,b,c){var d=[],e;for(e in b)if(b.hasOwnProperty(e)){var f=a.c[e];f&&d.push(f(b[e],c));}return d};function M(a,b){this.c=a;this.f=b;this.a=t(this.c,"span",{"aria-hidden":"true"},this.f);}function N(a){u(a.c,"body",a.a);}function O(a){return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+I(a.c)+";"+("font-style:"+H(a)+";font-weight:"+(a.f+"00")+";")};function P(a,b,c,d,e,f){this.g=a;this.j=b;this.a=d;this.c=c;this.f=e||3E3;this.h=f||void 0;}P.prototype.start=function(){var a=this.c.o.document,b=this,c=q(),d=new Promise(function(d,e){function f(){q()-c>=b.f?e():a.fonts.load(fa(b.a),b.h).then(function(a){1<=a.length?d():setTimeout(f,25);},function(){e();});}f();}),e=null,f=new Promise(function(a,d){e=setTimeout(d,b.f);});Promise.race([f,d]).then(function(){e&&(clearTimeout(e),e=null);b.g(b.a);},function(){b.j(b.a);});};function Q(a,b,c,d,e,f,g){this.v=a;this.B=b;this.c=c;this.a=d;this.s=g||"BESbswy";this.f={};this.w=e||3E3;this.u=f||null;this.m=this.j=this.h=this.g=null;this.g=new M(this.c,this.s);this.h=new M(this.c,this.s);this.j=new M(this.c,this.s);this.m=new M(this.c,this.s);a=new G(this.a.c+",serif",J(this.a));a=O(a);this.g.a.style.cssText=a;a=new G(this.a.c+",sans-serif",J(this.a));a=O(a);this.h.a.style.cssText=a;a=new G("serif",J(this.a));a=O(a);this.j.a.style.cssText=a;a=new G("sans-serif",J(this.a));a=
+function A(a,b,c,d){var e=a.c.getElementsByTagName("head")[0];if(e){var f=t(a,"script",{src:b}),g=!1;f.onload=f.onreadystatechange=function(){g||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(g=!0,c&&c(null),f.onload=f.onreadystatechange=null,"HEAD"==f.parentNode.tagName&&e.removeChild(f));};e.appendChild(f);setTimeout(function(){g||(g=!0,c&&c(Error("Script load timeout")));},d||5E3);return f}return null}function B(){this.a=0;this.c=null;}function C(a){a.a++;return function(){a.a--;D(a);}}function E(a,b){a.c=b;D(a);}function D(a){0==a.a&&a.c&&(a.c(),a.c=null);}function F(a){this.a=a||"-";}F.prototype.c=function(a){for(var b=[],c=0;c<arguments.length;c++)b.push(arguments[c].replace(/[\W_]+/g,"").toLowerCase());return b.join(this.a)};function G(a,b){this.c=a;this.f=4;this.a="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.a=c[1],this.f=parseInt(c[2],10));}function fa(a){return H(a)+" "+(a.f+"00")+" 300px "+I(a.c)}function I(a){var b=[];a=a.split(/,\s*/);for(var c=0;c<a.length;c++){var d=a[c].replace(/['"]/g,"");-1!=d.indexOf(" ")||/^\d/.test(d)?b.push("'"+d+"'"):b.push(d);}return b.join(",")}function J(a){return a.a+a.f}function H(a){var b="normal";"o"===a.a?b="oblique":"i"===a.a&&(b="italic");return b}
+function ga(a){var b=4,c="n",d=null;a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10))));return c+b}function ha(a,b){this.c=a;this.f=a.o.document.documentElement;this.h=b;this.a=new F("-");this.j=!1!==b.events;this.g=!1!==b.classes;}function ia(a){a.g&&w(a.f,[a.a.c("wf","loading")]);K(a,"loading");}function L(a){if(a.g){var b=y(a.f,a.a.c("wf","active")),c=[],d=[a.a.c("wf","loading")];b||c.push(a.a.c("wf","inactive"));w(a.f,c,d);}K(a,"inactive");}function K(a,b,c){if(a.j&&a.h[b])if(c)a.h[b](c.c,J(c));else a.h[b]();}function ja(){this.c={};}function ka(a,b,c){var d=[],e;for(e in b)if(b.hasOwnProperty(e)){var f=a.c[e];f&&d.push(f(b[e],c));}return d}function M(a,b){this.c=a;this.f=b;this.a=t(this.c,"span",{"aria-hidden":"true"},this.f);}function N(a){u(a.c,"body",a.a);}function O(a){return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+I(a.c)+";"+("font-style:"+H(a)+";font-weight:"+(a.f+"00")+";")}function P(a,b,c,d,e,f){this.g=a;this.j=b;this.a=d;this.c=c;this.f=e||3E3;this.h=f||void 0;}P.prototype.start=function(){var a=this.c.o.document,b=this,c=q(),d=new Promise(function(d,e){function f(){q()-c>=b.f?e():a.fonts.load(fa(b.a),b.h).then(function(a){1<=a.length?d():setTimeout(f,25);},function(){e();});}f();}),e=null,f=new Promise(function(a,d){e=setTimeout(d,b.f);});Promise.race([f,d]).then(function(){e&&(clearTimeout(e),e=null);b.g(b.a);},function(){b.j(b.a);});};function Q(a,b,c,d,e,f,g){this.v=a;this.B=b;this.c=c;this.a=d;this.s=g||"BESbswy";this.f={};this.w=e||3E3;this.u=f||null;this.m=this.j=this.h=this.g=null;this.g=new M(this.c,this.s);this.h=new M(this.c,this.s);this.j=new M(this.c,this.s);this.m=new M(this.c,this.s);a=new G(this.a.c+",serif",J(this.a));a=O(a);this.g.a.style.cssText=a;a=new G(this.a.c+",sans-serif",J(this.a));a=O(a);this.h.a.style.cssText=a;a=new G("serif",J(this.a));a=O(a);this.j.a.style.cssText=a;a=new G("sans-serif",J(this.a));a=
 O(a);this.m.a.style.cssText=a;N(this.g);N(this.h);N(this.j);N(this.m);}var R={D:"serif",C:"sans-serif"},S=null;function T(){if(null===S){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);S=!!a&&(536>parseInt(a[1],10)||536===parseInt(a[1],10)&&11>=parseInt(a[2],10));}return S}Q.prototype.start=function(){this.f.serif=this.j.a.offsetWidth;this.f["sans-serif"]=this.m.a.offsetWidth;this.A=q();U(this);};
-function la(a,b,c){for(var d in R)if(R.hasOwnProperty(d)&&b===a.f[R[d]]&&c===a.f[R[d]])return !0;return !1}function U(a){var b=a.g.a.offsetWidth,c=a.h.a.offsetWidth,d;(d=b===a.f.serif&&c===a.f["sans-serif"])||(d=T()&&la(a,b,c));d?q()-a.A>=a.w?T()&&la(a,b,c)&&(null===a.u||a.u.hasOwnProperty(a.a.c))?V(a,a.v):V(a,a.B):ma(a):V(a,a.v);}function ma(a){setTimeout(p(function(){U(this);},a),50);}function V(a,b){setTimeout(p(function(){v(this.g.a);v(this.h.a);v(this.j.a);v(this.m.a);b(this.a);},a),0);};function W(a,b,c){this.c=a;this.a=b;this.f=0;this.m=this.j=!1;this.s=c;}var X=null;W.prototype.g=function(a){var b=this.a;b.g&&w(b.f,[b.a.c("wf",a.c,J(a).toString(),"active")],[b.a.c("wf",a.c,J(a).toString(),"loading"),b.a.c("wf",a.c,J(a).toString(),"inactive")]);K(b,"fontactive",a);this.m=!0;na(this);};
-W.prototype.h=function(a){var b=this.a;if(b.g){var c=y(b.f,b.a.c("wf",a.c,J(a).toString(),"active")),d=[],e=[b.a.c("wf",a.c,J(a).toString(),"loading")];c||d.push(b.a.c("wf",a.c,J(a).toString(),"inactive"));w(b.f,d,e);}K(b,"fontinactive",a);na(this);};function na(a){0==--a.f&&a.j&&(a.m?(a=a.a,a.g&&w(a.f,[a.a.c("wf","active")],[a.a.c("wf","loading"),a.a.c("wf","inactive")]),K(a,"active")):L(a.a));};function oa(a){this.j=a;this.a=new ja;this.h=0;this.f=this.g=!0;}oa.prototype.load=function(a){this.c=new ca(this.j,a.context||this.j);this.g=!1!==a.events;this.f=!1!==a.classes;pa(this,new ha(this.c,a),a);};
+function la(a,b,c){for(var d in R)if(R.hasOwnProperty(d)&&b===a.f[R[d]]&&c===a.f[R[d]])return !0;return !1}function U(a){var b=a.g.a.offsetWidth,c=a.h.a.offsetWidth,d;(d=b===a.f.serif&&c===a.f["sans-serif"])||(d=T()&&la(a,b,c));d?q()-a.A>=a.w?T()&&la(a,b,c)&&(null===a.u||a.u.hasOwnProperty(a.a.c))?V(a,a.v):V(a,a.B):ma(a):V(a,a.v);}function ma(a){setTimeout(p(function(){U(this);},a),50);}function V(a,b){setTimeout(p(function(){v(this.g.a);v(this.h.a);v(this.j.a);v(this.m.a);b(this.a);},a),0);}function W(a,b,c){this.c=a;this.a=b;this.f=0;this.m=this.j=!1;this.s=c;}var X=null;W.prototype.g=function(a){var b=this.a;b.g&&w(b.f,[b.a.c("wf",a.c,J(a).toString(),"active")],[b.a.c("wf",a.c,J(a).toString(),"loading"),b.a.c("wf",a.c,J(a).toString(),"inactive")]);K(b,"fontactive",a);this.m=!0;na(this);};
+W.prototype.h=function(a){var b=this.a;if(b.g){var c=y(b.f,b.a.c("wf",a.c,J(a).toString(),"active")),d=[],e=[b.a.c("wf",a.c,J(a).toString(),"loading")];c||d.push(b.a.c("wf",a.c,J(a).toString(),"inactive"));w(b.f,d,e);}K(b,"fontinactive",a);na(this);};function na(a){0==--a.f&&a.j&&(a.m?(a=a.a,a.g&&w(a.f,[a.a.c("wf","active")],[a.a.c("wf","loading"),a.a.c("wf","inactive")]),K(a,"active")):L(a.a));}function oa(a){this.j=a;this.a=new ja;this.h=0;this.f=this.g=!0;}oa.prototype.load=function(a){this.c=new ca(this.j,a.context||this.j);this.g=!1!==a.events;this.f=!1!==a.classes;pa(this,new ha(this.c,a),a);};
 function qa(a,b,c,d,e){var f=0==--a.h;(a.f||a.g)&&setTimeout(function(){var a=e||null,m=d||null||{};if(0===c.length&&f)L(b.a);else {b.f+=c.length;f&&(b.j=f);var h,l=[];for(h=0;h<c.length;h++){var k=c[h],n=m[k.c],r=b.a,x=k;r.g&&w(r.f,[r.a.c("wf",x.c,J(x).toString(),"loading")]);K(r,"fontloading",x);r=null;if(null===X)if(window.FontFace){var x=/Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent),xa=/OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent)&&/Apple/.exec(window.navigator.vendor);
-X=x?42<parseInt(x[1],10):xa?!1:!0;}else X=!1;X?r=new P(p(b.g,b),p(b.h,b),b.c,k,b.s,n):r=new Q(p(b.g,b),p(b.h,b),b.c,k,b.s,a,n);l.push(r);}for(h=0;h<l.length;h++)l[h].start();}},0);}function pa(a,b,c){var d=[],e=c.timeout;ia(b);var d=ka(a.a,c,a.c),f=new W(a.c,b,e);a.h=d.length;b=0;for(c=d.length;b<c;b++)d[b].load(function(b,d,c){qa(a,f,b,d,c);});};function ra(a,b){this.c=a;this.a=b;}
+X=x?42<parseInt(x[1],10):xa?!1:!0;}else X=!1;X?r=new P(p(b.g,b),p(b.h,b),b.c,k,b.s,n):r=new Q(p(b.g,b),p(b.h,b),b.c,k,b.s,a,n);l.push(r);}for(h=0;h<l.length;h++)l[h].start();}},0);}function pa(a,b,c){var d=[],e=c.timeout;ia(b);var d=ka(a.a,c,a.c),f=new W(a.c,b,e);a.h=d.length;b=0;for(c=d.length;b<c;b++)d[b].load(function(b,d,c){qa(a,f,b,d,c);});}function ra(a,b){this.c=a;this.a=b;}
 ra.prototype.load=function(a){function b(){if(f["__mti_fntLst"+d]){var c=f["__mti_fntLst"+d](),e=[],h;if(c)for(var l=0;l<c.length;l++){var k=c[l].fontfamily;void 0!=c[l].fontStyle&&void 0!=c[l].fontWeight?(h=c[l].fontStyle+c[l].fontWeight,e.push(new G(k,h))):e.push(new G(k));}a(e);}else setTimeout(function(){b();},50);}var c=this,d=c.a.projectId,e=c.a.version;if(d){var f=c.c.o;A(this.c,(c.a.api||"https://fast.fonts.net/jsapi")+"/"+d+".js"+(e?"?v="+e:""),function(e){e?a([]):(f["__MonotypeConfiguration__"+
 d]=function(){return c.a},b());}).id="__MonotypeAPIScript__"+d;}else a([]);};function sa(a,b){this.c=a;this.a=b;}sa.prototype.load=function(a){var b,c,d=this.a.urls||[],e=this.a.families||[],f=this.a.testStrings||{},g=new B;b=0;for(c=d.length;b<c;b++)z(this.c,d[b],C(g));var m=[];b=0;for(c=e.length;b<c;b++)if(d=e[b].split(":"),d[1])for(var h=d[1].split(","),l=0;l<h.length;l+=1)m.push(new G(d[0],h[l]));else m.push(new G(d[0]));E(g,function(){a(m,f);});};function ta(a,b){a?this.c=a:this.c=ua;this.a=[];this.f=[];this.g=b||"";}var ua="https://fonts.googleapis.com/css";function va(a,b){for(var c=b.length,d=0;d<c;d++){var e=b[d].split(":");3==e.length&&a.f.push(e.pop());var f="";2==e.length&&""!=e[1]&&(f=":");a.a.push(e.join(f));}}
-function wa(a){if(0==a.a.length)throw Error("No fonts to load!");if(-1!=a.c.indexOf("kit="))return a.c;for(var b=a.a.length,c=[],d=0;d<b;d++)c.push(a.a[d].replace(/ /g,"+"));b=a.c+"?family="+c.join("%7C");0<a.f.length&&(b+="&subset="+a.f.join(","));0<a.g.length&&(b+="&text="+encodeURIComponent(a.g));return b};function ya(a){this.f=a;this.a=[];this.c={};}
+function wa(a){if(0==a.a.length)throw Error("No fonts to load!");if(-1!=a.c.indexOf("kit="))return a.c;for(var b=a.a.length,c=[],d=0;d<b;d++)c.push(a.a[d].replace(/ /g,"+"));b=a.c+"?family="+c.join("%7C");0<a.f.length&&(b+="&subset="+a.f.join(","));0<a.g.length&&(b+="&text="+encodeURIComponent(a.g));return b}function ya(a){this.f=a;this.a=[];this.c={};}
 var za={latin:"BESbswy","latin-ext":"\u00e7\u00f6\u00fc\u011f\u015f",cyrillic:"\u0439\u044f\u0416",greek:"\u03b1\u03b2\u03a3",khmer:"\u1780\u1781\u1782",Hanuman:"\u1780\u1781\u1782"},Aa={thin:"1",extralight:"2","extra-light":"2",ultralight:"2","ultra-light":"2",light:"3",regular:"4",book:"4",medium:"5","semi-bold":"6",semibold:"6","demi-bold":"6",demibold:"6",bold:"7","extra-bold":"8",extrabold:"8","ultra-bold":"8",ultrabold:"8",black:"9",heavy:"9",l:"3",r:"4",b:"7"},Ba={i:"i",italic:"i",n:"n",normal:"n"},
 Ca=/^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
 function Da(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].replace(/\+/g," "),f=["n4"];if(2<=d.length){var g;var m=d[1];g=[];if(m)for(var m=m.split(","),h=m.length,l=0;l<h;l++){var k;k=m[l];if(k.match(/^[\w-]+$/)){var n=Ca.exec(k.toLowerCase());if(null==n)k="";else {k=n[2];k=null==k||""==k?"n":Ba[k];n=n[1];if(null==n||""==n)n="4";else var r=Aa[n],n=r?r:isNaN(n)?"4":n.substr(0,1);k=[k,n].join("");}}else k="";k&&g.push(k);}0<g.length&&(f=g);3==d.length&&(d=d[2],g=[],d=d?d.split(","):
-g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d));}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]));}};function Ea(a,b){this.c=a;this.a=b;}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa);});};function Ga(a,b){this.c=a;this.a=b;}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(l){}a(e);}},2E3):a([]);};function Ha(a,b){this.c=a;this.f=b;this.a=[];}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)};"function"===typeof undefined&&undefined.amd?undefined(function(){return Z}):"undefined"!=='object'&&module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
-}(webfontloader$1));
+g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d));}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]));}}function Ea(a,b){this.c=a;this.a=b;}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa);});};function Ga(a,b){this.c=a;this.a=b;}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(l){}a(e);}},2E3):a([]);};function Ha(a,b){this.c=a;this.f=b;this.a=[];}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)};module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
+}(webfontloader));
 
-const webfontloader = webfontloader$1.exports;
-
-var fonts = {};
-var StyleHelper = /** @class */ (function () {
-    function StyleHelper() {
-    }
-    StyleHelper.parseRootVars = function (variables) {
-        var varList = Object.entries(variables);
-        var rootVars = varList.reduce(function (root, _a) {
-            var key = _a[0], value = _a[1];
-            return "".concat(root, " --theme-").concat(StringHelper.slugify(key), ": ").concat(value, ";");
-        }, '');
-        return ":root{ ".concat(rootVars, " }");
-    };
-    StyleHelper.fontLoader = function (font) {
-        if (font && font.family && font.fontWeight) {
-            var family = font.family, category = font.category, fontWeight = font.fontWeight;
-            var fontLoad = family && fontWeight ? family + ':' + fontWeight : null;
-            var fontFamily = "".concat(family, ", ").concat(category);
-            if (fonts[fontLoad])
-                return fontFamily;
-            webfontloader$1.exports.load({
-                google: {
-                    families: [fontLoad]
-                }
-            });
-            fonts[fontLoad] = true;
-            return fontFamily;
-        }
-    };
-    return StyleHelper;
-}());
-
-var ViewportHelper = /** @class */ (function () {
-    function ViewportHelper() {
-    }
-    ViewportHelper.getSize = function () {
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        return { width: width, height: height };
-    };
-    ViewportHelper.widthGreaterThan = function (width) {
-        return this.getSize().width >= width;
-    };
-    ViewportHelper.widthLessThan = function (width) {
-        return this.getSize().width <= width;
-    };
-    ViewportHelper.heightGreaterThan = function (height) {
-        return this.getSize().height >= height;
-    };
-    ViewportHelper.heightLessThan = function (height) {
-        return this.getSize().height <= height;
-    };
-    ViewportHelper.isMobile = function () {
-        var regexMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        return regexMobile.test(navigator.userAgent) || this.widthLessThan(1024);
-    };
-    return ViewportHelper;
-}());
-
-var __awaiter$_ = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -143,7 +31,7 @@ var __awaiter$_ = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$_ = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -175,9 +63,9 @@ var AppRepositoryJson = /** @class */ (function () {
     }
     AppRepositoryJson.getById = function (id, fields) {
         var _a;
-        return __awaiter$_(this, void 0, void 0, function () {
+        return __awaiter$b(this, void 0, void 0, function () {
             var mock, isFieldNotSelected, deleteFieldIfNecessary;
-            return __generator$_(this, function (_b) {
+            return __generator$b(this, function (_b) {
                 mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
                 if (id != mock.id) {
                     throw new Error('apps_not_found');
@@ -193,9 +81,9 @@ var AppRepositoryJson = /** @class */ (function () {
     };
     AppRepositoryJson.getBySlug = function (slug, fields) {
         var _a;
-        return __awaiter$_(this, void 0, void 0, function () {
+        return __awaiter$b(this, void 0, void 0, function () {
             var mock, isFieldNotSelected, deleteFieldIfNecessary;
-            return __generator$_(this, function (_b) {
+            return __generator$b(this, function (_b) {
                 mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
                 if (slug != mock.slug) {
                     throw new Error('apps_not_found');
@@ -214,8 +102,9 @@ var AppRepositoryJson = /** @class */ (function () {
 
 // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 var nodejsCustomInspectSymbol = typeof Symbol === 'function' && typeof Symbol.for === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
+const nodejsCustomInspectSymbol$1 = nodejsCustomInspectSymbol;
 
-function _typeof$3(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
+function _typeof$2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
 var MAX_ARRAY_LENGTH = 10;
 var MAX_RECURSIVE_DEPTH = 2;
 /**
@@ -227,7 +116,7 @@ function inspect(value) {
 }
 
 function formatValue(value, seenValues) {
-  switch (_typeof$3(value)) {
+  switch (_typeof$2(value)) {
     case 'string':
       return JSON.stringify(value);
 
@@ -312,7 +201,7 @@ function formatArray(array, seenValues) {
 }
 
 function getCustomFn(object) {
-  var customInspectFn = object[String(nodejsCustomInspectSymbol)];
+  var customInspectFn = object[String(nodejsCustomInspectSymbol$1)];
 
   if (typeof customInspectFn === 'function') {
     return customInspectFn;
@@ -354,8 +243,8 @@ function defineInspect(classObject) {
   typeof fn === 'function' || invariant(0);
   classObject.prototype.inspect = fn; // istanbul ignore else (See: 'https://github.com/graphql/graphql-js/issues/2317')
 
-  if (nodejsCustomInspectSymbol) {
-    classObject.prototype[nodejsCustomInspectSymbol] = fn;
+  if (nodejsCustomInspectSymbol$1) {
+    classObject.prototype[nodejsCustomInspectSymbol$1] = fn;
   }
 }
 
@@ -764,60 +653,6 @@ function visit(root, visitor) {
   }
 
   return newRoot;
-}
-/**
- * Creates a new visitor instance which delegates to many visitors to run in
- * parallel. Each visitor will be visited for each node before moving on.
- *
- * If a prior visitor edits a node, no following visitors will see that node.
- */
-
-function visitInParallel(visitors) {
-  var skipping = new Array(visitors.length);
-  return {
-    enter: function enter(node) {
-      for (var i = 0; i < visitors.length; i++) {
-        if (skipping[i] == null) {
-          var fn = getVisitFn(visitors[i], node.kind,
-          /* isLeaving */
-          false);
-
-          if (fn) {
-            var result = fn.apply(visitors[i], arguments);
-
-            if (result === false) {
-              skipping[i] = node;
-            } else if (result === BREAK) {
-              skipping[i] = BREAK;
-            } else if (result !== undefined) {
-              return result;
-            }
-          }
-        }
-      }
-    },
-    leave: function leave(node) {
-      for (var i = 0; i < visitors.length; i++) {
-        if (skipping[i] == null) {
-          var fn = getVisitFn(visitors[i], node.kind,
-          /* isLeaving */
-          true);
-
-          if (fn) {
-            var result = fn.apply(visitors[i], arguments);
-
-            if (result === BREAK) {
-              skipping[i] = BREAK;
-            } else if (result !== undefined && result !== false) {
-              return result;
-            }
-          }
-        } else if (skipping[i] === node) {
-          skipping[i] = null;
-        }
-      }
-    }
-  };
 }
 /**
  * Given a visitor instance, if it is leaving or not, and a node kind, return
@@ -1366,22 +1201,17 @@ function devAssert(condition, message) {
   }
 }
 
-function _typeof$2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$2 = function _typeof(obj) { return typeof obj; }; } else { _typeof$2 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$2(obj); }
+function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
 
 /**
  * Return true if `value` is object-like. A value is object-like if it's not
  * `null` and has a `typeof` result of "object".
  */
 function isObjectLike(value) {
-  return _typeof$2(value) == 'object' && value !== null;
+  return _typeof$1(value) == 'object' && value !== null;
 }
 
 // In ES2015 (or a polyfilled) environment, this will be Symbol.iterator
-// istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
-var SYMBOL_ITERATOR = typeof Symbol === 'function' && Symbol.iterator != null ? Symbol.iterator : '@@iterator'; // In ES2017 (or a polyfilled) environment, this will be Symbol.asyncIterator
-// istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
-
-var SYMBOL_ASYNC_ITERATOR = typeof Symbol === 'function' && Symbol.asyncIterator != null ? Symbol.asyncIterator : '@@asyncIterator'; // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 
 var SYMBOL_TO_STRING_TAG = typeof Symbol === 'function' && Symbol.toStringTag != null ? Symbol.toStringTag : '@@toStringTag';
 
@@ -1453,8 +1283,7 @@ function printSourceLocation(source, sourceLocation) {
 
 function printPrefixedLines(lines) {
   var existingLines = lines.filter(function (_ref) {
-    var _ = _ref[0],
-        line = _ref[1];
+    var line = _ref[1];
     return line !== undefined;
   });
   var padLen = Math.max.apply(Math, existingLines.map(function (_ref2) {
@@ -1476,7 +1305,7 @@ function leftPad(len, str) {
   return whitespace(len - str.length) + str;
 }
 
-function _typeof$1(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -1494,7 +1323,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof$1(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
@@ -1782,7 +1611,6 @@ var TokenKind = Object.freeze({
  * The enum type representing the token kinds values.
  */
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 /**
  * A replacement for instanceof which includes an error warning when multi-realm
  * constructors are detected.
@@ -1790,31 +1618,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 // See: https://expressjs.com/en/advanced/best-practice-performance.html#set-node_env-to-production
 // See: https://webpack.js.org/guides/production/
-const instanceOf = "development" === 'production' ? // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
+const instanceOf = // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2317')
 // eslint-disable-next-line no-shadow
 function instanceOf(value, constructor) {
   return value instanceof constructor;
-} : // eslint-disable-next-line no-shadow
-function instanceOf(value, constructor) {
-  if (value instanceof constructor) {
-    return true;
-  }
-
-  if (_typeof(value) === 'object' && value !== null) {
-    var _value$constructor;
-
-    var className = constructor.prototype[Symbol.toStringTag];
-    var valueClassName = // We still need to support constructor's name to detect conflicts with older versions of this library.
-    Symbol.toStringTag in value ? value[Symbol.toStringTag] : (_value$constructor = value.constructor) === null || _value$constructor === void 0 ? void 0 : _value$constructor.name;
-
-    if (className === valueClassName) {
-      var stringifiedValue = inspect(value);
-      throw new Error("Cannot use ".concat(className, " \"").concat(stringifiedValue, "\" from another module or realm.\n\nEnsure that there is only one instance of \"graphql\" in the node_modules\ndirectory. If different versions of \"graphql\" are the dependencies of other\nrelied on modules, use \"resolutions\" to ensure only one version is installed.\n\nhttps://yarnpkg.com/en/docs/selective-version-resolutions\n\nDuplicate \"graphql\" modules cannot be used at the same time since different\nversions may have different capabilities and behavior. The data from one\nversion used in the function from another could produce confusing and\nspurious results."));
-    }
-  }
-
-  return false;
-};
+} ;
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -2577,42 +2385,6 @@ function isNameStart(code) {
 function parse$1(source, options) {
   var parser = new Parser(source, options);
   return parser.parseDocument();
-}
-/**
- * Given a string containing a GraphQL value (ex. `[42]`), parse the AST for
- * that value.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Values directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: valueFromAST().
- */
-
-function parseValue(source, options) {
-  var parser = new Parser(source, options);
-  parser.expectToken(TokenKind.SOF);
-  var value = parser.parseValueLiteral(false);
-  parser.expectToken(TokenKind.EOF);
-  return value;
-}
-/**
- * Given a string containing a GraphQL Type (ex. `[Int!]`), parse the AST for
- * that type.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Types directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: typeFromAST().
- */
-
-function parseType(source, options) {
-  var parser = new Parser(source, options);
-  parser.expectToken(TokenKind.SOF);
-  var type = parser.parseTypeReference();
-  parser.expectToken(TokenKind.EOF);
-  return type;
 }
 /**
  * This class is exported only to assist people in implementing their own parsers
@@ -4146,92 +3918,6 @@ function t(a) {
   a(0);
 }
 
-function u$1(a) {
-  let b = !1;
-  a(
-    l$1(0, [
-      function (c) {
-        c ? (b = !0) : b || a(0);
-      },
-    ])
-  );
-}
-
-function w(a) {
-  if (void 0 === a) {
-    return ((a = [v, 0]).tag = 256), a;
-  }
-  if (null === a || a[0] !== v) {
-    return a;
-  }
-  (a = [v, (a[1] + 1) | 0]).tag = 256;
-  return a;
-}
-
-function x(a) {
-  if (null === a || a[0] !== v) {
-    return a;
-  }
-  if (0 !== (a = a[1])) {
-    return [v, (a - 1) | 0];
-  }
-}
-
-function z(a) {
-  return function (b) {
-    return function (c) {
-      function d(b) {
-        'number' == typeof b
-          ? k &&
-            ((k = !1),
-            void 0 !== (b = e.shift())
-              ? ((b = a(x(b))), (k = !0), b(d))
-              : q
-              ? c(0)
-              : g || ((g = !0), f(0)))
-          : b.tag
-          ? k && (c(b), n ? (n = !1) : h(0))
-          : ((h = b = b[0]), (n = !1), b(0));
-      }
-      let e = [],
-        f = m,
-        g = !1,
-        h = m,
-        k = !1,
-        n = !1,
-        q = !1;
-      b(function (b) {
-        'number' == typeof b
-          ? q || ((q = !0), k || 0 !== e.length || c(0))
-          : b.tag
-          ? q || ((b = b[0]), (g = !1), k ? e.push(b) : ((b = a(b)), (k = !0), b(d)))
-          : (f = b[0]);
-      });
-      c(
-        l$1(0, [
-          function (c) {
-            if (c) {
-              if ((q || ((q = !0), f(1)), k)) {
-                return (k = !1), h(1);
-              }
-            } else {
-              q || g || ((g = !0), f(0)), k && !n && ((n = !0), h(0));
-            }
-          },
-        ])
-      );
-    };
-  };
-}
-
-function A(a) {
-  return a;
-}
-
-function B(a) {
-  return a;
-}
-
 function C(a) {
   return a(0);
 }
@@ -4288,14 +3974,6 @@ function D(a) {
 
 function E(a) {
   return a;
-}
-
-function F$1(a) {
-  return a;
-}
-
-function G$1(a) {
-  return D(F$1)(a);
 }
 
 function H(a) {
@@ -4370,26 +4048,6 @@ function K(a) {
   };
 }
 
-function L$1(a) {
-  return a;
-}
-
-function M(a) {
-  return function (b) {
-    return function (c) {
-      let d = [],
-        e = m;
-      return b(function (b) {
-        'number' == typeof b
-          ? p$1(d)(c)
-          : b.tag
-          ? (d.length >= a && 0 < a && d.shift(), d.push(b[0]), e(0))
-          : ((b = b[0]), 0 >= a ? (b(1), u$1(c)) : ((e = b), b(0)));
-      });
-    };
-  };
-}
-
 function N(a) {
   return function (b) {
     let c = m,
@@ -4409,170 +4067,6 @@ function N(a) {
 
 function O() {}
 
-function Q$1() {}
-
-function R() {}
-
-function S() {}
-
-function buffer$1(a) {
-  return function (b) {
-    return function (c) {
-      function d(a) {
-        'number' == typeof a
-          ? k || ((k = !0), f(1), 0 < e.length && c(l$1(1, [e])), c(0))
-          : a.tag
-          ? !k && 0 < e.length && ((a = e), (e = []), c(l$1(1, [a])))
-          : (g = a[0]);
-      }
-      let e = [],
-        f = m,
-        g = m,
-        h = !1,
-        k = !1;
-      b(function (b) {
-        'number' == typeof b
-          ? k || ((k = !0), g(1), 0 < e.length && c(l$1(1, [e])), c(0))
-          : b.tag
-          ? k || (e.push(b[0]), h ? (h = !1) : ((h = !0), f(0), g(0)))
-          : ((f = b[0]), a(d));
-      });
-      c(
-        l$1(0, [
-          function (a) {
-            if (!k) {
-              if (a) {
-                return (k = !0), f(1), g(1);
-              }
-              if (!h) {
-                return (h = !0), f(0), g(0);
-              }
-            }
-          },
-        ])
-      );
-    };
-  };
-}
-
-function combine$1(a, b) {
-  return (function (a, b) {
-    return function (c) {
-      let d = m,
-        e = m,
-        f = void 0,
-        g = void 0,
-        h = !1,
-        k = 0,
-        n = !1;
-      a(function (a) {
-        var b = g;
-        'number' == typeof a
-          ? 1 > k
-            ? (k = (k + 1) | 0)
-            : n || ((n = !0), c(0))
-          : a.tag
-          ? ((a = a[0]),
-            void 0 !== b
-              ? n || ((f = w(a)), (h = !1), c(l$1(1, [[a, x(b)]])))
-              : ((f = w(a)), h ? (h = !1) : e(0)))
-          : (d = a[0]);
-      });
-      b(function (a) {
-        var b = f;
-        'number' == typeof a
-          ? 1 > k
-            ? (k = (k + 1) | 0)
-            : n || ((n = !0), c(0))
-          : a.tag
-          ? ((a = a[0]),
-            void 0 !== b
-              ? n || ((g = w(a)), (h = !1), c(l$1(1, [[x(b), a]])))
-              : ((g = w(a)), h ? (h = !1) : d(0)))
-          : (e = a[0]);
-      });
-      c(
-        l$1(0, [
-          function (c) {
-            if (!n) {
-              if (c) {
-                return (n = !0), d(1), e(1);
-              }
-              if (!h) {
-                return (h = !0), d(c), e(c);
-              }
-            }
-          },
-        ])
-      );
-    };
-  })(a, b);
-}
-
-function concat$1(a) {
-  return z(B)(p$1(a));
-}
-
-function concatAll$1(a) {
-  return z(A)(a);
-}
-
-function debounce$1(a) {
-  return function (b) {
-    return function (c) {
-      function d() {
-        var a = e;
-        void 0 !== a && ((e = void 0), clearTimeout(x(a)));
-      }
-      let e = void 0,
-        f = !1,
-        g = !1;
-      return b(function (b) {
-        if ('number' == typeof b) {
-          g || ((g = !0), void 0 !== e ? (f = !0) : c(0));
-        } else if (b.tag) {
-          g ||
-            (d(),
-            (e = w(
-              setTimeout(function () {
-                e = void 0;
-                c(b);
-                f && c(0);
-              }, a(b[0]))
-            )));
-        } else {
-          var n = b[0];
-          c(
-            l$1(0, [
-              function (a) {
-                if (!g) {
-                  return a ? ((g = !0), (f = !1), d(), n(1)) : n(0);
-                }
-              },
-            ])
-          );
-        }
-      });
-    };
-  };
-}
-
-function delay$1(a) {
-  return function (b) {
-    return function (c) {
-      let d = 0;
-      return b(function (b) {
-        'number' == typeof b || b.tag
-          ? ((d = (d + 1) | 0),
-            setTimeout(function () {
-              0 !== d && ((d = (d - 1) | 0), c(b));
-            }, a))
-          : c(b);
-      });
-    };
-  };
-}
-
 function filter$1(a) {
   return function (b) {
     return function (c) {
@@ -4584,122 +4078,6 @@ function filter$1(a) {
   };
 }
 
-function forEach$1(a) {
-  return function (b) {
-    N(a)(b);
-  };
-}
-
-function fromCallbag$2(a) {
-  return function (b) {
-    function c(a, c) {
-      switch (a) {
-        case 0:
-          b(
-            l$1(0, [
-              function (a) {
-                return a ? c(2) : c(1);
-              },
-            ])
-          );
-          break;
-
-        case 1:
-          b(l$1(1, [c]));
-          break;
-
-        case 2:
-          b(0);
-      }
-    }
-    return 2 === a.length ? a(0, c) : a.bind(null, 0, c);
-  };
-}
-
-function fromDomEvent$1(a, b) {
-  return (function (a, b) {
-    return function (c) {
-      function d(a) {
-        c(l$1(1, [a]));
-      }
-      c(
-        l$1(0, [
-          function (c) {
-            c && a.removeEventListener(b, d);
-          },
-        ])
-      );
-      a.addEventListener(b, d);
-    };
-  })(a, b);
-}
-
-function fromList$1(a) {
-  return function (b) {
-    let c = !1,
-      d = !1,
-      e = !1,
-      f = a;
-    b(
-      l$1(0, [
-        function (a) {
-          if (a) {
-            c = !0;
-          } else if (d) {
-            e = !0;
-          } else {
-            for (d = e = !0; e && !c; ) {
-              (a = f) ? ((f = a[1]), (e = !1), b(l$1(1, [a[0]]))) : ((c = !0), b(0));
-            }
-            d = !1;
-          }
-        },
-      ])
-    );
-  };
-}
-
-function fromObservable$2(a) {
-  var b = void 0 !== a[P] ? a[P]() : a;
-  return function (a) {
-    var c = b.subscribe({
-      next: function (c) {
-        a(l$1(1, [c]));
-      },
-      complete: function () {
-        a(0);
-      },
-      error: Q$1,
-    });
-    a(
-      l$1(0, [
-        function (a) {
-          if (a) {
-            return c.unsubscribe();
-          }
-        },
-      ])
-    );
-  };
-}
-
-function fromPromise$1(a) {
-  return function (b) {
-    let c = !1;
-    a.then(function (a) {
-      c || (b(l$1(1, [a])), b(0));
-      return Promise.resolve(void 0);
-    });
-    b(
-      l$1(0, [
-        function (a) {
-          a && (c = !0);
-        },
-      ])
-    );
-  };
-}
-
 function fromValue$1(a) {
   return function (b) {
     let c = !1;
@@ -4707,24 +4085,6 @@ function fromValue$1(a) {
       l$1(0, [
         function (d) {
           d ? (c = !0) : c || ((c = !0), b(l$1(1, [a])), b(0));
-        },
-      ])
-    );
-  };
-}
-
-function interval$1(a) {
-  return function (b) {
-    let c = 0;
-    var d = setInterval(function () {
-      var a = c;
-      c = (c + 1) | 0;
-      b(l$1(1, [a]));
-    }, a);
-    b(
-      l$1(0, [
-        function (a) {
-          a && clearInterval(d);
         },
       ])
     );
@@ -4799,10 +4159,6 @@ function merge$1(a) {
   return D(E)(p$1(a));
 }
 
-function never$1(a) {
-  a(l$1(0, [m]));
-}
-
 function onEnd$1(a) {
   return function (b) {
     return function (c) {
@@ -4845,74 +4201,8 @@ function onStart$1(a) {
   };
 }
 
-function pipe() {
-  for (var a = arguments, b = arguments[0], c = 1, d = arguments.length; c < d; c++) {
-    b = a[c](b);
-  }
-  return b;
-}
-
 function publish$1(a) {
   return N(O)(a);
-}
-
-function sample$1(a) {
-  return function (b) {
-    return function (c) {
-      let d = m,
-        e = m,
-        f = void 0,
-        g = !1,
-        h = !1;
-      b(function (a) {
-        'number' == typeof a
-          ? h || ((h = !0), e(1), c(0))
-          : a.tag
-          ? ((f = w(a[0])), g ? (g = !1) : ((g = !0), e(0), d(0)))
-          : (d = a[0]);
-      });
-      a(function (a) {
-        var b = f;
-        'number' == typeof a
-          ? h || ((h = !0), d(1), c(0))
-          : a.tag
-          ? void 0 === b || h || ((f = void 0), c(l$1(1, [x(b)])))
-          : (e = a[0]);
-      });
-      c(
-        l$1(0, [
-          function (a) {
-            if (!h) {
-              if (a) {
-                return (h = !0), d(1), e(1);
-              }
-              if (!g) {
-                return (g = !0), d(0), e(0);
-              }
-            }
-          },
-        ])
-      );
-    };
-  };
-}
-
-function scan$1(a, b) {
-  return (function (a, b) {
-    return function (c) {
-      return function (d) {
-        let e = b;
-        return c(function (c) {
-          'number' == typeof c
-            ? (c = 0)
-            : c.tag
-            ? ((e = a(e, c[0])), (c = l$1(1, [e])))
-            : (c = l$1(0, [c[0]]));
-          d(c);
-        });
-      };
-    };
-  })(a, b);
 }
 
 function share$1(a) {
@@ -4949,93 +4239,6 @@ function share$1(a) {
       ])
     );
   };
-}
-
-function skip$1(a) {
-  return function (b) {
-    return function (c) {
-      let d = m,
-        e = a;
-      return b(function (a) {
-        'number' == typeof a
-          ? c(a)
-          : a.tag
-          ? 0 < e
-            ? ((e = (e - 1) | 0), d(0))
-            : c(a)
-          : ((d = a[0]), c(a));
-      });
-    };
-  };
-}
-
-function skipUntil$1(a) {
-  return function (b) {
-    return function (c) {
-      function d(a) {
-        'number' == typeof a
-          ? g && ((k = !0), e(1))
-          : a.tag
-          ? ((g = !1), f(1))
-          : ((f = a = a[0]), a(0));
-      }
-      let e = m,
-        f = m,
-        g = !0,
-        h = !1,
-        k = !1;
-      b(function (b) {
-        'number' == typeof b
-          ? (g && f(1), (k = !0), c(0))
-          : b.tag
-          ? g || k
-            ? h
-              ? (h = !1)
-              : ((h = !0), e(0), f(0))
-            : ((h = !1), c(b))
-          : ((e = b[0]), a(d));
-      });
-      c(
-        l$1(0, [
-          function (a) {
-            if (!k) {
-              if (a) {
-                if (((k = !0), e(1), g)) {
-                  return f(1);
-                }
-              } else {
-                h || ((h = !0), g && f(0), e(0));
-              }
-            }
-          },
-        ])
-      );
-    };
-  };
-}
-
-function skipWhile$1(a) {
-  return function (b) {
-    return function (c) {
-      let d = m,
-        e = !0;
-      return b(function (b) {
-        'number' == typeof b
-          ? c(b)
-          : b.tag
-          ? e
-            ? a(b[0])
-              ? d(0)
-              : ((e = !1), c(b))
-            : c(b)
-          : ((d = b[0]), c(b));
-      });
-    };
-  };
-}
-
-function switchAll$1(a) {
-  return K(L$1)(a);
 }
 
 function take$1(a) {
@@ -5094,146 +4297,7 @@ function takeUntil$1(a) {
   };
 }
 
-function takeWhile$1(a) {
-  return function (b) {
-    return function (c) {
-      let d = m,
-        e = !1;
-      return b(function (b) {
-        'number' == typeof b
-          ? e || ((e = !0), c(0))
-          : b.tag
-          ? e || (a(b[0]) ? c(b) : ((e = !0), c(0), d(1)))
-          : ((d = b[0]), c(b));
-      });
-    };
-  };
-}
-
-function throttle$1(a) {
-  return function (b) {
-    return function (c) {
-      function d() {
-        void 0 !== g && clearTimeout(x(g));
-      }
-      function e() {
-        g = void 0;
-        f = !1;
-      }
-      let f = !1,
-        g = void 0;
-      return b(function (b) {
-        if ('number' == typeof b) {
-          d(), c(0);
-        } else if (b.tag) {
-          f || ((f = !0), d(), (g = w(setTimeout(e, a(b[0])))), c(b));
-        } else {
-          var h = b[0];
-          c(
-            l$1(0, [
-              function (a) {
-                return a ? (d(), h(1)) : h(a);
-              },
-            ])
-          );
-        }
-      });
-    };
-  };
-}
-
-function toArray$1(a) {
-  let b = [],
-    c = m,
-    d = !1;
-  a(function (a) {
-    'number' == typeof a ? (d = !0) : a.tag ? (b.push(a[0]), c(0)) : ((c = a = a[0]), a(0));
-  });
-  d || c(1);
-  return b;
-}
-
-function toCallbag$2(a) {
-  return function (b, c) {
-    if (0 === b) {
-      return a(function (a) {
-        function b(a) {
-          switch (a) {
-            case 1:
-              d(0);
-              break;
-
-            case 2:
-              d(1);
-          }
-        }
-        if ('number' == typeof a) {
-          return 2 === c.length ? c(2, void 0) : c.bind(null, 2, void 0);
-        }
-        if (a.tag) {
-          return (a = a[0]), 2 === c.length ? c(1, a) : c.bind(null, 1, a);
-        }
-        var d = a[0];
-        return 2 === c.length ? c(0, b) : c.bind(null, 0, b);
-      });
-    }
-  };
-}
-
-function toObservable$2(a) {
-  var b = {
-    subscribe: function (b, d, e) {
-      var c = ('object' == typeof b ? b.next.bind(b) : b) || R,
-        g = ('object' == typeof b ? b.complete.bind(b) : e) || S;
-      let h = m,
-        k = !1;
-      a(function (a) {
-        if ('number' == typeof a) {
-          return (k = !0), g();
-        }
-        if (a.tag) {
-          if (k) {
-            return;
-          }
-          c(a[0]);
-          return h(0);
-        }
-        h = a = a[0];
-        a(0);
-      });
-      return {
-        unsubscribe: function () {
-          if (!k) {
-            return (this.closed = !1), (k = !0), h(1);
-          }
-        },
-        closed: !1,
-      };
-    },
-  };
-  b[P] = function () {
-    return b;
-  };
-  return b;
-}
-
-function toPromise$1(a) {
-  return new Promise(function (b) {
-    M(1)(a)(function (a) {
-      if ('number' != typeof a) {
-        if (a.tag) {
-          b(a[0]);
-        } else {
-          a[0](0);
-        }
-      }
-    });
-  });
-}
-
-var v = [],
-  P =
-    'function' == typeof Symbol
+'function' == typeof Symbol
       ? Symbol.observable || (Symbol.observable = Symbol('observable'))
       : '@@observable';
 
@@ -5414,15 +4478,6 @@ function getOperationName(e) {
     var a = e.definitions[t];
     if (a.kind === Kind.OPERATION_DEFINITION && a.name) {
       return a.name.value;
-    }
-  }
-}
-
-function getOperationType(e) {
-  for (var t = 0, n = e.definitions.length; t < n; t++) {
-    var a = e.definitions[t];
-    if (a.kind === Kind.OPERATION_DEFINITION) {
-      return a.operation;
     }
   }
 }
@@ -5804,46 +4859,6 @@ function addMetadata(e, n) {
 
 function noop() {}
 
-function applyDefinitions(e, r, t) {
-  for (var a = 0; a < t.length; a++) {
-    if (t[a].kind === Kind.FRAGMENT_DEFINITION) {
-      var o = t[a].name.value;
-      var i = stringifyDocument(t[a]);
-      if (!e.has(o)) {
-        e.set(o, i);
-        r.push(t[a]);
-      } else if ("production" !== "development" && e.get(o) !== i) {
-        console.warn("[WARNING: Duplicate Fragment] A fragment with name `" + o + "` already exists in this document.\nWhile fragment names may not be unique across your source, each name must be unique per document.");
-      }
-    } else {
-      r.push(t[a]);
-    }
-  }
-}
-
-function gql() {
-  var e = arguments;
-  var r = new Map;
-  var a = [];
-  var o = [];
-  var i = Array.isArray(arguments[0]) ? arguments[0][0] : arguments[0] || "";
-  for (var u = 1; u < arguments.length; u++) {
-    var c = e[u];
-    if (c && c.definitions) {
-      o.push.apply(o, c.definitions);
-    } else {
-      i += c;
-    }
-    i += e[0][u];
-  }
-  applyDefinitions(r, a, keyDocument(i).definitions);
-  applyDefinitions(r, a, o);
-  return keyDocument({
-    kind: Kind.DOCUMENT,
-    definitions: a
-  });
-}
-
 function shouldSkip(e) {
   var n = e.kind;
   return "mutation" !== n && "query" !== n;
@@ -5852,7 +4867,6 @@ function shouldSkip(e) {
 function cacheExchange(e) {
   var n = e.forward;
   var r = e.client;
-  var t = e.dispatchDebug;
   var a = new Map;
   var i = Object.create(null);
   function mapTypeNames(e) {
@@ -5868,15 +4882,6 @@ function cacheExchange(e) {
     var u = share$1(e);
     var c = map$1((function(e) {
       var n = a.get(e.key);
-      "production" !== "development" && t(_extends({}, {
-        operation: e
-      }, n ? {
-        type: "cacheHit",
-        message: "The result was successfully retried from the cache"
-      } : {
-        type: "cacheMiss",
-        message: "The result could not be retrieved from the cache"
-      }));
       var i = _extends({}, n, {
         operation: addMetadata(e, {
           cacheOutcome: n ? "hit" : "miss"
@@ -5898,16 +4903,6 @@ function cacheExchange(e) {
       var o = collectTypesFromResponse(e.data).concat(n.context.additionalTypenames || []);
       if ("mutation" === e.operation.kind) {
         var u = new Set;
-        "production" !== "development" && t({
-          type: "cacheInvalidation",
-          message: "The following typenames have been invalidated: " + o,
-          operation: n,
-          data: {
-            typenames: o,
-            response: e
-          },
-          source: "cacheExchange"
-        });
         for (var c = 0; c < o.length; c++) {
           var s = o[c];
           var f = i[s] || (i[s] = new Set);
@@ -5951,213 +4946,8 @@ function reexecuteOperation(e, n) {
   })));
 }
 
-var Q = new Set;
-
-function ssrExchange(e) {
-  var n = !(!e || !e.staleWhileRevalidate);
-  var r = !(!e || !e.includeExtensions);
-  var t = {};
-  var a = [];
-  function invalidate(e) {
-    a.push(e.operation.key);
-    if (1 === a.length) {
-      Promise.resolve().then((function() {
-        var e;
-        while (e = a.shift()) {
-          t[e] = null;
-        }
-      }));
-    }
-  }
-  var ssr = function(a) {
-    var o$1 = a.client;
-    var i = a.forward;
-    return function(a) {
-      var u = e && "boolean" == typeof e.isClient ? !!e.isClient : !o$1.suspense;
-      var s = share$1(a);
-      var f = i(filter$1((function(e) {
-        return !t[e.key] || !!t[e.key].hasNext;
-      }))(s));
-      var p = map$1((function(e) {
-        var a = function deserializeResult(e, n, r) {
-          return {
-            operation: e,
-            data: n.data ? JSON.parse(n.data) : void 0,
-            extensions: r && n.extensions ? JSON.parse(n.extensions) : void 0,
-            error: n.error ? new o({
-              networkError: n.error.networkError ? new Error(n.error.networkError) : void 0,
-              graphQLErrors: n.error.graphQLErrors
-            }) : void 0,
-            hasNext: n.hasNext
-          };
-        }(e, t[e.key], r);
-        if (n && !Q.has(e.key)) {
-          a.stale = !0;
-          Q.add(e.key);
-          reexecuteOperation(o$1, e);
-        }
-        return a;
-      }))(filter$1((function(e) {
-        return !!t[e.key] && "network-only" !== e.context.requestPolicy;
-      }))(s));
-      if (!u) {
-        f = H((function(e) {
-          var n = e.operation;
-          if ("mutation" !== n.kind) {
-            var a = function serializeResult(e, n) {
-              var r = e.hasNext;
-              var t = e.data;
-              var a = e.extensions;
-              var o = e.error;
-              var i = {};
-              if (void 0 !== t) {
-                i.data = JSON.stringify(t);
-              }
-              if (n && void 0 !== a) {
-                i.extensions = JSON.stringify(a);
-              }
-              if (r) {
-                i.hasNext = !0;
-              }
-              if (o) {
-                i.error = {
-                  graphQLErrors: o.graphQLErrors.map((function(e) {
-                    if (!e.path && !e.extensions) {
-                      return e.message;
-                    }
-                    return {
-                      message: e.message,
-                      path: e.path,
-                      extensions: e.extensions
-                    };
-                  }))
-                };
-                if (o.networkError) {
-                  i.error.networkError = "" + o.networkError;
-                }
-              }
-              return i;
-            }(e, r);
-            t[n.key] = a;
-          }
-        }))(f);
-      } else {
-        p = H(invalidate)(p);
-      }
-      return merge$1([ f, p ]);
-    };
-  };
-  ssr.restoreData = function(e) {
-    for (var n in e) {
-      if (null !== t[n]) {
-        t[n] = e[n];
-      }
-    }
-  };
-  ssr.extractData = function() {
-    var e = {};
-    for (var n in t) {
-      if (null != t[n]) {
-        e[n] = t[n];
-      }
-    }
-    return e;
-  };
-  if (e && e.initialState) {
-    ssr.restoreData(e.initialState);
-  }
-  return ssr;
-}
-
-function subscriptionExchange(e) {
-  var n = e.forwardSubscription;
-  var t = e.enableAllOperations;
-  var a = e.isSubscriptionOperation;
-  return function(e) {
-    var i = e.client;
-    var u = e.forward;
-    var c = a || function(e) {
-      var n = e.kind;
-      return "subscription" === n || !!t && ("query" === n || "mutation" === n);
-    };
-    return function(e) {
-      var t = share$1(e);
-      var a = D((function(e) {
-        var a = e.key;
-        var u = filter$1((function(e) {
-          return "teardown" === e.kind && e.key === a;
-        }))(t);
-        return takeUntil$1(u)(function createSubscriptionSource(e) {
-          var t = n({
-            key: e.key.toString(36),
-            query: print(e.query),
-            variables: e.variables,
-            context: _extends({}, e.context)
-          });
-          return make$1((function(n) {
-            var r = n.next;
-            var a = n.complete;
-            var o = !1;
-            var u;
-            Promise.resolve().then((function() {
-              if (o) {
-                return;
-              }
-              u = t.subscribe({
-                next: function(n) {
-                  return r(makeResult(e, n));
-                },
-                error: function(n) {
-                  return r(makeErrorResult(e, n));
-                },
-                complete: function() {
-                  if (!o) {
-                    o = !0;
-                    if ("subscription" === e.kind) {
-                      i.reexecuteOperation(makeOperation("teardown", e, e.context));
-                    }
-                    a();
-                  }
-                }
-              });
-            }));
-            return function() {
-              o = !0;
-              if (u) {
-                u.unsubscribe();
-              }
-            };
-          }));
-        }(e));
-      }))(filter$1(c)(t));
-      var f = u(filter$1((function(e) {
-        return !c(e);
-      }))(t));
-      return merge$1([ a, f ]);
-    };
-  };
-}
-
-function debugExchange(e) {
-  var n = e.forward;
-  if ("production" === "development") {
-    return function(e) {
-      return n(e);
-    };
-  } else {
-    return function(e) {
-      return H((function(e) {
-        return console.log("[Exchange debug]: Completed operation: ", e);
-      }))(n(H((function(e) {
-        return console.log("[Exchange debug]: Incoming operation: ", e);
-      }))(e)));
-    };
-  }
-}
-
 function dedupExchange(e) {
   var n = e.forward;
-  var r = e.dispatchDebug;
   var t = new Set;
   function filterIncomingOperation(e) {
     var n = e.key;
@@ -6171,14 +4961,6 @@ function dedupExchange(e) {
     }
     var o = t.has(n);
     t.add(n);
-    if (o) {
-      "production" !== "development" && r({
-        type: "dedup",
-        message: "An operation has been deduped.",
-        operation: e,
-        source: "dedupExchange"
-      });
-    }
     return !o;
   }
   function afterOperationResult(e) {
@@ -6194,7 +4976,6 @@ function dedupExchange(e) {
 
 function fetchExchange(e) {
   var n = e.forward;
-  var r = e.dispatchDebug;
   return function(e) {
     var t = share$1(e);
     var a = D((function(e) {
@@ -6205,29 +4986,7 @@ function fetchExchange(e) {
       var o = makeFetchBody(e);
       var i = makeFetchURL(e, o);
       var u = makeFetchOptions(e, o);
-      "production" !== "development" && r({
-        type: "fetchRequest",
-        message: "A fetch request is being executed.",
-        operation: e,
-        data: {
-          url: i,
-          fetchOptions: u
-        },
-        source: "fetchExchange"
-      });
       return H((function(n) {
-        var t = !n.data ? n.error : void 0;
-        "production" !== "development" && r({
-          type: t ? "fetchError" : "fetchSuccess",
-          message: "A " + (t ? "failed" : "successful") + " fetch response has been returned.",
-          operation: e,
-          data: {
-            url: i,
-            fetchOptions: u,
-            value: t || n
-          },
-          source: "fetchExchange"
-        });
       }))(takeUntil$1(a)(makeFetchSource(e, i, u)));
     }))(filter$1((function(e) {
       return "query" === e.kind || "mutation" === e.kind;
@@ -6240,69 +4999,35 @@ function fetchExchange(e) {
 }
 
 function fallbackExchange(e) {
-  var n = e.dispatchDebug;
   return function(e) {
     return filter$1((function() {
       return !1;
     }))(H((function(e) {
-      if ("teardown" !== e.kind && "production" !== "development") {
+      if ("teardown" !== e.kind && "production" !== "production") {
         var r = 'No exchange has handled operations of kind "' + e.kind + "\". Check whether you've added an exchange responsible for these operations.";
-        "production" !== "development" && n({
-          type: "fallbackCatch",
-          message: r,
-          operation: e,
-          source: "fallbackExchange"
-        });
         console.warn(r);
       }
     }))(e));
   };
 }
 
-var G = fallbackExchange({
-  dispatchDebug: noop
-});
-
 function composeExchanges(e) {
   return function(n) {
     var r = n.client;
-    var t = n.dispatchDebug;
     return e.reduceRight((function(e, n) {
       return n({
         client: r,
         forward: e,
         dispatchDebug: function dispatchDebug$1(e) {
-          "production" !== "development" && t(_extends({}, {
-            timestamp: Date.now(),
-            source: n.name
-          }, e));
         }
       });
     }), n.forward);
   };
 }
 
-function errorExchange(e) {
-  var n = e.onError;
-  return function(e) {
-    var r = e.forward;
-    return function(e) {
-      return H((function(e) {
-        var r = e.error;
-        if (r) {
-          n(r, e.operation);
-        }
-      }))(r(e));
-    };
-  };
-}
-
 var L = [ dedupExchange, cacheExchange, fetchExchange ];
 
 var J = function Client(e) {
-  if ("production" !== "development" && !e.url) {
-    throw new Error("You are creating an urql-client without a url.");
-  }
   var n = new Map;
   var r = new Map;
   var t = [];
@@ -6396,10 +5121,6 @@ var J = function Client(e) {
       });
     },
     createRequestOperation: function createRequestOperation(e, n, r) {
-      var t = getOperationType(n.query);
-      if ("production" !== "development" && "teardown" !== e && t !== e) {
-        throw new Error('Expected operation of type "' + e + '" but found "' + t + '"');
-      }
       var a = f.createOperationContext(r);
       if ("mutation" === e) {
         a._instance = [];
@@ -6471,22 +5192,11 @@ var J = function Client(e) {
     }
   });
   var p = noop;
-  if ("production" !== "development") {
-    var l = makeSubject$1();
-    var d = l.next;
-    var v = l.source;
-    f.subscribeToDebugTarget = function(e) {
-      return N(e)(v);
-    };
-    p = d;
-  }
   var h = composeExchanges(void 0 !== e.exchanges ? e.exchanges : L);
   var y = share$1(h({
     client: f,
     dispatchDebug: p,
-    forward: fallbackExchange({
-      dispatchDebug: p
-    })
+    forward: fallbackExchange()
   })(i));
   publish$1(y);
   return f;
@@ -6494,7 +5204,7 @@ var J = function Client(e) {
 
 var W = J;
 
-var __awaiter$Z = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -6503,7 +5213,7 @@ var __awaiter$Z = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$Z = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -6542,16 +5252,15 @@ var GraphqlService = /** @class */ (function () {
             fetchOptions: {
                 headers: {
                     token: token,
-                    domain: domain,
-                    'Client-Name': 'storefront-core'
+                    domain: domain
                 }
             }
         });
     }
     GraphqlService.prototype.query = function (query, variables) {
-        return __awaiter$Z(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_1;
-            return __generator$Z(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -6570,9 +5279,9 @@ var GraphqlService = /** @class */ (function () {
         });
     };
     GraphqlService.prototype.mutation = function (query, variables) {
-        return __awaiter$Z(this, void 0, void 0, function () {
+        return __awaiter$a(this, void 0, void 0, function () {
             var _a, data, error, error_2;
-            return __generator$Z(this, function (_b) {
+            return __generator$a(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -6612,7 +5321,7 @@ var AppQueries = /** @class */ (function () {
     return AppQueries;
 }());
 
-var __awaiter$Y = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -6621,7 +5330,7 @@ var __awaiter$Y = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$Y = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -6652,9 +5361,9 @@ var AppRepositoryGql = /** @class */ (function () {
     function AppRepositoryGql() {
     }
     AppRepositoryGql.getById = function (id, fields) {
-        return __awaiter$Y(this, void 0, void 0, function () {
+        return __awaiter$9(this, void 0, void 0, function () {
             var appQuery, getAppQuery, app;
-            return __generator$Y(this, function (_a) {
+            return __generator$9(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         appQuery = new AppQueries(fields);
@@ -6668,9 +5377,9 @@ var AppRepositoryGql = /** @class */ (function () {
         });
     };
     AppRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$Y(this, void 0, void 0, function () {
+        return __awaiter$9(this, void 0, void 0, function () {
             var appQuery, getAppQuery, app;
-            return __generator$Y(this, function (_a) {
+            return __generator$9(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         appQuery = new AppQueries(fields);
@@ -6699,7 +5408,7 @@ var BroadcastService = /** @class */ (function () {
     return BroadcastService;
 }());
 
-var __awaiter$X = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -6708,7 +5417,7 @@ var __awaiter$X = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$X = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -6735,18 +5444,18 @@ var __generator$X = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var Repository$j = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
+var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
 var AppService = /** @class */ (function () {
     function AppService() {
     }
     AppService.getById = function (id, fields) {
-        return __awaiter$X(this, void 0, void 0, function () {
+        return __awaiter$8(this, void 0, void 0, function () {
             var result, error_1;
-            return __generator$X(this, function (_a) {
+            return __generator$8(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$j().getById(Number(id), fields)];
+                        return [4 /*yield*/, Repository$2().getById(Number(id), fields)];
                     case 1:
                         result = _a.sent();
                         BroadcastService.emit('Apps', result);
@@ -6760,13 +5469,13 @@ var AppService = /** @class */ (function () {
         });
     };
     AppService.getBySlug = function (slug, fields) {
-        return __awaiter$X(this, void 0, void 0, function () {
+        return __awaiter$8(this, void 0, void 0, function () {
             var result, error_2;
-            return __generator$X(this, function (_a) {
+            return __generator$8(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$j().getBySlug(slug, fields)];
+                        return [4 /*yield*/, Repository$2().getBySlug(slug, fields)];
                     case 1:
                         result = _a.sent();
                         BroadcastService.emit('Apps', result);
@@ -6782,3964 +5491,12 @@ var AppService = /** @class */ (function () {
     return AppService;
 }());
 
-var BlogCategoryQueries = /** @class */ (function () {
-    function BlogCategoryQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    BlogCategoryQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    BlogCategoryQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'slug',
-            'description',
-            'metaTitle',
-            'metaDescription',
-            'isActive',
-            'postsCount',
-            'position',
-            'createdAt',
-            'updatedAt'
-        ];
-    };
-    BlogCategoryQueries.prototype.getOnefullQuery = function () {
-        return "query BlogCategory($filter: filterBlogCategory) {\n        blogCategory(filter: $filter) {\n                ".concat(this.getFields(), "\n            }\n        }");
-    };
-    BlogCategoryQueries.prototype.listFullQuery = function () {
-        return "query BlogCategories {\n        blogCategories {\n          ".concat(this.getFields(), "\n            }\n        }");
-    };
-    return BlogCategoryQueries;
-}());
-
-var __assign$q = (undefined && undefined.__assign) || function () {
-    __assign$q = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$q.apply(this, arguments);
-};
-var __awaiter$W = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$W = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BlogCategoryRepositoryGql = /** @class */ (function () {
-    function BlogCategoryRepositoryGql() {
-    }
-    BlogCategoryRepositoryGql.getList = function (fields) {
-        return __awaiter$W(this, void 0, void 0, function () {
-            var blogCategoryQuery, blogCategoryListQuery, blogCategories;
-            return __generator$W(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        blogCategoryQuery = new BlogCategoryQueries(fields);
-                        blogCategoryListQuery = blogCategoryQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(blogCategoryListQuery)];
-                    case 1:
-                        blogCategories = (_a.sent()).blogCategories;
-                        return [2 /*return*/, blogCategories];
-                }
-            });
-        });
-    };
-    BlogCategoryRepositoryGql.getOne = function (OptionsGetBlogCategory) {
-        return __awaiter$W(this, void 0, void 0, function () {
-            var fields, filter, blogCategoryQuery, blogCategoryGetOneQuery, blogCategory;
-            return __generator$W(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        fields = OptionsGetBlogCategory.fields, filter = OptionsGetBlogCategory.filter;
-                        blogCategoryQuery = new BlogCategoryQueries(fields);
-                        blogCategoryGetOneQuery = blogCategoryQuery.getOnefullQuery();
-                        return [4 /*yield*/, getClient().query(blogCategoryGetOneQuery, filter && { filter: __assign$q({}, filter) })];
-                    case 1:
-                        blogCategory = (_a.sent()).blogCategory;
-                        return [2 /*return*/, blogCategory];
-                }
-            });
-        });
-    };
-    BlogCategoryRepositoryGql.getById = function (id, fields) {
-        return __awaiter$W(this, void 0, void 0, function () {
-            return __generator$W(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    BlogCategoryRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$W(this, void 0, void 0, function () {
-            return __generator$W(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return BlogCategoryRepositoryGql;
-}());
-
-var __assign$p = (undefined && undefined.__assign) || function () {
-    __assign$p = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$p.apply(this, arguments);
-};
-var __awaiter$V = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$V = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __spreadArray$2 = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-var BlogCategoryRepositoryJson = /** @class */ (function () {
-    function BlogCategoryRepositoryJson() {
-    }
-    BlogCategoryRepositoryJson.getList = function (fields) {
-        var _a;
-        return __awaiter$V(this, void 0, void 0, function () {
-            return __generator$V(this, function (_b) {
-                return [2 /*return*/, __spreadArray$2([], (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogCategory, true) || []];
-            });
-        });
-    };
-    BlogCategoryRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$V(this, void 0, void 0, function () {
-            var blogCategories, blogCategory, result;
-            return __generator$V(this, function (_b) {
-                blogCategories = __spreadArray$2([], (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogCategory, true);
-                blogCategory = blogCategories && blogCategories.find(function (blogCategory) { return blogCategory.id == id; });
-                if (!blogCategory) {
-                    throw new Error('blog-category_not_found');
-                }
-                result = __assign$p({}, blogCategory);
-                result && this.applyFieldFilters(result, fields);
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BlogCategoryRepositoryJson.getBySlug = function (slug, fields) {
-        var _a;
-        return __awaiter$V(this, void 0, void 0, function () {
-            var blogCategories, blogCategory, result;
-            return __generator$V(this, function (_b) {
-                blogCategories = __spreadArray$2([], (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogCategory, true);
-                blogCategory = blogCategories && blogCategories.find(function (blogCategory) { return blogCategory.slug == slug; });
-                if (!blogCategory) {
-                    throw new Error('blog-category_not_found');
-                }
-                result = __assign$p({}, blogCategory);
-                result && this.applyFieldFilters(result, fields);
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BlogCategoryRepositoryJson.applyFieldFilters = function (result, fields) {
-        var isFIeldNotSelected = function (entry) { return !fields.includes(entry); };
-        var deleteFieldIfNecessary = function (entry) {
-            isFIeldNotSelected(entry) && delete result[entry];
-        };
-        fields && Object.keys(result).forEach(deleteFieldIfNecessary);
-    };
-    return BlogCategoryRepositoryJson;
-}());
-
-var __awaiter$U = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$U = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$i = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogCategory) ? BlogCategoryRepositoryJson : BlogCategoryRepositoryGql); };
-var BlogCategoryService = /** @class */ (function () {
-    function BlogCategoryService() {
-    }
-    BlogCategoryService.getById = function (id, fields) {
-        return __awaiter$U(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$U(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$i().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Blog', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BlogCategoryService.getBySlug = function (slug, fields) {
-        return __awaiter$U(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$U(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$i().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Blog', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BlogCategoryService.getList = function (fields) {
-        return __awaiter$U(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$U(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$i().getList(fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Blog', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return BlogCategoryService;
-}());
-
 function normalizePagination(page, items) {
     if (page === void 0) { page = 1; }
     if (items === void 0) { items = 12; }
     var offset = (page - 1) * items + 1;
     return { page: Number(offset), first: Number(items) };
 }
-
-var BlogPostQueries = /** @class */ (function () {
-    function BlogPostQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    BlogPostQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    BlogPostQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'postCategoryId',
-            'name',
-            'slug',
-            'image {src, alt}',
-            'description',
-            'tags',
-            'isActive',
-            'metaTitle',
-            'metaDescription',
-            'metaKeywords',
-            'createdAt',
-            'updatedAt',
-            "category {\n            id,\n            name,\n            slug,\n            description,\n            metaTitle,\n            metaDescription,\n            isActive,\n            postsCount,\n            position,\n            createdAt,\n            updatedAt\n        }"
-        ];
-    };
-    BlogPostQueries.prototype.listFullQuery = function () {
-        return "query BlogPosts($filter: filterBlogPosts) {\n        blogPosts(filter: $filter) {\n            edges {\n              node {\n                ".concat(this.getFields(), "\n              }\n              cursor\n            }\n            pageInfo {\n              hasNextPage\n              hasPreviousPage\n              startCursor\n              endCursor\n              first\n              total\n            }\n          }\n        }");
-    };
-    BlogPostQueries.prototype.getOnefullQuery = function () {
-        return "query BlogPost($filter: filterBlogPost) {\n        blogPost(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return BlogPostQueries;
-}());
-
-var __assign$o = (undefined && undefined.__assign) || function () {
-    __assign$o = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$o.apply(this, arguments);
-};
-var __awaiter$T = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$T = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BlogPostRepositoryGql = /** @class */ (function () {
-    function BlogPostRepositoryGql() {
-    }
-    BlogPostRepositoryGql.getList = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$T(this, void 0, void 0, function () {
-            var blogPostQuery, blogPostListQuery, blogPosts;
-            return __generator$T(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        blogPostQuery = new BlogPostQueries(fields);
-                        blogPostListQuery = blogPostQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(blogPostListQuery, filter && { filter: __assign$o({}, filter) })];
-                    case 1:
-                        blogPosts = (_b.sent()).blogPosts;
-                        return [2 /*return*/, blogPosts];
-                }
-            });
-        });
-    };
-    BlogPostRepositoryGql.getBlogPost = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$T(this, void 0, void 0, function () {
-            var blogPostQuery, blogPostGetOneQuery, blogPost;
-            return __generator$T(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        blogPostQuery = new BlogPostQueries(fields);
-                        blogPostGetOneQuery = blogPostQuery.getOnefullQuery();
-                        return [4 /*yield*/, getClient().query(blogPostGetOneQuery, filter && { filter: __assign$o({}, filter) })];
-                    case 1:
-                        blogPost = (_b.sent()).blogPost;
-                        return [2 /*return*/, blogPost];
-                }
-            });
-        });
-    };
-    BlogPostRepositoryGql.getById = function (id, fields) {
-        return __awaiter$T(this, void 0, void 0, function () {
-            return __generator$T(this, function (_a) {
-                return [2 /*return*/, this.getBlogPost({ filter: { id: id }, fields: fields })];
-            });
-        });
-    };
-    BlogPostRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$T(this, void 0, void 0, function () {
-            return __generator$T(this, function (_a) {
-                return [2 /*return*/, this.getBlogPost({ filter: { slug: slug }, fields: fields })];
-            });
-        });
-    };
-    return BlogPostRepositoryGql;
-}());
-
-var __assign$n = (undefined && undefined.__assign) || function () {
-    __assign$n = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$n.apply(this, arguments);
-};
-var __awaiter$S = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$S = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BlogPostRepositoryJson = /** @class */ (function () {
-    function BlogPostRepositoryJson() {
-    }
-    BlogPostRepositoryJson.getList = function (_a) {
-        var _b;
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$S(this, void 0, void 0, function () {
-            var result;
-            return __generator$S(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.blogPost;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BlogPostRepositoryJson.getById = function (id, fields) {
-        var _a, _b;
-        return __awaiter$S(this, void 0, void 0, function () {
-            var blogPostList, blogPost, result;
-            return __generator$S(this, function (_c) {
-                blogPostList = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogPost) === null || _b === void 0 ? void 0 : _b.edges;
-                blogPost = blogPostList && blogPostList.find(function (blogPost) { return blogPost.id == id; });
-                if (!blogPost) {
-                    throw new Error('blog-post_not_found');
-                }
-                result = __assign$n({}, blogPost);
-                result && this.applyFieldFilters(result, fields);
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BlogPostRepositoryJson.getBySlug = function (slug, fields) {
-        var _a, _b;
-        return __awaiter$S(this, void 0, void 0, function () {
-            var blogPostList, blogPost, result;
-            return __generator$S(this, function (_c) {
-                blogPostList = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogPost) === null || _b === void 0 ? void 0 : _b.edges;
-                blogPost = blogPostList && blogPostList.find(function (blogPost) { return blogPost.slug == slug; });
-                if (!blogPost) {
-                    throw new Error('blog-post_not_found');
-                }
-                result = __assign$n({}, blogPost);
-                result && this.applyFieldFilters(result, fields);
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BlogPostRepositoryJson.applyFieldFilters = function (result, fields) {
-        var isFIeldNotSelected = function (entry) { return !fields.includes(entry); };
-        var deleteFieldIfNecessary = function (entry) {
-            isFIeldNotSelected(entry) && delete result[entry];
-        };
-        fields && Object.keys(result).forEach(deleteFieldIfNecessary);
-    };
-    return BlogPostRepositoryJson;
-}());
-
-var __assign$m = (undefined && undefined.__assign) || function () {
-    __assign$m = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$m.apply(this, arguments);
-};
-var __awaiter$R = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$R = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$h = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.blogPost) ? BlogPostRepositoryJson : BlogPostRepositoryGql); };
-var BlogPostService = /** @class */ (function () {
-    function BlogPostService() {
-    }
-    BlogPostService.getById = function (id, fields) {
-        return __awaiter$R(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$R(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$h().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BlogPostService.getBySlug = function (slug, fields) {
-        return __awaiter$R(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$R(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$h().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BlogPostService.getList = function (_a, fields) {
-        var page = _a.page, _b = _a.first, first = _b === void 0 ? 6 : _b, fastSearch = _a.fastSearch, postCategoryId = _a.postCategoryId;
-        return __awaiter$R(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$R(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        _c.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$h().getList({
-                                filter: __assign$m(__assign$m({}, normalizePagination(page, first)), { fastSearch: fastSearch, postCategoryId: postCategoryId }),
-                                fields: fields
-                            })];
-                    case 1:
-                        result = _c.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _c.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return BlogPostService;
-}());
-
-var BrandQueries = /** @class */ (function () {
-    function BrandQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    BrandQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    BrandQueries.prototype.getImageFields = function () {
-        return '{alt, src}';
-    };
-    BrandQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'hotsiteId',
-            'externalId',
-            'name',
-            'slug',
-            'description',
-            'shortDescription',
-            "image ".concat(this.getImageFields()),
-            "banner ".concat(this.getImageFields()),
-            'metaTitle',
-            'metaKeywords',
-            'metaDescription',
-            'position',
-            'isActive',
-            'createdAt',
-            'updatedAt'
-        ];
-    };
-    BrandQueries.prototype.listFullQuery = function () {
-        return "query getBrands($filter: filterPaginationBrand) {\n        brands(filter: $filter) {\n          edges {\n            node {\n              ".concat(this.getFields(), "\n            }\n            cursor\n          }\n          pageInfo {\n            hasNextPage\n            hasPreviousPage\n            startCursor\n            endCursor\n            first\n            total\n          }\n        }\n      }");
-    };
-    BrandQueries.prototype.getOneFullQuery = function () {
-        return "query getBrand($filter: filterBrand){\n      brand(filter: $filter){\n        ".concat(this.getFields(), "\n      }\n    }");
-    };
-    return BrandQueries;
-}());
-
-var __assign$l = (undefined && undefined.__assign) || function () {
-    __assign$l = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$l.apply(this, arguments);
-};
-var __awaiter$Q = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$Q = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BrandRepositoryGql = /** @class */ (function () {
-    function BrandRepositoryGql() {
-    }
-    BrandRepositoryGql.getList = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$Q(this, void 0, void 0, function () {
-            var brandQuery, brandListQuery, brands;
-            return __generator$Q(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        brandQuery = new BrandQueries(fields);
-                        brandListQuery = brandQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(brandListQuery, filter && { filter: __assign$l({}, filter) })];
-                    case 1:
-                        brands = (_b.sent()).brands;
-                        return [2 /*return*/, brands];
-                }
-            });
-        });
-    };
-    BrandRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$Q(this, void 0, void 0, function () {
-            var brandQuery, brandGetOneQuery, brand;
-            return __generator$Q(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        brandQuery = new BrandQueries(fields);
-                        brandGetOneQuery = brandQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(brandGetOneQuery, filter && { filter: __assign$l({}, filter) })];
-                    case 1:
-                        brand = (_b.sent()).brand;
-                        return [2 /*return*/, brand];
-                }
-            });
-        });
-    };
-    BrandRepositoryGql.getById = function (id, fields) {
-        return __awaiter$Q(this, void 0, void 0, function () {
-            return __generator$Q(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    BrandRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$Q(this, void 0, void 0, function () {
-            return __generator$Q(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return BrandRepositoryGql;
-}());
-
-var __awaiter$P = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$P = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BrandRepositoryJson = /** @class */ (function () {
-    function BrandRepositoryJson() {
-    }
-    BrandRepositoryJson.getList = function (_a) {
-        var _b;
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$P(this, void 0, void 0, function () {
-            var result;
-            return __generator$P(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.brand;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BrandRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$P(this, void 0, void 0, function () {
-            var brandList, result;
-            return __generator$P(this, function (_b) {
-                brandList = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.brand;
-                result = brandList && brandList.filter(function (brand) { return brand.id == id; })[0];
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    BrandRepositoryJson.getBySlug = function (slug, fields) {
-        var _a;
-        return __awaiter$P(this, void 0, void 0, function () {
-            var brandList, result;
-            return __generator$P(this, function (_b) {
-                brandList = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.brand;
-                result = brandList && brandList.filter(function (brand) { return brand.slug == slug; })[0];
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return BrandRepositoryJson;
-}());
-
-var __awaiter$O = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$O = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$g = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.brand) ? BrandRepositoryJson : BrandRepositoryGql); };
-var BrandService = /** @class */ (function () {
-    function BrandService() {
-    }
-    BrandService.getList = function (paginationFilter, fields) {
-        return __awaiter$O(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$O(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$g().getList({
-                                fields: fields || null,
-                                filter: paginationFilter || { page: 1 }
-                            })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Brand', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BrandService.getById = function (id, fields) {
-        return __awaiter$O(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$O(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$g().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Brand', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    BrandService.getBySlug = function (slug, fields) {
-        return __awaiter$O(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$O(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$g().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Brand', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return BrandService;
-}());
-
-var CartQueries = /** @class */ (function () {
-    function CartQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    CartQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    CartQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'token',
-            "customer {\n        email, \n        doc, \n        newsletter, \n        firstName, \n        lastName, \n        name, \n        phone\n      }",
-            "address {\n        receiver, \n        zipcode, \n        street, \n        Int, \n        detail, \n        district, \n        city, \n        state\n      }",
-            'coupon',
-            'shippingToken',
-            'paymentToken',
-            'creditcard {cvv, exp, name, Int}',
-            "items {\n        id,\n        name,\n        variation,\n        isVirtual,\n        quantity,\n        allowedGiftWrapping,\n        totalCost,\n        total,\n        price,\n        priceCost,\n        stockBalance,\n        canSellOutOfStock,\n        variationId,\n        additionalPrice,\n        priceGiftWrapping,\n        allowedGiftWrappingPrice,\n        discount,\n        priceCompare,\n        image {src, alt},\n        customize {\n            id, \n            name, \n            content {\n                id, \n                field, \n                value, \n                price\n            }\n        },\n        components {variationId, componentId}\n      }"
-        ];
-    };
-    CartQueries.prototype.getCartQuery = function () {
-        return "query Query($cartToken: String) {\n        cart(cartToken: $cartToken) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    CartQueries.prototype.addItemQuery = function () {
-        return "mutation Mutation($cartToken: String, $items: [CartItemAddInput]) {\n        addItem(cartToken: $cartToken, items: $items) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    CartQueries.prototype.updateItemQuery = function () {
-        return "mutation Mutation($cartToken: String!, $item: updateItemTypeInput) {\n        updateItem(cartToken: $cartToken, item: $item) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    CartQueries.prototype.deleteItemQuery = function () {
-        return "mutation DeleteItem($cartToken: String!, $item: deleteItemTypeInput) {\n        deleteItem(cartToken: $cartToken, item: $item) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    CartQueries.prototype.cleanCartQuery = function () {
-        return "mutation CleanCart($cartToken: String!, $items: [deleteItemTypeInput]) {\n        cleanCart(cartToken: $cartToken, items: $items) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return CartQueries;
-}());
-
-var __assign$k = (undefined && undefined.__assign) || function () {
-    __assign$k = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$k.apply(this, arguments);
-};
-var __awaiter$N = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$N = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var CartRepositoryGql = /** @class */ (function () {
-    function CartRepositoryGql() {
-    }
-    CartRepositoryGql.addItem = function (_a) {
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$N(this, void 0, void 0, function () {
-            var cartQuery, addItemQuery, addItem;
-            return __generator$N(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        cartQuery = new CartQueries(fields);
-                        addItemQuery = cartQuery.addItemQuery();
-                        return [4 /*yield*/, getClient().mutation(addItemQuery, input && __assign$k({}, input))];
-                    case 1:
-                        addItem = (_b.sent()).addItem;
-                        return [2 /*return*/, addItem];
-                }
-            });
-        });
-    };
-    CartRepositoryGql.updateItem = function (_a) {
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$N(this, void 0, void 0, function () {
-            var cartQuery, updateItemQuery, updateItem;
-            return __generator$N(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        cartQuery = new CartQueries(fields);
-                        updateItemQuery = cartQuery.updateItemQuery();
-                        return [4 /*yield*/, getClient().mutation(updateItemQuery, input && __assign$k({}, input))];
-                    case 1:
-                        updateItem = (_b.sent()).updateItem;
-                        return [2 /*return*/, updateItem];
-                }
-            });
-        });
-    };
-    CartRepositoryGql.deleteItem = function (_a) {
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$N(this, void 0, void 0, function () {
-            var cartQuery, deleteItemQuery, deleteItem;
-            return __generator$N(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        cartQuery = new CartQueries(fields);
-                        deleteItemQuery = cartQuery.deleteItemQuery();
-                        return [4 /*yield*/, getClient().mutation(deleteItemQuery, input && __assign$k({}, input))];
-                    case 1:
-                        deleteItem = (_b.sent()).deleteItem;
-                        return [2 /*return*/, deleteItem];
-                }
-            });
-        });
-    };
-    CartRepositoryGql.cleanCart = function (_a) {
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$N(this, void 0, void 0, function () {
-            var cartQuery, cleanCartQuery, cleanCart;
-            return __generator$N(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        cartQuery = new CartQueries(fields);
-                        cleanCartQuery = cartQuery.cleanCartQuery();
-                        return [4 /*yield*/, getClient().mutation(cleanCartQuery, input && __assign$k({}, input))];
-                    case 1:
-                        cleanCart = (_b.sent()).cleanCart;
-                        return [2 /*return*/, cleanCart];
-                }
-            });
-        });
-    };
-    CartRepositoryGql.getCart = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$N(this, void 0, void 0, function () {
-            var cartQuery, getCartQuery, cart;
-            return __generator$N(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        cartQuery = new CartQueries(fields);
-                        getCartQuery = cartQuery.getCartQuery();
-                        return [4 /*yield*/, getClient().query(getCartQuery, filter && __assign$k({}, filter))];
-                    case 1:
-                        cart = (_b.sent()).cart;
-                        return [2 /*return*/, cart];
-                }
-            });
-        });
-    };
-    return CartRepositoryGql;
-}());
-
-var __awaiter$M = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$M = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var CartRepositoryJson = /** @class */ (function () {
-    function CartRepositoryJson() {
-    }
-    CartRepositoryJson.addItem = function (_a) {
-        var _b;
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$M(this, void 0, void 0, function () {
-            var result;
-            return __generator$M(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.cart;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CartRepositoryJson.updateItem = function (_a) {
-        var _b;
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$M(this, void 0, void 0, function () {
-            var result;
-            return __generator$M(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.cart;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CartRepositoryJson.deleteItem = function (_a) {
-        var _b;
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$M(this, void 0, void 0, function () {
-            var result;
-            return __generator$M(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.cart;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CartRepositoryJson.cleanCart = function (_a) {
-        var _b;
-        var fields = _a.fields, input = _a.input;
-        return __awaiter$M(this, void 0, void 0, function () {
-            var result;
-            return __generator$M(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.cart;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CartRepositoryJson.getCart = function (_a) {
-        var _b;
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$M(this, void 0, void 0, function () {
-            var result;
-            return __generator$M(this, function (_c) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.cart;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return CartRepositoryJson;
-}());
-
-var __awaiter$L = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$L = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$f = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.cart) ? CartRepositoryJson : CartRepositoryGql); };
-var CartService = /** @class */ (function () {
-    function CartService() {
-    }
-    CartService.addItem = function (input, fields) {
-        return __awaiter$L(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$L(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$f().addItem({ fields: fields || null, input: input })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Cart', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    CartService.updateItem = function (input, fields) {
-        return __awaiter$L(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$L(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$f().updateItem({ fields: fields || null, input: input })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Cart', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    CartService.deleteItem = function (input, fields) {
-        return __awaiter$L(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$L(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$f().deleteItem({ fields: fields || null, input: input })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Cart', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    CartService.getCart = function (cartToken, fields) {
-        return __awaiter$L(this, void 0, void 0, function () {
-            var result, error_4;
-            return __generator$L(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$f().getCart({ fields: fields || null, filter: { cartToken: cartToken } })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Cart', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_4 = _a.sent();
-                        throw new Error(error_4 === null || error_4 === void 0 ? void 0 : error_4.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return CartService;
-}());
-
-var CategoryQueries = /** @class */ (function () {
-    function CategoryQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    CategoryQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    CategoryQueries.prototype.getChildrenFields = function () {
-        return "children {\n      ".concat(this.getFields(), ",\n      children {\n        ").concat(this.getFields(), "\n      }\n    }");
-    };
-    CategoryQueries.prototype.getImageFields = function () {
-        return '{src, alt}';
-    };
-    CategoryQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'slug',
-            'position',
-            'depth',
-            'breadcrumb',
-            'isActive',
-            'createdAt',
-            'updatedAt',
-            'parentId',
-            'hotsiteId',
-            'externalId',
-            'description',
-            "image ".concat(this.getImageFields()),
-            "banner ".concat(this.getImageFields()),
-            'bannerLink',
-            'googleTaxonomyId',
-            'metaTitle',
-            'metaKeywords',
-            'metaDescription'
-        ];
-    };
-    CategoryQueries.prototype.treeFullQuery = function () {
-        return "query getCategoryTree {\n        categoryTree {\n                ".concat(this.getFields(), ",\n                ").concat(this.getChildrenFields(), "\n          }\n        }");
-    };
-    CategoryQueries.prototype.getOneFullQuery = function () {
-        return "query getCategory($filter: filterCategory!){\n        category(filter: $filter){\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return CategoryQueries;
-}());
-
-var __assign$j = (undefined && undefined.__assign) || function () {
-    __assign$j = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$j.apply(this, arguments);
-};
-var __awaiter$K = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$K = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var CategoryRepositoryGql = /** @class */ (function () {
-    function CategoryRepositoryGql() {
-    }
-    CategoryRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$K(this, void 0, void 0, function () {
-            var categoryQuery, getOneQuery, category;
-            return __generator$K(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        categoryQuery = new CategoryQueries(fields);
-                        getOneQuery = categoryQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(getOneQuery, filter && { filter: __assign$j({}, filter) })];
-                    case 1:
-                        category = (_b.sent()).category;
-                        return [2 /*return*/, category];
-                }
-            });
-        });
-    };
-    CategoryRepositoryGql.getTree = function (fields) {
-        return __awaiter$K(this, void 0, void 0, function () {
-            var categoryQuery, getTreeQuery, categoryTree;
-            return __generator$K(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        categoryQuery = new CategoryQueries(fields);
-                        getTreeQuery = categoryQuery.treeFullQuery();
-                        return [4 /*yield*/, getClient().query(getTreeQuery)];
-                    case 1:
-                        categoryTree = (_a.sent()).categoryTree;
-                        return [2 /*return*/, categoryTree];
-                }
-            });
-        });
-    };
-    CategoryRepositoryGql.getById = function (id, fields) {
-        return __awaiter$K(this, void 0, void 0, function () {
-            return __generator$K(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    CategoryRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$K(this, void 0, void 0, function () {
-            return __generator$K(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return CategoryRepositoryGql;
-}());
-
-var __awaiter$J = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$J = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var CategoryRepositoryJson = /** @class */ (function () {
-    function CategoryRepositoryJson() {
-    }
-    CategoryRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$J(this, void 0, void 0, function () {
-            var categories, result;
-            return __generator$J(this, function (_b) {
-                categories = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.category;
-                result = categories && categories.filter(function (category) { return category.id == id; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CategoryRepositoryJson.getBySlug = function (slug, fields) {
-        var _a;
-        return __awaiter$J(this, void 0, void 0, function () {
-            var categories, result;
-            return __generator$J(this, function (_b) {
-                categories = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.category;
-                result = categories && categories.filter(function (category) { return category.slug == slug; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    CategoryRepositoryJson.getTree = function (fields) {
-        var _a;
-        return __awaiter$J(this, void 0, void 0, function () {
-            var categoryTrees;
-            return __generator$J(this, function (_b) {
-                categoryTrees = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.categoryTree;
-                return [2 /*return*/, categoryTrees];
-            });
-        });
-    };
-    return CategoryRepositoryJson;
-}());
-
-var __awaiter$I = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$I = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$e = function () { var _a, _b; return ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.category) && ((_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.categoryTree) ? CategoryRepositoryJson : CategoryRepositoryGql; };
-var CategoryService = /** @class */ (function () {
-    function CategoryService() {
-    }
-    CategoryService.getById = function (id, fields) {
-        return __awaiter$I(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$I(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$e().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Category', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    CategoryService.getBySlug = function (slug, fields) {
-        return __awaiter$I(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$I(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$e().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Category', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    CategoryService.getTree = function (fields) {
-        return __awaiter$I(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$I(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$e().getTree(fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Category', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return CategoryService;
-}());
-
-var LandingPagesQueries = /** @class */ (function () {
-    function LandingPagesQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    LandingPagesQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    LandingPagesQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'content',
-            'slug',
-            'isIndex',
-            'isActive',
-            'createdAt',
-            'updatedAt',
-            'metaTitle',
-            'metaDescription',
-            'metaKeywords'
-        ];
-    };
-    LandingPagesQueries.prototype.getOneFullQuery = function () {
-        return "query LandingPage($filter: filter) {\n        landingPage(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return LandingPagesQueries;
-}());
-
-var __assign$i = (undefined && undefined.__assign) || function () {
-    __assign$i = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$i.apply(this, arguments);
-};
-var __awaiter$H = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$H = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var LandingPagesRepositoryGql = /** @class */ (function () {
-    function LandingPagesRepositoryGql() {
-    }
-    LandingPagesRepositoryGql.get = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$H(this, void 0, void 0, function () {
-            var landingPagesQuery, landingPagesGetQuery, landingPage;
-            return __generator$H(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        landingPagesQuery = new LandingPagesQueries(fields);
-                        landingPagesGetQuery = landingPagesQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(landingPagesGetQuery, filter && { filter: __assign$i({}, filter) })];
-                    case 1:
-                        landingPage = (_b.sent()).landingPage;
-                        landingPage.content = landingPage.content ? JSON.parse(landingPage.content) : {};
-                        BroadcastService.emit('LandingPages', landingPage);
-                        return [2 /*return*/, landingPage];
-                }
-            });
-        });
-    };
-    LandingPagesRepositoryGql.getById = function (id, fields) {
-        return __awaiter$H(this, void 0, void 0, function () {
-            return __generator$H(this, function (_a) {
-                return [2 /*return*/, this.get({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    LandingPagesRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$H(this, void 0, void 0, function () {
-            return __generator$H(this, function (_a) {
-                return [2 /*return*/, this.get({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return LandingPagesRepositoryGql;
-}());
-
-var __awaiter$G = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$G = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var LandingPagesRepositoryJson = /** @class */ (function () {
-    function LandingPagesRepositoryJson() {
-    }
-    LandingPagesRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$G(this, void 0, void 0, function () {
-            var landingPages, result;
-            return __generator$G(this, function (_b) {
-                landingPages = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.landing_pages;
-                result = landingPages && landingPages.filter(function (landingPage) { return landingPage.id == id; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    LandingPagesRepositoryJson.getBySlug = function (slug, fields) {
-        var _a;
-        return __awaiter$G(this, void 0, void 0, function () {
-            var landingPages, result;
-            return __generator$G(this, function (_b) {
-                landingPages = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.landing_pages;
-                result = landingPages && landingPages.filter(function (landingPage) { return landingPage.slug == slug; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return LandingPagesRepositoryJson;
-}());
-
-var __awaiter$F = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$F = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$d = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.landing_pages) ? LandingPagesRepositoryJson : LandingPagesRepositoryGql); };
-var LandingPagesService = /** @class */ (function () {
-    function LandingPagesService() {
-    }
-    LandingPagesService.getById = function (id, fields) {
-        return __awaiter$F(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$F(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$d().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    LandingPagesService.getBySlug = function (slug, fields) {
-        return __awaiter$F(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$F(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$d().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return LandingPagesService;
-}());
-
-var MenuQueries = /** @class */ (function () {
-    function MenuQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    MenuQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    MenuQueries.prototype.getImageFields = function () {
-        return '{alt, src}';
-    };
-    MenuQueries.prototype.getChildrenFields = function () {
-        return [
-            'id',
-            'menuId',
-            'brandId',
-            'name',
-            'menuType',
-            'slug',
-            'menuTypeSlug',
-            'isActive',
-            'createdAt',
-            "image ".concat(this.getImageFields()),
-            'parentId',
-            'pageId',
-            'hotsiteId',
-            'categoryId',
-            "banner ".concat(this.getImageFields()),
-            'bannerLink',
-            'isFeatured',
-            'link',
-            'menuTypeLink',
-            'updatedAt',
-            'position'
-        ];
-    };
-    MenuQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'handle',
-            'createdAt',
-            'updatedAt',
-            "values {\n        id, \n        menuId, \n        brandId,\n        name,\n        menuType,\n        slug, \n        menuTypeSlug, \n        isActive, \n        createdAt, \n        image ".concat(this.getImageFields(), ",\n        parentId, \n        pageId, \n        hotsiteId,\n        categoryId,\n        banner ").concat(this.getImageFields(), ",\n        bannerLink,\n        isFeatured,\n        link,\n        menuTypeLink,\n        updatedAt,\n        position,\n        children {\n           ").concat(this.getChildrenFields().join(), ",\n           children {\n            ").concat(this.getChildrenFields().join(), ",\n           }\n        }\n      }")
-        ];
-    };
-    MenuQueries.prototype.listFullQuery = function () {
-        return "query getMenus {\n        menus {\n            ".concat(this.getFields(), "\n        }\n      }");
-    };
-    MenuQueries.prototype.getOneFullQuery = function () {
-        return "query getMenu($filter: filterMenu){\n        menu(filter: $filter){\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return MenuQueries;
-}());
-
-var __assign$h = (undefined && undefined.__assign) || function () {
-    __assign$h = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$h.apply(this, arguments);
-};
-var __awaiter$E = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$E = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var MenuRepositoryGql = /** @class */ (function () {
-    function MenuRepositoryGql() {
-    }
-    MenuRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$E(this, void 0, void 0, function () {
-            var menuQuery, menuGetOneQuery, menu;
-            return __generator$E(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        menuQuery = new MenuQueries(fields);
-                        menuGetOneQuery = menuQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(menuGetOneQuery, filter && { filter: __assign$h({}, filter) })];
-                    case 1:
-                        menu = (_b.sent()).menu;
-                        return [2 /*return*/, menu];
-                }
-            });
-        });
-    };
-    MenuRepositoryGql.getList = function (optionsGetMenuList) {
-        return __awaiter$E(this, void 0, void 0, function () {
-            var menuIds, fields, menuQuery, menuListQuery, menus;
-            return __generator$E(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        menuIds = optionsGetMenuList === null || optionsGetMenuList === void 0 ? void 0 : optionsGetMenuList.menuIds;
-                        fields = optionsGetMenuList === null || optionsGetMenuList === void 0 ? void 0 : optionsGetMenuList.fields;
-                        menuQuery = new MenuQueries(fields);
-                        menuListQuery = menuQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(menuListQuery, menuIds && { menuIds: menuIds })];
-                    case 1:
-                        menus = (_a.sent()).menus;
-                        return [2 /*return*/, menus];
-                }
-            });
-        });
-    };
-    MenuRepositoryGql.getById = function (id, fields) {
-        return __awaiter$E(this, void 0, void 0, function () {
-            return __generator$E(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    return MenuRepositoryGql;
-}());
-
-var __awaiter$D = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$D = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var MenuRepositoryJson = /** @class */ (function () {
-    function MenuRepositoryJson() {
-    }
-    MenuRepositoryJson.getList = function (optionsGetMenuList) {
-        var _a;
-        return __awaiter$D(this, void 0, void 0, function () {
-            var result;
-            return __generator$D(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.menu;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    MenuRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$D(this, void 0, void 0, function () {
-            var menus, result;
-            return __generator$D(this, function (_b) {
-                menus = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.menu;
-                result = menus && menus.find(function (menu) { return menu.id == id; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return MenuRepositoryJson;
-}());
-
-var __awaiter$C = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$C = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$c = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.menu) ? MenuRepositoryJson : MenuRepositoryGql); };
-var MenuService = /** @class */ (function () {
-    function MenuService() {
-    }
-    MenuService.getById = function (id, fields) {
-        return __awaiter$C(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$C(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$c().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Menu', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    MenuService.getList = function (fields) {
-        return __awaiter$C(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$C(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$c().getList({ fields: fields })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Menu', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return MenuService;
-}());
-
-var NewsletterQueries = /** @class */ (function () {
-    function NewsletterQueries() {
-        this.fields = this.defaultFields();
-    }
-    NewsletterQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    NewsletterQueries.prototype.defaultFields = function () {
-        return ['name', 'email', 'gender', 'createdAt'];
-    };
-    NewsletterQueries.prototype.subscribe = function () {
-        return "mutation SendMailing($data: MailingInput) {\n      sendMailing(data: $data) {\n            ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return NewsletterQueries;
-}());
-
-var __assign$g = (undefined && undefined.__assign) || function () {
-    __assign$g = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$g.apply(this, arguments);
-};
-var __awaiter$B = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$B = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var NewsletterRepositoryGql = /** @class */ (function () {
-    function NewsletterRepositoryGql() {
-    }
-    NewsletterRepositoryGql.subscribe = function (input) {
-        return __awaiter$B(this, void 0, void 0, function () {
-            var newsletterQuery, newsletterSubscribeQuery, newsletter;
-            return __generator$B(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        newsletterQuery = new NewsletterQueries();
-                        newsletterSubscribeQuery = newsletterQuery.subscribe();
-                        return [4 /*yield*/, getClient().mutation(newsletterSubscribeQuery, input && { data: __assign$g({}, input) })];
-                    case 1:
-                        newsletter = (_a.sent()).sendMailing;
-                        return [2 /*return*/, newsletter];
-                }
-            });
-        });
-    };
-    return NewsletterRepositoryGql;
-}());
-
-var __assign$f = (undefined && undefined.__assign) || function () {
-    __assign$f = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$f.apply(this, arguments);
-};
-var __awaiter$A = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$A = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var NewsletterRepositoryJson = /** @class */ (function () {
-    function NewsletterRepositoryJson() {
-    }
-    NewsletterRepositoryJson.subscribe = function (input) {
-        var _a;
-        return __awaiter$A(this, void 0, void 0, function () {
-            var mock;
-            return __generator$A(this, function (_b) {
-                mock = __assign$f({}, (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.newsletter);
-                if (input.email == mock.email) {
-                    throw new Error('email already subscribed');
-                }
-                mock.email = input.email;
-                return [2 /*return*/, mock || {}];
-            });
-        });
-    };
-    return NewsletterRepositoryJson;
-}());
-
-var __awaiter$z = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$z = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$b = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.newsletter) ? NewsletterRepositoryJson : NewsletterRepositoryGql); };
-var NewsletterService = /** @class */ (function () {
-    function NewsletterService() {
-    }
-    NewsletterService.subscribe = function (userData) {
-        return __awaiter$z(this, void 0, void 0, function () {
-            var newsletterResult, error_1;
-            return __generator$z(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$b().subscribe(userData)];
-                    case 1:
-                        newsletterResult = _a.sent();
-                        BroadcastService.emit('Newsletter', newsletterResult);
-                        return [2 /*return*/, newsletterResult];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return NewsletterService;
-}());
-
-var PagesQueries = /** @class */ (function () {
-    function PagesQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    PagesQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    PagesQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'slug',
-            'template',
-            'isActive',
-            'faq {answer, question}',
-            'createdAt',
-            'updatedAt',
-            'description',
-            'metaTitle',
-            'metaDescription',
-            'metaKeywords'
-        ];
-    };
-    PagesQueries.prototype.listFullQuery = function () {
-        return "query getPages {\n        pages {\n            ".concat(this.getFields(), "\n        }\n      }");
-    };
-    PagesQueries.prototype.getOneFullQuery = function () {
-        return "query Page($filter: filterPage) {\n      page(filter: $filter) {\n            ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return PagesQueries;
-}());
-
-var __awaiter$y = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$y = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var PagesRepositoryGql = /** @class */ (function () {
-    function PagesRepositoryGql() {
-    }
-    PagesRepositoryGql.getList = function (fields) {
-        return __awaiter$y(this, void 0, void 0, function () {
-            var pagesQuery, pagesListQuery, pages;
-            return __generator$y(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        pagesQuery = new PagesQueries(fields);
-                        pagesListQuery = pagesQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(pagesListQuery)];
-                    case 1:
-                        pages = (_a.sent()).pages;
-                        return [2 /*return*/, pages];
-                }
-            });
-        });
-    };
-    PagesRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$y(this, void 0, void 0, function () {
-            var pagesQuery, pagesGetOneQuery, page;
-            return __generator$y(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        pagesQuery = new PagesQueries(fields);
-                        pagesGetOneQuery = pagesQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(pagesGetOneQuery, filter && { filter: filter })];
-                    case 1:
-                        page = (_b.sent()).page;
-                        return [2 /*return*/, page];
-                }
-            });
-        });
-    };
-    PagesRepositoryGql.getById = function (id, fields) {
-        return __awaiter$y(this, void 0, void 0, function () {
-            return __generator$y(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { id: id } })];
-            });
-        });
-    };
-    PagesRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$y(this, void 0, void 0, function () {
-            return __generator$y(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return PagesRepositoryGql;
-}());
-
-var __awaiter$x = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$x = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var PagesRepositoryJson = /** @class */ (function () {
-    function PagesRepositoryJson() {
-    }
-    PagesRepositoryJson.getList = function (fields) {
-        var _a;
-        return __awaiter$x(this, void 0, void 0, function () {
-            var result;
-            return __generator$x(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.pages;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    PagesRepositoryJson.getById = function (id, fields) {
-        var _a;
-        return __awaiter$x(this, void 0, void 0, function () {
-            var result;
-            return __generator$x(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.page;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    PagesRepositoryJson.getBySlug = function (slug, fields) {
-        var _a;
-        return __awaiter$x(this, void 0, void 0, function () {
-            var result;
-            return __generator$x(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.page;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return PagesRepositoryJson;
-}());
-
-var __awaiter$w = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$w = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$a = function () { var _a, _b; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.pages) || ((_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.page) ? PagesRepositoryJson : PagesRepositoryGql); };
-var PagesService = /** @class */ (function () {
-    function PagesService() {
-    }
-    PagesService.getList = function (fields) {
-        return __awaiter$w(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$w(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$a().getList(fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    PagesService.getById = function (id, fields) {
-        return __awaiter$w(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$w(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$a().getById(Number(id), fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    PagesService.getBySlug = function (slug, fields) {
-        return __awaiter$w(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$w(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$a().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return PagesService;
-}());
-
-var ScriptsQueries = /** @class */ (function () {
-    function ScriptsQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    ScriptsQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    ScriptsQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'position',
-            'name',
-            'location',
-            'page',
-            'loadMethod',
-            'content',
-            'category',
-            'isActive',
-            'description',
-            'src'
-        ];
-    };
-    ScriptsQueries.prototype.listFullQuery = function () {
-        return "query Scripts($filter: filterScript) {\n        scripts(filter: $filter) {\n            ".concat(this.getFields(), "\n          }\n        }");
-    };
-    return ScriptsQueries;
-}());
-
-var __assign$e = (undefined && undefined.__assign) || function () {
-    __assign$e = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$e.apply(this, arguments);
-};
-var __awaiter$v = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$v = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ScriptsRepositoryGql = /** @class */ (function () {
-    function ScriptsRepositoryGql() {
-    }
-    ScriptsRepositoryGql.get = function (optionsGetScripts) {
-        return __awaiter$v(this, void 0, void 0, function () {
-            var fields, filter, scriptsQuery, getScriptsQuery, scripts;
-            return __generator$v(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        fields = optionsGetScripts.fields, filter = optionsGetScripts.filter;
-                        scriptsQuery = new ScriptsQueries(fields);
-                        getScriptsQuery = scriptsQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(getScriptsQuery, filter && { filter: __assign$e({}, filter) })];
-                    case 1:
-                        scripts = (_a.sent()).scripts;
-                        return [2 /*return*/, scripts];
-                }
-            });
-        });
-    };
-    ScriptsRepositoryGql.getList = function (fields) {
-        return __awaiter$v(this, void 0, void 0, function () {
-            return __generator$v(this, function (_a) {
-                return [2 /*return*/, this.get({ fields: fields || null })];
-            });
-        });
-    };
-    ScriptsRepositoryGql.getListByPage = function (page, fields) {
-        return __awaiter$v(this, void 0, void 0, function () {
-            return __generator$v(this, function (_a) {
-                return [2 /*return*/, this.get({ filter: { page: page }, fields: fields || null })];
-            });
-        });
-    };
-    ScriptsRepositoryGql.getListByLocation = function (location, fields) {
-        return __awaiter$v(this, void 0, void 0, function () {
-            return __generator$v(this, function (_a) {
-                return [2 /*return*/, this.get({ filter: { location: location }, fields: fields || null })];
-            });
-        });
-    };
-    return ScriptsRepositoryGql;
-}());
-
-var __awaiter$u = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$u = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ScriptsRepositoryJson = /** @class */ (function () {
-    function ScriptsRepositoryJson() {
-    }
-    ScriptsRepositoryJson.getList = function (fields) {
-        var _a;
-        return __awaiter$u(this, void 0, void 0, function () {
-            var result;
-            return __generator$u(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.scripts;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    ScriptsRepositoryJson.getListByPage = function (page, fields) {
-        var _a;
-        return __awaiter$u(this, void 0, void 0, function () {
-            var scripts, result;
-            return __generator$u(this, function (_b) {
-                scripts = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.scripts;
-                result = scripts && scripts.filter(function (script) { return script.page == page; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    ScriptsRepositoryJson.getListByLocation = function (location, fields) {
-        var _a;
-        return __awaiter$u(this, void 0, void 0, function () {
-            var scripts, result;
-            return __generator$u(this, function (_b) {
-                scripts = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.scripts;
-                result = scripts && scripts.filter(function (script) { return script.location == location; });
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return ScriptsRepositoryJson;
-}());
-
-var __awaiter$t = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$t = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$9 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.scripts) ? ScriptsRepositoryJson : ScriptsRepositoryGql); };
-var ScriptsService = /** @class */ (function () {
-    function ScriptsService() {
-    }
-    ScriptsService.getList = function (fields) {
-        return __awaiter$t(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$t(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$9().getList(fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Scripts', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ScriptsService.getListByPage = function (page, fields) {
-        return __awaiter$t(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$t(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$9().getListByPage(page, fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Scripts', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ScriptsService.getListByLocation = function (location, fields) {
-        return __awaiter$t(this, void 0, void 0, function () {
-            var result, error_3;
-            return __generator$t(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$9().getListByLocation(location, fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Scripts', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_3 = _a.sent();
-                        throw new Error(error_3 === null || error_3 === void 0 ? void 0 : error_3.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return ScriptsService;
-}());
-
-var SectionsQueries = /** @class */ (function () {
-    function SectionsQueries() {
-        this.fields = this.defaultFields();
-    }
-    SectionsQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    SectionsQueries.prototype.defaultFields = function () {
-        return ['data', 'page', 'version', 'themeId'];
-    };
-    SectionsQueries.prototype.getOneFullQuery = function () {
-        return "query getSections($filter: filterSection){\n        section(filter: $filter){\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return SectionsQueries;
-}());
-
-var __assign$d = (undefined && undefined.__assign) || function () {
-    __assign$d = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$d.apply(this, arguments);
-};
-var __awaiter$s = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$s = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var SectionsRepositoryGql = /** @class */ (function () {
-    function SectionsRepositoryGql() {
-    }
-    SectionsRepositoryGql.getOne = function (filter) {
-        return __awaiter$s(this, void 0, void 0, function () {
-            var sectionsQuery, sectionsGetOneQuery, section, data;
-            return __generator$s(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        sectionsQuery = new SectionsQueries();
-                        sectionsGetOneQuery = sectionsQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(sectionsGetOneQuery, filter && { filter: __assign$d({}, filter) })];
-                    case 1:
-                        section = (_a.sent()).section;
-                        data = JSON.parse(section.data);
-                        return [2 /*return*/, __assign$d(__assign$d({}, section), { data: data })];
-                }
-            });
-        });
-    };
-    return SectionsRepositoryGql;
-}());
-
-var __assign$c = (undefined && undefined.__assign) || function () {
-    __assign$c = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$c.apply(this, arguments);
-};
-var __awaiter$r = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$r = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var SectionsRepositoryJson = /** @class */ (function () {
-    function SectionsRepositoryJson() {
-    }
-    SectionsRepositoryJson.getOne = function (filter) {
-        var _a;
-        return __awaiter$r(this, void 0, void 0, function () {
-            var data, dataParse;
-            return __generator$r(this, function (_b) {
-                data = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.sections).data;
-                dataParse = JSON.parse(data.section.data);
-                return [2 /*return*/, __assign$c(__assign$c({}, data.section), { data: dataParse })];
-            });
-        });
-    };
-    return SectionsRepositoryJson;
-}());
-
-var __awaiter$q = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$q = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$8 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.sections) ? SectionsRepositoryJson : SectionsRepositoryGql); };
-var SectionsService = /** @class */ (function () {
-    function SectionsService() {
-    }
-    SectionsService.getOne = function (filter) {
-        var _a;
-        return __awaiter$q(this, void 0, void 0, function () {
-            var page, result, sectionsByCategory, error_1;
-            return __generator$q(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _b.trys.push([0, 2, , 3]);
-                        page = (_a = filter.page) !== null && _a !== void 0 ? _a : 'home';
-                        delete filter.page;
-                        return [4 /*yield*/, Repository$8().getOne(filter)];
-                    case 1:
-                        result = _b.sent();
-                        sectionsByCategory = this.getByCategory(result.data, page);
-                        BroadcastService.emit('Sections', sectionsByCategory);
-                        return [2 /*return*/, sectionsByCategory];
-                    case 2:
-                        error_1 = _b.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    SectionsService.getByCategory = function (data, page) {
-        return __awaiter$q(this, void 0, void 0, function () {
-            return __generator$q(this, function (_a) {
-                return [2 /*return*/, {
-                        header: data.header,
-                        footer: data.footer,
-                        content: data[page]
-                    }];
-            });
-        });
-    };
-    return SectionsService;
-}());
-
-var SettingsQueries = /** @class */ (function () {
-    function SettingsQueries() {
-        this.fields = this.defaultFields();
-    }
-    SettingsQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    SettingsQueries.prototype.defaultFields = function () {
-        return ['shopId', 'themeId', 'version', 'page', 'data'];
-    };
-    SettingsQueries.prototype.getOnefullQuery = function () {
-        return "query Setting($filter: filterSetting) {\n        setting(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return SettingsQueries;
-}());
-
-var __assign$b = (undefined && undefined.__assign) || function () {
-    __assign$b = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$b.apply(this, arguments);
-};
-var __awaiter$p = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$p = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var SettingsRepositoryGql = /** @class */ (function () {
-    function SettingsRepositoryGql() {
-    }
-    SettingsRepositoryGql.getOne = function (filter) {
-        return __awaiter$p(this, void 0, void 0, function () {
-            var settingsQuery, settingsGetOneQuery, setting, data;
-            return __generator$p(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        settingsQuery = new SettingsQueries();
-                        settingsGetOneQuery = settingsQuery.getOnefullQuery();
-                        return [4 /*yield*/, getClient().query(settingsGetOneQuery, filter && { filter: __assign$b({}, filter) })];
-                    case 1:
-                        setting = (_a.sent()).setting;
-                        data = JSON.parse(setting.data);
-                        return [2 /*return*/, __assign$b(__assign$b({}, setting), { data: data })];
-                }
-            });
-        });
-    };
-    return SettingsRepositoryGql;
-}());
-
-var __awaiter$o = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$o = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var SettingsRepositoryJson = /** @class */ (function () {
-    function SettingsRepositoryJson() {
-    }
-    SettingsRepositoryJson.getOne = function () {
-        var _a;
-        return __awaiter$o(this, void 0, void 0, function () {
-            var result;
-            return __generator$o(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.settings;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return SettingsRepositoryJson;
-}());
-
-var __awaiter$n = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$n = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$7 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.settings) ? SettingsRepositoryJson : SettingsRepositoryGql); };
-var SettingsService = /** @class */ (function () {
-    function SettingsService() {
-    }
-    SettingsService.getOne = function (filter) {
-        return __awaiter$n(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$n(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$7().getOne(filter)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Settings', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return SettingsService;
-}());
-
-var ShopQueries = /** @class */ (function () {
-    function ShopQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    ShopQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    ShopQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'themeId',
-            'name',
-            'slug',
-            'domain',
-            'domainTemporary',
-            'shippingTimeAdditional',
-            'shippingTimeAdditionalKit',
-            'appendToHead',
-            'appendToBody',
-            'zipcode',
-            'customerRegisterApproves',
-            'customerRegisterFor',
-            'scheduleDelivery',
-            'isActive',
-            'isSsl',
-            'isRedirectTemporary',
-            'isCatalog',
-            'isCheckoutNoteActive',
-            'isGiftWrappingActive',
-            'isCustomerRegisterIndividual',
-            'isCustomerRegisterCompany',
-            'isGoogleConnect',
-            'isFacebookConnect',
-            'industry',
-            'phrase',
-            'description',
-            'keywords',
-            'email',
-            'emailFrom',
-            'shippingRestrictionMessage',
-            'policyFooter',
-            'company',
-            'cgc',
-            'city',
-            'state',
-            'street',
-            'number',
-            'detail',
-            'district',
-            'phone',
-            'checkoutNoteLabel',
-            'giftWrappingPrice',
-            'trackerGoogleAnalytics { id }',
-            'trackerGoogleConversion { id, label }',
-            'trackerFacebookPixel { id }',
-            'organization',
-            'checkoutOptions',
-            'isBetaCheckout'
-        ];
-    };
-    ShopQueries.prototype.getShop = function () {
-        var query = 'query Shop {shop{' + this.getFields() + '}}';
-        return query.toString();
-    };
-    return ShopQueries;
-}());
-
-var __awaiter$m = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$m = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ShopRepositoryGql = /** @class */ (function () {
-    function ShopRepositoryGql() {
-    }
-    ShopRepositoryGql.getShop = function (fields) {
-        return __awaiter$m(this, void 0, void 0, function () {
-            var shopQuery, getShopQuery, shop;
-            return __generator$m(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        shopQuery = new ShopQueries(fields);
-                        getShopQuery = shopQuery.getShop();
-                        return [4 /*yield*/, getClient().query(getShopQuery)];
-                    case 1:
-                        shop = (_a.sent()).shop;
-                        return [2 /*return*/, shop];
-                }
-            });
-        });
-    };
-    return ShopRepositoryGql;
-}());
-
-var __awaiter$l = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$l = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ShopRepositoryJson = /** @class */ (function () {
-    function ShopRepositoryJson() {
-    }
-    ShopRepositoryJson.getShop = function (fields) {
-        var _a;
-        return __awaiter$l(this, void 0, void 0, function () {
-            var result;
-            return __generator$l(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.shop;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return ShopRepositoryJson;
-}());
-
-var __awaiter$k = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$k = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$6 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.shop) ? ShopRepositoryJson : ShopRepositoryGql); };
-var ShopService = /** @class */ (function () {
-    function ShopService() {
-    }
-    ShopService.getShop = function (fields) {
-        return __awaiter$k(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$k(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$6().getShop(fields)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Shop', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return ShopService;
-}());
-
-var SidebarQueries = /** @class */ (function () {
-    function SidebarQueries() {
-        this.fields = this.defaultFields();
-    }
-    SidebarQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    SidebarQueries.prototype.defaultFields = function () {
-        return [
-            'filtered {type, id, name}',
-            'filters {type, name, items {id, name, position, hexadecimal, image {src, alt}}}'
-        ];
-    };
-    SidebarQueries.prototype.getQuery = function () {
-        return "query SidebarFilters($filters: [filterSidebar]) {\n        sidebarFilters(filters: $filters) {\n            ".concat(this.getFields(), "\n          }\n        }");
-    };
-    return SidebarQueries;
-}());
-
-var __assign$a = (undefined && undefined.__assign) || function () {
-    __assign$a = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$a.apply(this, arguments);
-};
-var __awaiter$j = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$j = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var SidebarRepositoryGql = /** @class */ (function () {
-    function SidebarRepositoryGql() {
-    }
-    SidebarRepositoryGql.get = function (filters) {
-        return __awaiter$j(this, void 0, void 0, function () {
-            var sidebarQuery, sidebarGetQuery, sidebar;
-            return __generator$j(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        sidebarQuery = new SidebarQueries();
-                        sidebarGetQuery = sidebarQuery.getQuery();
-                        return [4 /*yield*/, getClient().query(sidebarGetQuery, __assign$a({}, filters))];
-                    case 1:
-                        sidebar = (_a.sent()).sidebarFilters;
-                        return [2 /*return*/, sidebar];
-                }
-            });
-        });
-    };
-    return SidebarRepositoryGql;
-}());
-
-var __assign$9 = (undefined && undefined.__assign) || function () {
-    __assign$9 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$9.apply(this, arguments);
-};
-var __spreadArray$1 = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-var SidebarRepositoryJson = /** @class */ (function () {
-    function SidebarRepositoryJson() {
-    }
-    SidebarRepositoryJson.get = function (filters) {
-        var _a;
-        var mock = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.sidebar;
-        var result = mock && __assign$9(__assign$9({}, mock), { filtered: __spreadArray$1([], mock.filtered, true) });
-        !filters && this.adjustFilteredField(result);
-        return result || {};
-    };
-    SidebarRepositoryJson.adjustFilteredField = function (result) {
-        var _a, _b;
-        (_a = result === null || result === void 0 ? void 0 : result.filtered) === null || _a === void 0 ? void 0 : _a.pop();
-        (_b = result === null || result === void 0 ? void 0 : result.filtered) === null || _b === void 0 ? void 0 : _b.push(null);
-    };
-    return SidebarRepositoryJson;
-}());
-
-var __awaiter$i = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$i = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$5 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.sidebar) ? SidebarRepositoryJson : SidebarRepositoryGql); };
-var SidebarService = /** @class */ (function () {
-    function SidebarService() {
-    }
-    SidebarService.get = function (filters) {
-        return __awaiter$i(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$i(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$5().get(filters)];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Sidebar', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return SidebarService;
-}());
 
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
@@ -10898,8 +5655,8 @@ var ProductQueries = /** @class */ (function () {
     return ProductQueries;
 }());
 
-var __assign$8 = (undefined && undefined.__assign) || function () {
-    __assign$8 = Object.assign || function(t) {
+var __assign$4 = (undefined && undefined.__assign) || function () {
+    __assign$4 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -10907,9 +5664,9 @@ var __assign$8 = (undefined && undefined.__assign) || function () {
         }
         return t;
     };
-    return __assign$8.apply(this, arguments);
+    return __assign$4.apply(this, arguments);
 };
-var __awaiter$h = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$7 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -10918,7 +5675,7 @@ var __awaiter$h = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$h = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$7 = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -10950,14 +5707,14 @@ var ProductRepositoryGql = /** @class */ (function () {
     }
     ProductRepositoryGql.getList = function (_a) {
         var fields = _a.fields, agg = _a.agg, filter = _a.filter;
-        return __awaiter$h(this, void 0, void 0, function () {
+        return __awaiter$7(this, void 0, void 0, function () {
             var productQuery, productListQuery, products;
-            return __generator$h(this, function (_b) {
+            return __generator$7(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         productQuery = new ProductQueries(fields);
                         productListQuery = productQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$8({}, filter) })];
+                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$4({}, filter) })];
                     case 1:
                         products = (_b.sent()).products;
                         return [2 /*return*/, products];
@@ -10967,14 +5724,14 @@ var ProductRepositoryGql = /** @class */ (function () {
     };
     ProductRepositoryGql.getOne = function (_a) {
         var fields = _a.fields, filter = _a.filter;
-        return __awaiter$h(this, void 0, void 0, function () {
+        return __awaiter$7(this, void 0, void 0, function () {
             var productQuery, productGetOneQuery, product;
-            return __generator$h(this, function (_b) {
+            return __generator$7(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         productQuery = new ProductQueries(fields);
                         productGetOneQuery = productQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$8({}, filter) })];
+                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$4({}, filter) })];
                     case 1:
                         product = (_b.sent()).product;
                         return [2 /*return*/, product];
@@ -10983,15 +5740,15 @@ var ProductRepositoryGql = /** @class */ (function () {
         });
     };
     ProductRepositoryGql.getById = function (id, fields) {
-        return __awaiter$h(this, void 0, void 0, function () {
-            return __generator$h(this, function (_a) {
+        return __awaiter$7(this, void 0, void 0, function () {
+            return __generator$7(this, function (_a) {
                 return [2 /*return*/, this.getOne({ fields: fields || null, filter: { productId: id } })];
             });
         });
     };
     ProductRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$h(this, void 0, void 0, function () {
-            return __generator$h(this, function (_a) {
+        return __awaiter$7(this, void 0, void 0, function () {
+            return __generator$7(this, function (_a) {
                 return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
             });
         });
@@ -10999,7 +5756,7 @@ var ProductRepositoryGql = /** @class */ (function () {
     return ProductRepositoryGql;
 }());
 
-var __awaiter$g = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$6 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11008,7 +5765,7 @@ var __awaiter$g = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$g = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$6 = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -11040,10 +5797,9 @@ var ProductRepositoryJson = /** @class */ (function () {
     }
     ProductRepositoryJson.getList = function (_a) {
         var _b;
-        var filter = _a.filter, _c = _a.agg, agg = _c === void 0 ? { field: ['productId'] } : _c, fields = _a.fields;
-        return __awaiter$g(this, void 0, void 0, function () {
+        return __awaiter$6(this, void 0, void 0, function () {
             var result;
-            return __generator$g(this, function (_d) {
+            return __generator$6(this, function (_d) {
                 result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.products;
                 return [2 /*return*/, result || {}];
             });
@@ -11051,9 +5807,9 @@ var ProductRepositoryJson = /** @class */ (function () {
     };
     ProductRepositoryJson.getById = function (id, fields) {
         var _a, _b, _c, _d;
-        return __awaiter$g(this, void 0, void 0, function () {
+        return __awaiter$6(this, void 0, void 0, function () {
             var result;
-            return __generator$g(this, function (_e) {
+            return __generator$6(this, function (_e) {
                 result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
                 return [2 /*return*/, result];
             });
@@ -11061,9 +5817,9 @@ var ProductRepositoryJson = /** @class */ (function () {
     };
     ProductRepositoryJson.getBySlug = function (slug, fields) {
         var _a, _b, _c, _d;
-        return __awaiter$g(this, void 0, void 0, function () {
+        return __awaiter$6(this, void 0, void 0, function () {
             var result;
-            return __generator$g(this, function (_e) {
+            return __generator$6(this, function (_e) {
                 result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.slug) == slug; })) === null || _d === void 0 ? void 0 : _d.node;
                 return [2 /*return*/, result];
             });
@@ -11072,8 +5828,8 @@ var ProductRepositoryJson = /** @class */ (function () {
     return ProductRepositoryJson;
 }());
 
-var __assign$7 = (undefined && undefined.__assign) || function () {
-    __assign$7 = Object.assign || function(t) {
+var __assign$3 = (undefined && undefined.__assign) || function () {
+    __assign$3 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -11081,9 +5837,9 @@ var __assign$7 = (undefined && undefined.__assign) || function () {
         }
         return t;
     };
-    return __assign$7.apply(this, arguments);
+    return __assign$3.apply(this, arguments);
 };
-var __awaiter$f = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11092,7 +5848,7 @@ var __awaiter$f = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$f = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$5 = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -11130,22 +5886,22 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
         }
     return t;
 };
-var Repository$4 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
+var Repository$1 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
 var ProductService = /** @class */ (function () {
     function ProductService() {
     }
     ProductService.getList = function (_a) {
         var filter = _a.filter, _b = _a.agg, agg = _b === void 0 ? { field: ['productId'] } : _b, fields = _a.fields;
-        return __awaiter$f(this, void 0, void 0, function () {
-            var items, remainFilter, result, error_1;
-            return __generator$f(this, function (_c) {
+        return __awaiter$5(this, void 0, void 0, function () {
+            var remainFilter, result, error_1;
+            return __generator$5(this, function (_c) {
                 switch (_c.label) {
                     case 0:
                         _c.trys.push([0, 2, , 3]);
-                        items = filter.items, remainFilter = __rest(filter, ["items"]);
-                        return [4 /*yield*/, Repository$4().getList({
+                        remainFilter = __rest(filter, ["items"]);
+                        return [4 /*yield*/, Repository$1().getList({
                                 fields: fields || null,
-                                filter: __assign$7(__assign$7({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
+                                filter: __assign$3(__assign$3({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
                                 agg: agg
                             })];
                     case 1:
@@ -11161,11 +5917,11 @@ var ProductService = /** @class */ (function () {
         });
     };
     ProductService.getById = function (productId, fields) {
-        return __awaiter$f(this, void 0, void 0, function () {
+        return __awaiter$5(this, void 0, void 0, function () {
             var result;
-            return __generator$f(this, function (_a) {
+            return __generator$5(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository$4().getById(Number(productId), fields)];
+                    case 0: return [4 /*yield*/, Repository$1().getById(Number(productId), fields)];
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result];
@@ -11174,11 +5930,11 @@ var ProductService = /** @class */ (function () {
         });
     };
     ProductService.getBySlug = function (slug, fields) {
-        return __awaiter$f(this, void 0, void 0, function () {
+        return __awaiter$5(this, void 0, void 0, function () {
             var result;
-            return __generator$f(this, function (_a) {
+            return __generator$5(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository$4().getBySlug(slug, fields)];
+                    case 0: return [4 /*yield*/, Repository$1().getBySlug(slug, fields)];
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result];
@@ -11187,770 +5943,6 @@ var ProductService = /** @class */ (function () {
         });
     };
     return ProductService;
-}());
-
-var ArrayHelper = /** @class */ (function () {
-    function ArrayHelper() {
-    }
-    ArrayHelper.lastItem = function (list) {
-        if (list.length === 0) {
-            return '';
-        }
-        return list[list.length - 1];
-    };
-    return ArrayHelper;
-}());
-
-function convertFieldsToSchema(fields, keys, result) {
-    if (result === void 0) { result = []; }
-    var key = keys.shift();
-    var target = fields[key];
-    if (typeof target === 'object') {
-        var schema = "".concat(key, " {");
-        var objStartIndex = result.push(schema) - 1;
-        convertFieldsToSchema(fields[key], Object.keys(fields[key]), result);
-        if (result[objStartIndex].includes('{') && !result[objStartIndex].includes('}')) {
-            result.push('}');
-        }
-    }
-    var lastItem = ArrayHelper.lastItem(result);
-    if (lastItem.includes('{') && !lastItem.includes('}')) {
-        if (target)
-            result[result.length - 1] += " ".concat(key);
-        if (keys.length === 0) {
-            result[result.length - 1] += ' }';
-            return result;
-        }
-        return convertFieldsToSchema(fields, keys, result);
-    }
-    if (typeof target === 'boolean' && target) {
-        result.push("".concat(key, " "));
-    }
-    if (keys.length === 0) {
-        return result;
-    }
-    return convertFieldsToSchema(fields, keys, result);
-}
-
-var ProductFieldQueries = /** @class */ (function () {
-    function ProductFieldQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    ProductFieldQueries.prototype.getFields = function () {
-        var keys = Object.keys(this.fields);
-        return convertFieldsToSchema(this.fields, keys).join('\n');
-    };
-    ProductFieldQueries.prototype.defaultFields = function () {
-        return { id: true };
-    };
-    ProductFieldQueries.prototype.getOneFullQuery = function () {
-        return "query ProductFields($filter: filterProductFields!) {\n      productFields(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return ProductFieldQueries;
-}());
-
-var __assign$6 = (undefined && undefined.__assign) || function () {
-    __assign$6 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$6.apply(this, arguments);
-};
-var __awaiter$e = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$e = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ProductFieldRepositoryGql = /** @class */ (function () {
-    function ProductFieldRepositoryGql() {
-    }
-    ProductFieldRepositoryGql.getById = function (id, fields) {
-        return __awaiter$e(this, void 0, void 0, function () {
-            return __generator$e(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields, filter: { productId: id } })];
-            });
-        });
-    };
-    ProductFieldRepositoryGql.getOne = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$e(this, void 0, void 0, function () {
-            var productQuery, productFieldGetOneQuery, productFields;
-            return __generator$e(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        productQuery = new ProductFieldQueries(fields);
-                        productFieldGetOneQuery = productQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(productFieldGetOneQuery, filter && { filter: __assign$6({}, filter) })];
-                    case 1:
-                        productFields = (_b.sent()).productFields;
-                        return [2 /*return*/, productFields];
-                }
-            });
-        });
-    };
-    return ProductFieldRepositoryGql;
-}());
-
-var __awaiter$d = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$d = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var ProductFieldRepositoryJson = /** @class */ (function () {
-    function ProductFieldRepositoryJson() {
-    }
-    ProductFieldRepositoryJson.getById = function (id, fields) {
-        var _a, _b, _c, _d;
-        return __awaiter$d(this, void 0, void 0, function () {
-            var result;
-            return __generator$d(this, function (_e) {
-                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.productsFields) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
-                return [2 /*return*/, result];
-            });
-        });
-    };
-    return ProductFieldRepositoryJson;
-}());
-
-var __awaiter$c = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$c = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$3 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.productsFields) ? ProductFieldRepositoryJson : ProductFieldRepositoryGql); };
-var ProductFieldService = /** @class */ (function () {
-    function ProductFieldService() {
-    }
-    ProductFieldService.getById = function (productId, fields) {
-        return __awaiter$c(this, void 0, void 0, function () {
-            var result;
-            return __generator$c(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository$3().getById(Number(productId), fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    return ProductFieldService;
-}());
-
-var UserQueries = /** @class */ (function () {
-    function UserQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    UserQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    UserQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'email',
-            'firstName',
-            'lastName',
-            'gender',
-            'newsletter',
-            'marketplace',
-            'customerGroupId',
-            'externalId',
-            'entity',
-            'company',
-            'ie',
-            'birthday',
-            'phone',
-            'token',
-            'resetToken',
-            'note',
-            'facebookId',
-            'googleId',
-            'isActive',
-            'createdAt',
-            'updatedAt',
-            'doc',
-            'group {id, name}',
-            'address {id, receiver, zipCode, street, city, state, number, detail}',
-            'image {src, alt}'
-        ];
-    };
-    UserQueries.prototype.auth = function () {
-        return "mutation Login($credentials: Credentials) {\n        login(credentials: $credentials) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    UserQueries.prototype.get = function () {
-        return "query User($filter: filterUser) {\n        user(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
-    };
-    return UserQueries;
-}());
-
-var __assign$5 = (undefined && undefined.__assign) || function () {
-    __assign$5 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$5.apply(this, arguments);
-};
-var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var UserRepositoryGql = /** @class */ (function () {
-    function UserRepositoryGql() {
-    }
-    UserRepositoryGql.auth = function (_a) {
-        var fields = _a.fields, credentials = _a.credentials;
-        return __awaiter$b(this, void 0, void 0, function () {
-            var userQuery, doLoginQuery, login;
-            return __generator$b(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        userQuery = new UserQueries(fields);
-                        doLoginQuery = userQuery.auth();
-                        return [4 /*yield*/, getClient().mutation(doLoginQuery, credentials && { credentials: __assign$5({}, credentials) })];
-                    case 1:
-                        login = (_b.sent()).login;
-                        return [2 /*return*/, login];
-                }
-            });
-        });
-    };
-    UserRepositoryGql.get = function (_a) {
-        var token = _a.token, fields = _a.fields;
-        return __awaiter$b(this, void 0, void 0, function () {
-            var userQuery, getUserQuery, user;
-            return __generator$b(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        userQuery = new UserQueries(fields);
-                        getUserQuery = userQuery.get();
-                        return [4 /*yield*/, getClient().query(getUserQuery, {
-                                filter: { user_token: token }
-                            })];
-                    case 1:
-                        user = (_b.sent()).user;
-                        return [2 /*return*/, user];
-                }
-            });
-        });
-    };
-    return UserRepositoryGql;
-}());
-
-var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var UserRepositoryJson = /** @class */ (function () {
-    function UserRepositoryJson() {
-    }
-    UserRepositoryJson.auth = function (optionsDoLogin) {
-        var _a;
-        return __awaiter$a(this, void 0, void 0, function () {
-            var result;
-            return __generator$a(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.user;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    UserRepositoryJson.get = function (optionsGetUser) {
-        var _a;
-        return __awaiter$a(this, void 0, void 0, function () {
-            var result;
-            return __generator$a(this, function (_b) {
-                result = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.user;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    return UserRepositoryJson;
-}());
-
-var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.user) ? UserRepositoryJson : UserRepositoryGql); };
-var UserService = /** @class */ (function () {
-    function UserService() {
-    }
-    UserService.auth = function (credentials, fields) {
-        return __awaiter$9(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$9(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$2().auth({ fields: fields || null, credentials: credentials })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('User', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    UserService.get = function (token, fields) {
-        return __awaiter$9(this, void 0, void 0, function () {
-            var result, error_2;
-            return __generator$9(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$2().get({ fields: fields || null, token: token })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('User', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_2 = _a.sent();
-                        throw new Error(error_2 === null || error_2 === void 0 ? void 0 : error_2.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return UserService;
-}());
-
-var FreightQueries = /** @class */ (function () {
-    function FreightQueries(fields) {
-        this.fields = fields || this.defaultFields();
-    }
-    FreightQueries.prototype.getFields = function () {
-        return this.fields.join();
-    };
-    FreightQueries.prototype.defaultFields = function () {
-        return [
-            'id',
-            'name',
-            'alias',
-            'api',
-            'image',
-            'price',
-            'priceCost',
-            'additionalMessage',
-            'insurance',
-            'insurancePrice',
-            'shipmentTime',
-            'deliveryTime',
-            'hasLowerPrice'
-        ];
-    };
-    FreightQueries.prototype.getListFullQuery = function () {
-        return "query Freights($shipping: Shipping) {\n          freights(shipping: $shipping) {\n            ".concat(this.getFields(), "\n          }\n        }");
-    };
-    return FreightQueries;
-}());
-
-var __assign$4 = (undefined && undefined.__assign) || function () {
-    __assign$4 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$4.apply(this, arguments);
-};
-var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var FreightRepositoryGql = /** @class */ (function () {
-    function FreightRepositoryGql() {
-    }
-    FreightRepositoryGql.getList = function (_a) {
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$8(this, void 0, void 0, function () {
-            var freightQuery, getListQuery, freights;
-            return __generator$8(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        freightQuery = new FreightQueries(fields);
-                        getListQuery = freightQuery.getListFullQuery();
-                        return [4 /*yield*/, getClient().query(getListQuery, filter && { shipping: __assign$4({}, filter) })];
-                    case 1:
-                        freights = (_b.sent()).freights;
-                        return [2 /*return*/, freights];
-                }
-            });
-        });
-    };
-    return FreightRepositoryGql;
-}());
-
-var __awaiter$7 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$7 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var FreightRepositoryJson = /** @class */ (function () {
-    function FreightRepositoryJson() {
-    }
-    FreightRepositoryJson.getList = function (_a) {
-        var _b;
-        var fields = _a.fields, filter = _a.filter;
-        return __awaiter$7(this, void 0, void 0, function () {
-            var mock, result;
-            return __generator$7(this, function (_c) {
-                if (filter.variationId === 111)
-                    throw new Error();
-                mock = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.freight;
-                result = fields
-                    ? mock.map(function (freight) {
-                        var formattedFreight = {};
-                        fields.forEach(function (field) { return (formattedFreight[field] = freight[field]); });
-                        return formattedFreight;
-                    })
-                    : mock;
-                return [2 /*return*/, result || []];
-            });
-        });
-    };
-    return FreightRepositoryJson;
-}());
-
-var __assign$3 = (undefined && undefined.__assign) || function () {
-    __assign$3 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$3.apply(this, arguments);
-};
-var __awaiter$6 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$6 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Repository$1 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.freight) ? FreightRepositoryJson : FreightRepositoryGql); };
-var FreightService = /** @class */ (function () {
-    function FreightService() {
-    }
-    FreightService.getList = function (shipping, fields) {
-        return __awaiter$6(this, void 0, void 0, function () {
-            var result, error_1;
-            return __generator$6(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$1().getList({
-                                filter: __assign$3(__assign$3({}, shipping), { variationId: Number(shipping.variationId) }),
-                                fields: fields || null
-                            })];
-                    case 1:
-                        result = _a.sent();
-                        BroadcastService.emit('Freight', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _a.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return FreightService;
 }());
 
 var BuyTogetherQueries = /** @class */ (function () {
@@ -11981,80 +5973,6 @@ var BuyTogetherQueries = /** @class */ (function () {
         return "query BuyTogetherList($filter: filterBuyTogetherList) {\n      buyTogetherList(filter: $filter) \n        ".concat(this.getAllFields(productQueryMode), "\n    }");
     };
     return BuyTogetherQueries;
-}());
-
-var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$5 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var BuyTogetherRepositoryGql = /** @class */ (function () {
-    function BuyTogetherRepositoryGql() {
-    }
-    BuyTogetherRepositoryGql.getByProductId = function (productId, fields) {
-        return __awaiter$5(this, void 0, void 0, function () {
-            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
-            return __generator$5(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        buyTogetherQuery = new BuyTogetherQueries(fields);
-                        buyTogetherGetOneQuery = buyTogetherQuery.getOneFullQuery('restrict');
-                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
-                    case 1:
-                        buyTogether = (_a.sent()).buyTogether;
-                        return [2 /*return*/, buyTogether];
-                }
-            });
-        });
-    };
-    BuyTogetherRepositoryGql.getByProductIds = function (productIds, fields) {
-        return __awaiter$5(this, void 0, void 0, function () {
-            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
-            return __generator$5(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        buyTogetherQuery = new BuyTogetherQueries(fields);
-                        buyTogetherGetOneQuery = buyTogetherQuery.getListFullQuery('restrict');
-                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productsIds: productIds } })];
-                    case 1:
-                        buyTogether = (_a.sent());
-                        return [2 /*return*/, buyTogether.buyTogetherList];
-                }
-            });
-        });
-    };
-    return BuyTogetherRepositoryGql;
 }());
 
 var __awaiter$4 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -12093,12 +6011,86 @@ var __generator$4 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var BuyTogetherRepositoryGql = /** @class */ (function () {
+    function BuyTogetherRepositoryGql() {
+    }
+    BuyTogetherRepositoryGql.getByProductId = function (productId, fields) {
+        return __awaiter$4(this, void 0, void 0, function () {
+            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
+            return __generator$4(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        buyTogetherQuery = new BuyTogetherQueries(fields);
+                        buyTogetherGetOneQuery = buyTogetherQuery.getOneFullQuery('restrict');
+                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productId: productId } })];
+                    case 1:
+                        buyTogether = (_a.sent()).buyTogether;
+                        return [2 /*return*/, buyTogether];
+                }
+            });
+        });
+    };
+    BuyTogetherRepositoryGql.getByProductIds = function (productIds, fields) {
+        return __awaiter$4(this, void 0, void 0, function () {
+            var buyTogetherQuery, buyTogetherGetOneQuery, buyTogether;
+            return __generator$4(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        buyTogetherQuery = new BuyTogetherQueries(fields);
+                        buyTogetherGetOneQuery = buyTogetherQuery.getListFullQuery('restrict');
+                        return [4 /*yield*/, getClient().query(buyTogetherGetOneQuery, { filter: { productsIds: productIds } })];
+                    case 1:
+                        buyTogether = (_a.sent());
+                        return [2 /*return*/, buyTogether.buyTogetherList];
+                }
+            });
+        });
+    };
+    return BuyTogetherRepositoryGql;
+}());
+
+var __awaiter$3 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$3 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var BuyTogetherService = /** @class */ (function () {
     function BuyTogetherService() {
     }
     BuyTogetherService.getByProductId = function (productId, fields) {
-        return __awaiter$4(this, void 0, void 0, function () {
-            return __generator$4(this, function (_a) {
+        return __awaiter$3(this, void 0, void 0, function () {
+            return __generator$3(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
                     case 1: return [2 /*return*/, _a.sent()];
@@ -12107,9 +6099,9 @@ var BuyTogetherService = /** @class */ (function () {
         });
     };
     BuyTogetherService.getByProductIdWithValidPromotionDate = function (productId, fields) {
-        return __awaiter$4(this, void 0, void 0, function () {
+        return __awaiter$3(this, void 0, void 0, function () {
             var buyTogetherData;
-            return __generator$4(this, function (_a) {
+            return __generator$3(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductId(productId, fields)];
                     case 1:
@@ -12122,10 +6114,10 @@ var BuyTogetherService = /** @class */ (function () {
         });
     };
     BuyTogetherService.getByProductIds = function (productIds, fields) {
-        return __awaiter$4(this, void 0, void 0, function () {
+        return __awaiter$3(this, void 0, void 0, function () {
             var buyTogetherData;
             var _this = this;
-            return __generator$4(this, function (_a) {
+            return __generator$3(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, BuyTogetherRepositoryGql.getByProductIds(productIds, fields)];
                     case 1:
@@ -12207,64 +6199,6 @@ var __assign$2 = (undefined && undefined.__assign) || function () {
     };
     return __assign$2.apply(this, arguments);
 };
-var __awaiter$3 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator$3 = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var LiveShopRepositoryGql = /** @class */ (function () {
-    function LiveShopRepositoryGql() {
-    }
-    LiveShopRepositoryGql.getOne = function (filter, fields) {
-        return __awaiter$3(this, void 0, void 0, function () {
-            var liveShopQuery, fullQuery, liveShop;
-            return __generator$3(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        liveShopQuery = new LiveShopQueries(fields);
-                        fullQuery = liveShopQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(fullQuery, __assign$2({}, filter))];
-                    case 1:
-                        liveShop = (_a.sent()).liveShop;
-                        return [2 /*return*/, liveShop];
-                }
-            });
-        });
-    };
-    return LiveShopRepositoryGql;
-}());
-
 var __awaiter$2 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12301,29 +6235,26 @@ var __generator$2 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var LiveShopRepositoryJson = /** @class */ (function () {
-    function LiveShopRepositoryJson() {
+var LiveShopRepositoryGql = /** @class */ (function () {
+    function LiveShopRepositoryGql() {
     }
-    LiveShopRepositoryJson.getOne = function (_a, fields) {
-        var _b;
-        var filter = _a.filter;
+    LiveShopRepositoryGql.getOne = function (filter, fields) {
         return __awaiter$2(this, void 0, void 0, function () {
-            var liveShop, liveShopResult;
-            return __generator$2(this, function (_c) {
-                liveShop = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.live_shop;
-                liveShopResult = liveShop.find(function (item) {
-                    return (filter.hashRoom && item.hashRoom === filter.hashRoom) ||
-                        (filter.id && item.id === filter.id) ||
-                        (filter.slug && item.slug === filter.slug);
-                });
-                if (!liveShopResult) {
-                    throw new Error('Live Shop not found');
+            var liveShopQuery, fullQuery, liveShop;
+            return __generator$2(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        liveShopQuery = new LiveShopQueries(fields);
+                        fullQuery = liveShopQuery.getOneFullQuery();
+                        return [4 /*yield*/, getClient().query(fullQuery, __assign$2({}, filter))];
+                    case 1:
+                        liveShop = (_a.sent()).liveShop;
+                        return [2 /*return*/, liveShop];
                 }
-                return [2 /*return*/, liveShopResult];
             });
         });
     };
-    return LiveShopRepositoryJson;
+    return LiveShopRepositoryGql;
 }());
 
 var __awaiter$1 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -12362,14 +6293,75 @@ var __generator$1 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var LiveShopRepositoryJson = /** @class */ (function () {
+    function LiveShopRepositoryJson() {
+    }
+    LiveShopRepositoryJson.getOne = function (_a, fields) {
+        var _b;
+        var filter = _a.filter;
+        return __awaiter$1(this, void 0, void 0, function () {
+            var liveShop, liveShopResult;
+            return __generator$1(this, function (_c) {
+                liveShop = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.live_shop;
+                liveShopResult = liveShop.find(function (item) {
+                    return (filter.hashRoom && item.hashRoom === filter.hashRoom) ||
+                        (filter.id && item.id === filter.id) ||
+                        (filter.slug && item.slug === filter.slug);
+                });
+                if (!liveShopResult) {
+                    throw new Error('Live Shop not found');
+                }
+                return [2 /*return*/, liveShopResult];
+            });
+        });
+    };
+    return LiveShopRepositoryJson;
+}());
+
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var Repository = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.live_shop) ? LiveShopRepositoryJson : LiveShopRepositoryGql); };
 var LiveShopService = /** @class */ (function () {
     function LiveShopService() {
     }
     LiveShopService.getByHash = function (hashRoom, fields) {
-        return __awaiter$1(this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
             var result, error_1;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -12387,9 +6379,9 @@ var LiveShopService = /** @class */ (function () {
         });
     };
     LiveShopService.getById = function (id, fields) {
-        return __awaiter$1(this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
             var result, error_2;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
@@ -12437,7 +6429,7 @@ var __extends$9 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var ShopSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$9(ShopSeoService, _super);
     function ShopSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12468,7 +6460,7 @@ var ShopSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return ShopSeoService;
-}(SeoService));
+})(SeoService));
 
 var NavigationService = /** @class */ (function () {
     function NavigationService() {
@@ -12627,7 +6619,7 @@ var __assign$1 = (undefined && undefined.__assign) || function () {
     };
     return __assign$1.apply(this, arguments);
 };
-var ProductItemSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$7(ProductItemSeoService, _super);
     function ProductItemSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12639,7 +6631,7 @@ var ProductItemSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return ProductItemSeoService;
-}(ProductSeoServiceBase));
+})(ProductSeoServiceBase));
 
 var __extends$6 = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12656,7 +6648,7 @@ var __extends$6 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var ProductListSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$6(ProductListSeoService, _super);
     function ProductListSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12681,7 +6673,7 @@ var ProductListSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return ProductListSeoService;
-}(ProductSeoServiceBase));
+})(ProductSeoServiceBase));
 
 var __extends$5 = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12698,7 +6690,7 @@ var __extends$5 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var SomeProductsSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$5(SomeProductsSeoService, _super);
     function SomeProductsSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12717,7 +6709,7 @@ var SomeProductsSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return SomeProductsSeoService;
-}(SeoService));
+})(SeoService));
 
 var __extends$4 = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12734,7 +6726,7 @@ var __extends$4 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var BrandSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$4(BrandSeoService, _super);
     function BrandSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12755,7 +6747,7 @@ var BrandSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return BrandSeoService;
-}(SeoService));
+})(SeoService));
 
 var __extends$3 = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12772,7 +6764,7 @@ var __extends$3 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var PageSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$3(PageSeoService, _super);
     function PageSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12823,7 +6815,7 @@ var PageSeoService = /** @class */ (function (_super) {
         return microData;
     };
     return PageSeoService;
-}(SeoService));
+})(SeoService));
 
 var __extends$2 = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12880,7 +6872,7 @@ var __extends$1 = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var BlogCategorySeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends$1(BlogCategorySeoService, _super);
     function BlogCategorySeoService(data) {
         var _this = _super.call(this) || this;
@@ -12905,7 +6897,7 @@ var BlogCategorySeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return BlogCategorySeoService;
-}(BlogSeoServiceBase));
+})(BlogSeoServiceBase));
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12933,7 +6925,7 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var BlogPostSeoService = /** @class */ (function (_super) {
+/** @class */ ((function (_super) {
     __extends(BlogPostSeoService, _super);
     function BlogPostSeoService(data) {
         var _this = _super.call(this) || this;
@@ -12945,57 +6937,7 @@ var BlogPostSeoService = /** @class */ (function (_super) {
         return this.render(microData);
     };
     return BlogPostSeoService;
-}(BlogSeoServiceBase));
-
-var SeoServiceFactory = /** @class */ (function () {
-    function SeoServiceFactory() {
-    }
-    SeoServiceFactory.getInstance = function (type, data) {
-        switch (type) {
-            case 'shop':
-                return new ShopSeoService(data).getShop();
-            case 'product-item':
-                return new ProductItemSeoService(data).getProductItem();
-            case 'product-list':
-                return new ProductListSeoService(data).getProductList();
-            case 'some-products':
-                return new SomeProductsSeoService(data).getSomeProducts();
-            case 'brand':
-                return new BrandSeoService(data).getBrand();
-            case 'page':
-                return new PageSeoService(data).getPage();
-            case 'blog-category':
-                return new BlogCategorySeoService(data).getBlogCategory();
-            case 'blog-post':
-                return new BlogPostSeoService(data).getBlogPost();
-            default:
-                break;
-        }
-    };
-    return SeoServiceFactory;
-}());
-
-var CookieService = /** @class */ (function () {
-    function CookieService() {
-    }
-    CookieService.getCookie = function (key) {
-        var _a;
-        var cookie = (_a = document.cookie
-            .split(';')
-            .find(function (row) {
-            return row.trim().startsWith("".concat(key, "="));
-        })) === null || _a === void 0 ? void 0 : _a.split('=')[1];
-        return cookie || null;
-    };
-    CookieService.setCookie = function (name, value, lifetime) {
-        var maxAge = lifetime ? 60 * 60 * 24 * lifetime : 0;
-        document.cookie = "".concat(name, "=").concat(value, ";max-age= ").concat(maxAge, "; Secure;path=/");
-    };
-    CookieService.eraseCookie = function (name) {
-        document.cookie = name + '=; Max-Age=-99999999;';
-    };
-    return CookieService;
-}());
+})(BlogSeoServiceBase));
 
 const PACKET_TYPES = Object.create(null); // no Map = no polyfill
 PACKET_TYPES["open"] = "0";
@@ -13085,22 +7027,6 @@ const lookup$1 = typeof Uint8Array === 'undefined' ? [] : new Uint8Array(256);
 for (let i = 0; i < chars.length; i++) {
     lookup$1[chars.charCodeAt(i)] = i;
 }
-const encode$1 = (arraybuffer) => {
-    let bytes = new Uint8Array(arraybuffer), i, len = bytes.length, base64 = '';
-    for (i = 0; i < len; i += 3) {
-        base64 += chars[bytes[i] >> 2];
-        base64 += chars[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];
-        base64 += chars[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];
-        base64 += chars[bytes[i + 2] & 63];
-    }
-    if (len % 3 === 2) {
-        base64 = base64.substring(0, base64.length - 1) + '=';
-    }
-    else if (len % 3 === 1) {
-        base64 = base64.substring(0, base64.length - 2) + '==';
-    }
-    return base64;
-};
 const decode$1 = (base64) => {
     let bufferLength = base64.length * 0.75, len = base64.length, i, p = 0, encoded1, encoded2, encoded3, encoded4;
     if (base64[base64.length - 1] === '=') {
@@ -13334,7 +7260,7 @@ function createPacketDecoderStream(maxPayload, binaryType) {
         },
     });
 }
-const protocol$2 = 4;
+const protocol$1 = 4;
 
 /**
  * Initialize a new `Emitter`.
@@ -13687,9 +7613,6 @@ class Transport extends Emitter {
         if (this.readyState === "open") {
             this.write(packets);
         }
-        else {
-            // this might happen if the transport was silently closed in the beforeunload event handler
-        }
     }
     /**
      * Called upon open
@@ -13848,8 +7771,6 @@ class Polling extends Transport {
             this.emitReserved("pollComplete");
             if ("open" === this.readyState) {
                 this._poll();
-            }
-            else {
             }
         }
     }
@@ -14609,7 +8530,7 @@ class SocketWithoutUpgrade extends Emitter {
     createTransport(name) {
         const query = Object.assign({}, this.opts.query);
         // append engine.io protocol identifier
-        query.EIO = protocol$2;
+        query.EIO = protocol$1;
         // transport name
         query.transport = name;
         // session id if we already have one
@@ -14710,8 +8631,6 @@ class SocketWithoutUpgrade extends Emitter {
                     this.emitReserved("message", packet.data);
                     break;
             }
-        }
-        else {
         }
     }
     /**
@@ -14986,7 +8905,7 @@ class SocketWithoutUpgrade extends Emitter {
         }
     }
 }
-SocketWithoutUpgrade.protocol = protocol$2;
+SocketWithoutUpgrade.protocol = protocol$1;
 /**
  * This class provides a WebSocket-like interface to connect to an Engine.IO server. The connection will be established
  * with one of the available low-level transports, like HTTP long-polling, WebSocket or WebTransport.
@@ -15163,7 +9082,7 @@ class SocketWithUpgrade extends SocketWithoutUpgrade {
  * @see SocketWithoutUpgrade
  * @see SocketWithUpgrade
  */
-class Socket$2 extends SocketWithUpgrade {
+class Socket$1 extends SocketWithUpgrade {
     constructor(uri, opts = {}) {
         const o = typeof uri === "object" ? uri : opts;
         if (!o.transports ||
@@ -15175,64 +9094,6 @@ class Socket$2 extends SocketWithUpgrade {
         super(uri, o);
     }
 }
-
-/**
- * HTTP long-polling based on the built-in `fetch()` method.
- *
- * Usage: browser, Node.js (since v18), Deno, Bun
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/fetch
- * @see https://caniuse.com/fetch
- * @see https://nodejs.org/api/globals.html#fetch
- */
-class Fetch extends Polling {
-    doPoll() {
-        this._fetch()
-            .then((res) => {
-            if (!res.ok) {
-                return this.onError("fetch read error", res.status, res);
-            }
-            res.text().then((data) => this.onData(data));
-        })
-            .catch((err) => {
-            this.onError("fetch read error", err);
-        });
-    }
-    doWrite(data, callback) {
-        this._fetch(data)
-            .then((res) => {
-            if (!res.ok) {
-                return this.onError("fetch write error", res.status, res);
-            }
-            callback();
-        })
-            .catch((err) => {
-            this.onError("fetch write error", err);
-        });
-    }
-    _fetch(data) {
-        var _a;
-        const isPost = data !== undefined;
-        const headers = new Headers(this.opts.extraHeaders);
-        if (isPost) {
-            headers.set("content-type", "text/plain;charset=UTF-8");
-        }
-        (_a = this.socket._cookieJar) === null || _a === void 0 ? void 0 : _a.appendCookies(headers);
-        return fetch(this.uri(), {
-            method: isPost ? "POST" : "GET",
-            body: isPost ? data : null,
-            headers,
-            credentials: this.opts.withCredentials ? "include" : "omit",
-        }).then((res) => {
-            var _a;
-            // @ts-ignore getSetCookie() was added in Node.js v19.7.0
-            (_a = this.socket._cookieJar) === null || _a === void 0 ? void 0 : _a.parseCookies(res.headers.getSetCookie());
-            return res;
-        });
-    }
-}
-
-const protocol$1 = Socket$2.protocol;
 
 /**
  * URL parser.
@@ -15788,7 +9649,7 @@ const RESERVED_EVENTS = Object.freeze({
  *   console.log(`disconnected due to ${reason}`);
  * });
  */
-class Socket$1 extends Emitter {
+class Socket extends Emitter {
     /**
      * `Socket` constructor.
      */
@@ -16011,8 +9872,7 @@ class Socket$1 extends Emitter {
         const isTransportWritable = (_b = (_a = this.io.engine) === null || _a === void 0 ? void 0 : _a.transport) === null || _b === void 0 ? void 0 : _b.writable;
         const isConnected = this.connected && !((_c = this.io.engine) === null || _c === void 0 ? void 0 : _c._hasPingExpired());
         const discardPacket = this.flags.volatile && !isTransportWritable;
-        if (discardPacket) {
-        }
+        if (discardPacket) ;
         else if (isConnected) {
             this.notifyOutgoingListeners(packet);
             this.packet(packet);
@@ -16802,7 +10662,7 @@ class Manager extends Emitter {
     open(fn) {
         if (~this._readyState.indexOf("open"))
             return this;
-        this.engine = new Socket$2(this.uri, this.opts);
+        this.engine = new Socket$1(this.uri, this.opts);
         const socket = this.engine;
         const self = this;
         this._readyState = "opening";
@@ -16920,7 +10780,7 @@ class Manager extends Emitter {
     socket(nsp, opts) {
         let socket = this.nsps[nsp];
         if (!socket) {
-            socket = new Socket$1(this, nsp, opts);
+            socket = new Socket(this, nsp, opts);
             this.nsps[nsp] = socket;
         }
         else if (this._autoConnect && !socket.active) {
@@ -17098,89 +10958,11 @@ function lookup(uri, opts) {
 // namespace (e.g. `io.connect(...)`), for backward compatibility
 Object.assign(lookup, {
     Manager,
-    Socket: Socket$1,
+    Socket,
     io: lookup,
     connect: lookup,
 });
 
-function createSocket(hash, onUpdate, onFocus) {
-    var URL = shop_ctx.api_editor;
-    var socketIO = lookup(URL, { autoConnect: false, query: { hash: hash } });
-    socketIO.connect();
-    socketIO.on('UPDATE_SETTINGS_DATA', onUpdate);
-    socketIO.on('FOCUS_SECTION', onFocus);
-}
-
-function focusSection(_a) {
-    var data = _a.data;
-    var element = document.querySelector("[data-section-id=\"".concat(data, "\"]"));
-    var timerSectionFocused = null;
-    if (element) {
-        element.classList.add('section-focused');
-        clearTimeout(timerSectionFocused);
-        timerSectionFocused = setTimeout(function () {
-            element.classList.remove('section-focused');
-        }, 2000);
-        window.scroll({
-            behavior: 'smooth',
-            left: 0,
-            top: element.offsetTop
-        });
-    }
-}
-
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Socket = /** @class */ (function () {
-    function Socket() {
-    }
-    Socket.create = function (hashPreview, onUpdate) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                createSocket(hashPreview, onUpdate, focusSection);
-                return [2 /*return*/];
-            });
-        });
-    };
-    return Socket;
-}());
-
-// Helpers
-
-export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductFieldService as P, ProductService as a, commonjsGlobal as c };
+export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductService as P };
 
 //# sourceMappingURL=index2.js.map

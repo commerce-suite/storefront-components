@@ -1,5 +1,5 @@
-import { r as registerInstance, a as createEvent, h, e as Host } from './index-9b51ba9f.js';
-import { P as ProductFieldService } from './index-588ed867.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-acabb06e.js';
+import { P as ProductService } from './index-27e70230.js';
 
 class LaunchCountdownService {
     static async getReleaseDateByProduct(productId, variationId) {
@@ -7,10 +7,7 @@ class LaunchCountdownService {
         try {
             if (!productId)
                 return null;
-            const product = await ProductFieldService.getById(productId, {
-                releaseDate: { now: true, releaseDate: true },
-                variations: { id: true, releaseDate: { now: true, releaseDate: true } },
-            });
+            const product = await ProductService.getById(productId);
             if (!product)
                 return null;
             let variation = product;
@@ -27,6 +24,7 @@ class LaunchCountdownService {
 }
 
 const launchCountdownCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}:host{display:inline-block;width:100%}.launch-countdown-container{display:flex;flex-direction:column;justify-content:center;align-items:center;background-color:var(--fc-color-secondary);padding:var(--fc-gap-grid);border-radius:var(--fc-border-radius)}.launch-countdown-container>.launch-countdown-container-header{display:flex;flex-direction:column;align-items:center;color:var(--fc-color-white);background-color:transparent;margin-bottom:16px;line-height:1.5;text-align:center}.launch-countdown-container>.launch-countdown-container-header>.launch-countdown-container-title{margin:0;margin-bottom:4px;font-weight:var(--fc-m-fw)}.launch-countdown-container>.launch-countdown-container-header>.launch-countdown-container-description{margin:0;font-size:12px}.launch-countdown-container>front-countdown.timer{display:flex;flex-wrap:wrap;--variations-gap:16px;gap:var(--variations-gap)}.launch-countdown-container>front-countdown.timer>.cell{display:flex;flex-direction:column;align-items:center;min-width:calc(50% - var(--variations-gap));border-radius:16px;background-color:#fff;color:var(--fc-color-secondary);padding:6px}.launch-countdown-container>front-countdown.timer>.cell>.time{font-size:46px;font-weight:700;margin:0}.launch-countdown-container>front-countdown.timer>.cell>.unit{font-size:12px;margin:0}@media (min-width: 1024px){.launch-countdown-container>front-countdown.timer>.cell{min-width:80px}.launch-countdown-container>front-countdown.timer>.cell>.time{font-size:40px}}";
+const LaunchCountdownStyle0 = launchCountdownCss;
 
 const LaunchCountdown = class {
     constructor(hostRef) {
@@ -77,7 +75,7 @@ const LaunchCountdown = class {
         "productId": ["watchProductIdChange"]
     }; }
 };
-LaunchCountdown.style = launchCountdownCss;
+LaunchCountdown.style = LaunchCountdownStyle0;
 
 export { LaunchCountdown as launch_countdown };
 

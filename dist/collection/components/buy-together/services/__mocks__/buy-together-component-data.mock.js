@@ -60,7 +60,7 @@ export const buyTogetherComponentData = {
             },
         ],
         slug: 'chuck-taylor-all-star-lift-glam',
-        paymentOptions: [],
+        specialPrice: null,
     },
     products: [
         {
@@ -115,7 +115,7 @@ export const buyTogetherComponentData = {
                 },
             ],
             slug: 'chuck-taylor-all-star-preto',
-            paymentOptions: [],
+            specialPrice: null,
             isCheck: true,
         },
         {
@@ -172,7 +172,7 @@ export const buyTogetherComponentData = {
                 },
             ],
             slug: 'sandalia-diesel-sa-valla',
-            paymentOptions: [],
+            specialPrice: null,
             isCheck: true,
         },
         {
@@ -190,7 +190,7 @@ export const buyTogetherComponentData = {
             },
             name: 'Boné Jordan Flight MVP',
             slug: 'bone-jordan-flight-mvp',
-            paymentOptions: [],
+            specialPrice: null,
             selectVariations: [],
             isCheck: true,
         },

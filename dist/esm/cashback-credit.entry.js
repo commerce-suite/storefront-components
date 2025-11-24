@@ -1,5 +1,5 @@
-import { r as registerInstance, h, e as Host, g as getAssetPath } from './index-9b51ba9f.js';
-import { c as currencyFormat } from './utils-65274404.js';
+import { r as registerInstance, h, g as getAssetPath, H as Host } from './index-acabb06e.js';
+import { c as currencyFormat } from './utils-c22f4591.js';
 
 const exec = (method, url, data) => {
     return new Promise((resolve, reject) => {
@@ -31,6 +31,7 @@ var CalculationItemPromotion;
 })(CalculationItemPromotion || (CalculationItemPromotion = {}));
 
 const cashbackCss = ".cashback.sc-cashback-credit{display:inline-flex}.cashback.sc-cashback-credit img.sc-cashback-credit{margin-right:0.5rem}.cashback.sc-cashback-credit span.sc-cashback-credit{color:var(--success)}";
+const CashbackCreditStyle0 = cashbackCss;
 
 const Cashback = class {
     constructor(hostRef) {
@@ -79,7 +80,7 @@ const Cashback = class {
         "product": ["onProductChange"]
     }; }
 };
-Cashback.style = cashbackCss;
+Cashback.style = CashbackCreditStyle0;
 
 export { Cashback as cashback_credit };
 

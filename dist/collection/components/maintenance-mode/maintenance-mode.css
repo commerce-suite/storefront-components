@@ -132,7 +132,7 @@ body {
 }
 .maintenance-mode-content img {
   border-radius: 12px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   width: 346px;
   height: 172px;

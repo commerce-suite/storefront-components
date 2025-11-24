@@ -16,8 +16,8 @@ describe('FrontBuyTogetherAdapter', () => {
             position: 1,
         },
         name: 'Chuck Taylor All Star Lift Glam',
-        paymentOptions: [],
         slug: 'chuck-taylor-all-star-lift-glam',
+        specialPrice: null,
         selectVariations: [
             {
                 label: 'Cor',

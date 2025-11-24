@@ -36,7 +36,7 @@
 .live-shop-in-live-desktop-infos-options-title {
   margin: 0;
   font-family: var(--h1-ff);
-  color: var(--fc-color-primary);
+  color: var(--menu-items);
   font-weight: 700;
   font-size: 24px;
   text-transform: uppercase;
@@ -92,7 +92,7 @@
 }
 .live-shop-in-live-desktop-content-card .in-live-custom-style-desktop {
   padding: 40px;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--menu-items);
   border-radius: 8px;
 }
 .live-shop-in-live-desktop-content-card .in-live-custom-style-desktop .custom-card-content {

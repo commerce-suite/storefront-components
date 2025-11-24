@@ -2,16 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index$1 = require('./index-ccb6baf7.js');
-const index = require('./index-fd40904d.js');
-const utils = require('./utils-f2fc9e55.js');
+const index$1 = require('./index-53de1b7a.js');
+const index = require('./index-15bfa4ed.js');
+const utils = require('./utils-0cb85ee7.js');
 
 class LiveShopHandler {
     async getProducts() {
         const productIds = this.liveShopData.products.map(product => product.productId);
         return await index.ProductService.getList({
             fields: [
-                'id',
                 'name',
                 'images { src }',
                 'price',
@@ -19,103 +18,37 @@ class LiveShopHandler {
                 'productId',
                 'slug',
                 'hasPriceRange',
-                'balance',
-                'isSellOutOfStock',
-                'color { id, name, hexadecimal, slug, image { src } }',
             ],
-            filter: { productIds, page: 0, first: 1000 },
-            agg: {
-                field: ['productId', 'colorId', 'id'],
-            },
+            filter: { productIds, page: 0, first: productIds.length },
         });
     }
     async getLiveShop(hashRoom) {
         this.liveShopData = await index.LiveShopService.getByHash(hashRoom);
         return this.liveShopData;
     }
-    groupByProductIdWithColorAndVariations(edges) {
-        var _a, _b;
-        const grouped = {};
-        for (const { node } of edges) {
-            const productId = node.productId;
-            const colorId = (_b = (_a = node.color) === null || _a === void 0 ? void 0 : _a.id) !== null && _b !== void 0 ? _b : 0;
-            if (!grouped[productId])
-                grouped[productId] = {};
-            if (!grouped[productId][colorId])
-                grouped[productId][colorId] = [];
-            grouped[productId][colorId].push(node);
-        }
-        return Object.fromEntries(Object.entries(grouped).map(([productId, colorGroups]) => [
-            +productId,
-            Object.values(colorGroups),
-        ]));
-    }
-    selectBaseNode(nodes) {
-        var _a;
-        return (_a = nodes.find(n => { var _a; return (_a = n.images) === null || _a === void 0 ? void 0 : _a.length; })) !== null && _a !== void 0 ? _a : nodes[0];
-    }
-    buildProductItemGroupedByColor(base, colorGroups, liveProduct) {
-        var _a, _b, _c;
-        const validColorGroups = colorGroups.filter(group => { var _a, _b; return (_b = (_a = group[0]) === null || _a === void 0 ? void 0 : _a.color) === null || _b === void 0 ? void 0 : _b.id; });
-        const shouldGroup = validColorGroups.length > 1;
-        const colors = shouldGroup
-            ? validColorGroups.map(group => {
-                var _a, _b, _c, _d, _e, _f, _g, _h;
-                const variation = group[0];
-                return {
-                    id: (_a = variation.color) === null || _a === void 0 ? void 0 : _a.id,
-                    name: (_b = variation.color) === null || _b === void 0 ? void 0 : _b.name,
-                    slug: (_c = variation.color) === null || _c === void 0 ? void 0 : _c.slug,
-                    hexadecimal: (_d = variation.color) === null || _d === void 0 ? void 0 : _d.hexadecimal,
-                    image: ((_f = (_e = variation.color) === null || _e === void 0 ? void 0 : _e.image) === null || _f === void 0 ? void 0 : _f.src) ? { src: variation.color.image.src } : null,
-                    price: variation.price,
-                    productImage: ((_h = (_g = variation.images) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h.src) ? { src: variation.images[0].src } : null,
-                    balance: group.reduce((sum, v) => { var _a; return sum + ((_a = v.balance) !== null && _a !== void 0 ? _a : 0); }, 0),
-                    priceCompare: variation.priceCompare,
-                    variations: group.map(v => {
-                        var _a, _b;
-                        return ({
-                            id: v.id,
-                            price: v.price,
-                            balance: v.balance,
-                            image: ((_b = (_a = v.images) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.src) ? { src: v.images[0].src } : null,
-                        });
-                    }),
-                };
-            })
-            : null;
-        const color = base.color;
-        const gridId = color ? `${base.productId}-${color.id}` : `${base.productId}`;
-        return Object.assign({ id: +base.productId, name: base.name, image: ((_b = (_a = base.images) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.src) ? { src: base.images[0].src } : null, images: (() => {
-                var _a;
-                const seenSrcs = new Set();
-                const result = [];
-                for (const variation of colorGroups.flat()) {
-                    const variationId = variation.id;
-                    const images = (_a = variation.images) !== null && _a !== void 0 ? _a : [];
-                    for (const image of images) {
-                        if ((image === null || image === void 0 ? void 0 : image.src) && !seenSrcs.has(image.src)) {
-                            seenSrcs.add(image.src);
-                            result.push({
-                                src: image.src,
-                                variationId,
-                            });
-                        }
-                    }
-                }
-                return result;
-            })(), price: base.price, priceBase: base.priceCompare, balance: base.balance, isSellOutOfStock: base.isSellOutOfStock, gridId, slug: base.slug, type: 'product', show: (liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.status) && liveProduct.status !== 'hidden', highlight: (liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.status) === 'highlighting', position: (_c = liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.position) !== null && _c !== void 0 ? _c : 0, colors }, (shouldGroup ? {} : { showStartingFrom: base.hasPriceRange }));
-    }
     async productsToItemsAdapter() {
         var _a;
         const products = await this.getProducts();
         const liveProducts = (_a = this.liveShopData) === null || _a === void 0 ? void 0 : _a.products;
-        const grouped = this.groupByProductIdWithColorAndVariations(products.edges);
-        return Object.entries(grouped).map(([productId, colorGroups]) => {
-            const allNodes = colorGroups.flat();
-            const baseNode = this.selectBaseNode(allNodes);
-            const liveProduct = liveProducts.find(p => p.productId === Number(productId));
-            return this.buildProductItemGroupedByColor(baseNode, colorGroups, liveProduct);
+        return products.edges.map(({ node }) => {
+            var _a, _b, _c, _d;
+            const liveProduct = liveProducts.find(product => product.productId === node.productId);
+            const status = (_a = liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.status) !== null && _a !== void 0 ? _a : null;
+            return {
+                id: +node.productId,
+                name: node.name,
+                image: (_c = (_b = node === null || node === void 0 ? void 0 : node.images) === null || _b === void 0 ? void 0 : _b[0]) !== null && _c !== void 0 ? _c : null,
+                price: node.price,
+                priceBase: node.priceCompare,
+                title: '',
+                content: '',
+                type: 'product',
+                slug: node.slug,
+                show: status && status !== 'hidden',
+                highlight: status === 'highlighting',
+                position: (_d = liveProduct === null || liveProduct === void 0 ? void 0 : liveProduct.position) !== null && _d !== void 0 ? _d : 0,
+                showStartingFrom: node.hasPriceRange,
+            };
         });
     }
     messagesToItemsAdapter() {
@@ -231,6 +164,7 @@ WebSocketClient.MAX_RECONNECT_DELAY = 30000;
 WebSocketClient.INITIAL_INCREMENT_DELAY = 1000;
 
 const liveShopCss = "*{--fc-font-family:var(--m-ff);--fc-border-radius:4px;--fc-color-primary:var(--color-primary, #ff4295);--fc-color-secondary:var(--color-secondary, #000);--fc-color-white:var(--white, #fff);--fc-m-tt:var(--m-tt, \"uppercase\");--fc-m-fs:var(--m-fs, 14px);--fc-m-fw:var(--m-fw, 600);--fc-m-ls:var(--m-ls, 1px);--fc-h2-fs:var(--h2-fs, 18px);--fc-h2-fw:var(--h2-fw, 600);--fc-h2-ls:var(--h2-ls, 0px);--fc-color-light-text-default:#343a40;--fc-color-light-text-secondary:#6d747a;--fc-color-light-border-default:#dee2e6;--fc-gap-grid:24px;--fc-margin-width:8px}@keyframes lds-dual-ring-animation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes simple-spinner-animation{0%{transform:translate(-50%, -50%) rotate(0deg)}100%{transform:translate(-50%, -50%) rotate(360deg)}}:host{display:block;width:100%}.loading-container{display:flex;width:100%;justify-content:center;align-items:center;min-height:350px}.loading-container .spinner{--spinner-color:var(--fc-color-secondary, #000);display:inline-block;width:80px;height:80px}.loading-container .spinner:after{content:\" \";display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid var(--spinner-color);border-color:var(--spinner-color) transparent var(--spinner-color) transparent;animation:lds-dual-ring-animation 1.2s linear infinite}.live-shop-warmup .banner-custom-style{padding:40px}.live-shop-warmup .banner-custom-style>.custom-card-content{width:100%;max-width:720px;height:auto;aspect-ratio:16/9}.live-shop-warmup .banner-custom-style>.custom-card-content img{width:100%;height:100%;object-fit:cover}.live-shop-warmup .banner-custom-style>.custom-card-content .live-shop-banner{background-color:#d9d9d9;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.live-shop-finished .button-custom-style{padding:40px;max-width:410px;margin:0 auto;text-align:center}.live-shop-finished .button-custom-style button{--btn-bg-color:var(--fc-color-primary);--btn-text-color:var(--fc-color-white);--btn-text-weight:var(--fc-m-fw, 600);--btn-text-size:var(--fc-m-fs);--btn-text-transform:var(--fc-m-tt, \"uppercase\");--btn-text-letter-spacing:var(--fc-m-ls, 1px);all:unset;box-sizing:border-box;width:100%;background-color:var(--btn-bg-color);color:var(--btn-text-color);font-weight:var(--btn-text-weight);font-size:var(--btn-text-size);padding:12px 24px;cursor:pointer;border-radius:var(--fc-border-radius);text-align:center;text-transform:var(--btn-text-transform);letter-spacing:var(--btn-text-letter-spacing);font-weight:500;font-size:14px}.live-shop-finished .button-custom-style button:hover{opacity:0.75}.live-shop-finished .button-custom-style button:disabled{opacity:0.6;cursor:not-allowed}";
+const LiveShopStyle0 = liveShopCss;
 
 const LiveShop = class {
     constructor(hostRef) {
@@ -294,7 +228,7 @@ const LiveShop = class {
             if (this.liveShopRegister) {
                 this.videoId = utils.extractYouTubeVideoId(this.liveShopRegister.urlLive);
             }
-            const wsBaseUrl = index$1.Env.WEBSOCKET_URL || 'ws://localhost:3001';
+            const wsBaseUrl = 'ws://localhost:3001';
             this.liveSocket = new WebSocketClient(`${wsBaseUrl}?hashRoom=${this.hashRoom}`);
             this.liveSocket.onMessage(this.handleMessage);
         }
@@ -334,7 +268,7 @@ const LiveShop = class {
         return (index$1.h(index$1.Host, null, index$1.h("div", { class: "live-shop" }, ((_a = this.liveShopRegister) === null || _a === void 0 ? void 0 : _a.status) === 'warmup' && this.renderWarmup(), ((_b = this.liveShopRegister) === null || _b === void 0 ? void 0 : _b.status) === 'inLive' && this.renderInLive(), ((_c = this.liveShopRegister) === null || _c === void 0 ? void 0 : _c.status) === 'finished' && this.renderFinished())));
     }
 };
-LiveShop.style = liveShopCss;
+LiveShop.style = LiveShopStyle0;
 
 exports.live_shop = LiveShop;
 

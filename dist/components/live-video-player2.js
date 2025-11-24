@@ -1,6 +1,7 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
 
 const liveVideoPlayerCss = ":host{display:inline-block;width:100%}.live-video-player{display:flex;justify-content:center;align-items:center;width:100%;height:100%}.live-video-player iframe{height:100%;width:100%}";
+const LiveVideoPlayerStyle0 = liveVideoPlayerCss;
 
 const LiveVideoPlayer = /*@__PURE__*/ proxyCustomElement(class LiveVideoPlayer extends HTMLElement {
     constructor() {
@@ -20,9 +21,9 @@ const LiveVideoPlayer = /*@__PURE__*/ proxyCustomElement(class LiveVideoPlayer e
         this.componentRendered.emit();
     }
     render() {
-        return (h(Host, { key: '1417ff4b4ea1da61d8472f29be4214bacf9bea59' }, h("div", { key: '7efe51c561700a7e4289911c24443be3ac455655', class: "live-video-player" }, h("iframe", { key: '69a994c0a1306c00cdc2f33b6940c42a5e805d8d', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
+        return (h(Host, { key: 'b7e494530efeba855077e59604d69f797816cc68' }, h("div", { key: 'b907509b06ad0cb953b4879d80cf57905ea85b3f', class: "live-video-player" }, h("iframe", { key: '05d3efbeff57386cb30447de2550ba2ad38d4a55', src: this.getVideoUrl(), frameborder: "0", allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true }))));
     }
-    static get style() { return liveVideoPlayerCss; }
+    static get style() { return LiveVideoPlayerStyle0; }
 }, [0, "live-video-player", {
         "videoId": [1, "video-id"],
         "autoPlay": [4, "auto-play"],

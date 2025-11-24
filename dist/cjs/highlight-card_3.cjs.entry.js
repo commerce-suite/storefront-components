@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-ed1a22c2.js');
+const index = require('./index-53de1b7a.js');
 
-const highlightCardCss = ":host{display:inline-block;width:100%}.highlight-card{display:flex;flex-direction:column;gap:16px}.highlight-card-container{border:1px solid var(--color-primary);border-radius:8px}.highlight-card-header{background-color:var(--color-secondary);padding:10px;text-align:center;font-weight:bold;border-top-left-radius:7px;border-top-right-radius:7px}.highlight-card-header-title{font-family:var(--h1-ff);text-transform:uppercase;color:var(--white)}.highlight-card-item{border:1px solid #d5d5d5;border-radius:8px}.highlight-card-item-highlighted{border:none;border-radius:0}.highlight-card-message{display:flex;flex-direction:column;padding:24px;gap:2px;word-break:break-word}.highlight-card-message-title,.highlight-card-message-content{margin:0;font-size:14px}.highlight-card-message-title{font-weight:600}.highlight-card-separator{height:1px;background-color:var(--color-primary)}.highlight-card-product{display:flex;align-items:center;justify-content:space-between}.highlight-card-product-cart-icon{padding:24px;cursor:pointer}.highlight-card .color-selector{max-width:100%;margin-top:12px}.highlight-card .highlight-custom-style.product-container{display:flex;gap:24px;padding:24px}.highlight-card .highlight-custom-style.product-container>.info>.title{word-break:break-word;font-size:14px;margin-bottom:0px}.highlight-card .highlight-custom-style.product-container>.info .payment-option-simple{display:flex;flex-direction:row;gap:8px;align-items:baseline}.highlight-card .highlight-custom-style.product-container>.info .payment-option-simple .price-compare,.highlight-card .highlight-custom-style.product-container>.info .payment-option-simple .price-current>.highlight{font-size:14px;font-weight:normal}.highlight-card .highlight-custom-style.product-container>.image{height:58px;width:58px;border:1px solid #dee2e6;border-radius:4px;flex-shrink:0}.highlight-card .highlight-custom-style.product-container>.image>.image-container>img{border-radius:3px}.highlight-card .highlight-custom-style.product-container>.image .image-container.-is-loading{min-width:48px;min-height:48px}";
+const highlightCardCss = ":host{display:inline-block;width:100%}.highlight-card{display:flex;flex-direction:column;gap:16px}.highlight-card-container{border:1px solid var(--menu-items);border-radius:8px}.highlight-card-header{background-color:var(--color-secondary);padding:10px;text-align:center;font-weight:bold;border-top-left-radius:7px;border-top-right-radius:7px}.highlight-card-header-title{font-family:var(--h1-ff);text-transform:uppercase;color:var(--white)}.highlight-card-item{border:1px solid #d5d5d5;border-radius:8px}.highlight-card-item-highlighted{border:none;border-radius:0}.highlight-card-message{display:flex;flex-direction:column;padding:24px;gap:2px;word-break:break-word}.highlight-card-message-title,.highlight-card-message-content{margin:0;font-size:14px}.highlight-card-message-title{font-weight:600}.highlight-card-separator{height:1px;background-color:var(--menu-items)}.highlight-card-product{display:flex;align-items:center;justify-content:space-between}.highlight-card-product:hover{cursor:pointer}.highlight-card-product:hover .highlight-card-product-cart-action a{text-decoration:underline var(--fc-color-primary) 1px solid !important}.highlight-card-product-cart-action{padding:24px;font-weight:bold}.highlight-card .highlight-custom-style.product-container{display:flex;gap:12px;padding:24px}.highlight-card .highlight-custom-style.product-container>.info>.title{word-break:break-all}.highlight-card .highlight-custom-style.product-container>.info>.price{display:flex;flex-direction:row;gap:8px;align-items:center}.highlight-card .highlight-custom-style.product-container>.info>.price>.base,.highlight-card .highlight-custom-style.product-container>.info>.price .current{font-weight:400;font-size:14px}.highlight-card .highlight-custom-style.product-container>.image{height:48px;width:48px;border:1px solid #dee2e6;border-radius:4px;flex-shrink:0}.highlight-card .highlight-custom-style.product-container>.image>.image-container>img{border-radius:3px}.highlight-card .highlight-custom-style.product-container>.image .image-container.-is-loading{min-width:48px;min-height:48px}";
 const HighlightCardStyle0 = highlightCardCss;
 
 const HighlightCard = class {
@@ -15,47 +15,16 @@ const HighlightCard = class {
         this.items = [];
         this.highlightedItems = [];
         this.nonHighlightedItems = [];
-        this.selectedColorByProductId = {};
-    }
-    updateProductItem(currentItem, updatedProduct) {
-        const targetList = currentItem.highlight ? this.highlightedItems : this.nonHighlightedItems;
-        const updatedList = targetList.map(item => item.type === 'product' && item.id === currentItem.id ? Object.assign(Object.assign({}, item), updatedProduct) : item);
-        if (currentItem.highlight)
-            this.highlightedItems = [...updatedList];
-        else
-            this.nonHighlightedItems = [...updatedList];
-    }
-    handleColorSelected(currentItem, color) {
-        var _a, _b, _c;
-        const productId = currentItem.id;
-        this.selectedColorByProductId = Object.assign(Object.assign({}, this.selectedColorByProductId), { [productId]: color.id });
-        const baseName = (_a = currentItem.name.split(' - ')[0]) !== null && _a !== void 0 ? _a : currentItem.name;
-        const baseSlug = (_b = currentItem.slug.split('/')[0]) !== null && _b !== void 0 ? _b : currentItem.slug;
-        const updatedProduct = Object.assign(Object.assign({}, currentItem), { id: productId, name: `${baseName} - ${color.name}`, slug: `${baseSlug}/${color.slug}`, gridId: `${productId}-${color.id}`, image: ((_c = color.productImage) === null || _c === void 0 ? void 0 : _c.src) ? { src: color.productImage.src } : null, price: color.price, balance: color.balance, priceBase: color.priceCompare });
-        this.updateProductItem(currentItem, updatedProduct);
     }
     renderItem(item, isHighlighted) {
         if (!item.show)
             return null;
-        return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product" }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, basePrice: { price: item.price, priceCompare: item.priceBase }, showStartingFrom: item.showStartingFrom, inline: true }, item.colors && (index.h("color-selector", { colors: item.colors, selectedId: this.selectedColorByProductId[item.id], onColorSelected: e => this.handleColorSelected(item, e.detail) }))), index.h("div", { class: "highlight-card-product-cart-icon", onClick: () => this.addItem.emit(item) }, index.h("img", { src: index.getAssetPath('./assets/icons/add-to-cart.svg'), alt: "add_to_cart_icon" }))))));
+        return (index.h("div", { class: `highlight-card-item ${isHighlighted ? 'highlight-card-item-highlighted' : ''}` }, item.type === 'message' && (index.h("div", { class: "highlight-card-message" }, index.h("h4", { class: "highlight-card-message-title" }, item.title), index.h("p", { class: "highlight-card-message-content" }, item.content))), item.type === 'product' && (index.h("div", { class: "highlight-card-product", onClick: () => this.addItem.emit(item) }, index.h("product-card", { "custom-class": "highlight-custom-style", product: item, basePrice: { price: item.price, priceCompare: item.priceBase }, showStartingFrom: item.showStartingFrom, inline: true }), index.h("div", { class: "highlight-card-product-cart-action" }, index.h("a", null, "Ver produto"))))));
     }
     filterItems(items) {
         const visibleItems = items.filter(item => item.show);
         this.highlightedItems = visibleItems.filter(item => item.highlight);
         this.nonHighlightedItems = visibleItems.filter(item => !item.highlight);
-        const selectedMap = {};
-        const allProducts = [...this.highlightedItems, ...this.nonHighlightedItems];
-        allProducts.forEach(item => {
-            var _a;
-            if (item.type === 'product') {
-                const firstColor = (_a = item.colors) === null || _a === void 0 ? void 0 : _a[0];
-                if (firstColor) {
-                    selectedMap[item.id] = firstColor.id;
-                    this.handleColorSelected(item, firstColor);
-                }
-            }
-        });
-        this.selectedColorByProductId = selectedMap;
     }
     componentDidLoad() {
         this.componentRendered.emit();
@@ -67,7 +36,7 @@ const HighlightCard = class {
         this.filterItems(newItems);
     }
     render() {
-        return (index.h(index.Host, { key: '5d2d15679e726cb24d9f474c28f57ef5c0dfed13' }, index.h("div", { key: '2ffa54e037aa2d9c4dec8d04f4e382b4dcb80e60', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: '0c4460f04bac7c209a554c22d17a9e40c1928edb', class: "highlight-card-container" }, index.h("div", { key: 'c71d35b5f1bfd0f8b3eaf83006f07eeb0f021afc', class: "highlight-card-header" }, index.h("span", { key: 'd31268ae9daafc7001fd6a2838ea452a57e3517c', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
+        return (index.h(index.Host, { key: 'dbedc562911a2aa0de8c549ca6e624384462bb43' }, index.h("div", { key: '0e906d70f4a33ce8a4fa68a0e5f24788aeaf4dd2', class: "highlight-card" }, this.highlightedItems.length > 0 && (index.h("div", { key: 'ff07e4f52e37658cc0a01f84da9b867a061bd595', class: "highlight-card-container" }, index.h("div", { key: '31f09f1551c076a0b96befa406615f3dff4f9f13', class: "highlight-card-header" }, index.h("span", { key: 'f2726974bf3aa3b4c980dd46badd979a2ee0f342', class: "highlight-card-header-title" }, "Destaque")), this.highlightedItems.map((item, index$1) => (index.h("div", null, this.renderItem(item, true), index$1 < this.highlightedItems.length - 1 && (index.h("div", { class: "highlight-card-separator" }))))))), this.nonHighlightedItems.map(item => this.renderItem(item, false)))));
     }
     static get watchers() { return {
         "items": ["handleItemsChange"]
@@ -91,7 +60,7 @@ const LiveVideoChat = class {
         this.componentRendered.emit();
     }
     render() {
-        return (index.h(index.Host, { key: '057f50d5c296db5cf49cec899e13a1afb99b3203' }, index.h("div", { key: 'c6ca6987679a8486a16f9f99805123d0cb8db8dc', class: "live-video-chat" }, index.h("iframe", { key: 'd5d2d586e01672a4916436645616c6b2e1c6641c', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
+        return (index.h(index.Host, { key: 'b375119df95c68b42627497709d997d831b81eaf' }, index.h("div", { key: '8baf88559c9114a168fd079463fbd26add1e7235', class: "live-video-chat" }, index.h("iframe", { key: '9733e87680f2c629d56a6746815a180647806aaa', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
 };
 LiveVideoChat.style = LiveVideoChatStyle0;
@@ -115,7 +84,7 @@ const TabSelector = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: '260c50e4e923a7fdfdf1a225b8cd37aa7bf342ea', class: "tab-selector" }, index.h("div", { key: 'c4c39da8b9946c1ab818f1a9d810c4d6c38f7a80', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (index.h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), index.h("div", { key: 'e571fa23fe8aa7285e9b97ca24f6e09a246ff775', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (index.h("div", { class: {
+        return (index.h("div", { key: 'aa7e377b4bacdb6aac7a108a3eb56b4ea1a1ff59', class: "tab-selector" }, index.h("div", { key: 'a624968d01bcc64975bf5fb3dae9cfb16bede933', class: "tab-selector-tabs" }, (_a = this.tabs) === null || _a === void 0 ? void 0 : _a.map(tab => (index.h("span", { class: { active: this.activeTab === tab.name }, onClick: () => this.handleTabClick(tab.name) }, tab.label)))), index.h("div", { key: '4d0cb9491abff1bb74702b0ef67654e794a96056', class: "tab-selector-tabs-content" }, (_b = this.tabs) === null || _b === void 0 ? void 0 : _b.map(tab => (index.h("div", { class: {
                 'tab-selector-tabs-content-item': true,
                 'active': this.activeTab === tab.name,
             } }, this.activeTab === tab.name && tab.content()))))));

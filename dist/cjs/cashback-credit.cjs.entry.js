@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-ccb6baf7.js');
-const utils = require('./utils-f2fc9e55.js');
+const index = require('./index-53de1b7a.js');
+const utils = require('./utils-0cb85ee7.js');
 
 const exec = (method, url, data) => {
     return new Promise((resolve, reject) => {
@@ -35,6 +35,7 @@ var CalculationItemPromotion;
 })(CalculationItemPromotion || (CalculationItemPromotion = {}));
 
 const cashbackCss = ".cashback.sc-cashback-credit{display:inline-flex}.cashback.sc-cashback-credit img.sc-cashback-credit{margin-right:0.5rem}.cashback.sc-cashback-credit span.sc-cashback-credit{color:var(--success)}";
+const CashbackCreditStyle0 = cashbackCss;
 
 const Cashback = class {
     constructor(hostRef) {
@@ -83,7 +84,7 @@ const Cashback = class {
         "product": ["onProductChange"]
     }; }
 };
-Cashback.style = cashbackCss;
+Cashback.style = CashbackCreditStyle0;
 
 exports.cashback_credit = Cashback;
 

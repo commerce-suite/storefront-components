@@ -2,6 +2,7 @@ import { proxyCustomElement, HTMLElement, createEvent, h } from '@stencil/core/i
 import { d as defineCustomElement$1 } from './front-select2.js';
 
 const variationSelectorCss = ".variations.sc-variation-selector{display:flex;flex-wrap:wrap;--variations-gap:calc(var(--fc-margin-width) * 2);gap:var(--variations-gap)}.variations.sc-variation-selector .item.sc-variation-selector{min-width:calc(50% - var(--variations-gap));flex-grow:2}.variations.-showcase.sc-variation-selector .item.sc-variation-selector{width:100%}";
+const VariationSelectorStyle0 = variationSelectorCss;
 
 const VariationSelector = /*@__PURE__*/ proxyCustomElement(class VariationSelector extends HTMLElement {
     constructor() {
@@ -20,9 +21,9 @@ const VariationSelector = /*@__PURE__*/ proxyCustomElement(class VariationSelect
         });
     }
     render() {
-        return (h("div", { key: 'f4fc504c347097fb24a724825f3676da399477ad', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
+        return (h("div", { key: '7ef666eed4f440e439c7295d1bba9acfa4e13048', class: `variations ${this.showcaseMode ? '-showcase' : ''}` }, this.variations.map(({ label, currentValue, options, selectId, placeholder, selectType }) => (h("div", { class: "item" }, h("front-select", { placeholder: placeholder, selectId: selectId, optionsList: options, label: label, value: currentValue, onInput: data => this.onInputSelect(data, selectType) }))))));
     }
-    static get style() { return variationSelectorCss; }
+    static get style() { return VariationSelectorStyle0; }
 }, [2, "variation-selector", {
         "variations": [16],
         "productId": [2, "product-id"],

@@ -1,6 +1,7 @@
-import { r as registerInstance, a as createEvent, h } from './index-9b51ba9f.js';
+import { r as registerInstance, c as createEvent, h } from './index-acabb06e.js';
 
 const googleRecaptchaCss = ".g-recaptcha{display:flex;justify-content:center}";
+const GoogleRecaptchaStyle0 = googleRecaptchaCss;
 
 const GoogleRecaptcha = class {
     constructor(hostRef) {
@@ -50,7 +51,7 @@ const GoogleRecaptcha = class {
         return h("div", { key: 'e836237538893dab8e46f717230d2e0519b81360', class: "g-recaptcha", id: this.recaptchaId });
     }
 };
-GoogleRecaptcha.style = googleRecaptchaCss;
+GoogleRecaptcha.style = GoogleRecaptchaStyle0;
 
 export { GoogleRecaptcha as google_recaptcha };
 
