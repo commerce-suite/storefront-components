@@ -8,6 +8,7 @@ export declare class LaunchMode {
     isInitialLoading: boolean;
     userMessage: {
         text: string;
+        type: 'error' | 'success';
     };
     passwordInput: string;
     showPassword: boolean;

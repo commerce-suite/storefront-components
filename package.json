@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "build": "stencil build --docs",
+    "build:dev": "stencil build --docs --dev",
     "start": "stencil build --docs --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -31,7 +32,7 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "4.17.0",
-    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core#feature/add-user-agent",
+    "@uxshop/storefront-core": "github:uxshop/storefront-core#homolog",
     "dotenv": "^16.4.7",
     "lodash": "^4.17.21"
   },

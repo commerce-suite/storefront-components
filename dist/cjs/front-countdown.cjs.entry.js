@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-9c4b21d6.js');
+const index = require('./index-ccb6baf7.js');
 
 class FrontCountdownService {
     constructor(startDate, endDate) {
@@ -51,7 +51,6 @@ class FrontCountdownService {
 }
 
 const frontCountdownCss = ".sc-front-countdown-h{display:block}";
-const FrontCountdownStyle0 = frontCountdownCss;
 
 const FrontCountdown = class {
     constructor(hostRef) {
@@ -116,7 +115,7 @@ const FrontCountdown = class {
         "endDate": ["watchEndDateChange"]
     }; }
 };
-FrontCountdown.style = FrontCountdownStyle0;
+FrontCountdown.style = frontCountdownCss;
 
 exports.front_countdown = FrontCountdown;
 

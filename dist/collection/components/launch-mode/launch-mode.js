@@ -31,6 +31,10 @@ export class LaunchMode {
         try {
             this.isLoading = true;
             await this.launchModeService.validatePassword(formData);
+            this.userMessage = {
+                text: 'Acesso liberado. Você será redirecionado em instantes.',
+                type: 'success',
+            };
             const baseUrl = window.dooca.base_url;
             window.location.href = baseUrl;
         }
@@ -40,6 +44,7 @@ export class LaunchMode {
             const errorMessage = ERROR_MESSAGES[errorCode] || ERROR_MESSAGES.default;
             this.userMessage = {
                 text: errorMessage,
+                type: 'error',
             };
         }
         finally {
@@ -70,13 +75,13 @@ export class LaunchMode {
     }
     render() {
         const { title, caption, color_title: colorTitle, color_caption: colorCaption, color_button: colorButton, } = this.launchModeData;
-        return (h(Host, { key: 'a909f8edc8119e172b9acc82250e8c71f563fcc2', style: {
+        return (h(Host, { key: '2f04a58e9fb49d4dbb306af1148566b8e3b3c635', style: {
                 '--launch-title': colorTitle,
                 '--launch-caption': colorCaption,
                 '--launch-button-bg': colorButton,
-            } }, (this.isLoading || this.isInitialLoading) && (h("div", { key: '364694868f1debebd0034240599db23abc6ab89b', class: `loading-container ${this.isInitialLoading ? '-initial-loading' : ''}` }, h("span", { key: '4be252cb3fd2422809ed015572f81126f48db2ce', class: "spinner" }))), this.launchModeData && !this.isInitialLoading && (h("div", { key: '8bce12136bd7fc6ba2e6735794c58b711d9d6aea', class: "launch-mode launch-mode-container" }, h("div", { key: 'c05dc557e32d54043ed8f3b6fd2a9a6994a3524d', class: "launch-mode-content" }, h("div", { key: '7c5ae49f0060ec2762a30d6605ea3fa36524ac6c', class: "launch-mode-content-label" }, h("h1", { key: 'be0dd3ca2d98dd02f0549f53116fb0d1e7407aec', class: "h1" }, title), h("div", { key: 'd480fe29f0d12edf0529e4537e2d4c074138d8ec', innerHTML: caption })), h("form", { key: 'f0917ec6ead319b3956883b4114b604f14c6b636', onSubmit: e => this.handleSubmit(e), class: "launch-mode-form" }, h("div", { key: '69391b5305962c3fa277c9a87aeb0859933e3a45', class: "launch-mode-form-content" }, h("div", { key: 'd10748a0a7455103eac0d6954e902a2508f61929', class: "launch-mode-form-content-input" }, h("input", { key: '020acbb3b4daa284e29d2842ea8fca1f56cdd0ef', name: "password", type: this.showPassword ? 'text' : 'password', placeholder: "Digite sua senha", value: this.passwordInput, onInput: e => this.handlePasswordChange(e), required: true }), h("button", { key: 'e52c66eb057042e444dcf00414325908c1d126ee', type: "button", class: "password-toggle-btn", onClick: () => this.togglePasswordVisibility(), "aria-label": this.showPassword ? 'Ocultar senha' : 'Mostrar senha' }, h("img", { key: '7eaf2b34fb9ffc0515ef7552f99966c145a0b13f', src: getAssetPath(this.showPassword
+            } }, (this.isLoading || this.isInitialLoading) && (h("div", { key: '3f03f5d6002aba433b587ee5c59abe589a859801', class: `loading-container ${this.isInitialLoading ? '-initial-loading' : ''}` }, h("span", { key: '5be69b1fa720d4be7ae4bcbf5dbb2c925749ac89', class: "spinner" }))), this.launchModeData && !this.isInitialLoading && (h("div", { key: '8ffb73b0c2520f33398f21ebb2755bf98c75e3ce', class: "launch-mode launch-mode-container" }, h("div", { key: 'bceb9b44133fd32e7f429c8ed56b6eb61b6e66eb', class: "launch-mode-content" }, h("div", { key: '4f9cdd39df8dcb2b9c117106f628ae43acfb3aae', class: "launch-mode-content-label" }, h("h1", { key: '98b874c80e97fa15c2dcb6f1b5c5a7efede53ba7', class: "h1" }, title), h("div", { key: '1e2a9be6ff7533bc5753d12c72297dadf51ab9a2', innerHTML: caption })), h("form", { key: 'e10a93ce0ee8410cea3bd9a3e6cebe629d23a51b', onSubmit: e => this.handleSubmit(e), class: "launch-mode-form" }, h("div", { key: '3508f0f1ab12e16a0e8bbc0862219d8aa378eea1', class: "launch-mode-form-content" }, h("div", { key: '7417cdaccaa971eb74c6309f164e13d3cb891845', class: "launch-mode-form-content-input" }, h("input", { key: 'ded7bf21b3a727726b5896bcad72299d44e0374e', name: "password", type: this.showPassword ? 'text' : 'password', placeholder: "Digite sua senha", value: this.passwordInput, onInput: e => this.handlePasswordChange(e), required: true }), h("button", { key: 'eaf238e32518befa3b246eac112e22fb33611935', type: "button", class: "password-toggle-btn", onClick: () => this.togglePasswordVisibility(), "aria-label": this.showPassword ? 'Ocultar senha' : 'Mostrar senha' }, h("img", { key: '4bb356059a474e91a8f5a2e8e1abb46883d47b6f', src: getAssetPath(this.showPassword
                 ? './assets/icons/eye-off.svg'
-                : './assets/icons/eye.svg'), alt: this.showPassword ? 'Ocultar senha' : 'Mostrar senha' }))), h("button", { key: 'ca82551eee91a7a53fb057e270b6b4b4d7842766', class: "launch-mode-form-content-button", type: "submit", disabled: this.isLoading || !this.passwordInput.trim() }, this.isLoading ? 'Destravando...' : 'Destravar'))), this.userMessage && (h("div", { key: '33c23a18ecdd8fd8644cb3af23c0e38ca32491a3', class: `launch-mode-content-message launch-mode-content-message-error` }, h("span", { key: '90908a1bed0430c31beedc54cfcbb805f4ae86f3' }, this.userMessage.text))))))));
+                : './assets/icons/eye.svg'), alt: this.showPassword ? 'Ocultar senha' : 'Mostrar senha' }))), h("button", { key: '0b4836a64079181bd82832c1e15023ccf91a274c', class: "launch-mode-form-content-button", type: "submit", disabled: this.isLoading || !this.passwordInput.trim() }, this.isLoading ? 'Destravando...' : 'Destravar'))), this.userMessage && (h("div", { key: 'c072e9c8682adf7aec7b2b0e9b402497c9ec991e', class: `launch-mode-content-message launch-mode-content-message-${this.userMessage.type}` }, h("span", { key: '722dd31a47c42767477eaac01c303e61a45a0662' }, this.userMessage.text))))))));
     }
     static get is() { return "launch-mode"; }
     static get originalStyleUrls() {

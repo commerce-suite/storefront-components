@@ -2,10 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-9c4b21d6.js');
+const index = require('./index-ccb6baf7.js');
 
 const googleRecaptchaCss = ".g-recaptcha{display:flex;justify-content:center}";
-const GoogleRecaptchaStyle0 = googleRecaptchaCss;
 
 const GoogleRecaptcha = class {
     constructor(hostRef) {
@@ -55,7 +54,7 @@ const GoogleRecaptcha = class {
         return index.h("div", { key: 'e836237538893dab8e46f717230d2e0519b81360', class: "g-recaptcha", id: this.recaptchaId });
     }
 };
-GoogleRecaptcha.style = GoogleRecaptchaStyle0;
+GoogleRecaptcha.style = googleRecaptchaCss;
 
 exports.google_recaptcha = GoogleRecaptcha;
 

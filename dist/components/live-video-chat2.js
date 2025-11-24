@@ -1,7 +1,6 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
 
 const liveVideoChatCss = ":host{display:inline-block;width:100%}.live-video-chat{display:flex;justify-content:center;align-items:center;width:100%}.live-video-chat iframe{height:100%;width:100%}";
-const LiveVideoChatStyle0 = liveVideoChatCss;
 
 const LiveVideoChat = /*@__PURE__*/ proxyCustomElement(class LiveVideoChat extends HTMLElement {
     constructor() {
@@ -19,7 +18,7 @@ const LiveVideoChat = /*@__PURE__*/ proxyCustomElement(class LiveVideoChat exten
     render() {
         return (h(Host, { key: '057f50d5c296db5cf49cec899e13a1afb99b3203' }, h("div", { key: 'c6ca6987679a8486a16f9f99805123d0cb8db8dc', class: "live-video-chat" }, h("iframe", { key: 'd5d2d586e01672a4916436645616c6b2e1c6641c', src: this.getChatUrl(), frameborder: "0", allow: "autoplay; encrypted-media; picture-in-picture", allowFullScreen: true }))));
     }
-    static get style() { return LiveVideoChatStyle0; }
+    static get style() { return liveVideoChatCss; }
 }, [0, "live-video-chat", {
         "videoId": [1, "video-id"]
     }]);
