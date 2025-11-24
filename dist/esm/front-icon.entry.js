@@ -1,7 +1,6 @@
-import { r as registerInstance, h } from './index-f50d7c2c.js';
+import { r as registerInstance, h } from './index-9b51ba9f.js';
 
 const frontIconCss = "@import url('https://fonts.googleapis.com/icon?family=Material+Icons');";
-const FrontIconStyle0 = frontIconCss;
 
 const FrontIcon = class {
     constructor(hostRef) {
@@ -14,7 +13,7 @@ const FrontIcon = class {
         return (h("span", { key: '59c5c29ff8f8070e8163080e808c5355c118a133', class: "material-icons", style: { color: this.color, fontSize: this.size } }, this.name));
     }
 };
-FrontIcon.style = FrontIconStyle0;
+FrontIcon.style = frontIconCss;
 
 export { FrontIcon as front_icon };
 
