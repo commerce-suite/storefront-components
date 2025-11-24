@@ -22,7 +22,7 @@ function Da(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].
 g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d));}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new G(e,f[d]));}}function Ea(a,b){this.c=a;this.a=b;}var Fa={Arimo:!0,Cousine:!0,Tinos:!0};Ea.prototype.load=function(a){var b=new B,c=this.c,d=new ta(this.a.api,this.a.text),e=this.a.families;va(d,e);var f=new ya(e);Da(f);z(c,wa(d),C(b));E(b,function(){a(f.a,f.c,Fa);});};function Ga(a,b){this.c=a;this.a=b;}Ga.prototype.load=function(a){var b=this.a.id,c=this.c.o;b?A(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],m=b[f+1],h=0;h<m.length;h++)e.push(new G(g,m[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(l){}a(e);}},2E3):a([]);};function Ha(a,b){this.c=a;this.f=b;this.a=[];}Ha.prototype.load=function(a){var b=this.f.id,c=this.c.o,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,m=c.fonts.length;g<m;++g){var h=c.fonts[g];d.a.push(new G(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},A(this.c,(this.f.api||"https://f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new oa(window);Y.a.c.custom=function(a,b){return new sa(b,a)};Y.a.c.fontdeck=function(a,b){return new Ha(b,a)};Y.a.c.monotype=function(a,b){return new ra(b,a)};Y.a.c.typekit=function(a,b){return new Ga(b,a)};Y.a.c.google=function(a,b){return new Ea(b,a)};var Z={load:p(Y.load,Y)};module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
 }(webfontloader));
 
-var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$e = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -31,7 +31,7 @@ var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$e = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -63,9 +63,9 @@ var AppRepositoryJson = /** @class */ (function () {
     }
     AppRepositoryJson.getById = function (id, fields) {
         var _a;
-        return __awaiter$b(this, void 0, void 0, function () {
+        return __awaiter$e(this, void 0, void 0, function () {
             var mock, isFieldNotSelected, deleteFieldIfNecessary;
-            return __generator$b(this, function (_b) {
+            return __generator$e(this, function (_b) {
                 mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
                 if (id != mock.id) {
                     throw new Error('apps_not_found');
@@ -81,9 +81,9 @@ var AppRepositoryJson = /** @class */ (function () {
     };
     AppRepositoryJson.getBySlug = function (slug, fields) {
         var _a;
-        return __awaiter$b(this, void 0, void 0, function () {
+        return __awaiter$e(this, void 0, void 0, function () {
             var mock, isFieldNotSelected, deleteFieldIfNecessary;
-            return __generator$b(this, function (_b) {
+            return __generator$e(this, function (_b) {
                 mock = ((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) || {};
                 if (slug != mock.slug) {
                     throw new Error('apps_not_found');
@@ -5204,7 +5204,7 @@ var J = function Client(e) {
 
 var W = J;
 
-var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$d = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -5213,7 +5213,7 @@ var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$d = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -5252,15 +5252,16 @@ var GraphqlService = /** @class */ (function () {
             fetchOptions: {
                 headers: {
                     token: token,
-                    domain: domain
+                    domain: domain,
+                    'Client-Name': 'storefront-core'
                 }
             }
         });
     }
     GraphqlService.prototype.query = function (query, variables) {
-        return __awaiter$a(this, void 0, void 0, function () {
+        return __awaiter$d(this, void 0, void 0, function () {
             var _a, data, error, error_1;
-            return __generator$a(this, function (_b) {
+            return __generator$d(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5279,9 +5280,9 @@ var GraphqlService = /** @class */ (function () {
         });
     };
     GraphqlService.prototype.mutation = function (query, variables) {
-        return __awaiter$a(this, void 0, void 0, function () {
+        return __awaiter$d(this, void 0, void 0, function () {
             var _a, data, error, error_2;
-            return __generator$a(this, function (_b) {
+            return __generator$d(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
@@ -5321,7 +5322,7 @@ var AppQueries = /** @class */ (function () {
     return AppQueries;
 }());
 
-var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$c = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -5330,7 +5331,7 @@ var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$c = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -5361,9 +5362,9 @@ var AppRepositoryGql = /** @class */ (function () {
     function AppRepositoryGql() {
     }
     AppRepositoryGql.getById = function (id, fields) {
-        return __awaiter$9(this, void 0, void 0, function () {
+        return __awaiter$c(this, void 0, void 0, function () {
             var appQuery, getAppQuery, app;
-            return __generator$9(this, function (_a) {
+            return __generator$c(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         appQuery = new AppQueries(fields);
@@ -5377,9 +5378,9 @@ var AppRepositoryGql = /** @class */ (function () {
         });
     };
     AppRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$9(this, void 0, void 0, function () {
+        return __awaiter$c(this, void 0, void 0, function () {
             var appQuery, getAppQuery, app;
-            return __generator$9(this, function (_a) {
+            return __generator$c(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         appQuery = new AppQueries(fields);
@@ -5408,7 +5409,7 @@ var BroadcastService = /** @class */ (function () {
     return BroadcastService;
 }());
 
-var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter$b = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -5417,7 +5418,7 @@ var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _argu
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
+var __generator$b = (undefined && undefined.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -5444,18 +5445,18 @@ var __generator$8 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
+var Repository$3 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.apps) ? AppRepositoryJson : AppRepositoryGql); };
 var AppService = /** @class */ (function () {
     function AppService() {
     }
     AppService.getById = function (id, fields) {
-        return __awaiter$8(this, void 0, void 0, function () {
+        return __awaiter$b(this, void 0, void 0, function () {
             var result, error_1;
-            return __generator$8(this, function (_a) {
+            return __generator$b(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$2().getById(Number(id), fields)];
+                        return [4 /*yield*/, Repository$3().getById(Number(id), fields)];
                     case 1:
                         result = _a.sent();
                         BroadcastService.emit('Apps', result);
@@ -5469,13 +5470,13 @@ var AppService = /** @class */ (function () {
         });
     };
     AppService.getBySlug = function (slug, fields) {
-        return __awaiter$8(this, void 0, void 0, function () {
+        return __awaiter$b(this, void 0, void 0, function () {
             var result, error_2;
-            return __generator$8(this, function (_a) {
+            return __generator$b(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Repository$2().getBySlug(slug, fields)];
+                        return [4 /*yield*/, Repository$3().getBySlug(slug, fields)];
                     case 1:
                         result = _a.sent();
                         BroadcastService.emit('Apps', result);
@@ -5655,6 +5656,179 @@ var ProductQueries = /** @class */ (function () {
     return ProductQueries;
 }());
 
+var __assign$5 = (undefined && undefined.__assign) || function () {
+    __assign$5 = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign$5.apply(this, arguments);
+};
+var __awaiter$a = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$a = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var ProductRepositoryGql = /** @class */ (function () {
+    function ProductRepositoryGql() {
+    }
+    ProductRepositoryGql.getList = function (_a) {
+        var fields = _a.fields, agg = _a.agg, filter = _a.filter;
+        return __awaiter$a(this, void 0, void 0, function () {
+            var productQuery, productListQuery, products;
+            return __generator$a(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        productQuery = new ProductQueries(fields);
+                        productListQuery = productQuery.listFullQuery();
+                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$5({}, filter) })];
+                    case 1:
+                        products = (_b.sent()).products;
+                        return [2 /*return*/, products];
+                }
+            });
+        });
+    };
+    ProductRepositoryGql.getOne = function (_a) {
+        var fields = _a.fields, filter = _a.filter;
+        return __awaiter$a(this, void 0, void 0, function () {
+            var productQuery, productGetOneQuery, product;
+            return __generator$a(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        productQuery = new ProductQueries(fields);
+                        productGetOneQuery = productQuery.getOneFullQuery();
+                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$5({}, filter) })];
+                    case 1:
+                        product = (_b.sent()).product;
+                        return [2 /*return*/, product];
+                }
+            });
+        });
+    };
+    ProductRepositoryGql.getById = function (id, fields) {
+        return __awaiter$a(this, void 0, void 0, function () {
+            return __generator$a(this, function (_a) {
+                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { productId: id } })];
+            });
+        });
+    };
+    ProductRepositoryGql.getBySlug = function (slug, fields) {
+        return __awaiter$a(this, void 0, void 0, function () {
+            return __generator$a(this, function (_a) {
+                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
+            });
+        });
+    };
+    return ProductRepositoryGql;
+}());
+
+var __awaiter$9 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$9 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var ProductRepositoryJson = /** @class */ (function () {
+    function ProductRepositoryJson() {
+    }
+    ProductRepositoryJson.getList = function (_a) {
+        var _b;
+        return __awaiter$9(this, void 0, void 0, function () {
+            var result;
+            return __generator$9(this, function (_d) {
+                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.products;
+                return [2 /*return*/, result || {}];
+            });
+        });
+    };
+    ProductRepositoryJson.getById = function (id, fields) {
+        var _a, _b, _c, _d;
+        return __awaiter$9(this, void 0, void 0, function () {
+            var result;
+            return __generator$9(this, function (_e) {
+                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
+                return [2 /*return*/, result];
+            });
+        });
+    };
+    ProductRepositoryJson.getBySlug = function (slug, fields) {
+        var _a, _b, _c, _d;
+        return __awaiter$9(this, void 0, void 0, function () {
+            var result;
+            return __generator$9(this, function (_e) {
+                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.slug) == slug; })) === null || _d === void 0 ? void 0 : _d.node;
+                return [2 /*return*/, result];
+            });
+        });
+    };
+    return ProductRepositoryJson;
+}());
+
 var __assign$4 = (undefined && undefined.__assign) || function () {
     __assign$4 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -5665,6 +5839,183 @@ var __assign$4 = (undefined && undefined.__assign) || function () {
         return t;
     };
     return __assign$4.apply(this, arguments);
+};
+var __awaiter$8 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator$8 = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var Repository$2 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
+var ProductService = /** @class */ (function () {
+    function ProductService() {
+    }
+    ProductService.getList = function (_a) {
+        var filter = _a.filter, _b = _a.agg, agg = _b === void 0 ? { field: ['productId'] } : _b, fields = _a.fields;
+        return __awaiter$8(this, void 0, void 0, function () {
+            var remainFilter, result, error_1;
+            return __generator$8(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        _c.trys.push([0, 2, , 3]);
+                        remainFilter = __rest(filter, ["items"]);
+                        return [4 /*yield*/, Repository$2().getList({
+                                fields: fields || null,
+                                filter: __assign$4(__assign$4({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
+                                agg: agg
+                            })];
+                    case 1:
+                        result = _c.sent();
+                        BroadcastService.emit('Product', result);
+                        return [2 /*return*/, result];
+                    case 2:
+                        error_1 = _c.sent();
+                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProductService.getById = function (productId, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Repository$2().getById(Number(productId), fields)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    ProductService.getBySlug = function (slug, fields) {
+        return __awaiter$8(this, void 0, void 0, function () {
+            var result;
+            return __generator$8(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Repository$2().getBySlug(slug, fields)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    return ProductService;
+}());
+
+var ArrayHelper = /** @class */ (function () {
+    function ArrayHelper() {
+    }
+    ArrayHelper.lastItem = function (list) {
+        if (list.length === 0) {
+            return '';
+        }
+        return list[list.length - 1];
+    };
+    return ArrayHelper;
+}());
+
+function convertFieldsToSchema(fields, keys, result) {
+    if (result === void 0) { result = []; }
+    var key = keys.shift();
+    var target = fields[key];
+    if (typeof target === 'object') {
+        var schema = "".concat(key, " {");
+        var objStartIndex = result.push(schema) - 1;
+        convertFieldsToSchema(fields[key], Object.keys(fields[key]), result);
+        if (result[objStartIndex].includes('{') && !result[objStartIndex].includes('}')) {
+            result.push('}');
+        }
+    }
+    var lastItem = ArrayHelper.lastItem(result);
+    if (lastItem.includes('{') && !lastItem.includes('}')) {
+        if (target)
+            result[result.length - 1] += " ".concat(key);
+        if (keys.length === 0) {
+            result[result.length - 1] += ' }';
+            return result;
+        }
+        return convertFieldsToSchema(fields, keys, result);
+    }
+    if (typeof target === 'boolean' && target) {
+        result.push("".concat(key, " "));
+    }
+    if (keys.length === 0) {
+        return result;
+    }
+    return convertFieldsToSchema(fields, keys, result);
+}
+
+var ProductFieldQueries = /** @class */ (function () {
+    function ProductFieldQueries(fields) {
+        this.fields = fields || this.defaultFields();
+    }
+    ProductFieldQueries.prototype.getFields = function () {
+        var keys = Object.keys(this.fields);
+        return convertFieldsToSchema(this.fields, keys).join('\n');
+    };
+    ProductFieldQueries.prototype.defaultFields = function () {
+        return { id: true };
+    };
+    ProductFieldQueries.prototype.getOneFullQuery = function () {
+        return "query ProductFields($filter: filterProductFields!) {\n      productFields(filter: $filter) {\n          ".concat(this.getFields(), "\n        }\n      }");
+    };
+    return ProductFieldQueries;
+}());
+
+var __assign$3 = (undefined && undefined.__assign) || function () {
+    __assign$3 = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign$3.apply(this, arguments);
 };
 var __awaiter$7 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -5702,58 +6053,34 @@ var __generator$7 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ProductRepositoryGql = /** @class */ (function () {
-    function ProductRepositoryGql() {
+var ProductFieldRepositoryGql = /** @class */ (function () {
+    function ProductFieldRepositoryGql() {
     }
-    ProductRepositoryGql.getList = function (_a) {
-        var fields = _a.fields, agg = _a.agg, filter = _a.filter;
+    ProductFieldRepositoryGql.getById = function (id, fields) {
         return __awaiter$7(this, void 0, void 0, function () {
-            var productQuery, productListQuery, products;
-            return __generator$7(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        productQuery = new ProductQueries(fields);
-                        productListQuery = productQuery.listFullQuery();
-                        return [4 /*yield*/, getClient().query(productListQuery, filter && { agg: agg, filter: __assign$4({}, filter) })];
-                    case 1:
-                        products = (_b.sent()).products;
-                        return [2 /*return*/, products];
-                }
+            return __generator$7(this, function (_a) {
+                return [2 /*return*/, this.getOne({ fields: fields, filter: { productId: id } })];
             });
         });
     };
-    ProductRepositoryGql.getOne = function (_a) {
+    ProductFieldRepositoryGql.getOne = function (_a) {
         var fields = _a.fields, filter = _a.filter;
         return __awaiter$7(this, void 0, void 0, function () {
-            var productQuery, productGetOneQuery, product;
+            var productQuery, productFieldGetOneQuery, productFields;
             return __generator$7(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        productQuery = new ProductQueries(fields);
-                        productGetOneQuery = productQuery.getOneFullQuery();
-                        return [4 /*yield*/, getClient().query(productGetOneQuery, filter && { filter: __assign$4({}, filter) })];
+                        productQuery = new ProductFieldQueries(fields);
+                        productFieldGetOneQuery = productQuery.getOneFullQuery();
+                        return [4 /*yield*/, getClient().query(productFieldGetOneQuery, filter && { filter: __assign$3({}, filter) })];
                     case 1:
-                        product = (_b.sent()).product;
-                        return [2 /*return*/, product];
+                        productFields = (_b.sent()).productFields;
+                        return [2 /*return*/, productFields];
                 }
             });
         });
     };
-    ProductRepositoryGql.getById = function (id, fields) {
-        return __awaiter$7(this, void 0, void 0, function () {
-            return __generator$7(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { productId: id } })];
-            });
-        });
-    };
-    ProductRepositoryGql.getBySlug = function (slug, fields) {
-        return __awaiter$7(this, void 0, void 0, function () {
-            return __generator$7(this, function (_a) {
-                return [2 /*return*/, this.getOne({ fields: fields || null, filter: { slug: slug } })];
-            });
-        });
-    };
-    return ProductRepositoryGql;
+    return ProductFieldRepositoryGql;
 }());
 
 var __awaiter$6 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -5792,53 +6119,22 @@ var __generator$6 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ProductRepositoryJson = /** @class */ (function () {
-    function ProductRepositoryJson() {
+var ProductFieldRepositoryJson = /** @class */ (function () {
+    function ProductFieldRepositoryJson() {
     }
-    ProductRepositoryJson.getList = function (_a) {
-        var _b;
-        return __awaiter$6(this, void 0, void 0, function () {
-            var result;
-            return __generator$6(this, function (_d) {
-                result = (_b = shop_ctx.mock) === null || _b === void 0 ? void 0 : _b.products;
-                return [2 /*return*/, result || {}];
-            });
-        });
-    };
-    ProductRepositoryJson.getById = function (id, fields) {
+    ProductFieldRepositoryJson.getById = function (id, fields) {
         var _a, _b, _c, _d;
         return __awaiter$6(this, void 0, void 0, function () {
             var result;
             return __generator$6(this, function (_e) {
-                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
+                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.productsFields) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.product_id) == id; })) === null || _d === void 0 ? void 0 : _d.node;
                 return [2 /*return*/, result];
             });
         });
     };
-    ProductRepositoryJson.getBySlug = function (slug, fields) {
-        var _a, _b, _c, _d;
-        return __awaiter$6(this, void 0, void 0, function () {
-            var result;
-            return __generator$6(this, function (_e) {
-                result = (_d = (_c = (_b = (_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) === null || _b === void 0 ? void 0 : _b.edges) === null || _c === void 0 ? void 0 : _c.find(function (edge) { var _a; return ((_a = edge === null || edge === void 0 ? void 0 : edge.node) === null || _a === void 0 ? void 0 : _a.slug) == slug; })) === null || _d === void 0 ? void 0 : _d.node;
-                return [2 /*return*/, result];
-            });
-        });
-    };
-    return ProductRepositoryJson;
+    return ProductFieldRepositoryJson;
 }());
 
-var __assign$3 = (undefined && undefined.__assign) || function () {
-    __assign$3 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$3.apply(this, arguments);
-};
 var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -5875,48 +6171,11 @@ var __generator$5 = (undefined && undefined.__generator) || function (thisArg, b
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __rest = (undefined && undefined.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-var Repository$1 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.products) ? ProductRepositoryJson : ProductRepositoryGql); };
-var ProductService = /** @class */ (function () {
-    function ProductService() {
+var Repository$1 = function () { var _a; return (((_a = shop_ctx.mock) === null || _a === void 0 ? void 0 : _a.productsFields) ? ProductFieldRepositoryJson : ProductFieldRepositoryGql); };
+var ProductFieldService = /** @class */ (function () {
+    function ProductFieldService() {
     }
-    ProductService.getList = function (_a) {
-        var filter = _a.filter, _b = _a.agg, agg = _b === void 0 ? { field: ['productId'] } : _b, fields = _a.fields;
-        return __awaiter$5(this, void 0, void 0, function () {
-            var remainFilter, result, error_1;
-            return __generator$5(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        _c.trys.push([0, 2, , 3]);
-                        remainFilter = __rest(filter, ["items"]);
-                        return [4 /*yield*/, Repository$1().getList({
-                                fields: fields || null,
-                                filter: __assign$3(__assign$3({}, normalizePagination((filter === null || filter === void 0 ? void 0 : filter.page) || 1, filter === null || filter === void 0 ? void 0 : filter.items)), remainFilter),
-                                agg: agg
-                            })];
-                    case 1:
-                        result = _c.sent();
-                        BroadcastService.emit('Product', result);
-                        return [2 /*return*/, result];
-                    case 2:
-                        error_1 = _c.sent();
-                        throw new Error(error_1 === null || error_1 === void 0 ? void 0 : error_1.message);
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ProductService.getById = function (productId, fields) {
+    ProductFieldService.getById = function (productId, fields) {
         return __awaiter$5(this, void 0, void 0, function () {
             var result;
             return __generator$5(this, function (_a) {
@@ -5929,20 +6188,7 @@ var ProductService = /** @class */ (function () {
             });
         });
     };
-    ProductService.getBySlug = function (slug, fields) {
-        return __awaiter$5(this, void 0, void 0, function () {
-            var result;
-            return __generator$5(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, Repository$1().getBySlug(slug, fields)];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    return ProductService;
+    return ProductFieldService;
 }());
 
 var BuyTogetherQueries = /** @class */ (function () {
@@ -10963,6 +11209,6 @@ Object.assign(lookup, {
     connect: lookup,
 });
 
-export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductService as P };
+export { AppService as A, BuyTogetherService as B, LiveShopService as L, ProductFieldService as P, ProductService as a };
 
 //# sourceMappingURL=index2.js.map

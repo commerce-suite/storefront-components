@@ -1,11 +1,14 @@
-import { ProductService } from "@uxshop/storefront-core";
+import { ProductFieldService } from "@uxshop/storefront-core";
 export class LaunchCountdownService {
     static async getReleaseDateByProduct(productId, variationId) {
         var _a;
         try {
             if (!productId)
                 return null;
-            const product = await ProductService.getById(productId);
+            const product = await ProductFieldService.getById(productId, {
+                releaseDate: { now: true, releaseDate: true },
+                variations: { id: true, releaseDate: { now: true, releaseDate: true } },
+            });
             if (!product)
                 return null;
             let variation = product;

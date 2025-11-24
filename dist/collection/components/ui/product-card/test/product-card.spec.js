@@ -17,6 +17,7 @@ describe('product-card', () => {
             Bolsa Essencial
           </span>
           <product-price></product-price>
+          <div class="product-card-content"></div>
         </div>
       </div>
      </product-card>
@@ -36,6 +37,7 @@ describe('product-card', () => {
             Bolsa Essencial
           </span>
           <product-price></product-price>
+          <div class="product-card-content"></div>
         </div>
       </div>
      </product-card>
@@ -54,14 +56,8 @@ describe('product-card', () => {
           <span class="title">
             Bolsa Essencial
           </span>
-          <div class="price">
-            <span class="base">
-              R$&nbsp;499,99
-            </span>
-            <span class="current">
-              R$&nbsp;299,90 no pix
-            </span>
-          </div>
+          <product-price></product-price>
+          <div class="product-card-content"></div>
         </div>
       </div>
      </product-card>

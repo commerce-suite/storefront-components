@@ -30,8 +30,9 @@ export class FrontBuyTogetherAdapter {
         };
     }
     static adaptPaymentOptions(product, paymentConfig) {
+        var _a;
         const uniquePayments = {};
-        product.payments.forEach(payment => {
+        (_a = product === null || product === void 0 ? void 0 : product.payments) === null || _a === void 0 ? void 0 : _a.forEach(payment => {
             if (!uniquePayments[payment.method]) {
                 uniquePayments[payment.method] = payment;
             }

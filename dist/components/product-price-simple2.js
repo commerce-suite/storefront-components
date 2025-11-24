@@ -15,7 +15,7 @@ const ProductPriceSimple = /*@__PURE__*/ proxyCustomElement(class ProductPriceSi
     render() {
         const formattedPrice = currencyFormat(this.price);
         const formattedCompare = this.priceCompare ? currencyFormat(this.priceCompare) : null;
-        return (h("div", { key: '742d65e24510131f255dc105b5d491a139b43edc', class: "payment-option payment-option-simple" }, this.showStartingFrom && h("span", { key: 'f65dfd20e1add28b170e73bb1e28e145bb4a27df', class: "starting-from" }, "A partir de"), formattedCompare && !this.showStartingFrom && (h("span", { key: '1ca46bdc98689a5b1e44e6bfab64daf4460d26cd', class: "price-compare" }, formattedCompare)), h("span", { key: 'a8f4467da2e65fea621521b5f0bbefab3479bc39', class: "price-current" }, h("span", { key: '9cf82d389efed234dd351cced3ddbbce54d100b4', class: "highlight" }, formattedPrice))));
+        return (h("div", { key: '4630ba37bf64b4ac9d33981ab84a2d53e55bc778', class: "payment-option payment-option-simple" }, this.showStartingFrom && h("span", { key: '8768a1234ef4b957fafacfdc0ec20a758a06e77c', class: "starting-from" }, "A partir de"), formattedCompare && !this.showStartingFrom && (h("span", { key: 'ebc0066790aa2222525c704fef70946ebb6886c0', class: "price-compare" }, formattedCompare)), h("span", { key: '023b9b659676bb02e7d3745a4f8712f338b40b6f', class: "price-current" }, h("span", { key: '6cdccc631ae83b876b98d03164399d56f13a1b29', class: "highlight" }, formattedPrice))));
     }
     static get style() { return ProductPriceSimpleStyle0; }
 }, [0, "product-price-simple", {
