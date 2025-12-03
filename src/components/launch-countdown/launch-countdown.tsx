@@ -38,8 +38,9 @@ export class LaunchCountdown {
       return;
     }
     const { now, releaseDate } = productReleaseDate;
-    this.countdownLoaded.emit({ releaseDateActive: Number(now) < Number(releaseDate) });
-    this.hasDateConfigured = true;
+    const releaseDateActive = Number(now) < Number(releaseDate);
+    this.countdownLoaded.emit({ releaseDateActive });
+    this.hasDateConfigured = releaseDateActive;
     this.dateTime = {
       startDate: now,
       endDate: releaseDate,
