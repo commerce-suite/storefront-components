@@ -16,6 +16,7 @@ export class LaunchCountdown {
   @Prop() dataDescription = 'O produto que você tanto espera será liberado em breve.';
 
   @State() dateTime: { startDate: string; endDate: string } = { endDate: null, startDate: null };
+  @State() hasDateConfigured = false;
 
   @Event() countdownLoaded: EventEmitter<{ releaseDateActive: boolean }>;
 
@@ -38,6 +39,7 @@ export class LaunchCountdown {
     }
     const { now, releaseDate } = productReleaseDate;
     this.countdownLoaded.emit({ releaseDateActive: Number(now) < Number(releaseDate) });
+    this.hasDateConfigured = true;
     this.dateTime = {
       startDate: now,
       endDate: releaseDate,
@@ -59,6 +61,7 @@ export class LaunchCountdown {
   }
 
   render() {
+    if (!this.hasDateConfigured) return null;
     return (
       <Host>
         <div class="launch-countdown-container">
