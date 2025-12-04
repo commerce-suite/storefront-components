@@ -14,6 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install dependencies for security scan
+        run: npm install --ignore-scripts
+
+      - name: Security Scan
+        uses: gensecaihq/Shai-Hulud-2.0-Detector@v2
+        with:
+          fail-on-critical: true
+          fail-on-high: false
+          fail-on-any: false
+          scan-lockfiles: true
+          scan-node-modules: false
+          output-format: text
+          working-directory: '.'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
