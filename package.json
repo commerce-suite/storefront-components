@@ -32,7 +32,7 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "4.17.0",
-    "@uxshop/storefront-core": "github:uxshop/storefront-core#homolog",
+    "@uxshop/storefront-core": "https://github.com/uxshop/storefront-core",
     "dotenv": "^16.4.7",
     "lodash": "^4.17.21"
   },
