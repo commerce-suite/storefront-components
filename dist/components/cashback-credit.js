@@ -31,6 +31,7 @@ var CalculationItemPromotion;
 })(CalculationItemPromotion || (CalculationItemPromotion = {}));
 
 const cashbackCss = ".cashback.sc-cashback-credit{display:inline-flex}.cashback.sc-cashback-credit img.sc-cashback-credit{margin-right:0.5rem}.cashback.sc-cashback-credit span.sc-cashback-credit{color:var(--success)}";
+const CashbackCreditStyle0 = cashbackCss;
 
 const Cashback = /*@__PURE__*/ proxyCustomElement(class Cashback extends HTMLElement {
     constructor() {
@@ -79,7 +80,7 @@ const Cashback = /*@__PURE__*/ proxyCustomElement(class Cashback extends HTMLEle
         "customer_id": ["onCustomerIdChange"],
         "product": ["onProductChange"]
     }; }
-    static get style() { return cashbackCss; }
+    static get style() { return CashbackCreditStyle0; }
 }, [2, "cashback-credit", {
         "customer_id": [2],
         "cashback": [16],

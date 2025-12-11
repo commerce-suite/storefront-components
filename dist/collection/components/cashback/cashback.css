@@ -1,0 +1,9 @@
+.cashback {
+  display: inline-flex;
+}
+.cashback img {
+  margin-right: 0.5rem;
+}
+.cashback span {
+  color: var(--success);
+}

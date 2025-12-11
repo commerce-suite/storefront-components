@@ -1,0 +1,1 @@
+{"version":3,"file":"lauch-mode.type.js","sourceRoot":"","sources":["../../../src/components/launch-mode/lauch-mode.type.ts"],"names":[],"mappings":"","sourcesContent":["export interface ILaunchMode {\n  title: string;\n  caption: string;\n  password: string;\n  is_active: boolean;\n  color_title: string;\n  color_button: string;\n  color_caption: string;\n}\n"]}

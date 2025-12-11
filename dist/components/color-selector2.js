@@ -1,6 +1,7 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
 
 const colorSelectorCss = ".color-selector{display:flex;flex-wrap:wrap;gap:10px}.color-selector .color-option{position:relative;width:25px;height:25px;border:none;background:transparent;border-radius:50%;padding:0;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center}.color-selector .color-option::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;box-sizing:border-box;border:1px solid #ededed}.color-selector .color-option.active::before{border:2px solid #000000}.color-selector .color-option .color-dot{width:15px;height:15px;border-radius:50%;background-color:currentColor;z-index:1}";
+const ColorSelectorStyle0 = colorSelectorCss;
 
 const ColorSelector = /*@__PURE__*/ proxyCustomElement(class ColorSelector extends HTMLElement {
     constructor() {
@@ -30,7 +31,7 @@ const ColorSelector = /*@__PURE__*/ proxyCustomElement(class ColorSelector exten
                 'active': this.selectedId === color.id,
             }, onClick: () => this.onSelectColor(color), "aria-label": color.name, title: color.name }, h("span", { class: "color-dot", style: this.getColorStyle(color) })))))));
     }
-    static get style() { return colorSelectorCss; }
+    static get style() { return ColorSelectorStyle0; }
 }, [0, "color-selector", {
         "colors": [16],
         "selectedId": [2, "selected-id"]

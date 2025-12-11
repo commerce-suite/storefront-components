@@ -47,6 +47,7 @@ class FrontCountdownService {
 }
 
 const frontCountdownCss = ".sc-front-countdown-h{display:block}";
+const FrontCountdownStyle0 = frontCountdownCss;
 
 const FrontCountdown = /*@__PURE__*/ proxyCustomElement(class FrontCountdown extends HTMLElement {
     constructor() {
@@ -111,7 +112,7 @@ const FrontCountdown = /*@__PURE__*/ proxyCustomElement(class FrontCountdown ext
         "startDate": ["watchStartDateChange"],
         "endDate": ["watchEndDateChange"]
     }; }
-    static get style() { return frontCountdownCss; }
+    static get style() { return FrontCountdownStyle0; }
 }, [2, "front-countdown", {
         "startDate": [1025, "start-date"],
         "endDate": [1025, "end-date"],

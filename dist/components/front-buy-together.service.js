@@ -1,4 +1,6 @@
-import { c as commonjsGlobal, B as BuyTogetherService, A as AppService } from './index2.js';
+import { B as BuyTogetherService, A as AppService } from './index2.js';
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 /**
  * Checks if `value` is classified as an `Array` object.
