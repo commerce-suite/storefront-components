@@ -4,8 +4,11 @@ export declare class HighlightCard {
     items: IHighlightCardItem[];
     highlightedItems: IHighlightCardItem[];
     nonHighlightedItems: IHighlightCardItem[];
+    selectedColorByProductId: Record<number, number>;
     addItem: EventEmitter<IHighlightCardItem>;
     componentRendered: EventEmitter<void>;
+    private updateProductItem;
+    private handleColorSelected;
     private renderItem;
     filterItems(items: IHighlightCardItem[]): void;
     componentDidLoad(): void;

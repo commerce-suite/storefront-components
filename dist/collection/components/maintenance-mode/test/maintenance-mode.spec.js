@@ -3,12 +3,13 @@ import { newSpecPage } from "@stencil/core/testing";
 import { MaintenanceMode } from "../maintenance-mode";
 describe('maintenance-mode', () => {
     it('should render maintenance-mode', async () => {
+        Env.GOOGLE_RECAPTCHA_SITE_KEY = 'mocked_site_key';
         const page = await newSpecPage({
             components: [MaintenanceMode],
             html: `<maintenance-mode></maintenance-mode>`,
         });
         expect(page.root).toEqualHtml(`
-    <maintenance-mode style="--maintenance-bg: #212529; --maintenance-title: #FFFFFF; --maintenance-text: #C1C2C3; --maintenance-button-bg: #212529; --maintenance-button-color: #FFFFFF;">
+    <maintenance-mode style="--maintenance-bg: #FFFFFF; --maintenance-title: #212529; --maintenance-text: #535862; --maintenance-button-bg: #212529; --maintenance-button-color: #FFFFFF;">
       <div class="maintenance-mode maintenance-mode-container">
         <div class="maintenance-mode-content">
           <div class="maintenance-mode-content-label">
@@ -19,7 +20,7 @@ describe('maintenance-mode', () => {
               Estamos temporariamente em manutenção. Voltaremos em breve com novidades para você!
             </p>
           </div>
-          <img alt="maintenance-mode-image" src="https://optimizer.dchomolog.dooca.store/103964/applications/pexels-photo-976853.jpeg">
+
         </div>
         <form class="maintenance-mode-form" name="newsletter">
           <div class="maintenance-mode-form-label">
@@ -29,8 +30,8 @@ describe('maintenance-mode', () => {
           </div>
           <div class="maintenance-mode-form-content">
             <div class="maintenance-mode-form-content-input">
-              <input placeholder="Digite seu nome" required="" type="text">
-              <input placeholder="Digite seu e-mail" required="" type="email">
+              <input name="name" placeholder="Seu nome" required="" type="text">
+              <input name="email" placeholder="Seu email" required="" type="email">
             </div>
             <google-recaptcha sitekey="${Env.GOOGLE_RECAPTCHA_SITE_KEY}"></google-recaptcha>
             <button class="maintenance-mode-form-content-button" disabled="" type="submit">

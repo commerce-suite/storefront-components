@@ -1,5 +1,5 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
-import { P as ProductService } from './index2.js';
+import { P as ProductFieldService } from './index2.js';
 import { d as defineCustomElement$2 } from './front-countdown2.js';
 
 class LaunchCountdownService {
@@ -8,7 +8,10 @@ class LaunchCountdownService {
         try {
             if (!productId)
                 return null;
-            const product = await ProductService.getById(productId);
+            const product = await ProductFieldService.getById(productId, {
+                releaseDate: { now: true, releaseDate: true },
+                variations: { id: true, releaseDate: { now: true, releaseDate: true } },
+            });
             if (!product)
                 return null;
             let variation = product;

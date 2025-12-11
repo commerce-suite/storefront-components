@@ -8,9 +8,9 @@ export class Showcase {
         this.buttonLabel = undefined;
         this.buyTogetherProductIds = undefined;
         this.showArrows = true;
-        this.productIds = undefined;
-        this.products = undefined;
-        this.loading = undefined;
+        this.productIds = [];
+        this.products = [];
+        this.loading = false;
     }
     async load() {
         var _a;
@@ -74,12 +74,13 @@ export class Showcase {
         await this.load();
     }
     componentDidLoad() {
-        if (this.products.length)
+        var _a;
+        if ((_a = this.products) === null || _a === void 0 ? void 0 : _a.length)
             this.mountCarousel();
     }
     render() {
-        var _a;
-        return (h(Host, { key: '76ca2216fc3cb991e714a565879f6c5bec2a171f' }, this.loading && (h("div", { key: '8fd8b83123e439528ff230a185337aa7ce923e28', class: "loading-container" }, h("span", { key: '2c2136f4fc43dfdcd766b4c50a69285828220c2a', class: "spinner" }))), !this.loading && this.products.length ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_a = this.products) === null || _a === void 0 ? void 0 : _a.map(product => {
+        var _a, _b;
+        return (h(Host, { key: 'e8c14c31f554528c12a6aa89dfcb2a66bebec77f' }, this.loading && (h("div", { key: '3aaadda90cde705f4d7ba23fb5f21a9c43ab74c6', class: "loading-container" }, h("span", { key: 'be8098c6683b94c06be2a173fb90036a459f319f', class: "spinner" }))), !this.loading && ((_a = this.products) === null || _a === void 0 ? void 0 : _a.length) ? (h("div", { class: "showcase-related-products" }, h("h4", { class: "showcase-related-products-title" }, this.showcaseTitle || 'Recomendados para você'), h("div", { class: "splide-container" }, h("div", { id: "splide", class: "splide", style: !this.showArrows ? { padding: '30px 0' } : {} }, h("div", { class: "splide__track" }, h("ul", { class: "splide__list" }, (_b = this.products) === null || _b === void 0 ? void 0 : _b.map(product => {
             return (h("li", { class: "splide__slide" }, h("form", { class: "product-form", onSubmit: evt => this.onClickBuyButtonEmit(evt, product) }, h("div", { class: "product-main-container" }, h("product-card", { product: product, paymentOptions: product.paymentOptions }), h("button", { type: "submit", class: "buy-button" }, this.buttonLabel || 'Comprar')))));
         }))))))) : (h(Fragment, null))));
     }
