@@ -4,6 +4,7 @@ import { IInputSelectDataEvent } from '../../../components';
 import { IChangeResult, IFrontBuyTogetherService } from './front-buy-together.type';
 export declare class FrontBuyTogetherService implements IFrontBuyTogetherService {
     private buyTogetherPaymentConfig;
+    private configLoaded;
     constructor();
     private loadBuyTogetherPaymentConfig;
     private filterOutOriginalProducts;

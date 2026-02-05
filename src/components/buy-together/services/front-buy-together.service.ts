@@ -12,9 +12,10 @@ import { FrontBuyTogetherFilter } from './front-buy-together.filter';
 
 export class FrontBuyTogetherService implements IFrontBuyTogetherService {
   private buyTogetherPaymentConfig: BuyTogetherPaymentConfig[];
+  private configLoaded: Promise<void>;
 
   constructor() {
-    this.loadBuyTogetherPaymentConfig();
+    this.configLoaded = this.loadBuyTogetherPaymentConfig();
   }
 
   private async loadBuyTogetherPaymentConfig() {
@@ -40,6 +41,7 @@ export class FrontBuyTogetherService implements IFrontBuyTogetherService {
     productId: number,
     variationId?: number,
   ): Promise<IBuyTogetherComponentData> {
+    await this.configLoaded;
     const responseData = await BuyTogetherService.getByProductIdWithValidPromotionDate(productId);
     if (!responseData) return null;
     const buyTogetherData = new FrontBuyTogetherFilter(responseData);
